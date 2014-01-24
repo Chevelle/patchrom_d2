@@ -312,7 +312,7 @@
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService$2;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    move-object/from16 v0, v22
+    move-object/from16 v0, v27
 
     invoke-static {v3, v0}, Lcom/android/server/am/ActivityManagerService$Injector;->showAppCrashDialog(Lcom/android/server/am/ActivityManagerService;Ljava/util/HashMap;)Z
 

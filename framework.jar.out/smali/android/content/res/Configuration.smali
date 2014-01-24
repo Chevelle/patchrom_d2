@@ -800,18 +800,6 @@
 
     sub-int v2, v5, v6
 
-    .line 1224
-    iget-object v5, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    if-nez v5, :cond_6
-
-    .line 1225
-    iget-object v3, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    if-eqz v3, :cond_0
-
-    move v2, v4
-
     iget-object v3, p0, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
 
     iget-object v4, p1, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
@@ -819,60 +807,6 @@
     invoke-virtual {v3, v4}, Lmiui/content/res/ExtraConfiguration;->compareTo(Lmiui/content/res/ExtraConfiguration;)I
 
     move-result v2
-
-    goto/16 :goto_0
-
-    .line 1226
-    :cond_6
-    iget-object v4, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    if-nez v4, :cond_7
-
-    move v2, v3
-
-    .line 1227
-    goto/16 :goto_0
-
-    .line 1229
-    :cond_7
-    iget-object v3, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    invoke-virtual {v3}, Landroid/content/res/CustomTheme;->getThemeId()Ljava/lang/String;
-
-    move-result-object v3
-
-    iget-object v4, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    invoke-virtual {v4}, Landroid/content/res/CustomTheme;->getThemeId()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
-
-    move-result v2
-
-    .line 1230
-    if-nez v2, :cond_0
-
-    .line 1231
-    iget-object v3, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    invoke-virtual {v3}, Landroid/content/res/CustomTheme;->getThemePackageName()Ljava/lang/String;
-
-    move-result-object v3
-
-    iget-object v4, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    invoke-virtual {v4}, Landroid/content/res/CustomTheme;->getThemePackageName()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
-
-    move-result v2
-
-    .line 1232
-    if-eqz v2, :cond_0
 
     goto/16 :goto_0
 .end method
@@ -1211,32 +1145,6 @@
 
     or-int/2addr v0, v1
 
-    iget-object v1, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    if-eqz v1, :cond_13
-
-    iget-object v1, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    if-eqz v1, :cond_12
-
-    iget-object v1, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    iget-object v2, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    invoke-virtual {v1, v2}, Landroid/content/res/CustomTheme;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_13
-
-    .line 1022
-    :cond_12
-    const v1, 0x8000
-
-    or-int/2addr v0, v1
-
-    .line 1024
-    :cond_13
     return v0
 .end method
 
@@ -1459,22 +1367,6 @@
 
     iget v3, p0, Landroid/content/res/Configuration;->densityDpi:I
 
-    add-int v0, v1, v3
-
-    .line 1271
-    mul-int/lit8 v1, v0, 0x1f
-
-    iget-object v3, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    if-eqz v3, :cond_0
-
-    iget-object v2, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    invoke-virtual {v2}, Landroid/content/res/CustomTheme;->hashCode()I
-
-    move-result v2
-
-    :cond_0
     add-int v0, v1, v2
 
     iget-object v1, p0, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
@@ -1798,9 +1690,9 @@
     .local v1, themePackage:Ljava/lang/String;
     new-instance v2, Landroid/content/res/CustomTheme;
 
-    invoke-direct {v2, v0, v1}, Landroid/content/res/CustomTheme;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+    iget-object v0, p0, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
 
-    iput-object v2, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
+    invoke-virtual {v0, p1}, Lmiui/content/res/ExtraConfiguration;->readFromParcel(Landroid/os/Parcel;)V
 
     .line 1156
     .end local v0           #themeId:Ljava/lang/String;
@@ -1839,11 +1731,6 @@
 
     iput v1, p0, Landroid/content/res/Configuration;->screenLayout:I
 
-    iget-object v0, p0, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
-
-    invoke-virtual {v0, p1}, Lmiui/content/res/ExtraConfiguration;->readFromParcel(Landroid/os/Parcel;)V
-
-    .line 1316
     return-void
 .end method
 
@@ -1997,23 +1884,12 @@
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
     .line 606
-    iget-object v0, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
+    iget-object v0, p0, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
 
-    if-eqz v0, :cond_1
+    iget-object v1, p1, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
 
-    .line 607
-    iget-object v0, p1, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
+    invoke-virtual {v0, v1}, Lmiui/content/res/ExtraConfiguration;->setTo(Lmiui/content/res/ExtraConfiguration;)V
 
-    invoke-virtual {v0}, Landroid/content/res/CustomTheme;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/content/res/CustomTheme;
-
-    iput-object v0, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    .line 609
-    :cond_1
     return-void
 .end method
 
@@ -2074,16 +1950,8 @@
     iput v1, p0, Landroid/content/res/Configuration;->seq:I
 
     iget-object v1, p0, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
- 
+
     invoke-virtual {v1}, Lmiui/content/res/ExtraConfiguration;->setToDefaults()V
-
-    iput-object v2, p0, Landroid/content/res/Configuration;->customTheme:Landroid/content/res/CustomTheme;
-
-    iget-object v0, p0, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
-
-    iget-object v1, p1, Landroid/content/res/Configuration;->extraConfig:Lmiui/content/res/ExtraConfiguration;
-
-    invoke-virtual {v0, v1}, Lmiui/content/res/ExtraConfiguration;->setTo(Lmiui/content/res/ExtraConfiguration;)V
 
     return-void
 .end method

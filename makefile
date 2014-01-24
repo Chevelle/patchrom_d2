@@ -1,5 +1,5 @@
 #
-# Makefile for UnknownDevice
+# Makefile for SCH-i535
 #
 
 # The original zip file, MUST be specified by each product
@@ -12,14 +12,29 @@ local-out-zip-file := miuiandroid_d2vzw.zip
 local-previous-target-dir := 
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := Bluetooth
+local-modified-apps :=
 
 local-modified-jars :=
 
 # All apks from MIUI
-local-miui-removed-apps := MediaProvider BaiduNetworkLocation Userbook VoiceAssist
+local-miui-removed-apps := 	MediaProvider \
+				MiuiVideo \
+				BaiduNetworkLocation \
+				Userbook \
+				VoiceAssist \
+				GameCenter \
+				GameCenterSDKService \
+				KingSoftCleaner \
+				SuperMarket \
+				AlipayMsp \
+				MiShop \
+				VoiceRecognizerXunfei \
+				XunfeiSpeechService3
 
-local-miui-modified-apps := MiuiSystemUI Settings Phone Mms ThemeManager
+local-miui-modified-apps := 	MiuiSystemUI \
+				Settings \
+				Phone \
+				Mms
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -45,22 +60,20 @@ pre_install_data_packages := out/pre_install_apk_pkgname.txt
 local-pre-zip-misc:
 	cp other/build.prop $(ZIP_DIR)/system/build.prop
 	cp other/system_fonts.xml $(ZIP_DIR)/system/etc/system_fonts.xml
+	cp other/backuptool.functions $(ZIP_DIR)/system/bin/backuptool.functions
+	cp other/backuptool.sh $(ZIP_DIR)/system/bin/backuptool.sh
 # To replace spn
 #	cp other/spn-conf.xml $(ZIP_DIR)/system/etc/spn-conf.xml
 # To replace kernel
 	cp other/boot.img $(ZIP_DIR)/boot.img
 	cp other/installd $(ZIP_DIR)/system/bin/installd
-	#cp other/Camera.apk $(ZIP_DIR)/system/app
 # To replace FM icon
 #	cp -rf other/miui_mod_icons/* $(ZIP_DIR)/system/media/theme/miui_mod_icons/
-# To add MiuiSettings
-#	cp other/MiuiSettings.apk $(ZIP_DIR)/system/app/MiuiSettings.apk
-	rm -rf $(ZIP_DIR)/system/addon.d
-	rm -rf $(ZIP_DIR)/system/bin/backuptool.functions
-	rm -rf $(ZIP_DIR)/system/bin/backuptool.sh
-	
 	@echo Remove usless stuff
 	rm -rf $(ZIP_DIR)/data/media/preinstall_apps/*.apk
+	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/media/preinstall_apps/Network.apk
+	cp other/pro.burgerz.wsm.manager_v213_34ef24.apk $(ZIP_DIR)/data/media/preinstall_apps/WSM-Manager_213.apk
+	cp other/pro.burgerz.wsm.mods.mitools_v18_0f4dc2.apk $(ZIP_DIR)/data/media/preinstall_apps/MiTools-18.apk
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
 	rm -rf $(ZIP_DIR)/system/tts/lang_pico/*.bin
 out/framework2.jar : out/framework.jar
