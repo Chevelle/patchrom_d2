@@ -91,24 +91,24 @@
     :goto_0
     iget-object v1, p0, Landroid/media/AudioService$9;->this$0:Landroid/media/AudioService;
 
-    new-instance v2, Landroid/view/VolumePanel;
+    new-instance v2, Lmiui/view/VolumePanel;
 
     iget-object v3, p0, Landroid/media/AudioService$9;->this$0:Landroid/media/AudioService;
 
-    invoke-direct {v2, v0, v3}, Landroid/view/VolumePanel;-><init>(Landroid/content/Context;Landroid/media/AudioService;)V
+    invoke-direct {v2, v0, v3}, Lmiui/view/VolumePanel;-><init>(Landroid/content/Context;Landroid/media/AudioService;)V
 
-    #setter for: Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
-    invoke-static {v1, v2}, Landroid/media/AudioService;->access$9602(Landroid/media/AudioService;Landroid/view/VolumePanel;)Landroid/view/VolumePanel;
+    #setter for: Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+    invoke-static {v1, v2}, Landroid/media/AudioService;->access$9602(Landroid/media/AudioService;Lmiui/view/VolumePanel;)Lmiui/view/VolumePanel;
 
     .line 4259
     iget-object v1, p0, Landroid/media/AudioService$9;->this$0:Landroid/media/AudioService;
 
-    #getter for: Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
-    invoke-static {v1}, Landroid/media/AudioService;->access$9600(Landroid/media/AudioService;)Landroid/view/VolumePanel;
+    #getter for: Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+    invoke-static {v1}, Landroid/media/AudioService;->access$9600(Landroid/media/AudioService;)Lmiui/view/VolumePanel;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Landroid/view/VolumePanel;->postDisplaySafeVolumeWarning()V
+    invoke-virtual {v1}, Lmiui/view/VolumePanel;->postDisplaySafeVolumeWarning()V
 
     .line 4260
     return-void
