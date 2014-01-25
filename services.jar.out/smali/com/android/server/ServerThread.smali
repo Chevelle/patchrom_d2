@@ -824,8 +824,8 @@
     .catch Ljava/lang/RuntimeException; {:try_start_a .. :try_end_a} :catch_5c
 
     .line 314
-    .end local v98           #lights:Lcom/android/server/LightsService;
-    .local v6, lights:Lcom/android/server/LightsService;
+    .end local v98           #lights:Lcom/android/server/MiuiLightsService;
+    .local v6, lights:Lcom/android/server/MiuiLightsService;
     :try_start_b
     const-string v7, "SystemServer"
 

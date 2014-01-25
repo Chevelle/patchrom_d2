@@ -13551,12 +13551,12 @@
 
     .line 1747
     :cond_7
-    new-instance v12, Landroid/content/res/Resources;
+    new-instance v12, Landroid/content/res/MiuiResources;
 
     .end local v12           #r:Landroid/content/res/Resources;
     move-object/from16 v0, p4
 
-    invoke-direct {v12, v7, v9, v8, v0}, Landroid/content/res/Resources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;)V
+    invoke-direct {v12, v7, v9, v8, v0}, Landroid/content/res/MiuiResources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;)V
 
     .line 1754
     .restart local v12       #r:Landroid/content/res/Resources;

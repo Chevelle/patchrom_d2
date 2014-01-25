@@ -17,6 +17,7 @@
         Lcom/android/internal/policy/impl/PhoneWindow$ActionMenuPresenterCallback;,
         Lcom/android/internal/policy/impl/PhoneWindow$PanelMenuPresenterCallback;,
         Lcom/android/internal/policy/impl/PhoneWindow$WindowManagerHolder;,
+        Lcom/android/internal/policy/impl/PhoneWindow$SettingsObserver;,
         Lcom/android/internal/policy/impl/PhoneWindow$Injector;
     }
 .end annotation
