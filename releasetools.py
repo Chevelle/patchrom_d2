@@ -5,7 +5,7 @@ def AddAssertions(info):
     edify = info.script
     for i in xrange(len(edify.script)):
         if ");" in edify.script[i] and ("ro.product.device" in edify.script[i] or "ro.build.product" in edify.script[i]):
-            edify.script[i] = edify.script[i].replace(");", ' || getprop("ro.product.device") == "xt926" || getprop("ro.build.product") == "xt926");')
+            edify.script[i] = edify.script[i].replace(");", ' || getprop("ro.product.device") == "d2vzw" || getprop("ro.build.product") == "d2vzw");')
             return
 
 def FullOTA_InstallEnd(info):

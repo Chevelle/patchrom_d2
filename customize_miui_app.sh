@@ -35,6 +35,7 @@ fi
 
 if [ $1 = "Mms" ];then
 	$XMLMERGYTOOL $1/res/values $2/res/values
+	$XMLMERGYTOOL $1/res/xml $2/res/xml
 fi
 
 if [ $1 = "Phone" ];then
@@ -56,19 +57,20 @@ if [ $1 = "ThemeManager" ];then
 fi
 
 if [ $1 = "MiuiHome" ];then
-    cp $1/*.part out/
-    cd out
-    $GIT_APPLY MiuiHome.part
-    cd ..
-    for file in `find $2 -name *.rej`
-    do
-	echo "Fatal error: MiuiHome patch fail"
-        exit 1
-    done
+#    cp $1/*.part out/
+#    cd out
+#    $GIT_APPLY MiuiHome.part
+#    cd ..
+#    for file in `find $2 -name *.rej`
+#    do
+#	echo "Fatal error: MiuiHome patch fail"
+#        exit 1
+#    done
 fi
 
 if [ $1 = "MiuiSystemUI" ];then
 	$XMLMERGYTOOL $1/res/values $2/res/values
+	$XMLMERGYTOOL $1/res/layout $2/res/layout
     cp $1/MiuiSystemUI.patch out/
 	cd out
 	$GIT_APPLY MiuiSystemUI.patch
