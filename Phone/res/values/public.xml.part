@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="array" name="preferred_network_mode_choices_lte_gsm" id="0x7f080043" />
+    <public type="array" name="preferred_network_mode_values_lte_gsm" id="0x7f080044" />
+    <public type="string" name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary" id="0x7f0e03dd" />
+    <public type="string" name="preferred_network_mode_global_summary" id="0x7f0e03de" />
+    <public type="string" name="preferred_network_mode_lte_cdma_evdo_summary" id="0x7f0e03df" />
+    <public type="string" name="preferred_network_mode_lte_gsm_wcdma_summary" id="0x7f0e03e0" />
+    <public type="string" name="preferred_network_mode_lte_summary" id="0x7f0e03e1" />
+    <public type="string" name="preferred_network_mode_lte_wcdma_summary" id="0x7f0e03e2" />
+    <public type="string" name="preferred_network_type_pref_entries_only_4g_miui" id="0x7f0e03e3" />
+</resources>

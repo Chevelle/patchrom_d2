@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Preferred network mode: Global</string>
+    <string name="preferred_network_mode_global_summary">Preferred network mode: Global</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_summary">Preferred network mode: CDMA+LTE/EVDO</string>
+    <string name="preferred_network_mode_lte_gsm_wcdma_summary">Preferred network mode: GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_lte_summary">Preferred network mode: LTE</string>
+    <string name="preferred_network_mode_lte_wcdma_summary">Preferred network mode: LTE / WCDMA</string>
+    <string name="preferred_network_type_pref_entries_only_4g_miui">LTE</string>
+</resources>
