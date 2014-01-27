@@ -41,16 +41,15 @@ fi
 if [ $1 = "Phone" ];then
 	$XMLMERGYTOOL $1/res/values $2/res/values
 	$XMLMERGYTOOL $1/res/xml $2/res/xml
-	cp $1/Phone.part out/
+	cp $1/Phone.patch out/
 	cd out
-	$GIT_APPLY Phone.part
+	$GIT_APPLY Phone.patch
 	cd ..
 	for file in `find $2 -name *.rej`
 	do
 	echo "Phone patch fail"
 		exit 1
 	done
-fi
 fi
 
 if [ $1 = "ThemeManager" ];then
