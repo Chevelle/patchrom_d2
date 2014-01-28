@@ -66,7 +66,7 @@ if [ $1 = "ThemeManager" ];then
     $XMLMERGYTOOL $1/res/values $2/res/values
 fi
 
-if [ $1 = "MiuiHome" ];then
+#if [ $1 = "MiuiHome" ];then
 #    cp $1/*.part out/
 #    cd out
 #    $GIT_APPLY MiuiHome.part
@@ -76,7 +76,7 @@ if [ $1 = "MiuiHome" ];then
 #	echo "Fatal error: MiuiHome patch fail"
 #        exit 1
 #    done
-fi
+#fi
 
 if [ $1 = "MiuiSystemUI" ];then
 	$XMLMERGYTOOL $1/res/values $2/res/values
