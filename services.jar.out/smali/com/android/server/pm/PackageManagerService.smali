@@ -4390,7 +4390,7 @@
 
     move-result-object v1
 
-    goto :goto_0
+    goto/16 :goto_0
 
     .end local v8           #N:I
     .end local v9           #r0:Landroid/content/pm/ResolveInfo;
@@ -4399,7 +4399,7 @@
     :cond_5
     const/4 v1, 0x0
 
-    goto :goto_0
+    goto/16 :goto_0
 .end method
 
 .method static cidFromCodePath(Ljava/lang/String;)Ljava/lang/String;
@@ -17512,6 +17512,12 @@
     .end local v25           #i:I
     .end local v50           #renamed:Ljava/lang/String;
     :cond_1a
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, v46
+
+    invoke-static {v0, v1}, Lcom/android/server/pm/PackageManagerService$Injector;->addMiuiExtendFlags(Landroid/content/pm/PackageParser$Package;Lcom/android/server/pm/PackageSetting;)V
+
     move-object/from16 v0, v46
 
     iget-object v3, v0, Lcom/android/server/pm/PackageSetting;->origPackage:Lcom/android/server/pm/PackageSettingBase;
@@ -18998,13 +19004,6 @@
     .end local v32           #msg:Ljava/lang/String;
     .end local v49           #recovered:Z
     :cond_31
-
-    move-object/from16 v0, p1
-
-    move-object/from16 v1, v45
-
-    invoke-static {v0, v1}, Lcom/android/server/pm/PackageManagerService$Injector;->addMiuiExtendFlags(Landroid/content/pm/PackageParser$Package;Lcom/android/server/pm/PackageSetting;)V
-
     move-object/from16 v0, p1
 
     iget-object v3, v0, Landroid/content/pm/PackageParser$Package;->applicationInfo:Landroid/content/pm/ApplicationInfo;
@@ -19720,14 +19719,14 @@
 
     iget-object v3, v0, Lcom/android/server/pm/PackageManagerService;->mContext:Landroid/content/Context;
 
-     move-object/from16 v0, p1
+    move-object/from16 v0, p1
 
     iget-object v10, v0, Landroid/content/pm/PackageParser$Package;->applicationInfo:Landroid/content/pm/ApplicationInfo;
- 
-     move-object/from16 v0, p0
- 
+
+    move-object/from16 v0, p0
+
     iget-object v11, v0, Lcom/android/server/pm/PackageManagerService;->mSettings:Lcom/android/server/pm/Settings;
- 
+
     invoke-static {v3, v10, v11}, Lcom/android/server/pm/ExtraPackageManagerServices;->blockAutoStartedApp(Landroid/content/Context;Landroid/content/pm/ApplicationInfo;Lcom/android/server/pm/Settings;)V
 
     move-object/from16 v0, p1

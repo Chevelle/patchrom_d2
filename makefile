@@ -6,7 +6,7 @@
 local-zip-file     := stockrom.zip
 
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
-local-out-zip-file := miuiandroid_d2vzw.zip
+local-out-zip-file := miuiandroid_$(PORT_PRODUCT)_jb_$(BUILD_NUMBER).zip
 
 # the location for local-ota to save target-file
 local-previous-target-dir := 
@@ -62,6 +62,8 @@ local-pre-zip-misc:
 	cp other/system_fonts.xml $(ZIP_DIR)/system/etc/system_fonts.xml
 	cp other/backuptool.functions $(ZIP_DIR)/system/bin/backuptool.functions
 	cp other/backuptool.sh $(ZIP_DIR)/system/bin/backuptool.sh
+	cp other/updater-script $(ZIP_DIR)/META-INF/com/google/android/updater-script
+	cp other/update-binary $(ZIP_DIR)/META-INF/com/google/android/update-binary
 # To replace spn
 #	cp other/spn-conf.xml $(ZIP_DIR)/system/etc/spn-conf.xml
 # To replace kernel

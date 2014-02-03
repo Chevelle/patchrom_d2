@@ -713,8 +713,6 @@
 
     invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-static {}, Lcom/android/internal/os/ZygoteInit;->preloadMiuiResources()V
-
     .line 254
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -1419,6 +1417,7 @@
     invoke-virtual {v2}, Landroid/content/res/Resources;->startPreloading()V
 
     .line 365
+    invoke-static {}, Lcom/android/internal/os/ZygoteInit;->preloadMiuiResources()V
     const-string v2, "Zygote"
 
     const-string v3, "Preload resources disabled, skipped."

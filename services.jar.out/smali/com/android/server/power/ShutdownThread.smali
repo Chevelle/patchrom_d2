@@ -882,7 +882,7 @@
     .line 163
     new-instance v8, Landroid/app/AlertDialog$Builder;
 
-    invoke-direct {v8, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v8, p0, v9}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
     invoke-virtual {v8, v7}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
 
@@ -952,7 +952,7 @@
     .line 202
     new-instance v8, Landroid/app/AlertDialog$Builder;
 
-    invoke-direct {v8, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v8, p0, v9}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
     invoke-virtual {v8, v7}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
 
@@ -1081,6 +1081,10 @@
     .line 143
     .restart local v6       #resourceId:I
     :goto_5
+    invoke-static {v6}, Lcom/android/server/power/ShutdownThread$Injector;->getResourceId(I)I
+
+    move-result v6
+
     const-string v8, "ShutdownThread"
 
     new-instance v9, Ljava/lang/StringBuilder;
