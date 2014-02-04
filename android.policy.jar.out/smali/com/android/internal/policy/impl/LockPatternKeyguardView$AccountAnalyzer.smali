@@ -63,15 +63,15 @@
 
     iget-object v0, p0, Lcom/android/internal/policy/impl/LockPatternKeyguardView$AccountAnalyzer;->mAccounts:[Landroid/accounts/Account;
 
-    if-eqz v0, :cond_miui_0
+    if-eqz v0, :cond_0
 
     iget-object v0, p0, Lcom/android/internal/policy/impl/LockPatternKeyguardView$AccountAnalyzer;->mAccounts:[Landroid/accounts/Account;
 
     array-length v0, v0
 
-    if-nez v0, :cond_miui_1
+    if-nez v0, :cond_1
 
-    :cond_miui_0
+    :cond_0
     const-string v0, "com.xiaomi"
 
     invoke-virtual {p2, v0}, Landroid/accounts/AccountManager;->getAccountsByType(Ljava/lang/String;)[Landroid/accounts/Account;
@@ -80,7 +80,7 @@
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/LockPatternKeyguardView$AccountAnalyzer;->mAccounts:[Landroid/accounts/Account;
 
-    :cond_miui_1
+    :cond_1
     return-void
 .end method
 

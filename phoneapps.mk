@@ -9,6 +9,8 @@ private-phone-apps := 	ApplicationsProvider \
 			Galaxy4 \
 			GalaxyS3Settings \
 			Gallery2 \
+			HTMLViewer \
+			InputDevices \
 			KeyChain \
                         LatinIME \
 			LiveWallpapers \

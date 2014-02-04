@@ -132,6 +132,15 @@
     throw v0
 .end method
 
+.method getKeyguardHost()Landroid/widget/FrameLayout;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardHost:Landroid/widget/FrameLayout;
+
+    return-object v0
+.end method
+
 .method getKeyguardView()Lcom/android/internal/policy/impl/KeyguardViewBase;
     .locals 1
 
@@ -150,15 +159,6 @@
     return-object v0
 .end method
 
-.method getWindowLayoutParams()Landroid/view/WindowManager$LayoutParams;
-    .locals 1
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mWindowLayoutParams:Landroid/view/WindowManager$LayoutParams;
-
-    return-object v0
-.end method
-
 .method getViewManager()Landroid/view/ViewManager;
     .locals 1
 
@@ -168,11 +168,11 @@
     return-object v0
 .end method
 
-.method getKeyguardHost()Landroid/widget/FrameLayout;
+.method getWindowLayoutParams()Landroid/view/WindowManager$LayoutParams;
     .locals 1
 
     .prologue
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mKeyguardHost:Landroid/widget/FrameLayout;
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewManager;->mWindowLayoutParams:Landroid/view/WindowManager$LayoutParams;
 
     return-object v0
 .end method

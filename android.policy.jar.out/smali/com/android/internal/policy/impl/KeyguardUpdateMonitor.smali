@@ -660,21 +660,21 @@
     .prologue
     iget-boolean v2, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mSkipSimStateChange:Z
 
-    if-eqz v2, :cond_miui_0
+    if-eqz v2, :cond_0
 
     return-void
 
-    :cond_miui_0
+    :cond_0
     iget-object v1, p1, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor$SimArgs;->simState:Lcom/android/internal/telephony/IccCardConstants$State;
 
     .local v1, state:Lcom/android/internal/telephony/IccCardConstants$State;
     sget-object v2, Lcom/android/internal/telephony/IccCardConstants$State;->UNKNOWN:Lcom/android/internal/telephony/IccCardConstants$State;
 
-    if-eq v1, v2, :cond_0
+    if-eq v1, v2, :cond_1
 
     iget-object v2, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mSimState:Lcom/android/internal/telephony/IccCardConstants$State;
 
-    if-eq v1, v2, :cond_0
+    if-eq v1, v2, :cond_1
 
     .line 466
     iput-object v1, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mSimState:Lcom/android/internal/telephony/IccCardConstants$State;
@@ -690,7 +690,7 @@
 
     move-result v2
 
-    if-ge v0, v2, :cond_0
+    if-ge v0, v2, :cond_1
 
     .line 468
     iget-object v2, p0, Lcom/android/internal/policy/impl/KeyguardUpdateMonitor;->mCallbacks:Ljava/util/ArrayList;
@@ -710,7 +710,7 @@
 
     .line 471
     .end local v0           #i:I
-    :cond_0
+    :cond_1
     return-void
 .end method
 

@@ -5007,10 +5007,6 @@
 
     move-object/from16 v20, v0
 
-    .end local v6           #curUser:I
-    .end local v13           #now:J
-    .end local v16           #timeout:J
-    :goto_6
     move-object/from16 v0, v20
 
     invoke-virtual {v0, v4}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
@@ -5018,8 +5014,7 @@
     goto/16 :goto_1
 
     .line 8632
-    .restart local v6       #curUser:I
-    .restart local v16       #timeout:J
+    .end local v13           #now:J
     :catchall_0
     move-exception v20
 
@@ -5096,7 +5091,7 @@
     .catch Landroid/os/RemoteException; {:try_start_8 .. :try_end_8} :catch_3
 
     .line 8644
-    :goto_7
+    :goto_6
     if-eqz p3, :cond_8
 
     .line 8645
@@ -5128,7 +5123,7 @@
     .catch Landroid/os/RemoteException; {:try_start_a .. :try_end_a} :catch_2
 
     .line 8651
-    :goto_8
+    :goto_7
     :try_start_b
     move-object/from16 v0, v18
 
@@ -5160,7 +5155,7 @@
     .end local v8           #externalDataDir:Ljava/io/File;
     .end local v9           #externalMediaDir:Ljava/io/File;
     :cond_8
-    :goto_9
+    :goto_8
     add-int/lit8 v10, v10, 0x1
 
     goto/16 :goto_4
@@ -5178,7 +5173,11 @@
 
     move-object/from16 v20, v0
 
-    goto :goto_6
+    move-object/from16 v0, v20
+
+    invoke-virtual {v0, v4}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
+
+    goto/16 :goto_1
 
     .line 8655
     .restart local v6       #curUser:I
@@ -5191,21 +5190,21 @@
     :catch_1
     move-exception v20
 
-    goto :goto_9
+    goto :goto_8
 
     .line 8649
     .end local v9           #externalMediaDir:Ljava/io/File;
     :catch_2
     move-exception v20
 
-    goto :goto_8
+    goto :goto_7
 
     .line 8642
     .end local v8           #externalDataDir:Ljava/io/File;
     :catch_3
     move-exception v20
 
-    goto :goto_7
+    goto :goto_6
 .end method
 
 .method private collectCertificatesLI(Landroid/content/pm/PackageParser;Lcom/android/server/pm/PackageSetting;Landroid/content/pm/PackageParser$Package;Ljava/io/File;I)Z
@@ -12416,7 +12415,6 @@
     .line 10005
     iget-object v3, v10, Lcom/android/server/pm/PackageManagerService$AsecInstallArgs;->cid:Ljava/lang/String;
 
-    :goto_1
     move-object/from16 v0, p3
 
     invoke-virtual {v0, v3}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
@@ -12500,7 +12498,11 @@
     .line 10005
     iget-object v3, v10, Lcom/android/server/pm/PackageManagerService$AsecInstallArgs;->cid:Ljava/lang/String;
 
-    goto :goto_1
+    move-object/from16 v0, p3
+
+    invoke-virtual {v0, v3}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+
+    goto/16 :goto_0
 
     .line 9969
     :cond_3
@@ -12608,7 +12610,7 @@
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
     .line 9999
-    :goto_2
+    :goto_1
     :try_start_5
     monitor-exit v20
     :try_end_5
@@ -12624,7 +12626,11 @@
     .line 10005
     iget-object v3, v10, Lcom/android/server/pm/PackageManagerService$AsecInstallArgs;->cid:Ljava/lang/String;
 
-    goto/16 :goto_1
+    move-object/from16 v0, p3
+
+    invoke-virtual {v0, v3}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+
+    goto/16 :goto_0
 
     .line 9995
     :catchall_0
@@ -12709,7 +12715,7 @@
     :try_end_9
     .catchall {:try_start_9 .. :try_end_9} :catchall_1
 
-    goto :goto_2
+    goto :goto_1
 
     .line 10010
     .end local v5           #parseFlags:I
@@ -12742,7 +12748,7 @@
 
     .line 10018
     .local v18, regrantPermissions:Z
-    :goto_3
+    :goto_2
     if-eqz v18, :cond_9
 
     .line 10019
@@ -12815,7 +12821,7 @@
 
     const/4 v3, 0x6
 
-    :goto_4
+    :goto_3
     or-int/lit8 v3, v3, 0x1
 
     move-object/from16 v0, p0
@@ -12874,7 +12880,7 @@
 
     move-result-object v14
 
-    :goto_5
+    :goto_4
     invoke-interface {v14}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
@@ -12923,7 +12929,7 @@
     .line 10046
     invoke-static {v11}, Lcom/android/internal/content/PackageHelper;->destroySdDir(Ljava/lang/String;)Z
 
-    goto :goto_5
+    goto :goto_4
 
     .line 10017
     .end local v11           #cid:Ljava/lang/String;
@@ -12931,14 +12937,14 @@
     :cond_c
     const/16 v18, 0x0
 
-    goto/16 :goto_3
+    goto/16 :goto_2
 
     .line 10025
     .restart local v18       #regrantPermissions:Z
     :cond_d
     const/4 v3, 0x0
 
-    goto :goto_4
+    goto :goto_3
 
     .line 10032
     .end local v18           #regrantPermissions:Z
@@ -12984,7 +12990,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_5
+    goto :goto_4
 
     .line 10052
     .end local v11           #cid:Ljava/lang/String;
@@ -16592,27 +16598,6 @@
     invoke-static {v3, v0}, Lcom/android/server/pm/PackageManagerService;->compareSignatures([Landroid/content/pm/Signature;[Landroid/content/pm/Signature;)I
 
     move-result v3
-
-    if-nez v3, :cond_8
-
-    .line 3730
-    const-string v3, "PackageManager"
-
-    const-string v4, "Cannot install platform packages to user storage"
-
-    invoke-static {v3, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 3731
-    const/16 v3, -0x13
-
-    move-object/from16 v0, p0
-
-    iput v3, v0, Lcom/android/server/pm/PackageManagerService;->mLastScanError:I
-
-    .line 3732
-    const/16 p1, 0x0
-
-    goto/16 :goto_0
 
     .line 3737
     .end local v53           #s1:[Landroid/content/pm/Signature;
@@ -30469,8 +30454,8 @@
     invoke-virtual {v0, v3}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_2
-    .catch Ljava/io/FileNotFoundException; {:try_start_5 .. :try_end_5} :catch_8
-    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_7
+    .catch Ljava/io/FileNotFoundException; {:try_start_5 .. :try_end_5} :catch_a
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_9
 
     .line 9712
     if-eqz v20, :cond_3b
@@ -30480,7 +30465,7 @@
     invoke-virtual/range {v20 .. v20}, Ljava/io/FileInputStream;->close()V
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_0
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_4
+    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_7
 
     .line 9720
     .end local v9           #avail:I
@@ -30499,70 +30484,90 @@
     .line 9712
     .restart local v15       #fname:Ljava/io/File;
     .restart local v19       #in:Ljava/io/FileInputStream;
-    :catchall_1
+    :catch_3
     move-exception v3
 
     :goto_e
-    if-eqz v19, :cond_3c
+    if-eqz v19, :cond_3b
 
     .line 9714
     :try_start_8
     invoke-virtual/range {v19 .. v19}, Ljava/io/FileInputStream;->close()V
     :try_end_8
     .catchall {:try_start_8 .. :try_end_8} :catchall_0
-    .catch Ljava/io/IOException; {:try_start_8 .. :try_end_8} :catch_6
-
-    .line 9712
-    :cond_3c
-    :goto_f
-    :try_start_9
-    throw v3
-    :try_end_9
-    .catchall {:try_start_9 .. :try_end_9} :catchall_0
-
-    .line 9709
-    :catch_3
-    move-exception v3
-
-    .line 9712
-    :goto_10
-    if-eqz v19, :cond_3b
-
-    .line 9714
-    :try_start_a
-    invoke-virtual/range {v19 .. v19}, Ljava/io/FileInputStream;->close()V
+    .catch Ljava/io/IOException; {:try_start_8 .. :try_end_8} :catch_4
 
     goto :goto_d
 
     .line 9715
-    .end local v19           #in:Ljava/io/FileInputStream;
     :catch_4
     move-exception v3
 
     goto :goto_d
 
     .line 9710
-    .restart local v19       #in:Ljava/io/FileInputStream;
     :catch_5
     move-exception v3
 
     .line 9712
-    :goto_11
+    :goto_f
     if-eqz v19, :cond_3b
 
     .line 9714
+    :try_start_9
     invoke-virtual/range {v19 .. v19}, Ljava/io/FileInputStream;->close()V
-    :try_end_a
-    .catchall {:try_start_a .. :try_end_a} :catchall_0
-    .catch Ljava/io/IOException; {:try_start_a .. :try_end_a} :catch_4
+    :try_end_9
+    .catchall {:try_start_9 .. :try_end_9} :catchall_0
+    .catch Ljava/io/IOException; {:try_start_9 .. :try_end_9} :catch_6
 
     goto :goto_d
 
     .line 9715
     :catch_6
+    move-exception v3
+
+    goto :goto_d
+
+    .line 9712
+    :catchall_1
+    move-exception v3
+
+    :goto_10
+    if-eqz v19, :cond_3c
+
+    .line 9714
+    :try_start_a
+    invoke-virtual/range {v19 .. v19}, Ljava/io/FileInputStream;->close()V
+    :try_end_a
+    .catchall {:try_start_a .. :try_end_a} :catchall_0
+    .catch Ljava/io/IOException; {:try_start_a .. :try_end_a} :catch_8
+
+    .line 9716
+    :cond_3c
+    :goto_11
+    :try_start_b
+    throw v3
+    :try_end_b
+    .catchall {:try_start_b .. :try_end_b} :catchall_0
+
+    .line 9715
+    .end local v19           #in:Ljava/io/FileInputStream;
+    .restart local v9       #avail:I
+    .restart local v11       #data:[B
+    .restart local v20       #in:Ljava/io/FileInputStream;
+    :catch_7
+    move-exception v3
+
+    goto :goto_d
+
+    .end local v9           #avail:I
+    .end local v11           #data:[B
+    .end local v20           #in:Ljava/io/FileInputStream;
+    .restart local v19       #in:Ljava/io/FileInputStream;
+    :catch_8
     move-exception v4
 
-    goto :goto_f
+    goto :goto_11
 
     .line 9712
     .end local v19           #in:Ljava/io/FileInputStream;
@@ -30574,31 +30579,31 @@
 
     .end local v20           #in:Ljava/io/FileInputStream;
     .restart local v19       #in:Ljava/io/FileInputStream;
-    goto :goto_e
+    goto :goto_10
 
     .line 9710
     .end local v19           #in:Ljava/io/FileInputStream;
     .restart local v20       #in:Ljava/io/FileInputStream;
-    :catch_7
+    :catch_9
     move-exception v3
 
     move-object/from16 v19, v20
 
     .end local v20           #in:Ljava/io/FileInputStream;
     .restart local v19       #in:Ljava/io/FileInputStream;
-    goto :goto_11
+    goto :goto_f
 
     .line 9709
     .end local v19           #in:Ljava/io/FileInputStream;
     .restart local v20       #in:Ljava/io/FileInputStream;
-    :catch_8
+    :catch_a
     move-exception v3
 
     move-object/from16 v19, v20
 
     .end local v20           #in:Ljava/io/FileInputStream;
     .restart local v19       #in:Ljava/io/FileInputStream;
-    goto :goto_10
+    goto :goto_e
 .end method
 
 .method public enterSafeMode()V
@@ -39901,11 +39906,11 @@
 
     move-result v0
 
-    if-eqz v0, :cond_miui_0
+    if-eqz v0, :cond_1
 
     return-void
-    
-    :cond_miui_0
+
+    :cond_1
     const/4 v2, 0x0
 
     move-object v0, p0
@@ -40547,7 +40552,7 @@
     .line 10416
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result-wide v1
 
@@ -40558,7 +40563,7 @@
 
     invoke-interface {v0, v3}, Landroid/app/IActivityManager;->killProcessesBelowForeground(Ljava/lang/String;)Z
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
 
     .line 10421
@@ -40578,26 +40583,41 @@
     .line 10421
     .restart local v0       #am:Landroid/app/IActivityManager;
     .restart local v1       #token:J
-    :catchall_0
+    :catch_0
     move-exception v3
 
     invoke-static {v1, v2}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    throw v3
+    goto :goto_0
 
     .line 10425
     .end local v0           #am:Landroid/app/IActivityManager;
     .end local v1           #token:J
-    :catchall_1
+    :catchall_0
     move-exception v3
 
     monitor-exit v4
     :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     throw v3
 
+    .line 10421
+    .restart local v0       #am:Landroid/app/IActivityManager;
+    .restart local v1       #token:J
+    :catchall_1
+    move-exception v3
+
+    :try_start_3
+    invoke-static {v1, v2}, Landroid/os/Binder;->restoreCallingIdentity(J)V
+
+    throw v3
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
     .line 10427
+    .end local v0           #am:Landroid/app/IActivityManager;
+    .end local v1           #token:J
     :cond_2
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
@@ -40622,20 +40642,6 @@
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v3
-
-    .line 10419
-    .restart local v0       #am:Landroid/app/IActivityManager;
-    .restart local v1       #token:J
-    :catch_0
-    move-exception v3
-
-    .line 10421
-    :try_start_3
-    invoke-static {v1, v2}, Landroid/os/Binder;->restoreCallingIdentity(J)V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
-
-    goto :goto_0
 .end method
 
 .method public setPrivacyGuardSetting(Ljava/lang/String;ZI)V

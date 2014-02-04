@@ -267,6 +267,14 @@
 
     .line 209
     .local v10, onChangeListener:Landroid/widget/NumberPicker$OnValueChangeListener;
+    new-instance v10, Landroid/widget/DatePicker$OnDateChangeListener;
+
+    .end local v10           #onChangeListener:Landroid/widget/NumberPicker$OnValueChangeListener;
+    move-object/from16 v0, p0
+
+    invoke-direct {v10, v0}, Landroid/widget/DatePicker$OnDateChangeListener;-><init>(Landroid/widget/DatePicker;)V
+
+    .restart local v10       #onChangeListener:Landroid/widget/NumberPicker$OnValueChangeListener;
     const v13, 0x1020278
 
     move-object/from16 v0, p0
@@ -369,15 +377,6 @@
     iput-object v13, v0, Landroid/widget/DatePicker;->mDaySpinnerInput:Landroid/widget/EditText;
 
     .line 229
-
-    new-instance v10, Landroid/widget/DatePicker$OnDateChangeListener;
-
-    .end local v10           #onChangeListener:Landroid/widget/NumberPicker$OnValueChangeListener;
-    move-object/from16 v0, p0
-
-    invoke-direct {v10, v0}, Landroid/widget/DatePicker$OnDateChangeListener;-><init>(Landroid/widget/DatePicker;)V
-
-    .restart local v10       #onChangeListener:Landroid/widget/NumberPicker$OnValueChangeListener;
     const v13, 0x1020279
 
     move-object/from16 v0, p0
@@ -2140,6 +2139,102 @@
     return v0
 .end method
 
+.method handleValueChange(Landroid/widget/NumberPicker;II)V
+    .locals 6
+    .parameter "picker"
+    .parameter "oldVal"
+    .parameter "newVal"
+
+    .prologue
+    const/4 v5, 0x5
+
+    const/4 v4, 0x2
+
+    const/4 v3, 0x1
+
+    invoke-direct {p0}, Landroid/widget/DatePicker;->updateInputState()V
+
+    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
+
+    iget-object v1, p0, Landroid/widget/DatePicker;->mCurrentDate:Ljava/util/Calendar;
+
+    invoke-virtual {v1}, Ljava/util/Calendar;->getTimeInMillis()J
+
+    move-result-wide v1
+
+    invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->setTimeInMillis(J)V
+
+    iget-object v0, p0, Landroid/widget/DatePicker;->mDaySpinner:Landroid/widget/NumberPicker;
+
+    if-ne p1, v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
+
+    sub-int v1, p3, p2
+
+    invoke-virtual {v0, v5, v1}, Ljava/util/Calendar;->add(II)V
+
+    :goto_0
+    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
+
+    invoke-virtual {v0, v3}, Ljava/util/Calendar;->get(I)I
+
+    move-result v0
+
+    iget-object v1, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
+
+    invoke-virtual {v1, v4}, Ljava/util/Calendar;->get(I)I
+
+    move-result v1
+
+    iget-object v2, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
+
+    invoke-virtual {v2, v5}, Ljava/util/Calendar;->get(I)I
+
+    move-result v2
+
+    invoke-direct {p0, v0, v1, v2}, Landroid/widget/DatePicker;->setDate(III)V
+
+    invoke-direct {p0}, Landroid/widget/DatePicker;->updateSpinners()V
+
+    invoke-direct {p0}, Landroid/widget/DatePicker;->updateCalendarView()V
+
+    invoke-direct {p0}, Landroid/widget/DatePicker;->notifyDateChanged()V
+
+    return-void
+
+    :cond_0
+    iget-object v0, p0, Landroid/widget/DatePicker;->mMonthSpinner:Landroid/widget/NumberPicker;
+
+    if-ne p1, v0, :cond_1
+
+    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
+
+    sub-int v1, p3, p2
+
+    invoke-virtual {v0, v4, v1}, Ljava/util/Calendar;->add(II)V
+
+    goto :goto_0
+
+    :cond_1
+    iget-object v0, p0, Landroid/widget/DatePicker;->mYearSpinner:Landroid/widget/NumberPicker;
+
+    if-ne p1, v0, :cond_2
+
+    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
+
+    invoke-virtual {v0, v3, p3}, Ljava/util/Calendar;->set(II)V
+
+    goto :goto_0
+
+    :cond_2
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
+
+    throw v0
+.end method
+
 .method public init(IIILandroid/widget/DatePicker$OnDateChangedListener;)V
     .locals 0
     .parameter "year"
@@ -2656,100 +2751,4 @@
     invoke-direct {p0}, Landroid/widget/DatePicker;->notifyDateChanged()V
 
     goto :goto_0
-.end method
-
-.method handleValueChange(Landroid/widget/NumberPicker;II)V
-    .locals 6
-    .parameter "picker"
-    .parameter "oldVal"
-    .parameter "newVal"
-
-    .prologue
-    const/4 v5, 0x5
-
-    const/4 v4, 0x2
-
-    const/4 v3, 0x1
-
-    invoke-direct {p0}, Landroid/widget/DatePicker;->updateInputState()V
-
-    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
-
-    iget-object v1, p0, Landroid/widget/DatePicker;->mCurrentDate:Ljava/util/Calendar;
-
-    invoke-virtual {v1}, Ljava/util/Calendar;->getTimeInMillis()J
-
-    move-result-wide v1
-
-    invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->setTimeInMillis(J)V
-
-    iget-object v0, p0, Landroid/widget/DatePicker;->mDaySpinner:Landroid/widget/NumberPicker;
-
-    if-ne p1, v0, :cond_0
-
-    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
-
-    sub-int v1, p3, p2
-
-    invoke-virtual {v0, v5, v1}, Ljava/util/Calendar;->add(II)V
-
-    :goto_0
-    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
-
-    invoke-virtual {v0, v3}, Ljava/util/Calendar;->get(I)I
-
-    move-result v0
-
-    iget-object v1, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
-
-    invoke-virtual {v1, v4}, Ljava/util/Calendar;->get(I)I
-
-    move-result v1
-
-    iget-object v2, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
-
-    invoke-virtual {v2, v5}, Ljava/util/Calendar;->get(I)I
-
-    move-result v2
-
-    invoke-direct {p0, v0, v1, v2}, Landroid/widget/DatePicker;->setDate(III)V
-
-    invoke-direct {p0}, Landroid/widget/DatePicker;->updateSpinners()V
-
-    invoke-direct {p0}, Landroid/widget/DatePicker;->updateCalendarView()V
-
-    invoke-direct {p0}, Landroid/widget/DatePicker;->notifyDateChanged()V
-
-    return-void
-
-    :cond_0
-    iget-object v0, p0, Landroid/widget/DatePicker;->mMonthSpinner:Landroid/widget/NumberPicker;
-
-    if-ne p1, v0, :cond_1
-
-    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
-
-    sub-int v1, p3, p2
-
-    invoke-virtual {v0, v4, v1}, Ljava/util/Calendar;->add(II)V
-
-    goto :goto_0
-
-    :cond_1
-    iget-object v0, p0, Landroid/widget/DatePicker;->mYearSpinner:Landroid/widget/NumberPicker;
-
-    if-ne p1, v0, :cond_2
-
-    iget-object v0, p0, Landroid/widget/DatePicker;->mTempDate:Ljava/util/Calendar;
-
-    invoke-virtual {v0, v3, p3}, Ljava/util/Calendar;->set(II)V
-
-    goto :goto_0
-
-    :cond_2
-    new-instance v0, Ljava/lang/IllegalArgumentException;
-
-    invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
-
-    throw v0
 .end method

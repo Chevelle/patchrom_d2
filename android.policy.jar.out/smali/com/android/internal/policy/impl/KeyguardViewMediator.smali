@@ -1694,129 +1694,6 @@
     return-void
 .end method
 
-.method protected playSounds(Z)V
-    .locals 8
-    .parameter "locked"
-
-    .prologue
-    const/4 v5, 0x0
-
-    const/4 v4, 0x1
-
-    .line 1078
-    iget-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mSuppressNextLockSound:Z
-
-    if-eqz v0, :cond_1
-
-    .line 1079
-    iput-boolean v5, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mSuppressNextLockSound:Z
-
-    .line 1101
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 1083
-    :cond_1
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v7
-
-    .line 1084
-    .local v7, cr:Landroid/content/ContentResolver;
-    const-string v0, "lockscreen_sounds_enabled"
-
-    invoke-static {v7, v0, v4}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
-
-    move-result v0
-
-    if-ne v0, v4, :cond_0
-
-    .line 1085
-    if-eqz p1, :cond_3
-
-    iget v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundId:I
-
-    .line 1088
-    .local v1, whichSound:I
-    :goto_1
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSounds:Landroid/media/SoundPool;
-
-    iget v2, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundStreamId:I
-
-    invoke-virtual {v0, v2}, Landroid/media/SoundPool;->stop(I)V
-
-    .line 1090
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
-
-    if-nez v0, :cond_2
-
-    .line 1091
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mContext:Landroid/content/Context;
-
-    const-string v2, "audio"
-
-    invoke-virtual {v0, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/media/AudioManager;
-
-    iput-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
-
-    .line 1092
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
-
-    if-eqz v0, :cond_0
-
-    .line 1093
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
-
-    invoke-virtual {v0}, Landroid/media/AudioManager;->getMasterStreamType()I
-
-    move-result v0
-
-    iput v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mMasterStreamType:I
-
-    .line 1096
-    :cond_2
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
-
-    iget v2, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mMasterStreamType:I
-
-    invoke-virtual {v0, v2}, Landroid/media/AudioManager;->isStreamMute(I)Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 1098
-    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSounds:Landroid/media/SoundPool;
-
-    iget v2, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundVolume:F
-
-    iget v3, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundVolume:F
-
-    const/high16 v6, 0x3f80
-
-    invoke-virtual/range {v0 .. v6}, Landroid/media/SoundPool;->play(IFFIIF)I
-
-    move-result v0
-
-    iput v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundStreamId:I
-
-    goto :goto_0
-
-    .line 1085
-    .end local v1           #whichSound:I
-    :cond_3
-    iget v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mUnlockSoundId:I
-
-    goto :goto_1
-.end method
-
 .method private resetStateLocked()V
     .locals 3
 
@@ -2335,7 +2212,7 @@
 
     move-object/from16 v18, v0
 
-    if-eqz v18, :cond_3
+    if-eqz v18, :cond_1
 
     .line 445
     move-object/from16 v0, p0
@@ -2364,13 +2241,13 @@
 
     move/from16 v18, v0
 
-    if-nez v18, :cond_1
+    if-nez v18, :cond_0
 
     .line 448
     invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->hideLocked()V
 
     .line 504
-    :cond_1
+    :cond_0
     :goto_1
     monitor-exit p0
 
@@ -2379,21 +2256,20 @@
 
     .line 440
     .end local v10           #lockImmediately:Z
-    :cond_2
     const/4 v10, 0x0
 
     goto :goto_0
 
     .line 450
     .restart local v10       #lockImmediately:Z
-    :cond_3
+    :cond_1
     move-object/from16 v0, p0
 
     iget-boolean v0, v0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mShowing:Z
 
     move/from16 v18, v0
 
-    if-eqz v18, :cond_4
+    if-eqz v18, :cond_2
 
     .line 451
     invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->notifyScreenOffLocked()V
@@ -2416,14 +2292,14 @@
 
     .line 453
     .restart local v10       #lockImmediately:Z
-    :cond_4
+    :cond_2
     const/16 v18, 0x3
 
     move/from16 v0, p1
 
     move/from16 v1, v18
 
-    if-eq v0, v1, :cond_5
+    if-eq v0, v1, :cond_3
 
     const/16 v18, 0x2
 
@@ -2431,12 +2307,12 @@
 
     move/from16 v1, v18
 
-    if-ne v0, v1, :cond_8
+    if-ne v0, v1, :cond_6
 
-    if-nez v10, :cond_8
+    if-nez v10, :cond_6
 
     .line 460
-    :cond_5
+    :cond_3
     :try_start_1
     move-object/from16 v0, p0
 
@@ -2508,7 +2384,7 @@
 
     cmp-long v18, v11, v18
 
-    if-lez v18, :cond_6
+    if-lez v18, :cond_4
 
     .line 478
     const-wide/16 v18, 0x0
@@ -2535,7 +2411,7 @@
 
     cmp-long v18, v14, v18
 
-    if-gtz v18, :cond_7
+    if-gtz v18, :cond_5
 
     .line 486
     const/16 v18, 0x1
@@ -2553,14 +2429,14 @@
 
     .line 481
     .end local v14           #timeout:J
-    :cond_6
+    :cond_4
     move-wide v14, v8
 
     .restart local v14       #timeout:J
     goto :goto_2
 
     .line 490
-    :cond_7
+    :cond_5
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     move-result-wide v18
@@ -2643,14 +2519,14 @@
     .end local v13           #sender:Landroid/app/PendingIntent;
     .end local v14           #timeout:J
     .end local v16           #when:J
-    :cond_8
+    :cond_6
     const/16 v18, 0x4
 
     move/from16 v0, p1
 
     move/from16 v1, v18
 
-    if-eq v0, v1, :cond_1
+    if-eq v0, v1, :cond_0
 
     .line 502
     invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/KeyguardViewMediator;->doKeyguardLocked()V
@@ -2797,6 +2673,129 @@
     const/4 v0, 0x1
 
     return v0
+.end method
+
+.method protected playSounds(Z)V
+    .locals 8
+    .parameter "locked"
+
+    .prologue
+    const/4 v5, 0x0
+
+    const/4 v4, 0x1
+
+    .line 1078
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mSuppressNextLockSound:Z
+
+    if-eqz v0, :cond_1
+
+    .line 1079
+    iput-boolean v5, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mSuppressNextLockSound:Z
+
+    .line 1101
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 1083
+    :cond_1
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v7
+
+    .line 1084
+    .local v7, cr:Landroid/content/ContentResolver;
+    const-string v0, "lockscreen_sounds_enabled"
+
+    invoke-static {v7, v0, v4}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v0
+
+    if-ne v0, v4, :cond_0
+
+    .line 1085
+    if-eqz p1, :cond_3
+
+    iget v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundId:I
+
+    .line 1088
+    .local v1, whichSound:I
+    :goto_1
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSounds:Landroid/media/SoundPool;
+
+    iget v2, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundStreamId:I
+
+    invoke-virtual {v0, v2}, Landroid/media/SoundPool;->stop(I)V
+
+    .line 1090
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
+
+    if-nez v0, :cond_2
+
+    .line 1091
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mContext:Landroid/content/Context;
+
+    const-string v2, "audio"
+
+    invoke-virtual {v0, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/media/AudioManager;
+
+    iput-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
+
+    .line 1092
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
+
+    if-eqz v0, :cond_0
+
+    .line 1093
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
+
+    invoke-virtual {v0}, Landroid/media/AudioManager;->getMasterStreamType()I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mMasterStreamType:I
+
+    .line 1096
+    :cond_2
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mAudioManager:Landroid/media/AudioManager;
+
+    iget v2, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mMasterStreamType:I
+
+    invoke-virtual {v0, v2}, Landroid/media/AudioManager;->isStreamMute(I)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 1098
+    iget-object v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSounds:Landroid/media/SoundPool;
+
+    iget v2, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundVolume:F
+
+    iget v3, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundVolume:F
+
+    const/high16 v6, 0x3f80
+
+    invoke-virtual/range {v0 .. v6}, Landroid/media/SoundPool;->play(IFFIIF)I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mLockSoundStreamId:I
+
+    goto :goto_0
+
+    .line 1085
+    .end local v1           #whichSound:I
+    :cond_3
+    iget v1, p0, Lcom/android/internal/policy/impl/KeyguardViewMediator;->mUnlockSoundId:I
+
+    goto :goto_1
 .end method
 
 .method public pokeWakelock()V

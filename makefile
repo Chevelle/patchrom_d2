@@ -69,6 +69,7 @@ local-pre-zip-misc:
 # To replace kernel
 	cp other/boot.img $(ZIP_DIR)/boot.img
 	cp other/installd $(ZIP_DIR)/system/bin/installd
+	cp other/apns-conf.xml $(ZIP_DIR)/system/etc/apns-conf.xml
 # To replace FM icon
 #	cp -rf other/miui_mod_icons/* $(ZIP_DIR)/system/media/theme/miui_mod_icons/
 	@echo Remove usless stuff
