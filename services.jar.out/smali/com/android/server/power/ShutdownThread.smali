@@ -228,7 +228,7 @@
     if-eqz v2, :cond_2
 
     .line 292
-    const v2, 0x1040023
+    const v2, 0x60c0026
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -237,7 +237,7 @@
     invoke-virtual {v1, v2}, Landroid/app/ProgressDialog;->setTitle(Ljava/lang/CharSequence;)V
 
     .line 293
-    const v2, 0x104002e
+    const v2, 0x60c002c
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -881,6 +881,8 @@
     .line 163
     new-instance v8, Landroid/app/AlertDialog$Builder;
 
+    const v9, 0x60d003e
+
     invoke-direct {v8, p0, v9}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
     invoke-virtual {v8, v7}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
@@ -950,6 +952,8 @@
 
     .line 202
     new-instance v8, Landroid/app/AlertDialog$Builder;
+
+    const v9, 0x60d003e
 
     invoke-direct {v8, p0, v9}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
