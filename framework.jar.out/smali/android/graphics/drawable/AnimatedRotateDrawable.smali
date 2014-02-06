@@ -656,14 +656,14 @@
 
     move-result v6
 
-    goto :goto_1
+    goto/16 :goto_1
 
     .line 233
     .restart local v6       #pivotX:F
     :cond_5
     const/4 v9, 0x0
 
-    goto :goto_2
+    goto/16 :goto_2
 
     .line 234
     .restart local v9       #pivotYRel:Z

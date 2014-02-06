@@ -478,7 +478,7 @@
     invoke-virtual {v2}, Ljava/util/zip/ZipFile;->close()V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
 
     :goto_2
     :try_start_3
@@ -522,7 +522,7 @@
     invoke-virtual {v2}, Ljava/util/zip/ZipFile;->close()V
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_0
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
 
     .line 244
     :goto_3
@@ -564,16 +564,17 @@
     return v4
 
     .line 241
-    :catch_0
-    move-exception v7
-
-    goto :goto_3
-
     .end local v1           #i$:Ljava/util/Iterator;
-    :catch_1
+    :catch_0
     move-exception v8
 
     goto :goto_2
+
+    .restart local v1       #i$:Ljava/util/Iterator;
+    :catch_1
+    move-exception v7
+
+    goto :goto_3
 .end method
 
 .method public static finalizeSdDir(Ljava/lang/String;)Z

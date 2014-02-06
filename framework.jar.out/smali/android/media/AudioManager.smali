@@ -1548,11 +1548,11 @@
 
     move-result v3
 
-    if-eqz v3, :cond_miui_0
+    if-eqz v3, :cond_0
 
     return v2
 
-    :cond_miui_0
+    :cond_0
     invoke-static {}, Landroid/media/AudioManager;->getService()Landroid/media/IAudioService;
 
     move-result-object v1
@@ -1561,7 +1561,7 @@
     :try_start_0
     iget-boolean v2, p0, Landroid/media/AudioManager;->mUseMasterVolume:Z
 
-    if-eqz v2, :cond_0
+    if-eqz v2, :cond_1
 
     invoke-interface {v1}, Landroid/media/IAudioService;->getMasterVolume()I
 
@@ -1570,7 +1570,7 @@
     :goto_0
     return v2
 
-    :cond_0
+    :cond_1
     invoke-interface {v1, p1}, Landroid/media/IAudioService;->getStreamVolume(I)I
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0

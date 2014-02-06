@@ -1208,7 +1208,7 @@
     :try_start_1
     invoke-virtual {v6}, Ljava/io/DataInputStream;->close()V
     :try_end_1
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_4
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
 
     .line 1022
     :goto_1
@@ -1256,13 +1256,13 @@
     goto :goto_1
 
     .line 1016
+    .end local v2           #ex:Ljava/io/IOException;
     :catch_1
     move-exception v10
 
     goto :goto_1
 
     .line 1014
-    .end local v2           #ex:Ljava/io/IOException;
     :catchall_0
     move-exception v10
 
@@ -1270,7 +1270,7 @@
     :try_start_4
     invoke-virtual {v6}, Ljava/io/DataInputStream;->close()V
     :try_end_4
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_5
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_4
 
     .line 1017
     :goto_3
@@ -1436,11 +1436,6 @@
     .restart local v5       #innerPid:I
     .restart local v6       #is:Ljava/io/DataInputStream;
     :catch_4
-    move-exception v10
-
-    goto/16 :goto_1
-
-    :catch_5
     move-exception v11
 
     goto :goto_3
@@ -2100,6 +2095,7 @@
     invoke-static {v13}, Llibcore/io/IoUtils;->closeQuietly(Ljava/io/FileDescriptor;)V
 
     .line 267
+    :goto_2
     invoke-static/range {v21 .. v21}, Llibcore/io/IoUtils;->closeQuietly(Ljava/io/FileDescriptor;)V
 
     goto/16 :goto_0
@@ -2110,7 +2106,7 @@
 
     .line 239
     .restart local v15       #ex:Ljava/io/IOException;
-    :goto_2
+    :goto_3
     const-string v4, "Exception creating pipe"
 
     move-object/from16 v0, v16
@@ -2126,7 +2122,7 @@
 
     .line 241
     .local v15, ex:Llibcore/io/ErrnoException;
-    :goto_3
+    :goto_4
     const-string v4, "Exception creating pipe"
 
     move-object/from16 v0, v16
@@ -2142,7 +2138,7 @@
 
     .line 243
     .local v15, ex:Ljava/lang/IllegalArgumentException;
-    :goto_4
+    :goto_5
     const-string v4, "Invalid zygote arguments"
 
     move-object/from16 v0, v16
@@ -2158,7 +2154,7 @@
 
     .line 245
     .local v15, ex:Lcom/android/internal/os/ZygoteSecurityException;
-    :goto_5
+    :goto_6
     const-string v4, "Zygote security policy prevents request: "
 
     move-object/from16 v0, v16
@@ -2194,10 +2190,7 @@
     .line 266
     invoke-static {v13}, Llibcore/io/IoUtils;->closeQuietly(Ljava/io/FileDescriptor;)V
 
-    .line 267
-    invoke-static/range {v21 .. v21}, Llibcore/io/IoUtils;->closeQuietly(Ljava/io/FileDescriptor;)V
-
-    goto/16 :goto_0
+    goto :goto_2
 
     .line 266
     :catchall_0
@@ -2220,7 +2213,7 @@
 
     .end local v18           #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
     .restart local v17       #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
-    goto :goto_5
+    goto :goto_6
 
     .line 242
     .end local v17           #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
@@ -2232,7 +2225,7 @@
 
     .end local v18           #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
     .restart local v17       #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
-    goto :goto_4
+    goto :goto_5
 
     .line 240
     .end local v17           #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
@@ -2244,7 +2237,7 @@
 
     .end local v18           #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
     .restart local v17       #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
-    goto :goto_3
+    goto :goto_4
 
     .line 238
     .end local v17           #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
@@ -2256,5 +2249,5 @@
 
     .end local v18           #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
     .restart local v17       #parsedArgs:Lcom/android/internal/os/ZygoteConnection$Arguments;
-    goto :goto_2
+    goto :goto_3
 .end method

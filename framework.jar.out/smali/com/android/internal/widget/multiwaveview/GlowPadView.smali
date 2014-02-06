@@ -236,8 +236,6 @@
     .line 132
     new-instance v9, Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;
 
-    const/4 v10, 0x0
-
     invoke-direct {v9, p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;-><init>(Lcom/android/internal/widget/multiwaveview/GlowPadView;)V
 
     iput-object v9, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mWaveAnimations:Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;
@@ -245,16 +243,12 @@
     .line 133
     new-instance v9, Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;
 
-    const/4 v10, 0x0
-
     invoke-direct {v9, p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;-><init>(Lcom/android/internal/widget/multiwaveview/GlowPadView;)V
 
     iput-object v9, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mTargetAnimations:Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;
 
     .line 134
     new-instance v9, Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;
-
-    const/4 v10, 0x0
 
     invoke-direct {v9, p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle;-><init>(Lcom/android/internal/widget/multiwaveview/GlowPadView;)V
 
@@ -3322,86 +3316,6 @@
     return-void
 .end method
 
-.method updateTargetPosition(IFFF)V
-    .locals 6
-    .parameter "i"
-    .parameter "centerX"
-    .parameter "centerY"
-    .parameter "angle"
-
-    .prologue
-    const/high16 v5, 0x4000
-
-    .line 1223
-    invoke-direct {p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->getRingWidth()F
-
-    move-result v4
-
-    div-float v0, v4, v5
-
-    .line 1224
-    .local v0, placementRadiusX:F
-    invoke-direct {p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->getRingHeight()F
-
-    move-result v4
-
-    div-float v1, v4, v5
-
-    .line 1225
-    .local v1, placementRadiusY:F
-    if-ltz p1, :cond_0
-
-    .line 1226
-    iget-object v3, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mTargetDrawables:Ljava/util/ArrayList;
-
-    .line 1227
-    .local v3, targets:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/internal/widget/multiwaveview/TargetDrawable;>;"
-    invoke-virtual {v3, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Lcom/android/internal/widget/multiwaveview/TargetDrawable;
-
-    .line 1228
-    .local v2, targetIcon:Lcom/android/internal/widget/multiwaveview/TargetDrawable;
-    invoke-virtual {v2, p2}, Lcom/android/internal/widget/multiwaveview/TargetDrawable;->setPositionX(F)V
-
-    .line 1229
-    invoke-virtual {v2, p3}, Lcom/android/internal/widget/multiwaveview/TargetDrawable;->setPositionY(F)V
-
-    .line 1230
-    float-to-double v4, p4
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->cos(D)D
-
-    move-result-wide v4
-
-    double-to-float v4, v4
-
-    mul-float/2addr v4, v0
-
-    invoke-virtual {v2, v4}, Lcom/android/internal/widget/multiwaveview/TargetDrawable;->setX(F)V
-
-    .line 1231
-    float-to-double v4, p4
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->sin(D)D
-
-    move-result-wide v4
-
-    double-to-float v4, v4
-
-    mul-float/2addr v4, v1
-
-    invoke-virtual {v2, v4}, Lcom/android/internal/widget/multiwaveview/TargetDrawable;->setY(F)V
-
-    .line 1233
-    .end local v2           #targetIcon:Lcom/android/internal/widget/multiwaveview/TargetDrawable;
-    .end local v3           #targets:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/internal/widget/multiwaveview/TargetDrawable;>;"
-    :cond_0
-    return-void
-.end method
-
 .method private updateTargetPositions(FF)V
     .locals 1
     .parameter "centerX"
@@ -6077,6 +5991,17 @@
     goto :goto_0
 .end method
 
+.method setGlowRadius(F)V
+    .locals 0
+    .parameter "value"
+
+    .prologue
+    iput p1, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mGlowRadius:F
+
+    .line 751
+    return-void
+.end method
+
 .method public setMagneticTargets(Z)V
     .locals 0
     .parameter "enabled"
@@ -6084,17 +6009,6 @@
     .prologue
     .line 750
     iput-boolean p1, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mMagneticTargets:Z
-
-    .line 751
-    return-void
-.end method
-
-.method setGlowRadius(F)V
-    .locals 0
-    .parameter "value"
-
-    .prologue
-    iput p1, p0, Lcom/android/internal/widget/multiwaveview/GlowPadView;->mGlowRadius:F
 
     return-void
 .end method

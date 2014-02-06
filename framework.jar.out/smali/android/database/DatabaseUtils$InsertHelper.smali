@@ -566,10 +566,11 @@
     .line 1109
     iget-object v8, p0, Landroid/database/DatabaseUtils$InsertHelper;->mDb:Landroid/database/sqlite/SQLiteDatabase;
 
-    invoke-virtual {v8}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
-
     .end local v0           #e:Landroid/database/SQLException;
     :goto_1
+    invoke-virtual {v8}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+
+    .line 1107
     return-wide v5
 
     .line 1102
@@ -592,8 +593,6 @@
 
     .line 1109
     iget-object v8, p0, Landroid/database/DatabaseUtils$InsertHelper;->mDb:Landroid/database/sqlite/SQLiteDatabase;
-
-    invoke-virtual {v8}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
 
     goto :goto_1
 
@@ -847,9 +846,10 @@
     move-result-wide v1
 
     .line 1253
+    :goto_0
     iput-object v4, p0, Landroid/database/DatabaseUtils$InsertHelper;->mPreparedStatement:Landroid/database/sqlite/SQLiteStatement;
 
-    :goto_0
+    .line 1250
     return-wide v1
 
     .line 1248
@@ -887,9 +887,6 @@
 
     .line 1250
     const-wide/16 v1, -0x1
-
-    .line 1253
-    iput-object v4, p0, Landroid/database/DatabaseUtils$InsertHelper;->mPreparedStatement:Landroid/database/sqlite/SQLiteStatement;
 
     goto :goto_0
 

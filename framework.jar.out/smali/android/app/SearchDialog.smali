@@ -929,11 +929,11 @@
 
     move-result v4
 
-    if-eqz v4, :cond_miui_0
+    if-eqz v4, :cond_0
 
     return-void
 
-    :cond_miui_0
+    :cond_0
     invoke-virtual {p0}, Landroid/app/SearchDialog;->getContext()Landroid/content/Context;
 
     move-result-object v4
@@ -1221,7 +1221,7 @@
 
     iget-object v1, p0, Landroid/app/SearchDialog;->mSearchAutoComplete:Landroid/widget/AutoCompleteTextView;
 
-    const-string v2, "nm"
+    const-string/jumbo v2, "nm"
 
     invoke-virtual {v1, v2}, Landroid/widget/AutoCompleteTextView;->setPrivateImeOptions(Ljava/lang/String;)V
 

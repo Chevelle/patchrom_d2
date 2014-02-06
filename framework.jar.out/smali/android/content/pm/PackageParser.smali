@@ -11312,11 +11312,11 @@
     :cond_2
     if-eqz v5, :cond_3
 
+    :goto_1
     invoke-virtual {v5}, Landroid/content/res/AssetManager;->close()V
 
     .line 781
     :cond_3
-    :goto_1
     if-nez v29, :cond_0
 
     .line 782
@@ -11442,8 +11442,6 @@
     :cond_5
     if-eqz v5, :cond_3
 
-    invoke-virtual {v5}, Landroid/content/res/AssetManager;->close()V
-
     goto :goto_1
 
     .line 775
@@ -11472,8 +11470,6 @@
     .line 779
     :cond_6
     if-eqz v5, :cond_3
-
-    invoke-virtual {v5}, Landroid/content/res/AssetManager;->close()V
 
     goto :goto_1
 

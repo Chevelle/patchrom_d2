@@ -1574,10 +1574,10 @@
     .line 469
     if-eqz v6, :cond_5
 
+    :goto_0
     invoke-interface {v6}, Landroid/content/res/XmlResourceParser;->close()V
 
     :cond_5
-    :goto_0
     return-object v13
 
     .line 461
@@ -1606,8 +1606,6 @@
 
     .line 469
     if-eqz v6, :cond_5
-
-    invoke-interface {v6}, Landroid/content/res/XmlResourceParser;->close()V
 
     goto :goto_0
 .end method
@@ -1664,7 +1662,7 @@
     iget-boolean v10, p0, Landroid/content/pm/RegisteredServicesCache;->mPersistentServicesFileDidNotExist:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
     if-eqz v10, :cond_3
 
@@ -1779,7 +1777,7 @@
     invoke-interface {v10, v3}, Landroid/content/pm/XmlSerializerAndParser;->createFromXml(Lorg/xmlpull/v1/XmlPullParser;)Ljava/lang/Object;
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
 
     move-result-object v4
 
@@ -1797,13 +1795,7 @@
     :try_start_3
     invoke-virtual {v2}, Ljava/io/FileInputStream;->close()V
     :try_end_3
-    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_1
-
-    goto :goto_0
-
-    .line 521
-    :catch_1
-    move-exception v10
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_0
 
     goto :goto_0
 
@@ -1857,7 +1849,7 @@
     invoke-interface {v3}, Lorg/xmlpull/v1/XmlPullParser;->next()I
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
-    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_2
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_1
 
     move-result v1
 
@@ -1870,7 +1862,7 @@
     .end local v1           #eventType:I
     .end local v3           #parser:Lorg/xmlpull/v1/XmlPullParser;
     .end local v5           #tagName:Ljava/lang/String;
-    :catch_2
+    :catch_1
     move-exception v0
 
     .line 516
@@ -1891,13 +1883,7 @@
     :try_start_6
     invoke-virtual {v2}, Ljava/io/FileInputStream;->close()V
     :try_end_6
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_3
-
-    goto/16 :goto_0
-
-    .line 521
-    :catch_3
-    move-exception v10
+    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_0
 
     goto/16 :goto_0
 
@@ -1912,7 +1898,7 @@
     :try_start_7
     invoke-virtual {v2}, Ljava/io/FileInputStream;->close()V
     :try_end_7
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_4
+    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_2
 
     .line 522
     :cond_9
@@ -1920,7 +1906,7 @@
     throw v10
 
     .line 521
-    :catch_4
+    :catch_2
     move-exception v11
 
     goto :goto_4

@@ -809,7 +809,7 @@
 
     if-eqz p3, :cond_24
 
-    const-string v27, "notification_sound"
+    const-string/jumbo v27, "notification_sound"
 
     move-object/from16 v0, p0
 
@@ -1548,6 +1548,8 @@
     goto/16 :goto_7
 
     .line 889
+    nop
+
     :pswitch_data_0
     .packed-switch 0x3
         :pswitch_2

@@ -13,9 +13,9 @@
 
 
 # static fields
-.field public static final FILE_TYPE_3GPA:I = 0xb
-
 .field public static final FILE_TYPE_3G2B:I = 0xcf
+
+.field public static final FILE_TYPE_3GPA:I = 0xb
 
 .field public static final FILE_TYPE_3GPP:I = 0x17
 
@@ -351,7 +351,7 @@
 
     const/16 v1, 0x1f
 
-    const-string v2, "video/divx"
+    const-string/jumbo v2, "video/divx"
 
     invoke-static {v0, v1, v2}, Landroid/media/MediaFile;->addFileType(Ljava/lang/String;ILjava/lang/String;)V
 
@@ -904,7 +904,7 @@
 
     const/16 v1, 0xc8
 
-    const-string v2, "video/mp2p"
+    const-string/jumbo v2, "video/mp2p"
 
     invoke-static {v0, v1, v2}, Landroid/media/MediaFile;->addFileType(Ljava/lang/String;ILjava/lang/String;)V
 
@@ -912,7 +912,7 @@
 
     const/16 v1, 0xc8
 
-    const-string v2, "video/mp2p"
+    const-string/jumbo v2, "video/mp2p"
 
     invoke-static {v0, v1, v2}, Landroid/media/MediaFile;->addFileType(Ljava/lang/String;ILjava/lang/String;)V
 
@@ -1270,49 +1270,47 @@
     .parameter "fileType"
 
     .prologue
-
     const/16 v1, 0x3e9
 
-    if-lt p0, v1, :cond_miui_0
+    if-lt p0, v1, :cond_0
 
-    if-gt p0, v1, :cond_miui_0
-    
+    if-gt p0, v1, :cond_0
+
     const/4 v0, 0x1
-    
-    return v0
-    
-    :cond_miui_0
 
+    return v0
+
+    :cond_0
     const/16 v2, 0x12c
 
     const/4 v0, 0x1
 
     .line 269
-    if-lt p0, v0, :cond_0
+    if-lt p0, v0, :cond_1
 
     const/16 v1, 0x10
 
-    if-le p0, v1, :cond_2
+    if-le p0, v1, :cond_3
 
-    :cond_0
+    :cond_1
     const/16 v1, 0x11
 
-    if-lt p0, v1, :cond_1
+    if-lt p0, v1, :cond_2
 
     const/16 v1, 0x13
 
-    if-le p0, v1, :cond_2
-
-    :cond_1
-    if-lt p0, v2, :cond_3
-
-    if-gt p0, v2, :cond_3
+    if-le p0, v1, :cond_3
 
     :cond_2
+    if-lt p0, v2, :cond_4
+
+    if-gt p0, v2, :cond_4
+
+    :cond_3
     :goto_0
     return v0
 
-    :cond_3
+    :cond_4
     const/4 v0, 0x0
 
     goto :goto_0
