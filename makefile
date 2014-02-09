@@ -74,9 +74,7 @@ local-pre-zip-misc:
 #	cp -rf other/miui_mod_icons/* $(ZIP_DIR)/system/media/theme/miui_mod_icons/
 	@echo Remove usless stuff
 	rm -rf $(ZIP_DIR)/data/media/preinstall_apps/*.apk
-	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/media/preinstall_apps/Network.apk
-	cp other/pro.burgerz.wsm.manager_v213_34ef24.apk $(ZIP_DIR)/data/media/preinstall_apps/WSM-Manager_213.apk
-	cp other/pro.burgerz.wsm.mods.mitools_v18_0f4dc2.apk $(ZIP_DIR)/data/media/preinstall_apps/MiTools-18.apk
+	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/media/preinstall_apps/de.mangelow.network-1.apk
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
 	rm -rf $(ZIP_DIR)/system/tts/lang_pico/*.bin
 out/framework2.jar : out/framework.jar
