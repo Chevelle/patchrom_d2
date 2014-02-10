@@ -112,7 +112,7 @@
     return-void
 .end method
 
-.method static synthetic access$1200(Landroid/widget/Editor$SuggestionsPopupWindow;)Z
+.method static synthetic access$1100(Landroid/widget/Editor$SuggestionsPopupWindow;)Z
     .locals 1
     .parameter "x0"
 
@@ -123,7 +123,7 @@
     return v0
 .end method
 
-.method static synthetic access$1600(Landroid/widget/Editor$SuggestionsPopupWindow;)I
+.method static synthetic access$1500(Landroid/widget/Editor$SuggestionsPopupWindow;)I
     .locals 1
     .parameter "x0"
 
@@ -134,7 +134,7 @@
     return v0
 .end method
 
-.method static synthetic access$1700(Landroid/widget/Editor$SuggestionsPopupWindow;)[Landroid/widget/Editor$SuggestionsPopupWindow$SuggestionInfo;
+.method static synthetic access$1600(Landroid/widget/Editor$SuggestionsPopupWindow;)[Landroid/widget/Editor$SuggestionsPopupWindow$SuggestionInfo;
     .locals 1
     .parameter "x0"
 
@@ -145,7 +145,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$1800(Landroid/widget/Editor$SuggestionsPopupWindow;)Ljava/util/HashMap;
+.method static synthetic access$1700(Landroid/widget/Editor$SuggestionsPopupWindow;)Ljava/util/HashMap;
     .locals 1
     .parameter "x0"
 
@@ -164,7 +164,7 @@
     iget-object v9, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v9}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v9}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v9
 
@@ -177,7 +177,7 @@
     iget-object v9, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v9}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v9}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v9
 
@@ -273,7 +273,7 @@
     iget-object v4, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v4}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v4}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v4
 
@@ -373,7 +373,7 @@
     move-object/from16 v30, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v30 .. v30}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v30 .. v30}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v30
 
@@ -423,7 +423,7 @@
     move-object/from16 v30, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v30 .. v30}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v30 .. v30}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v30
 
@@ -889,7 +889,7 @@
     move-object/from16 v33, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v33 .. v33}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v33 .. v33}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v33
 
@@ -897,7 +897,7 @@
 
     move-result-object v33
 
-    const v34, 0x1040433
+    sget v34, Lcom/android/internal/R$string;->addToDictionary:I
 
     invoke-virtual/range {v33 .. v34}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1005,7 +1005,7 @@
     move-object/from16 v33, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v33 .. v33}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v33 .. v33}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v33
 
@@ -1013,7 +1013,7 @@
 
     move-result-object v33
 
-    const v34, 0x1040434
+    sget v34, Lcom/android/internal/R$string;->deleteText:I
 
     invoke-virtual/range {v33 .. v34}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1112,7 +1112,7 @@
     move-object/from16 v31, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v31 .. v31}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v31 .. v31}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v31
 
@@ -1236,7 +1236,7 @@
     iget-object v2, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v2}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v2}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v2
 
@@ -1271,7 +1271,7 @@
     iget-object v1, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v1}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v1}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -1279,7 +1279,7 @@
 
     move-result-object v1
 
-    const v2, 0x1010373
+    sget v2, Lcom/android/internal/R$attr;->textSuggestionsWindowStyle:I
 
     invoke-direct {v0, p0, v1, v2}, Landroid/widget/Editor$SuggestionsPopupWindow$CustomPopupWindow;-><init>(Landroid/widget/Editor$SuggestionsPopupWindow;Landroid/content/Context;I)V
 
@@ -1318,7 +1318,7 @@
     iget-object v0, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v0}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v0}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v0
 
@@ -1338,7 +1338,7 @@
     iget-object v0, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v0}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v0}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v0
 
@@ -1376,7 +1376,7 @@
     iget-object v2, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v2}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v2}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v2
 
@@ -1462,7 +1462,7 @@
     iget-object v7, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v7}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v7}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v7
 
@@ -1570,7 +1570,7 @@
     iget-object v7, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTempRect:Landroid/graphics/Rect;
-    invoke-static {v7}, Landroid/widget/Editor;->access$1900(Landroid/widget/Editor;)Landroid/graphics/Rect;
+    invoke-static {v7}, Landroid/widget/Editor;->access$1800(Landroid/widget/Editor;)Landroid/graphics/Rect;
 
     move-result-object v7
 
@@ -1583,14 +1583,14 @@
     invoke-direct {v8}, Landroid/graphics/Rect;-><init>()V
 
     #setter for: Landroid/widget/Editor;->mTempRect:Landroid/graphics/Rect;
-    invoke-static {v7, v8}, Landroid/widget/Editor;->access$1902(Landroid/widget/Editor;Landroid/graphics/Rect;)Landroid/graphics/Rect;
+    invoke-static {v7, v8}, Landroid/widget/Editor;->access$1802(Landroid/widget/Editor;Landroid/graphics/Rect;)Landroid/graphics/Rect;
 
     .line 2413
     :cond_1
     iget-object v7, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTempRect:Landroid/graphics/Rect;
-    invoke-static {v7}, Landroid/widget/Editor;->access$1900(Landroid/widget/Editor;)Landroid/graphics/Rect;
+    invoke-static {v7}, Landroid/widget/Editor;->access$1800(Landroid/widget/Editor;)Landroid/graphics/Rect;
 
     move-result-object v7
 
@@ -1600,7 +1600,7 @@
     iget-object v7, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTempRect:Landroid/graphics/Rect;
-    invoke-static {v7}, Landroid/widget/Editor;->access$1900(Landroid/widget/Editor;)Landroid/graphics/Rect;
+    invoke-static {v7}, Landroid/widget/Editor;->access$1800(Landroid/widget/Editor;)Landroid/graphics/Rect;
 
     move-result-object v7
 
@@ -1609,7 +1609,7 @@
     iget-object v8, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTempRect:Landroid/graphics/Rect;
-    invoke-static {v8}, Landroid/widget/Editor;->access$1900(Landroid/widget/Editor;)Landroid/graphics/Rect;
+    invoke-static {v8}, Landroid/widget/Editor;->access$1800(Landroid/widget/Editor;)Landroid/graphics/Rect;
 
     move-result-object v8
 
@@ -1655,7 +1655,7 @@
     move-object/from16 v25, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v25
 
@@ -1784,7 +1784,7 @@
     move-object/from16 v25, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v25
 
@@ -1897,7 +1897,7 @@
     move-object/from16 v26, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v26 .. v26}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v26 .. v26}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v26
 
@@ -1923,7 +1923,7 @@
     move-object/from16 v25, v0
 
     #getter for: Landroid/widget/Editor;->mUserDictionaryListener:Landroid/widget/Editor$UserDictionaryListener;
-    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$2000(Landroid/widget/Editor;)Landroid/widget/Editor$UserDictionaryListener;
+    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$1900(Landroid/widget/Editor;)Landroid/widget/Editor$UserDictionaryListener;
 
     move-result-object v25
 
@@ -1934,7 +1934,7 @@
     move-object/from16 v26, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v26 .. v26}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v26 .. v26}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v26
 
@@ -1956,7 +1956,7 @@
     move-object/from16 v27, v0
 
     #getter for: Landroid/widget/Editor;->mUserDictionaryListener:Landroid/widget/Editor$UserDictionaryListener;
-    invoke-static/range {v27 .. v27}, Landroid/widget/Editor;->access$2000(Landroid/widget/Editor;)Landroid/widget/Editor$UserDictionaryListener;
+    invoke-static/range {v27 .. v27}, Landroid/widget/Editor;->access$1900(Landroid/widget/Editor;)Landroid/widget/Editor$UserDictionaryListener;
 
     move-result-object v27
 
@@ -1989,7 +1989,7 @@
     move-object/from16 v25, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v25
 
@@ -2029,7 +2029,7 @@
     move/from16 v1, v26
 
     #calls: Landroid/widget/Editor;->updateSpellCheckSpans(IIZ)V
-    invoke-static {v0, v11, v10, v1}, Landroid/widget/Editor;->access$2100(Landroid/widget/Editor;IIZ)V
+    invoke-static {v0, v11, v10, v1}, Landroid/widget/Editor;->access$2000(Landroid/widget/Editor;IIZ)V
 
     .line 2682
     .end local v5           #intent:Landroid/content/Intent;
@@ -2184,7 +2184,7 @@
     move-object/from16 v25, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v25
 
@@ -2297,7 +2297,7 @@
     move-object/from16 v25, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v25
 
@@ -2323,7 +2323,6 @@
     :cond_b
     add-int v8, v10, v7
 
-    .line 2679
     .local v8, newCursorPosition:I
     move-object/from16 v0, p0
 
@@ -2332,7 +2331,7 @@
     move-object/from16 v25, v0
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static/range {v25 .. v25}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v25
 
@@ -2364,7 +2363,7 @@
     iget-object v0, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v0}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v0}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v0
 
@@ -2400,7 +2399,7 @@
     iget-object v0, p0, Landroid/widget/Editor$SuggestionsPopupWindow;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
-    invoke-static {v0}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+    invoke-static {v0}, Landroid/widget/Editor;->access$500(Landroid/widget/Editor;)Landroid/widget/TextView;
 
     move-result-object v0
 
