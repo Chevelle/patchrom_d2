@@ -108,23 +108,4 @@
         </fileset>
     </family>
 
-    <family>
-        <nameset>
-            <name>miui</name>
-        </nameset>
-        <fileset>
-            <file>Miui-Regular.ttf</file>
-            <file>Miui-Bold.ttf</file>
-        </fileset>
-    </family>
-
-    <family>
-        <nameset>
-            <name>TobysHand</name>
-        </nameset>
-        <fileset>
-            <file>TobysHand.ttf</file>
-        </fileset>
-    </family>
-
 </familyset>
