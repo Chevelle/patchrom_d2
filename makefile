@@ -9,7 +9,7 @@ local-zip-file     := stockrom.zip
 local-out-zip-file := miuiandroid_$(PORT_PRODUCT)_jb_$(BUILD_NUMBER).zip
 
 # the location for local-ota to save target-file
-local-previous-target-dir := 
+local-previous-target-dir := ~/workspace/ota_base/d2vzw
 
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps :=
