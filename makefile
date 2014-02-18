@@ -34,7 +34,8 @@ local-miui-removed-apps := 	MediaProvider \
 local-miui-modified-apps := 	MiuiSystemUI \
 				Settings \
 				Phone \
-				Mms
+				Mms \
+				GuardProvider
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch

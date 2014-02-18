@@ -41,6 +41,10 @@ if [ $1 = "Phone" ];then
 	$XMLMERGYTOOL $1/res/values $2/res/values
 fi
 
+if [ $1 = "GuardProvider" ];then
+	$XMLMERGYTOOL $1/res/values $2/res/values
+fi
+
 if [ $1 = "ThemeManager" ];then
 #    cp other/ThemeManager.part out/
 #    cd out
