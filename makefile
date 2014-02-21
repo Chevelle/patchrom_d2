@@ -28,14 +28,14 @@ local-miui-removed-apps := 	MediaProvider \
 				SuperMarket \
 				AlipayMsp \
 				MiShop \
-				VoiceRecognizerXunfei \
-				XunfeiSpeechService3
+				O2O \
+				XunfeiSpeechService3 \
+				GuardProvider
 
 local-miui-modified-apps := 	MiuiSystemUI \
 				Settings \
 				Phone \
 				Mms \
-				GuardProvider
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -63,8 +63,6 @@ local-pre-zip-misc:
 	cp other/system_fonts.xml $(ZIP_DIR)/system/etc/system_fonts.xml
 	cp other/backuptool.functions $(ZIP_DIR)/system/bin/backuptool.functions
 	cp other/backuptool.sh $(ZIP_DIR)/system/bin/backuptool.sh
-	cp other/updater-script $(ZIP_DIR)/META-INF/com/google/android/updater-script
-	cp other/update-binary $(ZIP_DIR)/META-INF/com/google/android/update-binary
 # To replace spn
 #	cp other/spn-conf.xml $(ZIP_DIR)/system/etc/spn-conf.xml
 # To replace kernel

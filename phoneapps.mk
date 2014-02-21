@@ -24,7 +24,6 @@ private-phone-apps := 	ApplicationsProvider \
 			SharedStorageBackup \
 			Tag \
 			Term \
-			Torch \
 			UserDictionaryProvider \
 			VisualizationWallpapers \
 			WAPPushManager
