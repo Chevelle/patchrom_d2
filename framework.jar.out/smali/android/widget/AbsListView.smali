@@ -1254,6 +1254,24 @@
     return-object v0
 .end method
 
+.method private calcFirstPosition(ZI)V
+    .locals 1
+    .parameter "down"
+    .parameter "count"
+
+    .prologue
+    if-eqz p1, :cond_0
+
+    iget v0, p0, Landroid/widget/AbsListView;->mFirstPosition:I
+
+    add-int/2addr v0, p2
+
+    iput v0, p0, Landroid/widget/AbsListView;->mFirstPosition:I
+
+    :cond_0
+    return-void
+.end method
+
 .method private clearScrollingCache()V
     .locals 1
 
@@ -16591,22 +16609,4 @@
     const/4 v0, 0x0
 
     goto :goto_0
-.end method
-
-.method private calcFirstPosition(ZI)V
-    .locals 1
-    .parameter "down"
-    .parameter "count"
-
-    .prologue
-    if-eqz p1, :cond_0
-
-    iget v0, p0, Landroid/widget/AbsListView;->mFirstPosition:I
-
-    add-int/2addr v0, p2
-
-    iput v0, p0, Landroid/widget/AbsListView;->mFirstPosition:I
-
-    :cond_0
-    return-void
 .end method

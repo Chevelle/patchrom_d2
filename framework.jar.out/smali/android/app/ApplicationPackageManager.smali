@@ -295,6 +295,48 @@
     throw v2
 .end method
 
+.method private getTopLevelResources(Landroid/content/pm/ApplicationInfo;)Landroid/content/res/Resources;
+    .locals 6
+    .parameter "app"
+
+    .prologue
+    iget-object v0, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/app/ContextImpl;
+
+    iget-object v0, v0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
+
+    iget-object v1, p1, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
+
+    iget v2, p1, Landroid/content/pm/ApplicationInfo;->uid:I
+
+    invoke-static {}, Landroid/os/Process;->myUid()I
+
+    move-result v3
+
+    if-ne v2, v3, :cond_0
+
+    iget-object v2, p1, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;
+
+    :goto_0
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    iget-object v5, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/app/ContextImpl;
+
+    iget-object v5, v5, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
+
+    invoke-virtual/range {v0 .. v5}, Landroid/app/ActivityThread;->getTopLevelResources(Ljava/lang/String;Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/app/LoadedApk;)Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    return-object v0
+
+    :cond_0
+    iget-object v2, p1, Landroid/content/pm/ApplicationInfo;->publicSourceDir:Ljava/lang/String;
+
+    goto :goto_0
+.end method
+
 .method static handlePackageBroadcast(I[Ljava/lang/String;Z)V
     .locals 10
     .parameter "cmd"
@@ -5028,48 +5070,6 @@
     .line 1085
     :catch_0
     move-exception v0
-
-    goto :goto_0
-.end method
-
-.method private getTopLevelResources(Landroid/content/pm/ApplicationInfo;)Landroid/content/res/Resources;
-    .locals 6
-    .parameter "app"
-
-    .prologue
-    iget-object v0, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/app/ContextImpl;
-
-    iget-object v0, v0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
-
-    iget-object v1, p1, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
-
-    iget v2, p1, Landroid/content/pm/ApplicationInfo;->uid:I
-
-    invoke-static {}, Landroid/os/Process;->myUid()I
-
-    move-result v3
-
-    if-ne v2, v3, :cond_0
-
-    iget-object v2, p1, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;
-
-    :goto_0
-    const/4 v3, 0x0
-
-    const/4 v4, 0x0
-
-    iget-object v5, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/app/ContextImpl;
-
-    iget-object v5, v5, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
-
-    invoke-virtual/range {v0 .. v5}, Landroid/app/ActivityThread;->getTopLevelResources(Ljava/lang/String;Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/app/LoadedApk;)Landroid/content/res/Resources;
-
-    move-result-object v0
-
-    return-object v0
-
-    :cond_0
-    iget-object v2, p1, Landroid/content/pm/ApplicationInfo;->publicSourceDir:Ljava/lang/String;
 
     goto :goto_0
 .end method

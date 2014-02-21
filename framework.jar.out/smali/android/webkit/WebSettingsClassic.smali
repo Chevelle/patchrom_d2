@@ -134,6 +134,8 @@
 
 .field private mNeedInitialFocus:Z
 
+.field private mNightReadMode:Z
+
 .field private mOverrideCacheMode:I
 
 .field private mPageCacheCapacity:I
@@ -1885,6 +1887,30 @@
     throw v0
 .end method
 
+.method public declared-synchronized getIsWebapp()Z
+    .locals 1
+
+    .prologue
+    .line 717
+    monitor-enter p0
+
+    :try_start_0
+    iget-boolean v0, p0, Landroid/webkit/WebSettingsClassic;->mIsWebapp:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    return v0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
 .method public declared-synchronized getJavaScriptCanOpenWindowsAutomatically()Z
     .locals 1
 
@@ -3017,6 +3043,37 @@
     throw v0
 .end method
 
+.method public declared-synchronized setBlockFloatPopupWindows(Z)V
+    .locals 1
+    .parameter "flag"
+
+    .prologue
+    monitor-enter p0
+
+    :try_start_0
+    iget-boolean v0, p0, Landroid/webkit/WebSettingsClassic;->mBlockFloatPopupWindows:Z
+
+    if-eq v0, p1, :cond_0
+
+    iput-boolean p1, p0, Landroid/webkit/WebSettingsClassic;->mBlockFloatPopupWindows:Z
+
+    invoke-direct {p0}, Landroid/webkit/WebSettingsClassic;->postSync()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    :cond_0
+    monitor-exit p0
+
+    return-void
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
 .method public declared-synchronized setBlockNetworkImage(Z)V
     .locals 1
     .parameter "flag"
@@ -3084,37 +3141,6 @@
     return-void
 
     .line 1102
-    :catchall_0
-    move-exception v0
-
-    monitor-exit p0
-
-    throw v0
-.end method
-
-.method public declared-synchronized setBlockFloatPopupWindows(Z)V
-    .locals 1
-    .parameter "flag"
-
-    .prologue
-    monitor-enter p0
-
-    :try_start_0
-    iget-boolean v0, p0, Landroid/webkit/WebSettingsClassic;->mBlockFloatPopupWindows:Z
-
-    if-eq v0, p1, :cond_0
-
-    iput-boolean p1, p0, Landroid/webkit/WebSettingsClassic;->mBlockFloatPopupWindows:Z
-
-    invoke-direct {p0}, Landroid/webkit/WebSettingsClassic;->postSync()V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    :cond_0
-    monitor-exit p0
-
-    return-void
-
     :catchall_0
     move-exception v0
 
@@ -3780,6 +3806,36 @@
     throw v0
 .end method
 
+.method public declared-synchronized setIsWebapp(Z)V
+    .locals 1
+    .parameter "isWebapp"
+
+    .prologue
+    .line 708
+    monitor-enter p0
+
+    :try_start_0
+    iput-boolean p1, p0, Landroid/webkit/WebSettingsClassic;->mIsWebapp:Z
+
+    .line 709
+    invoke-direct {p0}, Landroid/webkit/WebSettingsClassic;->postSync()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 710
+    monitor-exit p0
+
+    return-void
+
+    .line 708
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
 .method public declared-synchronized setJavaScriptCanOpenWindowsAutomatically(Z)V
     .locals 1
     .parameter "flag"
@@ -4176,6 +4232,35 @@
     .line 1563
     :cond_0
     return-void
+.end method
+
+.method public declared-synchronized setNightReadModeEnabled(Z)V
+    .locals 1
+    .parameter "enable"
+    .annotation build Landroid/annotation/MiuiHook;
+        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
+    .end annotation
+
+    .prologue
+    monitor-enter p0
+
+    :try_start_0
+    iput-boolean p1, p0, Landroid/webkit/WebSettingsClassic;->mNightReadMode:Z
+
+    invoke-direct {p0}, Landroid/webkit/WebSettingsClassic;->postSync()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    return-void
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
 .end method
 
 .method public declared-synchronized setPageCacheCapacity(I)V
@@ -5335,53 +5420,4 @@
     monitor-exit p0
 
     throw v1
-.end method
-
-.method public declared-synchronized getIsWebapp()Z
-    .locals 1
-
-    .prologue
-    monitor-enter p0
-
-    :try_start_0
-    iget-boolean v0, p0, Landroid/webkit/WebSettingsClassic;->mIsWebapp:Z
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    monitor-exit p0
-
-    return v0
-
-    :catchall_0
-    move-exception v0
-
-    monitor-exit p0
-
-    throw v0
-.end method
-
-.method public declared-synchronized setIsWebapp(Z)V
-    .locals 1
-    .parameter "isWebapp"
-
-    .prologue
-    monitor-enter p0
-
-    :try_start_0
-    iput-boolean p1, p0, Landroid/webkit/WebSettingsClassic;->mIsWebapp:Z
-
-    invoke-direct {p0}, Landroid/webkit/WebSettingsClassic;->postSync()V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    monitor-exit p0
-
-    return-void
-
-    :catchall_0
-    move-exception v0
-
-    monitor-exit p0
-
-    throw v0
 .end method

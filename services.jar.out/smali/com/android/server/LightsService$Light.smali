@@ -85,73 +85,6 @@
     return-void
 .end method
 
-.method setLightLocked(IIIII)V
-    .locals 7
-    .parameter "color"
-    .parameter "mode"
-    .parameter "onMS"
-    .parameter "offMS"
-    .parameter "brightnessMode"
-
-    .prologue
-    .line 119
-    iget v0, p0, Lcom/android/server/LightsService$Light;->mColor:I
-
-    if-ne p1, v0, :cond_0
-
-    iget v0, p0, Lcom/android/server/LightsService$Light;->mMode:I
-
-    if-ne p2, v0, :cond_0
-
-    iget v0, p0, Lcom/android/server/LightsService$Light;->mOnMS:I
-
-    if-ne p3, v0, :cond_0
-
-    iget v0, p0, Lcom/android/server/LightsService$Light;->mOffMS:I
-
-    if-eq p4, v0, :cond_1
-
-    .line 122
-    :cond_0
-    iput p1, p0, Lcom/android/server/LightsService$Light;->mColor:I
-
-    .line 123
-    iput p2, p0, Lcom/android/server/LightsService$Light;->mMode:I
-
-    .line 124
-    iput p3, p0, Lcom/android/server/LightsService$Light;->mOnMS:I
-
-    .line 125
-    iput p4, p0, Lcom/android/server/LightsService$Light;->mOffMS:I
-
-    .line 126
-    iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
-
-    #getter for: Lcom/android/server/LightsService;->mNativePointer:I
-    invoke-static {v0}, Lcom/android/server/LightsService;->access$100(Lcom/android/server/LightsService;)I
-
-    move-result v0
-
-    iget v1, p0, Lcom/android/server/LightsService$Light;->mId:I
-
-    move v2, p1
-
-    move v3, p2
-
-    move v4, p3
-
-    move v5, p4
-
-    move v6, p5
-
-    #calls: Lcom/android/server/LightsService;->setLight_native(IIIIIII)V
-    invoke-static/range {v0 .. v6}, Lcom/android/server/LightsService;->access$200(IIIIIII)V
-
-    .line 128
-    :cond_1
-    return-void
-.end method
-
 .method private stopFlashing()V
     .locals 6
 
@@ -440,6 +373,73 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
+.end method
+
+.method setLightLocked(IIIII)V
+    .locals 7
+    .parameter "color"
+    .parameter "mode"
+    .parameter "onMS"
+    .parameter "offMS"
+    .parameter "brightnessMode"
+
+    .prologue
+    .line 119
+    iget v0, p0, Lcom/android/server/LightsService$Light;->mColor:I
+
+    if-ne p1, v0, :cond_0
+
+    iget v0, p0, Lcom/android/server/LightsService$Light;->mMode:I
+
+    if-ne p2, v0, :cond_0
+
+    iget v0, p0, Lcom/android/server/LightsService$Light;->mOnMS:I
+
+    if-ne p3, v0, :cond_0
+
+    iget v0, p0, Lcom/android/server/LightsService$Light;->mOffMS:I
+
+    if-eq p4, v0, :cond_1
+
+    .line 122
+    :cond_0
+    iput p1, p0, Lcom/android/server/LightsService$Light;->mColor:I
+
+    .line 123
+    iput p2, p0, Lcom/android/server/LightsService$Light;->mMode:I
+
+    .line 124
+    iput p3, p0, Lcom/android/server/LightsService$Light;->mOnMS:I
+
+    .line 125
+    iput p4, p0, Lcom/android/server/LightsService$Light;->mOffMS:I
+
+    .line 126
+    iget-object v0, p0, Lcom/android/server/LightsService$Light;->this$0:Lcom/android/server/LightsService;
+
+    #getter for: Lcom/android/server/LightsService;->mNativePointer:I
+    invoke-static {v0}, Lcom/android/server/LightsService;->access$100(Lcom/android/server/LightsService;)I
+
+    move-result v0
+
+    iget v1, p0, Lcom/android/server/LightsService$Light;->mId:I
+
+    move v2, p1
+
+    move v3, p2
+
+    move v4, p3
+
+    move v5, p4
+
+    move v6, p5
+
+    #calls: Lcom/android/server/LightsService;->setLight_native(IIIIIII)V
+    invoke-static/range {v0 .. v6}, Lcom/android/server/LightsService;->access$200(IIIIIII)V
+
+    .line 128
+    :cond_1
+    return-void
 .end method
 
 .method public turnOff()V

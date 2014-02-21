@@ -688,6 +688,30 @@
     goto :goto_0
 .end method
 
+.method private getTopLevelResources(Landroid/app/ActivityThread;)Landroid/content/res/Resources;
+    .locals 6
+    .parameter "mainThread"
+
+    .prologue
+    iget-object v1, p0, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
+
+    iget-object v2, p0, Landroid/app/LoadedApk;->mResDir:Ljava/lang/String;
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    move-object v0, p1
+
+    move-object v5, p0
+
+    invoke-virtual/range {v0 .. v5}, Landroid/app/ActivityThread;->getTopLevelResources(Ljava/lang/String;Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/app/LoadedApk;)Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method private initializeJavaContextClassLoader()V
     .locals 12
 
@@ -2687,28 +2711,4 @@
     move-exception v8
 
     goto :goto_2
-.end method
-
-.method private getTopLevelResources(Landroid/app/ActivityThread;)Landroid/content/res/Resources;
-    .locals 6
-    .parameter "mainThread"
-
-    .prologue
-    iget-object v1, p0, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
-
-    iget-object v2, p0, Landroid/app/LoadedApk;->mResDir:Ljava/lang/String;
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x0
-
-    move-object v0, p1
-
-    move-object v5, p0
-
-    invoke-virtual/range {v0 .. v5}, Landroid/app/ActivityThread;->getTopLevelResources(Ljava/lang/String;Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/app/LoadedApk;)Landroid/content/res/Resources;
-
-    move-result-object v0
-
-    return-object v0
 .end method

@@ -1246,21 +1246,6 @@
     return-void
 .end method
 
-.method public abstract setFeatureDrawable(ILandroid/graphics/drawable/Drawable;)V
-.end method
-
-.method public abstract setFeatureDrawableAlpha(II)V
-.end method
-
-.method public abstract setFeatureDrawableResource(II)V
-.end method
-
-.method public abstract setFeatureDrawableUri(ILandroid/net/Uri;)V
-.end method
-
-.method public abstract setFeatureInt(II)V
-.end method
-
 .method public setExtraFlags(II)V
     .locals 3
     .parameter "flags"
@@ -1294,6 +1279,21 @@
 
     :cond_0
     return-void
+.end method
+
+.method public abstract setFeatureDrawable(ILandroid/graphics/drawable/Drawable;)V
+.end method
+
+.method public abstract setFeatureDrawableAlpha(II)V
+.end method
+
+.method public abstract setFeatureDrawableResource(II)V
+.end method
+
+.method public abstract setFeatureDrawableUri(ILandroid/net/Uri;)V
+.end method
+
+.method public abstract setFeatureInt(II)V
 .end method
 
 .method public setFlags(II)V
