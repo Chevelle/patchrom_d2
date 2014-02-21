@@ -9040,6 +9040,13 @@
     .parameter "policyFlags"
 
     .prologue
+    move-object/from16 v0, p0
+
+    const/4 v1, 0x0
+
+    iput v1, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLongPressOnHomeBehavior:I
+
+    .line 2177
     invoke-virtual/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->keyguardOn()Z
 
     move-result v19
