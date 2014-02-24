@@ -18,24 +18,22 @@ local-modified-jars :=
 
 # All apks from MIUI
 local-miui-removed-apps := 	MediaProvider \
-				MiuiVideo \
 				BaiduNetworkLocation \
 				Userbook \
 				VoiceAssist \
 				GameCenter \
 				GameCenterSDKService \
-				KingSoftCleaner \
 				SuperMarket \
 				AlipayMsp \
 				MiShop \
 				O2O \
-				XunfeiSpeechService3 \
-				GuardProvider
+				XunfeiSpeechService3
 
 local-miui-modified-apps := 	MiuiSystemUI \
 				Settings \
 				Phone \
 				Mms \
+				GuardProvider
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
