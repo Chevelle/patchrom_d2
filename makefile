@@ -24,6 +24,8 @@ local-miui-removed-apps := 	MediaProvider \
 				GameCenter \
 				GameCenterSDKService \
 				SuperMarket \
+				GuardProvider \
+				KingSoftCleaner \
 				AlipayMsp \
 				MiShop \
 				O2O \
@@ -32,8 +34,7 @@ local-miui-removed-apps := 	MediaProvider \
 local-miui-modified-apps := 	MiuiSystemUI \
 				Settings \
 				Phone \
-				Mms \
-				GuardProvider
+				Mms
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
