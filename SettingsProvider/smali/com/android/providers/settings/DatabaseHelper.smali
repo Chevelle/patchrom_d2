@@ -6847,7 +6847,7 @@
 
     new-array v6, v0, [Ljava/lang/String;
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     const-string v1, "preferred_network_mode"
 
@@ -6864,7 +6864,7 @@
 
     const-string v3, "global"
 
-    const/4 v5, 0x0
+    const/4 v5, 0x1
 
     move-object v0, p0
 

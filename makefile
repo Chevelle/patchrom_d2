@@ -28,7 +28,7 @@ local-miui-removed-apps := 	MediaProvider \
 				AlipayMsp \
 				MiShop \
 				O2O \
-				XunfeiSpeechService3 \
+				XunfeiSpeechService3
 
 local-miui-modified-apps :=	MiuiSystemUI \
 				Settings \
