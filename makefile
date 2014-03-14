@@ -6,7 +6,7 @@
 local-zip-file     := stockrom.zip
 
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
-local-out-zip-file := miuiandroid_$(PORT_PRODUCT)_jb_$(BUILD_NUMBER).zip
+local-out-zip-file := miui_$(PORT_PRODUCT)_$(BUILD_NUMBER)_4.2.zip
 
 # the location for local-ota to save target-file
 local-previous-target-dir := ~/workspace/ota_base/d2vzw
@@ -24,15 +24,15 @@ local-miui-removed-apps := 	MediaProvider \
 				GameCenter \
 				GameCenterSDKService \
 				SuperMarket \
-				GuardProvider \
 				KingSoftCleaner \
 				AlipayMsp \
 				MiShop \
 				O2O \
-				XunfeiSpeechService3
+				XunfeiSpeechService3 \
 
-local-miui-modified-apps := 	MiuiSystemUI \
+local-miui-modified-apps :=	MiuiSystemUI \
 				Settings \
+				SettingsProvider \
 				Phone \
 				Mms
 
@@ -75,6 +75,7 @@ local-pre-zip-misc:
 	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/media/preinstall_apps/de.mangelow.network-1.apk
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
 	rm -rf $(ZIP_DIR)/system/tts/lang_pico/*.bin
+
 out/framework2.jar : out/framework.jar
 
 %.phone : out/%.jar
