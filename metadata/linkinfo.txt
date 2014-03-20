@@ -60,8 +60,6 @@ system/bin/uptime|system/bin/toolbox
 system/bin/vmstat|system/bin/toolbox
 system/bin/watchprops|system/bin/toolbox
 system/bin/wipe|system/bin/toolbox
-system/etc/thermald.conf|etc/thermald-8960.conf
-system/etc/thermal-engine.conf|etc/thermal-engine-8960.conf
 system/fonts/DroidSans-Bold.ttf|system/fonts/Roboto-Bold.ttf
 system/fonts/DroidSans.ttf|system/fonts/Roboto-Regular.ttf
 system/xbin/adjtimex|system/xbin/busybox
