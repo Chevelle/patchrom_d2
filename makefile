@@ -24,7 +24,6 @@ local-miui-removed-apps := 	MediaProvider \
 				GameCenter \
 				GameCenterSDKService \
 				SuperMarket \
-				KingSoftCleaner \
 				AlipayMsp \
 				MiShop \
 				O2O \
