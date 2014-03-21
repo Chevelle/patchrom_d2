@@ -149,7 +149,7 @@
     :pswitch_8
     iget-object v0, p0, Lcom/android/phone/MobileNetworkSettings;->mButtonPreferredNetworkMode:Landroid/preference/ListPreference;
 
-    const v1, 0x7f0e03df
+    const v1, 0x7f0e03de
 
     invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(I)V
 
@@ -159,7 +159,7 @@
     :pswitch_9
     iget-object v0, p0, Lcom/android/phone/MobileNetworkSettings;->mButtonPreferredNetworkMode:Landroid/preference/ListPreference;
 
-    const v1, 0x7f0e03e0
+    const v1, 0x7f0e03df
 
     invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(I)V
 
@@ -169,7 +169,7 @@
     :pswitch_a
     iget-object v0, p0, Lcom/android/phone/MobileNetworkSettings;->mButtonPreferredNetworkMode:Landroid/preference/ListPreference;
 
-    const v1, 0x7f0e03e1
+    const v1, 0x7f0e03e0
 
     invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(I)V
 
@@ -179,7 +179,7 @@
     :pswitch_b
     iget-object v0, p0, Lcom/android/phone/MobileNetworkSettings;->mButtonPreferredNetworkMode:Landroid/preference/ListPreference;
 
-    const v1, 0x7f0e03e2
+    const v1, 0x7f0e03e1
 
     invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(I)V
 
