@@ -31,4 +31,4 @@ private-phone-apps := 	ApplicationsProvider \
 private-lockscreen-apps := 
 
 private-phone-apps2 :=  
-#for d2vzw
+#for d2spr
