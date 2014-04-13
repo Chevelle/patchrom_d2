@@ -764,7 +764,7 @@
 
     .line 379
     :cond_1
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     .line 380
     .local v0, cdmaSubscription:I
