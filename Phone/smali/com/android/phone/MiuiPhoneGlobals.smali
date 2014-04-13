@@ -760,7 +760,7 @@
     if-ne v4, v7, :cond_1
 
     .line 377
-    const/16 v2, 0x8
+    const/16 v2, 0x9
 
     .line 379
     :cond_1
@@ -891,7 +891,7 @@
 
     if-eq v4, v7, :cond_2
 
-    const/16 v4, 0x8
+    const/16 v4, 0x9
 
     if-eq v2, v4, :cond_2
 
@@ -900,7 +900,7 @@
     if-eq v2, v4, :cond_2
 
     .line 398
-    const/16 v2, 0x8
+    const/16 v2, 0x9
 
     .line 399
     const-string v4, "PhoneApp"
