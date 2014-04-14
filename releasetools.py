@@ -4,11 +4,14 @@ import edify_generator
 def ReplaceLine(info):
     edify = info.script
     for i in xrange(len(edify.script)):
-	if "assert(getprop(\"ro.product.device\") == \"d2vzw\" ||" in edify.script[i]:
-           edify.script[i] = edify.script[i].replace("assert(getprop(\"ro.product.device\") == \"d2vzw\" ||", 'assert(getprop("ro.product.device") == "d2vzw" || getprop("ro.build.product") == "d2vzw" || getprop("ro.product.device") == "d2lte" || getprop("ro.build.product") == "d2lte");')
+	if "assert(getprop(\"ro.product.device\") == \"d2spr\" ||" in edify.script[i]:
+           edify.script[i] = edify.script[i].replace("assert(getprop(\"ro.product.device\") == \"d2spr\" ||", 'assert(getprop("ro.product.device") == "d2spr" || getprop("ro.build.product") == "d2spr" || getprop("ro.product.device") == "d2lte" || getprop("ro.build.product") == "d2lte");')
 
-	if "       getprop(\"ro.build.product\") == \"d2vzw\");" in edify.script[i]:
-	   edify.script[i] = edify.script[i].replace("       getprop(\"ro.build.product\") == \"d2vzw\");", '')
+	if "       getprop(\"ro.build.product\") == \"d2spr\");" in edify.script[i]:
+	   edify.script[i] = edify.script[i].replace("       getprop(\"ro.build.product\") == \"d2spr\");", '')
+
+	if "format(\"ext4\", \"EMMC\", \"/dev/block/mmcblk0p14\", \"0\");" in edify.script[i]:
+	   edify.script[i] = edify.script[i].replace("format(\"ext4\", \"EMMC\", \"/dev/block/mmcblk0p14\", \"0\");", 'format(\"ext4\", \"EMMC\", \"/dev/block/mmcblk0p14\", \"0\", \"/system\");')
 
     return
 
