@@ -848,7 +848,7 @@ MMMM d"</string>
     <string name="keyguard_password_enter_puk_code">Type PUK and new PIN code</string>
     <string name="keyguard_password_enter_puk_prompt">PUK code</string>
     <string name="keyguard_password_enter_pin_prompt">New PIN code</string>
-    <string name="keyguard_password_entry_touch_hint"><font size="17">Touch to type password</font></string>
+    <string name="keyguard_password_entry_touch_hint">" "<font size="17">Touch to type password</font>" "</string>
     <string name="keyguard_password_enter_password_code">Type password to unlock</string>
     <string name="keyguard_password_enter_pin_password_code">Type PIN to unlock</string>
     <string name="keyguard_password_wrong_pin_code">Incorrect PIN code.</string>
@@ -1192,7 +1192,7 @@ Do you want to close it?"</string>
     <string name="sms_control_no">Deny</string>
     <string name="sms_short_code_confirm_message">&lt;b>%1$s&lt;/b> would like to send a message to &lt;b>%2$s&lt;/b>.</string>
     <string name="sms_short_code_details">This <font fgcolor="#ffffb060">may cause charges</font> on your mobile account.</string>
-    <string name="sms_premium_short_code_details"><font fgcolor="#ffffb060">This will cause charges on your mobile account.</font></string>
+    <string name="sms_premium_short_code_details">" "<font fgcolor="#ffffb060">This will cause charges on your mobile account.</font>" "</string>
     <string name="sms_short_code_confirm_allow">Send</string>
     <string name="sms_short_code_confirm_deny">Cancel</string>
     <string name="sms_short_code_remember_choice">Remember my choice</string>
@@ -1209,7 +1209,7 @@ Do you want to close it?"</string>
     <string name="date_picker_dialog_title">Set date</string>
     <string name="date_time_set">Set</string>
     <string name="date_time_done">Done</string>
-    <string name="perms_new_perm_prefix"><font size="12" fgcolor="#ff33b5e5">NEW: </font></string>
+    <string name="perms_new_perm_prefix">" "<font fgcolor="#ff33b5e5" size="12">NEW: </font>" "</string>
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="no_permissions">No permissions required</string>
     <string name="perm_costs_money">this may cost you money</string>
@@ -1249,7 +1249,7 @@ Do you want to close it?"</string>
     <string name="select_keyboard_layout_notification_message">Touch to select a keyboard layout.</string>
     <string name="fast_scroll_alphabet">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
     <string name="fast_scroll_numeric_alphabet">" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
-    <string name="candidates_style"><u>candidates</u></string>
+    <string name="candidates_style">" "<u>candidates</u>" "</string>
     <string name="ext_media_checking_notification_title">Preparing SD card</string>
     <string name="ext_media_checking_notification_message">Checking for errors.</string>
     <string name="ext_media_nofs_notification_title">Blank SD card</string>

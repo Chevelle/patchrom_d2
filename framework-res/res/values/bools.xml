@@ -17,7 +17,7 @@
     <bool name="config_useMasterVolume">false</bool>
     <bool name="config_useVolumeKeySounds">true</bool>
     <bool name="config_sendAudioBecomingNoisy">true</bool>
-    <bool name="config_ui_enableFadingMarquee">true</bool>
+    <bool name="config_ui_enableFadingMarquee">false</bool>
     <bool name="config_closeDialogWhenTouchOutside">true</bool>
     <bool name="config_wifiApFirmwareReload">true</bool>
     <bool name="config_wifi_dual_band_support">true</bool>
@@ -29,9 +29,9 @@
     <bool name="config_unplugTurnsOnScreen">true</bool>
     <bool name="config_animateScreenLights">false</bool>
     <bool name="config_enableScreenshotChord">true</bool>
-    <bool name="config_allowAllRotations">false</bool>
+    <bool name="config_allowAllRotations">true</bool>
     <bool name="config_reverseDefaultRotation">false</bool>
-    <bool name="config_deskDockEnablesAccelerometer">true</bool>
+    <bool name="config_deskDockEnablesAccelerometer">false</bool>
     <bool name="config_carDockEnablesAccelerometer">true</bool>
     <bool name="config_forceAnalogDeskDock">false</bool>
     <bool name="config_forceAnalogCarDock">false</bool>
@@ -42,7 +42,7 @@
     <bool name="config_intrusiveBatteryLed">true</bool>
     <bool name="config_multiColorBatteryLed">true</bool>
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
-    <bool name="config_enableLockBeforeUnlockScreen">false</bool>
+    <bool name="config_enableLockBeforeUnlockScreen">true</bool>
     <bool name="config_enableLockScreenRotation">false</bool>
     <bool name="config_enable_puk_unlock_screen">true</bool>
     <bool name="config_enable_emergency_call_while_sim_locked">true</bool>
@@ -61,7 +61,7 @@
     <bool name="config_showMenuShortcutsWhenKeyboardPresent">false</bool>
     <bool name="config_telephony_use_own_number_for_voicemail">true</bool>
     <bool name="config_sms_utf8_support">false</bool>
-    <bool name="config_mms_content_disposition_support">true</bool>
+    <bool name="config_mms_content_disposition_support">false</bool>
     <bool name="config_alwaysUseCdmaRssi">false</bool>
     <bool name="config_duplicate_port_omadm_wappush">false</bool>
     <bool name="config_showNavigationBar">false</bool>
@@ -80,7 +80,7 @@
     <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
     <bool name="config_camera_sound_forced">false</bool>
     <bool name="config_dontPreferApn">false</bool>
-    <bool name="config_speed_up_audio_on_mt_calls">true</bool>
+    <bool name="config_speed_up_audio_on_mt_calls">false</bool>
     <bool name="config_screenOffAnimation">true</bool>
     <bool name="config_hasRotationLockSwitch">false</bool>
     <bool name="config_forceDisableHardwareKeyboard">true</bool>
@@ -93,5 +93,6 @@
     <bool name="config_symKeyShowsImePicker">true</bool>
     <bool name="config_stylusGestures">false</bool>
     <bool name="config_allowPieService">true</bool>
+    <bool name="config_enableIrdaManagerService">true</bool>
     <bool name="lockscreen_isPortrait">true</bool>
 </resources>

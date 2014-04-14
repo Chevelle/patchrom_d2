@@ -428,4 +428,14 @@
     <item type="id" name="websearch">false</item>
     <item type="id" name="find_prev">false</item>
     <item type="id" name="find_next">false</item>
+    <item type="id" name="faceLockAreaView">false</item>
+    <item type="id" name="notification_sim_indicator">false</item>
+    <item type="id" name="notification_sim_indicator_bg">false</item>
+    <item type="id" name="notification_sim_info">false</item>
+    <item type="id" name="notification_sim_indicator_text">false</item>
+    <item type="id" name="big_base_content">false</item>
+    <item type="id" name="big_picture_shadow">false</item>
+    <item type="id" name="big_picture_content">false</item>
+    <item type="id" name="big_text_content">false</item>
+    <item type="id" name="inbox">false</item>
 </resources>

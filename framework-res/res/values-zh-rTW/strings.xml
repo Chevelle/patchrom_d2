@@ -173,7 +173,7 @@
     <string name="abbrev_wday_month_day_year">yyyy 年 M 月 d 日EEE</string>
     <string name="full_wday_month_day_no_year_split">"EEEE
 M 月 d 日"</string>
-    <string name="byteShort">位元組</string>
+    <string name="byteShort">B</string>
     <string name="kilobyteShort">KB</string>
     <string name="megabyteShort">MB</string>
     <string name="gigabyteShort">GB</string>
@@ -351,8 +351,8 @@ M 月 d 日"</string>
     <string name="permgroupdesc_statusBar">變更裝置狀態列設定。</string>
     <string name="permgrouplab_syncSettings">同步處理設定</string>
     <string name="permgroupdesc_syncSettings">存取同步處理設定。</string>
-    <string name="permgrouplab_accounts">您的帳戶</string>
-    <string name="permgroupdesc_accounts">存取可用帳戶。</string>
+    <string name="permgrouplab_accounts">您的帳號</string>
+    <string name="permgroupdesc_accounts">存取可用帳號。</string>
     <string name="permgrouplab_hardwareControls">硬體控制</string>
     <string name="permgroupdesc_hardwareControls">在免持設備上直接存取硬體。</string>
     <string name="permgrouplab_phoneCalls">通話次數</string>
@@ -416,7 +416,7 @@ M 月 d 日"</string>
     <string name="permlab_enableCarMode">啟用行車模式</string>
     <string name="permdesc_enableCarMode">允許應用程式啟用車用模式。</string>
     <string name="permlab_killBackgroundProcesses">關閉其他應用程式</string>
-    <string name="permdesc_killBackgroundProcesses">允許應用程式終止其他應用程式的背景處理程序。這項設定可能會導致其他應用程式停止執行。</string>
+    <string name="permdesc_killBackgroundProcesses">允許應用程式終止其他應用程式的背景處理任務。這項設定可能會導致其他應用程式停止執行。</string>
     <string name="permlab_forceStopPackages">強制停止其他應用程式</string>
     <string name="permdesc_forceStopPackages">允許應用程式強制停止其他應用程式。</string>
     <string name="permlab_forceBack">強制關閉應用程式</string>
@@ -434,10 +434,10 @@ M 月 d 日"</string>
     <string name="permlab_magnify_display">放大畫面</string>
     <string name="permdesc_magnify_display">允許應用程式放大畫面內容。請注意，惡意應用程式可能會藉此利用不正常的方式改變顯示內容，導致裝置失靈。</string>
     <string name="permlab_shutdown">部分關機</string>
-    <string name="permdesc_shutdown">讓活動管理員進入關機狀態，而不執行完整的關機程序。</string>
+    <string name="permdesc_shutdown">讓活動管理員進入關機狀態，而不執行完整的關機任務。</string>
     <string name="permlab_stopAppSwitches">防止切換應用程式</string>
     <string name="permdesc_stopAppSwitches">防止使用者切換到其他應用程式。</string>
-    <string name="permlab_runSetActivityWatcher">監視及控制所有應用程式的啟動程序</string>
+    <string name="permlab_runSetActivityWatcher">監視及控制所有應用程式的啟動任務</string>
     <string name="permdesc_runSetActivityWatcher">允許應用程式監視和控制系統啟動活動的方式。請注意，惡意應用程式可能利用此功能破壞整個系統。這個權限只有開發人員才需要，一般使用者不需使用這個權限。</string>
     <string name="permlab_broadcastPackageRemoved">傳送程式已移除廣播</string>
     <string name="permdesc_broadcastPackageRemoved">允許應用程式在其他應用程式套件遭到移除時發送通知。請注意，惡意應用程式可能利用此功能終止其他執行中的程式。</string>
@@ -445,8 +445,8 @@ M 月 d 日"</string>
     <string name="permdesc_broadcastSmsReceived">允許應用程式在收到 SMS 簡訊時發出通知。請注意，惡意應用程式可能利用此功能偽造外來的 SMS 簡訊。</string>
     <string name="permlab_broadcastWapPush">送出「WAP PUSH 已接收」廣播</string>
     <string name="permdesc_broadcastWapPush">允許應用程式在收到 WAP PUSH 訊息時發送通知。請注意，惡意應用程式可能利用此功能偽造 MMS 簡訊回條，或私自將網頁內容更換為惡意陷阱。</string>
-    <string name="permlab_setProcessLimit">執行程序限制數</string>
-    <string name="permdesc_setProcessLimit">允許應用程式控制可執行程序的數量上限 (一般應用程式不需使用)。</string>
+    <string name="permlab_setProcessLimit">執行程式限制數</string>
+    <string name="permdesc_setProcessLimit">允許應用程式控制可執行程式的數量上限 (一般應用程式不需使用)。</string>
     <string name="permlab_setAlwaysFinish">強制關閉背景應用程式</string>
     <string name="permdesc_setAlwaysFinish">允許應用程式控制活動是否隨時可於完成後立刻進入背景 (一般應用程式不需使用)。</string>
     <string name="permlab_batteryStats">讀取電池使用統計資料</string>
@@ -464,7 +464,7 @@ M 月 d 日"</string>
     <string name="permlab_setAnimationScale">編輯全域動畫速度</string>
     <string name="permdesc_setAnimationScale">允許應用程式隨時變更全域的動畫速度 (更快或更慢)。</string>
     <string name="permlab_manageAppTokens">管理應用程式憑證</string>
-    <string name="permdesc_manageAppTokens">允許應用程序略過一般程序，直接建立及管理本身的憑證 (一般應用程式不需使用)。</string>
+    <string name="permdesc_manageAppTokens">允許應用程式略過一般程序，直接建立及管理本身的憑證 (一般應用程式不需使用)。</string>
     <string name="permlab_freezeScreen">凍結螢幕</string>
     <string name="permdesc_freezeScreen">允許應用程式暫時凍結螢幕畫面，顯示全螢幕轉場效果。</string>
     <string name="permlab_injectEvents">按鍵及控制按鈕</string>
@@ -492,7 +492,7 @@ M 月 d 日"</string>
     <string name="permlab_setKeyboardLayout">變更鍵盤配置</string>
     <string name="permdesc_setKeyboardLayout">允許應用程式變更鍵盤配置 (一般應用程式不需使用)。</string>
     <string name="permlab_signalPersistentProcesses">將 Linux 訊號傳送給應用程式</string>
-    <string name="permdesc_signalPersistentProcesses">允許應用程式要求將提供的訊號傳送給所有持續運作中的處理程序。</string>
+    <string name="permdesc_signalPersistentProcesses">允許應用程式要求將提供的訊號傳送給所有持續運作中的處理任務。</string>
     <string name="permlab_persistentActivity">一律執行應用程式</string>
     <string name="permdesc_persistentActivity">允許應用程式讓部分內容佔用記憶體，持續執行。這項設定可能會限制其他應用程式可用的記憶體，並拖慢手機運作速度。</string>
     <string name="permlab_deletePackages">刪除應用程式</string>
@@ -506,7 +506,7 @@ M 月 d 日"</string>
     <string name="permlab_installPackages">直接安裝應用程式</string>
     <string name="permdesc_installPackages">允許應用程式安裝新的 Android 套件或進行更新。請注意，惡意應用程式可能利用此功能新增應用程式，並給予其最高權限。</string>
     <string name="permlab_clearAppCache">刪除所有應用程式快取資料</string>
-    <string name="permdesc_clearAppCache">允許應用程式刪除其他應用程式快取目錄中的檔案，藉此釋放手機儲存空間。這可能會使其他應用程式的啟動速度變慢，因為應用程式必須重新擷取資料。</string>
+    <string name="permdesc_clearAppCache">允許應用程式刪除應用程式快取目錄中的檔案以釋出手機的儲存空間。一般而言，只有系統程式才能執行這類檔案的存取動作。</string>
     <string name="permlab_movePackage">移動應用程式資源</string>
     <string name="permdesc_movePackage">允許應用程式將應用程式資源從內部媒體移到外部媒體，反之亦可。</string>
     <string name="permlab_readLogs">讀取機密記錄資料</string>
@@ -528,7 +528,7 @@ M 月 d 日"</string>
     <string name="permlab_writeGservices">修改 Google 服務地圖</string>
     <string name="permdesc_writeGservices">允許應用程式修改 Google 服務地圖 (不建議一般應用程式使用)。</string>
     <string name="permlab_receiveBootCompleted">啟動時執行</string>
-    <string name="permdesc_receiveBootCompleted">允許應用程式在系統完成開機程序後立即自行啟動。這會增加手機的開機時間，而且會因為系統一直執行該應用程式導致手機的整體運作速度變慢。</string>
+    <string name="permdesc_receiveBootCompleted">允許應用程式在系統完成開機任務後立即自行啟動。這會增加手機的開機時間，而且會因為系統一直執行該應用程式導致手機的整體運作速度變慢。</string>
     <string name="permlab_broadcastSticky">傳送附屬廣播</string>
     <string name="permdesc_broadcastSticky">允許應用程式傳送記憶廣播，這類廣播在廣播動作結束後仍繼續存在。請注意，過度使用此功能可能導致手機使用過多的記憶體，導致手機的執行速度變慢或不穩定。</string>
     <string name="permlab_readContacts">讀取您的聯絡人</string>
@@ -607,7 +607,7 @@ M 月 d 日"</string>
     <string name="permdesc_callPhone">允許應用程式自行撥打電話，但可能產生非預期的費用或撥打非預期的電話。注意：這項權限不允許應用程式撥打緊急電話。惡意應用程式可能利用此功能擅自撥打電話，增加您不必要的額外支出。</string>
     <string name="permlab_callPrivileged">直接撥打任何電話號碼</string>
     <string name="permdesc_callPrivileged">允許應用程式自行撥打任何電話號碼，包括緊急電話號碼。請注意，惡意應用程式可能利用此功能濫用緊急服務，撥打不必要或違法的電話。</string>
-    <string name="permlab_performCdmaProvisioning">直接起始 CDMA 手機設定程序</string>
+    <string name="permlab_performCdmaProvisioning">直接起始 CDMA 手機設定程式</string>
     <string name="permdesc_performCdmaProvisioning">允許應用程式啟動 CDMA 服務。請注意，惡意應用程式可能利用此功能啟動非必要的 CDMA 服務。</string>
     <string name="permlab_locationUpdates">控制位置更新通知</string>
     <string name="permdesc_locationUpdates">允許應用程式啟用/停用來自無線電的位置更新通知 (不建議一般應用程式使用)。</string>
@@ -637,13 +637,13 @@ M 月 d 日"</string>
     <string name="permdesc_setTimeZone">允許應用程式變更手機的時區。</string>
     <string name="permlab_accountManagerService">作為 AccountManagerService</string>
     <string name="permdesc_accountManagerService">允許應用程式呼叫 AccountAuthenticators。</string>
-    <string name="permlab_getAccounts">尋找裝置上的帳戶</string>
-    <string name="permdesc_getAccounts">允許應用程式取得手機上所記憶的帳戶清單，其中可能包括您安裝的應用程式所建立的任何帳戶。</string>
-    <string name="permlab_authenticateAccounts">建立帳戶及設定密碼</string>
-    <string name="permdesc_authenticateAccounts">允許應用程式使用 AccountManager 的帳戶驗證器功能，包括建立帳戶、取得及設定帳戶密碼。</string>
-    <string name="permlab_manageAccounts">新增或移除帳戶</string>
-    <string name="permdesc_manageAccounts">允許應用程式執行新增、移除帳戶和刪除帳戶密碼等作業。</string>
-    <string name="permlab_useCredentials">使用裝置上的帳戶</string>
+    <string name="permlab_getAccounts">尋找裝置上的帳號</string>
+    <string name="permdesc_getAccounts">允許應用程式取得手機上所記憶的帳號清單，其中可能包括您安裝的應用程式所建立的任何帳號。</string>
+    <string name="permlab_authenticateAccounts">建立帳號及設定密碼</string>
+    <string name="permdesc_authenticateAccounts">允許應用程式使用 AccountManager 的帳號驗證器功能，包括建立帳號、取得及設定帳號密碼。</string>
+    <string name="permlab_manageAccounts">新增或移除帳號</string>
+    <string name="permdesc_manageAccounts">允許應用程式執行新增、移除帳號和刪除帳號密碼等作業。</string>
+    <string name="permlab_useCredentials">使用裝置上的帳號</string>
     <string name="permdesc_useCredentials">允許應用程式要求驗證憑證。</string>
     <string name="permlab_accessNetworkState">查看網路連線</string>
     <string name="permdesc_accessNetworkState">允許應用程式查看網路連線相關資訊，例如有哪些網路，以及已連上哪些網路。</string>
@@ -676,11 +676,11 @@ M 月 d 日"</string>
     <string name="permlab_disableKeyguard">停用螢幕鎖定</string>
     <string name="permdesc_disableKeyguard">允許應用程式停用按鍵鎖定以及其他相關的密碼安全性功能。例如：手機收到來電時停用按鍵鎖定，通話結束後重新啟用按鍵鎖定。</string>
     <string name="permlab_readSyncSettings">讀取同步處理設定</string>
-    <string name="permdesc_readSyncSettings">允許應用程式讀取帳戶的同步處理設定，例如判斷「使用者」應用程式是否和某個帳戶進行同步處理。</string>
+    <string name="permdesc_readSyncSettings">允許應用程式讀取帳號的同步處理設定，例如判斷「使用者」應用程式是否和某個帳號進行同步處理。</string>
     <string name="permlab_writeSyncSettings">開啟及關閉同步功能</string>
-    <string name="permdesc_writeSyncSettings">允許應用程式修改帳戶的同步處理設定，例如讓「使用者」應用程式與某個帳戶進行同步處理。</string>
+    <string name="permdesc_writeSyncSettings">允許應用程式修改帳號的同步處理設定，例如讓「使用者」應用程式與某個帳號進行同步處理。</string>
     <string name="permlab_readSyncStats">讀取同步處理狀態</string>
-    <string name="permdesc_readSyncStats">允許應用程式讀取帳戶的同步處理統計資料，包括同步處理活動紀錄，以及同步處理的資料量。</string>
+    <string name="permdesc_readSyncStats">允許應用程式讀取帳號的同步處理統計資料，包括同步處理活動紀錄，以及同步處理的資料量。</string>
     <string name="permlab_subscribedFeedsRead">讀取訂閱資訊提供</string>
     <string name="permdesc_subscribedFeedsRead">允許應用程式取得目前已同步處理的資訊提供詳細資料。</string>
     <string name="permlab_subscribedFeedsWrite">寫入訂閱資訊提供</string>
@@ -801,13 +801,13 @@ M 月 d 日"</string>
     <string name="keyguard_password_enter_puk_code">輸入 PUK 碼和新 PIN 碼</string>
     <string name="keyguard_password_enter_puk_prompt">PUK 碼</string>
     <string name="keyguard_password_enter_pin_prompt">新 PIN 碼</string>
-    <string name="keyguard_password_entry_touch_hint"><font size="17">輕觸即可輸入密碼</font></string>
+    <string name="keyguard_password_entry_touch_hint">" "<font size="17">輕觸即可輸入密碼</font>" "</string>
     <string name="keyguard_password_enter_password_code">輸入密碼即可解鎖</string>
     <string name="keyguard_password_enter_pin_password_code">輸入 PIN 即可解鎖</string>
     <string name="keyguard_password_wrong_pin_code">PIN 碼不正確。</string>
     <string name="keyguard_label_text">如要解鎖，請按 Menu 鍵，然後按 0。</string>
     <string name="emergency_call_dialog_number_for_display">緊急電話號碼</string>
-    <string name="lockscreen_carrier_default">沒有服務。</string>
+    <string name="lockscreen_carrier_default">無服務</string>
     <string name="lockscreen_screen_locked">螢幕已鎖定。</string>
     <string name="lockscreen_instructions_when_pattern_enabled">按下 [Menu] 解鎖或撥打緊急電話。</string>
     <string name="lockscreen_instructions_when_pattern_disabled">按下 Menu 鍵解鎖。</string>
@@ -822,7 +822,7 @@ M 月 d 日"</string>
     <string name="lockscreen_charged">充電完成</string>
     <string name="lockscreen_battery_short">%d%%</string>
     <string name="lockscreen_low_battery">請連接充電器。</string>
-    <string name="lockscreen_missing_sim_message_short">找不到 SIM 卡</string>
+    <string name="lockscreen_missing_sim_message_short">無SIM卡</string>
     <string name="lockscreen_missing_sim_message">手機未插入 SIM 卡。</string>
     <string name="lockscreen_missing_sim_instructions">插入 SIM 卡。</string>
     <string name="lockscreen_missing_sim_instructions_long">找不到或無法讀取 SIM 卡。請插入 SIM 卡。</string>
@@ -856,9 +856,9 @@ M 月 d 日"</string>
     <string name="lockscreen_failed_attempts_now_wiping">您嘗試解除這支手機的鎖定已失敗 %d 次，手機現在將恢復原廠設定。</string>
     <string name="lockscreen_too_many_failed_attempts_countdown">%d 秒後再試一次。</string>
     <string name="lockscreen_forgot_pattern_button_text">忘記解鎖圖形？</string>
-    <string name="lockscreen_glogin_forgot_pattern">帳戶解鎖</string>
+    <string name="lockscreen_glogin_forgot_pattern">帳號解鎖</string>
     <string name="lockscreen_glogin_too_many_attempts">圖形嘗試次數過多</string>
-    <string name="lockscreen_glogin_instructions">如要解除鎖定，請使用 Google 帳戶登入。</string>
+    <string name="lockscreen_glogin_instructions">如要解除鎖定，請使用 Google 帳號登入。</string>
     <string name="lockscreen_glogin_username_hint">使用者名稱 (電子郵件)</string>
     <string name="lockscreen_glogin_password_hint">密碼</string>
     <string name="lockscreen_glogin_submit_button">登入</string>
@@ -1017,7 +1017,7 @@ M 月 d 日"</string>
     <string name="noApplications">沒有應用程式可執行這項操作。</string>
     <string name="aerr_title" />
     <string name="aerr_application">很抱歉，%1$s 已停止。</string>
-    <string name="aerr_process">很抱歉，處理程序 %1$s 已停止。</string>
+    <string name="aerr_process">很抱歉，處理任務 %1$s 已停止。</string>
     <string name="anr_title" />
     <string name="anr_activity_application">"%2$s 沒有回應。
 
@@ -1026,7 +1026,7 @@ M 月 d 日"</string>
 
 您要結束嗎？"</string>
     <string name="anr_application_process">%1$s 沒有回應。您要結束嗎？</string>
-    <string name="anr_process">"%1$s 處理程序沒有回應。
+    <string name="anr_process">"%1$s 處理任務沒有回應。
 
 您要結束嗎？"</string>
     <string name="force_close">確定</string>
@@ -1041,8 +1041,8 @@ M 月 d 日"</string>
     <string name="screen_compat_mode_scale">比例</string>
     <string name="screen_compat_mode_show">一律顯示</string>
     <string name="screen_compat_mode_hint">前往 [系統設定] > [應用程式] > [下載] 重新啟用這個模式。</string>
-    <string name="smv_application">應用程式 %1$s (處理程序 %2$s) 已違反其自行強制實施的嚴格模式 (StrictMode) 政策。</string>
-    <string name="smv_process">處理程序 %1$s 已違反其自行強制實施的嚴格模式 (StrictMode) 政策。</string>
+    <string name="smv_application">應用程式 %1$s (處理任務 %2$s) 已違反其自行強制實施的嚴格模式 (StrictMode) 政策。</string>
+    <string name="smv_process">處理任務 %1$s 已違反其自行強制實施的嚴格模式 (StrictMode) 政策。</string>
     <string name="android_upgrading_title">正在升級 Android…</string>
     <string name="android_upgrading_apk">正在最佳化第 %1$d 個應用程式 (共 %2$d 個)。</string>
     <string name="android_upgrading_starting_apps">正在啟動應用程式。</string>
@@ -1100,7 +1100,7 @@ M 月 d 日"</string>
     <string name="sms_control_no">拒絕</string>
     <string name="sms_short_code_confirm_message">&lt;b>%1$s&lt;/b> 要求將訊息傳送至 &lt;b>%2$s&lt;/b>。</string>
     <string name="sms_short_code_details">這<font fgcolor="#ffffb060">可能會透過您的行動帳戶計費</font>。</string>
-    <string name="sms_premium_short_code_details"><font fgcolor="#ffffb060">這會透過您的行動帳戶計費。</font></string>
+    <string name="sms_premium_short_code_details">" "<font fgcolor="#ffffb060">這會透過您的行動帳戶計費。</font>" "</string>
     <string name="sms_short_code_confirm_allow">傳送</string>
     <string name="sms_short_code_confirm_deny">取消</string>
     <string name="sms_short_code_remember_choice">記住我的選擇</string>
@@ -1117,7 +1117,7 @@ M 月 d 日"</string>
     <string name="date_picker_dialog_title">日期設定</string>
     <string name="date_time_set">設定</string>
     <string name="date_time_done">完成</string>
-    <string name="perms_new_perm_prefix"><font size="12" fgcolor="#ff33b5e5">新增：</font></string>
+    <string name="perms_new_perm_prefix">" "<font fgcolor="#ff33b5e5" size="12">新增：</font>" "</string>
     <string name="perms_description_app">由「%1$s」提供。</string>
     <string name="no_permissions">無須許可</string>
     <string name="perm_costs_money">這可能需要付費</string>
@@ -1156,7 +1156,7 @@ M 月 d 日"</string>
     <string name="select_keyboard_layout_notification_message">輕觸即可選取鍵盤配置。</string>
     <string name="fast_scroll_alphabet">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
     <string name="fast_scroll_numeric_alphabet">" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
-    <string name="candidates_style"><u>待選項目</u></string>
+    <string name="candidates_style">" "<u>待選項目</u>" "</string>
     <string name="ext_media_checking_notification_title">正在準備 SD 卡</string>
     <string name="ext_media_checking_notification_message">正在檢查錯誤。</string>
     <string name="ext_media_nofs_notification_title">SD 卡為空白</string>
@@ -1189,13 +1189,13 @@ M 月 d 日"</string>
 撥號"</string>
     <string name="create_contact_using">"建立手機號碼為 %s
 的聯絡人"</string>
-    <string name="grant_credentials_permission_message_header">下列一或多個應用程式要求取得今後都可存取您帳戶的權限。</string>
+    <string name="grant_credentials_permission_message_header">下列一或多個應用程式要求取得今後都可存取您帳號的權限。</string>
     <string name="grant_credentials_permission_message_footer">您確定要允許這個要求嗎？</string>
     <string name="grant_permissions_header_text">存取權限要求</string>
     <string name="allow">允許</string>
     <string name="deny">拒絕</string>
     <string name="permission_request_notification_title">已要求權限</string>
-    <string name="permission_request_notification_with_subtitle">"帳戶 %s 已提出
+    <string name="permission_request_notification_with_subtitle">"帳號 %s 已提出
 權限要求。"</string>
     <string name="input_method_binding_label">輸入法</string>
     <string name="sync_binding_label">同步處理</string>
@@ -1216,7 +1216,7 @@ M 月 d 日"</string>
     <string name="submit">提交</string>
     <string name="car_mode_disable_notification_title">已啟用車用模式</string>
     <string name="car_mode_disable_notification_message">輕觸即可結束車用模式。</string>
-    <string name="tethered_notification_title">網路共用或無線基地台已啟用</string>
+    <string name="tethered_notification_title">網路共用或熱點已啟用</string>
     <string name="tethered_notification_message">輕觸即可設定。</string>
     <string name="back_button_label">返回</string>
     <string name="next_button_label">繼續</string>
@@ -1247,13 +1247,13 @@ M 月 d 日"</string>
     <string name="gpsVerifYes">是</string>
     <string name="gpsVerifNo">否</string>
     <string name="sync_too_many_deletes">已超過刪除上限</string>
-    <string name="sync_too_many_deletes_desc">帳戶 %3$s 的%2$s會刪除 %1$d 個項目。您要如何處理？</string>
+    <string name="sync_too_many_deletes_desc">帳號 %3$s 的%2$s會刪除 %1$d 個項目。您要如何處理？</string>
     <string name="sync_really_delete">刪除這些項目</string>
     <string name="sync_undo_deletes">復原刪除</string>
     <string name="sync_do_nothing">暫不執行</string>
-    <string name="choose_account_label">選擇帳戶</string>
-    <string name="add_account_label">新增帳戶</string>
-    <string name="add_account_button_label">新增帳戶</string>
+    <string name="choose_account_label">選擇帳號</string>
+    <string name="add_account_label">新增帳號</string>
+    <string name="add_account_button_label">新增帳號</string>
     <string name="number_picker_increment_button">增加</string>
     <string name="number_picker_decrement_button">減少</string>
     <string name="number_picker_increment_scroll_mode">%s 輕觸並按住。</string>
@@ -1294,7 +1294,7 @@ M 月 d 日"</string>
     <string name="keyboard_headset_required_to_hear_password">連接耳機即可聽取系統朗讀密碼按鍵。</string>
     <string name="keyboard_password_character_no_headset">點。</string>
     <string name="action_bar_home_description">瀏覽首頁</string>
-    <string name="action_bar_up_description">向上瀏覽</string>
+    <string name="action_bar_up_description">返回</string>
     <string name="action_menu_overflow_description">更多選項</string>
     <string name="storage_internal">內部儲存空間</string>
     <string name="storage_sd_card">SD 卡</string>

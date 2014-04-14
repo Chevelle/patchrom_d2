@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/status_bar_latest_event_content" android:background="@drawable/notification_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" internal:layout_maxHeight="unbounded" internal:layout_minHeight="65.0dip"
+<FrameLayout android:id="@id/status_bar_latest_event_content" android:background="@drawable/notification_bg" android:paddingLeft="@dimen/notification_padding_left" android:paddingRight="@dimen/notification_padding_right" android:layout_width="fill_parent" android:layout_height="fill_parent" internal:layout_maxHeight="unbounded" internal:layout_minHeight="65.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:internal="http://schemas.android.com/apk/prv/res/android">
-    <ImageView android:layout_gravity="bottom" android:id="@id/big_picture" android:layout_width="fill_parent" android:layout_height="192.0dip" android:layout_marginTop="64.0dip" android:scaleType="centerCrop" />
-    <ImageView android:layout_width="fill_parent" android:layout_height="6.0dip" android:layout_marginTop="64.0dip" android:src="@drawable/title_bar_shadow" android:scaleType="fitXY" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/notification_template_base" />
-    <FrameLayout android:layout_gravity="bottom" android:background="#cc111111" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="208.0dip" android:paddingStart="64.0dip">
-        <include android:layout_gravity="bottom" android:id="@id/actions" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/notification_action_list" />
+    <ImageView android:layout_gravity="bottom" android:id="@id/big_picture" android:layout_width="fill_parent" android:layout_height="190.0dip" android:layout_marginTop="@dimen/notification_height" android:layout_marginBottom="7.5dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/big_picture_shadow" android:layout_width="fill_parent" android:layout_height="6.0dip" android:layout_marginTop="@dimen/notification_height" android:src="@drawable/title_bar_shadow" android:scaleType="fitXY" />
+    <FrameLayout android:id="@id/big_picture_content" android:background="@drawable/notification_bg" android:layout_width="fill_parent" android:layout_height="@dimen/notification_height">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:layout_width="@dimen/notification_large_icon_width" android:layout_height="@dimen/notification_large_icon_height" android:scaleType="centerInside" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/notification_content_margin_left_to_icon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/notification_large_icon_width">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/line1" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/notification_large_icon_height">
+                <TextView android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Title" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+                <ViewStub android:layout_gravity="center" android:id="@id/time" android:visibility="gone" android:layout="@layout/notification_template_part_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" />
+                <ViewStub android:layout_gravity="center" android:id="@id/chronometer" android:visibility="gone" android:layout="@layout/notification_template_part_chronometer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" />
+            </LinearLayout>
+            <TextView android:textAppearance="@style/TextAppearance.StatusBar.EventContent" android:ellipsize="marquee" android:visibility="invisible" android:fadingEdge="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:singleLine="true" />
+        </LinearLayout>
     </FrameLayout>
+    <FrameLayout android:layout_gravity="bottom" android:background="@drawable/big_picture_action_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="7.5dip">
+        <include android:gravity="center" android:layout_gravity="bottom" android:id="@id/actions" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/notification_action_list" />
+    </FrameLayout>
+    <ImageView android:layout_gravity="bottom" android:background="@drawable/big_picture_fg" android:layout_width="fill_parent" android:layout_height="190.0dip" android:layout_marginTop="@dimen/notification_height" android:layout_marginBottom="7.5dip" />
 </FrameLayout>

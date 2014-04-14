@@ -2067,6 +2067,16 @@
     <public type="id" name="websearch" id="0x010203b8" />
     <public type="id" name="find_prev" id="0x010203b9" />
     <public type="id" name="find_next" id="0x010203ba" />
+    <public type="id" name="faceLockAreaView" id="0x010203bb" />
+    <public type="id" name="notification_sim_indicator" id="0x010203bc" />
+    <public type="id" name="notification_sim_indicator_bg" id="0x010203bd" />
+    <public type="id" name="notification_sim_info" id="0x010203be" />
+    <public type="id" name="notification_sim_indicator_text" id="0x010203bf" />
+    <public type="id" name="big_base_content" id="0x010203c0" />
+    <public type="id" name="big_picture_shadow" id="0x010203c1" />
+    <public type="id" name="big_picture_content" id="0x010203c2" />
+    <public type="id" name="big_text_content" id="0x010203c3" />
+    <public type="id" name="inbox" id="0x010203c4" />
     <public type="style" name="Animation" id="0x01030000" />
     <public type="style" name="Animation.Activity" id="0x01030001" />
     <public type="style" name="Animation.Dialog" id="0x01030002" />
@@ -4445,11 +4455,18 @@
     <public type="dimen" name="pie_trigger_distance" id="0x0105007a" />
     <public type="dimen" name="pie_perpendicular_distance" id="0x0105007b" />
     <public type="dimen" name="pie_trigger_thickness" id="0x0105007c" />
+    <public type="dimen" name="APKTOOL_DUMMY_007e" id="0x0105007e" />
+    <public type="dimen" name="notification_content_margin_left_to_icon" id="0x01050082" />
+    <public type="dimen" name="notification_content_margin_left" id="0x01050083" />
+    <public type="dimen" name="notification_height" id="0x01050084" />
+    <public type="dimen" name="notification_padding_left" id="0x01050085" />
+    <public type="dimen" name="notification_padding_right" id="0x01050086" />
+    <public type="dimen" name="notification_action_height" id="0x01050087" />
+    <public type="dimen" name="notification_action_text_size" id="0x01050088" />
     <public type="dimen" name="keyguard_pattern_unlock_clock_font_size" id="0x0105007f" />
     <public type="dimen" name="keyguard_pattern_unlock_status_line_font_size" id="0x01050080" />
     <public type="dimen" name="navigation_bar_height_portrait" id="0x01050081" />
     <public type="dimen" name="kg_emergency_button_shift" id="0x0105007d" />
-    <public type="dimen" name="APKTOOL_DUMMY_007e" id="0x0105007e" />
     <public type="color" name="darker_gray" id="0x01060000" />
     <public type="color" name="primary_text_dark" id="0x01060001" />
     <public type="color" name="primary_text_dark_nodisable" id="0x01060002" />
@@ -4578,6 +4595,14 @@
     <public type="color" name="tab_indicator_text_v4" id="0x0106007d" />
     <public type="color" name="tertiary_text_holo_dark" id="0x0106007e" />
     <public type="color" name="tertiary_text_holo_light" id="0x0106007f" />
+    <public type="color" name="list_separator_foreground_holo_light" id="0x01060080" />
+    <public type="color" name="statusbar_content" id="0x01060081" />
+    <public type="color" name="statusbar_content_title" id="0x01060082" />
+    <public type="color" name="statusbar_content_info" id="0x01060083" />
+    <public type="color" name="statusbar_content_time" id="0x01060084" />
+    <public type="color" name="statusbar_content_emphasis" id="0x01060085" />
+    <public type="color" name="notification_action_text_color" id="0x01060086" />
+    <public type="color" name="listseparator_text_holo_light" id="0x01060087" />
     <public type="array" name="emailAddressTypes" id="0x01070000" />
     <public type="array" name="imProtocols" id="0x01070001" />
     <public type="array" name="organizationTypes" id="0x01070002" />
@@ -4641,11 +4666,14 @@
     <public type="array" name="common_nicknames" id="0x0107003c" />
     <public type="array" name="imAddressTypes" id="0x0107003d" />
     <public type="array" name="carrier_properties" id="0x0107003e" />
+    <public type="drawable" name="background_holo_dark" id="0x010800cc" />
+    <public type="drawable" name="background_holo_light" id="0x010800cd" />
     <public type="drawable" name="blank_tile" id="0x010800cf" />
     <public type="drawable" name="cidlogo" id="0x01080211" />
     <public type="drawable" name="cidlogo_alt" id="0x01080212" />
     <public type="drawable" name="default_wallpaper" id="0x01080221" />
     <public type="drawable" name="indicator_code_lock_drag_direction_green_up" id="0x010803c9" />
+    <public type="drawable" name="indicator_code_lock_drag_direction_red_up" id="0x010803ca" />
     <public type="drawable" name="loading_tile" id="0x01080455" />
     <public type="drawable" name="loading_tile_android" id="0x01080456" />
     <public type="drawable" name="no_tile_128" id="0x01080474" />
@@ -4704,8 +4732,6 @@
     <public type="drawable" name="app_icon_background" id="0x010800c9" />
     <public type="drawable" name="background_cache_hint_selector_holo_dark" id="0x010800ca" />
     <public type="drawable" name="background_cache_hint_selector_holo_light" id="0x010800cb" />
-    <public type="drawable" name="background_holo_dark" id="0x010800cc" />
-    <public type="drawable" name="background_holo_light" id="0x010800cd" />
     <public type="drawable" name="box" id="0x010800d0" />
     <public type="drawable" name="btn_browser_zoom_fit_page" id="0x010800d1" />
     <public type="drawable" name="btn_browser_zoom_page_overview" id="0x010800d2" />
@@ -4781,6 +4807,8 @@
     <public type="drawable" name="ic_navigation_ring_screenshot" id="0x01080399" />
     <public type="drawable" name="ic_navigation_ring_silent" id="0x0108039c" />
     <public type="drawable" name="ic_navigation_ring_sound_on" id="0x0108039f" />
+    <public type="drawable" name="APKTOOL_DUMMY_03a2" id="0x010803a2" />
+    <public type="drawable" name="APKTOOL_DUMMY_03a3" id="0x010803a3" />
     <public type="drawable" name="ic_navigation_ring_torch_off" id="0x010803a4" />
     <public type="drawable" name="ic_navigation_ring_torch_on" id="0x010803a7" />
     <public type="drawable" name="ic_navigation_ring_vibrate" id="0x010803aa" />
@@ -4889,6 +4917,7 @@
     <public type="drawable" name="switch_inner_holo_light" id="0x010805d9" />
     <public type="drawable" name="switch_track_holo_dark" id="0x010805e2" />
     <public type="drawable" name="switch_track_holo_light" id="0x010805e3" />
+    <public type="drawable" name="APKTOOL_DUMMY_05e8" id="0x010805e8" />
     <public type="drawable" name="tab_bottom_left" id="0x01080602" />
     <public type="drawable" name="tab_bottom_left_v4" id="0x01080603" />
     <public type="drawable" name="tab_bottom_right" id="0x01080604" />
@@ -4916,69 +4945,6 @@
     <public type="drawable" name="screen_background_holo_dark" id="0x01080673" />
     <public type="drawable" name="notification_template_icon_bg" id="0x01080674" />
     <public type="drawable" name="notification_template_icon_low_bg" id="0x01080675" />
-    <public type="drawable" name="btn_check_on_disable_focused" id="0x010800f9" />
-    <public type="drawable" name="btn_check_on_disable_focused_holo_light" id="0x010800fa" />
-    <public type="drawable" name="btn_check_on_disable_holo_dark" id="0x010800fb" />
-    <public type="drawable" name="btn_check_on_disable_holo_light" id="0x010800fc" />
-    <public type="drawable" name="dialog_middle_holo" id="0x0108022f" />
-    <public type="drawable" name="divider_strong_holo" id="0x01080238" />
-    <public type="drawable" name="dropdown_ic_arrow_focused_holo_dark" id="0x01080249" />
-    <public type="drawable" name="dropdown_ic_arrow_pressed_holo_dark" id="0x0108024d" />
-    <public type="drawable" name="ic_action_assist_focused" id="0x01080296" />
-    <public type="drawable" name="ic_clear_normal" id="0x010802ba" />
-    <public type="drawable" name="ic_lockscreen_search_activated" id="0x01080328" />
-    <public type="drawable" name="ic_lockscreen_search_normal" id="0x01080329" />
-    <public type="drawable" name="ic_sysbar_quicksettings" id="0x010803b8" />
-    <public type="drawable" name="indicator_code_lock_point_area_red" id="0x010803cf" />
-    <public type="drawable" name="jog_tab_bar_left_end_confirm_gray" id="0x010803e3" />
-    <public type="drawable" name="jog_tab_bar_left_end_confirm_green" id="0x010803e4" />
-    <public type="drawable" name="jog_tab_bar_left_end_confirm_red" id="0x010803e5" />
-    <public type="drawable" name="jog_tab_bar_left_end_confirm_yellow" id="0x010803e6" />
-    <public type="drawable" name="jog_tab_bar_left_end_normal" id="0x010803e7" />
-    <public type="drawable" name="jog_tab_bar_left_end_pressed" id="0x010803e8" />
-    <public type="drawable" name="jog_tab_bar_right_end_confirm_gray" id="0x010803ec" />
-    <public type="drawable" name="jog_tab_bar_right_end_confirm_green" id="0x010803ed" />
-    <public type="drawable" name="jog_tab_bar_right_end_confirm_red" id="0x010803ee" />
-    <public type="drawable" name="jog_tab_bar_right_end_confirm_yellow" id="0x010803ef" />
-    <public type="drawable" name="jog_tab_bar_right_end_normal" id="0x010803f0" />
-    <public type="drawable" name="jog_tab_bar_right_end_pressed" id="0x010803f1" />
-    <public type="drawable" name="jog_tab_left_confirm_gray" id="0x010803f6" />
-    <public type="drawable" name="jog_tab_left_confirm_green" id="0x010803f7" />
-    <public type="drawable" name="jog_tab_left_confirm_red" id="0x010803f8" />
-    <public type="drawable" name="jog_tab_left_confirm_yellow" id="0x010803f9" />
-    <public type="drawable" name="jog_tab_left_normal" id="0x010803fb" />
-    <public type="drawable" name="jog_tab_left_pressed" id="0x010803fc" />
-    <public type="drawable" name="jog_tab_right_confirm_gray" id="0x010803fe" />
-    <public type="drawable" name="jog_tab_right_confirm_green" id="0x010803ff" />
-    <public type="drawable" name="jog_tab_right_confirm_red" id="0x01080400" />
-    <public type="drawable" name="jog_tab_right_confirm_yellow" id="0x01080401" />
-    <public type="drawable" name="jog_tab_right_normal" id="0x01080404" />
-    <public type="drawable" name="jog_tab_right_pressed" id="0x01080405" />
-    <public type="drawable" name="jog_tab_target_gray" id="0x01080408" />
-    <public type="drawable" name="jog_tab_target_green" id="0x01080409" />
-    <public type="drawable" name="jog_tab_target_red" id="0x0108040a" />
-    <public type="drawable" name="jog_tab_target_yellow" id="0x0108040b" />
-    <public type="drawable" name="pointer_arrow_icon" id="0x010804bb" />
-    <public type="drawable" name="pointer_spot_anchor_icon" id="0x010804bd" />
-    <public type="drawable" name="pointer_spot_hover_icon" id="0x010804bf" />
-    <public type="drawable" name="pointer_spot_touch_icon" id="0x010804c1" />
-    <public type="drawable" name="stat_sys_battery_10" id="0x01080583" />
-    <public type="drawable" name="stat_sys_battery_20" id="0x01080586" />
-    <public type="drawable" name="stat_sys_battery_40" id="0x01080588" />
-    <public type="drawable" name="stat_sys_battery_60" id="0x0108058b" />
-    <public type="drawable" name="stat_sys_battery_80" id="0x0108058d" />
-    <public type="drawable" name="stat_sys_battery_charge_anim1" id="0x01080591" />
-    <public type="drawable" name="stat_sys_battery_charge_anim2" id="0x01080594" />
-    <public type="drawable" name="stat_sys_battery_charge_anim3" id="0x01080596" />
-    <public type="drawable" name="stat_sys_battery_charge_anim4" id="0x01080597" />
-    <public type="drawable" name="stat_sys_battery_charge_anim5" id="0x01080599" />
-    <public type="drawable" name="textfield_bg_activated_holo_dark" id="0x01080629" />
-    <public type="drawable" name="textfield_bg_default_holo_dark" id="0x0108062a" />
-    <public type="drawable" name="textfield_bg_disabled_focused_holo_dark" id="0x0108062b" />
-    <public type="drawable" name="textfield_bg_disabled_holo_dark" id="0x0108062c" />
-    <public type="drawable" name="textfield_bg_focused_holo_dark" id="0x0108062d" />
-    <public type="drawable" name="textfield_longpress_holo" id="0x01080639" />
-    <public type="drawable" name="textfield_pressed_holo" id="0x01080644" />
     <public type="drawable" name="arrow_down_float" id="0x01080002" />
     <public type="drawable" name="arrow_up_float" id="0x01080003" />
     <public type="drawable" name="btn_star_big_off" id="0x0108000b" />
@@ -5168,6 +5134,10 @@
     <public type="drawable" name="btn_check_off_selected" id="0x010800f6" />
     <public type="drawable" name="btn_check_on" id="0x010800f7" />
     <public type="drawable" name="btn_check_on_disable" id="0x010800f8" />
+    <public type="drawable" name="btn_check_on_disable_focused" id="0x010800f9" />
+    <public type="drawable" name="btn_check_on_disable_focused_holo_light" id="0x010800fa" />
+    <public type="drawable" name="btn_check_on_disable_holo_dark" id="0x010800fb" />
+    <public type="drawable" name="btn_check_on_disable_holo_light" id="0x010800fc" />
     <public type="drawable" name="btn_check_on_disabled_focused_holo_dark" id="0x010800fd" />
     <public type="drawable" name="btn_check_on_disabled_focused_holo_light" id="0x010800fe" />
     <public type="drawable" name="btn_check_on_disabled_holo_dark" id="0x010800ff" />
@@ -5441,6 +5411,7 @@
     <public type="drawable" name="dialog_ic_close_normal_holo_light" id="0x0108022c" />
     <public type="drawable" name="dialog_ic_close_pressed_holo_dark" id="0x0108022d" />
     <public type="drawable" name="dialog_ic_close_pressed_holo_light" id="0x0108022e" />
+    <public type="drawable" name="dialog_middle_holo" id="0x0108022f" />
     <public type="drawable" name="dialog_middle_holo_dark" id="0x01080230" />
     <public type="drawable" name="dialog_middle_holo_light" id="0x01080231" />
     <public type="drawable" name="dialog_top_holo_dark" id="0x01080232" />
@@ -5449,6 +5420,7 @@
     <public type="drawable" name="divider_horizontal_dark_opaque" id="0x01080235" />
     <public type="drawable" name="divider_horizontal_holo_dark" id="0x01080236" />
     <public type="drawable" name="divider_horizontal_holo_light" id="0x01080237" />
+    <public type="drawable" name="divider_strong_holo" id="0x01080238" />
     <public type="drawable" name="divider_vertical_bright" id="0x01080239" />
     <public type="drawable" name="divider_vertical_bright_opaque" id="0x0108023a" />
     <public type="drawable" name="divider_vertical_dark" id="0x0108023b" />
@@ -5465,9 +5437,11 @@
     <public type="drawable" name="dropdown_ic_arrow_disabled_focused_holo_light" id="0x01080246" />
     <public type="drawable" name="dropdown_ic_arrow_disabled_holo_dark" id="0x01080247" />
     <public type="drawable" name="dropdown_ic_arrow_disabled_holo_light" id="0x01080248" />
+    <public type="drawable" name="dropdown_ic_arrow_focused_holo_dark" id="0x01080249" />
     <public type="drawable" name="dropdown_ic_arrow_focused_holo_light" id="0x0108024a" />
     <public type="drawable" name="dropdown_ic_arrow_normal_holo_dark" id="0x0108024b" />
     <public type="drawable" name="dropdown_ic_arrow_normal_holo_light" id="0x0108024c" />
+    <public type="drawable" name="dropdown_ic_arrow_pressed_holo_dark" id="0x0108024d" />
     <public type="drawable" name="dropdown_ic_arrow_pressed_holo_light" id="0x0108024e" />
     <public type="drawable" name="dropdown_normal_holo_dark" id="0x0108024f" />
     <public type="drawable" name="dropdown_normal_holo_light" id="0x01080250" />
@@ -5529,6 +5503,7 @@
     <public type="drawable" name="highlight_selected" id="0x01080293" />
     <public type="drawable" name="ic_ab_back_holo_dark" id="0x01080294" />
     <public type="drawable" name="ic_ab_back_holo_light" id="0x01080295" />
+    <public type="drawable" name="ic_action_assist_focused" id="0x01080296" />
     <public type="drawable" name="ic_action_assist_generic_activated" id="0x01080298" />
     <public type="drawable" name="ic_action_assist_generic_normal" id="0x01080299" />
     <public type="drawable" name="ic_aggregated" id="0x0108029a" />
@@ -5558,11 +5533,11 @@
     <public type="drawable" name="ic_cab_done_holo_light" id="0x010802b5" />
     <public type="drawable" name="ic_checkmark_holo_light" id="0x010802b6" />
     <public type="drawable" name="ic_clear_disabled" id="0x010802b8" />
+    <public type="drawable" name="ic_clear_normal" id="0x010802ba" />
     <public type="drawable" name="ic_clear_search_api_disabled_holo_light" id="0x010802bb" />
     <public type="drawable" name="ic_clear_search_api_holo_light" id="0x010802bc" />
     <public type="drawable" name="ic_coins_l" id="0x010802bd" />
     <public type="drawable" name="ic_coins_s" id="0x010802be" />
-    <public type="drawable" name="ic_commit" id="0x010802bf" />
     <public type="drawable" name="ic_commit_search_api_holo_dark" id="0x010802c0" />
     <public type="drawable" name="ic_commit_search_api_holo_light" id="0x010802c1" />
     <public type="drawable" name="ic_contact_picture" id="0x010802c2" />
@@ -5664,6 +5639,8 @@
     <public type="drawable" name="ic_lockscreen_podcast_normal" id="0x01080325" />
     <public type="drawable" name="ic_lockscreen_rss_activated" id="0x01080326" />
     <public type="drawable" name="ic_lockscreen_rss_normal" id="0x01080327" />
+    <public type="drawable" name="ic_lockscreen_search_activated" id="0x01080328" />
+    <public type="drawable" name="ic_lockscreen_search_normal" id="0x01080329" />
     <public type="drawable" name="ic_lockscreen_silent_activated" id="0x0108032b" />
     <public type="drawable" name="ic_lockscreen_silent_focused" id="0x0108032c" />
     <public type="drawable" name="ic_lockscreen_silent_normal" id="0x0108032d" />
@@ -5783,6 +5760,7 @@
     <public type="drawable" name="ic_search" id="0x010803b5" />
     <public type="drawable" name="ic_search_api_holo_light" id="0x010803b6" />
     <public type="drawable" name="ic_settings_language" id="0x010803b7" />
+    <public type="drawable" name="ic_sysbar_quicksettings" id="0x010803b8" />
     <public type="drawable" name="ic_text_dot" id="0x010803b9" />
     <public type="drawable" name="ic_vibrate" id="0x010803ba" />
     <public type="drawable" name="ic_vibrate_small" id="0x010803bb" />
@@ -5797,11 +5775,11 @@
     <public type="drawable" name="icon_highlight_rectangle" id="0x010803c4" />
     <public type="drawable" name="icon_highlight_square" id="0x010803c5" />
     <public type="drawable" name="ime_qwerty" id="0x010803c6" />
-    <public type="drawable" name="indicator_code_lock_drag_direction_red_up" id="0x010803ca" />
     <public type="drawable" name="indicator_code_lock_point_area_default" id="0x010803cb" />
     <public type="drawable" name="indicator_code_lock_point_area_default_holo" id="0x010803cc" />
     <public type="drawable" name="indicator_code_lock_point_area_green" id="0x010803cd" />
     <public type="drawable" name="indicator_code_lock_point_area_green_holo" id="0x010803ce" />
+    <public type="drawable" name="indicator_code_lock_point_area_red" id="0x010803cf" />
     <public type="drawable" name="indicator_code_lock_point_area_red_holo" id="0x010803d0" />
     <public type="drawable" name="indicator_input_error" id="0x010803d1" />
     <public type="drawable" name="intro_bg" id="0x010803d2" />
@@ -5816,6 +5794,34 @@
     <public type="drawable" name="jog_dial_bg" id="0x010803df" />
     <public type="drawable" name="jog_dial_dimple" id="0x010803e0" />
     <public type="drawable" name="jog_dial_dimple_dim" id="0x010803e1" />
+    <public type="drawable" name="jog_tab_bar_left_end_confirm_gray" id="0x010803e3" />
+    <public type="drawable" name="jog_tab_bar_left_end_confirm_green" id="0x010803e4" />
+    <public type="drawable" name="jog_tab_bar_left_end_confirm_red" id="0x010803e5" />
+    <public type="drawable" name="jog_tab_bar_left_end_confirm_yellow" id="0x010803e6" />
+    <public type="drawable" name="jog_tab_bar_left_end_normal" id="0x010803e7" />
+    <public type="drawable" name="jog_tab_bar_left_end_pressed" id="0x010803e8" />
+    <public type="drawable" name="jog_tab_bar_right_end_confirm_gray" id="0x010803ec" />
+    <public type="drawable" name="jog_tab_bar_right_end_confirm_green" id="0x010803ed" />
+    <public type="drawable" name="jog_tab_bar_right_end_confirm_red" id="0x010803ee" />
+    <public type="drawable" name="jog_tab_bar_right_end_confirm_yellow" id="0x010803ef" />
+    <public type="drawable" name="jog_tab_bar_right_end_normal" id="0x010803f0" />
+    <public type="drawable" name="jog_tab_bar_right_end_pressed" id="0x010803f1" />
+    <public type="drawable" name="jog_tab_left_confirm_gray" id="0x010803f6" />
+    <public type="drawable" name="jog_tab_left_confirm_green" id="0x010803f7" />
+    <public type="drawable" name="jog_tab_left_confirm_red" id="0x010803f8" />
+    <public type="drawable" name="jog_tab_left_confirm_yellow" id="0x010803f9" />
+    <public type="drawable" name="jog_tab_left_normal" id="0x010803fb" />
+    <public type="drawable" name="jog_tab_left_pressed" id="0x010803fc" />
+    <public type="drawable" name="jog_tab_right_confirm_gray" id="0x010803fe" />
+    <public type="drawable" name="jog_tab_right_confirm_green" id="0x010803ff" />
+    <public type="drawable" name="jog_tab_right_confirm_red" id="0x01080400" />
+    <public type="drawable" name="jog_tab_right_confirm_yellow" id="0x01080401" />
+    <public type="drawable" name="jog_tab_right_normal" id="0x01080404" />
+    <public type="drawable" name="jog_tab_right_pressed" id="0x01080405" />
+    <public type="drawable" name="jog_tab_target_gray" id="0x01080408" />
+    <public type="drawable" name="jog_tab_target_green" id="0x01080409" />
+    <public type="drawable" name="jog_tab_target_red" id="0x0108040a" />
+    <public type="drawable" name="jog_tab_target_yellow" id="0x0108040b" />
     <public type="drawable" name="keyboard_accessory_bg_landscape" id="0x0108040c" />
     <public type="drawable" name="keyboard_background" id="0x0108040d" />
     <public type="drawable" name="keyboard_key_feedback_background" id="0x0108040f" />
@@ -5953,9 +5959,13 @@
     <public type="drawable" name="perm_group_wallpaper" id="0x010804b6" />
     <public type="drawable" name="picture_emergency" id="0x010804b7" />
     <public type="drawable" name="pointer_arrow" id="0x010804ba" />
+    <public type="drawable" name="pointer_arrow_icon" id="0x010804bb" />
     <public type="drawable" name="pointer_spot_anchor" id="0x010804bc" />
+    <public type="drawable" name="pointer_spot_anchor_icon" id="0x010804bd" />
     <public type="drawable" name="pointer_spot_hover" id="0x010804be" />
+    <public type="drawable" name="pointer_spot_hover_icon" id="0x010804bf" />
     <public type="drawable" name="pointer_spot_touch" id="0x010804c0" />
+    <public type="drawable" name="pointer_spot_touch_icon" id="0x010804c1" />
     <public type="drawable" name="popup_bottom_bright" id="0x010804c2" />
     <public type="drawable" name="popup_bottom_dark" id="0x010804c3" />
     <public type="drawable" name="popup_bottom_medium" id="0x010804c4" />
@@ -6095,7 +6105,6 @@
     <public type="drawable" name="stat_notify_disk_full" id="0x01080577" />
     <public type="drawable" name="stat_notify_email_generic" id="0x01080578" />
     <public type="drawable" name="stat_notify_gmail" id="0x01080579" />
-    <public type="drawable" name="stat_notify_privacy_guard" id="0x0108057a" />
     <public type="drawable" name="stat_notify_rssi_in_range" id="0x0108057b" />
     <public type="drawable" name="stat_notify_sim_toolkit" id="0x0108057c" />
     <public type="drawable" name="stat_notify_sync_anim0" id="0x0108057d" />
@@ -6103,18 +6112,28 @@
     <public type="drawable" name="stat_notify_wifi_in_range" id="0x0108057f" />
     <public type="drawable" name="stat_sys_adb" id="0x01080580" />
     <public type="drawable" name="stat_sys_battery_0" id="0x01080582" />
+    <public type="drawable" name="stat_sys_battery_10" id="0x01080583" />
     <public type="drawable" name="stat_sys_battery_100" id="0x01080584" />
     <public type="drawable" name="stat_sys_battery_15" id="0x01080585" />
+    <public type="drawable" name="stat_sys_battery_20" id="0x01080586" />
     <public type="drawable" name="stat_sys_battery_28" id="0x01080587" />
+    <public type="drawable" name="stat_sys_battery_40" id="0x01080588" />
     <public type="drawable" name="stat_sys_battery_43" id="0x01080589" />
     <public type="drawable" name="stat_sys_battery_57" id="0x0108058a" />
+    <public type="drawable" name="stat_sys_battery_60" id="0x0108058b" />
     <public type="drawable" name="stat_sys_battery_71" id="0x0108058c" />
+    <public type="drawable" name="stat_sys_battery_80" id="0x0108058d" />
     <public type="drawable" name="stat_sys_battery_85" id="0x0108058e" />
     <public type="drawable" name="stat_sys_battery_charge_anim0" id="0x01080590" />
+    <public type="drawable" name="stat_sys_battery_charge_anim1" id="0x01080591" />
     <public type="drawable" name="stat_sys_battery_charge_anim100" id="0x01080592" />
     <public type="drawable" name="stat_sys_battery_charge_anim15" id="0x01080593" />
+    <public type="drawable" name="stat_sys_battery_charge_anim2" id="0x01080594" />
     <public type="drawable" name="stat_sys_battery_charge_anim28" id="0x01080595" />
+    <public type="drawable" name="stat_sys_battery_charge_anim3" id="0x01080596" />
+    <public type="drawable" name="stat_sys_battery_charge_anim4" id="0x01080597" />
     <public type="drawable" name="stat_sys_battery_charge_anim43" id="0x01080598" />
+    <public type="drawable" name="stat_sys_battery_charge_anim5" id="0x01080599" />
     <public type="drawable" name="stat_sys_battery_charge_anim57" id="0x0108059a" />
     <public type="drawable" name="stat_sys_battery_charge_anim71" id="0x0108059b" />
     <public type="drawable" name="stat_sys_battery_charge_anim85" id="0x0108059c" />
@@ -6241,6 +6260,11 @@
     <public type="drawable" name="text_select_handle_right" id="0x01080626" />
     <public type="drawable" name="textfield_activated_holo_dark" id="0x01080627" />
     <public type="drawable" name="textfield_activated_holo_light" id="0x01080628" />
+    <public type="drawable" name="textfield_bg_activated_holo_dark" id="0x01080629" />
+    <public type="drawable" name="textfield_bg_default_holo_dark" id="0x0108062a" />
+    <public type="drawable" name="textfield_bg_disabled_focused_holo_dark" id="0x0108062b" />
+    <public type="drawable" name="textfield_bg_disabled_holo_dark" id="0x0108062c" />
+    <public type="drawable" name="textfield_bg_focused_holo_dark" id="0x0108062d" />
     <public type="drawable" name="textfield_default" id="0x0108062e" />
     <public type="drawable" name="textfield_default_holo_dark" id="0x0108062f" />
     <public type="drawable" name="textfield_default_holo_light" id="0x01080630" />
@@ -6252,6 +6276,7 @@
     <public type="drawable" name="textfield_disabled_selected" id="0x01080636" />
     <public type="drawable" name="textfield_focused_holo_dark" id="0x01080637" />
     <public type="drawable" name="textfield_focused_holo_light" id="0x01080638" />
+    <public type="drawable" name="textfield_longpress_holo" id="0x01080639" />
     <public type="drawable" name="textfield_multiline_activated_holo_dark" id="0x0108063a" />
     <public type="drawable" name="textfield_multiline_activated_holo_light" id="0x0108063b" />
     <public type="drawable" name="textfield_multiline_default_holo_dark" id="0x0108063c" />
@@ -6262,6 +6287,7 @@
     <public type="drawable" name="textfield_multiline_disabled_holo_light" id="0x01080641" />
     <public type="drawable" name="textfield_multiline_focused_holo_dark" id="0x01080642" />
     <public type="drawable" name="textfield_multiline_focused_holo_light" id="0x01080643" />
+    <public type="drawable" name="textfield_pressed_holo" id="0x01080644" />
     <public type="drawable" name="textfield_search_default" id="0x01080646" />
     <public type="drawable" name="textfield_search_default_holo_dark" id="0x01080647" />
     <public type="drawable" name="textfield_search_default_holo_light" id="0x01080648" />
@@ -6287,14 +6313,24 @@
     <public type="drawable" name="usb_android_connected" id="0x01080665" />
     <public type="drawable" name="vpn_connected" id="0x01080667" />
     <public type="drawable" name="vpn_disconnected" id="0x01080668" />
+    <public type="drawable" name="ab_tab_bg" id="0x01080676" />
+    <public type="drawable" name="ab_tab_divider" id="0x01080677" />
+    <public type="drawable" name="big_picture_action_bg" id="0x01080678" />
+    <public type="drawable" name="big_picture_fg" id="0x01080679" />
+    <public type="drawable" name="list_dashed_divider" id="0x0108067a" />
+    <public type="drawable" name="numberpicker_down_disabled_focused_holo_dark" id="0x0108067b" />
+    <public type="drawable" name="numberpicker_down_focused_holo_dark" id="0x0108067c" />
+    <public type="drawable" name="numberpicker_down_pressed_holo_dark" id="0x0108067d" />
+    <public type="drawable" name="numberpicker_up_disabled_focused_holo_dark" id="0x0108067e" />
+    <public type="drawable" name="numberpicker_up_focused_holo_dark" id="0x0108067f" />
+    <public type="drawable" name="numberpicker_up_pressed_holo_dark" id="0x01080680" />
     <public type="drawable" name="unlock_default" id="0x01080660" />
     <public type="drawable" name="unlock_halo" id="0x01080661" />
     <public type="drawable" name="unlock_ring" id="0x01080662" />
     <public type="drawable" name="unlock_wave" id="0x01080663" />
     <public type="drawable" name="btn_lock_normal" id="0x0108016c" />
-    <public type="drawable" name="APKTOOL_DUMMY_03a2" id="0x010803a2" />
-    <public type="drawable" name="APKTOOL_DUMMY_03a3" id="0x010803a3" />
-    <public type="drawable" name="APKTOOL_DUMMY_05e8" id="0x010805e8" />
+    <public type="drawable" name="ic_commit" id="0x010802bf" />
+    <public type="drawable" name="stat_notify_privacy_guard" id="0x0108057a" />
     <public type="layout" name="activity_list_item" id="0x01090000" />
     <public type="layout" name="expandable_list_content" id="0x01090001" />
     <public type="layout" name="preference_category" id="0x01090002" />
@@ -6860,7 +6896,8 @@
     <public type="bool" name="config_symKeyShowsImePicker" id="0x0111005c" />
     <public type="bool" name="config_stylusGestures" id="0x0111005d" />
     <public type="bool" name="config_allowPieService" id="0x0111005e" />
-    <public type="bool" name="lockscreen_isPortrait" id="0x0111005f" />
+    <public type="bool" name="config_enableIrdaManagerService" id="0x0111005f" />
+    <public type="bool" name="lockscreen_isPortrait" id="0x01110060" />
     <public type="bool" name="kg_share_status_area" id="0x0111000b" />
     <public type="bool" name="kg_sim_puk_account_full_screen" id="0x0111000c" />
     <public type="fraction" name="config_dimBehindFadeDuration" id="0x01120000" />

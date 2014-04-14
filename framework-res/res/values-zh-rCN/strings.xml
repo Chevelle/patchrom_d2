@@ -762,13 +762,13 @@ M 月 d 日"</string>
     <string name="keyguard_password_enter_puk_code">请输入 PUK 码和新的 PIN 码</string>
     <string name="keyguard_password_enter_puk_prompt">PUK 码</string>
     <string name="keyguard_password_enter_pin_prompt">新的 PIN 码</string>
-    <string name="keyguard_password_entry_touch_hint"><font size="17">触摸可输入密码</font></string>
+    <string name="keyguard_password_entry_touch_hint">" "<font size="17">触摸可输入密码</font>" "</string>
     <string name="keyguard_password_enter_password_code">输入密码以解锁</string>
     <string name="keyguard_password_enter_pin_password_code">输入 PIN 进行解锁</string>
     <string name="keyguard_password_wrong_pin_code">PIN 码有误。</string>
     <string name="keyguard_label_text">要解锁，请先按 MENU 再按 0。</string>
     <string name="emergency_call_dialog_number_for_display">急救或报警电话</string>
-    <string name="lockscreen_carrier_default">无服务.</string>
+    <string name="lockscreen_carrier_default">无服务</string>
     <string name="lockscreen_screen_locked">屏幕已锁定。</string>
     <string name="lockscreen_instructions_when_pattern_enabled">按 Menu 解锁或进行紧急呼救。</string>
     <string name="lockscreen_instructions_when_pattern_disabled">按 MENU 解锁。</string>
@@ -783,7 +783,7 @@ M 月 d 日"</string>
     <string name="lockscreen_charged">充电完成</string>
     <string name="lockscreen_battery_short">%d%%</string>
     <string name="lockscreen_low_battery">连接您的充电器, %d%%</string>
-    <string name="lockscreen_missing_sim_message_short">没有 SIM 卡</string>
+    <string name="lockscreen_missing_sim_message_short">无SIM卡</string>
     <string name="lockscreen_missing_sim_message">手机中无 SIM 卡</string>
     <string name="lockscreen_missing_sim_instructions">请插入 SIM 卡</string>
     <string name="lockscreen_missing_sim_instructions_long">SIM 卡缺失或无法读取。请插入 SIM 卡。</string>
@@ -970,7 +970,7 @@ M 月 d 日"</string>
     <string name="loading">正在加载...</string>
     <string name="capital_on">打开</string>
     <string name="capital_off">关闭</string>
-    <string name="whichApplication">选择要使用的应用：</string>
+    <string name="whichApplication">选择要使用的应用</string>
     <string name="alwaysUse">设为默认选项。</string>
     <string name="clearDefaultHintMsg">在“系统设置”>“应用”>“已下载”中清除默认设置。</string>
     <string name="chooseActivity">选择操作</string>
@@ -1060,8 +1060,8 @@ M 月 d 日"</string>
     <string name="sms_control_yes">允许</string>
     <string name="sms_control_no">拒绝</string>
     <string name="sms_short_code_confirm_message">&lt;b>%1$s&lt;/b>想要向 &lt;b>%2$s&lt;/b> 发送一条短信。</string>
-    <string name="sms_short_code_details"><font fgcolor="#ffffb060">这可能会导致您的手机号产生费用。</font></string>
-    <string name="sms_premium_short_code_details"><font fgcolor="#ffffb060">这会导致您的手机号产生费用。</font></string>
+    <string name="sms_short_code_details">" "<font fgcolor="#ffffb060">这可能会导致您的手机号产生费用。</font>" "</string>
+    <string name="sms_premium_short_code_details">" "<font fgcolor="#ffffb060">这会导致您的手机号产生费用。</font>" "</string>
     <string name="sms_short_code_confirm_allow">发送</string>
     <string name="sms_short_code_confirm_deny">取消</string>
     <string name="sms_short_code_remember_choice">记住我的选择</string>
@@ -1078,7 +1078,7 @@ M 月 d 日"</string>
     <string name="date_picker_dialog_title">设置日期</string>
     <string name="date_time_set">设置</string>
     <string name="date_time_done">完成</string>
-    <string name="perms_new_perm_prefix"><font size="12" fgcolor="#ff33b5e5">新增：</font></string>
+    <string name="perms_new_perm_prefix">" "<font fgcolor="#ff33b5e5" size="12">新增：</font>" "</string>
     <string name="perms_description_app">由“%1$s”提供。</string>
     <string name="no_permissions">不需要任何权限</string>
     <string name="perm_costs_money">这可能会产生费用</string>
@@ -1117,7 +1117,7 @@ M 月 d 日"</string>
     <string name="select_keyboard_layout_notification_message">触摸可选择键盘布局。</string>
     <string name="fast_scroll_alphabet">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
     <string name="fast_scroll_numeric_alphabet">" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
-    <string name="candidates_style"><u>候选</u></string>
+    <string name="candidates_style">" "<u>候选</u>" "</string>
     <string name="ext_media_checking_notification_title">正在准备 SD 卡</string>
     <string name="ext_media_checking_notification_message">正在检查是否有错误。</string>
     <string name="ext_media_nofs_notification_title">空 SD 卡</string>
@@ -1255,7 +1255,7 @@ M 月 d 日"</string>
     <string name="keyboard_headset_required_to_hear_password">需要插入耳机才能听到密码的按键声。</string>
     <string name="keyboard_password_character_no_headset">点。</string>
     <string name="action_bar_home_description">导航首页</string>
-    <string name="action_bar_up_description">向上导航</string>
+    <string name="action_bar_up_description">返回</string>
     <string name="action_menu_overflow_description">更多选项</string>
     <string name="storage_internal">内存设备</string>
     <string name="storage_sd_card">SD 卡</string>
