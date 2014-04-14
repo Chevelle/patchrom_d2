@@ -1428,7 +1428,7 @@
     if-ne v0, v2, :cond_7
 
     .line 2229
-    const/16 v0, 0x8
+    const/16 v0, 0x9
 
     .line 2234
     :goto_2
@@ -1468,7 +1468,7 @@
     :try_start_1
     const-string v0, "ro.telephony.default_network"
 
-    const/16 v2, 0x8
+    const/16 v2, 0x9
 
     invoke-static {v0, v2}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
     :try_end_1
