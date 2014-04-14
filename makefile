@@ -1,5 +1,5 @@
 #
-# Makefile for SCH-i535
+# Makefile for SGH-i747
 #
 
 # The original zip file, MUST be specified by each product
@@ -9,7 +9,7 @@ local-zip-file     := stockrom.zip
 local-out-zip-file := miui_$(PORT_PRODUCT)_$(BUILD_NUMBER)_4.2.zip
 
 # the location for local-ota to save target-file
-local-previous-target-dir := ~/workspace/ota_base/d2vzw
+local-previous-target-dir := ~/workspace/ota_base/d2att
 
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps :=
