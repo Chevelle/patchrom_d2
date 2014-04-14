@@ -1005,7 +1005,7 @@
     if-eq v4, v8, :cond_3
 
     .line 404
-    const/4 v2, 0x4
+    const/4 v2, 0x3
 
     .line 405
     const-string v4, "PhoneApp"
