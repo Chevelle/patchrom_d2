@@ -27,7 +27,7 @@ use this command
 
 $ . build/envsetup.sh
 
-$ cd d2spr
+$ cd d2vzw
 
 $ make fullota PORT_PRODUCT=d2vzw BUILD_NUMBER=4.X.XX
 
