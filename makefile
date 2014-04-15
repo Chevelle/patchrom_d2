@@ -1,5 +1,5 @@
 #
-# Makefile for SCH-i535
+# Makefile for SPH-L720
 #
 
 # The original zip file, MUST be specified by each product
