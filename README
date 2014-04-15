@@ -1,4 +1,4 @@
-Patchrom MIUI V5 for D2SPR (WIP)
+Patchrom MIUI V5 for D2VZW (WIP)
 ========================================
 
 Get started
@@ -29,8 +29,8 @@ $ . build/envsetup.sh
 
 $ cd d2spr
 
-$ make fullota PORT_PRODUCT=d2spr BUILD_NUMBER=4.X.XX
+$ make fullota PORT_PRODUCT=d2vzw BUILD_NUMBER=4.X.XX
 
 or
 
-$ make zipfile PORT_PRODUCT=d2spr BUILD_NUMBER=4.X.XX
+$ make zipfile PORT_PRODUCT=d2vzw BUILD_NUMBER=4.X.XX
