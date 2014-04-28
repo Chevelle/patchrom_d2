@@ -62,7 +62,7 @@ local-pre-zip-misc:
 	cp other/backuptool.functions $(ZIP_DIR)/system/bin/backuptool.functions
 	cp other/backuptool.sh $(ZIP_DIR)/system/bin/backuptool.sh
 # To replace spn
-#	cp other/spn-conf.xml $(ZIP_DIR)/system/etc/spn-conf.xml
+	cp other/spn-conf.xml $(ZIP_DIR)/system/etc/spn-conf.xml
 # To replace kernel
 	cp other/boot.img $(ZIP_DIR)/boot.img
 	cp other/installd $(ZIP_DIR)/system/bin/installd
