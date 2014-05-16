@@ -25,9 +25,8 @@ local-miui-removed-apps := 	MediaProvider \
 				GameCenterSDKService \
 				SuperMarket \
 				AlipayMsp \
-				MiShop \
-				O2O \
-				XunfeiSpeechService3
+				ota-miui-MiShop \
+				ota-partner-XunfeiSpeechService3
 
 local-miui-modified-apps :=	MiuiSystemUI \
 				Settings \
@@ -71,7 +70,9 @@ local-pre-zip-misc:
 #	cp -rf other/miui_mod_icons/* $(ZIP_DIR)/system/media/theme/miui_mod_icons/
 	@echo Remove usless stuff
 	rm -rf $(ZIP_DIR)/data/media/preinstall_apps/*.apk
-	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/media/preinstall_apps/de.mangelow.network-1.apk
+	rm -rf $(ZIP_DIR)/data/miui/preinstall_apps/*.apk
+	rm -rf $(ZIP_DIR)/data/miui/cust/preinstall_apps/*.apk
+	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/miui/preinstall_apps/de.mangelow.network-1.apk
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
 	rm -rf $(ZIP_DIR)/system/tts/lang_pico/*.bin
 
