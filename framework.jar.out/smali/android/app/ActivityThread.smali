@@ -11481,7 +11481,9 @@
 
     .line 3972
     :cond_4
-    invoke-static {v3}, Landroid/app/MiuiThemeHelper;->handleExtraConfigurationChanges(I)V
+    move-object/from16 v0, p1
+
+    invoke-static {v3, v0}, Landroid/app/MiuiThemeHelper;->handleExtraConfigurationChanges(ILandroid/content/res/Configuration;)V
 
     move-object/from16 v0, p1
 
