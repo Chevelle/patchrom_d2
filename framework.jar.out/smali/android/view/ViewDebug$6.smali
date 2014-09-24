@@ -24,7 +24,7 @@
 
 .field final synthetic val$latch:Ljava/util/concurrent/CountDownLatch;
 
-.field final synthetic val$skpiChildren:Z
+.field final synthetic val$skipChildren:Z
 
 
 # direct methods
@@ -36,12 +36,12 @@
     .parameter
 
     .prologue
-    .line 730
+    .line 756
     iput-object p1, p0, Landroid/view/ViewDebug$6;->val$cache:[Landroid/graphics/Bitmap;
 
     iput-object p2, p0, Landroid/view/ViewDebug$6;->val$captureView:Landroid/view/View;
 
-    iput-boolean p3, p0, Landroid/view/ViewDebug$6;->val$skpiChildren:Z
+    iput-boolean p3, p0, Landroid/view/ViewDebug$6;->val$skipChildren:Z
 
     iput-object p4, p0, Landroid/view/ViewDebug$6;->val$latch:Ljava/util/concurrent/CountDownLatch;
 
@@ -56,7 +56,7 @@
     .locals 7
 
     .prologue
-    .line 733
+    .line 759
     :try_start_0
     iget-object v1, p0, Landroid/view/ViewDebug$6;->val$cache:[Landroid/graphics/Bitmap;
 
@@ -68,7 +68,7 @@
 
     const/4 v5, 0x0
 
-    iget-boolean v6, p0, Landroid/view/ViewDebug$6;->val$skpiChildren:Z
+    iget-boolean v6, p0, Landroid/view/ViewDebug$6;->val$skipChildren:Z
 
     invoke-virtual {v3, v4, v5, v6}, Landroid/view/View;->createSnapshot(Landroid/graphics/Bitmap$Config;IZ)Landroid/graphics/Bitmap;
 
@@ -79,20 +79,20 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/OutOfMemoryError; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 738
+    .line 764
     iget-object v1, p0, Landroid/view/ViewDebug$6;->val$latch:Ljava/util/concurrent/CountDownLatch;
 
     invoke-virtual {v1}, Ljava/util/concurrent/CountDownLatch;->countDown()V
 
-    .line 740
+    .line 766
     :goto_0
     return-void
 
-    .line 735
+    .line 761
     :catch_0
     move-exception v0
 
-    .line 736
+    .line 762
     .local v0, e:Ljava/lang/OutOfMemoryError;
     :try_start_1
     const-string v1, "View"
@@ -103,7 +103,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 738
+    .line 764
     iget-object v1, p0, Landroid/view/ViewDebug$6;->val$latch:Ljava/util/concurrent/CountDownLatch;
 
     invoke-virtual {v1}, Ljava/util/concurrent/CountDownLatch;->countDown()V

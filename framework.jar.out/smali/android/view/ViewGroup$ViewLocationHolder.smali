@@ -30,36 +30,39 @@
 # static fields
 .field private static final MAX_POOL_SIZE:I = 0x20
 
-.field private static sPool:Landroid/view/ViewGroup$ViewLocationHolder;
-
-.field private static final sPoolLock:Ljava/lang/Object;
-
-.field private static sPoolSize:I
+.field private static final sPool:Landroid/util/Pools$SynchronizedPool;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/util/Pools$SynchronizedPool",
+            "<",
+            "Landroid/view/ViewGroup$ViewLocationHolder;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # instance fields
-.field private mIsPooled:Z
-
 .field private mLayoutDirection:I
 
 .field private final mLocation:Landroid/graphics/Rect;
-
-.field private mNext:Landroid/view/ViewGroup$ViewLocationHolder;
 
 .field public mView:Landroid/view/View;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 6219
-    new-instance v0, Ljava/lang/Object;
+    .line 6646
+    new-instance v0, Landroid/util/Pools$SynchronizedPool;
 
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    const/16 v1, 0x20
 
-    sput-object v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolLock:Ljava/lang/Object;
+    invoke-direct {v0, v1}, Landroid/util/Pools$SynchronizedPool;-><init>(I)V
+
+    sput-object v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/util/Pools$SynchronizedPool;
 
     return-void
 .end method
@@ -68,10 +71,10 @@
     .locals 1
 
     .prologue
-    .line 6215
+    .line 6642
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 6229
+    .line 6649
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
@@ -87,17 +90,17 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 6327
+    .line 6729
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mView:Landroid/view/View;
 
-    .line 6328
+    .line 6730
     iget-object v0, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
 
     invoke-virtual {v0, v1, v1, v1, v1}, Landroid/graphics/Rect;->set(IIII)V
 
-    .line 6329
+    .line 6731
     return-void
 .end method
 
@@ -107,108 +110,62 @@
     .parameter "view"
 
     .prologue
-    .line 6319
+    .line 6721
     iget-object v0, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
 
-    .line 6320
+    .line 6722
     .local v0, viewLocation:Landroid/graphics/Rect;
     invoke-virtual {p2, v0}, Landroid/view/View;->getDrawingRect(Landroid/graphics/Rect;)V
 
-    .line 6321
+    .line 6723
     invoke-virtual {p1, p2, v0}, Landroid/view/ViewGroup;->offsetDescendantRectToMyCoords(Landroid/view/View;Landroid/graphics/Rect;)V
 
-    .line 6322
+    .line 6724
     iput-object p2, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mView:Landroid/view/View;
 
-    .line 6323
+    .line 6725
     invoke-virtual {p1}, Landroid/view/ViewGroup;->getLayoutDirection()I
 
     move-result v1
 
     iput v1, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLayoutDirection:I
 
-    .line 6324
+    .line 6726
     return-void
 .end method
 
 .method public static obtain(Landroid/view/ViewGroup;Landroid/view/View;)Landroid/view/ViewGroup$ViewLocationHolder;
-    .locals 4
+    .locals 2
     .parameter "root"
     .parameter "view"
 
     .prologue
-    .line 6236
-    const/4 v0, 0x0
+    .line 6656
+    sget-object v1, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    .line 6237
+    invoke-virtual {v1}, Landroid/util/Pools$SynchronizedPool;->acquire()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/ViewGroup$ViewLocationHolder;
+
+    .line 6657
     .local v0, holder:Landroid/view/ViewGroup$ViewLocationHolder;
-    sget-object v3, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolLock:Ljava/lang/Object;
+    if-nez v0, :cond_0
 
-    monitor-enter v3
-
-    .line 6238
-    :try_start_0
-    sget-object v2, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    if-eqz v2, :cond_0
-
-    .line 6239
-    sget-object v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    .line 6240
-    iget-object v2, v0, Landroid/view/ViewGroup$ViewLocationHolder;->mNext:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    sput-object v2, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    .line 6241
-    const/4 v2, 0x0
-
-    iput-object v2, v0, Landroid/view/ViewGroup$ViewLocationHolder;->mNext:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    .line 6242
-    const/4 v2, 0x0
-
-    iput-boolean v2, v0, Landroid/view/ViewGroup$ViewLocationHolder;->mIsPooled:Z
-
-    .line 6243
-    sget v2, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolSize:I
-
-    add-int/lit8 v2, v2, -0x1
-
-    sput v2, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolSize:I
-
-    .line 6247
-    :goto_0
-    invoke-direct {v0, p0, p1}, Landroid/view/ViewGroup$ViewLocationHolder;->init(Landroid/view/ViewGroup;Landroid/view/View;)V
-
-    .line 6248
-    monitor-exit v3
-
-    return-object v0
-
-    .line 6245
-    :cond_0
-    new-instance v1, Landroid/view/ViewGroup$ViewLocationHolder;
-
-    invoke-direct {v1}, Landroid/view/ViewGroup$ViewLocationHolder;-><init>()V
+    .line 6658
+    new-instance v0, Landroid/view/ViewGroup$ViewLocationHolder;
 
     .end local v0           #holder:Landroid/view/ViewGroup$ViewLocationHolder;
-    .local v1, holder:Landroid/view/ViewGroup$ViewLocationHolder;
-    move-object v0, v1
+    invoke-direct {v0}, Landroid/view/ViewGroup$ViewLocationHolder;-><init>()V
 
-    .end local v1           #holder:Landroid/view/ViewGroup$ViewLocationHolder;
+    .line 6660
     .restart local v0       #holder:Landroid/view/ViewGroup$ViewLocationHolder;
-    goto :goto_0
+    :cond_0
+    invoke-direct {v0, p0, p1}, Landroid/view/ViewGroup$ViewLocationHolder;->init(Landroid/view/ViewGroup;Landroid/view/View;)V
 
-    .line 6249
-    :catchall_0
-    move-exception v2
-
-    monitor-exit v3
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v2
+    .line 6661
+    return-object v0
 .end method
 
 
@@ -220,15 +177,15 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 6270
+    .line 6672
     if-nez p1, :cond_1
 
-    .line 6315
+    .line 6717
     :cond_0
     :goto_0
     return v1
 
-    .line 6273
+    .line 6675
     :cond_1
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -240,7 +197,7 @@
 
     if-ne v5, v6, :cond_0
 
-    .line 6277
+    .line 6679
     iget-object v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
 
     iget v5, v5, Landroid/graphics/Rect;->bottom:I
@@ -253,12 +210,12 @@
 
     if-gtz v5, :cond_2
 
-    .line 6278
+    .line 6680
     const/4 v1, -0x1
 
     goto :goto_0
 
-    .line 6281
+    .line 6683
     :cond_2
     iget-object v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
 
@@ -272,12 +229,12 @@
 
     if-gez v5, :cond_0
 
-    .line 6285
+    .line 6687
     iget v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLayoutDirection:I
 
     if-nez v5, :cond_4
 
-    .line 6286
+    .line 6688
     iget-object v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
 
     iget v5, v5, Landroid/graphics/Rect;->left:I
@@ -288,11 +245,11 @@
 
     sub-int v1, v5, v6
 
-    .line 6288
+    .line 6690
     .local v1, leftDifference:I
     if-nez v1, :cond_0
 
-    .line 6299
+    .line 6701
     .end local v1           #leftDifference:I
     :cond_3
     iget-object v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
@@ -305,16 +262,16 @@
 
     sub-int v3, v5, v6
 
-    .line 6300
+    .line 6702
     .local v3, topDiference:I
     if-eqz v3, :cond_5
 
     move v1, v3
 
-    .line 6301
+    .line 6703
     goto :goto_0
 
-    .line 6292
+    .line 6694
     .end local v3           #topDiference:I
     :cond_4
     iget-object v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
@@ -327,16 +284,16 @@
 
     sub-int v2, v5, v6
 
-    .line 6294
+    .line 6696
     .local v2, rightDifference:I
     if-eqz v2, :cond_3
 
-    .line 6295
+    .line 6697
     neg-int v1, v2
 
     goto :goto_0
 
-    .line 6304
+    .line 6706
     .end local v2           #rightDifference:I
     .restart local v3       #topDiference:I
     :cond_5
@@ -354,16 +311,16 @@
 
     sub-int v0, v5, v6
 
-    .line 6305
+    .line 6707
     .local v0, heightDiference:I
     if-eqz v0, :cond_6
 
-    .line 6306
+    .line 6708
     neg-int v1, v0
 
     goto :goto_0
 
-    .line 6309
+    .line 6711
     :cond_6
     iget-object v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mLocation:Landroid/graphics/Rect;
 
@@ -379,16 +336,16 @@
 
     sub-int v4, v5, v6
 
-    .line 6310
+    .line 6712
     .local v4, widthDiference:I
     if-eqz v4, :cond_7
 
-    .line 6311
+    .line 6713
     neg-int v1, v4
 
     goto :goto_0
 
-    .line 6315
+    .line 6717
     :cond_7
     iget-object v5, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mView:Landroid/view/View;
 
@@ -412,7 +369,7 @@
     .parameter "x0"
 
     .prologue
-    .line 6215
+    .line 6642
     check-cast p1, Landroid/view/ViewGroup$ViewLocationHolder;
 
     .end local p1
@@ -424,74 +381,17 @@
 .end method
 
 .method public recycle()V
-    .locals 3
+    .locals 1
 
     .prologue
-    .line 6253
-    iget-boolean v0, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mIsPooled:Z
-
-    if-eqz v0, :cond_0
-
-    .line 6254
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "Instance already recycled."
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 6256
-    :cond_0
+    .line 6665
     invoke-direct {p0}, Landroid/view/ViewGroup$ViewLocationHolder;->clear()V
 
-    .line 6257
-    sget-object v1, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolLock:Ljava/lang/Object;
+    .line 6666
+    sget-object v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    monitor-enter v1
+    invoke-virtual {v0, p0}, Landroid/util/Pools$SynchronizedPool;->release(Ljava/lang/Object;)Z
 
-    .line 6258
-    :try_start_0
-    sget v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolSize:I
-
-    const/16 v2, 0x20
-
-    if-ge v0, v2, :cond_1
-
-    .line 6259
-    sget-object v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    iput-object v0, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mNext:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    .line 6260
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/view/ViewGroup$ViewLocationHolder;->mIsPooled:Z
-
-    .line 6261
-    sput-object p0, Landroid/view/ViewGroup$ViewLocationHolder;->sPool:Landroid/view/ViewGroup$ViewLocationHolder;
-
-    .line 6262
-    sget v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolSize:I
-
-    add-int/lit8 v0, v0, 0x1
-
-    sput v0, Landroid/view/ViewGroup$ViewLocationHolder;->sPoolSize:I
-
-    .line 6264
-    :cond_1
-    monitor-exit v1
-
-    .line 6265
+    .line 6667
     return-void
-
-    .line 6264
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v0
 .end method

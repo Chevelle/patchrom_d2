@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/widget/AbsListView;->onTouchEvent(Landroid/view/MotionEvent;)Z
+    value = Landroid/widget/AbsListView;->setFastScrollEnabled(Z)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,25 +20,20 @@
 # instance fields
 .field final synthetic this$0:Landroid/widget/AbsListView;
 
-.field final synthetic val$child:Landroid/view/View;
-
-.field final synthetic val$performClick:Landroid/widget/AbsListView$PerformClick;
+.field final synthetic val$enabled:Z
 
 
 # direct methods
-.method constructor <init>(Landroid/widget/AbsListView;Landroid/view/View;Landroid/widget/AbsListView$PerformClick;)V
+.method constructor <init>(Landroid/widget/AbsListView;Z)V
     .locals 0
-    .parameter
     .parameter
     .parameter
 
     .prologue
-    .line 3416
+    .line 1230
     iput-object p1, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
 
-    iput-object p2, p0, Landroid/widget/AbsListView$1;->val$child:Landroid/view/View;
-
-    iput-object p3, p0, Landroid/widget/AbsListView$1;->val$performClick:Landroid/widget/AbsListView$PerformClick;
+    iput-boolean p2, p0, Landroid/widget/AbsListView$1;->val$enabled:Z
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -48,41 +43,17 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 2
 
     .prologue
-    const/4 v2, 0x0
-
-    .line 3419
+    .line 1233
     iget-object v0, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
 
-    const/4 v1, -0x1
+    iget-boolean v1, p0, Landroid/widget/AbsListView$1;->val$enabled:Z
 
-    iput v1, v0, Landroid/widget/AbsListView;->mTouchMode:I
+    #calls: Landroid/widget/AbsListView;->setFastScrollerEnabledUiThread(Z)V
+    invoke-static {v0, v1}, Landroid/widget/AbsListView;->access$000(Landroid/widget/AbsListView;Z)V
 
-    .line 3420
-    iget-object v0, p0, Landroid/widget/AbsListView$1;->val$child:Landroid/view/View;
-
-    invoke-virtual {v0, v2}, Landroid/view/View;->setPressed(Z)V
-
-    .line 3421
-    iget-object v0, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
-
-    invoke-virtual {v0, v2}, Landroid/widget/AbsListView;->setPressed(Z)V
-
-    .line 3422
-    iget-object v0, p0, Landroid/widget/AbsListView$1;->this$0:Landroid/widget/AbsListView;
-
-    iget-boolean v0, v0, Landroid/widget/AbsListView;->mDataChanged:Z
-
-    if-nez v0, :cond_0
-
-    .line 3423
-    iget-object v0, p0, Landroid/widget/AbsListView$1;->val$performClick:Landroid/widget/AbsListView$PerformClick;
-
-    invoke-virtual {v0}, Landroid/widget/AbsListView$PerformClick;->run()V
-
-    .line 3425
-    :cond_0
+    .line 1234
     return-void
 .end method

@@ -27,7 +27,7 @@
     .locals 1
 
     .prologue
-    .line 1005
+    .line 1252
     sget v0, Ldalvik/bytecode/OpcodeInfo;->MAXIMUM_PACKED_VALUE:I
 
     add-int/lit8 v0, v0, 0x1
@@ -41,17 +41,17 @@
     .locals 1
 
     .prologue
-    .line 1010
+    .line 1257
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1011
+    .line 1258
     sget v0, Landroid/os/Debug$InstructionCount;->NUM_INSTR:I
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/os/Debug$InstructionCount;->mCounts:[I
 
-    .line 1012
+    .line 1259
     return-void
 .end method
 
@@ -61,28 +61,28 @@
     .locals 2
 
     .prologue
-    .line 1036
+    .line 1283
     :try_start_0
     invoke-static {}, Ldalvik/system/VMDebug;->stopInstructionCounting()V
 
-    .line 1037
+    .line 1284
     iget-object v1, p0, Landroid/os/Debug$InstructionCount;->mCounts:[I
 
     invoke-static {v1}, Ldalvik/system/VMDebug;->getInstructionCount([I)V
     :try_end_0
     .catch Ljava/lang/UnsupportedOperationException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1041
+    .line 1288
     const/4 v1, 0x1
 
     :goto_0
     return v1
 
-    .line 1038
+    .line 1285
     :catch_0
     move-exception v0
 
-    .line 1039
+    .line 1286
     .local v0, uoe:Ljava/lang/UnsupportedOperationException;
     const/4 v1, 0x0
 
@@ -93,10 +93,10 @@
     .locals 3
 
     .prologue
-    .line 1063
+    .line 1310
     const/4 v0, 0x0
 
-    .line 1065
+    .line 1312
     .local v0, count:I
     const/4 v1, 0x0
 
@@ -106,27 +106,27 @@
 
     if-ge v1, v2, :cond_1
 
-    .line 1066
+    .line 1313
     invoke-static {v1}, Ldalvik/bytecode/OpcodeInfo;->isInvoke(I)Z
 
     move-result v2
 
     if-eqz v2, :cond_0
 
-    .line 1067
+    .line 1314
     iget-object v2, p0, Landroid/os/Debug$InstructionCount;->mCounts:[I
 
     aget v2, v2, v1
 
     add-int/2addr v0, v2
 
-    .line 1065
+    .line 1312
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 1071
+    .line 1318
     :cond_1
     return v0
 .end method
@@ -135,10 +135,10 @@
     .locals 3
 
     .prologue
-    .line 1049
+    .line 1296
     const/4 v0, 0x0
 
-    .line 1051
+    .line 1298
     .local v0, count:I
     const/4 v1, 0x0
 
@@ -148,19 +148,19 @@
 
     if-ge v1, v2, :cond_0
 
-    .line 1052
+    .line 1299
     iget-object v2, p0, Landroid/os/Debug$InstructionCount;->mCounts:[I
 
     aget v2, v2, v1
 
     add-int/2addr v0, v2
 
-    .line 1051
+    .line 1298
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 1055
+    .line 1302
     :cond_0
     return v0
 .end method
@@ -169,26 +169,26 @@
     .locals 2
 
     .prologue
-    .line 1022
+    .line 1269
     :try_start_0
     invoke-static {}, Ldalvik/system/VMDebug;->startInstructionCounting()V
 
-    .line 1023
+    .line 1270
     invoke-static {}, Ldalvik/system/VMDebug;->resetInstructionCount()V
     :try_end_0
     .catch Ljava/lang/UnsupportedOperationException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1027
+    .line 1274
     const/4 v1, 0x1
 
     :goto_0
     return v1
 
-    .line 1024
+    .line 1271
     :catch_0
     move-exception v0
 
-    .line 1025
+    .line 1272
     .local v0, uoe:Ljava/lang/UnsupportedOperationException;
     const/4 v1, 0x0
 

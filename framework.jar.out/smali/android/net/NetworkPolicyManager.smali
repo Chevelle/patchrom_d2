@@ -27,13 +27,13 @@
     .parameter "service"
 
     .prologue
-    .line 64
+    .line 67
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 65
+    .line 68
     if-nez p1, :cond_0
 
-    .line 66
+    .line 69
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v1, "missing INetworkPolicyManager"
@@ -42,11 +42,11 @@
 
     throw v0
 
-    .line 68
+    .line 71
     :cond_0
     iput-object p1, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
-    .line 69
+    .line 72
     return-void
 .end method
 
@@ -60,14 +60,14 @@
 
     const/4 v5, 0x1
 
-    .line 157
+    .line 160
     iget v3, p2, Landroid/net/NetworkPolicy;->cycleDay:I
 
     const/4 v4, -0x1
 
     if-ne v3, v4, :cond_0
 
-    .line 158
+    .line 161
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
     const-string v4, "Unable to compute boundary without cycleDay"
@@ -76,7 +76,7 @@
 
     throw v3
 
-    .line 161
+    .line 164
     :cond_0
     new-instance v2, Landroid/text/format/Time;
 
@@ -84,16 +84,16 @@
 
     invoke-direct {v2, v3}, Landroid/text/format/Time;-><init>(Ljava/lang/String;)V
 
-    .line 162
+    .line 165
     .local v2, now:Landroid/text/format/Time;
     invoke-virtual {v2, p0, p1}, Landroid/text/format/Time;->set(J)V
 
-    .line 165
+    .line 168
     new-instance v0, Landroid/text/format/Time;
 
     invoke-direct {v0, v2}, Landroid/text/format/Time;-><init>(Landroid/text/format/Time;)V
 
-    .line 166
+    .line 169
     .local v0, cycle:Landroid/text/format/Time;
     iput v6, v0, Landroid/text/format/Time;->second:I
 
@@ -101,60 +101,104 @@
 
     iput v6, v0, Landroid/text/format/Time;->hour:I
 
-    .line 167
+    .line 170
     iget v3, p2, Landroid/net/NetworkPolicy;->cycleDay:I
 
-    invoke-static {v0, v3}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;I)V
+    iget v4, p2, Landroid/net/NetworkPolicy;->cycleLength:I
 
-    .line 169
+    invoke-static {v0, v3, v4}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;II)V
+
+    .line 172
     invoke-static {v0, v2}, Landroid/text/format/Time;->compare(Landroid/text/format/Time;Landroid/text/format/Time;)I
 
     move-result v3
 
-    if-ltz v3, :cond_1
+    if-ltz v3, :cond_2
 
-    .line 172
+    .line 175
     new-instance v1, Landroid/text/format/Time;
 
     invoke-direct {v1, v2}, Landroid/text/format/Time;-><init>(Landroid/text/format/Time;)V
 
-    .line 173
-    .local v1, lastMonth:Landroid/text/format/Time;
+    .line 176
+    .local v1, last:Landroid/text/format/Time;
     iput v6, v1, Landroid/text/format/Time;->second:I
 
     iput v6, v1, Landroid/text/format/Time;->minute:I
 
     iput v6, v1, Landroid/text/format/Time;->hour:I
 
-    .line 174
+    .line 178
+    iget v3, p2, Landroid/net/NetworkPolicy;->cycleLength:I
+
+    const/4 v4, 0x2
+
+    if-ne v3, v4, :cond_3
+
+    .line 179
     iput v5, v1, Landroid/text/format/Time;->monthDay:I
 
-    .line 175
+    .line 180
     iget v3, v1, Landroid/text/format/Time;->month:I
 
     add-int/lit8 v3, v3, -0x1
 
     iput v3, v1, Landroid/text/format/Time;->month:I
 
-    .line 176
+    .line 187
+    :cond_1
+    :goto_0
     invoke-virtual {v1, v5}, Landroid/text/format/Time;->normalize(Z)J
 
-    .line 178
+    .line 189
     invoke-virtual {v0, v1}, Landroid/text/format/Time;->set(Landroid/text/format/Time;)V
 
-    .line 179
+    .line 190
     iget v3, p2, Landroid/net/NetworkPolicy;->cycleDay:I
 
-    invoke-static {v0, v3}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;I)V
+    iget v4, p2, Landroid/net/NetworkPolicy;->cycleLength:I
 
-    .line 182
-    .end local v1           #lastMonth:Landroid/text/format/Time;
-    :cond_1
+    invoke-static {v0, v3, v4}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;II)V
+
+    .line 193
+    .end local v1           #last:Landroid/text/format/Time;
+    :cond_2
     invoke-virtual {v0, v5}, Landroid/text/format/Time;->toMillis(Z)J
 
     move-result-wide v3
 
     return-wide v3
+
+    .line 181
+    .restart local v1       #last:Landroid/text/format/Time;
+    :cond_3
+    iget v3, p2, Landroid/net/NetworkPolicy;->cycleLength:I
+
+    if-ne v3, v5, :cond_4
+
+    .line 182
+    iget v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    add-int/lit8 v3, v3, -0x7
+
+    iput v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    goto :goto_0
+
+    .line 183
+    :cond_4
+    iget v3, p2, Landroid/net/NetworkPolicy;->cycleLength:I
+
+    if-nez v3, :cond_1
+
+    .line 184
+    iget v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    add-int/lit8 v3, v3, -0x1
+
+    iput v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    goto :goto_0
 .end method
 
 .method public static computeNextCycleBoundary(JLandroid/net/NetworkPolicy;)J
@@ -167,14 +211,14 @@
 
     const/4 v5, 0x1
 
-    .line 187
+    .line 198
     iget v3, p2, Landroid/net/NetworkPolicy;->cycleDay:I
 
     const/4 v4, -0x1
 
     if-ne v3, v4, :cond_0
 
-    .line 188
+    .line 199
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
     const-string v4, "Unable to compute boundary without cycleDay"
@@ -183,7 +227,7 @@
 
     throw v3
 
-    .line 191
+    .line 202
     :cond_0
     new-instance v2, Landroid/text/format/Time;
 
@@ -191,16 +235,16 @@
 
     invoke-direct {v2, v3}, Landroid/text/format/Time;-><init>(Ljava/lang/String;)V
 
-    .line 192
+    .line 203
     .local v2, now:Landroid/text/format/Time;
     invoke-virtual {v2, p0, p1}, Landroid/text/format/Time;->set(J)V
 
-    .line 195
+    .line 206
     new-instance v0, Landroid/text/format/Time;
 
     invoke-direct {v0, v2}, Landroid/text/format/Time;-><init>(Landroid/text/format/Time;)V
 
-    .line 196
+    .line 207
     .local v0, cycle:Landroid/text/format/Time;
     iput v6, v0, Landroid/text/format/Time;->second:I
 
@@ -208,60 +252,104 @@
 
     iput v6, v0, Landroid/text/format/Time;->hour:I
 
-    .line 197
+    .line 208
     iget v3, p2, Landroid/net/NetworkPolicy;->cycleDay:I
 
-    invoke-static {v0, v3}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;I)V
+    iget v4, p2, Landroid/net/NetworkPolicy;->cycleLength:I
 
-    .line 199
+    invoke-static {v0, v3, v4}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;II)V
+
+    .line 210
     invoke-static {v0, v2}, Landroid/text/format/Time;->compare(Landroid/text/format/Time;Landroid/text/format/Time;)I
 
     move-result v3
 
-    if-gtz v3, :cond_1
+    if-gtz v3, :cond_2
 
-    .line 202
+    .line 213
     new-instance v1, Landroid/text/format/Time;
 
     invoke-direct {v1, v2}, Landroid/text/format/Time;-><init>(Landroid/text/format/Time;)V
 
-    .line 203
-    .local v1, nextMonth:Landroid/text/format/Time;
+    .line 214
+    .local v1, next:Landroid/text/format/Time;
     iput v6, v1, Landroid/text/format/Time;->second:I
 
     iput v6, v1, Landroid/text/format/Time;->minute:I
 
     iput v6, v1, Landroid/text/format/Time;->hour:I
 
-    .line 204
+    .line 216
+    iget v3, p2, Landroid/net/NetworkPolicy;->cycleLength:I
+
+    const/4 v4, 0x2
+
+    if-ne v3, v4, :cond_3
+
+    .line 217
     iput v5, v1, Landroid/text/format/Time;->monthDay:I
 
-    .line 205
+    .line 218
     iget v3, v1, Landroid/text/format/Time;->month:I
 
     add-int/lit8 v3, v3, 0x1
 
     iput v3, v1, Landroid/text/format/Time;->month:I
 
-    .line 206
+    .line 225
+    :cond_1
+    :goto_0
     invoke-virtual {v1, v5}, Landroid/text/format/Time;->normalize(Z)J
 
-    .line 208
+    .line 227
     invoke-virtual {v0, v1}, Landroid/text/format/Time;->set(Landroid/text/format/Time;)V
 
-    .line 209
+    .line 228
     iget v3, p2, Landroid/net/NetworkPolicy;->cycleDay:I
 
-    invoke-static {v0, v3}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;I)V
+    iget v4, p2, Landroid/net/NetworkPolicy;->cycleLength:I
 
-    .line 212
-    .end local v1           #nextMonth:Landroid/text/format/Time;
-    :cond_1
+    invoke-static {v0, v3, v4}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;II)V
+
+    .line 231
+    .end local v1           #next:Landroid/text/format/Time;
+    :cond_2
     invoke-virtual {v0, v5}, Landroid/text/format/Time;->toMillis(Z)J
 
     move-result-wide v3
 
     return-wide v3
+
+    .line 219
+    .restart local v1       #next:Landroid/text/format/Time;
+    :cond_3
+    iget v3, p2, Landroid/net/NetworkPolicy;->cycleLength:I
+
+    if-ne v3, v5, :cond_4
+
+    .line 220
+    iget v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    add-int/lit8 v3, v3, 0x7
+
+    iput v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    goto :goto_0
+
+    .line 221
+    :cond_4
+    iget v3, p2, Landroid/net/NetworkPolicy;->cycleLength:I
+
+    if-nez v3, :cond_1
+
+    .line 222
+    iget v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    add-int/lit8 v3, v3, 0x1
+
+    iput v3, v1, Landroid/text/format/Time;->monthDay:I
+
+    goto :goto_0
 .end method
 
 .method public static dumpPolicy(Ljava/io/PrintWriter;I)V
@@ -270,28 +358,28 @@
     .parameter "policy"
 
     .prologue
-    .line 273
+    .line 306
     const-string v0, "["
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->write(Ljava/lang/String;)V
 
-    .line 274
+    .line 307
     and-int/lit8 v0, p1, 0x1
 
     if-eqz v0, :cond_0
 
-    .line 275
+    .line 308
     const-string v0, "REJECT_METERED_BACKGROUND"
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->write(Ljava/lang/String;)V
 
-    .line 277
+    .line 310
     :cond_0
     const-string v0, "]"
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->write(Ljava/lang/String;)V
 
-    .line 278
+    .line 311
     return-void
 .end method
 
@@ -301,28 +389,28 @@
     .parameter "rules"
 
     .prologue
-    .line 282
+    .line 315
     const-string v0, "["
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->write(Ljava/lang/String;)V
 
-    .line 283
+    .line 316
     and-int/lit8 v0, p1, 0x1
 
     if-eqz v0, :cond_0
 
-    .line 284
+    .line 317
     const-string v0, "REJECT_METERED"
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->write(Ljava/lang/String;)V
 
-    .line 286
+    .line 319
     :cond_0
     const-string v0, "]"
 
     invoke-virtual {p0, v0}, Ljava/io/PrintWriter;->write(Ljava/lang/String;)V
 
-    .line 287
+    .line 320
     return-void
 .end method
 
@@ -331,7 +419,7 @@
     .parameter "context"
 
     .prologue
-    .line 72
+    .line 75
     const-string/jumbo v0, "netpolicy"
 
     invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -351,17 +439,17 @@
     .end annotation
 
     .prologue
-    .line 240
+    .line 273
     invoke-static {p1}, Landroid/os/UserHandle;->isApp(I)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 241
+    .line 274
     const/4 v0, 0x0
 
-    .line 268
+    .line 301
     :goto_0
     return v0
 
@@ -379,7 +467,7 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 222
+    .line 241
     const/4 v0, 0x4
 
     invoke-virtual {p0, v0}, Landroid/text/format/Time;->getActualMaximum(I)I
@@ -388,31 +476,74 @@
 
     if-le p1, v0, :cond_0
 
-    .line 224
+    .line 243
     iget v0, p0, Landroid/text/format/Time;->month:I
 
     add-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Landroid/text/format/Time;->month:I
 
-    .line 225
+    .line 244
     iput v1, p0, Landroid/text/format/Time;->monthDay:I
 
-    .line 226
+    .line 245
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/text/format/Time;->second:I
 
-    .line 230
+    .line 249
     :goto_0
     invoke-virtual {p0, v1}, Landroid/text/format/Time;->normalize(Z)J
 
-    .line 231
+    .line 250
     return-void
 
-    .line 228
+    .line 247
     :cond_0
     iput p1, p0, Landroid/text/format/Time;->monthDay:I
+
+    goto :goto_0
+.end method
+
+.method public static snapToCycleDay(Landroid/text/format/Time;II)V
+    .locals 3
+    .parameter "time"
+    .parameter "cycleDay"
+    .parameter "cycleLength"
+
+    .prologue
+    const/4 v2, 0x1
+
+    .line 258
+    const/4 v0, 0x2
+
+    if-ne p2, v0, :cond_1
+
+    .line 259
+    invoke-static {p0, p1}, Landroid/net/NetworkPolicyManager;->snapToCycleDay(Landroid/text/format/Time;I)V
+
+    .line 264
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 260
+    :cond_1
+    if-ne p2, v2, :cond_0
+
+    .line 261
+    iget v0, p0, Landroid/text/format/Time;->monthDay:I
+
+    iget v1, p0, Landroid/text/format/Time;->weekDay:I
+
+    sub-int v1, p1, v1
+
+    add-int/2addr v0, v1
+
+    iput v0, p0, Landroid/text/format/Time;->monthDay:I
+
+    .line 262
+    invoke-virtual {p0, v2}, Landroid/text/format/Time;->normalize(Z)J
 
     goto :goto_0
 .end method
@@ -447,7 +578,7 @@
     .locals 2
 
     .prologue
-    .line 127
+    .line 130
     :try_start_0
     iget-object v1, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -457,15 +588,15 @@
 
     move-result-object v1
 
-    .line 129
+    .line 132
     :goto_0
     return-object v1
 
-    .line 128
+    .line 131
     :catch_0
     move-exception v0
 
-    .line 129
+    .line 132
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -476,7 +607,7 @@
     .locals 2
 
     .prologue
-    .line 142
+    .line 145
     :try_start_0
     iget-object v1, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -486,15 +617,15 @@
 
     move-result v1
 
-    .line 144
+    .line 147
     :goto_0
     return v1
 
-    .line 143
+    .line 146
     :catch_0
     move-exception v0
 
-    .line 144
+    .line 147
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -506,7 +637,7 @@
     .parameter "uid"
 
     .prologue
-    .line 90
+    .line 93
     :try_start_0
     iget-object v1, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -516,15 +647,15 @@
 
     move-result v1
 
-    .line 92
+    .line 95
     :goto_0
     return v1
 
-    .line 91
+    .line 94
     :catch_0
     move-exception v0
 
-    .line 92
+    .line 95
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -536,7 +667,7 @@
     .parameter "policy"
 
     .prologue
-    .line 98
+    .line 101
     :try_start_0
     iget-object v1, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -546,15 +677,15 @@
 
     move-result-object v1
 
-    .line 100
+    .line 103
     :goto_0
     return-object v1
 
-    .line 99
+    .line 102
     :catch_0
     move-exception v0
 
-    .line 100
+    .line 103
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -568,7 +699,7 @@
     .parameter "listener"
 
     .prologue
-    .line 106
+    .line 109
     :try_start_0
     iget-object v0, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -576,11 +707,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 109
+    .line 112
     :goto_0
     return-void
 
-    .line 107
+    .line 110
     :catch_0
     move-exception v0
 
@@ -603,7 +734,7 @@
     .parameter "policies"
 
     .prologue
-    .line 120
+    .line 123
     :try_start_0
     iget-object v0, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -611,11 +742,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 123
+    .line 126
     :goto_0
     return-void
 
-    .line 121
+    .line 124
     :catch_0
     move-exception v0
 
@@ -627,7 +758,7 @@
     .parameter "restrictBackground"
 
     .prologue
-    .line 135
+    .line 138
     :try_start_0
     iget-object v0, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -635,11 +766,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 138
+    .line 141
     :goto_0
     return-void
 
-    .line 136
+    .line 139
     :catch_0
     move-exception v0
 
@@ -652,7 +783,7 @@
     .parameter "policy"
 
     .prologue
-    .line 83
+    .line 86
     :try_start_0
     iget-object v0, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -660,11 +791,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 86
+    .line 89
     :goto_0
     return-void
 
-    .line 84
+    .line 87
     :catch_0
     move-exception v0
 
@@ -676,7 +807,7 @@
     .parameter "listener"
 
     .prologue
-    .line 113
+    .line 116
     :try_start_0
     iget-object v0, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
@@ -684,11 +815,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 116
+    .line 119
     :goto_0
     return-void
 
-    .line 114
+    .line 117
     :catch_0
     move-exception v0
 

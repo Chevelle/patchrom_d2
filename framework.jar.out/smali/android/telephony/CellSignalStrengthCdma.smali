@@ -40,7 +40,7 @@
     .locals 1
 
     .prologue
-    .line 362
+    .line 367
     new-instance v0, Landroid/telephony/CellSignalStrengthCdma$1;
 
     invoke-direct {v0}, Landroid/telephony/CellSignalStrengthCdma$1;-><init>()V
@@ -88,45 +88,53 @@
     .parameter "in"
 
     .prologue
-    .line 345
+    .line 347
     invoke-direct {p0}, Landroid/telephony/CellSignalStrength;-><init>()V
 
-    .line 346
+    .line 351
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
+
+    mul-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mCdmaDbm:I
 
-    .line 347
+    .line 352
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
+
+    mul-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mCdmaEcio:I
 
-    .line 348
+    .line 353
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
+
+    mul-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoDbm:I
 
-    .line 349
+    .line 354
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
+    mul-int/lit8 v0, v0, -0x1
+
     iput v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoEcio:I
 
-    .line 350
+    .line 355
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoSnr:I
 
-    .line 352
+    .line 357
     return-void
 .end method
 
@@ -162,12 +170,12 @@
     .parameter "s"
 
     .prologue
-    .line 379
+    .line 384
     const-string v0, "CellSignalStrengthCdma"
 
-    invoke-static {v0, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 380
+    .line 385
     return-void
 .end method
 
@@ -235,7 +243,7 @@
     .locals 1
 
     .prologue
-    .line 357
+    .line 362
     const/4 v0, 0x0
 
     return v0
@@ -1130,31 +1138,39 @@
     .parameter "flags"
 
     .prologue
-    .line 334
+    .line 336
     iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mCdmaDbm:I
 
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 335
-    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mCdmaEcio:I
-
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 336
-    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoDbm:I
+    mul-int/lit8 v0, v0, -0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 337
-    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoEcio:I
+    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mCdmaEcio:I
+
+    mul-int/lit8 v0, v0, -0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 338
-    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoSnr:I
+    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoDbm:I
+
+    mul-int/lit8 v0, v0, -0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 339
+    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoEcio:I
+
+    mul-int/lit8 v0, v0, -0x1
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 340
+    iget v0, p0, Landroid/telephony/CellSignalStrengthCdma;->mEvdoSnr:I
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 341
     return-void
 .end method

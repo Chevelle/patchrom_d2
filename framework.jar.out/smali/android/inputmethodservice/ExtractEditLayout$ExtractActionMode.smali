@@ -88,10 +88,8 @@
 
     invoke-virtual {v1}, Lcom/android/internal/view/menu/MenuBuilder;->startDispatchingItemsChanged()V
 
-    .line 150
     return v0
 
-    .line 152
     :catchall_0
     move-exception v0
 

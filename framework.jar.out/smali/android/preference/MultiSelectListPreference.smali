@@ -350,10 +350,13 @@
 
     .line 212
     .local v0, defaultValues:[Ljava/lang/CharSequence;
+    if-eqz v0, :cond_0
+
     array-length v3, v0
 
     .line 213
     .local v3, valueCount:I
+    :goto_0
     new-instance v2, Ljava/util/HashSet;
 
     invoke-direct {v2}, Ljava/util/HashSet;-><init>()V
@@ -363,8 +366,8 @@
     const/4 v1, 0x0
 
     .local v1, i:I
-    :goto_0
-    if-ge v1, v3, :cond_0
+    :goto_1
+    if-ge v1, v3, :cond_1
 
     .line 216
     aget-object v4, v0, v1
@@ -378,10 +381,22 @@
     .line 215
     add-int/lit8 v1, v1, 0x1
 
+    goto :goto_1
+
+    .line 212
+    .end local v1           #i:I
+    .end local v2           #result:Ljava/util/Set;,"Ljava/util/Set<Ljava/lang/String;>;"
+    .end local v3           #valueCount:I
+    :cond_0
+    const/4 v3, 0x0
+
     goto :goto_0
 
     .line 219
-    :cond_0
+    .restart local v1       #i:I
+    .restart local v2       #result:Ljava/util/Set;,"Ljava/util/Set<Ljava/lang/String;>;"
+    .restart local v3       #valueCount:I
+    :cond_1
     return-object v2
 .end method
 

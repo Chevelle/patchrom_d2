@@ -298,13 +298,13 @@
     .parameter "certificateDate"
 
     .prologue
-    .line 489
+    .line 504
     if-nez p2, :cond_0
 
-    .line 490
+    .line 505
     const-string v0, ""
 
-    .line 492
+    .line 507
     :goto_0
     return-object v0
 
@@ -798,14 +798,14 @@
     .parameter "context"
 
     .prologue
-    .line 434
+    .line 449
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v2
 
-    .line 436
+    .line 451
     .local v2, factory:Landroid/view/LayoutInflater;
-    const v6, 0x10900cc
+    const v6, 0x10900a4
 
     const/4 v7, 0x0
 
@@ -813,18 +813,18 @@
 
     move-result-object v0
 
-    .line 440
+    .line 455
     .local v0, certificateView:Landroid/view/View;
     invoke-virtual {p0}, Landroid/net/http/SslCertificate;->getIssuedTo()Landroid/net/http/SslCertificate$DName;
 
     move-result-object v5
 
-    .line 441
+    .line 456
     .local v5, issuedTo:Landroid/net/http/SslCertificate$DName;
     if-eqz v5, :cond_0
 
-    .line 442
-    const v6, 0x102037a
+    .line 457
+    const v6, 0x1020337
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -838,8 +838,8 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 444
-    const v6, 0x102037c
+    .line 459
+    const v6, 0x1020339
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -853,8 +853,8 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 446
-    const v6, 0x102037e
+    .line 461
+    const v6, 0x102033b
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -868,9 +868,9 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 450
+    .line 465
     :cond_0
-    const v6, 0x1020380
+    const v6, 0x102033d
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -886,17 +886,17 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 454
+    .line 469
     invoke-virtual {p0}, Landroid/net/http/SslCertificate;->getIssuedBy()Landroid/net/http/SslCertificate$DName;
 
     move-result-object v3
 
-    .line 455
+    .line 470
     .local v3, issuedBy:Landroid/net/http/SslCertificate$DName;
     if-eqz v3, :cond_1
 
-    .line 456
-    const v6, 0x1020382
+    .line 471
+    const v6, 0x102033f
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -910,8 +910,8 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 458
-    const v6, 0x1020384
+    .line 473
+    const v6, 0x1020341
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -925,8 +925,8 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 460
-    const v6, 0x1020386
+    .line 475
+    const v6, 0x1020343
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -940,7 +940,7 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 465
+    .line 480
     :cond_1
     invoke-virtual {p0}, Landroid/net/http/SslCertificate;->getValidNotBeforeDate()Ljava/util/Date;
 
@@ -950,9 +950,9 @@
 
     move-result-object v4
 
-    .line 466
+    .line 481
     .local v4, issuedOn:Ljava/lang/String;
-    const v6, 0x1020389
+    const v6, 0x1020346
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -962,7 +962,7 @@
 
     invoke-virtual {v6, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 470
+    .line 485
     invoke-virtual {p0}, Landroid/net/http/SslCertificate;->getValidNotAfterDate()Ljava/util/Date;
 
     move-result-object v6
@@ -971,9 +971,9 @@
 
     move-result-object v1
 
-    .line 471
+    .line 486
     .local v1, expiresOn:Ljava/lang/String;
-    const v6, 0x102038b
+    const v6, 0x1020348
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -983,8 +983,8 @@
 
     invoke-virtual {v6, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 475
-    const v6, 0x102038e
+    .line 490
+    const v6, 0x102034b
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1002,8 +1002,8 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 477
-    const v6, 0x1020390
+    .line 492
+    const v6, 0x102034d
 
     invoke-virtual {v0, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1021,7 +1021,7 @@
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 480
+    .line 495
     return-object v0
 .end method
 

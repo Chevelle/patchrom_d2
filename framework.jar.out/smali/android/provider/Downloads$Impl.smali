@@ -36,6 +36,8 @@
 
 .field public static final COLUMN_ALLOW_ROAMING:Ljava/lang/String; = "allow_roaming"
 
+.field public static final COLUMN_ALLOW_WRITE:Ljava/lang/String; = "allow_write"
+
 .field public static final COLUMN_APP_DATA:Ljava/lang/String; = "entity"
 
 .field public static final COLUMN_BYPASS_RECOMMENDED_SIZE_LIMIT:Ljava/lang/String; = "bypass_recommended_size_limit"
@@ -53,6 +55,8 @@
 .field public static final COLUMN_DESTINATION:Ljava/lang/String; = "destination"
 
 .field public static final COLUMN_ERROR_MSG:Ljava/lang/String; = "errorMsg"
+
+.field public static final COLUMN_FAILED_CONNECTIONS:Ljava/lang/String; = "numfailed"
 
 .field public static final COLUMN_FILE_NAME_HINT:Ljava/lang/String; = "hint"
 
@@ -167,6 +171,8 @@
 
 .field public static final STATUS_PAUSED_BY_APP:I = 0xc1
 
+.field public static final STATUS_PAUSED_BY_MANUAL:I = 0xc5
+
 .field public static final STATUS_PENDING:I = 0xbe
 
 .field public static final STATUS_PRECONDITION_FAILED:I = 0x19c
@@ -250,7 +256,7 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 547
+    .line 552
     if-eq p0, v0, :cond_0
 
     const/4 v1, 0x3
@@ -272,7 +278,7 @@
     .parameter "status"
 
     .prologue
-    .line 530
+    .line 535
     const/16 v0, 0x190
 
     if-lt p0, v0, :cond_0
@@ -297,7 +303,7 @@
     .parameter "status"
 
     .prologue
-    .line 556
+    .line 561
     const/16 v0, 0xc8
 
     if-lt p0, v0, :cond_0
@@ -332,7 +338,7 @@
     .parameter "status"
 
     .prologue
-    .line 523
+    .line 528
     const/16 v0, 0x190
 
     if-lt p0, v0, :cond_0
@@ -357,7 +363,7 @@
     .parameter "status"
 
     .prologue
-    .line 509
+    .line 514
     const/16 v0, 0x64
 
     if-lt p0, v0, :cond_0
@@ -382,7 +388,7 @@
     .parameter "status"
 
     .prologue
-    .line 537
+    .line 542
     const/16 v0, 0x1f4
 
     if-lt p0, v0, :cond_0
@@ -407,7 +413,7 @@
     .parameter "status"
 
     .prologue
-    .line 516
+    .line 521
     const/16 v0, 0xc8
 
     if-lt p0, v0, :cond_0
@@ -432,10 +438,10 @@
     .parameter "status"
 
     .prologue
-    .line 720
+    .line 730
     sparse-switch p0, :sswitch_data_0
 
-    .line 745
+    .line 755
     invoke-static {p0}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
     move-result-object v0
@@ -443,151 +449,151 @@
     :goto_0
     return-object v0
 
-    .line 721
+    .line 731
     :sswitch_0
     const-string v0, "PENDING"
 
     goto :goto_0
 
-    .line 722
+    .line 732
     :sswitch_1
     const-string v0, "RUNNING"
 
     goto :goto_0
 
-    .line 723
+    .line 733
     :sswitch_2
     const-string v0, "PAUSED_BY_APP"
 
     goto :goto_0
 
-    .line 724
+    .line 734
     :sswitch_3
     const-string v0, "WAITING_TO_RETRY"
 
     goto :goto_0
 
-    .line 725
+    .line 735
     :sswitch_4
     const-string v0, "WAITING_FOR_NETWORK"
 
     goto :goto_0
 
-    .line 726
+    .line 736
     :sswitch_5
     const-string v0, "QUEUED_FOR_WIFI"
 
     goto :goto_0
 
-    .line 727
+    .line 737
     :sswitch_6
     const-string v0, "INSUFFICIENT_SPACE_ERROR"
 
     goto :goto_0
 
-    .line 728
+    .line 738
     :sswitch_7
     const-string v0, "DEVICE_NOT_FOUND_ERROR"
 
     goto :goto_0
 
-    .line 729
+    .line 739
     :sswitch_8
     const-string v0, "SUCCESS"
 
     goto :goto_0
 
-    .line 730
+    .line 740
     :sswitch_9
     const-string v0, "BAD_REQUEST"
 
     goto :goto_0
 
-    .line 731
+    .line 741
     :sswitch_a
     const-string v0, "NOT_ACCEPTABLE"
 
     goto :goto_0
 
-    .line 732
+    .line 742
     :sswitch_b
     const-string v0, "LENGTH_REQUIRED"
 
     goto :goto_0
 
-    .line 733
+    .line 743
     :sswitch_c
     const-string v0, "PRECONDITION_FAILED"
 
     goto :goto_0
 
-    .line 734
+    .line 744
     :sswitch_d
     const-string v0, "FILE_ALREADY_EXISTS_ERROR"
 
     goto :goto_0
 
-    .line 735
+    .line 745
     :sswitch_e
     const-string v0, "CANNOT_RESUME"
 
     goto :goto_0
 
-    .line 736
+    .line 746
     :sswitch_f
     const-string v0, "CANCELED"
 
     goto :goto_0
 
-    .line 737
+    .line 747
     :sswitch_10
     const-string v0, "UNKNOWN_ERROR"
 
     goto :goto_0
 
-    .line 738
+    .line 748
     :sswitch_11
     const-string v0, "FILE_ERROR"
 
     goto :goto_0
 
-    .line 739
+    .line 749
     :sswitch_12
     const-string v0, "UNHANDLED_REDIRECT"
 
     goto :goto_0
 
-    .line 740
+    .line 750
     :sswitch_13
     const-string v0, "UNHANDLED_HTTP_CODE"
 
     goto :goto_0
 
-    .line 741
+    .line 751
     :sswitch_14
     const-string v0, "HTTP_DATA_ERROR"
 
     goto :goto_0
 
-    .line 742
+    .line 752
     :sswitch_15
     const-string v0, "HTTP_EXCEPTION"
 
     goto :goto_0
 
-    .line 743
+    .line 753
     :sswitch_16
     const-string v0, "TOO_MANY_REDIRECTS"
 
     goto :goto_0
 
-    .line 744
+    .line 754
     :sswitch_17
     const-string v0, "BLOCKED"
 
     goto :goto_0
 
-    .line 720
+    .line 730
     :sswitch_data_0
     .sparse-switch
         0xbe -> :sswitch_0

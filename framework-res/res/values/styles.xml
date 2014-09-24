@@ -264,6 +264,9 @@
         <item name="presentationTheme">@style/Theme.DeviceDefault.Dialog.Presentation</item>
         <item name="textAppearanceEasyCorrectSuggestion">@style/TextAppearance.EasyCorrectSuggestion</item>
         <item name="checkedTextViewStyle">@style/Widget.CheckedTextView</item>
+        <item name="windowOverscan">false</item>
+        <item name="windowTranslucentStatus">false</item>
+        <item name="windowTranslucentNavigation">false</item>
         <item name="textAppearanceMisspelledSuggestion">@style/TextAppearance.MisspelledSuggestion</item>
         <item name="textAppearanceAutoCorrectionSuggestion">@style/TextAppearance.AutoCorrectionSuggestion</item>
         <item name="errorMessageBackground">@drawable/popup_inline_error</item>
@@ -284,6 +287,10 @@
         <item name="actionModePopupWindowStyle">?popupWindowStyle</item>
         <item name="preferenceFragmentStyle">@style/PreferenceFragment</item>
         <item name="preferencePanelStyle">@style/PreferencePanel</item>
+        <item name="preferenceHeaderPanelStyle">@style/PreferenceHeaderPanel</item>
+        <item name="preferenceListStyle">@style/PreferenceHeaderList</item>
+        <item name="preferenceFragmentListStyle">@style/PreferenceFragmentList</item>
+        <item name="preferenceFragmentPaddingSide">@dimen/preference_fragment_padding_side</item>
         <item name="dialogTitleIconsDecorLayout">@layout/dialog_title_icons</item>
         <item name="dialogCustomTitleDecorLayout">@layout/dialog_custom_title</item>
         <item name="dialogTitleDecorLayout">@layout/dialog_title</item>
@@ -502,6 +509,7 @@
         <item name="indeterminateBehavior">repeat</item>
         <item name="minWidth">48.0dip</item>
         <item name="minHeight">48.0dip</item>
+        <item name="mirrorForRtl">false</item>
     </style>
     <style name="Widget.ProgressBar.Large" parent="@style/Widget.ProgressBar">
         <item name="maxWidth">76.0dip</item>
@@ -523,6 +531,7 @@
         <item name="indeterminateDrawable">@drawable/progress_indeterminate_horizontal</item>
         <item name="progressDrawable">@drawable/progress_horizontal</item>
         <item name="minHeight">20.0dip</item>
+        <item name="mirrorForRtl">true</item>
     </style>
     <style name="Widget.SeekBar" parent="@style/Widget">
         <item name="focusable">true</item>
@@ -533,6 +542,7 @@
         <item name="minHeight">20.0dip</item>
         <item name="thumb">@drawable/seek_thumb</item>
         <item name="thumbOffset">8.0dip</item>
+        <item name="mirrorForRtl">true</item>
     </style>
     <style name="Widget.RatingBar" parent="@style/Widget">
         <item name="maxHeight">57.0dip</item>
@@ -541,6 +551,7 @@
         <item name="progressDrawable">@drawable/ratingbar_full</item>
         <item name="minHeight">57.0dip</item>
         <item name="thumb">@null</item>
+        <item name="mirrorForRtl">true</item>
     </style>
     <style name="Widget.TextView" parent="@style/Widget">
         <item name="textAppearance">?textAppearanceSmall</item>
@@ -1091,8 +1102,8 @@
         <item name="actionModeSelectAllDrawable">@drawable/ic_menu_selectall_holo_dark</item>
         <item name="listPreferredItemHeightLarge">80.0dip</item>
         <item name="listPreferredItemHeightSmall">48.0dip</item>
-        <item name="colorPressedHighlight">@color/holo_blue_light</item>
-        <item name="colorLongPressedHighlight">@color/holo_blue_bright</item>
+        <item name="colorPressedHighlight">@color/holo_gray_light</item>
+        <item name="colorLongPressedHighlight">@color/holo_gray_bright</item>
         <item name="colorFocusedHighlight">@color/holo_blue_dark</item>
         <item name="colorActivatedHighlight">@color/holo_blue_dark</item>
         <item name="colorMultiSelectHighlight">@color/holo_green_light</item>
@@ -1108,6 +1119,7 @@
         <item name="listPreferredItemPaddingEnd">8.0dip</item>
         <item name="presentationTheme">@style/Theme.Holo.Dialog.Presentation</item>
         <item name="checkedTextViewStyle">@style/Widget.Holo.CheckedTextView</item>
+        <item name="windowOverscan">false</item>
         <item name="errorMessageBackground">@drawable/popup_inline_error_holo_dark</item>
         <item name="errorMessageAboveBackground">@drawable/popup_inline_error_above_holo_dark</item>
         <item name="searchResultListItemHeight">58.0dip</item>
@@ -1129,7 +1141,7 @@
         <item name="dialogTitleIconsDecorLayout">@layout/dialog_title_icons_holo</item>
         <item name="dialogCustomTitleDecorLayout">@layout/dialog_custom_title_holo</item>
         <item name="dialogTitleDecorLayout">@layout/dialog_title_holo</item>
-        <item name="toastFrameBackground">@drawable/toast_frame_holo</item>
+        <item name="toastFrameBackground">@drawable/toast_frame</item>
         <item name="searchDropdownBackground">@drawable/search_dropdown_dark</item>
         <item name="searchDialogTheme">@style/Theme.Holo.SearchBar</item>
         <item name="preferenceFrameLayoutStyle">@style/Widget.Holo.PreferenceFrameLayout</item>
@@ -1240,7 +1252,7 @@
         <item name="yesNoPreferenceStyle">@style/Preference.Holo.DialogPreference.YesNoPreference</item>
         <item name="dialogPreferenceStyle">@style/Preference.Holo.DialogPreference</item>
         <item name="editTextPreferenceStyle">@style/Preference.Holo.DialogPreference.EditTextPreference</item>
-        <item name="ringtonePreferenceStyle">@style/Preference.Holo.RingtonePreference</item>
+        <item name="ringtonePreferenceStyle">@style/Preference.Holo.Light.RingtonePreference</item>
         <item name="preferenceLayoutChild">@layout/preference_child_holo</item>
         <item name="textColorHighlight">@color/highlighted_text_holo_light</item>
         <item name="textColorHint">@color/hint_foreground_holo_light</item>
@@ -1337,8 +1349,8 @@
         <item name="actionModeSelectAllDrawable">@drawable/ic_menu_selectall_holo_light</item>
         <item name="listPreferredItemHeightLarge">80.0dip</item>
         <item name="listPreferredItemHeightSmall">48.0dip</item>
-        <item name="colorPressedHighlight">@color/holo_blue_light</item>
-        <item name="colorLongPressedHighlight">@color/holo_blue_bright</item>
+        <item name="colorPressedHighlight">@color/holo_gray_light</item>
+        <item name="colorLongPressedHighlight">@color/holo_gray_bright</item>
         <item name="colorFocusedHighlight">@color/holo_blue_dark</item>
         <item name="colorActivatedHighlight">@color/holo_blue_dark</item>
         <item name="colorMultiSelectHighlight">@color/holo_green_light</item>
@@ -1354,6 +1366,7 @@
         <item name="listPreferredItemPaddingEnd">8.0dip</item>
         <item name="presentationTheme">@style/Theme.Holo.Light.Dialog.Presentation</item>
         <item name="checkedTextViewStyle">@style/Widget.Holo.Light.CheckedTextView</item>
+        <item name="windowOverscan">false</item>
         <item name="errorMessageBackground">@drawable/popup_inline_error_holo_light</item>
         <item name="errorMessageAboveBackground">@drawable/popup_inline_error_above_holo_light</item>
         <item name="searchResultListItemHeight">58.0dip</item>
@@ -1375,7 +1388,7 @@
         <item name="dialogTitleIconsDecorLayout">@layout/dialog_title_icons_holo</item>
         <item name="dialogCustomTitleDecorLayout">@layout/dialog_custom_title_holo</item>
         <item name="dialogTitleDecorLayout">@layout/dialog_title_holo</item>
-        <item name="toastFrameBackground">@drawable/toast_frame_holo</item>
+        <item name="toastFrameBackground">@drawable/toast_frame</item>
         <item name="searchDropdownBackground">@drawable/search_dropdown_light</item>
         <item name="searchDialogTheme">@style/Theme.Holo.Light.SearchBar</item>
         <item name="preferenceFrameLayoutStyle">@style/Widget.Holo.PreferenceFrameLayout</item>
@@ -1621,6 +1634,7 @@
         <item name="thumbOffset">16.0dip</item>
         <item name="paddingStart">16.0dip</item>
         <item name="paddingEnd">16.0dip</item>
+        <item name="mirrorForRtl">true</item>
     </style>
     <style name="Widget.Holo.RatingBar" parent="@style/Widget.RatingBar">
         <item name="indeterminateDrawable">@drawable/ratingbar_full_holo_dark</item>
@@ -1680,7 +1694,7 @@
     </style>
     <style name="Widget.Holo.ListPopupWindow" parent="@style/Widget.ListPopupWindow">
         <item name="dropDownSelector">@drawable/list_selector_holo_dark</item>
-        <item name="popupBackground">@drawable/menu_dropdown_panel_holo_dark</item>
+        <item name="popupBackground">@drawable/menu_panel_holo_dark</item>
         <item name="dropDownWidth">wrap_content</item>
         <item name="dropDownHorizontalOffset">0.0dip</item>
         <item name="dropDownVerticalOffset">0.0dip</item>
@@ -1816,7 +1830,7 @@
     <style name="Widget.Holo.Light.TextView.SpinnerItem" parent="@style/Widget.Holo.TextView.SpinnerItem" />
     <style name="Widget.Holo.Light.ListPopupWindow" parent="@style/Widget.ListPopupWindow">
         <item name="dropDownSelector">@drawable/list_selector_holo_light</item>
-        <item name="popupBackground">@drawable/menu_dropdown_panel_holo_light</item>
+        <item name="popupBackground">@drawable/menu_panel_holo_light</item>
         <item name="dropDownWidth">wrap_content</item>
         <item name="dropDownHorizontalOffset">0.0dip</item>
         <item name="dropDownVerticalOffset">0.0dip</item>
@@ -1887,7 +1901,6 @@
         <item name="background">@drawable/btn_group_holo_light</item>
     </style>
     <style name="Widget.CalendarView" parent="@style/Widget">
-        <item name="firstDayOfWeek">1</item>
         <item name="showWeekNumber">true</item>
         <item name="minDate">01/01/1900</item>
         <item name="maxDate">12/31/2100</item>
@@ -2607,6 +2620,30 @@
     <style name="Widget.Holo.Light.CheckedTextView" parent="@style/Widget.CheckedTextView" />
     <style name="Widget.DeviceDefault.CheckedTextView" parent="@style/Widget.Holo.CheckedTextView" />
     <style name="Widget.DeviceDefault.Light.CheckedTextView" parent="@style/Widget.Holo.Light.CheckedTextView" />
+    <style name="Theme.Holo.NoActionBar.Overscan" parent="@style/Theme.Holo.NoActionBar">
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowFullscreen">true</item>
+        <item name="windowOverscan">true</item>
+    </style>
+    <style name="Theme.Holo.Light.NoActionBar.Overscan" parent="@style/Theme.Holo.Light.NoActionBar">
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowFullscreen">true</item>
+        <item name="windowOverscan">true</item>
+    </style>
+    <style name="Theme.DeviceDefault.NoActionBar.Overscan" parent="@style/Theme.Holo.NoActionBar.Overscan" />
+    <style name="Theme.DeviceDefault.Light.NoActionBar.Overscan" parent="@style/Theme.Holo.Light.NoActionBar.Overscan" />
+    <style name="Theme.Holo.NoActionBar.TranslucentDecor" parent="@style/Theme.Holo.NoActionBar">
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowTranslucentStatus">true</item>
+        <item name="windowTranslucentNavigation">true</item>
+    </style>
+    <style name="Theme.Holo.Light.NoActionBar.TranslucentDecor" parent="@style/Theme.Holo.Light.NoActionBar">
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowTranslucentStatus">true</item>
+        <item name="windowTranslucentNavigation">true</item>
+    </style>
+    <style name="Theme.DeviceDefault.NoActionBar.TranslucentDecor" parent="@style/Theme.Holo.NoActionBar.TranslucentDecor" />
+    <style name="Theme.DeviceDefault.Light.NoActionBar.TranslucentDecor" parent="@style/Theme.Holo.Light.NoActionBar.TranslucentDecor" />
     <style name="WindowTitleBackground">
         <item name="background">@drawable/title_bar</item>
     </style>
@@ -2882,6 +2919,9 @@
         <item name="textSize">30.0sp</item>
         <item name="textColor">@color/primary_text_light</item>
     </style>
+    <style name="TextAppearance.Toast" parent="@style/TextAppearance">
+        <item name="fontFamily">sans-serif-condensed</item>
+    </style>
     <style name="Widget.ActivityChooserView" parent="@style/Widget">
         <item name="gravity">center</item>
         <item name="background">@drawable/ab_share_pack_holo_dark</item>
@@ -2973,6 +3013,9 @@
         <item name="showDefault">true</item>
         <item name="showSilent">true</item>
     </style>
+    <style name="Preference.Holo.Light.RingtonePreference" parent="@style/Preference.Holo.RingtonePreference">
+        <item name="dialogStyle">@style/Theme.Holo.Light.Dialog.Alert</item>
+    </style>
     <style name="PreferencePanel" />
     <style name="PreferencePanel.Dialog" parent="@style/PreferencePanel">
         <item name="background">@null</item>
@@ -2980,6 +3023,21 @@
         <item name="layout_marginBottom">0.0dip</item>
         <item name="layout_marginStart">0.0dip</item>
         <item name="layout_marginEnd">0.0dip</item>
+    </style>
+    <style name="PreferenceHeaderPanel">
+        <item name="paddingTop">@dimen/preference_screen_header_vertical_padding</item>
+        <item name="paddingBottom">@dimen/preference_screen_header_vertical_padding</item>
+        <item name="layout_marginStart">@dimen/preference_screen_side_margin</item>
+        <item name="layout_marginEnd">@dimen/preference_screen_side_margin_negative</item>
+    </style>
+    <style name="PreferenceHeaderList">
+        <item name="scrollbarStyle">@integer/preference_screen_header_scrollbarStyle</item>
+        <item name="paddingStart">@dimen/preference_screen_header_padding_side</item>
+        <item name="paddingEnd">@dimen/preference_screen_header_padding_side</item>
+    </style>
+    <style name="PreferenceFragmentList">
+        <item name="paddingStart">@dimen/preference_fragment_padding_side</item>
+        <item name="paddingEnd">@dimen/preference_fragment_padding_side</item>
     </style>
     <style name="ZoomControls">
         <item name="gravity">bottom</item>
@@ -3270,8 +3328,8 @@
     <style name="Widget.Holo.PreferenceFrameLayout" parent="@style/Widget.Holo">
         <item name="borderTop">0.0dip</item>
         <item name="borderBottom">@dimen/preference_fragment_padding_bottom</item>
-        <item name="borderLeft">@dimen/preference_fragment_padding_side</item>
-        <item name="borderRight">@dimen/preference_fragment_padding_side</item>
+        <item name="borderLeft">?preferenceFragmentPaddingSide</item>
+        <item name="borderRight">?preferenceFragmentPaddingSide</item>
     </style>
     <style name="Pointer">
         <item name="pointerIconArrow">@drawable/pointer_arrow_icon</item>
@@ -3309,7 +3367,7 @@
         <item name="textColor">#ffffffff</item>
         <item name="gravity">left|center</item>
         <item name="background">?selectableItemBackground</item>
-        <item name="paddingLeft">@dimen/kg_num_pad_key_padding_left</item>
+        <item name="paddingLeft">20.0dip</item>
         <item name="paddingBottom">10.0dip</item>
         <item name="singleLine">true</item>
         <item name="fontFamily">sans-serif</item>

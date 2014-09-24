@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Sinulla on %d yritystä jäljellä, ennen kuin SIM-kortti lukitaan.</item>
+        <item quantity="one">Sinulla on %d yritys jäljellä, ennen kuin SIM-kortti lukitaan.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d sekuntia sitten</item>
         <item quantity="one">1 sekunti sitten</item>
@@ -80,15 +84,19 @@
         <item quantity="one">1 tunti</item>
     </plurals>
     <plurals name="wifi_available">
-        <item quantity="other">Wi-Fi-verkkoja käytettävissä</item>
-        <item quantity="one">Wi-Fi-verkko käytettävissä</item>
+        <item quantity="other">Wifi-verkkoja käytettävissä</item>
+        <item quantity="one">Wifi-verkko käytettävissä</item>
     </plurals>
     <plurals name="wifi_available_detailed">
-        <item quantity="other">Avoimia Wi-Fi-verkkoja käytettävissä</item>
-        <item quantity="one">Avoin Wi-Fi-verkko käytettävissä</item>
+        <item quantity="other">Avoimia wifi-verkkoja käytettävissä</item>
+        <item quantity="one">Avoin wifi-verkko käytettävissä</item>
     </plurals>
     <plurals name="matches_found">
         <item quantity="other">%1$d/%2$d</item>
         <item quantity="one">1 tulos</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Yritä uud. %d s kul.</item>
+        <item quantity="one">Yritä uud. 1 s kul.</item>
     </plurals>
 </resources>

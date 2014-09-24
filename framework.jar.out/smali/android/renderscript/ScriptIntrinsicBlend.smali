@@ -10,10 +10,10 @@
     .parameter "rs"
 
     .prologue
-    .line 26
+    .line 25
     invoke-direct {p0, p1, p2}, Landroid/renderscript/ScriptIntrinsic;-><init>(ILandroid/renderscript/RenderScript;)V
 
-    .line 27
+    .line 26
     return-void
 .end method
 
@@ -24,7 +24,7 @@
     .parameter "aout"
 
     .prologue
-    .line 46
+    .line 44
     invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
 
     move-result-object v0
@@ -41,7 +41,7 @@
 
     if-nez v0, :cond_0
 
-    .line 47
+    .line 45
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
     const-string v1, "Input is not of expected format."
@@ -50,7 +50,7 @@
 
     throw v0
 
-    .line 49
+    .line 47
     :cond_0
     invoke-virtual {p3}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
 
@@ -68,7 +68,7 @@
 
     if-nez v0, :cond_1
 
-    .line 50
+    .line 48
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
     const-string v1, "Output is not of expected format."
@@ -77,13 +77,13 @@
 
     throw v0
 
-    .line 52
+    .line 50
     :cond_1
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, p2, p3, v0}, Landroid/renderscript/ScriptIntrinsicBlend;->forEach(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;Landroid/renderscript/FieldPacker;)V
 
-    .line 53
+    .line 51
     return-void
 .end method
 
@@ -93,7 +93,7 @@
     .parameter "e"
 
     .prologue
-    .line 40
+    .line 38
     const/4 v1, 0x7
 
     invoke-virtual {p1, p0}, Landroid/renderscript/Element;->getID(Landroid/renderscript/RenderScript;)I
@@ -104,7 +104,7 @@
 
     move-result v0
 
-    .line 41
+    .line 39
     .local v0, id:I
     new-instance v1, Landroid/renderscript/ScriptIntrinsicBlend;
 
@@ -121,12 +121,12 @@
     .parameter "aout"
 
     .prologue
-    .line 400
+    .line 399
     const/16 v0, 0x22
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 401
+    .line 400
     return-void
 .end method
 
@@ -136,12 +136,12 @@
     .parameter "aout"
 
     .prologue
-    .line 62
+    .line 60
     const/4 v0, 0x0
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 63
+    .line 61
     return-void
 .end method
 
@@ -151,7 +151,7 @@
     .parameter "aout"
 
     .prologue
-    .line 103
+    .line 102
     return-void
 .end method
 
@@ -161,12 +161,12 @@
     .parameter "aout"
 
     .prologue
-    .line 256
+    .line 255
     const/16 v0, 0xa
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 257
+    .line 256
     return-void
 .end method
 
@@ -176,12 +176,12 @@
     .parameter "aout"
 
     .prologue
-    .line 178
+    .line 177
     const/4 v0, 0x6
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 179
+    .line 178
     return-void
 .end method
 
@@ -191,12 +191,12 @@
     .parameter "aout"
 
     .prologue
-    .line 216
+    .line 215
     const/16 v0, 0x8
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 217
+    .line 216
     return-void
 .end method
 
@@ -206,12 +206,12 @@
     .parameter "aout"
 
     .prologue
-    .line 140
+    .line 139
     const/4 v0, 0x4
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 141
+    .line 140
     return-void
 .end method
 
@@ -221,12 +221,12 @@
     .parameter "aout"
 
     .prologue
-    .line 304
+    .line 303
     const/16 v0, 0xe
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 305
+    .line 304
     return-void
 .end method
 
@@ -236,12 +236,12 @@
     .parameter "aout"
 
     .prologue
-    .line 82
+    .line 80
     const/4 v0, 0x1
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 83
+    .line 81
     return-void
 .end method
 
@@ -251,12 +251,12 @@
     .parameter "aout"
 
     .prologue
-    .line 236
+    .line 235
     const/16 v0, 0x9
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 237
+    .line 236
     return-void
 .end method
 
@@ -266,12 +266,12 @@
     .parameter "aout"
 
     .prologue
-    .line 159
+    .line 158
     const/4 v0, 0x5
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 160
+    .line 159
     return-void
 .end method
 
@@ -281,12 +281,12 @@
     .parameter "aout"
 
     .prologue
-    .line 197
+    .line 196
     const/4 v0, 0x7
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 198
+    .line 197
     return-void
 .end method
 
@@ -296,12 +296,12 @@
     .parameter "aout"
 
     .prologue
-    .line 121
+    .line 120
     const/4 v0, 0x3
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 122
+    .line 121
     return-void
 .end method
 
@@ -311,12 +311,12 @@
     .parameter "aout"
 
     .prologue
-    .line 419
+    .line 418
     const/16 v0, 0x23
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 420
+    .line 419
     return-void
 .end method
 
@@ -326,12 +326,12 @@
     .parameter "aout"
 
     .prologue
-    .line 275
+    .line 274
     const/16 v0, 0xb
 
     invoke-direct {p0, v0, p1, p2}, Landroid/renderscript/ScriptIntrinsicBlend;->blend(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
 
-    .line 276
+    .line 275
     return-void
 .end method
 
@@ -341,7 +341,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 409
+    .line 408
     const/16 v0, 0x22
 
     const/4 v1, 0x3
@@ -359,7 +359,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 71
+    .line 69
     const/4 v0, 0x0
 
     const/4 v1, 0x3
@@ -377,7 +377,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 111
+    .line 110
     const/4 v0, 0x2
 
     const/4 v1, 0x3
@@ -395,7 +395,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 265
+    .line 264
     const/16 v0, 0xa
 
     const/4 v1, 0x3
@@ -413,7 +413,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 187
+    .line 186
     const/4 v0, 0x6
 
     const/4 v1, 0x3
@@ -431,7 +431,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 225
+    .line 224
     const/16 v0, 0x8
 
     const/4 v1, 0x3
@@ -449,7 +449,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 149
+    .line 148
     const/4 v0, 0x4
 
     const/4 v1, 0x3
@@ -467,7 +467,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 313
+    .line 312
     const/16 v0, 0xe
 
     const/4 v1, 0x3
@@ -485,7 +485,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 91
+    .line 89
     const/4 v0, 0x1
 
     const/4 v1, 0x3
@@ -503,7 +503,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 245
+    .line 244
     const/16 v0, 0x9
 
     const/4 v1, 0x3
@@ -521,7 +521,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 168
+    .line 167
     const/4 v0, 0x5
 
     const/4 v1, 0x3
@@ -539,7 +539,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 206
+    .line 205
     const/4 v0, 0x7
 
     const/4 v1, 0x3
@@ -559,7 +559,7 @@
 
     const/4 v0, 0x3
 
-    .line 130
+    .line 129
     invoke-virtual {p0, v0, v0, v1, v1}, Landroid/renderscript/ScriptIntrinsicBlend;->createKernelID(IILandroid/renderscript/Element;Landroid/renderscript/Element;)Landroid/renderscript/Script$KernelID;
 
     move-result-object v0
@@ -573,7 +573,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 428
+    .line 427
     const/16 v0, 0x23
 
     const/4 v1, 0x3
@@ -591,7 +591,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 284
+    .line 283
     const/16 v0, 0xb
 
     const/4 v1, 0x3

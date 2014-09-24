@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 290
+    .line 300
     iput-object p1, p0, Lcom/android/server/display/OverlayDisplayWindow$2;->this$0:Lcom/android/server/display/OverlayDisplayWindow;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -44,7 +44,7 @@
     .parameter "height"
 
     .prologue
-    .line 294
+    .line 304
     iget-object v0, p0, Lcom/android/server/display/OverlayDisplayWindow$2;->this$0:Lcom/android/server/display/OverlayDisplayWindow;
 
     #getter for: Lcom/android/server/display/OverlayDisplayWindow;->mListener:Lcom/android/server/display/OverlayDisplayWindow$Listener;
@@ -63,7 +63,7 @@
 
     invoke-interface {v0, p1, v1}, Lcom/android/server/display/OverlayDisplayWindow$Listener;->onWindowCreated(Landroid/graphics/SurfaceTexture;F)V
 
-    .line 295
+    .line 305
     return-void
 .end method
 
@@ -72,7 +72,7 @@
     .parameter "surfaceTexture"
 
     .prologue
-    .line 299
+    .line 309
     iget-object v0, p0, Lcom/android/server/display/OverlayDisplayWindow$2;->this$0:Lcom/android/server/display/OverlayDisplayWindow;
 
     #getter for: Lcom/android/server/display/OverlayDisplayWindow;->mListener:Lcom/android/server/display/OverlayDisplayWindow$Listener;
@@ -82,7 +82,7 @@
 
     invoke-interface {v0}, Lcom/android/server/display/OverlayDisplayWindow$Listener;->onWindowDestroyed()V
 
-    .line 300
+    .line 310
     const/4 v0, 0x1
 
     return v0
@@ -95,7 +95,7 @@
     .parameter "height"
 
     .prologue
-    .line 306
+    .line 316
     return-void
 .end method
 
@@ -104,6 +104,6 @@
     .parameter "surfaceTexture"
 
     .prologue
-    .line 310
+    .line 320
     return-void
 .end method

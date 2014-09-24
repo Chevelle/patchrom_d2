@@ -17,6 +17,10 @@
 # static fields
 .field public static final DISABLED:I = 0x2
 
+.field public static final ON_A2DP_CONNECT:I = 0x3
+
+.field public static final ON_A2DP_DISCONNECT:I = 0x4
+
 .field public static final ON_CONNECT:I = 0x0
 
 .field public static final ON_DISCONNECT:I = 0x1
@@ -27,7 +31,7 @@
     .locals 0
 
     .prologue
-    .line 95
+    .line 105
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

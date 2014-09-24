@@ -68,7 +68,7 @@
 
     const/4 v3, 0x0
 
-    .line 60
+    .line 62
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "IDLE"
@@ -77,7 +77,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->IDLE:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 62
+    .line 64
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "SCANNING"
@@ -86,7 +86,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->SCANNING:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 64
+    .line 66
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "CONNECTING"
@@ -95,7 +95,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->CONNECTING:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 66
+    .line 68
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "AUTHENTICATING"
@@ -104,7 +104,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->AUTHENTICATING:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 68
+    .line 70
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "OBTAINING_IPADDR"
@@ -113,7 +113,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->OBTAINING_IPADDR:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 70
+    .line 72
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "CONNECTED"
@@ -124,7 +124,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->CONNECTED:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 72
+    .line 74
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "SUSPENDED"
@@ -135,7 +135,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->SUSPENDED:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 74
+    .line 76
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "DISCONNECTING"
@@ -146,7 +146,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->DISCONNECTING:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 76
+    .line 78
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "DISCONNECTED"
@@ -157,7 +157,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->DISCONNECTED:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 78
+    .line 80
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "FAILED"
@@ -168,7 +168,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->FAILED:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 80
+    .line 82
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "BLOCKED"
@@ -179,7 +179,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->BLOCKED:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 82
+    .line 84
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "VERIFYING_POOR_LINK"
@@ -190,7 +190,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->VERIFYING_POOR_LINK:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 84
+    .line 86
     new-instance v0, Landroid/net/NetworkInfo$DetailedState;
 
     const-string v1, "CAPTIVE_PORTAL_CHECK"
@@ -201,7 +201,7 @@
 
     sput-object v0, Landroid/net/NetworkInfo$DetailedState;->CAPTIVE_PORTAL_CHECK:Landroid/net/NetworkInfo$DetailedState;
 
-    .line 58
+    .line 60
     const/16 v0, 0xd
 
     new-array v0, v0, [Landroid/net/NetworkInfo$DetailedState;
@@ -290,7 +290,7 @@
     .end annotation
 
     .prologue
-    .line 58
+    .line 60
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -301,7 +301,7 @@
     .parameter "name"
 
     .prologue
-    .line 58
+    .line 60
     const-class v0, Landroid/net/NetworkInfo$DetailedState;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -317,7 +317,7 @@
     .locals 1
 
     .prologue
-    .line 58
+    .line 60
     sget-object v0, Landroid/net/NetworkInfo$DetailedState;->$VALUES:[Landroid/net/NetworkInfo$DetailedState;
 
     invoke-virtual {v0}, [Landroid/net/NetworkInfo$DetailedState;->clone()Ljava/lang/Object;

@@ -33,7 +33,7 @@
     .parameter
 
     .prologue
-    .line 1347
+    .line 1439
     iput-object p1, p0, Landroid/accounts/AccountManager$12;->this$0:Landroid/accounts/AccountManager;
 
     iput-object p2, p0, Landroid/accounts/AccountManager$12;->val$listener:Landroid/accounts/OnAccountsUpdateListener;
@@ -51,8 +51,24 @@
     .locals 3
 
     .prologue
-    .line 1350
+    .line 1442
     :try_start_0
+    iget-object v1, p0, Landroid/accounts/AccountManager$12;->this$0:Landroid/accounts/AccountManager;
+
+    #getter for: Landroid/accounts/AccountManager;->mAccountsUpdatedListeners:Ljava/util/HashMap;
+    invoke-static {v1}, Landroid/accounts/AccountManager;->access$100(Landroid/accounts/AccountManager;)Ljava/util/HashMap;
+
+    move-result-object v1
+
+    iget-object v2, p0, Landroid/accounts/AccountManager$12;->val$listener:Landroid/accounts/OnAccountsUpdateListener;
+
+    invoke-virtual {v1, v2}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 1443
     iget-object v1, p0, Landroid/accounts/AccountManager$12;->val$listener:Landroid/accounts/OnAccountsUpdateListener;
 
     iget-object v2, p0, Landroid/accounts/AccountManager$12;->val$accountsCopy:[Landroid/accounts/Account;
@@ -61,15 +77,16 @@
     :try_end_0
     .catch Landroid/database/SQLException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1356
+    .line 1450
+    :cond_0
     :goto_0
     return-void
 
-    .line 1351
+    .line 1445
     :catch_0
     move-exception v0
 
-    .line 1354
+    .line 1448
     .local v0, e:Landroid/database/SQLException;
     const-string v1, "AccountManager"
 

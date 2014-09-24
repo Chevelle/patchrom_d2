@@ -14,6 +14,14 @@
 .end annotation
 
 
+# static fields
+.field public static final ERROR_KEY_EXPIRED:I = 0x2
+
+.field public static final ERROR_NO_KEY:I = 0x1
+
+.field public static final ERROR_RESOURCE_BUSY:I = 0x3
+
+
 # instance fields
 .field private mErrorCode:I
 
@@ -25,13 +33,13 @@
     .parameter "detailMessage"
 
     .prologue
-    .line 286
+    .line 304
     invoke-direct {p0, p2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 287
+    .line 305
     iput p1, p0, Landroid/media/MediaCodec$CryptoException;->mErrorCode:I
 
-    .line 288
+    .line 306
     return-void
 .end method
 
@@ -41,7 +49,7 @@
     .locals 1
 
     .prologue
-    .line 291
+    .line 330
     iget v0, p0, Landroid/media/MediaCodec$CryptoException;->mErrorCode:I
 
     return v0

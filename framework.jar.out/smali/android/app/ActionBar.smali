@@ -43,7 +43,7 @@
     .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 923
+    .line 1003
     return-void
 .end method
 
@@ -172,6 +172,42 @@
 .end method
 
 .method public abstract setDisplayUseLogoEnabled(Z)V
+.end method
+
+.method public setHomeActionContentDescription(I)V
+    .locals 0
+    .parameter "resId"
+
+    .prologue
+    .line 775
+    return-void
+.end method
+
+.method public setHomeActionContentDescription(Ljava/lang/CharSequence;)V
+    .locals 0
+    .parameter "description"
+
+    .prologue
+    .line 755
+    return-void
+.end method
+
+.method public setHomeAsUpIndicator(I)V
+    .locals 0
+    .parameter "resId"
+
+    .prologue
+    .line 736
+    return-void
+.end method
+
+.method public setHomeAsUpIndicator(Landroid/graphics/drawable/Drawable;)V
+    .locals 0
+    .parameter "indicator"
+
+    .prologue
+    .line 715
+    return-void
 .end method
 
 .method public setHomeButtonEnabled(Z)V

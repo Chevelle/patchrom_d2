@@ -1040,3 +1040,22 @@
 
     goto/16 :goto_0
 .end method
+
+.method public recycleParcel()V
+    .locals 1
+
+    .prologue
+    .line 550
+    iget-object v0, p0, Landroid/media/Metadata;->mParcel:Landroid/os/Parcel;
+
+    if-eqz v0, :cond_0
+
+    .line 551
+    iget-object v0, p0, Landroid/media/Metadata;->mParcel:Landroid/os/Parcel;
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    .line 552
+    :cond_0
+    return-void
+.end method

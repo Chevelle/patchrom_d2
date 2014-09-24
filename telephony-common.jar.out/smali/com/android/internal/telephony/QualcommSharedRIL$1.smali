@@ -15,9 +15,9 @@
 
 
 # static fields
-.field static final synthetic $SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppState:[I
+.field static final synthetic $SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppState:[I
 
-.field static final synthetic $SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppType:[I
+.field static final synthetic $SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppType:[I
 
 
 # direct methods
@@ -25,8 +25,8 @@
     .locals 3
 
     .prologue
-    .line 706
-    invoke-static {}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;->values()[Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;
+    .line 709
+    invoke-static {}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->values()[Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;
 
     move-result-object v0
 
@@ -34,14 +34,14 @@
 
     new-array v0, v0, [I
 
-    sput-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppState:[I
+    sput-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppState:[I
 
     :try_start_0
-    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppState:[I
+    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppState:[I
 
-    sget-object v1, Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;->APPSTATE_PIN:Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;
+    sget-object v1, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->APPSTATE_PIN:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;->ordinal()I
+    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->ordinal()I
 
     move-result v1
 
@@ -53,11 +53,11 @@
 
     :goto_0
     :try_start_1
-    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppState:[I
+    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppState:[I
 
-    sget-object v1, Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;->APPSTATE_PUK:Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;
+    sget-object v1, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->APPSTATE_PUK:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;->ordinal()I
+    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->ordinal()I
 
     move-result v1
 
@@ -69,11 +69,11 @@
 
     :goto_1
     :try_start_2
-    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppState:[I
+    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppState:[I
 
-    sget-object v1, Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;->APPSTATE_READY:Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;
+    sget-object v1, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->APPSTATE_READY:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppState;->ordinal()I
+    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->ordinal()I
 
     move-result v1
 
@@ -83,9 +83,9 @@
     :try_end_2
     .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_3
 
-    .line 709
+    .line 712
     :goto_2
-    invoke-static {}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;->values()[Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;
+    invoke-static {}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->values()[Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
     move-result-object v0
 
@@ -93,14 +93,14 @@
 
     new-array v0, v0, [I
 
-    sput-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppType:[I
+    sput-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppType:[I
 
     :try_start_3
-    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppType:[I
+    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppType:[I
 
-    sget-object v1, Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;->APPTYPE_SIM:Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;
+    sget-object v1, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_SIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;->ordinal()I
+    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->ordinal()I
 
     move-result v1
 
@@ -112,11 +112,11 @@
 
     :goto_3
     :try_start_4
-    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppType:[I
+    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppType:[I
 
-    sget-object v1, Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;->APPTYPE_USIM:Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;
+    sget-object v1, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_USIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;->ordinal()I
+    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->ordinal()I
 
     move-result v1
 
@@ -128,11 +128,11 @@
 
     :goto_4
     :try_start_5
-    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$IccCardApplicationStatus$AppType:[I
+    sget-object v0, Lcom/android/internal/telephony/QualcommSharedRIL$1;->$SwitchMap$com$android$internal$telephony$uicc$IccCardApplicationStatus$AppType:[I
 
-    sget-object v1, Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;->APPTYPE_RUIM:Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;
+    sget-object v1, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->APPTYPE_RUIM:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;
 
-    invoke-virtual {v1}, Lcom/android/internal/telephony/IccCardApplicationStatus$AppType;->ordinal()I
+    invoke-virtual {v1}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;->ordinal()I
 
     move-result v1
 
@@ -160,7 +160,7 @@
 
     goto :goto_3
 
-    .line 706
+    .line 709
     :catch_3
     move-exception v0
 

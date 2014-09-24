@@ -108,7 +108,7 @@
 
     sput-boolean v0, Landroid/opengl/GLSurfaceView;->RGB565:Z
 
-    .line 1917
+    .line 1928
     new-instance v0, Landroid/opengl/GLSurfaceView$GLThreadManager;
 
     const/4 v1, 0x0
@@ -128,7 +128,7 @@
     .line 215
     invoke-direct {p0, p1}, Landroid/view/SurfaceView;-><init>(Landroid/content/Context;)V
 
-    .line 1919
+    .line 1930
     new-instance v0, Ljava/lang/ref/WeakReference;
 
     invoke-direct {v0, p0}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
@@ -151,7 +151,7 @@
     .line 224
     invoke-direct {p0, p1, p2}, Landroid/view/SurfaceView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 1919
+    .line 1930
     new-instance v0, Ljava/lang/ref/WeakReference;
 
     invoke-direct {v0, p0}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
@@ -277,12 +277,12 @@
     .locals 2
 
     .prologue
-    .line 1796
+    .line 1807
     iget-object v0, p0, Landroid/opengl/GLSurfaceView;->mGLThread:Landroid/opengl/GLSurfaceView$GLThread;
 
     if-eqz v0, :cond_0
 
-    .line 1797
+    .line 1808
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v1, "setRenderer has already been called for this instance."
@@ -291,7 +291,7 @@
 
     throw v0
 
-    .line 1800
+    .line 1811
     :cond_0
     return-void
 .end method

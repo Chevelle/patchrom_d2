@@ -28,7 +28,7 @@
     .parameter
 
     .prologue
-    .line 388
+    .line 397
     iput-object p1, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$3;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
 
     iput-object p3, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$3;->val$this$0:Lcom/android/server/usb/UsbDeviceManager;
@@ -45,12 +45,12 @@
     .parameter "selfChange"
 
     .prologue
-    .line 390
+    .line 400
     iget-object v0, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$3;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
 
     #calls: Lcom/android/server/usb/UsbDeviceManager$UsbHandler;->updateAdbNotification()V
     invoke-static {v0}, Lcom/android/server/usb/UsbDeviceManager$UsbHandler;->access$700(Lcom/android/server/usb/UsbDeviceManager$UsbHandler;)V
 
-    .line 391
+    .line 401
     return-void
 .end method

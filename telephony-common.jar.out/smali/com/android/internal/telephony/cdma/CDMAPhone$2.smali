@@ -25,7 +25,7 @@
     .locals 3
 
     .prologue
-    .line 621
+    .line 721
     invoke-static {}, Lcom/android/internal/telephony/DctConstants$State;->values()[Lcom/android/internal/telephony/DctConstants$State;
 
     move-result-object v0
@@ -39,7 +39,7 @@
     :try_start_0
     sget-object v0, Lcom/android/internal/telephony/cdma/CDMAPhone$2;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
 
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->FAILED:Lcom/android/internal/telephony/DctConstants$State;
+    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->RETRYING:Lcom/android/internal/telephony/DctConstants$State;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
 
@@ -55,7 +55,7 @@
     :try_start_1
     sget-object v0, Lcom/android/internal/telephony/cdma/CDMAPhone$2;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
 
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->IDLE:Lcom/android/internal/telephony/DctConstants$State;
+    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->FAILED:Lcom/android/internal/telephony/DctConstants$State;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
 
@@ -71,7 +71,7 @@
     :try_start_2
     sget-object v0, Lcom/android/internal/telephony/cdma/CDMAPhone$2;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
 
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->CONNECTED:Lcom/android/internal/telephony/DctConstants$State;
+    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->IDLE:Lcom/android/internal/telephony/DctConstants$State;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
 
@@ -87,7 +87,7 @@
     :try_start_3
     sget-object v0, Lcom/android/internal/telephony/cdma/CDMAPhone$2;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
 
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->DISCONNECTING:Lcom/android/internal/telephony/DctConstants$State;
+    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->CONNECTED:Lcom/android/internal/telephony/DctConstants$State;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
 
@@ -103,7 +103,7 @@
     :try_start_4
     sget-object v0, Lcom/android/internal/telephony/cdma/CDMAPhone$2;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
 
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->INITING:Lcom/android/internal/telephony/DctConstants$State;
+    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->DISCONNECTING:Lcom/android/internal/telephony/DctConstants$State;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
 
@@ -147,7 +147,7 @@
     :try_end_6
     .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_4
 
-    .line 338
+    .line 351
     :goto_6
     invoke-static {}, Lcom/android/internal/telephony/DctConstants$Activity;->values()[Lcom/android/internal/telephony/DctConstants$Activity;
 
@@ -245,7 +245,7 @@
 
     goto :goto_7
 
-    .line 621
+    .line 721
     :catch_4
     move-exception v0
 

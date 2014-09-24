@@ -156,7 +156,7 @@
 
     move-result-object v3
 
-    const v4, 0x1040097
+    const v4, 0x10400f4
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -363,6 +363,28 @@
     return-void
 .end method
 
+.method public clearUsbDebuggingKeys()V
+    .locals 3
+
+    .prologue
+    .line 262
+    iget-object v0, p0, Lcom/android/server/usb/UsbService;->mContext:Landroid/content/Context;
+
+    const-string v1, "android.permission.MANAGE_USB"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 263
+    iget-object v0, p0, Lcom/android/server/usb/UsbService;->mDeviceManager:Lcom/android/server/usb/UsbDeviceManager;
+
+    invoke-virtual {v0}, Lcom/android/server/usb/UsbDeviceManager;->clearUsbDebuggingKeys()V
+
+    .line 264
+    return-void
+.end method
+
 .method public denyUsbDebugging()V
     .locals 3
 
@@ -392,7 +414,7 @@
     .parameter "args"
 
     .prologue
-    .line 262
+    .line 268
     iget-object v4, p0, Lcom/android/server/usb/UsbService;->mContext:Landroid/content/Context;
 
     const-string v5, "android.permission.DUMP"
@@ -401,47 +423,47 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 263
+    .line 269
     new-instance v1, Lcom/android/internal/util/IndentingPrintWriter;
 
     const-string v4, "  "
 
     invoke-direct {v1, p2, v4}, Lcom/android/internal/util/IndentingPrintWriter;-><init>(Ljava/io/Writer;Ljava/lang/String;)V
 
-    .line 265
+    .line 271
     .local v1, pw:Lcom/android/internal/util/IndentingPrintWriter;
     const-string v4, "USB Manager State:"
 
     invoke-virtual {v1, v4}, Lcom/android/internal/util/IndentingPrintWriter;->println(Ljava/lang/String;)V
 
-    .line 266
+    .line 272
     iget-object v4, p0, Lcom/android/server/usb/UsbService;->mDeviceManager:Lcom/android/server/usb/UsbDeviceManager;
 
     if-eqz v4, :cond_0
 
-    .line 267
+    .line 273
     iget-object v4, p0, Lcom/android/server/usb/UsbService;->mDeviceManager:Lcom/android/server/usb/UsbDeviceManager;
 
     invoke-virtual {v4, p1, v1}, Lcom/android/server/usb/UsbDeviceManager;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;)V
 
-    .line 269
+    .line 275
     :cond_0
     iget-object v4, p0, Lcom/android/server/usb/UsbService;->mHostManager:Lcom/android/server/usb/UsbHostManager;
 
     if-eqz v4, :cond_1
 
-    .line 270
+    .line 276
     iget-object v4, p0, Lcom/android/server/usb/UsbService;->mHostManager:Lcom/android/server/usb/UsbHostManager;
 
     invoke-virtual {v4, p1, v1}, Lcom/android/server/usb/UsbHostManager;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;)V
 
-    .line 273
+    .line 279
     :cond_1
     iget-object v5, p0, Lcom/android/server/usb/UsbService;->mLock:Ljava/lang/Object;
 
     monitor-enter v5
 
-    .line 274
+    .line 280
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -455,14 +477,14 @@
 
     if-ge v0, v4, :cond_2
 
-    .line 275
+    .line 281
     iget-object v4, p0, Lcom/android/server/usb/UsbService;->mSettingsByUser:Landroid/util/SparseArray;
 
     invoke-virtual {v4, v0}, Landroid/util/SparseArray;->keyAt(I)I
 
     move-result v3
 
-    .line 276
+    .line 282
     .local v3, userId:I
     iget-object v4, p0, Lcom/android/server/usb/UsbService;->mSettingsByUser:Landroid/util/SparseArray;
 
@@ -472,11 +494,11 @@
 
     check-cast v2, Lcom/android/server/usb/UsbSettingsManager;
 
-    .line 277
+    .line 283
     .local v2, settings:Lcom/android/server/usb/UsbSettingsManager;
     invoke-virtual {v1}, Lcom/android/internal/util/IndentingPrintWriter;->increaseIndent()V
 
-    .line 278
+    .line 284
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -503,18 +525,18 @@
 
     invoke-virtual {v1, v4}, Lcom/android/internal/util/IndentingPrintWriter;->println(Ljava/lang/String;)V
 
-    .line 279
+    .line 285
     invoke-virtual {v2, p1, v1}, Lcom/android/server/usb/UsbSettingsManager;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;)V
 
-    .line 280
+    .line 286
     invoke-virtual {v1}, Lcom/android/internal/util/IndentingPrintWriter;->decreaseIndent()V
 
-    .line 274
+    .line 280
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 282
+    .line 288
     .end local v2           #settings:Lcom/android/server/usb/UsbSettingsManager;
     .end local v3           #userId:I
     :cond_2
@@ -522,13 +544,13 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 283
+    .line 289
     invoke-virtual {v1}, Lcom/android/internal/util/IndentingPrintWriter;->decreaseIndent()V
 
-    .line 284
+    .line 290
     return-void
 
-    .line 282
+    .line 288
     :catchall_0
     move-exception v4
 

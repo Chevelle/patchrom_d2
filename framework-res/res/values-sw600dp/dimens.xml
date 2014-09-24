@@ -31,6 +31,7 @@
     <dimen name="kg_runway_lights_top_margin">-10.0dip</dimen>
     <dimen name="keyguard_security_view_margin">12.0dip</dimen>
     <dimen name="keyguard_muliuser_selector_margin">12.0dip</dimen>
+    <dimen name="immersive_mode_cling_width">380.0dip</dimen>
     <dimen name="keyguard_pattern_unlock_clock_font_size">112.0sp</dimen>
     <dimen name="keyguard_pattern_unlock_status_line_font_size">14.0sp</dimen>
     <dimen name="navigation_bar_height_portrait">56.0dip</dimen>

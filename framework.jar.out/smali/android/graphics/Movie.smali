@@ -13,13 +13,13 @@
     .parameter "nativeMovie"
 
     .prologue
-    .line 25
+    .line 26
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 26
+    .line 27
     if-nez p1, :cond_0
 
-    .line 27
+    .line 28
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string/jumbo v1, "native movie creation failed"
@@ -28,11 +28,11 @@
 
     throw v0
 
-    .line 29
+    .line 30
     :cond_0
     iput p1, p0, Landroid/graphics/Movie;->mNativeMovie:I
 
-    .line 30
+    .line 31
     return-void
 .end method
 
@@ -44,7 +44,7 @@
     .parameter "pathName"
 
     .prologue
-    .line 54
+    .line 68
     :try_start_0
     new-instance v1, Ljava/io/FileInputStream;
 
@@ -52,7 +52,7 @@
     :try_end_0
     .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 59
+    .line 73
     .local v1, is:Ljava/io/InputStream;
     invoke-static {v1}, Landroid/graphics/Movie;->decodeTempStream(Ljava/io/InputStream;)Landroid/graphics/Movie;
 
@@ -62,18 +62,63 @@
     :goto_0
     return-object v2
 
-    .line 56
+    .line 70
     :catch_0
     move-exception v0
 
-    .line 57
+    .line 71
     .local v0, e:Ljava/io/FileNotFoundException;
     const/4 v2, 0x0
 
     goto :goto_0
 .end method
 
-.method public static native decodeStream(Ljava/io/InputStream;)Landroid/graphics/Movie;
+.method public static decodeStream(Ljava/io/InputStream;)Landroid/graphics/Movie;
+    .locals 2
+    .parameter "is"
+
+    .prologue
+    .line 47
+    if-nez p0, :cond_0
+
+    .line 48
+    const/4 v1, 0x0
+
+    .line 55
+    :goto_0
+    return-object v1
+
+    .line 50
+    :cond_0
+    instance-of v1, p0, Landroid/content/res/AssetManager$AssetInputStream;
+
+    if-eqz v1, :cond_1
+
+    .line 51
+    check-cast p0, Landroid/content/res/AssetManager$AssetInputStream;
+
+    .end local p0
+    invoke-virtual {p0}, Landroid/content/res/AssetManager$AssetInputStream;->getAssetInt()I
+
+    move-result v0
+
+    .line 52
+    .local v0, asset:I
+    invoke-static {v0}, Landroid/graphics/Movie;->nativeDecodeAsset(I)Landroid/graphics/Movie;
+
+    move-result-object v1
+
+    goto :goto_0
+
+    .line 55
+    .end local v0           #asset:I
+    .restart local p0
+    :cond_1
+    invoke-static {p0}, Landroid/graphics/Movie;->nativeDecodeStream(Ljava/io/InputStream;)Landroid/graphics/Movie;
+
+    move-result-object v1
+
+    goto :goto_0
 .end method
 
 .method private static decodeTempStream(Ljava/io/InputStream;)Landroid/graphics/Movie;
@@ -81,30 +126,36 @@
     .parameter "is"
 
     .prologue
-    .line 72
+    .line 86
     const/4 v0, 0x0
 
-    .line 74
+    .line 88
     .local v0, moov:Landroid/graphics/Movie;
     :try_start_0
     invoke-static {p0}, Landroid/graphics/Movie;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Movie;
 
     move-result-object v0
 
-    .line 75
+    .line 89
     invoke-virtual {p0}, Ljava/io/InputStream;->close()V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 83
+    .line 97
     :goto_0
     return-object v0
 
-    .line 77
+    .line 91
     :catch_0
     move-exception v1
 
     goto :goto_0
+.end method
+
+.method private static native nativeDecodeAsset(I)Landroid/graphics/Movie;
+.end method
+
+.method private static native nativeDecodeStream(Ljava/io/InputStream;)Landroid/graphics/Movie;
 .end method
 
 .method private static native nativeDestructor(I)V
@@ -119,12 +170,12 @@
     .parameter "y"
 
     .prologue
-    .line 42
+    .line 43
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, p2, p3, v0}, Landroid/graphics/Movie;->draw(Landroid/graphics/Canvas;FFLandroid/graphics/Paint;)V
 
-    .line 43
+    .line 44
     return-void
 .end method
 
@@ -143,7 +194,7 @@
     .end annotation
 
     .prologue
-    .line 65
+    .line 79
     :try_start_0
     iget v0, p0, Landroid/graphics/Movie;->mNativeMovie:I
 
@@ -151,13 +202,13 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 67
+    .line 81
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 69
+    .line 83
     return-void
 
-    .line 67
+    .line 81
     :catchall_0
     move-exception v0
 

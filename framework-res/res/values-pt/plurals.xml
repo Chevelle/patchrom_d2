@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Tentativas restantes: %d. Caso o código correto não seja digitado, o SIM será bloqueado.</item>
+        <item quantity="one">Tentativas restantes: %d. Caso o código correto não seja digitado, o SIM será bloqueado.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d segundos atrás</item>
         <item quantity="one">1 segundo atrás</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d de %2$d</item>
         <item quantity="one">Uma correspondência</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Tente novamente em %d segundos</item>
+        <item quantity="one">Tente novamente em 1 segundo</item>
     </plurals>
 </resources>

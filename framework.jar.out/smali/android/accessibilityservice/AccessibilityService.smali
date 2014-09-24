@@ -73,10 +73,10 @@
     .locals 0
 
     .prologue
-    .line 209
+    .line 210
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
-    .line 542
+    .line 582
     return-void
 .end method
 
@@ -86,7 +86,7 @@
     .parameter "x1"
 
     .prologue
-    .line 209
+    .line 210
     iput p1, p0, Landroid/accessibilityservice/AccessibilityService;->mConnectionId:I
 
     return p1
@@ -96,7 +96,7 @@
     .locals 4
 
     .prologue
-    .line 491
+    .line 524
     invoke-static {}, Landroid/view/accessibility/AccessibilityInteractionClient;->getInstance()Landroid/view/accessibility/AccessibilityInteractionClient;
 
     move-result-object v2
@@ -107,7 +107,7 @@
 
     move-result-object v0
 
-    .line 493
+    .line 526
     .local v0, connection:Landroid/accessibilityservice/IAccessibilityServiceConnection;
     iget-object v2, p0, Landroid/accessibilityservice/AccessibilityService;->mInfo:Landroid/accessibilityservice/AccessibilityServiceInfo;
 
@@ -115,18 +115,18 @@
 
     if-eqz v0, :cond_0
 
-    .line 495
+    .line 528
     :try_start_0
     iget-object v2, p0, Landroid/accessibilityservice/AccessibilityService;->mInfo:Landroid/accessibilityservice/AccessibilityServiceInfo;
 
     invoke-interface {v0, v2}, Landroid/accessibilityservice/IAccessibilityServiceConnection;->setServiceInfo(Landroid/accessibilityservice/AccessibilityServiceInfo;)V
 
-    .line 496
+    .line 529
     const/4 v2, 0x0
 
     iput-object v2, p0, Landroid/accessibilityservice/AccessibilityService;->mInfo:Landroid/accessibilityservice/AccessibilityServiceInfo;
 
-    .line 497
+    .line 530
     invoke-static {}, Landroid/view/accessibility/AccessibilityInteractionClient;->getInstance()Landroid/view/accessibility/AccessibilityInteractionClient;
 
     move-result-object v2
@@ -135,16 +135,16 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 502
+    .line 535
     :cond_0
     :goto_0
     return-void
 
-    .line 498
+    .line 531
     :catch_0
     move-exception v1
 
-    .line 499
+    .line 532
     .local v1, re:Landroid/os/RemoteException;
     const-string v2, "AccessibilityService"
 
@@ -161,7 +161,7 @@
     .locals 2
 
     .prologue
-    .line 419
+    .line 452
     invoke-static {}, Landroid/view/accessibility/AccessibilityInteractionClient;->getInstance()Landroid/view/accessibility/AccessibilityInteractionClient;
 
     move-result-object v0
@@ -179,7 +179,7 @@
     .locals 4
 
     .prologue
-    .line 460
+    .line 493
     invoke-static {}, Landroid/view/accessibility/AccessibilityInteractionClient;->getInstance()Landroid/view/accessibility/AccessibilityInteractionClient;
 
     move-result-object v2
@@ -190,11 +190,11 @@
 
     move-result-object v0
 
-    .line 462
+    .line 495
     .local v0, connection:Landroid/accessibilityservice/IAccessibilityServiceConnection;
     if-eqz v0, :cond_0
 
-    .line 464
+    .line 497
     :try_start_0
     invoke-interface {v0}, Landroid/accessibilityservice/IAccessibilityServiceConnection;->getServiceInfo()Landroid/accessibilityservice/AccessibilityServiceInfo;
     :try_end_0
@@ -202,15 +202,15 @@
 
     move-result-object v2
 
-    .line 469
+    .line 502
     :goto_0
     return-object v2
 
-    .line 465
+    .line 498
     :catch_0
     move-exception v1
 
-    .line 466
+    .line 499
     .local v1, re:Landroid/os/RemoteException;
     const-string v2, "AccessibilityService"
 
@@ -218,7 +218,7 @@
 
     invoke-static {v2, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 469
+    .line 502
     .end local v1           #re:Landroid/os/RemoteException;
     :cond_0
     const/4 v2, 0x0
@@ -234,7 +234,7 @@
     .parameter "intent"
 
     .prologue
-    .line 510
+    .line 543
     new-instance v0, Landroid/accessibilityservice/AccessibilityService$IAccessibilityServiceClientWrapper;
 
     invoke-virtual {p0}, Landroid/accessibilityservice/AccessibilityService;->getMainLooper()Landroid/os/Looper;
@@ -255,7 +255,7 @@
     .parameter "gestureId"
 
     .prologue
-    .line 409
+    .line 416
     const/4 v0, 0x0
 
     return v0
@@ -264,11 +264,22 @@
 .method public abstract onInterrupt()V
 .end method
 
+.method protected onKeyEvent(Landroid/view/KeyEvent;)Z
+    .locals 1
+    .parameter "event"
+
+    .prologue
+    .line 442
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
 .method protected onServiceConnected()V
     .locals 0
 
     .prologue
-    .line 376
+    .line 383
     return-void
 .end method
 
@@ -277,7 +288,7 @@
     .parameter "action"
 
     .prologue
-    .line 437
+    .line 470
     invoke-static {}, Landroid/view/accessibility/AccessibilityInteractionClient;->getInstance()Landroid/view/accessibility/AccessibilityInteractionClient;
 
     move-result-object v2
@@ -288,11 +299,11 @@
 
     move-result-object v0
 
-    .line 439
+    .line 472
     .local v0, connection:Landroid/accessibilityservice/IAccessibilityServiceConnection;
     if-eqz v0, :cond_0
 
-    .line 441
+    .line 474
     :try_start_0
     invoke-interface {v0, p1}, Landroid/accessibilityservice/IAccessibilityServiceConnection;->performGlobalAction(I)Z
     :try_end_0
@@ -300,15 +311,15 @@
 
     move-result v2
 
-    .line 446
+    .line 479
     :goto_0
     return v2
 
-    .line 442
+    .line 475
     :catch_0
     move-exception v1
 
-    .line 443
+    .line 476
     .local v1, re:Landroid/os/RemoteException;
     const-string v2, "AccessibilityService"
 
@@ -316,7 +327,7 @@
 
     invoke-static {v2, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 446
+    .line 479
     .end local v1           #re:Landroid/os/RemoteException;
     :cond_0
     const/4 v2, 0x0
@@ -329,12 +340,12 @@
     .parameter "info"
 
     .prologue
-    .line 481
+    .line 514
     iput-object p1, p0, Landroid/accessibilityservice/AccessibilityService;->mInfo:Landroid/accessibilityservice/AccessibilityServiceInfo;
 
-    .line 482
+    .line 515
     invoke-direct {p0}, Landroid/accessibilityservice/AccessibilityService;->sendServiceInfo()V
 
-    .line 483
+    .line 516
     return-void
 .end method

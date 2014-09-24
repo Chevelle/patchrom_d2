@@ -1,99 +1,76 @@
-.class final Landroid/view/View$3;
-.super Landroid/util/FloatProperty;
+.class Landroid/view/View$3;
+.super Ljava/lang/Object;
 .source "View.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Landroid/view/View;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Landroid/view/View;->destroyLayer(Z)Z
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Landroid/util/FloatProperty",
-        "<",
-        "Landroid/view/View;",
-        ">;"
-    }
-.end annotation
+
+# instance fields
+.field final synthetic this$0:Landroid/view/View;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
+.method constructor <init>(Landroid/view/View;)V
     .locals 0
-    .parameter "x0"
+    .parameter
 
     .prologue
-    .line 17061
-    invoke-direct {p0, p1}, Landroid/util/FloatProperty;-><init>(Ljava/lang/String;)V
+    .line 13159
+    iput-object p1, p0, Landroid/view/View$3;->this$0:Landroid/view/View;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public get(Landroid/view/View;)Ljava/lang/Float;
-    .locals 1
-    .parameter "object"
+.method public run()V
+    .locals 2
 
     .prologue
-    .line 17069
-    invoke-virtual {p1}, Landroid/view/View;->getAlpha()F
+    .line 13165
+    iget-object v0, p0, Landroid/view/View$3;->this$0:Landroid/view/View;
 
-    move-result v0
-
-    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    #getter for: Landroid/view/View;->mHardwareLayer:Landroid/view/HardwareLayer;
+    invoke-static {v0}, Landroid/view/View;->access$2400(Landroid/view/View;)Landroid/view/HardwareLayer;
 
     move-result-object v0
 
-    return-object v0
-.end method
+    invoke-virtual {v0}, Landroid/view/HardwareLayer;->destroy()V
 
-.method public bridge synthetic get(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
+    .line 13166
+    iget-object v0, p0, Landroid/view/View$3;->this$0:Landroid/view/View;
 
-    .prologue
-    .line 17061
-    check-cast p1, Landroid/view/View;
+    const/4 v1, 0x0
 
-    .end local p1
-    invoke-virtual {p0, p1}, Landroid/view/View$3;->get(Landroid/view/View;)Ljava/lang/Float;
+    #setter for: Landroid/view/View;->mHardwareLayer:Landroid/view/HardwareLayer;
+    invoke-static {v0, v1}, Landroid/view/View;->access$2402(Landroid/view/View;Landroid/view/HardwareLayer;)Landroid/view/HardwareLayer;
 
-    move-result-object v0
+    .line 13168
+    iget-object v0, p0, Landroid/view/View$3;->this$0:Landroid/view/View;
 
-    return-object v0
-.end method
+    const/4 v1, 0x1
 
-.method public setValue(Landroid/view/View;F)V
-    .locals 0
-    .parameter "object"
-    .parameter "value"
+    invoke-virtual {v0, v1}, Landroid/view/View;->invalidate(Z)V
 
-    .prologue
-    .line 17064
-    invoke-virtual {p1, p2}, Landroid/view/View;->setAlpha(F)V
+    .line 13169
+    iget-object v0, p0, Landroid/view/View$3;->this$0:Landroid/view/View;
 
-    .line 17065
-    return-void
-.end method
+    invoke-virtual {v0}, Landroid/view/View;->invalidateParentCaches()V
 
-.method public bridge synthetic setValue(Ljava/lang/Object;F)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 17061
-    check-cast p1, Landroid/view/View;
-
-    .end local p1
-    invoke-virtual {p0, p1, p2}, Landroid/view/View$3;->setValue(Landroid/view/View;F)V
-
+    .line 13170
     return-void
 .end method

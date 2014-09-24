@@ -20,23 +20,23 @@
 
 
 # instance fields
-.field private finalResponse:Ljava/lang/String;
-
-.field in:Ljava/io/InputStream;
-
-.field lineReader:Lcom/android/internal/telephony/test/LineReader;
+.field private mFinalResponse:Ljava/lang/String;
 
 .field mHandlerThread:Landroid/os/HandlerThread;
 
-.field out:Ljava/io/OutputStream;
+.field mIn:Ljava/io/InputStream;
 
-.field pausedResponseCount:I
+.field mLineReader:Lcom/android/internal/telephony/test/LineReader;
 
-.field pausedResponseMonitor:Ljava/lang/Object;
+.field mOut:Ljava/io/OutputStream;
 
-.field simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+.field mPausedResponseCount:I
 
-.field ss:Ljava/net/ServerSocket;
+.field mPausedResponseMonitor:Ljava/lang/Object;
+
+.field mSS:Ljava/net/ServerSocket;
+
+.field mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
 
 # direct methods
@@ -52,7 +52,7 @@
 
     const/4 v4, 0x0
 
-    .line 702
+    .line 657
     const/16 v0, 0x1f
 
     new-array v0, v0, [[Ljava/lang/String;
@@ -482,26 +482,26 @@
     .parameter "out"
 
     .prologue
-    .line 168
+    .line 167
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 158
+    .line 157
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
-    iput-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseMonitor:Ljava/lang/Object;
+    iput-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseMonitor:Ljava/lang/Object;
+
+    .line 168
+    iput-object p1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mIn:Ljava/io/InputStream;
 
     .line 169
-    iput-object p1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->in:Ljava/io/InputStream;
+    iput-object p2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mOut:Ljava/io/OutputStream;
 
-    .line 170
-    iput-object p2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->out:Ljava/io/OutputStream;
-
-    .line 172
+    .line 171
     invoke-direct {p0}, Lcom/android/internal/telephony/test/ModelInterpreter;->init()V
 
-    .line 173
+    .line 172
     return-void
 .end method
 
@@ -515,73 +515,39 @@
     .end annotation
 
     .prologue
-    .line 177
+    .line 176
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 158
+    .line 157
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
-    iput-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseMonitor:Ljava/lang/Object;
+    iput-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseMonitor:Ljava/lang/Object;
 
-    .line 178
+    .line 177
     new-instance v0, Ljava/net/ServerSocket;
 
     invoke-direct {v0}, Ljava/net/ServerSocket;-><init>()V
 
-    iput-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->ss:Ljava/net/ServerSocket;
+    iput-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSS:Ljava/net/ServerSocket;
 
-    .line 180
-    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->ss:Ljava/net/ServerSocket;
+    .line 179
+    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSS:Ljava/net/ServerSocket;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Ljava/net/ServerSocket;->setReuseAddress(Z)V
 
-    .line 181
-    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->ss:Ljava/net/ServerSocket;
+    .line 180
+    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSS:Ljava/net/ServerSocket;
 
     invoke-virtual {v0, p1}, Ljava/net/ServerSocket;->bind(Ljava/net/SocketAddress;)V
 
-    .line 183
+    .line 182
     invoke-direct {p0}, Lcom/android/internal/telephony/test/ModelInterpreter;->init()V
 
-    .line 184
-    return-void
-.end method
-
-.method private conference()V
-    .locals 3
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lcom/android/internal/telephony/test/InterpreterEx;
-        }
-    .end annotation
-
-    .prologue
-    .line 528
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->conference()Z
-
-    move-result v0
-
-    .line 530
-    .local v0, success:Z
-    if-nez v0, :cond_0
-
-    .line 531
-    new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
-
-    const-string v2, "ERROR"
-
-    invoke-direct {v1, v2}, Lcom/android/internal/telephony/test/InterpreterEx;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 533
-    :cond_0
+    .line 183
     return-void
 .end method
 
@@ -589,7 +555,7 @@
     .locals 3
 
     .prologue
-    .line 189
+    .line 188
     new-instance v1, Ljava/lang/Thread;
 
     const-string v2, "ModelInterpreter"
@@ -598,7 +564,7 @@
 
     invoke-virtual {v1}, Ljava/lang/Thread;->start()V
 
-    .line 190
+    .line 189
     new-instance v1, Landroid/os/HandlerThread;
 
     const-string v2, "ModelInterpreter"
@@ -607,27 +573,27 @@
 
     iput-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mHandlerThread:Landroid/os/HandlerThread;
 
-    .line 191
+    .line 190
     iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v1}, Landroid/os/HandlerThread;->start()V
 
-    .line 192
+    .line 191
     iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v1}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
 
     move-result-object v0
 
-    .line 193
+    .line 192
     .local v0, looper:Landroid/os/Looper;
     new-instance v1, Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-direct {v1, v0}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;-><init>(Landroid/os/Looper;)V
 
-    iput-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    iput-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
-    .line 194
+    .line 193
     return-void
 .end method
 
@@ -640,18 +606,18 @@
     .end annotation
 
     .prologue
-    .line 433
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 447
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->onAnswer()Z
 
     move-result v0
 
-    .line 435
+    .line 449
     .local v0, success:Z
     if-nez v0, :cond_0
 
-    .line 436
+    .line 450
     new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
 
     const-string v2, "ERROR"
@@ -660,7 +626,7 @@
 
     throw v1
 
-    .line 438
+    .line 452
     :cond_0
     return-void
 .end method
@@ -675,10 +641,10 @@
     .end annotation
 
     .prologue
-    .line 459
+    .line 473
     const/4 v1, 0x0
 
-    .line 462
+    .line 476
     .local v1, c1:C
     const/4 v3, 0x6
 
@@ -686,7 +652,7 @@
 
     move-result v0
 
-    .line 464
+    .line 478
     .local v0, c0:C
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
@@ -696,26 +662,26 @@
 
     if-lt v3, v4, :cond_0
 
-    .line 465
+    .line 479
     const/4 v3, 0x7
 
     invoke-virtual {p1, v3}, Ljava/lang/String;->charAt(I)C
 
     move-result v1
 
-    .line 468
+    .line 482
     :cond_0
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v3, v0, v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->onChld(CC)Z
 
     move-result v2
 
-    .line 470
+    .line 484
     .local v2, success:Z
     if-nez v2, :cond_1
 
-    .line 471
+    .line 485
     new-instance v3, Lcom/android/internal/telephony/test/InterpreterEx;
 
     const-string v4, "ERROR"
@@ -724,28 +690,23 @@
 
     throw v3
 
-    .line 473
+    .line 487
     :cond_1
     return-void
 .end method
 
 .method private onCLCC()V
     .locals 4
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lcom/android/internal/telephony/test/InterpreterEx;
-        }
-    .end annotation
 
     .prologue
-    .line 552
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 506
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v3}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->getClccLines()Ljava/util/List;
 
     move-result-object v1
 
-    .line 554
+    .line 508
     .local v1, lines:Ljava/util/List;,"Ljava/util/List<Ljava/lang/String;>;"
     const/4 v0, 0x0
 
@@ -758,7 +719,7 @@
     :goto_0
     if-ge v0, v2, :cond_0
 
-    .line 555
+    .line 509
     invoke-interface {v1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v3
@@ -767,12 +728,12 @@
 
     invoke-virtual {p0, v3}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 554
+    .line 508
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 557
+    .line 511
     :cond_0
     return-void
 .end method
@@ -787,8 +748,8 @@
     .end annotation
 
     .prologue
-    .line 540
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 494
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     const/4 v2, 0x1
 
@@ -800,11 +761,11 @@
 
     move-result v0
 
-    .line 542
+    .line 496
     .local v0, success:Z
     if-nez v0, :cond_0
 
-    .line 543
+    .line 497
     new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
 
     const-string v2, "ERROR"
@@ -813,7 +774,7 @@
 
     throw v1
 
-    .line 545
+    .line 499
     :cond_0
     return-void
 .end method
@@ -827,21 +788,21 @@
     .end annotation
 
     .prologue
-    .line 443
+    .line 457
     const/4 v0, 0x0
 
-    .line 445
+    .line 459
     .local v0, success:Z
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->onAnswer()Z
 
     move-result v0
 
-    .line 447
+    .line 461
     if-nez v0, :cond_0
 
-    .line 448
+    .line 462
     new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
 
     const-string v2, "ERROR"
@@ -850,182 +811,40 @@
 
     throw v1
 
-    .line 451
+    .line 465
     :cond_0
     const-string v1, "NO CARRIER"
 
-    iput-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->finalResponse:Ljava/lang/String;
+    iput-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mFinalResponse:Ljava/lang/String;
 
-    .line 452
+    .line 466
     return-void
 .end method
 
 .method private onSMSSend(Ljava/lang/String;)V
     .locals 2
     .parameter "command"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lcom/android/internal/telephony/test/InterpreterEx;
-        }
-    .end annotation
 
     .prologue
-    .line 564
+    .line 518
     const-string v1, "> "
 
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/test/ModelInterpreter;->print(Ljava/lang/String;)V
 
-    .line 565
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->lineReader:Lcom/android/internal/telephony/test/LineReader;
+    .line 519
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mLineReader:Lcom/android/internal/telephony/test/LineReader;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/test/LineReader;->getNextLineCtrlZ()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 567
+    .line 521
     .local v0, pdu:Ljava/lang/String;
     const-string v1, "+CMGS: 1"
 
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 568
-    return-void
-.end method
-
-.method private releaseActiveAcceptHeldOrWaiting()V
-    .locals 3
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lcom/android/internal/telephony/test/InterpreterEx;
-        }
-    .end annotation
-
-    .prologue
-    .line 492
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->releaseActiveAcceptHeldOrWaiting()Z
-
-    move-result v0
-
-    .line 494
-    .local v0, success:Z
-    if-nez v0, :cond_0
-
-    .line 495
-    new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
-
-    const-string v2, "ERROR"
-
-    invoke-direct {v1, v2}, Lcom/android/internal/telephony/test/InterpreterEx;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 497
-    :cond_0
-    return-void
-.end method
-
-.method private releaseHeldOrUDUB()V
-    .locals 3
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lcom/android/internal/telephony/test/InterpreterEx;
-        }
-    .end annotation
-
-    .prologue
-    .line 480
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->releaseHeldOrUDUB()Z
-
-    move-result v0
-
-    .line 482
-    .local v0, success:Z
-    if-nez v0, :cond_0
-
-    .line 483
-    new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
-
-    const-string v2, "ERROR"
-
-    invoke-direct {v1, v2}, Lcom/android/internal/telephony/test/InterpreterEx;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 485
-    :cond_0
-    return-void
-.end method
-
-.method private separateCall(I)V
-    .locals 3
-    .parameter "index"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lcom/android/internal/telephony/test/InterpreterEx;
-        }
-    .end annotation
-
-    .prologue
-    .line 516
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
-
-    invoke-virtual {v1, p1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->separateCall(I)Z
-
-    move-result v0
-
-    .line 518
-    .local v0, success:Z
-    if-nez v0, :cond_0
-
-    .line 519
-    new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
-
-    const-string v2, "ERROR"
-
-    invoke-direct {v1, v2}, Lcom/android/internal/telephony/test/InterpreterEx;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 521
-    :cond_0
-    return-void
-.end method
-
-.method private switchActiveAndHeldOrWaiting()V
-    .locals 3
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Lcom/android/internal/telephony/test/InterpreterEx;
-        }
-    .end annotation
-
-    .prologue
-    .line 504
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->switchActiveAndHeldOrWaiting()Z
-
-    move-result v0
-
-    .line 506
-    .local v0, success:Z
-    if-nez v0, :cond_0
-
-    .line 507
-    new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
-
-    const-string v2, "ERROR"
-
-    invoke-direct {v1, v2}, Lcom/android/internal/telephony/test/InterpreterEx;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 509
-    :cond_0
+    .line 522
     return-void
 .end method
 
@@ -1035,26 +854,26 @@
     .locals 2
 
     .prologue
-    .line 409
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseMonitor:Ljava/lang/Object;
+    .line 422
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseMonitor:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 410
+    .line 423
     :try_start_0
-    iget v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseCount:I
+    iget v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseCount:I
 
     add-int/lit8 v0, v0, 0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseCount:I
+    iput v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseCount:I
 
-    .line 411
+    .line 424
     monitor-exit v1
 
-    .line 412
+    .line 425
     return-void
 
-    .line 411
+    .line 424
     :catchall_0
     move-exception v0
 
@@ -1070,10 +889,10 @@
     .parameter "s"
 
     .prologue
-    .line 669
+    .line 623
     monitor-enter p0
 
-    .line 671
+    .line 625
     :try_start_0
     const-string v2, "US-ASCII"
 
@@ -1081,35 +900,35 @@
 
     move-result-object v0
 
-    .line 675
+    .line 629
     .local v0, bytes:[B
-    iget-object v2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->out:Ljava/io/OutputStream;
+    iget-object v2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mOut:Ljava/io/OutputStream;
 
     invoke-virtual {v2, v0}, Ljava/io/OutputStream;->write([B)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 679
+    .line 633
     .end local v0           #bytes:[B
     :goto_0
     :try_start_1
     monitor-exit p0
 
-    .line 680
+    .line 634
     return-void
 
-    .line 676
+    .line 630
     :catch_0
     move-exception v1
 
-    .line 677
+    .line 631
     .local v1, ex:Ljava/io/IOException;
     invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_0
 
-    .line 679
+    .line 633
     .end local v1           #ex:Ljava/io/IOException;
     :catchall_0
     move-exception v2
@@ -1126,10 +945,10 @@
     .parameter "s"
 
     .prologue
-    .line 652
+    .line 606
     monitor-enter p0
 
-    .line 654
+    .line 608
     :try_start_0
     const-string v2, "US-ASCII"
 
@@ -1137,14 +956,14 @@
 
     move-result-object v0
 
-    .line 658
+    .line 612
     .local v0, bytes:[B
-    iget-object v2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->out:Ljava/io/OutputStream;
+    iget-object v2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mOut:Ljava/io/OutputStream;
 
     invoke-virtual {v2, v0}, Ljava/io/OutputStream;->write([B)V
 
-    .line 659
-    iget-object v2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->out:Ljava/io/OutputStream;
+    .line 613
+    iget-object v2, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mOut:Ljava/io/OutputStream;
 
     const/16 v3, 0xd
 
@@ -1153,26 +972,26 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 663
+    .line 617
     .end local v0           #bytes:[B
     :goto_0
     :try_start_1
     monitor-exit p0
 
-    .line 664
+    .line 618
     return-void
 
-    .line 660
+    .line 614
     :catch_0
     move-exception v1
 
-    .line 661
+    .line 615
     .local v1, ex:Ljava/io/IOException;
     invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_0
 
-    .line 663
+    .line 617
     .end local v1           #ex:Ljava/io/IOException;
     :catchall_0
     move-exception v2
@@ -1194,12 +1013,12 @@
     .end annotation
 
     .prologue
-    .line 575
+    .line 529
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/test/ModelInterpreter;->splitCommands(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v1
 
-    .line 577
+    .line 531
     .local v1, commands:[Ljava/lang/String;
     const/4 v3, 0x0
 
@@ -1209,10 +1028,10 @@
 
     if-ge v3, v6, :cond_a
 
-    .line 578
+    .line 532
     aget-object v0, v1, v3
 
-    .line 580
+    .line 534
     .local v0, command:Ljava/lang/String;
     const-string v6, "A"
 
@@ -1222,17 +1041,17 @@
 
     if-eqz v6, :cond_1
 
-    .line 581
+    .line 535
     invoke-direct {p0}, Lcom/android/internal/telephony/test/ModelInterpreter;->onAnswer()V
 
-    .line 577
+    .line 531
     :cond_0
     :goto_1
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 582
+    .line 536
     :cond_1
     const-string v6, "H"
 
@@ -1242,12 +1061,12 @@
 
     if-eqz v6, :cond_2
 
-    .line 583
+    .line 537
     invoke-direct {p0}, Lcom/android/internal/telephony/test/ModelInterpreter;->onHangup()V
 
     goto :goto_1
 
-    .line 584
+    .line 538
     :cond_2
     const-string v6, "+CHLD="
 
@@ -1257,12 +1076,12 @@
 
     if-eqz v6, :cond_3
 
-    .line 585
+    .line 539
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/test/ModelInterpreter;->onCHLD(Ljava/lang/String;)V
 
     goto :goto_1
 
-    .line 586
+    .line 540
     :cond_3
     const-string v6, "+CLCC"
 
@@ -1272,12 +1091,12 @@
 
     if-eqz v6, :cond_4
 
-    .line 587
+    .line 541
     invoke-direct {p0}, Lcom/android/internal/telephony/test/ModelInterpreter;->onCLCC()V
 
     goto :goto_1
 
-    .line 588
+    .line 542
     :cond_4
     const-string v6, "D"
 
@@ -1287,12 +1106,12 @@
 
     if-eqz v6, :cond_5
 
-    .line 589
+    .line 543
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/test/ModelInterpreter;->onDial(Ljava/lang/String;)V
 
     goto :goto_1
 
-    .line 590
+    .line 544
     :cond_5
     const-string v6, "+CMGS="
 
@@ -1302,16 +1121,16 @@
 
     if-eqz v6, :cond_6
 
-    .line 591
+    .line 545
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/test/ModelInterpreter;->onSMSSend(Ljava/lang/String;)V
 
     goto :goto_1
 
-    .line 593
+    .line 547
     :cond_6
     const/4 v2, 0x0
 
-    .line 595
+    .line 549
     .local v2, found:Z
     const/4 v4, 0x0
 
@@ -1323,7 +1142,7 @@
 
     if-ge v4, v6, :cond_8
 
-    .line 596
+    .line 550
     sget-object v6, Lcom/android/internal/telephony/test/ModelInterpreter;->sDefaultResponses:[[Ljava/lang/String;
 
     aget-object v6, v6, v4
@@ -1338,7 +1157,7 @@
 
     if-eqz v6, :cond_9
 
-    .line 597
+    .line 551
     sget-object v6, Lcom/android/internal/telephony/test/ModelInterpreter;->sDefaultResponses:[[Ljava/lang/String;
 
     aget-object v6, v6, v4
@@ -1347,23 +1166,23 @@
 
     aget-object v5, v6, v7
 
-    .line 598
+    .line 552
     .local v5, r:Ljava/lang/String;
     if-eqz v5, :cond_7
 
-    .line 599
+    .line 553
     invoke-virtual {p0, v5}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 601
+    .line 555
     :cond_7
     const/4 v2, 0x1
 
-    .line 606
+    .line 560
     .end local v5           #r:Ljava/lang/String;
     :cond_8
     if-nez v2, :cond_0
 
-    .line 607
+    .line 561
     new-instance v6, Lcom/android/internal/telephony/test/InterpreterEx;
 
     const-string v7, "ERROR"
@@ -1372,13 +1191,13 @@
 
     throw v6
 
-    .line 595
+    .line 549
     :cond_9
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_2
 
-    .line 611
+    .line 565
     .end local v0           #command:Ljava/lang/String;
     .end local v2           #found:Z
     .end local v4           #j:I
@@ -1390,12 +1209,12 @@
     .locals 1
 
     .prologue
-    .line 294
-    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 296
+    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->progressConnectingCallState()V
 
-    .line 295
+    .line 297
     return-void
 .end method
 
@@ -1403,12 +1222,12 @@
     .locals 1
 
     .prologue
-    .line 302
-    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 305
+    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->progressConnectingToActive()V
 
-    .line 303
+    .line 306
     return-void
 .end method
 
@@ -1416,37 +1235,37 @@
     .locals 2
 
     .prologue
-    .line 417
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseMonitor:Ljava/lang/Object;
+    .line 431
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseMonitor:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 418
+    .line 432
     :try_start_0
-    iget v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseCount:I
+    iget v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseCount:I
 
     add-int/lit8 v0, v0, -0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseCount:I
+    iput v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseCount:I
 
-    .line 420
-    iget v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseCount:I
+    .line 434
+    iget v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseCount:I
 
     if-nez v0, :cond_0
 
-    .line 421
-    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseMonitor:Ljava/lang/Object;
+    .line 435
+    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseMonitor:Ljava/lang/Object;
 
     invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
 
-    .line 423
+    .line 437
     :cond_0
     monitor-exit v1
 
-    .line 424
+    .line 438
     return-void
 
-    .line 423
+    .line 437
     :catchall_0
     move-exception v0
 
@@ -1464,13 +1283,13 @@
     .line 201
     :cond_0
     :goto_0
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->ss:Ljava/net/ServerSocket;
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSS:Ljava/net/ServerSocket;
 
     if-eqz v3, :cond_1
 
     .line 205
     :try_start_0
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->ss:Ljava/net/ServerSocket;
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSS:Ljava/net/ServerSocket;
 
     invoke-virtual {v3}, Ljava/net/ServerSocket;->accept()Ljava/net/Socket;
     :try_end_0
@@ -1485,14 +1304,14 @@
 
     move-result-object v3
 
-    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->in:Ljava/io/InputStream;
+    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mIn:Ljava/io/InputStream;
 
     .line 214
     invoke-virtual {v2}, Ljava/net/Socket;->getOutputStream()Ljava/io/OutputStream;
 
     move-result-object v3
 
-    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->out:Ljava/io/OutputStream;
+    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mOut:Ljava/io/OutputStream;
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
 
@@ -1501,18 +1320,18 @@
 
     const-string v4, "New connection accepted"
 
-    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v4}, Landroid/telephony/Rlog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 225
     .end local v2           #s:Ljava/net/Socket;
     :cond_1
     new-instance v3, Lcom/android/internal/telephony/test/LineReader;
 
-    iget-object v4, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->in:Ljava/io/InputStream;
+    iget-object v4, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mIn:Ljava/io/InputStream;
 
     invoke-direct {v3, v4}, Lcom/android/internal/telephony/test/LineReader;-><init>(Ljava/io/InputStream;)V
 
-    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->lineReader:Lcom/android/internal/telephony/test/LineReader;
+    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mLineReader:Lcom/android/internal/telephony/test/LineReader;
 
     .line 227
     const-string v3, "Welcome"
@@ -1521,7 +1340,7 @@
 
     .line 232
     :goto_1
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->lineReader:Lcom/android/internal/telephony/test/LineReader;
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mLineReader:Lcom/android/internal/telephony/test/LineReader;
 
     invoke-virtual {v3}, Lcom/android/internal/telephony/test/LineReader;->getNextLine()Ljava/lang/String;
 
@@ -1536,10 +1355,10 @@
 
     const-string v4, "Disconnected"
 
-    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v4}, Landroid/telephony/Rlog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 265
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->ss:Ljava/net/ServerSocket;
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSS:Ljava/net/ServerSocket;
 
     if-nez v3, :cond_0
 
@@ -1558,7 +1377,7 @@
 
     const-string v4, "IOException on socket.accept(); stopping"
 
-    invoke-static {v3, v4, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v3, v4, v0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_2
 
@@ -1574,7 +1393,7 @@
 
     const-string v4, "IOException on accepted socket(); re-listening"
 
-    invoke-static {v3, v4, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v3, v4, v0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
 
@@ -1583,14 +1402,14 @@
     .end local v2           #s:Ljava/net/Socket;
     .restart local v1       #line:Ljava/lang/String;
     :cond_2
-    iget-object v4, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseMonitor:Ljava/lang/Object;
+    iget-object v4, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseMonitor:Ljava/lang/Object;
 
     monitor-enter v4
 
     .line 241
     :goto_3
     :try_start_2
-    iget v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseCount:I
+    iget v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseCount:I
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
@@ -1598,7 +1417,7 @@
 
     .line 243
     :try_start_3
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->pausedResponseMonitor:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mPausedResponseMonitor:Ljava/lang/Object;
 
     invoke-virtual {v3}, Ljava/lang/Object;->wait()V
     :try_end_3
@@ -1627,13 +1446,13 @@
     :try_start_5
     const-string v3, "OK"
 
-    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->finalResponse:Ljava/lang/String;
+    iput-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mFinalResponse:Ljava/lang/String;
 
     .line 252
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/test/ModelInterpreter;->processLine(Ljava/lang/String;)V
 
     .line 253
-    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->finalResponse:Ljava/lang/String;
+    iget-object v3, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mFinalResponse:Ljava/lang/String;
 
     invoke-virtual {p0, v3}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
     :try_end_5
@@ -1675,7 +1494,7 @@
     .line 255
     .local v0, ex:Lcom/android/internal/telephony/test/InterpreterEx;
     :try_start_8
-    iget-object v3, v0, Lcom/android/internal/telephony/test/InterpreterEx;->result:Ljava/lang/String;
+    iget-object v3, v0, Lcom/android/internal/telephony/test/InterpreterEx;->mResult:Ljava/lang/String;
 
     invoke-virtual {p0, v3}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
@@ -1705,20 +1524,20 @@
     .parameter "unsol"
 
     .prologue
-    .line 369
+    .line 378
     monitor-enter p0
 
-    .line 370
+    .line 379
     :try_start_0
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 371
+    .line 380
     monitor-exit p0
 
-    .line 372
+    .line 381
     return-void
 
-    .line 371
+    .line 380
     :catchall_0
     move-exception v0
 
@@ -1734,12 +1553,12 @@
     .parameter "b"
 
     .prologue
-    .line 311
-    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 315
+    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v0, p1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->setAutoProgressConnectingCall(Z)V
 
-    .line 312
+    .line 316
     return-void
 .end method
 
@@ -1748,7 +1567,7 @@
     .parameter "gsmCause"
 
     .prologue
-    .line 323
+    .line 329
     return-void
 .end method
 
@@ -1757,12 +1576,12 @@
     .parameter "b"
 
     .prologue
-    .line 317
-    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 322
+    iget-object v0, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v0, p1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->setNextDialFailImmediately(Z)V
 
-    .line 318
+    .line 323
     return-void
 .end method
 
@@ -1770,49 +1589,49 @@
     .locals 2
 
     .prologue
-    .line 686
+    .line 641
     iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v1}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
 
     move-result-object v0
 
-    .line 687
+    .line 642
     .local v0, looper:Landroid/os/Looper;
     if-eqz v0, :cond_0
 
-    .line 688
+    .line 643
     invoke-virtual {v0}, Landroid/os/Looper;->quit()V
 
-    .line 692
+    .line 647
     :cond_0
     :try_start_0
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->in:Ljava/io/InputStream;
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mIn:Ljava/io/InputStream;
 
     invoke-virtual {v1}, Ljava/io/InputStream;->close()V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1
 
-    .line 696
+    .line 651
     :goto_0
     :try_start_1
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->out:Ljava/io/OutputStream;
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mOut:Ljava/io/OutputStream;
 
     invoke-virtual {v1}, Ljava/io/OutputStream;->close()V
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 699
+    .line 654
     :goto_1
     return-void
 
-    .line 697
+    .line 652
     :catch_0
     move-exception v1
 
     goto :goto_1
 
-    .line 693
+    .line 648
     :catch_1
     move-exception v1
 
@@ -1833,7 +1652,7 @@
 
     const/4 v2, 0x0
 
-    .line 617
+    .line 571
     const-string v1, "AT"
 
     invoke-virtual {p1, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
@@ -1842,7 +1661,7 @@
 
     if-nez v1, :cond_0
 
-    .line 618
+    .line 572
     new-instance v1, Lcom/android/internal/telephony/test/InterpreterEx;
 
     const-string v2, "ERROR"
@@ -1851,7 +1670,7 @@
 
     throw v1
 
-    .line 621
+    .line 575
     :cond_0
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
@@ -1859,20 +1678,20 @@
 
     if-ne v1, v3, :cond_1
 
-    .line 623
+    .line 577
     new-array v0, v2, [Ljava/lang/String;
 
-    .line 631
+    .line 585
     :goto_0
     return-object v0
 
-    .line 626
+    .line 580
     :cond_1
     const/4 v1, 0x1
 
     new-array v0, v1, [Ljava/lang/String;
 
-    .line 629
+    .line 583
     .local v0, ret:[Ljava/lang/String;
     invoke-virtual {p1, v3}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
@@ -1887,23 +1706,23 @@
     .locals 2
 
     .prologue
-    .line 359
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 368
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->triggerHangupAll()Z
 
     move-result v0
 
-    .line 361
+    .line 370
     .local v0, success:Z
     if-eqz v0, :cond_0
 
-    .line 362
+    .line 371
     const-string v1, "NO CARRIER"
 
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 364
+    .line 373
     :cond_0
     return-void
 .end method
@@ -1912,23 +1731,23 @@
     .locals 2
 
     .prologue
-    .line 345
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 353
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->triggerHangupBackground()Z
 
     move-result v0
 
-    .line 347
+    .line 355
     .local v0, success:Z
     if-eqz v0, :cond_0
 
-    .line 348
+    .line 356
     const-string v1, "NO CARRIER"
 
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 350
+    .line 358
     :cond_0
     return-void
 .end method
@@ -1937,23 +1756,23 @@
     .locals 2
 
     .prologue
-    .line 332
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    .line 339
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->triggerHangupForeground()Z
 
     move-result v0
 
-    .line 334
+    .line 341
     .local v0, success:Z
     if-eqz v0, :cond_0
 
-    .line 335
+    .line 342
     const-string v1, "NO CARRIER"
 
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 337
+    .line 344
     :cond_0
     return-void
 .end method
@@ -1963,7 +1782,7 @@
     .parameter "message"
 
     .prologue
-    .line 404
+    .line 416
     return-void
 .end method
 
@@ -1973,7 +1792,7 @@
     .parameter "message"
 
     .prologue
-    .line 375
+    .line 386
     return-void
 .end method
 
@@ -1982,34 +1801,34 @@
     .parameter "number"
 
     .prologue
-    .line 279
+    .line 280
     monitor-enter p0
 
-    .line 282
+    .line 283
     :try_start_0
-    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->simulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
+    iget-object v1, p0, Lcom/android/internal/telephony/test/ModelInterpreter;->mSimulatedCallState:Lcom/android/internal/telephony/test/SimulatedGsmCallState;
 
     invoke-virtual {v1, p1}, Lcom/android/internal/telephony/test/SimulatedGsmCallState;->triggerRing(Ljava/lang/String;)Z
 
     move-result v0
 
-    .line 284
+    .line 285
     .local v0, success:Z
     if-eqz v0, :cond_0
 
-    .line 285
+    .line 286
     const-string v1, "RING"
 
     invoke-virtual {p0, v1}, Lcom/android/internal/telephony/test/ModelInterpreter;->println(Ljava/lang/String;)V
 
-    .line 287
+    .line 288
     :cond_0
     monitor-exit p0
 
-    .line 288
+    .line 289
     return-void
 
-    .line 287
+    .line 288
     .end local v0           #success:Z
     :catchall_0
     move-exception v1
@@ -2027,6 +1846,6 @@
     .parameter "b"
 
     .prologue
-    .line 374
+    .line 384
     return-void
 .end method

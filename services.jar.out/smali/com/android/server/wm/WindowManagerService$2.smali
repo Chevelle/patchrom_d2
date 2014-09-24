@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 311
+    .line 309
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$2;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,12 +40,12 @@
     .parameter "intent"
 
     .prologue
-    .line 314
+    .line 312
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 315
+    .line 313
     .local v0, action:Ljava/lang/String;
     const-string v1, "android.app.action.DEVICE_POLICY_MANAGER_STATE_CHANGED"
 
@@ -55,7 +55,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 316
+    .line 314
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$2;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     #getter for: Lcom/android/server/wm/WindowManagerService;->mKeyguardDisableHandler:Lcom/android/server/wm/KeyguardDisableHandler;
@@ -67,7 +67,7 @@
 
     invoke-virtual {v1, v2}, Lcom/android/server/wm/KeyguardDisableHandler;->sendEmptyMessage(I)Z
 
-    .line 319
+    .line 317
     :cond_0
     return-void
 .end method

@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 49
+    .line 57
     iput-object p1, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
     invoke-direct {p0}, Ljava/io/InputStream;-><init>()V
@@ -43,7 +43,7 @@
     .end annotation
 
     .prologue
-    .line 53
+    .line 61
     iget-object v0, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
     iget-object v1, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
@@ -70,12 +70,12 @@
     .end annotation
 
     .prologue
-    .line 59
+    .line 67
     iget-object v0, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
     invoke-virtual {v0}, Landroid/net/LocalSocketImpl;->close()V
 
-    .line 60
+    .line 68
     return-void
 .end method
 
@@ -88,7 +88,7 @@
     .end annotation
 
     .prologue
-    .line 66
+    .line 74
     iget-object v2, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
     #getter for: Landroid/net/LocalSocketImpl;->readMonitor:Ljava/lang/Object;
@@ -98,7 +98,7 @@
 
     monitor-enter v3
 
-    .line 67
+    .line 75
     :try_start_0
     iget-object v2, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
@@ -107,7 +107,7 @@
 
     move-result-object v0
 
-    .line 68
+    .line 76
     .local v0, myFd:Ljava/io/FileDescriptor;
     if-nez v0, :cond_0
 
@@ -119,7 +119,7 @@
 
     throw v2
 
-    .line 72
+    .line 80
     .end local v0           #myFd:Ljava/io/FileDescriptor;
     :catchall_0
     move-exception v2
@@ -130,7 +130,7 @@
 
     throw v2
 
-    .line 70
+    .line 78
     .restart local v0       #myFd:Ljava/io/FileDescriptor;
     :cond_0
     :try_start_1
@@ -141,7 +141,7 @@
 
     move-result v1
 
-    .line 71
+    .line 79
     .local v1, ret:I
     monitor-exit v3
     :try_end_1
@@ -160,7 +160,7 @@
     .end annotation
 
     .prologue
-    .line 78
+    .line 86
     const/4 v0, 0x0
 
     array-length v1, p1
@@ -184,7 +184,7 @@
     .end annotation
 
     .prologue
-    .line 84
+    .line 92
     iget-object v2, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
     #getter for: Landroid/net/LocalSocketImpl;->readMonitor:Ljava/lang/Object;
@@ -194,7 +194,7 @@
 
     monitor-enter v3
 
-    .line 85
+    .line 93
     :try_start_0
     iget-object v2, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
@@ -203,7 +203,7 @@
 
     move-result-object v0
 
-    .line 86
+    .line 94
     .local v0, myFd:Ljava/io/FileDescriptor;
     if-nez v0, :cond_0
 
@@ -215,7 +215,7 @@
 
     throw v2
 
-    .line 95
+    .line 103
     .end local v0           #myFd:Ljava/io/FileDescriptor;
     :catchall_0
     move-exception v2
@@ -226,7 +226,7 @@
 
     throw v2
 
-    .line 88
+    .line 96
     .restart local v0       #myFd:Ljava/io/FileDescriptor;
     :cond_0
     if-ltz p2, :cond_1
@@ -240,7 +240,7 @@
 
     if-le v2, v4, :cond_2
 
-    .line 89
+    .line 97
     :cond_1
     new-instance v2, Ljava/lang/ArrayIndexOutOfBoundsException;
 
@@ -248,7 +248,7 @@
 
     throw v2
 
-    .line 92
+    .line 100
     :cond_2
     iget-object v2, p0, Landroid/net/LocalSocketImpl$SocketInputStream;->this$0:Landroid/net/LocalSocketImpl;
 
@@ -257,7 +257,7 @@
 
     move-result v1
 
-    .line 94
+    .line 102
     .local v1, ret:I
     monitor-exit v3
     :try_end_1

@@ -102,7 +102,7 @@
     .parameter "pkgFlags"
 
     .prologue
-    const v0, -0x17fbffff
+    const v0, -0x19fbffff
 
     and-int/2addr v0, p1
 

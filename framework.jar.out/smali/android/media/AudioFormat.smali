@@ -26,19 +26,33 @@
 
 .field public static final CHANNEL_INVALID:I = 0x0
 
+.field public static final CHANNEL_IN_5POINT1:I = 0x3f0000
+
 .field public static final CHANNEL_IN_BACK:I = 0x20
 
+.field public static final CHANNEL_IN_BACK_LEFT:I = 0x100000
+
 .field public static final CHANNEL_IN_BACK_PROCESSED:I = 0x200
+
+.field public static final CHANNEL_IN_BACK_RIGHT:I = 0x200000
 
 .field public static final CHANNEL_IN_DEFAULT:I = 0x1
 
 .field public static final CHANNEL_IN_FRONT:I = 0x10
 
+.field public static final CHANNEL_IN_FRONT_CENTER:I = 0x40000
+
+.field public static final CHANNEL_IN_FRONT_LEFT:I = 0x10000
+
 .field public static final CHANNEL_IN_FRONT_PROCESSED:I = 0x100
+
+.field public static final CHANNEL_IN_FRONT_RIGHT:I = 0x20000
 
 .field public static final CHANNEL_IN_LEFT:I = 0x4
 
 .field public static final CHANNEL_IN_LEFT_PROCESSED:I = 0x40
+
+.field public static final CHANNEL_IN_LOW_FREQUENCY:I = 0x80000
 
 .field public static final CHANNEL_IN_MONO:I = 0x10
 
@@ -122,6 +136,8 @@
 
 .field public static final ENCODING_EVRCB:I = 0x67
 
+.field public static final ENCODING_EVRCNW:I = 0x69
+
 .field public static final ENCODING_EVRCWB:I = 0x68
 
 .field public static final ENCODING_INVALID:I = 0x0
@@ -136,7 +152,7 @@
     .locals 0
 
     .prologue
-    .line 25
+    .line 28
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

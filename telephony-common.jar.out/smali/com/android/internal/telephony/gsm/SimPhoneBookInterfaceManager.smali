@@ -4,7 +4,7 @@
 
 
 # static fields
-.field static final LOG_TAG:Ljava/lang/String; = "GSM"
+.field static final LOG_TAG:Ljava/lang/String; = "SimPhoneBookIM"
 
 
 # direct methods
@@ -26,10 +26,10 @@
     .locals 0
 
     .prologue
-    .line 42
+    .line 43
     invoke-super {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->dispose()V
 
-    .line 43
+    .line 44
     return-void
 .end method
 
@@ -37,34 +37,34 @@
     .locals 3
 
     .prologue
-    .line 47
+    .line 49
     :try_start_0
     invoke-super {p0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->finalize()V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 51
+    .line 53
     :goto_0
-    const-string v1, "GSM"
+    const-string v1, "SimPhoneBookIM"
 
     const-string v2, "SimPhoneBookInterfaceManager finalized"
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v1, v2}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 52
+    .line 54
     return-void
 
-    .line 48
+    .line 50
     :catch_0
     move-exception v0
 
-    .line 49
+    .line 51
     .local v0, throwable:Ljava/lang/Throwable;
-    const-string v1, "GSM"
+    const-string v1, "SimPhoneBookIM"
 
     const-string v2, "Error while finalizing:"
 
-    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v1, v2, v0}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
 .end method
@@ -74,7 +74,7 @@
     .parameter "efid"
 
     .prologue
-    .line 55
+    .line 58
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -95,30 +95,30 @@
 
     invoke-virtual {p0, v3}, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->logd(Ljava/lang/String;)V
 
-    .line 56
+    .line 59
     iget-object v4, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->mLock:Ljava/lang/Object;
 
     monitor-enter v4
 
-    .line 57
+    .line 60
     :try_start_0
     invoke-virtual {p0}, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->checkThread()V
 
-    .line 58
+    .line 61
     const/4 v3, 0x3
 
     new-array v3, v3, [I
 
-    iput-object v3, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->recordSize:[I
+    iput-object v3, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->mRecordSize:[I
 
-    .line 61
+    .line 64
     new-instance v2, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v3, 0x0
 
     invoke-direct {v2, v3}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
 
-    .line 62
+    .line 65
     .local v2, status:Ljava/util/concurrent/atomic/AtomicBoolean;
     iget-object v3, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->mBaseHandler:Landroid/os/Handler;
 
@@ -128,37 +128,37 @@
 
     move-result-object v1
 
-    .line 64
+    .line 67
     .local v1, response:Landroid/os/Message;
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->phone:Lcom/android/internal/telephony/PhoneBase;
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
-    invoke-virtual {v3}, Lcom/android/internal/telephony/PhoneBase;->getIccFileHandler()Lcom/android/internal/telephony/IccFileHandler;
+    invoke-virtual {v3}, Lcom/android/internal/telephony/PhoneBase;->getIccFileHandler()Lcom/android/internal/telephony/uicc/IccFileHandler;
 
     move-result-object v0
 
-    .line 65
-    .local v0, fh:Lcom/android/internal/telephony/IccFileHandler;
+    .line 68
+    .local v0, fh:Lcom/android/internal/telephony/uicc/IccFileHandler;
     if-eqz v0, :cond_0
 
-    .line 66
-    invoke-virtual {v0, p1, v1}, Lcom/android/internal/telephony/IccFileHandler;->getEFLinearRecordSize(ILandroid/os/Message;)V
+    .line 69
+    invoke-virtual {v0, p1, v1}, Lcom/android/internal/telephony/uicc/IccFileHandler;->getEFLinearRecordSize(ILandroid/os/Message;)V
 
-    .line 67
+    .line 70
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->waitForResult(Ljava/util/concurrent/atomic/AtomicBoolean;)V
 
-    .line 69
+    .line 72
     :cond_0
     monitor-exit v4
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 71
-    iget-object v3, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->recordSize:[I
+    .line 74
+    iget-object v3, p0, Lcom/android/internal/telephony/gsm/SimPhoneBookInterfaceManager;->mRecordSize:[I
 
     return-object v3
 
-    .line 69
-    .end local v0           #fh:Lcom/android/internal/telephony/IccFileHandler;
+    .line 72
+    .end local v0           #fh:Lcom/android/internal/telephony/uicc/IccFileHandler;
     .end local v1           #response:Landroid/os/Message;
     .end local v2           #status:Ljava/util/concurrent/atomic/AtomicBoolean;
     :catchall_0
@@ -177,8 +177,8 @@
     .parameter "msg"
 
     .prologue
-    .line 75
-    const-string v0, "GSM"
+    .line 79
+    const-string v0, "SimPhoneBookIM"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -198,9 +198,9 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 76
+    .line 80
     return-void
 .end method
 
@@ -209,8 +209,8 @@
     .parameter "msg"
 
     .prologue
-    .line 79
-    const-string v0, "GSM"
+    .line 84
+    const-string v0, "SimPhoneBookIM"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -230,8 +230,8 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 80
+    .line 85
     return-void
 .end method

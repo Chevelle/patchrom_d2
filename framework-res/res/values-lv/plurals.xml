@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Varat mēģināt vēl %d reizi(-es), pirms SIM karte tiks bloķēta.</item>
+        <item quantity="one">Varat mēģināt vēl %d reizi, pirms SIM karte tiks bloķēta.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">Pirms %d sekundes(-ēm)</item>
         <item quantity="one">Pirms 1 sekundes</item>
@@ -77,7 +81,7 @@
     </plurals>
     <plurals name="duration_hours">
         <item quantity="other">%d h</item>
-        <item quantity="one">1 h</item>
+        <item quantity="one">1 stunda</item>
     </plurals>
     <plurals name="wifi_available">
         <item quantity="other">Wi-Fi tīkli ir pieejami</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d no %2$d</item>
         <item quantity="one">1 atbilstība</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Mēģ. vēl pēc %d s</item>
+        <item quantity="one">Mēģ. vēl pēc 1 s</item>
     </plurals>
 </resources>

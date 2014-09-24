@@ -231,7 +231,7 @@
 
     aget-byte v9, v9, v10
 
-    invoke-static {v9}, Lcom/android/internal/telephony/IccUtils;->gsmBcdByteToInt(B)I
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
     move-result v8
 
@@ -241,7 +241,7 @@
 
     aget-byte v9, v9, v11
 
-    invoke-static {v9}, Lcom/android/internal/telephony/IccUtils;->gsmBcdByteToInt(B)I
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
     move-result v3
 
@@ -253,7 +253,7 @@
 
     aget-byte v9, v9, v10
 
-    invoke-static {v9}, Lcom/android/internal/telephony/IccUtils;->gsmBcdByteToInt(B)I
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
     move-result v0
 
@@ -265,7 +265,7 @@
 
     aget-byte v9, v9, v10
 
-    invoke-static {v9}, Lcom/android/internal/telephony/IccUtils;->gsmBcdByteToInt(B)I
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
     move-result v1
 
@@ -277,7 +277,7 @@
 
     aget-byte v9, v9, v10
 
-    invoke-static {v9}, Lcom/android/internal/telephony/IccUtils;->gsmBcdByteToInt(B)I
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
     move-result v2
 
@@ -289,7 +289,7 @@
 
     aget-byte v9, v9, v10
 
-    invoke-static {v9}, Lcom/android/internal/telephony/IccUtils;->gsmBcdByteToInt(B)I
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
     move-result v4
 
@@ -307,7 +307,7 @@
 
     int-to-byte v9, v9
 
-    invoke-static {v9}, Lcom/android/internal/telephony/IccUtils;->gsmBcdByteToInt(B)I
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
     move-result v6
 

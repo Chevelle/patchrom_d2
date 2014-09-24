@@ -79,10 +79,10 @@
     move-result-object v1
 
     .line 296
-    :goto_0
     invoke-static {v4}, Landroid/gesture/GestureUtils;->closeStream(Ljava/io/Closeable;)V
 
     .line 299
+    :goto_0
     if-eqz v1, :cond_0
 
     .line 300
@@ -107,6 +107,9 @@
     invoke-static {v5, v6, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 296
+    invoke-static {v4}, Landroid/gesture/GestureUtils;->closeStream(Ljava/io/Closeable;)V
 
     goto :goto_0
 

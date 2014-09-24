@@ -61,7 +61,7 @@
 
     .line 53
     .local v0, result:F
-    const v1, 0x10400db
+    const v1, 0x1040107
 
     .line 54
     .local v1, suffix:I
@@ -70,7 +70,7 @@
     if-lez v3, :cond_1
 
     .line 55
-    const v1, 0x10400dc
+    const v1, 0x1040108
 
     .line 56
     div-float/2addr v0, v5
@@ -82,7 +82,7 @@
     if-lez v3, :cond_2
 
     .line 59
-    const v1, 0x10400dd
+    const v1, 0x1040109
 
     .line 60
     div-float/2addr v0, v5
@@ -94,7 +94,7 @@
     if-lez v3, :cond_3
 
     .line 63
-    const v1, 0x10400de
+    const v1, 0x104010a
 
     .line 64
     div-float/2addr v0, v5
@@ -106,7 +106,7 @@
     if-lez v3, :cond_4
 
     .line 67
-    const v1, 0x10400df
+    const v1, 0x104010b
 
     .line 68
     div-float/2addr v0, v5
@@ -118,7 +118,7 @@
     if-lez v3, :cond_5
 
     .line 71
-    const v1, 0x10400e0
+    const v1, 0x104010c
 
     .line 72
     div-float/2addr v0, v5
@@ -153,7 +153,7 @@
 
     move-result-object v3
 
-    const v4, 0x10400e1
+    const v4, 0x104010d
 
     const/4 v5, 0x2
 
@@ -301,7 +301,7 @@
     .end annotation
 
     .prologue
-    .line 111
+    .line 107
     invoke-static {p0}, Landroid/net/NetworkUtils;->intToInetAddress(I)Ljava/net/InetAddress;
 
     move-result-object v0

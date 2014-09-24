@@ -163,6 +163,16 @@
 
 .field public static final MPEG4ProfileSimpleScalable:I = 0x2
 
+.field public static final VP8Level_Version0:I = 0x1
+
+.field public static final VP8Level_Version1:I = 0x2
+
+.field public static final VP8Level_Version2:I = 0x4
+
+.field public static final VP8Level_Version3:I = 0x8
+
+.field public static final VP8ProfileMain:I = 0x1
+
 
 # instance fields
 .field public level:I
@@ -175,7 +185,7 @@
     .locals 0
 
     .prologue
-    .line 105
+    .line 169
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

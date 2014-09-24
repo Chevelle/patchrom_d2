@@ -19,6 +19,8 @@
 
 .field public static final imProtocols:I = 0x1070001
 
+.field public static final networkAttributes:I = 0x107000b
+
 .field public static final organizationTypes:I = 0x1070002
 
 .field public static final phoneTypes:I = 0x1070003

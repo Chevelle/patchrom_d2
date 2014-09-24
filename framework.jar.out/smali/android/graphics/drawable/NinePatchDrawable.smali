@@ -13,7 +13,7 @@
 
 
 # static fields
-.field private static final DEFAULT_DITHER:Z = true
+.field private static final DEFAULT_DITHER:Z
 
 
 # instance fields
@@ -21,13 +21,13 @@
 
 .field private mBitmapWidth:I
 
-.field private mLayoutInsets:Landroid/graphics/Insets;
-
 .field private mMutated:Z
 
 .field private mNinePatch:Landroid/graphics/NinePatch;
 
 .field private mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
+
+.field private mOpticalInsets:Landroid/graphics/Insets;
 
 .field private mPadding:Landroid/graphics/Rect;
 
@@ -41,20 +41,20 @@
     .locals 1
 
     .prologue
-    .line 69
+    .line 70
     invoke-direct {p0}, Landroid/graphics/drawable/Drawable;-><init>()V
 
-    .line 59
+    .line 60
     sget-object v0, Landroid/graphics/Insets;->NONE:Landroid/graphics/Insets;
 
-    iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mLayoutInsets:Landroid/graphics/Insets;
+    iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
 
-    .line 63
+    .line 64
     const/16 v0, 0xa0
 
     iput v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
-    .line 70
+    .line 71
     return-void
 .end method
 
@@ -64,11 +64,11 @@
     .parameter "bitmap"
     .parameter "chunk"
     .parameter "padding"
-    .parameter "layoutInsets"
+    .parameter "opticalInsets"
     .parameter "srcName"
 
     .prologue
-    .line 100
+    .line 101
     new-instance v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     new-instance v1, Landroid/graphics/NinePatch;
@@ -79,14 +79,14 @@
 
     invoke-direct {p0, v0, p1}, Landroid/graphics/drawable/NinePatchDrawable;-><init>(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
-    .line 101
+    .line 102
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     iget v1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
     iput v1, v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mTargetDensity:I
 
-    .line 102
+    .line 103
     return-void
 .end method
 
@@ -99,7 +99,7 @@
     .parameter "srcName"
 
     .prologue
-    .line 88
+    .line 89
     new-instance v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     new-instance v1, Landroid/graphics/NinePatch;
@@ -110,14 +110,14 @@
 
     invoke-direct {p0, v0, p1}, Landroid/graphics/drawable/NinePatchDrawable;-><init>(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
-    .line 89
+    .line 90
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     iget v1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
     iput v1, v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mTargetDensity:I
 
-    .line 90
+    .line 91
     return-void
 .end method
 
@@ -127,7 +127,7 @@
     .parameter "patch"
 
     .prologue
-    .line 119
+    .line 120
     new-instance v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     new-instance v1, Landroid/graphics/Rect;
@@ -138,14 +138,14 @@
 
     invoke-direct {p0, v0, p1}, Landroid/graphics/drawable/NinePatchDrawable;-><init>(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
-    .line 120
+    .line 121
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     iget v1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
     iput v1, v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mTargetDensity:I
 
-    .line 121
+    .line 122
     return-void
 .end method
 
@@ -159,7 +159,7 @@
     .end annotation
 
     .prologue
-    .line 79
+    .line 80
     new-instance v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     new-instance v1, Landroid/graphics/NinePatch;
@@ -172,7 +172,7 @@
 
     invoke-direct {p0, v0, v1}, Landroid/graphics/drawable/NinePatchDrawable;-><init>(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
-    .line 80
+    .line 81
     return-void
 .end method
 
@@ -183,7 +183,7 @@
     .end annotation
 
     .prologue
-    .line 111
+    .line 112
     new-instance v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     new-instance v1, Landroid/graphics/Rect;
@@ -196,7 +196,7 @@
 
     invoke-direct {p0, v0, v1}, Landroid/graphics/drawable/NinePatchDrawable;-><init>(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
-    .line 112
+    .line 113
     return-void
 .end method
 
@@ -206,23 +206,23 @@
     .parameter "res"
 
     .prologue
-    .line 448
+    .line 503
     invoke-direct {p0}, Landroid/graphics/drawable/Drawable;-><init>()V
 
-    .line 59
+    .line 60
     sget-object v0, Landroid/graphics/Insets;->NONE:Landroid/graphics/Insets;
 
-    iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mLayoutInsets:Landroid/graphics/Insets;
+    iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
 
-    .line 63
+    .line 64
     const/16 v0, 0xa0
 
     iput v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
-    .line 449
+    .line 504
     invoke-direct {p0, p1, p2}, Landroid/graphics/drawable/NinePatchDrawable;->setNinePatchState(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
-    .line 450
+    .line 505
     return-void
 .end method
 
@@ -233,7 +233,7 @@
     .parameter "x2"
 
     .prologue
-    .line 53
+    .line 54
     invoke-direct {p0, p1, p2}, Landroid/graphics/drawable/NinePatchDrawable;-><init>(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
     return-void
@@ -243,22 +243,22 @@
     .locals 5
 
     .prologue
-    .line 193
+    .line 195
     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     invoke-virtual {v4}, Landroid/graphics/NinePatch;->getDensity()I
 
     move-result v1
 
-    .line 194
+    .line 196
     .local v1, sdensity:I
     iget v3, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
-    .line 195
+    .line 197
     .local v3, tdensity:I
     if-ne v1, v3, :cond_0
 
-    .line 196
+    .line 198
     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     invoke-virtual {v4}, Landroid/graphics/NinePatch;->getWidth()I
@@ -267,7 +267,7 @@
 
     iput v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mBitmapWidth:I
 
-    .line 197
+    .line 199
     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     invoke-virtual {v4}, Landroid/graphics/NinePatch;->getHeight()I
@@ -278,9 +278,9 @@
 
     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
-    iget-object v4, v4, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mLayoutInsets:Landroid/graphics/Insets;
+    iget-object v4, v4, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mOpticalInsets:Landroid/graphics/Insets;
 
-    iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mLayoutInsets:Landroid/graphics/Insets;
+    iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
 
     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
@@ -304,7 +304,7 @@
 
     iput v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mBitmapWidth:I
 
-    .line 202
+    .line 203
     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     invoke-virtual {v4}, Landroid/graphics/NinePatch;->getHeight()I
@@ -393,13 +393,41 @@
     :cond_2
     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
-    iget-object v4, v4, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mLayoutInsets:Landroid/graphics/Insets;
+    iget-object v4, v4, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mOpticalInsets:Landroid/graphics/Insets;
 
     invoke-static {v4, v1, v3}, Landroid/graphics/drawable/NinePatchDrawable;->scaleFromDensity(Landroid/graphics/Insets;II)Landroid/graphics/Insets;
 
     move-result-object v4
 
-    iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mLayoutInsets:Landroid/graphics/Insets;
+    iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
+
+    goto :goto_0
+.end method
+
+.method private needsMirroring()Z
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x1
+
+    .line 309
+    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->isAutoMirrored()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getLayoutDirection()I
+
+    move-result v1
+
+    if-ne v1, v0, :cond_0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
@@ -411,14 +439,14 @@
     .parameter "tdensity"
 
     .prologue
-    .line 185
+    .line 187
     iget v4, p0, Landroid/graphics/Insets;->left:I
 
     invoke-static {v4, p1, p2}, Landroid/graphics/Bitmap;->scaleFromDensity(III)I
 
     move-result v1
 
-    .line 186
+    .line 188
     .local v1, left:I
     iget v4, p0, Landroid/graphics/Insets;->top:I
 
@@ -426,7 +454,7 @@
 
     move-result v3
 
-    .line 187
+    .line 189
     .local v3, top:I
     iget v4, p0, Landroid/graphics/Insets;->right:I
 
@@ -434,7 +462,7 @@
 
     move-result v2
 
-    .line 188
+    .line 190
     .local v2, right:I
     iget v4, p0, Landroid/graphics/Insets;->bottom:I
 
@@ -442,7 +470,7 @@
 
     move-result v0
 
-    .line 189
+    .line 191
     .local v0, bottom:I
     invoke-static {v1, v3, v2, v0}, Landroid/graphics/Insets;->of(IIII)Landroid/graphics/Insets;
 
@@ -452,25 +480,25 @@
 .end method
 
 .method private setNinePatchState(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
-    .locals 2
+    .locals 1
     .parameter "state"
     .parameter "res"
 
     .prologue
-    .line 124
+    .line 125
     iput-object p1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
-    .line 125
+    .line 126
     iget-object v0, p1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mNinePatch:Landroid/graphics/NinePatch;
 
     iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
-    .line 126
+    .line 127
     iget-object v0, p1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mPadding:Landroid/graphics/Rect;
 
     iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
 
-    .line 127
+    .line 128
     if-eqz p2, :cond_2
 
     invoke-virtual {p2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
@@ -482,32 +510,35 @@
     :goto_0
     iput v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
-    .line 130
+    .line 131
     iget-boolean v0, p1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mDither:Z
 
-    const/4 v1, 0x1
+    if-eqz v0, :cond_0
 
-    if-eq v0, v1, :cond_0
-
-    .line 133
+    .line 134
     iget-boolean v0, p1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mDither:Z
 
     invoke-virtual {p0, v0}, Landroid/graphics/drawable/NinePatchDrawable;->setDither(Z)V
 
-    .line 135
+    .line 136
     :cond_0
+    iget-boolean v0, p1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mAutoMirrored:Z
+
+    invoke-virtual {p0, v0}, Landroid/graphics/drawable/NinePatchDrawable;->setAutoMirrored(Z)V
+
+    .line 137
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     if-eqz v0, :cond_1
 
-    .line 136
+    .line 138
     invoke-direct {p0}, Landroid/graphics/drawable/NinePatchDrawable;->computeBitmapSize()V
 
-    .line 138
+    .line 140
     :cond_1
     return-void
 
-    .line 127
+    .line 128
     :cond_2
     iget v0, p1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mTargetDensity:I
 
@@ -517,30 +548,100 @@
 
 # virtual methods
 .method public draw(Landroid/graphics/Canvas;)V
-    .locals 3
+    .locals 4
     .parameter "canvas"
 
     .prologue
     .line 221
-    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
-
     invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getBounds()Landroid/graphics/Rect;
 
-    move-result-object v1
-
-    iget-object v2, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
-
-    invoke-virtual {v0, p1, v1, v2}, Landroid/graphics/NinePatch;->draw(Landroid/graphics/Canvas;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    move-result-object v0
 
     .line 222
+    .local v0, bounds:Landroid/graphics/Rect;
+    invoke-direct {p0}, Landroid/graphics/drawable/NinePatchDrawable;->needsMirroring()Z
+
+    move-result v1
+
+    .line 223
+    .local v1, needsMirroring:Z
+    if-eqz v1, :cond_0
+
+    .line 224
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
+
+    .line 226
+    iget v2, v0, Landroid/graphics/Rect;->right:I
+
+    iget v3, v0, Landroid/graphics/Rect;->left:I
+
+    sub-int/2addr v2, v3
+
+    int-to-float v2, v2
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p1, v2, v3}, Landroid/graphics/Canvas;->translate(FF)V
+
+    .line 227
+    const/high16 v2, -0x4080
+
+    const/high16 v3, 0x3f80
+
+    invoke-virtual {p1, v2, v3}, Landroid/graphics/Canvas;->scale(FF)V
+
+    .line 229
+    :cond_0
+    iget-object v2, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
+
+    iget-object v3, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {v2, p1, v0, v3}, Landroid/graphics/NinePatch;->draw(Landroid/graphics/Canvas;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+
+    .line 230
+    if-eqz v1, :cond_1
+
+    .line 231
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
+
+    .line 233
+    :cond_1
     return-void
+.end method
+
+.method public getAlpha()I
+    .locals 1
+
+    .prologue
+    .line 275
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
+
+    if-nez v0, :cond_0
+
+    .line 277
+    const/16 v0, 0xff
+
+    .line 279
+    :goto_0
+    return v0
+
+    :cond_0
+    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getPaint()Landroid/graphics/Paint;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/graphics/Paint;->getAlpha()I
+
+    move-result v0
+
+    goto :goto_0
 .end method
 
 .method public getChangingConfigurations()I
     .locals 2
 
     .prologue
-    .line 226
+    .line 237
     invoke-super {p0}, Landroid/graphics/drawable/Drawable;->getChangingConfigurations()I
 
     move-result v0
@@ -558,7 +659,7 @@
     .locals 2
 
     .prologue
-    .line 383
+    .line 428
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getChangingConfigurations()I
@@ -567,7 +668,7 @@
 
     iput v1, v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mChangingConfigurations:I
 
-    .line 384
+    .line 429
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     return-object v0
@@ -577,7 +678,7 @@
     .locals 1
 
     .prologue
-    .line 353
+    .line 398
     iget v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mBitmapHeight:I
 
     return v0
@@ -587,27 +688,17 @@
     .locals 1
 
     .prologue
-    .line 345
+    .line 390
     iget v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mBitmapWidth:I
 
     return v0
-.end method
-
-.method public getLayoutInsets()Landroid/graphics/Insets;
-    .locals 1
-
-    .prologue
-    .line 240
-    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mLayoutInsets:Landroid/graphics/Insets;
-
-    return-object v0
 .end method
 
 .method public getMinimumHeight()I
     .locals 1
 
     .prologue
-    .line 363
+    .line 408
     iget v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mBitmapHeight:I
 
     return v0
@@ -617,7 +708,7 @@
     .locals 1
 
     .prologue
-    .line 358
+    .line 403
     iget v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mBitmapWidth:I
 
     return v0
@@ -627,7 +718,7 @@
     .locals 2
 
     .prologue
-    .line 372
+    .line 417
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     invoke-virtual {v0}, Landroid/graphics/NinePatch;->hasAlpha()Z
@@ -662,46 +753,141 @@
     goto :goto_0
 .end method
 
+.method public getOpticalInsets()Landroid/graphics/Insets;
+    .locals 4
+
+    .prologue
+    .line 255
+    invoke-direct {p0}, Landroid/graphics/drawable/NinePatchDrawable;->needsMirroring()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 256
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
+
+    iget v0, v0, Landroid/graphics/Insets;->right:I
+
+    iget-object v1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
+
+    iget v1, v1, Landroid/graphics/Insets;->top:I
+
+    iget-object v2, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
+
+    iget v2, v2, Landroid/graphics/Insets;->right:I
+
+    iget-object v3, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
+
+    iget v3, v3, Landroid/graphics/Insets;->bottom:I
+
+    invoke-static {v0, v1, v2, v3}, Landroid/graphics/Insets;->of(IIII)Landroid/graphics/Insets;
+
+    move-result-object v0
+
+    .line 259
+    :goto_0
+    return-object v0
+
+    :cond_0
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mOpticalInsets:Landroid/graphics/Insets;
+
+    goto :goto_0
+.end method
+
 .method public getPadding(Landroid/graphics/Rect;)Z
-    .locals 1
+    .locals 4
     .parameter "padding"
 
     .prologue
-    .line 231
+    .line 242
+    invoke-direct {p0}, Landroid/graphics/drawable/NinePatchDrawable;->needsMirroring()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 243
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
+
+    iget v0, v0, Landroid/graphics/Rect;->right:I
+
+    iget-object v1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
+
+    iget v1, v1, Landroid/graphics/Rect;->top:I
+
+    iget-object v2, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
+
+    iget v2, v2, Landroid/graphics/Rect;->left:I
+
+    iget-object v3, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
+
+    iget v3, v3, Landroid/graphics/Rect;->bottom:I
+
+    invoke-virtual {p1, v0, v1, v2, v3}, Landroid/graphics/Rect;->set(IIII)V
+
+    .line 247
+    :goto_0
+    iget v0, p1, Landroid/graphics/Rect;->left:I
+
+    iget v1, p1, Landroid/graphics/Rect;->top:I
+
+    or-int/2addr v0, v1
+
+    iget v1, p1, Landroid/graphics/Rect;->right:I
+
+    or-int/2addr v0, v1
+
+    iget v1, p1, Landroid/graphics/Rect;->bottom:I
+
+    or-int/2addr v0, v1
+
+    if-eqz v0, :cond_1
+
+    const/4 v0, 0x1
+
+    :goto_1
+    return v0
+
+    .line 245
+    :cond_0
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
 
     invoke-virtual {p1, v0}, Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V
 
-    .line 232
-    const/4 v0, 0x1
+    goto :goto_0
 
-    return v0
+    .line 247
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_1
 .end method
 
 .method public getPaint()Landroid/graphics/Paint;
     .locals 2
 
     .prologue
-    .line 333
+    .line 378
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
 
     if-nez v0, :cond_0
 
-    .line 334
+    .line 379
     new-instance v0, Landroid/graphics/Paint;
 
     invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
 
     iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
 
-    .line 335
+    .line 380
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
 
-    const/4 v1, 0x1
+    const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setDither(Z)V
 
-    .line 337
+    .line 382
     :cond_0
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
 
@@ -712,7 +898,7 @@
     .locals 2
 
     .prologue
-    .line 378
+    .line 423
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getBounds()Landroid/graphics/Rect;
@@ -739,250 +925,271 @@
     .end annotation
 
     .prologue
-    .line 282
+    .line 326
     invoke-super/range {p0 .. p3}, Landroid/graphics/drawable/Drawable;->inflate(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;)V
 
-    .line 284
-    sget-object v10, Lcom/android/internal/R$styleable;->NinePatchDrawable:[I
+    .line 328
+    sget-object v1, Lcom/android/internal/R$styleable;->NinePatchDrawable:[I
 
     move-object/from16 v0, p3
 
-    invoke-virtual {p1, v0, v10}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    invoke-virtual {p1, v0, v1}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
-    move-result-object v1
+    move-result-object v7
 
-    .line 286
-    .local v1, a:Landroid/content/res/TypedArray;
-    const/4 v10, 0x0
+    .line 330
+    .local v7, a:Landroid/content/res/TypedArray;
+    const/4 v1, 0x0
 
-    const/4 v11, 0x0
+    const/4 v2, 0x0
 
-    invoke-virtual {v1, v10, v11}, Landroid/content/res/TypedArray;->getResourceId(II)I
+    invoke-virtual {v7, v1, v2}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
-    move-result v4
+    move-result v9
 
-    .line 287
-    .local v4, id:I
-    if-nez v4, :cond_0
+    .line 331
+    .local v9, id:I
+    if-nez v9, :cond_0
 
-    .line 288
-    new-instance v10, Lorg/xmlpull/v1/XmlPullParserException;
+    .line 332
+    new-instance v1, Lorg/xmlpull/v1/XmlPullParserException;
 
-    new-instance v11, Ljava/lang/StringBuilder;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
     invoke-interface/range {p2 .. p2}, Lorg/xmlpull/v1/XmlPullParser;->getPositionDescription()Ljava/lang/String;
 
-    move-result-object v12
+    move-result-object v13
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    const-string v12, ": <nine-patch> requires a valid src attribute"
-
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v11
-
-    invoke-direct {v10, v11}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
-
-    throw v10
-
-    .line 292
-    :cond_0
-    const/4 v10, 0x1
-
-    const/4 v11, 0x1
-
-    invoke-virtual {v1, v10, v11}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
-
-    move-result v3
-
-    .line 295
-    .local v3, dither:Z
-    new-instance v7, Landroid/graphics/BitmapFactory$Options;
-
-    invoke-direct {v7}, Landroid/graphics/BitmapFactory$Options;-><init>()V
-
-    .line 296
-    .local v7, options:Landroid/graphics/BitmapFactory$Options;
-    if-eqz v3, :cond_1
-
-    .line 297
-    const/4 v10, 0x0
-
-    iput-boolean v10, v7, Landroid/graphics/BitmapFactory$Options;->inDither:Z
-
-    .line 299
-    :cond_1
-    invoke-virtual {p1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v10
-
-    iget v10, v10, Landroid/util/DisplayMetrics;->noncompatDensityDpi:I
-
-    iput v10, v7, Landroid/graphics/BitmapFactory$Options;->inScreenDensity:I
-
-    .line 301
-    new-instance v8, Landroid/graphics/Rect;
-
-    invoke-direct {v8}, Landroid/graphics/Rect;-><init>()V
-
-    .line 302
-    .local v8, padding:Landroid/graphics/Rect;
-    new-instance v6, Landroid/graphics/Rect;
-
-    invoke-direct {v6}, Landroid/graphics/Rect;-><init>()V
-
-    .line 303
-    .local v6, layoutInsets:Landroid/graphics/Rect;
-    const/4 v2, 0x0
-
-    .line 306
-    .local v2, bitmap:Landroid/graphics/Bitmap;
-    :try_start_0
-    new-instance v9, Landroid/util/TypedValue;
-
-    invoke-direct {v9}, Landroid/util/TypedValue;-><init>()V
-
-    .line 307
-    .local v9, value:Landroid/util/TypedValue;
-    invoke-virtual {p1, v4, v9}, Landroid/content/res/Resources;->openRawResource(ILandroid/util/TypedValue;)Ljava/io/InputStream;
-
-    move-result-object v5
-
-    .line 309
-    .local v5, is:Ljava/io/InputStream;
-    invoke-static {p1, v9, v5, v8, v7}, Landroid/graphics/BitmapFactory;->decodeResourceStream(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    invoke-virtual {v2, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    .line 311
-    invoke-virtual {v5}, Ljava/io/InputStream;->close()V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    const-string v13, ": <nine-patch> requires a valid src attribute"
 
-    .line 316
-    .end local v5           #is:Ljava/io/InputStream;
-    .end local v9           #value:Landroid/util/TypedValue;
-    :goto_0
-    if-nez v2, :cond_2
+    invoke-virtual {v2, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 317
-    new-instance v10, Lorg/xmlpull/v1/XmlPullParserException;
+    move-result-object v2
 
-    new-instance v11, Ljava/lang/StringBuilder;
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+    move-result-object v2
 
-    invoke-interface/range {p2 .. p2}, Lorg/xmlpull/v1/XmlPullParser;->getPositionDescription()Ljava/lang/String;
+    invoke-direct {v1, v2}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
 
-    move-result-object v12
+    throw v1
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 336
+    :cond_0
+    const/4 v1, 0x1
 
-    move-result-object v11
+    const/4 v2, 0x0
 
-    const-string v12, ": <nine-patch> requires a valid src attribute"
+    invoke-virtual {v7, v1, v2}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result v5
 
-    move-result-object v11
+    .line 338
+    .local v5, dither:Z
+    new-instance v11, Landroid/graphics/BitmapFactory$Options;
 
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-direct {v11}, Landroid/graphics/BitmapFactory$Options;-><init>()V
 
-    move-result-object v11
+    .line 339
+    .local v11, options:Landroid/graphics/BitmapFactory$Options;
+    if-eqz v5, :cond_1
 
-    invoke-direct {v10, v11}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
+    .line 340
+    const/4 v1, 0x0
 
-    throw v10
+    iput-boolean v1, v11, Landroid/graphics/BitmapFactory$Options;->inDither:Z
 
-    .line 319
-    :cond_2
-    invoke-virtual {v2}, Landroid/graphics/Bitmap;->getNinePatchChunk()[B
+    .line 342
+    :cond_1
+    invoke-virtual {p1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v1
+
+    iget v1, v1, Landroid/util/DisplayMetrics;->noncompatDensityDpi:I
+
+    iput v1, v11, Landroid/graphics/BitmapFactory$Options;->inScreenDensity:I
+
+    .line 344
+    new-instance v3, Landroid/graphics/Rect;
+
+    invoke-direct {v3}, Landroid/graphics/Rect;-><init>()V
+
+    .line 345
+    .local v3, padding:Landroid/graphics/Rect;
+    new-instance v4, Landroid/graphics/Rect;
+
+    invoke-direct {v4}, Landroid/graphics/Rect;-><init>()V
+
+    .line 346
+    .local v4, opticalInsets:Landroid/graphics/Rect;
+    const/4 v8, 0x0
+
+    .line 349
+    .local v8, bitmap:Landroid/graphics/Bitmap;
+    :try_start_0
+    new-instance v12, Landroid/util/TypedValue;
+
+    invoke-direct {v12}, Landroid/util/TypedValue;-><init>()V
+
+    .line 350
+    .local v12, value:Landroid/util/TypedValue;
+    invoke-virtual {p1, v9, v12}, Landroid/content/res/Resources;->openRawResource(ILandroid/util/TypedValue;)Ljava/io/InputStream;
 
     move-result-object v10
 
-    if-nez v10, :cond_3
+    .line 352
+    .local v10, is:Ljava/io/InputStream;
+    invoke-static {p1, v12, v10, v3, v11}, Landroid/graphics/BitmapFactory;->decodeResourceStream(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
 
-    .line 320
-    new-instance v10, Lorg/xmlpull/v1/XmlPullParserException;
+    move-result-object v8
 
-    new-instance v11, Ljava/lang/StringBuilder;
+    .line 354
+    invoke-virtual {v10}, Ljava/io/InputStream;->close()V
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+    .line 359
+    .end local v10           #is:Ljava/io/InputStream;
+    .end local v12           #value:Landroid/util/TypedValue;
+    :goto_0
+    if-nez v8, :cond_2
+
+    .line 360
+    new-instance v1, Lorg/xmlpull/v1/XmlPullParserException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
     invoke-interface/range {p2 .. p2}, Lorg/xmlpull/v1/XmlPullParser;->getPositionDescription()Ljava/lang/String;
 
-    move-result-object v12
+    move-result-object v13
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v11
+    move-result-object v2
 
-    const-string v12, ": <nine-patch> requires a valid 9-patch source image"
+    const-string v13, ": <nine-patch> requires a valid src attribute"
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v11
+    move-result-object v2
 
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v11
+    move-result-object v2
 
-    invoke-direct {v10, v11}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
 
-    throw v10
+    throw v1
 
-    .line 324
+    .line 362
+    :cond_2
+    invoke-virtual {v8}, Landroid/graphics/Bitmap;->getNinePatchChunk()[B
+
+    move-result-object v1
+
+    if-nez v1, :cond_3
+
+    .line 363
+    new-instance v1, Lorg/xmlpull/v1/XmlPullParserException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-interface/range {p2 .. p2}, Lorg/xmlpull/v1/XmlPullParser;->getPositionDescription()Ljava/lang/String;
+
+    move-result-object v13
+
+    invoke-virtual {v2, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v13, ": <nine-patch> requires a valid 9-patch source image"
+
+    invoke-virtual {v2, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 367
     :cond_3
-    new-instance v10, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
+    const/4 v1, 0x2
 
-    new-instance v11, Landroid/graphics/NinePatch;
+    const/4 v2, 0x0
 
-    invoke-virtual {v2}, Landroid/graphics/Bitmap;->getNinePatchChunk()[B
+    invoke-virtual {v7, v1, v2}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
-    move-result-object v12
+    move-result v6
 
-    const-string v13, "XML 9-patch"
+    .line 370
+    .local v6, automirrored:Z
+    new-instance v1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
-    invoke-direct {v11, v2, v12, v13}, Landroid/graphics/NinePatch;-><init>(Landroid/graphics/Bitmap;[BLjava/lang/String;)V
+    new-instance v2, Landroid/graphics/NinePatch;
 
-    invoke-direct {v10, v11, v8, v6, v3}, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;-><init>(Landroid/graphics/NinePatch;Landroid/graphics/Rect;Landroid/graphics/Rect;Z)V
+    invoke-virtual {v8}, Landroid/graphics/Bitmap;->getNinePatchChunk()[B
 
-    invoke-direct {p0, v10, p1}, Landroid/graphics/drawable/NinePatchDrawable;->setNinePatchState(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
+    move-result-object v13
 
-    .line 327
-    iget-object v10, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
+    invoke-direct {v2, v8, v13}, Landroid/graphics/NinePatch;-><init>(Landroid/graphics/Bitmap;[B)V
 
-    iget v11, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
+    invoke-direct/range {v1 .. v6}, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;-><init>(Landroid/graphics/NinePatch;Landroid/graphics/Rect;Landroid/graphics/Rect;ZZ)V
 
-    iput v11, v10, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mTargetDensity:I
+    invoke-direct {p0, v1, p1}, Landroid/graphics/drawable/NinePatchDrawable;->setNinePatchState(Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;Landroid/content/res/Resources;)V
 
-    .line 329
-    invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V
+    .line 372
+    iget-object v1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
-    .line 330
+    iget v2, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
+
+    iput v2, v1, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mTargetDensity:I
+
+    .line 374
+    invoke-virtual {v7}, Landroid/content/res/TypedArray;->recycle()V
+
+    .line 375
     return-void
 
-    .line 312
+    .line 355
+    .end local v6           #automirrored:Z
     :catch_0
-    move-exception v10
+    move-exception v1
 
     goto :goto_0
+.end method
+
+.method public isAutoMirrored()Z
+    .locals 1
+
+    .prologue
+    .line 314
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
+
+    iget-boolean v0, v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mAutoMirrored:Z
+
+    return v0
 .end method
 
 .method public mutate()Landroid/graphics/drawable/Drawable;
     .locals 2
 
     .prologue
-    .line 389
+    .line 434
     iget-boolean v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mMutated:Z
 
     if-nez v0, :cond_0
@@ -993,7 +1200,7 @@
 
     if-ne v0, p0, :cond_0
 
-    .line 390
+    .line 435
     new-instance v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     iget-object v1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
@@ -1002,19 +1209,19 @@
 
     iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
-    .line 391
+    .line 436
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
 
     iget-object v0, v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mNinePatch:Landroid/graphics/NinePatch;
 
     iput-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
-    .line 392
+    .line 437
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mMutated:Z
 
-    .line 394
+    .line 439
     :cond_0
     return-object p0
 .end method
@@ -1024,74 +1231,12 @@
     .parameter "alpha"
 
     .prologue
-    .line 245
-    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
-
-    if-nez v0, :cond_0
-
-    const/16 v0, 0xff
-
-    if-ne p1, v0, :cond_0
-
-    .line 251
-    :goto_0
-    return-void
-
-    .line 249
-    :cond_0
-    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getPaint()Landroid/graphics/Paint;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setAlpha(I)V
-
-    .line 250
-    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->invalidateSelf()V
-
-    goto :goto_0
-.end method
-
-.method public setColorFilter(Landroid/graphics/ColorFilter;)V
-    .locals 1
-    .parameter "cf"
-
-    .prologue
-    .line 255
-    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
-
-    if-nez v0, :cond_0
-
-    if-nez p1, :cond_0
-
-    .line 261
-    :goto_0
-    return-void
-
-    .line 259
-    :cond_0
-    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getPaint()Landroid/graphics/Paint;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setColorFilter(Landroid/graphics/ColorFilter;)Landroid/graphics/ColorFilter;
-
-    .line 260
-    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->invalidateSelf()V
-
-    goto :goto_0
-.end method
-
-.method public setDither(Z)V
-    .locals 1
-    .parameter "dither"
-
-    .prologue
     .line 265
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
 
     if-nez v0, :cond_0
 
-    const/4 v0, 0x1
+    const/16 v0, 0xff
 
     if-ne p1, v0, :cond_0
 
@@ -1105,9 +1250,83 @@
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setDither(Z)V
+    invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setAlpha(I)V
 
     .line 270
+    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->invalidateSelf()V
+
+    goto :goto_0
+.end method
+
+.method public setAutoMirrored(Z)V
+    .locals 1
+    .parameter "mirrored"
+
+    .prologue
+    .line 305
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
+
+    iput-boolean p1, v0, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mAutoMirrored:Z
+
+    .line 306
+    return-void
+.end method
+
+.method public setColorFilter(Landroid/graphics/ColorFilter;)V
+    .locals 1
+    .parameter "cf"
+
+    .prologue
+    .line 284
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
+
+    if-nez v0, :cond_0
+
+    if-nez p1, :cond_0
+
+    .line 290
+    :goto_0
+    return-void
+
+    .line 288
+    :cond_0
+    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getPaint()Landroid/graphics/Paint;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setColorFilter(Landroid/graphics/ColorFilter;)Landroid/graphics/ColorFilter;
+
+    .line 289
+    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->invalidateSelf()V
+
+    goto :goto_0
+.end method
+
+.method public setDither(Z)V
+    .locals 1
+    .parameter "dither"
+
+    .prologue
+    .line 295
+    iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPaint:Landroid/graphics/Paint;
+
+    if-nez v0, :cond_0
+
+    if-nez p1, :cond_0
+
+    .line 301
+    :goto_0
+    return-void
+
+    .line 299
+    :cond_0
+    invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getPaint()Landroid/graphics/Paint;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setDither(Z)V
+
+    .line 300
     invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->invalidateSelf()V
 
     goto :goto_0
@@ -1118,17 +1337,17 @@
     .parameter "filter"
 
     .prologue
-    .line 275
+    .line 319
     invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->getPaint()Landroid/graphics/Paint;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setFilterBitmap(Z)V
 
-    .line 276
+    .line 320
     invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->invalidateSelf()V
 
-    .line 277
+    .line 321
     return-void
 .end method
 
@@ -1137,12 +1356,12 @@
     .parameter "density"
 
     .prologue
-    .line 175
+    .line 177
     iget v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
     if-eq p1, v0, :cond_2
 
-    .line 176
+    .line 178
     if-nez p1, :cond_0
 
     const/16 p1, 0xa0
@@ -1151,19 +1370,19 @@
     :cond_0
     iput p1, p0, Landroid/graphics/drawable/NinePatchDrawable;->mTargetDensity:I
 
-    .line 177
+    .line 179
     iget-object v0, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
 
     if-eqz v0, :cond_1
 
-    .line 178
+    .line 180
     invoke-direct {p0}, Landroid/graphics/drawable/NinePatchDrawable;->computeBitmapSize()V
 
-    .line 180
+    .line 182
     :cond_1
     invoke-virtual {p0}, Landroid/graphics/drawable/NinePatchDrawable;->invalidateSelf()V
 
-    .line 182
+    .line 184
     :cond_2
     return-void
 .end method
@@ -1173,14 +1392,14 @@
     .parameter "canvas"
 
     .prologue
-    .line 151
+    .line 153
     invoke-virtual {p1}, Landroid/graphics/Canvas;->getDensity()I
 
     move-result v0
 
     invoke-virtual {p0, v0}, Landroid/graphics/drawable/NinePatchDrawable;->setTargetDensity(I)V
 
-    .line 152
+    .line 154
     return-void
 .end method
 
@@ -1189,11 +1408,11 @@
     .parameter "metrics"
 
     .prologue
-    .line 163
+    .line 165
     iget v0, p1, Landroid/util/DisplayMetrics;->densityDpi:I
 
     invoke-virtual {p0, v0}, Landroid/graphics/drawable/NinePatchDrawable;->setTargetDensity(I)V
 
-    .line 164
+    .line 166
     return-void
 .end method

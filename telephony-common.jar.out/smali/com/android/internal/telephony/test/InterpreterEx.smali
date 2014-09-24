@@ -4,7 +4,7 @@
 
 
 # instance fields
-.field result:Ljava/lang/String;
+.field mResult:Ljava/lang/String;
 
 
 # direct methods
@@ -13,12 +13,12 @@
     .parameter "result"
 
     .prologue
-    .line 127
+    .line 126
     invoke-direct {p0}, Ljava/lang/Exception;-><init>()V
 
-    .line 128
-    iput-object p1, p0, Lcom/android/internal/telephony/test/InterpreterEx;->result:Ljava/lang/String;
+    .line 127
+    iput-object p1, p0, Lcom/android/internal/telephony/test/InterpreterEx;->mResult:Ljava/lang/String;
 
-    .line 129
+    .line 128
     return-void
 .end method

@@ -28,21 +28,21 @@
 
     invoke-direct {v2}, Lcom/android/internal/telephony/SyntheticSmsMessage$SyntheticAddress;-><init>()V
 
-    iput-object v2, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->originatingAddress:Lcom/android/internal/telephony/SmsAddress;
+    iput-object v2, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->mOriginatingAddress:Lcom/android/internal/telephony/SmsAddress;
 
     .line 40
-    iget-object v2, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->originatingAddress:Lcom/android/internal/telephony/SmsAddress;
+    iget-object v2, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->mOriginatingAddress:Lcom/android/internal/telephony/SmsAddress;
 
     iput-object p1, v2, Lcom/android/internal/telephony/SmsAddress;->address:Ljava/lang/String;
 
     .line 42
-    iput-object p3, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->messageBody:Ljava/lang/String;
+    iput-object p3, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->mMessageBody:Ljava/lang/String;
 
     .line 43
-    iput-wide p4, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->scTimeMillis:J
+    iput-wide p4, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->mScTimeMillis:J
 
     .line 44
-    iput-object p2, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->scAddress:Ljava/lang/String;
+    iput-object p2, p0, Lcom/android/internal/telephony/SyntheticSmsMessage;->mScAddress:Ljava/lang/String;
 
     .line 47
     :try_start_0

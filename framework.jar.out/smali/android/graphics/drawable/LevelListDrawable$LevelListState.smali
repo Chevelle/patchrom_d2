@@ -50,22 +50,18 @@
 
     .line 167
     :cond_0
-    invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->getChildren()[Landroid/graphics/drawable/Drawable;
+    invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->getCapacity()I
 
-    move-result-object v0
-
-    array-length v0, v0
+    move-result v0
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->mLows:[I
 
     .line 168
-    invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->getChildren()[Landroid/graphics/drawable/Drawable;
+    invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->getCapacity()I
 
-    move-result-object v0
-
-    array-length v0, v0
+    move-result v0
 
     new-array v0, v0, [I
 

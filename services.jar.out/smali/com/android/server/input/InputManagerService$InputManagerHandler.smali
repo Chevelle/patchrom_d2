@@ -25,17 +25,17 @@
     .parameter "looper"
 
     .prologue
-    .line 1607
+    .line 1613
     iput-object p1, p0, Lcom/android/server/input/InputManagerService$InputManagerHandler;->this$0:Lcom/android/server/input/InputManagerService;
 
-    .line 1608
+    .line 1614
     const/4 v0, 0x0
 
     const/4 v1, 0x1
 
     invoke-direct {p0, p2, v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;Landroid/os/Handler$Callback;Z)V
 
-    .line 1609
+    .line 1615
     return-void
 .end method
 
@@ -46,16 +46,16 @@
     .parameter "msg"
 
     .prologue
-    .line 1613
+    .line 1619
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 1630
+    .line 1636
     :goto_0
     return-void
 
-    .line 1615
+    .line 1621
     :pswitch_0
     iget-object v1, p0, Lcom/android/server/input/InputManagerService$InputManagerHandler;->this$0:Lcom/android/server/input/InputManagerService;
 
@@ -70,7 +70,7 @@
 
     goto :goto_0
 
-    .line 1618
+    .line 1624
     :pswitch_1
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$InputManagerHandler;->this$0:Lcom/android/server/input/InputManagerService;
 
@@ -83,7 +83,7 @@
 
     goto :goto_0
 
-    .line 1621
+    .line 1627
     :pswitch_2
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$InputManagerHandler;->this$0:Lcom/android/server/input/InputManagerService;
 
@@ -92,7 +92,7 @@
 
     goto :goto_0
 
-    .line 1624
+    .line 1630
     :pswitch_3
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$InputManagerHandler;->this$0:Lcom/android/server/input/InputManagerService;
 
@@ -101,7 +101,7 @@
 
     goto :goto_0
 
-    .line 1627
+    .line 1633
     :pswitch_4
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$InputManagerHandler;->this$0:Lcom/android/server/input/InputManagerService;
 
@@ -110,7 +110,7 @@
 
     goto :goto_0
 
-    .line 1613
+    .line 1619
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="emailAddressTypes">
-        <item>家庭</item>
-        <item>单位</item>
+        <item>个人</item>
+        <item>工作</item>
         <item>其他</item>
         <item>自定义</item>
     </string-array>
@@ -24,7 +24,7 @@
     <string-array name="phoneTypes">
         <item>住宅</item>
         <item>手机</item>
-        <item>单位电话</item>
+        <item>单位</item>
         <item>单位传真</item>
         <item>住宅传真</item>
         <item>寻呼机</item>

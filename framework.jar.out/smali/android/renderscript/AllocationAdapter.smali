@@ -11,17 +11,17 @@
     .parameter "alloc"
 
     .prologue
-    .line 29
+    .line 30
     iget-object v0, p3, Landroid/renderscript/Allocation;->mType:Landroid/renderscript/Type;
 
     iget v1, p3, Landroid/renderscript/Allocation;->mUsage:I
 
     invoke-direct {p0, p1, p2, v0, v1}, Landroid/renderscript/Allocation;-><init>(ILandroid/renderscript/RenderScript;Landroid/renderscript/Type;I)V
 
-    .line 30
+    .line 31
     iput-object p3, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
-    .line 31
+    .line 32
     return-void
 .end method
 
@@ -35,66 +35,43 @@
 
     const/4 v1, 0x1
 
-    .line 215
+    .line 216
     invoke-virtual {p0}, Landroid/renderscript/RenderScript;->validate()V
 
-    .line 216
+    .line 217
     new-instance v0, Landroid/renderscript/AllocationAdapter;
 
     invoke-direct {v0, v2, p0, p1}, Landroid/renderscript/AllocationAdapter;-><init>(ILandroid/renderscript/RenderScript;Landroid/renderscript/Allocation;)V
 
-    .line 217
+    .line 218
     .local v0, aa:Landroid/renderscript/AllocationAdapter;
     iput-boolean v1, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedLOD:Z
 
-    .line 218
+    .line 219
     iput-boolean v1, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedFace:Z
 
-    .line 219
+    .line 220
     iput-boolean v1, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedY:Z
 
-    .line 220
+    .line 221
     iput-boolean v1, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedZ:Z
 
-    .line 221
+    .line 222
     invoke-virtual {v0, v2}, Landroid/renderscript/AllocationAdapter;->initLOD(I)V
 
-    .line 222
+    .line 223
     return-object v0
 .end method
 
 .method public static create2D(Landroid/renderscript/RenderScript;Landroid/renderscript/Allocation;)Landroid/renderscript/AllocationAdapter;
-    .locals 6
+    .locals 3
     .parameter "rs"
     .parameter "a"
 
     .prologue
-    const/4 v5, 0x1
+    const/4 v2, 0x1
 
-    const/4 v4, 0x0
-
-    .line 226
-    const-string/jumbo v1, "rs"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "create2d "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    const/4 v1, 0x0
 
     .line 227
     invoke-virtual {p0}, Landroid/renderscript/RenderScript;->validate()V
@@ -102,23 +79,23 @@
     .line 228
     new-instance v0, Landroid/renderscript/AllocationAdapter;
 
-    invoke-direct {v0, v4, p0, p1}, Landroid/renderscript/AllocationAdapter;-><init>(ILandroid/renderscript/RenderScript;Landroid/renderscript/Allocation;)V
+    invoke-direct {v0, v1, p0, p1}, Landroid/renderscript/AllocationAdapter;-><init>(ILandroid/renderscript/RenderScript;Landroid/renderscript/Allocation;)V
 
     .line 229
     .local v0, aa:Landroid/renderscript/AllocationAdapter;
-    iput-boolean v5, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedLOD:Z
+    iput-boolean v2, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedLOD:Z
 
     .line 230
-    iput-boolean v5, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedFace:Z
+    iput-boolean v2, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedFace:Z
 
     .line 231
-    iput-boolean v4, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedY:Z
+    iput-boolean v1, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedY:Z
 
     .line 232
-    iput-boolean v5, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedZ:Z
+    iput-boolean v2, v0, Landroid/renderscript/AllocationAdapter;->mConstrainedZ:Z
 
     .line 233
-    invoke-virtual {v0, v4}, Landroid/renderscript/AllocationAdapter;->initLOD(I)V
+    invoke-virtual {v0, v1}, Landroid/renderscript/AllocationAdapter;->initLOD(I)V
 
     .line 234
     return-object v0
@@ -131,7 +108,7 @@
     .parameter "rs"
 
     .prologue
-    .line 34
+    .line 35
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "This operation is not supported with adapters at this time."
@@ -150,10 +127,10 @@
 
     const/4 v6, 0x1
 
-    .line 100
+    .line 101
     if-gez p1, :cond_0
 
-    .line 101
+    .line 102
     new-instance v4, Landroid/renderscript/RSIllegalArgumentException;
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -184,7 +161,7 @@
 
     throw v4
 
-    .line 104
+    .line 105
     :cond_0
     iget-object v4, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
@@ -194,7 +171,7 @@
 
     move-result v1
 
-    .line 105
+    .line 106
     .local v1, tx:I
     iget-object v4, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
@@ -204,7 +181,7 @@
 
     move-result v2
 
-    .line 106
+    .line 107
     .local v2, ty:I
     iget-object v4, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
@@ -214,7 +191,7 @@
 
     move-result v3
 
-    .line 108
+    .line 109
     .local v3, tz:I
     const/4 v0, 0x0
 
@@ -222,14 +199,14 @@
     :goto_0
     if-ge v0, p1, :cond_5
 
-    .line 109
+    .line 110
     if-ne v1, v6, :cond_1
 
     if-ne v2, v6, :cond_1
 
     if-ne v3, v6, :cond_1
 
-    .line 110
+    .line 111
     new-instance v4, Landroid/renderscript/RSIllegalArgumentException;
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -260,51 +237,51 @@
 
     throw v4
 
-    .line 113
+    .line 114
     :cond_1
     if-le v1, v6, :cond_2
 
     shr-int/lit8 v1, v1, 0x1
 
-    .line 114
+    .line 115
     :cond_2
     if-le v2, v6, :cond_3
 
     shr-int/lit8 v2, v2, 0x1
 
-    .line 115
+    .line 116
     :cond_3
     if-le v3, v6, :cond_4
 
     shr-int/lit8 v3, v3, 0x1
 
-    .line 108
+    .line 109
     :cond_4
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 118
+    .line 119
     :cond_5
     iput v1, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimX:I
 
-    .line 119
+    .line 120
     iput v2, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimY:I
 
-    .line 120
+    .line 121
     iput v3, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimZ:I
 
-    .line 121
+    .line 122
     iget v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimX:I
 
     iput v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentCount:I
 
-    .line 122
+    .line 123
     iget v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimY:I
 
     if-le v4, v6, :cond_6
 
-    .line 123
+    .line 124
     iget v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentCount:I
 
     iget v5, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimY:I
@@ -313,13 +290,13 @@
 
     iput v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentCount:I
 
-    .line 125
+    .line 126
     :cond_6
     iget v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimZ:I
 
     if-le v4, v6, :cond_7
 
-    .line 126
+    .line 127
     iget v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentCount:I
 
     iget v5, p0, Landroid/renderscript/AllocationAdapter;->mCurrentDimZ:I
@@ -328,14 +305,14 @@
 
     iput v4, p0, Landroid/renderscript/AllocationAdapter;->mCurrentCount:I
 
-    .line 128
+    .line 129
     :cond_7
     iput v7, p0, Landroid/renderscript/AllocationAdapter;->mSelectedY:I
 
-    .line 129
+    .line 130
     iput v7, p0, Landroid/renderscript/AllocationAdapter;->mSelectedZ:I
 
-    .line 130
+    .line 131
     return-void
 .end method
 
@@ -344,10 +321,10 @@
     .parameter "d"
 
     .prologue
-    .line 96
+    .line 97
     invoke-super {p0, p1}, Landroid/renderscript/Allocation;->copyTo([F)V
 
-    .line 97
+    .line 98
     return-void
 .end method
 
@@ -356,10 +333,10 @@
     .parameter "d"
 
     .prologue
-    .line 90
+    .line 91
     invoke-super {p0, p1}, Landroid/renderscript/Allocation;->copyTo([I)V
 
-    .line 91
+    .line 92
     return-void
 .end method
 
@@ -395,7 +372,7 @@
     .parameter "cf"
 
     .prologue
-    .line 159
+    .line 160
     iget-object v0, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
     invoke-virtual {v0}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
@@ -408,7 +385,7 @@
 
     if-nez v0, :cond_0
 
-    .line 160
+    .line 161
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set Face when the allocation type does not include faces."
@@ -417,13 +394,13 @@
 
     throw v0
 
-    .line 162
+    .line 163
     :cond_0
     iget-boolean v0, p0, Landroid/renderscript/AllocationAdapter;->mConstrainedFace:Z
 
     if-nez v0, :cond_1
 
-    .line 163
+    .line 164
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set LOD when the adapter includes mipmaps."
@@ -432,11 +409,11 @@
 
     throw v0
 
-    .line 165
+    .line 166
     :cond_1
     if-nez p1, :cond_2
 
-    .line 166
+    .line 167
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
     const-string v1, "Cannot set null face."
@@ -445,11 +422,11 @@
 
     throw v0
 
-    .line 169
+    .line 170
     :cond_2
     iput-object p1, p0, Landroid/renderscript/AllocationAdapter;->mSelectedFace:Landroid/renderscript/Type$CubemapFace;
 
-    .line 170
+    .line 171
     return-void
 .end method
 
@@ -458,7 +435,7 @@
     .parameter "lod"
 
     .prologue
-    .line 142
+    .line 143
     iget-object v0, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
     invoke-virtual {v0}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
@@ -471,7 +448,7 @@
 
     if-nez v0, :cond_0
 
-    .line 143
+    .line 144
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set LOD when the allocation type does not include mipmaps."
@@ -480,13 +457,13 @@
 
     throw v0
 
-    .line 145
+    .line 146
     :cond_0
     iget-boolean v0, p0, Landroid/renderscript/AllocationAdapter;->mConstrainedLOD:Z
 
     if-nez v0, :cond_1
 
-    .line 146
+    .line 147
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set LOD when the adapter includes mipmaps."
@@ -495,11 +472,11 @@
 
     throw v0
 
-    .line 149
+    .line 150
     :cond_1
     invoke-virtual {p0, p1}, Landroid/renderscript/AllocationAdapter;->initLOD(I)V
 
-    .line 150
+    .line 151
     return-void
 .end method
 
@@ -508,7 +485,7 @@
     .parameter "y"
 
     .prologue
-    .line 180
+    .line 181
     iget-object v0, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
     invoke-virtual {v0}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
@@ -521,7 +498,7 @@
 
     if-nez v0, :cond_0
 
-    .line 181
+    .line 182
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set Y when the allocation type does not include Y dim."
@@ -530,7 +507,7 @@
 
     throw v0
 
-    .line 183
+    .line 184
     :cond_0
     iget-object v0, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
@@ -544,7 +521,7 @@
 
     if-gt v0, p1, :cond_1
 
-    .line 184
+    .line 185
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set Y greater than dimension of allocation."
@@ -553,13 +530,13 @@
 
     throw v0
 
-    .line 186
+    .line 187
     :cond_1
     iget-boolean v0, p0, Landroid/renderscript/AllocationAdapter;->mConstrainedY:Z
 
     if-nez v0, :cond_2
 
-    .line 187
+    .line 188
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set Y when the adapter includes Y."
@@ -568,11 +545,11 @@
 
     throw v0
 
-    .line 190
+    .line 191
     :cond_2
     iput p1, p0, Landroid/renderscript/AllocationAdapter;->mSelectedY:I
 
-    .line 191
+    .line 192
     return-void
 .end method
 
@@ -581,7 +558,7 @@
     .parameter "z"
 
     .prologue
-    .line 201
+    .line 202
     iget-object v0, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
     invoke-virtual {v0}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
@@ -594,7 +571,7 @@
 
     if-nez v0, :cond_0
 
-    .line 202
+    .line 203
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set Z when the allocation type does not include Z dim."
@@ -603,7 +580,7 @@
 
     throw v0
 
-    .line 204
+    .line 205
     :cond_0
     iget-object v0, p0, Landroid/renderscript/AllocationAdapter;->mAdaptedAllocation:Landroid/renderscript/Allocation;
 
@@ -617,7 +594,7 @@
 
     if-gt v0, p1, :cond_1
 
-    .line 205
+    .line 206
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set Z greater than dimension of allocation."
@@ -626,13 +603,13 @@
 
     throw v0
 
-    .line 207
+    .line 208
     :cond_1
     iget-boolean v0, p0, Landroid/renderscript/AllocationAdapter;->mConstrainedZ:Z
 
     if-nez v0, :cond_2
 
-    .line 208
+    .line 209
     new-instance v0, Landroid/renderscript/RSInvalidStateException;
 
     const-string v1, "Cannot set Z when the adapter includes Z."
@@ -641,11 +618,11 @@
 
     throw v0
 
-    .line 211
+    .line 212
     :cond_2
     iput p1, p0, Landroid/renderscript/AllocationAdapter;->mSelectedZ:I
 
-    .line 212
+    .line 213
     return-void
 .end method
 
@@ -655,10 +632,10 @@
     .parameter "fp"
 
     .prologue
-    .line 42
+    .line 43
     invoke-super {p0, p1, p2}, Landroid/renderscript/Allocation;->setFromFieldPacker(ILandroid/renderscript/FieldPacker;)V
 
-    .line 43
+    .line 44
     return-void
 .end method
 
@@ -669,10 +646,10 @@
     .parameter "d"
 
     .prologue
-    .line 66
+    .line 67
     invoke-super {p0, p1, p2, p3}, Landroid/renderscript/Allocation;->copy1DRangeFrom(II[B)V
 
-    .line 67
+    .line 68
     return-void
 .end method
 
@@ -683,10 +660,10 @@
     .parameter "d"
 
     .prologue
-    .line 72
+    .line 73
     invoke-super {p0, p1, p2, p3}, Landroid/renderscript/Allocation;->copy1DRangeFrom(II[F)V
 
-    .line 73
+    .line 74
     return-void
 .end method
 
@@ -697,10 +674,10 @@
     .parameter "d"
 
     .prologue
-    .line 54
+    .line 55
     invoke-super {p0, p1, p2, p3}, Landroid/renderscript/Allocation;->copy1DRangeFrom(II[I)V
 
-    .line 55
+    .line 56
     return-void
 .end method
 
@@ -711,10 +688,10 @@
     .parameter "d"
 
     .prologue
-    .line 60
+    .line 61
     invoke-super {p0, p1, p2, p3}, Landroid/renderscript/Allocation;->copy1DRangeFrom(II[S)V
 
-    .line 61
+    .line 62
     return-void
 .end method
 
@@ -727,10 +704,10 @@
     .parameter "d"
 
     .prologue
-    .line 84
+    .line 85
     invoke-super/range {p0 .. p5}, Landroid/renderscript/Allocation;->copy2DRangeFrom(IIII[F)V
 
-    .line 85
+    .line 86
     return-void
 .end method
 
@@ -743,10 +720,10 @@
     .parameter "d"
 
     .prologue
-    .line 78
+    .line 79
     invoke-super/range {p0 .. p5}, Landroid/renderscript/Allocation;->copy2DRangeFrom(IIII[I)V
 
-    .line 79
+    .line 80
     return-void
 .end method
 
@@ -757,9 +734,9 @@
     .parameter "fp"
 
     .prologue
-    .line 48
+    .line 49
     invoke-super {p0, p1, p2, p3}, Landroid/renderscript/Allocation;->setFromFieldPacker(IILandroid/renderscript/FieldPacker;)V
 
-    .line 49
+    .line 50
     return-void
 .end method

@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 207
+    .line 219
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,7 +45,7 @@
     .parameter "in"
 
     .prologue
-    .line 209
+    .line 221
     new-instance v0, Landroid/app/Profile;
 
     const/4 v1, 0x0
@@ -60,7 +60,7 @@
     .parameter "x0"
 
     .prologue
-    .line 207
+    .line 219
     invoke-virtual {p0, p1}, Landroid/app/Profile$1;->createFromParcel(Landroid/os/Parcel;)Landroid/app/Profile;
 
     move-result-object v0
@@ -73,7 +73,7 @@
     .parameter "size"
 
     .prologue
-    .line 214
+    .line 226
     new-array v0, p1, [Landroid/app/Profile;
 
     return-object v0
@@ -84,7 +84,7 @@
     .parameter "x0"
 
     .prologue
-    .line 207
+    .line 219
     invoke-virtual {p0, p1}, Landroid/app/Profile$1;->newArray(I)[Landroid/app/Profile;
 
     move-result-object v0

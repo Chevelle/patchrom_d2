@@ -72,7 +72,7 @@
     .parameter "currentCanvas"
 
     .prologue
-    .line 67
+    .line 72
     return-void
 .end method
 
@@ -87,26 +87,24 @@
 .end method
 
 .method getSurfaceTexture()Landroid/graphics/SurfaceTexture;
-    .locals 3
+    .locals 2
 
     .prologue
-    .line 70
+    .line 75
     iget-object v0, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
     if-nez v0, :cond_0
 
-    .line 71
+    .line 76
     new-instance v0, Landroid/graphics/SurfaceTexture;
 
     iget v1, p0, Landroid/view/GLES20TextureLayer;->mTexture:I
 
-    const/4 v2, 0x0
-
-    invoke-direct {v0, v1, v2}, Landroid/graphics/SurfaceTexture;-><init>(IZ)V
+    invoke-direct {v0, v1}, Landroid/graphics/SurfaceTexture;-><init>(I)V
 
     iput-object v0, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
-    .line 73
+    .line 78
     :cond_0
     iget-object v0, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
@@ -143,7 +141,7 @@
     .parameter "dirtyRect"
 
     .prologue
-    .line 102
+    .line 107
     return-void
 .end method
 
@@ -166,7 +164,7 @@
     .parameter "isOpaque"
 
     .prologue
-    .line 92
+    .line 97
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
     const-string v1, "Use update(int, int, boolean) instead"
@@ -181,28 +179,28 @@
     .parameter "surfaceTexture"
 
     .prologue
-    .line 77
+    .line 82
     iget-object v0, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
     if-eqz v0, :cond_0
 
-    .line 78
+    .line 83
     iget-object v0, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
     invoke-virtual {v0}, Landroid/graphics/SurfaceTexture;->release()V
 
-    .line 80
+    .line 85
     :cond_0
     iput-object p1, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
-    .line 81
+    .line 86
     iget-object v0, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
     iget v1, p0, Landroid/view/GLES20TextureLayer;->mTexture:I
 
     invoke-virtual {v0, v1}, Landroid/graphics/SurfaceTexture;->attachToGLContext(I)V
 
-    .line 82
+    .line 87
     return-void
 .end method
 
@@ -211,14 +209,14 @@
     .parameter "matrix"
 
     .prologue
-    .line 97
+    .line 102
     iget v0, p0, Landroid/view/GLES20TextureLayer;->mLayer:I
 
     iget v1, p1, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, v1}, Landroid/view/GLES20Canvas;->nSetTextureLayerTransform(II)V
 
-    .line 98
+    .line 103
     return-void
 .end method
 
@@ -233,6 +231,18 @@
     return-object v0
 .end method
 
+.method start(Landroid/graphics/Canvas;Landroid/graphics/Rect;)Landroid/view/HardwareCanvas;
+    .locals 1
+    .parameter "currentCanvas"
+    .parameter "dirty"
+
+    .prologue
+    .line 67
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
 .method update(IIZ)V
     .locals 2
     .parameter "width"
@@ -240,16 +250,16 @@
     .parameter "isOpaque"
 
     .prologue
-    .line 86
+    .line 91
     invoke-super {p0, p1, p2, p3}, Landroid/view/GLES20Layer;->update(IIZ)V
 
-    .line 87
+    .line 92
     iget v0, p0, Landroid/view/GLES20TextureLayer;->mLayer:I
 
     iget-object v1, p0, Landroid/view/GLES20TextureLayer;->mSurface:Landroid/graphics/SurfaceTexture;
 
     invoke-static {v0, p1, p2, p3, v1}, Landroid/view/GLES20Canvas;->nUpdateTextureLayer(IIIZLandroid/graphics/SurfaceTexture;)V
 
-    .line 88
+    .line 93
     return-void
 .end method

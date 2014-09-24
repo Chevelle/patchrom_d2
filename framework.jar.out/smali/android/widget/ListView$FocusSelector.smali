@@ -31,7 +31,7 @@
     .parameter
 
     .prologue
-    .line 1080
+    .line 1097
     iput-object p1, p0, Landroid/widget/ListView$FocusSelector;->this$0:Landroid/widget/ListView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -45,7 +45,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1080
+    .line 1097
     invoke-direct {p0, p1}, Landroid/widget/ListView$FocusSelector;-><init>(Landroid/widget/ListView;)V
 
     return-void
@@ -57,7 +57,7 @@
     .locals 3
 
     .prologue
-    .line 1091
+    .line 1108
     iget-object v0, p0, Landroid/widget/ListView$FocusSelector;->this$0:Landroid/widget/ListView;
 
     iget v1, p0, Landroid/widget/ListView$FocusSelector;->mPosition:I
@@ -66,7 +66,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/widget/ListView;->setSelectionFromTop(II)V
 
-    .line 1092
+    .line 1109
     return-void
 .end method
 
@@ -76,12 +76,12 @@
     .parameter "top"
 
     .prologue
-    .line 1085
+    .line 1102
     iput p1, p0, Landroid/widget/ListView$FocusSelector;->mPosition:I
 
-    .line 1086
+    .line 1103
     iput p2, p0, Landroid/widget/ListView$FocusSelector;->mPositionTop:I
 
-    .line 1087
+    .line 1104
     return-object p0
 .end method

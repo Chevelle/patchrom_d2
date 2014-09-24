@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 563
+    .line 596
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -28,28 +28,14 @@
 
 # virtual methods
 .method public createService(Landroid/app/ContextImpl;)Ljava/lang/Object;
-    .locals 3
+    .locals 1
     .parameter "ctx"
 
     .prologue
-    .line 565
-    const-string v2, "fm_receiver"
+    .line 598
+    new-instance v0, Landroid/hardware/camera2/CameraManager;
 
-    invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+    invoke-direct {v0, p1}, Landroid/hardware/camera2/CameraManager;-><init>(Landroid/content/Context;)V
 
-    move-result-object v0
-
-    .line 566
-    .local v0, b:Landroid/os/IBinder;
-    invoke-static {v0}, Lcom/stericsson/hardware/fm/IFmReceiver$Stub;->asInterface(Landroid/os/IBinder;)Lcom/stericsson/hardware/fm/IFmReceiver;
-
-    move-result-object v1
-
-    .line 567
-    .local v1, service:Lcom/stericsson/hardware/fm/IFmReceiver;
-    new-instance v2, Lcom/stericsson/hardware/fm/FmReceiverImpl;
-
-    invoke-direct {v2, v1}, Lcom/stericsson/hardware/fm/FmReceiverImpl;-><init>(Lcom/stericsson/hardware/fm/IFmReceiver;)V
-
-    return-object v2
+    return-object v0
 .end method

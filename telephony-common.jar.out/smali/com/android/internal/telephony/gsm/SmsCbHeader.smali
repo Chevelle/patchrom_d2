@@ -1,4 +1,4 @@
-.class Lcom/android/internal/telephony/gsm/SmsCbHeader;
+.class public Lcom/android/internal/telephony/gsm/SmsCbHeader;
 .super Ljava/lang/Object;
 .source "SmsCbHeader.java"
 
@@ -20,23 +20,23 @@
 
 
 # instance fields
-.field private final dataCodingScheme:I
-
-.field private final format:I
-
-.field private final geographicalScope:I
-
 .field private final mCmasInfo:Landroid/telephony/SmsCbCmasInfo;
+
+.field private final mDataCodingScheme:I
 
 .field private final mEtwsInfo:Landroid/telephony/SmsCbEtwsInfo;
 
-.field private final messageIdentifier:I
+.field private final mFormat:I
 
-.field private final nrOfPages:I
+.field private final mGeographicalScope:I
 
-.field private final pageIndex:I
+.field private final mMessageIdentifier:I
 
-.field private final serialNumber:I
+.field private final mNrOfPages:I
+
+.field private final mPageIndex:I
+
+.field private final mSerialNumber:I
 
 
 # direct methods
@@ -89,7 +89,7 @@
 
     ushr-int/lit8 v0, v0, 0x6
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->geographicalScope:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mGeographicalScope:I
 
     .line 104
     const/4 v0, 0x0
@@ -108,7 +108,7 @@
 
     or-int/2addr v0, v2
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->serialNumber:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
     .line 105
     const/4 v0, 0x2
@@ -127,7 +127,7 @@
 
     or-int/2addr v0, v2
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     .line 106
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->isEtwsMessage()Z
@@ -145,22 +145,22 @@
     .line 107
     const/4 v0, 0x3
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->format:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mFormat:I
 
     .line 108
     const/4 v0, -0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->dataCodingScheme:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mDataCodingScheme:I
 
     .line 109
     const/4 v0, -0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->pageIndex:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mPageIndex:I
 
     .line 110
     const/4 v0, -0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->nrOfPages:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mNrOfPages:I
 
     .line 111
     const/4 v0, 0x4
@@ -266,7 +266,7 @@
     :cond_5
     const/4 v0, 0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->format:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mFormat:I
 
     .line 128
     const/4 v0, 0x4
@@ -275,7 +275,7 @@
 
     and-int/lit16 v0, v0, 0xff
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->dataCodingScheme:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mDataCodingScheme:I
 
     .line 131
     const/4 v0, 0x5
@@ -311,10 +311,10 @@
 
     .line 139
     :cond_7
-    iput v11, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->pageIndex:I
+    iput v11, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mPageIndex:I
 
     .line 140
-    iput v10, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->nrOfPages:I
+    iput v10, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mNrOfPages:I
 
     .line 165
     .end local v10           #nrOfPages:I
@@ -367,7 +367,7 @@
     :cond_8
     const/4 v0, 0x2
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->format:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mFormat:I
 
     .line 147
     const/4 v0, 0x0
@@ -423,7 +423,7 @@
 
     or-int/2addr v0, v2
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     .line 154
     const/4 v0, 0x3
@@ -434,7 +434,7 @@
 
     ushr-int/lit8 v0, v0, 0x6
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->geographicalScope:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mGeographicalScope:I
 
     .line 155
     const/4 v0, 0x3
@@ -453,7 +453,7 @@
 
     or-int/2addr v0, v2
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->serialNumber:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
     .line 156
     const/4 v0, 0x5
@@ -462,17 +462,17 @@
 
     and-int/lit16 v0, v0, 0xff
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->dataCodingScheme:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mDataCodingScheme:I
 
     .line 161
     const/4 v0, 0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->pageIndex:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mPageIndex:I
 
     .line 162
     const/4 v0, 0x1
 
-    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->nrOfPages:I
+    iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mNrOfPages:I
 
     goto :goto_4
 
@@ -550,7 +550,7 @@
 
     .prologue
     .line 386
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     packed-switch v0, :pswitch_data_0
 
@@ -593,7 +593,7 @@
 
     .prologue
     .line 296
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     packed-switch v0, :pswitch_data_0
 
@@ -609,7 +609,7 @@
 
     goto :goto_0
 
-    .line 304
+    .line 302
     :pswitch_1
     const/4 v0, 0x1
 
@@ -653,8 +653,8 @@
         :pswitch_0
         :pswitch_1
         :pswitch_1
-        :pswitch_1
-        :pswitch_1
+        :pswitch_2
+        :pswitch_2
         :pswitch_2
         :pswitch_2
         :pswitch_2
@@ -671,7 +671,7 @@
 
     .prologue
     .line 336
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     packed-switch v0, :pswitch_data_0
 
@@ -714,7 +714,7 @@
 
     .prologue
     .line 361
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     packed-switch v0, :pswitch_data_0
 
@@ -757,7 +757,7 @@
 
     .prologue
     .line 287
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     add-int/lit16 v0, v0, -0x1100
 
@@ -769,13 +769,13 @@
 
     .prologue
     .line 256
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     const/16 v1, 0x1112
 
     if-lt v0, v1, :cond_0
 
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     const/16 v1, 0x112f
 
@@ -797,7 +797,7 @@
 
     .prologue
     .line 277
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->serialNumber:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
     and-int/lit16 v0, v0, 0x2000
 
@@ -819,7 +819,7 @@
 
     .prologue
     .line 231
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     const v1, 0xfff8
 
@@ -845,7 +845,7 @@
 
     .prologue
     .line 267
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->serialNumber:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
     and-int/lit16 v0, v0, 0x1000
 
@@ -879,7 +879,7 @@
 
     .prologue
     .line 198
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->dataCodingScheme:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mDataCodingScheme:I
 
     return v0
 .end method
@@ -899,7 +899,7 @@
 
     .prologue
     .line 186
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->geographicalScope:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mGeographicalScope:I
 
     return v0
 .end method
@@ -909,7 +909,7 @@
 
     .prologue
     .line 206
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->nrOfPages:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mNrOfPages:I
 
     return v0
 .end method
@@ -919,7 +919,7 @@
 
     .prologue
     .line 202
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->pageIndex:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mPageIndex:I
 
     return v0
 .end method
@@ -929,7 +929,7 @@
 
     .prologue
     .line 190
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->serialNumber:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
     return v0
 .end method
@@ -939,7 +939,7 @@
 
     .prologue
     .line 194
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     return v0
 .end method
@@ -949,13 +949,13 @@
 
     .prologue
     .line 222
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     const/16 v1, 0x1100
 
     if-lt v0, v1, :cond_0
 
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     const/16 v1, 0x18ff
 
@@ -977,7 +977,7 @@
 
     .prologue
     .line 240
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->format:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mFormat:I
 
     const/4 v1, 0x3
 
@@ -999,7 +999,7 @@
 
     .prologue
     .line 248
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->format:I
+    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mFormat:I
 
     const/4 v1, 0x2
 
@@ -1031,7 +1031,7 @@
 
     move-result-object v0
 
-    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->geographicalScope:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mGeographicalScope:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -1043,7 +1043,7 @@
 
     move-result-object v0
 
-    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->serialNumber:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
@@ -1059,7 +1059,7 @@
 
     move-result-object v0
 
-    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->messageIdentifier:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
@@ -1075,7 +1075,7 @@
 
     move-result-object v0
 
-    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->dataCodingScheme:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mDataCodingScheme:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
@@ -1091,7 +1091,7 @@
 
     move-result-object v0
 
-    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->pageIndex:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mPageIndex:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -1103,7 +1103,7 @@
 
     move-result-object v0
 
-    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->nrOfPages:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mNrOfPages:I
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 

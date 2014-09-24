@@ -617,7 +617,7 @@
 
     sput-object v0, Lcom/android/internal/telephony/cat/Tone;->$VALUES:[Lcom/android/internal/telephony/cat/Tone;
 
-    .line 181
+    .line 183
     new-instance v0, Lcom/android/internal/telephony/cat/Tone$1;
 
     invoke-direct {v0}, Lcom/android/internal/telephony/cat/Tone$1;-><init>()V
@@ -764,7 +764,7 @@
     .locals 1
 
     .prologue
-    .line 178
+    .line 180
     const/4 v0, 0x0
 
     return v0
@@ -776,13 +776,13 @@
     .parameter "flags"
 
     .prologue
-    .line 174
+    .line 175
     invoke-virtual {p0}, Lcom/android/internal/telephony/cat/Tone;->ordinal()I
 
     move-result v0
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 175
+    .line 176
     return-void
 .end method

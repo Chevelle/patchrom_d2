@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Jy het %d oorblywende pogings voordat SIM gesluit word.</item>
+        <item quantity="one">Jy het %d oorblywende poging voordat SIM gesluit word.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d sekondes gelede</item>
         <item quantity="one">1 sekonde gelede</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d van %2$d</item>
         <item quantity="one">1 passing</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Probeer weer oor %d sekondes</item>
+        <item quantity="one">Probeer weer oor 1 sekonde</item>
     </plurals>
 </resources>

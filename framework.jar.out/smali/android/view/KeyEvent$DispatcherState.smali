@@ -27,10 +27,10 @@
     .locals 1
 
     .prologue
-    .line 2661
+    .line 2692
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2664
+    .line 2695
     new-instance v0, Landroid/util/SparseIntArray;
 
     invoke-direct {v0}, Landroid/util/SparseIntArray;-><init>()V
@@ -47,12 +47,12 @@
     .parameter "event"
 
     .prologue
-    .line 2732
+    .line 2763
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
 
     move-result v1
 
-    .line 2734
+    .line 2765
     .local v1, keyCode:I
     iget-object v2, p0, Landroid/view/KeyEvent$DispatcherState;->mActiveLongPresses:Landroid/util/SparseIntArray;
 
@@ -60,42 +60,42 @@
 
     move-result v0
 
-    .line 2735
+    .line 2766
     .local v0, index:I
     if-ltz v0, :cond_0
 
-    .line 2737
+    .line 2768
     const/16 v2, 0x120
 
     invoke-static {p1, v2}, Landroid/view/KeyEvent;->access$076(Landroid/view/KeyEvent;I)I
 
-    .line 2738
+    .line 2769
     iget-object v2, p0, Landroid/view/KeyEvent$DispatcherState;->mActiveLongPresses:Landroid/util/SparseIntArray;
 
     invoke-virtual {v2, v0}, Landroid/util/SparseIntArray;->removeAt(I)V
 
-    .line 2740
+    .line 2771
     :cond_0
     iget v2, p0, Landroid/view/KeyEvent$DispatcherState;->mDownKeyCode:I
 
     if-ne v2, v1, :cond_1
 
-    .line 2742
+    .line 2773
     const/16 v2, 0x200
 
     invoke-static {p1, v2}, Landroid/view/KeyEvent;->access$076(Landroid/view/KeyEvent;I)I
 
-    .line 2743
+    .line 2774
     const/4 v2, 0x0
 
     iput v2, p0, Landroid/view/KeyEvent$DispatcherState;->mDownKeyCode:I
 
-    .line 2744
+    .line 2775
     const/4 v2, 0x0
 
     iput-object v2, p0, Landroid/view/KeyEvent$DispatcherState;->mDownTarget:Ljava/lang/Object;
 
-    .line 2746
+    .line 2777
     :cond_1
     return-void
 .end method
@@ -105,7 +105,7 @@
     .parameter "event"
 
     .prologue
-    .line 2712
+    .line 2743
     iget v0, p0, Landroid/view/KeyEvent$DispatcherState;->mDownKeyCode:I
 
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
@@ -130,7 +130,7 @@
     .parameter "event"
 
     .prologue
-    .line 2722
+    .line 2753
     iget-object v0, p0, Landroid/view/KeyEvent$DispatcherState;->mActiveLongPresses:Landroid/util/SparseIntArray;
 
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
@@ -141,7 +141,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 2723
+    .line 2754
     return-void
 .end method
 
@@ -149,22 +149,22 @@
     .locals 1
 
     .prologue
-    .line 2671
+    .line 2702
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/view/KeyEvent$DispatcherState;->mDownKeyCode:I
 
-    .line 2672
+    .line 2703
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/view/KeyEvent$DispatcherState;->mDownTarget:Ljava/lang/Object;
 
-    .line 2673
+    .line 2704
     iget-object v0, p0, Landroid/view/KeyEvent$DispatcherState;->mActiveLongPresses:Landroid/util/SparseIntArray;
 
     invoke-virtual {v0}, Landroid/util/SparseIntArray;->clear()V
 
-    .line 2674
+    .line 2705
     return-void
 .end method
 
@@ -173,22 +173,22 @@
     .parameter "target"
 
     .prologue
-    .line 2680
+    .line 2711
     iget-object v0, p0, Landroid/view/KeyEvent$DispatcherState;->mDownTarget:Ljava/lang/Object;
 
     if-ne v0, p1, :cond_0
 
-    .line 2682
+    .line 2713
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/view/KeyEvent$DispatcherState;->mDownKeyCode:I
 
-    .line 2683
+    .line 2714
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/view/KeyEvent$DispatcherState;->mDownTarget:Ljava/lang/Object;
 
-    .line 2685
+    .line 2716
     :cond_0
     return-void
 .end method
@@ -199,14 +199,14 @@
     .parameter "target"
 
     .prologue
-    .line 2698
+    .line 2729
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getAction()I
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 2699
+    .line 2730
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "Can only start tracking on a down event"
@@ -215,7 +215,7 @@
 
     throw v0
 
-    .line 2703
+    .line 2734
     :cond_0
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
 
@@ -223,9 +223,9 @@
 
     iput v0, p0, Landroid/view/KeyEvent$DispatcherState;->mDownKeyCode:I
 
-    .line 2704
+    .line 2735
     iput-object p2, p0, Landroid/view/KeyEvent$DispatcherState;->mDownTarget:Ljava/lang/Object;
 
-    .line 2705
+    .line 2736
     return-void
 .end method

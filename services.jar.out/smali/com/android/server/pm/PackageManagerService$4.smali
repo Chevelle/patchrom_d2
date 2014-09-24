@@ -1,38 +1,45 @@
-.class final Lcom/android/server/pm/PackageManagerService$4;
+.class Lcom/android/server/pm/PackageManagerService$4;
 .super Ljava/lang/Object;
 .source "PackageManagerService.java"
 
 # interfaces
-.implements Ljava/util/Comparator;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/server/pm/PackageManagerService;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/server/pm/PackageManagerService;->freeStorage(JLandroid/content/IntentSender;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Ljava/lang/Object;",
-        "Ljava/util/Comparator",
-        "<",
-        "Landroid/content/pm/ProviderInfo;",
-        ">;"
-    }
-.end annotation
+
+# instance fields
+.field final synthetic this$0:Lcom/android/server/pm/PackageManagerService;
+
+.field final synthetic val$freeStorageSize:J
+
+.field final synthetic val$pi:Landroid/content/IntentSender;
 
 
 # direct methods
-.method constructor <init>()V
+.method constructor <init>(Lcom/android/server/pm/PackageManagerService;JLandroid/content/IntentSender;)V
     .locals 0
+    .parameter
+    .parameter
+    .parameter
 
     .prologue
-    .line 5459
+    .line 2233
+    iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
+
+    iput-wide p2, p0, Lcom/android/server/pm/PackageManagerService$4;->val$freeStorageSize:J
+
+    iput-object p4, p0, Lcom/android/server/pm/PackageManagerService$4;->val$pi:Landroid/content/IntentSender;
+
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -40,57 +47,119 @@
 
 
 # virtual methods
-.method public compare(Landroid/content/pm/ProviderInfo;Landroid/content/pm/ProviderInfo;)I
-    .locals 3
-    .parameter "p1"
-    .parameter "p2"
+.method public run()V
+    .locals 8
 
     .prologue
-    .line 5461
-    iget v0, p1, Landroid/content/pm/ProviderInfo;->initOrder:I
+    .line 2235
+    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
 
-    .line 5462
-    .local v0, v1:I
-    iget v1, p2, Landroid/content/pm/ProviderInfo;->initOrder:I
+    iget-object v0, v0, Lcom/android/server/pm/PackageManagerService;->mHandler:Lcom/android/server/pm/PackageManagerService$PackageHandler;
 
-    .line 5463
-    .local v1, v2:I
-    if-le v0, v1, :cond_0
+    invoke-virtual {v0, p0}, Lcom/android/server/pm/PackageManagerService$PackageHandler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    const/4 v2, -0x1
+    .line 2236
+    const/4 v7, -0x1
 
-    :goto_0
-    return v2
+    .line 2237
+    .local v7, retCode:I
+    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
 
+    iget-object v1, v0, Lcom/android/server/pm/PackageManagerService;->mInstallLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 2238
+    :try_start_0
+    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
+
+    iget-object v0, v0, Lcom/android/server/pm/PackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
+
+    iget-wide v3, p0, Lcom/android/server/pm/PackageManagerService$4;->val$freeStorageSize:J
+
+    invoke-virtual {v0, v3, v4}, Lcom/android/server/pm/Installer;->freeCache(J)I
+
+    move-result v7
+
+    .line 2239
+    if-gez v7, :cond_0
+
+    .line 2240
+    const-string v0, "PackageManager"
+
+    const-string v3, "Couldn\'t clear application caches"
+
+    invoke-static {v0, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 2242
     :cond_0
-    if-ge v0, v1, :cond_1
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 2243
+    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$4;->val$pi:Landroid/content/IntentSender;
+
+    if-eqz v0, :cond_1
+
+    .line 2246
+    if-ltz v7, :cond_2
 
     const/4 v2, 0x1
 
-    goto :goto_0
+    .line 2247
+    .local v2, code:I
+    :goto_0
+    :try_start_1
+    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$4;->val$pi:Landroid/content/IntentSender;
 
+    const/4 v1, 0x0
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x0
+
+    invoke-virtual/range {v0 .. v5}, Landroid/content/IntentSender;->sendIntent(Landroid/content/Context;ILandroid/content/Intent;Landroid/content/IntentSender$OnFinished;Landroid/os/Handler;)V
+    :try_end_1
+    .catch Landroid/content/IntentSender$SendIntentException; {:try_start_1 .. :try_end_1} :catch_0
+
+    .line 2253
+    .end local v2           #code:I
     :cond_1
+    :goto_1
+    return-void
+
+    .line 2242
+    :catchall_0
+    move-exception v0
+
+    :try_start_2
+    monitor-exit v1
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    throw v0
+
+    .line 2246
+    :cond_2
     const/4 v2, 0x0
 
     goto :goto_0
-.end method
 
-.method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .line 2249
+    .restart local v2       #code:I
+    :catch_0
+    move-exception v6
 
-    .prologue
-    .line 5459
-    check-cast p1, Landroid/content/pm/ProviderInfo;
+    .line 2250
+    .local v6, e1:Landroid/content/IntentSender$SendIntentException;
+    const-string v0, "PackageManager"
 
-    .end local p1
-    check-cast p2, Landroid/content/pm/ProviderInfo;
+    const-string v1, "Failed to send pending intent"
 
-    .end local p2
-    invoke-virtual {p0, p1, p2}, Lcom/android/server/pm/PackageManagerService$4;->compare(Landroid/content/pm/ProviderInfo;Landroid/content/pm/ProviderInfo;)I
+    invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    move-result v0
-
-    return v0
+    goto :goto_1
 .end method

@@ -4,7 +4,7 @@
 
 
 # instance fields
-.field private mStat:Llibcore/io/StructStatFs;
+.field private mStat:Llibcore/io/StructStatVfs;
 
 
 # direct methods
@@ -17,17 +17,17 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 39
-    invoke-static {p1}, Landroid/os/StatFs;->doStat(Ljava/lang/String;)Llibcore/io/StructStatFs;
+    invoke-static {p1}, Landroid/os/StatFs;->doStat(Ljava/lang/String;)Llibcore/io/StructStatVfs;
 
     move-result-object v0
 
-    iput-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatFs;
+    iput-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
 
     .line 40
     return-void
 .end method
 
-.method private static doStat(Ljava/lang/String;)Llibcore/io/StructStatFs;
+.method private static doStat(Ljava/lang/String;)Llibcore/io/StructStatVfs;
     .locals 4
     .parameter "path"
 
@@ -36,7 +36,7 @@
     :try_start_0
     sget-object v1, Llibcore/io/Libcore;->os:Llibcore/io/Os;
 
-    invoke-interface {v1, p0}, Llibcore/io/Os;->statfs(Ljava/lang/String;)Llibcore/io/StructStatFs;
+    invoke-interface {v1, p0}, Llibcore/io/Os;->statvfs(Ljava/lang/String;)Llibcore/io/StructStatVfs;
     :try_end_0
     .catch Llibcore/io/ErrnoException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -79,58 +79,168 @@
 # virtual methods
 .method public getAvailableBlocks()I
     .locals 2
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 90
-    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatFs;
+    .line 123
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
 
-    iget-wide v0, v0, Llibcore/io/StructStatFs;->f_bavail:J
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bavail:J
 
     long-to-int v0, v0
 
     return v0
+.end method
+
+.method public getAvailableBlocksLong()J
+    .locals 2
+
+    .prologue
+    .line 131
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bavail:J
+
+    return-wide v0
+.end method
+
+.method public getAvailableBytes()J
+    .locals 4
+
+    .prologue
+    .line 139
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bavail:J
+
+    iget-object v2, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v2, v2, Llibcore/io/StructStatVfs;->f_bsize:J
+
+    mul-long/2addr v0, v2
+
+    return-wide v0
 .end method
 
 .method public getBlockCount()I
     .locals 2
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 72
-    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatFs;
+    .line 80
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
 
-    iget-wide v0, v0, Llibcore/io/StructStatFs;->f_blocks:J
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_blocks:J
 
     long-to-int v0, v0
 
     return v0
+.end method
+
+.method public getBlockCountLong()J
+    .locals 2
+
+    .prologue
+    .line 88
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_blocks:J
+
+    return-wide v0
 .end method
 
 .method public getBlockSize()I
     .locals 2
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
     .line 64
-    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatFs;
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
 
-    iget-wide v0, v0, Llibcore/io/StructStatFs;->f_bsize:J
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bsize:J
 
     long-to-int v0, v0
 
     return v0
 .end method
 
-.method public getFreeBlocks()I
+.method public getBlockSizeLong()J
     .locals 2
 
     .prologue
-    .line 82
-    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatFs;
+    .line 72
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
 
-    iget-wide v0, v0, Llibcore/io/StructStatFs;->f_bfree:J
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bsize:J
+
+    return-wide v0
+.end method
+
+.method public getFreeBlocks()I
+    .locals 2
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 96
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bfree:J
 
     long-to-int v0, v0
 
     return v0
+.end method
+
+.method public getFreeBlocksLong()J
+    .locals 2
+
+    .prologue
+    .line 106
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bfree:J
+
+    return-wide v0
+.end method
+
+.method public getFreeBytes()J
+    .locals 4
+
+    .prologue
+    .line 115
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_bfree:J
+
+    iget-object v2, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v2, v2, Llibcore/io/StructStatVfs;->f_bsize:J
+
+    mul-long/2addr v0, v2
+
+    return-wide v0
+.end method
+
+.method public getTotalBytes()J
+    .locals 4
+
+    .prologue
+    .line 146
+    iget-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v0, v0, Llibcore/io/StructStatVfs;->f_blocks:J
+
+    iget-object v2, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
+
+    iget-wide v2, v2, Llibcore/io/StructStatVfs;->f_bsize:J
+
+    mul-long/2addr v0, v2
+
+    return-wide v0
 .end method
 
 .method public restat(Ljava/lang/String;)V
@@ -139,11 +249,11 @@
 
     .prologue
     .line 56
-    invoke-static {p1}, Landroid/os/StatFs;->doStat(Ljava/lang/String;)Llibcore/io/StructStatFs;
+    invoke-static {p1}, Landroid/os/StatFs;->doStat(Ljava/lang/String;)Llibcore/io/StructStatVfs;
 
     move-result-object v0
 
-    iput-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatFs;
+    iput-object v0, p0, Landroid/os/StatFs;->mStat:Llibcore/io/StructStatVfs;
 
     .line 57
     return-void

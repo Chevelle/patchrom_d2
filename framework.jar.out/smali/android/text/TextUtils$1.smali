@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 649
+    .line 665
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,62 +45,62 @@
     .parameter "p"
 
     .prologue
-    .line 655
+    .line 671
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    .line 657
+    .line 673
     .local v0, kind:I
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 658
+    .line 674
     .local v2, string:Ljava/lang/String;
     if-nez v2, :cond_1
 
-    .line 659
+    .line 675
     const/4 v2, 0x0
 
-    .line 772
+    .line 788
     .end local v2           #string:Ljava/lang/String;
     :cond_0
     :goto_0
     return-object v2
 
-    .line 662
+    .line 678
     .restart local v2       #string:Ljava/lang/String;
     :cond_1
     const/4 v3, 0x1
 
     if-eq v0, v3, :cond_0
 
-    .line 666
+    .line 682
     new-instance v1, Landroid/text/SpannableString;
 
     invoke-direct {v1, v2}, Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V
 
-    .line 669
+    .line 685
     .local v1, sp:Landroid/text/SpannableString;
     :goto_1
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    .line 671
+    .line 687
     if-nez v0, :cond_2
 
     move-object v2, v1
 
-    .line 772
+    .line 788
     goto :goto_0
 
-    .line 674
+    .line 690
     :cond_2
     packed-switch v0, :pswitch_data_0
 
-    .line 768
+    .line 784
     new-instance v3, Ljava/lang/RuntimeException;
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -125,7 +125,7 @@
 
     throw v3
 
-    .line 676
+    .line 692
     :pswitch_0
     new-instance v3, Landroid/text/style/AlignmentSpan$Standard;
 
@@ -136,7 +136,7 @@
 
     goto :goto_1
 
-    .line 680
+    .line 696
     :pswitch_1
     new-instance v3, Landroid/text/style/ForegroundColorSpan;
 
@@ -147,7 +147,7 @@
 
     goto :goto_1
 
-    .line 684
+    .line 700
     :pswitch_2
     new-instance v3, Landroid/text/style/RelativeSizeSpan;
 
@@ -158,7 +158,7 @@
 
     goto :goto_1
 
-    .line 688
+    .line 704
     :pswitch_3
     new-instance v3, Landroid/text/style/ScaleXSpan;
 
@@ -169,7 +169,7 @@
 
     goto :goto_1
 
-    .line 692
+    .line 708
     :pswitch_4
     new-instance v3, Landroid/text/style/StrikethroughSpan;
 
@@ -180,7 +180,7 @@
 
     goto :goto_1
 
-    .line 696
+    .line 712
     :pswitch_5
     new-instance v3, Landroid/text/style/UnderlineSpan;
 
@@ -191,7 +191,7 @@
 
     goto :goto_1
 
-    .line 700
+    .line 716
     :pswitch_6
     new-instance v3, Landroid/text/style/StyleSpan;
 
@@ -202,7 +202,7 @@
 
     goto :goto_1
 
-    .line 704
+    .line 720
     :pswitch_7
     new-instance v3, Landroid/text/style/BulletSpan;
 
@@ -213,7 +213,7 @@
 
     goto :goto_1
 
-    .line 708
+    .line 724
     :pswitch_8
     new-instance v3, Landroid/text/style/QuoteSpan;
 
@@ -224,7 +224,7 @@
 
     goto :goto_1
 
-    .line 712
+    .line 728
     :pswitch_9
     new-instance v3, Landroid/text/style/LeadingMarginSpan$Standard;
 
@@ -235,7 +235,7 @@
 
     goto :goto_1
 
-    .line 716
+    .line 732
     :pswitch_a
     new-instance v3, Landroid/text/style/URLSpan;
 
@@ -246,7 +246,7 @@
 
     goto/16 :goto_1
 
-    .line 720
+    .line 736
     :pswitch_b
     new-instance v3, Landroid/text/style/BackgroundColorSpan;
 
@@ -257,7 +257,7 @@
 
     goto/16 :goto_1
 
-    .line 724
+    .line 740
     :pswitch_c
     new-instance v3, Landroid/text/style/TypefaceSpan;
 
@@ -268,7 +268,7 @@
 
     goto/16 :goto_1
 
-    .line 728
+    .line 744
     :pswitch_d
     new-instance v3, Landroid/text/style/SuperscriptSpan;
 
@@ -279,7 +279,7 @@
 
     goto/16 :goto_1
 
-    .line 732
+    .line 748
     :pswitch_e
     new-instance v3, Landroid/text/style/SubscriptSpan;
 
@@ -290,7 +290,7 @@
 
     goto/16 :goto_1
 
-    .line 736
+    .line 752
     :pswitch_f
     new-instance v3, Landroid/text/style/AbsoluteSizeSpan;
 
@@ -301,7 +301,7 @@
 
     goto/16 :goto_1
 
-    .line 740
+    .line 756
     :pswitch_10
     new-instance v3, Landroid/text/style/TextAppearanceSpan;
 
@@ -312,7 +312,7 @@
 
     goto/16 :goto_1
 
-    .line 744
+    .line 760
     :pswitch_11
     new-instance v3, Landroid/text/Annotation;
 
@@ -323,7 +323,7 @@
 
     goto/16 :goto_1
 
-    .line 748
+    .line 764
     :pswitch_12
     new-instance v3, Landroid/text/style/SuggestionSpan;
 
@@ -334,7 +334,7 @@
 
     goto/16 :goto_1
 
-    .line 752
+    .line 768
     :pswitch_13
     new-instance v3, Landroid/text/style/SpellCheckSpan;
 
@@ -345,7 +345,7 @@
 
     goto/16 :goto_1
 
-    .line 756
+    .line 772
     :pswitch_14
     new-instance v3, Landroid/text/style/SuggestionRangeSpan;
 
@@ -356,18 +356,18 @@
 
     goto/16 :goto_1
 
-    .line 760
+    .line 776
     :pswitch_15
     new-instance v3, Landroid/text/style/EasyEditSpan;
 
-    invoke-direct {v3}, Landroid/text/style/EasyEditSpan;-><init>()V
+    invoke-direct {v3, p1}, Landroid/text/style/EasyEditSpan;-><init>(Landroid/os/Parcel;)V
 
     #calls: Landroid/text/TextUtils;->readSpan(Landroid/os/Parcel;Landroid/text/Spannable;Ljava/lang/Object;)V
     invoke-static {p1, v1, v3}, Landroid/text/TextUtils;->access$000(Landroid/os/Parcel;Landroid/text/Spannable;Ljava/lang/Object;)V
 
     goto/16 :goto_1
 
-    .line 764
+    .line 780
     :pswitch_16
     new-instance v3, Landroid/text/style/LocaleSpan;
 
@@ -378,7 +378,7 @@
 
     goto/16 :goto_1
 
-    .line 674
+    .line 690
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -412,7 +412,7 @@
     .parameter "x0"
 
     .prologue
-    .line 649
+    .line 665
     invoke-virtual {p0, p1}, Landroid/text/TextUtils$1;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/CharSequence;
 
     move-result-object v0
@@ -425,7 +425,7 @@
     .parameter "size"
 
     .prologue
-    .line 777
+    .line 793
     new-array v0, p1, [Ljava/lang/CharSequence;
 
     return-object v0
@@ -436,7 +436,7 @@
     .parameter "x0"
 
     .prologue
-    .line 649
+    .line 665
     invoke-virtual {p0, p1}, Landroid/text/TextUtils$1;->newArray(I)[Ljava/lang/CharSequence;
 
     move-result-object v0

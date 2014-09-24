@@ -381,13 +381,179 @@
 .method private static native nativeCreateFromTypeface(II)I
 .end method
 
+.method private static native nativeFreeCaches()V
+.end method
+
 .method private static native nativeGetStyle(I)I
 .end method
 
 .method private static native nativeUnref(I)V
 .end method
 
-.method public static native setGammaForText(FF)V
+.method public static recreateDefaults()V
+    .locals 12
+
+    .prologue
+    const/4 v11, 0x3
+
+    const/4 v10, 0x2
+
+    const/4 v9, 0x0
+
+    const/4 v8, 0x0
+
+    .line 203
+    invoke-static {}, Landroid/graphics/Typeface;->nativeFreeCaches()V
+
+    .line 204
+    sget-object v7, Landroid/graphics/Typeface;->sTypefaceCache:Landroid/util/SparseArray;
+
+    invoke-virtual {v7}, Landroid/util/SparseArray;->clear()V
+
+    .line 206
+    invoke-static {v9, v8}, Landroid/graphics/Typeface;->nativeCreate(Ljava/lang/String;I)I
+
+    move-result v1
+
+    .line 207
+    .local v1, newDefault:I
+    const/4 v7, 0x1
+
+    invoke-static {v9, v7}, Landroid/graphics/Typeface;->nativeCreate(Ljava/lang/String;I)I
+
+    move-result v2
+
+    .line 208
+    .local v2, newDefaultBold:I
+    const-string/jumbo v7, "sans-serif"
+
+    invoke-static {v7, v8}, Landroid/graphics/Typeface;->nativeCreate(Ljava/lang/String;I)I
+
+    move-result v5
+
+    .line 209
+    .local v5, newSansSerif:I
+    const-string/jumbo v7, "serif"
+
+    invoke-static {v7, v8}, Landroid/graphics/Typeface;->nativeCreate(Ljava/lang/String;I)I
+
+    move-result v6
+
+    .line 210
+    .local v6, newSerif:I
+    const-string/jumbo v7, "monospace"
+
+    invoke-static {v7, v8}, Landroid/graphics/Typeface;->nativeCreate(Ljava/lang/String;I)I
+
+    move-result v4
+
+    .line 211
+    .local v4, newMonoSpace:I
+    invoke-static {v9, v10}, Landroid/graphics/Typeface;->nativeCreate(Ljava/lang/String;I)I
+
+    move-result v3
+
+    .line 212
+    .local v3, newItalic:I
+    invoke-static {v9, v11}, Landroid/graphics/Typeface;->nativeCreate(Ljava/lang/String;I)I
+
+    move-result v0
+
+    .line 214
+    .local v0, newBoldItalic:I
+    sget-object v7, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
+
+    iget v7, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    invoke-static {v7}, Landroid/graphics/Typeface;->nativeUnref(I)V
+
+    .line 215
+    sget-object v7, Landroid/graphics/Typeface;->DEFAULT_BOLD:Landroid/graphics/Typeface;
+
+    iget v7, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    invoke-static {v7}, Landroid/graphics/Typeface;->nativeUnref(I)V
+
+    .line 216
+    sget-object v7, Landroid/graphics/Typeface;->SANS_SERIF:Landroid/graphics/Typeface;
+
+    iget v7, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    invoke-static {v7}, Landroid/graphics/Typeface;->nativeUnref(I)V
+
+    .line 217
+    sget-object v7, Landroid/graphics/Typeface;->SERIF:Landroid/graphics/Typeface;
+
+    iget v7, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    invoke-static {v7}, Landroid/graphics/Typeface;->nativeUnref(I)V
+
+    .line 218
+    sget-object v7, Landroid/graphics/Typeface;->MONOSPACE:Landroid/graphics/Typeface;
+
+    iget v7, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    invoke-static {v7}, Landroid/graphics/Typeface;->nativeUnref(I)V
+
+    .line 219
+    sget-object v7, Landroid/graphics/Typeface;->sDefaults:[Landroid/graphics/Typeface;
+
+    aget-object v7, v7, v10
+
+    iget v7, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    invoke-static {v7}, Landroid/graphics/Typeface;->nativeUnref(I)V
+
+    .line 220
+    sget-object v7, Landroid/graphics/Typeface;->sDefaults:[Landroid/graphics/Typeface;
+
+    aget-object v7, v7, v11
+
+    iget v7, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    invoke-static {v7}, Landroid/graphics/Typeface;->nativeUnref(I)V
+
+    .line 222
+    sget-object v7, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
+
+    iput v1, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    .line 223
+    sget-object v7, Landroid/graphics/Typeface;->DEFAULT_BOLD:Landroid/graphics/Typeface;
+
+    iput v2, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    .line 224
+    sget-object v7, Landroid/graphics/Typeface;->SANS_SERIF:Landroid/graphics/Typeface;
+
+    iput v5, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    .line 225
+    sget-object v7, Landroid/graphics/Typeface;->SERIF:Landroid/graphics/Typeface;
+
+    iput v6, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    .line 226
+    sget-object v7, Landroid/graphics/Typeface;->MONOSPACE:Landroid/graphics/Typeface;
+
+    iput v4, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    .line 227
+    sget-object v7, Landroid/graphics/Typeface;->sDefaults:[Landroid/graphics/Typeface;
+
+    aget-object v7, v7, v10
+
+    iput v3, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    .line 228
+    sget-object v7, Landroid/graphics/Typeface;->sDefaults:[Landroid/graphics/Typeface;
+
+    aget-object v7, v7, v11
+
+    iput v0, v7, Landroid/graphics/Typeface;->native_instance:I
+
+    .line 229
+    return-void
 .end method
 
 
@@ -401,15 +567,15 @@
 
     const/4 v2, 0x0
 
-    .line 207
+    .line 241
     if-ne p0, p1, :cond_1
 
-    .line 212
+    .line 246
     :cond_0
     :goto_0
     return v1
 
-    .line 208
+    .line 242
     :cond_1
     if-eqz p1, :cond_2
 
@@ -431,10 +597,10 @@
     :cond_3
     move-object v0, p1
 
-    .line 210
+    .line 244
     check-cast v0, Landroid/graphics/Typeface;
 
-    .line 212
+    .line 246
     .local v0, typeface:Landroid/graphics/Typeface;
     iget v3, p0, Landroid/graphics/Typeface;->mStyle:I
 
@@ -463,7 +629,7 @@
     .end annotation
 
     .prologue
-    .line 199
+    .line 233
     :try_start_0
     iget v0, p0, Landroid/graphics/Typeface;->native_instance:I
 
@@ -471,13 +637,13 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 201
+    .line 235
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 203
+    .line 237
     return-void
 
-    .line 201
+    .line 235
     :catchall_0
     move-exception v0
 
@@ -500,10 +666,10 @@
     .locals 3
 
     .prologue
-    .line 217
+    .line 251
     iget v0, p0, Landroid/graphics/Typeface;->native_instance:I
 
-    .line 218
+    .line 252
     .local v0, result:I
     mul-int/lit8 v1, v0, 0x1f
 
@@ -511,7 +677,7 @@
 
     add-int v0, v1, v2
 
-    .line 219
+    .line 253
     return v0
 .end method
 

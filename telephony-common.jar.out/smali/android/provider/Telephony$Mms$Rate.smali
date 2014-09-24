@@ -25,7 +25,7 @@
     .locals 2
 
     .prologue
-    .line 1592
+    .line 2219
     sget-object v0, Landroid/provider/Telephony$Mms;->CONTENT_URI:Landroid/net/Uri;
 
     const-string v1, "rate"
@@ -39,12 +39,13 @@
     return-void
 .end method
 
-.method public constructor <init>()V
+.method private constructor <init>()V
     .locals 0
 
     .prologue
-    .line 1591
+    .line 2213
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 2214
     return-void
 .end method

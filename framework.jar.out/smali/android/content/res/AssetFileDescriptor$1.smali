@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 328
+    .line 370
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,7 +45,7 @@
     .parameter "in"
 
     .prologue
-    .line 330
+    .line 372
     new-instance v0, Landroid/content/res/AssetFileDescriptor;
 
     invoke-direct {v0, p1}, Landroid/content/res/AssetFileDescriptor;-><init>(Landroid/os/Parcel;)V
@@ -58,7 +58,7 @@
     .parameter "x0"
 
     .prologue
-    .line 328
+    .line 370
     invoke-virtual {p0, p1}, Landroid/content/res/AssetFileDescriptor$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/res/AssetFileDescriptor;
 
     move-result-object v0
@@ -71,7 +71,7 @@
     .parameter "size"
 
     .prologue
-    .line 333
+    .line 375
     new-array v0, p1, [Landroid/content/res/AssetFileDescriptor;
 
     return-object v0
@@ -82,7 +82,7 @@
     .parameter "x0"
 
     .prologue
-    .line 328
+    .line 370
     invoke-virtual {p0, p1}, Landroid/content/res/AssetFileDescriptor$1;->newArray(I)[Landroid/content/res/AssetFileDescriptor;
 
     move-result-object v0

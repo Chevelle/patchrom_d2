@@ -45,14 +45,14 @@
     iget-object v0, p0, Landroid/preference/PreferenceFragment$2;->this$0:Landroid/preference/PreferenceFragment;
 
     #getter for: Landroid/preference/PreferenceFragment;->mList:Landroid/widget/ListView;
-    invoke-static {v0}, Landroid/preference/PreferenceFragment;->access$100(Landroid/preference/PreferenceFragment;)Landroid/widget/ListView;
+    invoke-static {v0}, Landroid/preference/PreferenceFragment;->access$000(Landroid/preference/PreferenceFragment;)Landroid/widget/ListView;
 
     move-result-object v0
 
     iget-object v1, p0, Landroid/preference/PreferenceFragment$2;->this$0:Landroid/preference/PreferenceFragment;
 
     #getter for: Landroid/preference/PreferenceFragment;->mList:Landroid/widget/ListView;
-    invoke-static {v1}, Landroid/preference/PreferenceFragment;->access$100(Landroid/preference/PreferenceFragment;)Landroid/widget/ListView;
+    invoke-static {v1}, Landroid/preference/PreferenceFragment;->access$000(Landroid/preference/PreferenceFragment;)Landroid/widget/ListView;
 
     move-result-object v1
 

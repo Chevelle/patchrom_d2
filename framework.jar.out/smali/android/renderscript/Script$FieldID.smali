@@ -29,15 +29,15 @@
     .parameter "slot"
 
     .prologue
-    .line 86
+    .line 79
     invoke-direct {p0, p1, p2}, Landroid/renderscript/BaseObj;-><init>(ILandroid/renderscript/RenderScript;)V
 
-    .line 87
+    .line 80
     iput-object p3, p0, Landroid/renderscript/Script$FieldID;->mScript:Landroid/renderscript/Script;
 
-    .line 88
+    .line 81
     iput p4, p0, Landroid/renderscript/Script$FieldID;->mSlot:I
 
-    .line 89
+    .line 82
     return-void
 .end method

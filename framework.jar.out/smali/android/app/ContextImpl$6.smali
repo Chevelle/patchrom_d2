@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 325
+    .line 349
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -28,14 +28,28 @@
 
 # virtual methods
 .method public createService(Landroid/app/ContextImpl;)Ljava/lang/Object;
-    .locals 1
+    .locals 3
     .parameter "ctx"
 
     .prologue
-    .line 327
-    new-instance v0, Landroid/media/AudioManager;
+    .line 351
+    const-string v2, "alarm"
 
-    invoke-direct {v0, p1}, Landroid/media/AudioManager;-><init>(Landroid/content/Context;)V
+    invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
-    return-object v0
+    move-result-object v0
+
+    .line 352
+    .local v0, b:Landroid/os/IBinder;
+    invoke-static {v0}, Landroid/app/IAlarmManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/app/IAlarmManager;
+
+    move-result-object v1
+
+    .line 353
+    .local v1, service:Landroid/app/IAlarmManager;
+    new-instance v2, Landroid/app/AlarmManager;
+
+    invoke-direct {v2, v1, p1}, Landroid/app/AlarmManager;-><init>(Landroid/app/IAlarmManager;Landroid/content/Context;)V
+
+    return-object v2
 .end method

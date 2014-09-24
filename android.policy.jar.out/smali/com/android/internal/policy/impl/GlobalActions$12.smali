@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 599
+    .line 643
     iput-object p1, p0, Lcom/android/internal/policy/impl/GlobalActions$12;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,14 +43,14 @@
     .parameter "service"
 
     .prologue
-    .line 602
+    .line 646
     iget-object v4, p0, Lcom/android/internal/policy/impl/GlobalActions$12;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     iget-object v5, v4, Lcom/android/internal/policy/impl/GlobalActions;->mScreenshotLock:Ljava/lang/Object;
 
     monitor-enter v5
 
-    .line 603
+    .line 647
     :try_start_0
     iget-object v4, p0, Lcom/android/internal/policy/impl/GlobalActions$12;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
@@ -58,20 +58,20 @@
 
     if-eq v4, p0, :cond_0
 
-    .line 604
+    .line 648
     monitor-exit v5
 
-    .line 643
+    .line 687
     :goto_0
     return-void
 
-    .line 606
+    .line 650
     :cond_0
     new-instance v1, Landroid/os/Messenger;
 
     invoke-direct {v1, p2}, Landroid/os/Messenger;-><init>(Landroid/os/IBinder;)V
 
-    .line 607
+    .line 651
     .local v1, messenger:Landroid/os/Messenger;
     const/4 v4, 0x0
 
@@ -81,18 +81,18 @@
 
     move-result-object v2
 
-    .line 608
+    .line 652
     .local v2, msg:Landroid/os/Message;
     move-object v3, p0
 
-    .line 609
+    .line 653
     .local v3, myConn:Landroid/content/ServiceConnection;
     new-instance v0, Lcom/android/internal/policy/impl/GlobalActions$12$1;
 
     iget-object v4, p0, Lcom/android/internal/policy/impl/GlobalActions$12;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mHandler:Landroid/os/Handler;
-    invoke-static {v4}, Lcom/android/internal/policy/impl/GlobalActions;->access$1000(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/os/Handler;
+    invoke-static {v4}, Lcom/android/internal/policy/impl/GlobalActions;->access$1100(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/os/Handler;
 
     move-result-object v4
 
@@ -102,7 +102,7 @@
 
     invoke-direct {v0, p0, v4, v3}, Lcom/android/internal/policy/impl/GlobalActions$12$1;-><init>(Lcom/android/internal/policy/impl/GlobalActions$12;Landroid/os/Looper;Landroid/content/ServiceConnection;)V
 
-    .line 621
+    .line 665
     .local v0, h:Landroid/os/Handler;
     new-instance v4, Landroid/os/Messenger;
 
@@ -110,7 +110,7 @@
 
     iput-object v4, v2, Landroid/os/Message;->replyTo:Landroid/os/Messenger;
 
-    .line 622
+    .line 666
     const/4 v4, 0x0
 
     iput v4, v2, Landroid/os/Message;->arg2:I
@@ -119,7 +119,7 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 633
+    .line 677
     const-wide/16 v6, 0x3e8
 
     :try_start_1
@@ -128,7 +128,7 @@
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 639
+    .line 683
     :goto_1
     :try_start_2
     invoke-virtual {v1, v2}, Landroid/os/Messenger;->send(Landroid/os/Message;)V
@@ -136,7 +136,7 @@
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
     .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_1
 
-    .line 642
+    .line 686
     :goto_2
     :try_start_3
     monitor-exit v5
@@ -156,7 +156,7 @@
 
     throw v4
 
-    .line 634
+    .line 678
     .restart local v0       #h:Landroid/os/Handler;
     .restart local v1       #messenger:Landroid/os/Messenger;
     .restart local v2       #msg:Landroid/os/Message;
@@ -166,7 +166,7 @@
 
     goto :goto_1
 
-    .line 640
+    .line 684
     :catch_1
     move-exception v4
 
@@ -178,6 +178,6 @@
     .parameter "name"
 
     .prologue
-    .line 645
+    .line 689
     return-void
 .end method

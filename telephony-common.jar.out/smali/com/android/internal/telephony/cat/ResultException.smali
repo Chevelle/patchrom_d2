@@ -39,20 +39,20 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 50
+    .line 52
     iput-object p1, p0, Lcom/android/internal/telephony/cat/ResultException;->mResult:Lcom/android/internal/telephony/cat/ResultCode;
 
-    .line 51
+    .line 53
     const/4 v0, -0x1
 
     iput v0, p0, Lcom/android/internal/telephony/cat/ResultException;->mAdditionalInfo:I
 
-    .line 52
+    .line 54
     const-string v0, ""
 
     iput-object v0, p0, Lcom/android/internal/telephony/cat/ResultException;->mExplanation:Ljava/lang/String;
 
-    .line 53
+    .line 55
     return-void
 
     .line 45
@@ -109,13 +109,13 @@
     .parameter "additionalInfo"
 
     .prologue
-    .line 61
+    .line 63
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/cat/ResultException;-><init>(Lcom/android/internal/telephony/cat/ResultCode;)V
 
-    .line 63
+    .line 65
     if-gez p2, :cond_0
 
-    .line 64
+    .line 66
     new-instance v0, Ljava/lang/AssertionError;
 
     const-string v1, "Additional info must be greater than zero!"
@@ -124,11 +124,11 @@
 
     throw v0
 
-    .line 68
+    .line 70
     :cond_0
     iput p2, p0, Lcom/android/internal/telephony/cat/ResultException;->mAdditionalInfo:I
 
-    .line 69
+    .line 71
     return-void
 .end method
 
@@ -139,13 +139,13 @@
     .parameter "explanation"
 
     .prologue
-    .line 72
+    .line 74
     invoke-direct {p0, p1, p2}, Lcom/android/internal/telephony/cat/ResultException;-><init>(Lcom/android/internal/telephony/cat/ResultCode;I)V
 
-    .line 73
+    .line 75
     iput-object p3, p0, Lcom/android/internal/telephony/cat/ResultException;->mExplanation:Ljava/lang/String;
 
-    .line 74
+    .line 76
     return-void
 .end method
 
@@ -155,13 +155,13 @@
     .parameter "explanation"
 
     .prologue
-    .line 56
+    .line 58
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/cat/ResultException;-><init>(Lcom/android/internal/telephony/cat/ResultCode;)V
 
-    .line 57
+    .line 59
     iput-object p2, p0, Lcom/android/internal/telephony/cat/ResultException;->mExplanation:Ljava/lang/String;
 
-    .line 58
+    .line 60
     return-void
 .end method
 
@@ -171,7 +171,7 @@
     .locals 1
 
     .prologue
-    .line 85
+    .line 87
     iget v0, p0, Lcom/android/internal/telephony/cat/ResultException;->mAdditionalInfo:I
 
     return v0
@@ -181,7 +181,7 @@
     .locals 1
 
     .prologue
-    .line 89
+    .line 91
     iget-object v0, p0, Lcom/android/internal/telephony/cat/ResultException;->mExplanation:Ljava/lang/String;
 
     return-object v0
@@ -191,7 +191,7 @@
     .locals 1
 
     .prologue
-    .line 81
+    .line 83
     iget v0, p0, Lcom/android/internal/telephony/cat/ResultException;->mAdditionalInfo:I
 
     if-ltz v0, :cond_0
@@ -211,7 +211,7 @@
     .locals 1
 
     .prologue
-    .line 77
+    .line 79
     iget-object v0, p0, Lcom/android/internal/telephony/cat/ResultException;->mResult:Lcom/android/internal/telephony/cat/ResultCode;
 
     return-object v0
@@ -221,7 +221,7 @@
     .locals 2
 
     .prologue
-    .line 94
+    .line 96
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

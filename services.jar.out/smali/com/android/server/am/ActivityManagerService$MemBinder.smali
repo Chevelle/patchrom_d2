@@ -24,28 +24,26 @@
     .parameter "activityManagerService"
 
     .prologue
-    .line 1558
+    .line 1952
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
-    .line 1559
+    .line 1953
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$MemBinder;->mActivityManagerService:Lcom/android/server/am/ActivityManagerService;
 
-    .line 1560
+    .line 1954
     return-void
 .end method
 
 
 # virtual methods
 .method protected dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
-    .locals 9
+    .locals 7
     .parameter "fd"
     .parameter "pw"
     .parameter "args"
 
     .prologue
-    const/4 v6, 0x0
-
-    .line 1564
+    .line 1958
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$MemBinder;->mActivityManagerService:Lcom/android/server/am/ActivityManagerService;
 
     const-string v1, "android.permission.DUMP"
@@ -56,7 +54,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 1566
+    .line 1960
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -107,11 +105,11 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 1574
+    .line 1967
     :goto_0
     return-void
 
-    .line 1572
+    .line 1966
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$MemBinder;->mActivityManagerService:Lcom/android/server/am/ActivityManagerService;
 
@@ -119,17 +117,15 @@
 
     const/4 v5, 0x0
 
+    const/4 v6, 0x0
+
     move-object v1, p1
 
     move-object v2, p2
 
     move-object v4, p3
 
-    move-object v7, v6
-
-    move-object v8, v6
-
-    invoke-virtual/range {v0 .. v8}, Lcom/android/server/am/ActivityManagerService;->dumpApplicationMemoryUsage(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;Ljava/lang/String;[Ljava/lang/String;ZLjava/io/PrintWriter;Ljava/lang/StringBuilder;Ljava/lang/StringBuilder;)V
+    invoke-virtual/range {v0 .. v6}, Lcom/android/server/am/ActivityManagerService;->dumpApplicationMemoryUsage(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;Ljava/lang/String;[Ljava/lang/String;ZLjava/io/PrintWriter;)V
 
     goto :goto_0
 .end method

@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 752
+    .line 757
     new-instance v0, Landroid/content/Intent$ShortcutIconResource$1;
 
     invoke-direct {v0}, Landroid/content/Intent$ShortcutIconResource$1;-><init>()V
@@ -55,7 +55,7 @@
     .locals 0
 
     .prologue
-    .line 722
+    .line 727
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -67,12 +67,12 @@
     .parameter "resourceId"
 
     .prologue
-    .line 743
+    .line 748
     new-instance v0, Landroid/content/Intent$ShortcutIconResource;
 
     invoke-direct {v0}, Landroid/content/Intent$ShortcutIconResource;-><init>()V
 
-    .line 744
+    .line 749
     .local v0, icon:Landroid/content/Intent$ShortcutIconResource;
     invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
@@ -80,7 +80,7 @@
 
     iput-object v1, v0, Landroid/content/Intent$ShortcutIconResource;->packageName:Ljava/lang/String;
 
-    .line 745
+    .line 750
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
@@ -91,7 +91,7 @@
 
     iput-object v1, v0, Landroid/content/Intent$ShortcutIconResource;->resourceName:Ljava/lang/String;
 
-    .line 746
+    .line 751
     return-object v0
 .end method
 
@@ -101,7 +101,7 @@
     .locals 1
 
     .prologue
-    .line 771
+    .line 776
     const/4 v0, 0x0
 
     return v0
@@ -111,7 +111,7 @@
     .locals 1
 
     .prologue
-    .line 781
+    .line 786
     iget-object v0, p0, Landroid/content/Intent$ShortcutIconResource;->resourceName:Ljava/lang/String;
 
     return-object v0
@@ -123,16 +123,16 @@
     .parameter "flags"
 
     .prologue
-    .line 775
+    .line 780
     iget-object v0, p0, Landroid/content/Intent$ShortcutIconResource;->packageName:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 776
+    .line 781
     iget-object v0, p0, Landroid/content/Intent$ShortcutIconResource;->resourceName:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 777
+    .line 782
     return-void
 .end method

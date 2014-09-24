@@ -274,7 +274,6 @@
 
     iput-object v0, v2, Landroid/app/FragmentManagerImpl;->mNoTransactionsBecause:Ljava/lang/String;
 
-    .line 485
     :cond_4
     throw v1
 .end method
@@ -567,7 +566,6 @@
 
     iput-object v0, v3, Landroid/app/FragmentManagerImpl;->mNoTransactionsBecause:Ljava/lang/String;
 
-    .line 366
     :cond_7
     throw v2
 .end method
@@ -725,7 +723,7 @@
     .line 522
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mRetaining="
+    const-string/jumbo v0, "mRetaining="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 

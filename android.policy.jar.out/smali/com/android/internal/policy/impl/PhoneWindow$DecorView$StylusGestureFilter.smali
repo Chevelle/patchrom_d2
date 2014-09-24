@@ -60,19 +60,19 @@
     .parameter
 
     .prologue
-    .line 1976
+    .line 2090
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->this$1:Lcom/android/internal/policy/impl/PhoneWindow$DecorView;
 
     invoke-direct {p0}, Landroid/view/GestureDetector$SimpleOnGestureListener;-><init>()V
 
-    .line 1977
+    .line 2091
     new-instance v0, Landroid/view/GestureDetector;
 
     invoke-direct {v0, p0}, Landroid/view/GestureDetector;-><init>(Landroid/view/GestureDetector$OnGestureListener;)V
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->mDetector:Landroid/view/GestureDetector;
 
-    .line 1978
+    .line 2092
     return-void
 .end method
 
@@ -83,7 +83,7 @@
     .parameter "arg0"
 
     .prologue
-    .line 2023
+    .line 2137
     iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->this$1:Lcom/android/internal/policy/impl/PhoneWindow$DecorView;
 
     const/4 v1, 0x6
@@ -91,7 +91,7 @@
     #calls: Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->dispatchStylusAction(I)V
     invoke-static {v0, v1}, Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->access$1200(Lcom/android/internal/policy/impl/PhoneWindow$DecorView;I)V
 
-    .line 2024
+    .line 2138
     const/4 v0, 0x1
 
     return v0
@@ -109,7 +109,7 @@
 
     const-wide/high16 v7, 0x4039
 
-    .line 1988
+    .line 2102
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v3
@@ -124,7 +124,7 @@
 
     move-result v1
 
-    .line 1989
+    .line 2103
     .local v1, xDistance:F
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
@@ -140,21 +140,21 @@
 
     move-result v2
 
-    .line 1991
+    .line 2105
     .local v2, yDistance:F
     invoke-static {p3}, Ljava/lang/Math;->abs(F)F
 
     move-result p3
 
-    .line 1992
+    .line 2106
     invoke-static {p4}, Ljava/lang/Math;->abs(F)F
 
     move-result p4
 
-    .line 1993
+    .line 2107
     const/4 v0, 0x0
 
-    .line 1995
+    .line 2109
     .local v0, result:Z
     float-to-double v3, p3
 
@@ -204,7 +204,7 @@
 
     if-lez v3, :cond_2
 
-    .line 1998
+    .line 2112
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v3
@@ -217,7 +217,7 @@
 
     if-lez v3, :cond_1
 
-    .line 2000
+    .line 2114
     iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->this$1:Lcom/android/internal/policy/impl/PhoneWindow$DecorView;
 
     const/4 v4, 0x3
@@ -225,16 +225,16 @@
     #calls: Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->dispatchStylusAction(I)V
     invoke-static {v3, v4}, Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->access$1200(Lcom/android/internal/policy/impl/PhoneWindow$DecorView;I)V
 
-    .line 2005
+    .line 2119
     :goto_0
     const/4 v0, 0x1
 
-    .line 2018
+    .line 2132
     :cond_0
     :goto_1
     return v0
 
-    .line 2003
+    .line 2117
     :cond_1
     iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->this$1:Lcom/android/internal/policy/impl/PhoneWindow$DecorView;
 
@@ -245,7 +245,7 @@
 
     goto :goto_0
 
-    .line 2006
+    .line 2120
     :cond_2
     float-to-double v3, p4
 
@@ -295,7 +295,7 @@
 
     if-lez v3, :cond_0
 
-    .line 2009
+    .line 2123
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v3
@@ -308,7 +308,7 @@
 
     if-lez v3, :cond_3
 
-    .line 2011
+    .line 2125
     iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->this$1:Lcom/android/internal/policy/impl/PhoneWindow$DecorView;
 
     const/4 v4, 0x1
@@ -316,13 +316,13 @@
     #calls: Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->dispatchStylusAction(I)V
     invoke-static {v3, v4}, Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->access$1200(Lcom/android/internal/policy/impl/PhoneWindow$DecorView;I)V
 
-    .line 2016
+    .line 2130
     :goto_2
     const/4 v0, 0x1
 
     goto :goto_1
 
-    .line 2014
+    .line 2128
     :cond_3
     iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->this$1:Lcom/android/internal/policy/impl/PhoneWindow$DecorView;
 
@@ -339,7 +339,7 @@
     .parameter "e"
 
     .prologue
-    .line 2028
+    .line 2142
     iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->this$1:Lcom/android/internal/policy/impl/PhoneWindow$DecorView;
 
     const/4 v1, 0x5
@@ -347,7 +347,7 @@
     #calls: Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->dispatchStylusAction(I)V
     invoke-static {v0, v1}, Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->access$1200(Lcom/android/internal/policy/impl/PhoneWindow$DecorView;I)V
 
-    .line 2029
+    .line 2143
     return-void
 .end method
 
@@ -356,7 +356,7 @@
     .parameter "event"
 
     .prologue
-    .line 1981
+    .line 2095
     iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView$StylusGestureFilter;->mDetector:Landroid/view/GestureDetector;
 
     invoke-virtual {v0, p1}, Landroid/view/GestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z

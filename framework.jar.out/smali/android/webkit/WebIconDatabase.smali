@@ -10,13 +10,16 @@
     }
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # direct methods
 .method protected constructor <init>()V
     .locals 0
 
     .prologue
-    .line 112
+    .line 120
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -26,7 +29,7 @@
     .locals 1
 
     .prologue
-    .line 106
+    .line 114
     invoke-static {}, Landroid/webkit/WebViewFactory;->getProvider()Landroid/webkit/WebViewFactoryProvider;
 
     move-result-object v0
@@ -47,7 +50,7 @@
     .parameter "listener"
 
     .prologue
-    .line 79
+    .line 87
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -59,7 +62,7 @@
     .locals 1
 
     .prologue
-    .line 55
+    .line 63
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -72,7 +75,7 @@
     .parameter "path"
 
     .prologue
-    .line 48
+    .line 56
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -85,7 +88,7 @@
     .parameter "url"
 
     .prologue
-    .line 95
+    .line 103
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -97,7 +100,7 @@
     .locals 1
 
     .prologue
-    .line 62
+    .line 70
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -111,7 +114,7 @@
     .parameter "listener"
 
     .prologue
-    .line 72
+    .line 80
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -124,7 +127,7 @@
     .parameter "url"
 
     .prologue
-    .line 87
+    .line 95
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V

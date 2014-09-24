@@ -25,13 +25,13 @@
     .parameter "handler"
 
     .prologue
-    .line 678
+    .line 1364
     iput-object p1, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
 
-    .line 679
+    .line 1365
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 680
+    .line 1366
     return-void
 .end method
 
@@ -43,7 +43,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 683
+    .line 1369
     iget-object v1, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
 
     iget-object v1, v1, Lcom/android/server/NotificationManagerService;->mContext:Landroid/content/Context;
@@ -52,7 +52,7 @@
 
     move-result-object v0
 
-    .line 684
+    .line 1370
     .local v0, resolver:Landroid/content/ContentResolver;
     const-string v1, "quiet_hours_enabled"
 
@@ -62,7 +62,7 @@
 
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 686
+    .line 1372
     const-string v1, "quiet_hours_start"
 
     invoke-static {v1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -71,7 +71,7 @@
 
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 688
+    .line 1374
     const-string v1, "quiet_hours_end"
 
     invoke-static {v1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -80,7 +80,7 @@
 
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 690
+    .line 1376
     const-string v1, "quiet_hours_mute"
 
     invoke-static {v1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -89,7 +89,7 @@
 
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 692
+    .line 1378
     const-string v1, "quiet_hours_still"
 
     invoke-static {v1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -98,7 +98,7 @@
 
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 694
+    .line 1380
     const-string v1, "quiet_hours_dim"
 
     invoke-static {v1}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -107,10 +107,10 @@
 
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 696
+    .line 1382
     invoke-virtual {p0}, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->update()V
 
-    .line 697
+    .line 1383
     return-void
 .end method
 
@@ -119,30 +119,24 @@
     .parameter "selfChange"
 
     .prologue
-    .line 700
+    .line 1386
     invoke-virtual {p0}, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->update()V
 
-    .line 701
+    .line 1387
     iget-object v0, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
 
     #calls: Lcom/android/server/NotificationManagerService;->updateNotificationPulse()V
-    invoke-static {v0}, Lcom/android/server/NotificationManagerService;->access$1200(Lcom/android/server/NotificationManagerService;)V
+    invoke-static {v0}, Lcom/android/server/NotificationManagerService;->access$1600(Lcom/android/server/NotificationManagerService;)V
 
-    .line 702
+    .line 1388
     return-void
 .end method
 
 .method public update()V
-    .locals 6
+    .locals 2
 
     .prologue
-    const/4 v2, 0x1
-
-    const/4 v5, -0x3
-
-    const/4 v3, 0x0
-
-    .line 705
+    .line 1391
     iget-object v1, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
 
     iget-object v1, v1, Lcom/android/server/NotificationManagerService;->mContext:Landroid/content/Context;
@@ -151,121 +145,7 @@
 
     move-result-object v0
 
-    .line 706
+    .line 1392
     .local v0, resolver:Landroid/content/ContentResolver;
-    iget-object v4, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
-
-    const-string v1, "quiet_hours_enabled"
-
-    invoke-static {v0, v1, v3, v5}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
-
-    move-result v1
-
-    if-eqz v1, :cond_0
-
-    move v1, v2
-
-    :goto_0
-    #setter for: Lcom/android/server/NotificationManagerService;->mQuietHoursEnabled:Z
-    invoke-static {v4, v1}, Lcom/android/server/NotificationManagerService;->access$2202(Lcom/android/server/NotificationManagerService;Z)Z
-
-    .line 708
-    iget-object v1, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
-
-    const-string v4, "quiet_hours_start"
-
-    invoke-static {v0, v4, v3, v5}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
-
-    move-result v4
-
-    #setter for: Lcom/android/server/NotificationManagerService;->mQuietHoursStart:I
-    invoke-static {v1, v4}, Lcom/android/server/NotificationManagerService;->access$2302(Lcom/android/server/NotificationManagerService;I)I
-
-    .line 710
-    iget-object v1, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
-
-    const-string v4, "quiet_hours_end"
-
-    invoke-static {v0, v4, v3, v5}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
-
-    move-result v4
-
-    #setter for: Lcom/android/server/NotificationManagerService;->mQuietHoursEnd:I
-    invoke-static {v1, v4}, Lcom/android/server/NotificationManagerService;->access$2402(Lcom/android/server/NotificationManagerService;I)I
-
-    .line 712
-    iget-object v4, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
-
-    const-string v1, "quiet_hours_mute"
-
-    invoke-static {v0, v1, v3, v5}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    move v1, v2
-
-    :goto_1
-    #setter for: Lcom/android/server/NotificationManagerService;->mQuietHoursMute:Z
-    invoke-static {v4, v1}, Lcom/android/server/NotificationManagerService;->access$2502(Lcom/android/server/NotificationManagerService;Z)Z
-
-    .line 714
-    iget-object v4, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
-
-    const-string v1, "quiet_hours_still"
-
-    invoke-static {v0, v1, v3, v5}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
-    move v1, v2
-
-    :goto_2
-    #setter for: Lcom/android/server/NotificationManagerService;->mQuietHoursStill:Z
-    invoke-static {v4, v1}, Lcom/android/server/NotificationManagerService;->access$2602(Lcom/android/server/NotificationManagerService;Z)Z
-
-    .line 716
-    iget-object v1, p0, Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;->this$0:Lcom/android/server/NotificationManagerService;
-
-    const-string v4, "quiet_hours_dim"
-
-    invoke-static {v0, v4, v3, v5}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
-
-    move-result v4
-
-    if-eqz v4, :cond_3
-
-    :goto_3
-    #setter for: Lcom/android/server/NotificationManagerService;->mQuietHoursDim:Z
-    invoke-static {v1, v2}, Lcom/android/server/NotificationManagerService;->access$2702(Lcom/android/server/NotificationManagerService;Z)Z
-
-    .line 718
     return-void
-
-    :cond_0
-    move v1, v3
-
-    .line 706
-    goto :goto_0
-
-    :cond_1
-    move v1, v3
-
-    .line 712
-    goto :goto_1
-
-    :cond_2
-    move v1, v3
-
-    .line 714
-    goto :goto_2
-
-    :cond_3
-    move v2, v3
-
-    .line 716
-    goto :goto_3
 .end method

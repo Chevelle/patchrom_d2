@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 57
+    .line 108
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,34 +41,16 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/PeriodicSync;
-    .locals 6
+    .locals 2
     .parameter "source"
 
     .prologue
-    .line 59
+    .line 111
     new-instance v0, Landroid/content/PeriodicSync;
 
-    sget-object v1, Landroid/accounts/Account;->CREATOR:Landroid/os/Parcelable$Creator;
+    const/4 v1, 0x0
 
-    invoke-interface {v1, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/accounts/Account;
-
-    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {p1}, Landroid/os/Parcel;->readBundle()Landroid/os/Bundle;
-
-    move-result-object v3
-
-    invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
-
-    move-result-wide v4
-
-    invoke-direct/range {v0 .. v5}, Landroid/content/PeriodicSync;-><init>(Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;J)V
+    invoke-direct {v0, p1, v1}, Landroid/content/PeriodicSync;-><init>(Landroid/os/Parcel;Landroid/content/PeriodicSync$1;)V
 
     return-object v0
 .end method
@@ -78,7 +60,7 @@
     .parameter "x0"
 
     .prologue
-    .line 57
+    .line 108
     invoke-virtual {p0, p1}, Landroid/content/PeriodicSync$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/PeriodicSync;
 
     move-result-object v0
@@ -91,7 +73,7 @@
     .parameter "size"
 
     .prologue
-    .line 64
+    .line 116
     new-array v0, p1, [Landroid/content/PeriodicSync;
 
     return-object v0
@@ -102,7 +84,7 @@
     .parameter "x0"
 
     .prologue
-    .line 57
+    .line 108
     invoke-virtual {p0, p1}, Landroid/content/PeriodicSync$1;->newArray(I)[Landroid/content/PeriodicSync;
 
     move-result-object v0

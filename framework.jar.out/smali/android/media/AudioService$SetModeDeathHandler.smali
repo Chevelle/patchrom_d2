@@ -35,130 +35,140 @@
     .parameter "pid"
 
     .prologue
-    .line 1488
+    .line 1607
     iput-object p1, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1486
+    .line 1605
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/media/AudioService$SetModeDeathHandler;->mMode:I
 
-    .line 1489
+    .line 1608
     iput-object p2, p0, Landroid/media/AudioService$SetModeDeathHandler;->mCb:Landroid/os/IBinder;
 
-    .line 1490
+    .line 1609
     iput p3, p0, Landroid/media/AudioService$SetModeDeathHandler;->mPid:I
 
-    .line 1491
+    .line 1610
     return-void
 .end method
 
 
 # virtual methods
 .method public binderDied()V
-    .locals 7
+    .locals 9
 
     .prologue
-    .line 1494
-    const/4 v1, 0x0
+    .line 1613
+    const/4 v3, 0x0
 
-    .line 1495
-    .local v1, newModeOwnerPid:I
-    iget-object v2, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
+    .line 1614
+    .local v3, newModeOwnerPid:I
+    iget-object v4, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
 
     #getter for: Landroid/media/AudioService;->mSetModeDeathHandlers:Ljava/util/ArrayList;
-    invoke-static {v2}, Landroid/media/AudioService;->access$1300(Landroid/media/AudioService;)Ljava/util/ArrayList;
+    invoke-static {v4}, Landroid/media/AudioService;->access$1100(Landroid/media/AudioService;)Ljava/util/ArrayList;
 
-    move-result-object v3
+    move-result-object v5
 
-    monitor-enter v3
+    monitor-enter v5
 
-    .line 1496
+    .line 1615
     :try_start_0
-    const-string v2, "AudioService"
+    const-string v4, "AudioService"
 
-    const-string/jumbo v4, "setMode() client died"
+    const-string/jumbo v6, "setMode() client died"
 
-    invoke-static {v2, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v4, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1497
-    iget-object v2, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
+    .line 1616
+    iget-object v4, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
 
     #getter for: Landroid/media/AudioService;->mSetModeDeathHandlers:Ljava/util/ArrayList;
-    invoke-static {v2}, Landroid/media/AudioService;->access$1300(Landroid/media/AudioService;)Ljava/util/ArrayList;
+    invoke-static {v4}, Landroid/media/AudioService;->access$1100(Landroid/media/AudioService;)Ljava/util/ArrayList;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2, p0}, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
+    invoke-virtual {v4, p0}, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
 
-    move-result v0
+    move-result v2
 
-    .line 1498
-    .local v0, index:I
-    if-gez v0, :cond_1
+    .line 1617
+    .local v2, index:I
+    if-gez v2, :cond_1
 
-    .line 1499
-    const-string v2, "AudioService"
+    .line 1618
+    const-string v4, "AudioService"
 
-    const-string/jumbo v4, "unregistered setMode() client died"
+    const-string/jumbo v6, "unregistered setMode() client died"
 
-    invoke-static {v2, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v4, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1503
+    .line 1622
     :goto_0
-    monitor-exit v3
+    monitor-exit v5
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1506
-    if-eqz v1, :cond_0
+    .line 1625
+    if-eqz v3, :cond_0
 
-    .line 1507
-    iget-object v2, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
+    .line 1626
+    invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
+
+    move-result-wide v0
+
+    .line 1627
+    .local v0, ident:J
+    iget-object v4, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
 
     #calls: Landroid/media/AudioService;->disconnectBluetoothSco(I)V
-    invoke-static {v2, v1}, Landroid/media/AudioService;->access$1400(Landroid/media/AudioService;I)V
+    invoke-static {v4, v3}, Landroid/media/AudioService;->access$1200(Landroid/media/AudioService;I)V
 
-    .line 1509
+    .line 1628
+    invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
+
+    .line 1630
+    .end local v0           #ident:J
     :cond_0
     return-void
 
-    .line 1501
+    .line 1620
     :cond_1
     :try_start_1
-    iget-object v2, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
+    iget-object v4, p0, Landroid/media/AudioService$SetModeDeathHandler;->this$0:Landroid/media/AudioService;
 
-    const/4 v4, 0x0
+    const/4 v6, 0x0
 
-    iget-object v5, p0, Landroid/media/AudioService$SetModeDeathHandler;->mCb:Landroid/os/IBinder;
+    iget-object v7, p0, Landroid/media/AudioService$SetModeDeathHandler;->mCb:Landroid/os/IBinder;
 
-    iget v6, p0, Landroid/media/AudioService$SetModeDeathHandler;->mPid:I
+    iget v8, p0, Landroid/media/AudioService$SetModeDeathHandler;->mPid:I
 
-    invoke-virtual {v2, v4, v5, v6}, Landroid/media/AudioService;->setModeInt(ILandroid/os/IBinder;I)I
+    invoke-virtual {v4, v6, v7, v8}, Landroid/media/AudioService;->setModeInt(ILandroid/os/IBinder;I)I
 
-    move-result v1
+    move-result v3
 
     goto :goto_0
 
-    .line 1503
-    .end local v0           #index:I
+    .line 1622
+    .end local v2           #index:I
     :catchall_0
-    move-exception v2
+    move-exception v4
 
-    monitor-exit v3
+    monitor-exit v5
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    throw v2
+    throw v4
 .end method
 
 .method public getBinder()Landroid/os/IBinder;
     .locals 1
 
     .prologue
-    .line 1524
+    .line 1645
     iget-object v0, p0, Landroid/media/AudioService$SetModeDeathHandler;->mCb:Landroid/os/IBinder;
 
     return-object v0
@@ -168,7 +178,7 @@
     .locals 1
 
     .prologue
-    .line 1520
+    .line 1641
     iget v0, p0, Landroid/media/AudioService$SetModeDeathHandler;->mMode:I
 
     return v0
@@ -178,7 +188,7 @@
     .locals 1
 
     .prologue
-    .line 1512
+    .line 1633
     iget v0, p0, Landroid/media/AudioService$SetModeDeathHandler;->mPid:I
 
     return v0
@@ -189,9 +199,9 @@
     .parameter "mode"
 
     .prologue
-    .line 1516
+    .line 1637
     iput p1, p0, Landroid/media/AudioService$SetModeDeathHandler;->mMode:I
 
-    .line 1517
+    .line 1638
     return-void
 .end method

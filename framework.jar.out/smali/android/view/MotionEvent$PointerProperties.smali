@@ -25,13 +25,13 @@
     .locals 0
 
     .prologue
-    .line 3471
+    .line 3469
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3472
+    .line 3470
     invoke-virtual {p0}, Landroid/view/MotionEvent$PointerProperties;->clear()V
 
-    .line 3473
+    .line 3471
     return-void
 .end method
 
@@ -40,13 +40,13 @@
     .parameter "other"
 
     .prologue
-    .line 3480
+    .line 3478
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3481
+    .line 3479
     invoke-virtual {p0, p1}, Landroid/view/MotionEvent$PointerProperties;->copyFrom(Landroid/view/MotionEvent$PointerProperties;)V
 
-    .line 3482
+    .line 3480
     return-void
 .end method
 
@@ -56,7 +56,7 @@
     .parameter "x1"
 
     .prologue
-    .line 3467
+    .line 3465
     invoke-direct {p0, p1}, Landroid/view/MotionEvent$PointerProperties;->equals(Landroid/view/MotionEvent$PointerProperties;)Z
 
     move-result v0
@@ -69,10 +69,10 @@
     .parameter "size"
 
     .prologue
-    .line 3486
+    .line 3484
     new-array v0, p0, [Landroid/view/MotionEvent$PointerProperties;
 
-    .line 3487
+    .line 3485
     .local v0, array:[Landroid/view/MotionEvent$PointerProperties;
     const/4 v1, 0x0
 
@@ -80,19 +80,19 @@
     :goto_0
     if-ge v1, p0, :cond_0
 
-    .line 3488
+    .line 3486
     new-instance v2, Landroid/view/MotionEvent$PointerProperties;
 
     invoke-direct {v2}, Landroid/view/MotionEvent$PointerProperties;-><init>()V
 
     aput-object v2, v0, v1
 
-    .line 3487
+    .line 3485
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 3490
+    .line 3488
     :cond_0
     return-object v0
 .end method
@@ -102,7 +102,7 @@
     .parameter "other"
 
     .prologue
-    .line 3536
+    .line 3534
     if-eqz p1, :cond_0
 
     iget v0, p0, Landroid/view/MotionEvent$PointerProperties;->id:I
@@ -134,17 +134,17 @@
     .locals 1
 
     .prologue
-    .line 3513
+    .line 3511
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/view/MotionEvent$PointerProperties;->id:I
 
-    .line 3514
+    .line 3512
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/view/MotionEvent$PointerProperties;->toolType:I
 
-    .line 3515
+    .line 3513
     return-void
 .end method
 
@@ -153,17 +153,17 @@
     .parameter "other"
 
     .prologue
-    .line 3523
+    .line 3521
     iget v0, p1, Landroid/view/MotionEvent$PointerProperties;->id:I
 
     iput v0, p0, Landroid/view/MotionEvent$PointerProperties;->id:I
 
-    .line 3524
+    .line 3522
     iget v0, p1, Landroid/view/MotionEvent$PointerProperties;->toolType:I
 
     iput v0, p0, Landroid/view/MotionEvent$PointerProperties;->toolType:I
 
-    .line 3525
+    .line 3523
     return-void
 .end method
 
@@ -172,12 +172,12 @@
     .parameter "other"
 
     .prologue
-    .line 3529
+    .line 3527
     instance-of v0, p1, Landroid/view/MotionEvent$PointerProperties;
 
     if-eqz v0, :cond_0
 
-    .line 3530
+    .line 3528
     check-cast p1, Landroid/view/MotionEvent$PointerProperties;
 
     .end local p1
@@ -185,7 +185,7 @@
 
     move-result v0
 
-    .line 3532
+    .line 3530
     :goto_0
     return v0
 
@@ -200,7 +200,7 @@
     .locals 2
 
     .prologue
-    .line 3541
+    .line 3539
     iget v0, p0, Landroid/view/MotionEvent$PointerProperties;->id:I
 
     iget v1, p0, Landroid/view/MotionEvent$PointerProperties;->toolType:I

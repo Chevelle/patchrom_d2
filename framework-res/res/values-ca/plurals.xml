@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">"Et queden %d intents; si no l'encertes, la SIM es bloquejarà."</item>
+        <item quantity="one">"Et queda %d intent; si no l'encertes, la SIM es bloquejarà."</item>
+    </plurals>
     <plurals name="num_seconds_ago">
-        <item quantity="other">fa %d segons</item>
+        <item quantity="other">Fa %d segons</item>
         <item quantity="one">Fa 1 segon</item>
     </plurals>
     <plurals name="num_minutes_ago">
@@ -17,7 +21,7 @@
     </plurals>
     <plurals name="num_days_ago">
         <item quantity="other">Fa %d dies</item>
-        <item quantity="one">ahir</item>
+        <item quantity="one">Ahir</item>
     </plurals>
     <plurals name="in_num_seconds">
         <item quantity="other">"d'aquí a %d segons"</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d de %2$d</item>
         <item quantity="one">1 coincidència</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">"Torna-ho a provar d'aquí a %d segons"</item>
+        <item quantity="one">"Torna-ho a provar d'aquí a 1 segon"</item>
     </plurals>
 </resources>

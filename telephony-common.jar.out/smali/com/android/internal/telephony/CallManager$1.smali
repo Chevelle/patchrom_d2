@@ -1,5 +1,5 @@
-.class Lcom/android/internal/telephony/CallManager$1;
-.super Landroid/content/BroadcastReceiver;
+.class synthetic Lcom/android/internal/telephony/CallManager$1;
+.super Ljava/lang/Object;
 .source "CallManager.java"
 
 
@@ -9,93 +9,93 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x1008
     name = null
 .end annotation
 
 
-# instance fields
-.field final synthetic this$0:Lcom/android/internal/telephony/CallManager;
+# static fields
+.field static final synthetic $SwitchMap$com$android$internal$telephony$PhoneConstants$State:[I
 
 
 # direct methods
-.method constructor <init>(Lcom/android/internal/telephony/CallManager;)V
-    .locals 0
-    .parameter
+.method static constructor <clinit>()V
+    .locals 3
 
     .prologue
-    .line 178
-    iput-object p1, p0, Lcom/android/internal/telephony/CallManager$1;->this$0:Lcom/android/internal/telephony/CallManager;
+    .line 468
+    invoke-static {}, Lcom/android/internal/telephony/PhoneConstants$State;->values()[Lcom/android/internal/telephony/PhoneConstants$State;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    move-result-object v0
 
-    return-void
-.end method
+    array-length v0, v0
 
+    new-array v0, v0, [I
 
-# virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 6
-    .parameter "context"
-    .parameter "intent"
+    sput-object v0, Lcom/android/internal/telephony/CallManager$1;->$SwitchMap$com$android$internal$telephony$PhoneConstants$State:[I
 
-    .prologue
-    const/4 v5, -0x1
+    :try_start_0
+    sget-object v0, Lcom/android/internal/telephony/CallManager$1;->$SwitchMap$com$android$internal$telephony$PhoneConstants$State:[I
 
-    .line 181
-    const-string v3, "android.media.EXTRA_VOLUME_STREAM_TYPE"
+    sget-object v1, Lcom/android/internal/telephony/PhoneConstants$State;->RINGING:Lcom/android/internal/telephony/PhoneConstants$State;
 
-    invoke-virtual {p2, v3, v5}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
-
-    move-result v2
-
-    .line 182
-    .local v2, streamType:I
-    iget-object v3, p0, Lcom/android/internal/telephony/CallManager$1;->this$0:Lcom/android/internal/telephony/CallManager;
-
-    invoke-virtual {v3}, Lcom/android/internal/telephony/CallManager;->getState()Lcom/android/internal/telephony/PhoneConstants$State;
-
-    move-result-object v3
-
-    sget-object v4, Lcom/android/internal/telephony/PhoneConstants$State;->RINGING:Lcom/android/internal/telephony/PhoneConstants$State;
-
-    if-ne v3, v4, :cond_1
-
-    const/4 v3, 0x2
-
-    if-ne v2, v3, :cond_1
-
-    .line 183
-    const-string v3, "android.media.EXTRA_PREV_VOLUME_STREAM_VALUE"
-
-    invoke-virtual {p2, v3, v5}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+    invoke-virtual {v1}, Lcom/android/internal/telephony/PhoneConstants$State;->ordinal()I
 
     move-result v1
 
-    .line 184
-    .local v1, oldVolume:I
-    const-string v3, "android.media.EXTRA_VOLUME_STREAM_VALUE"
+    const/4 v2, 0x1
 
-    invoke-virtual {p2, v3, v5}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+    aput v2, v0, v1
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_2
 
-    move-result v0
+    :goto_0
+    :try_start_1
+    sget-object v0, Lcom/android/internal/telephony/CallManager$1;->$SwitchMap$com$android$internal$telephony$PhoneConstants$State:[I
 
-    .line 185
-    .local v0, newVolume:I
-    if-eqz v1, :cond_0
+    sget-object v1, Lcom/android/internal/telephony/PhoneConstants$State;->OFFHOOK:Lcom/android/internal/telephony/PhoneConstants$State;
 
-    if-nez v0, :cond_1
+    invoke-virtual {v1}, Lcom/android/internal/telephony/PhoneConstants$State;->ordinal()I
 
-    .line 186
-    :cond_0
-    iget-object v3, p0, Lcom/android/internal/telephony/CallManager$1;->this$0:Lcom/android/internal/telephony/CallManager;
+    move-result v1
 
-    #calls: Lcom/android/internal/telephony/CallManager;->updateRingingAudioFocus(Landroid/content/Context;)V
-    invoke-static {v3, p1}, Lcom/android/internal/telephony/CallManager;->access$000(Lcom/android/internal/telephony/CallManager;Landroid/content/Context;)V
+    const/4 v2, 0x2
 
-    .line 189
-    .end local v0           #newVolume:I
-    .end local v1           #oldVolume:I
-    :cond_1
+    aput v2, v0, v1
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_1
+
+    :goto_1
+    :try_start_2
+    sget-object v0, Lcom/android/internal/telephony/CallManager$1;->$SwitchMap$com$android$internal$telephony$PhoneConstants$State:[I
+
+    sget-object v1, Lcom/android/internal/telephony/PhoneConstants$State;->IDLE:Lcom/android/internal/telephony/PhoneConstants$State;
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/PhoneConstants$State;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_0
+
+    :goto_2
     return-void
+
+    :catch_0
+    move-exception v0
+
+    goto :goto_2
+
+    :catch_1
+    move-exception v0
+
+    goto :goto_1
+
+    :catch_2
+    move-exception v0
+
+    goto :goto_0
 .end method

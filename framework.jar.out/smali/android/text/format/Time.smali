@@ -694,7 +694,7 @@
 
     .line 338
     .local v2, r:Landroid/content/res/Resources;
-    const v4, 0x10400a4
+    const v4, 0x10400fc
 
     invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -703,7 +703,7 @@
     sput-object v4, Landroid/text/format/Time;->sTimeOnlyFormat:Ljava/lang/String;
 
     .line 339
-    const v4, 0x10400a3
+    const v4, 0x10400fb
 
     invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -712,7 +712,7 @@
     sput-object v4, Landroid/text/format/Time;->sDateOnlyFormat:Ljava/lang/String;
 
     .line 340
-    const v4, 0x10400a5
+    const v4, 0x10400fd
 
     invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

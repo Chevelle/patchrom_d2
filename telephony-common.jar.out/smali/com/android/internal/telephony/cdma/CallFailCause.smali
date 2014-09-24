@@ -28,6 +28,16 @@
 
 .field public static final CDMA_SO_REJECT:I = 0x3ec
 
+.field public static final DIAL_MODIFIED_TO_DIAL:I = 0xf6
+
+.field public static final DIAL_MODIFIED_TO_SS:I = 0xf5
+
+.field public static final DIAL_MODIFIED_TO_USSD:I = 0xf4
+
+.field public static final EMERGENCY_PERM_FAILURE:I = 0x146
+
+.field public static final EMERGENCY_TEMP_FAILURE:I = 0x145
+
 .field public static final ERROR_UNSPECIFIED:I = 0xffff
 
 .field public static final FDN_BLOCKED:I = 0xf1

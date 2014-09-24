@@ -26,7 +26,7 @@
     .locals 1
 
     .prologue
-    .line 186
+    .line 199
     new-instance v0, Landroid/text/TextDirectionHeuristics$FirstStrong;
 
     invoke-direct {v0}, Landroid/text/TextDirectionHeuristics$FirstStrong;-><init>()V
@@ -40,27 +40,27 @@
     .locals 0
 
     .prologue
-    .line 183
+    .line 196
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 184
+    .line 197
     return-void
 .end method
 
 
 # virtual methods
-.method public checkRtl([CII)Landroid/text/TextDirectionHeuristics$TriState;
+.method public checkRtl(Ljava/lang/CharSequence;II)I
     .locals 4
-    .parameter "text"
+    .parameter "cs"
     .parameter "start"
     .parameter "count"
 
     .prologue
-    .line 176
-    sget-object v2, Landroid/text/TextDirectionHeuristics$TriState;->UNKNOWN:Landroid/text/TextDirectionHeuristics$TriState;
+    .line 189
+    const/4 v2, 0x2
 
-    .line 177
-    .local v2, result:Landroid/text/TextDirectionHeuristics$TriState;
+    .line 190
+    .local v2, result:I
     move v1, p2
 
     .local v1, i:I
@@ -70,28 +70,30 @@
     :goto_0
     if-ge v1, v0, :cond_0
 
-    sget-object v3, Landroid/text/TextDirectionHeuristics$TriState;->UNKNOWN:Landroid/text/TextDirectionHeuristics$TriState;
+    const/4 v3, 0x2
 
     if-ne v2, v3, :cond_0
 
-    .line 178
-    aget-char v3, p1, v1
+    .line 191
+    invoke-interface {p1, v1}, Ljava/lang/CharSequence;->charAt(I)C
+
+    move-result v3
 
     invoke-static {v3}, Ljava/lang/Character;->getDirectionality(C)B
 
     move-result v3
 
-    #calls: Landroid/text/TextDirectionHeuristics;->isRtlTextOrFormat(I)Landroid/text/TextDirectionHeuristics$TriState;
-    invoke-static {v3}, Landroid/text/TextDirectionHeuristics;->access$100(I)Landroid/text/TextDirectionHeuristics$TriState;
+    #calls: Landroid/text/TextDirectionHeuristics;->isRtlTextOrFormat(I)I
+    invoke-static {v3}, Landroid/text/TextDirectionHeuristics;->access$100(I)I
 
-    move-result-object v2
+    move-result v2
 
-    .line 177
+    .line 190
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 180
+    .line 193
     :cond_0
-    return-object v2
+    return v2
 .end method

@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract disable(Z)Z
+.method public abstract disable(Ljava/lang/String;Z)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -23,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract enable()Z
+.method public abstract enable(Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,7 +47,23 @@
     .end annotation
 .end method
 
+.method public abstract getBluetoothGatt()Landroid/bluetooth/IBluetoothGatt;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getName()Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getQBluetooth()Landroid/bluetooth/IQBluetooth;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,6 +87,14 @@
     .end annotation
 .end method
 
+.method public abstract registerQAdapter(Landroid/bluetooth/IQBluetoothManagerCallback;)Landroid/bluetooth/IQBluetooth;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract registerStateChangeCallback(Landroid/bluetooth/IBluetoothStateChangeCallback;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -80,6 +104,14 @@
 .end method
 
 .method public abstract unregisterAdapter(Landroid/bluetooth/IBluetoothManagerCallback;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract unregisterQAdapter(Landroid/bluetooth/IQBluetoothManagerCallback;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

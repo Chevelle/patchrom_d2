@@ -22,7 +22,7 @@
     invoke-direct {p0, p1, p2}, Landroid/preference/DialogPreference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 38
-    const v0, 0x10900c2
+    const v0, 0x109009a
 
     invoke-virtual {p0, v0}, Landroid/preference/SeekBarDialogPreference;->setDialogLayoutResource(I)V
 
@@ -51,7 +51,7 @@
 
     .prologue
     .line 65
-    const v0, 0x1020348
+    const v0, 0x10202ff
 
     invoke-virtual {p0, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

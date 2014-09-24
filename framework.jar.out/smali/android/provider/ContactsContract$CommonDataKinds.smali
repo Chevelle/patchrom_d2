@@ -15,6 +15,7 @@
 
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/provider/ContactsContract$CommonDataKinds$Contactables;,
         Landroid/provider/ContactsContract$CommonDataKinds$Callable;,
         Landroid/provider/ContactsContract$CommonDataKinds$Identity;,
         Landroid/provider/ContactsContract$CommonDataKinds$SipAddress;,
@@ -31,6 +32,7 @@
         Landroid/provider/ContactsContract$CommonDataKinds$Phone;,
         Landroid/provider/ContactsContract$CommonDataKinds$Nickname;,
         Landroid/provider/ContactsContract$CommonDataKinds$StructuredName;,
+        Landroid/provider/ContactsContract$CommonDataKinds$LocalGroup;,
         Landroid/provider/ContactsContract$CommonDataKinds$CommonColumns;,
         Landroid/provider/ContactsContract$CommonDataKinds$BaseTypes;
     }
@@ -46,7 +48,7 @@
     .locals 0
 
     .prologue
-    .line 5050
+    .line 5134
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

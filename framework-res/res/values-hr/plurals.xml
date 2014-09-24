@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Imate još nekoliko preostalih pokušaja (%d) prije zaključavanja SIM kartice.</item>
+        <item quantity="one">Imate još %d pokušaj prije zaključavanja SIM kartice.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">prije %d s</item>
         <item quantity="one">Prije 1 sekundu</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d od %2$d</item>
         <item quantity="one">1 podudaranje</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Ponovite za %d s</item>
+        <item quantity="one">Ponovite za 1 s</item>
     </plurals>
 </resources>

@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 944
+    .line 1001
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -27,6 +27,16 @@
 
 
 # virtual methods
+.method public getBitmap()Landroid/graphics/Bitmap;
+    .locals 1
+
+    .prologue
+    .line 1029
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
 .method public abstract getChangingConfigurations()I
 .end method
 
@@ -38,7 +48,7 @@
     .parameter "res"
 
     .prologue
-    .line 960
+    .line 1017
     invoke-virtual {p0}, Landroid/graphics/drawable/Drawable$ConstantState;->newDrawable()Landroid/graphics/drawable/Drawable;
 
     move-result-object v0

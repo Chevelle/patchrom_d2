@@ -14,12 +14,16 @@
 .end annotation
 
 
+# instance fields
+.field mDefaultDisplay:Landroid/view/Display;
+
+
 # direct methods
 .method constructor <init>()V
     .locals 0
 
     .prologue
-    .line 545
+    .line 567
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -28,28 +32,58 @@
 
 # virtual methods
 .method public getService(Landroid/app/ContextImpl;)Ljava/lang/Object;
-    .locals 3
+    .locals 4
     .parameter "ctx"
 
     .prologue
-    .line 547
-    const-string/jumbo v2, "user"
-
-    invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+    .line 570
+    #getter for: Landroid/app/ContextImpl;->mDisplay:Landroid/view/Display;
+    invoke-static {p1}, Landroid/app/ContextImpl;->access$100(Landroid/app/ContextImpl;)Landroid/view/Display;
 
     move-result-object v0
 
-    .line 548
-    .local v0, b:Landroid/os/IBinder;
-    invoke-static {v0}, Landroid/os/IUserManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/os/IUserManager;
+    .line 571
+    .local v0, display:Landroid/view/Display;
+    if-nez v0, :cond_1
+
+    .line 572
+    iget-object v2, p0, Landroid/app/ContextImpl$40;->mDefaultDisplay:Landroid/view/Display;
+
+    if-nez v2, :cond_0
+
+    .line 573
+    invoke-virtual {p1}, Landroid/app/ContextImpl;->getOuterContext()Landroid/content/Context;
+
+    move-result-object v2
+
+    const-string v3, "display"
+
+    invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v1
 
-    .line 549
-    .local v1, service:Landroid/os/IUserManager;
-    new-instance v2, Landroid/os/UserManager;
+    check-cast v1, Landroid/hardware/display/DisplayManager;
 
-    invoke-direct {v2, p1, v1}, Landroid/os/UserManager;-><init>(Landroid/content/Context;Landroid/os/IUserManager;)V
+    .line 575
+    .local v1, dm:Landroid/hardware/display/DisplayManager;
+    const/4 v2, 0x0
+
+    invoke-virtual {v1, v2}, Landroid/hardware/display/DisplayManager;->getDisplay(I)Landroid/view/Display;
+
+    move-result-object v2
+
+    iput-object v2, p0, Landroid/app/ContextImpl$40;->mDefaultDisplay:Landroid/view/Display;
+
+    .line 577
+    .end local v1           #dm:Landroid/hardware/display/DisplayManager;
+    :cond_0
+    iget-object v0, p0, Landroid/app/ContextImpl$40;->mDefaultDisplay:Landroid/view/Display;
+
+    .line 579
+    :cond_1
+    new-instance v2, Landroid/view/WindowManagerImpl;
+
+    invoke-direct {v2, v0}, Landroid/view/WindowManagerImpl;-><init>(Landroid/view/Display;)V
 
     return-object v2
 .end method

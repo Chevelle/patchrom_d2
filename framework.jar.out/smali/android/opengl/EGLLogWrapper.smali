@@ -1986,7 +1986,7 @@
 
     .prologue
     .line 329
-    const-string v1, "eglInitialize"
+    const-string v1, "eglSwapBuffers"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 

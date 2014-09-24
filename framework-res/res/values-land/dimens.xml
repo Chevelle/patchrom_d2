@@ -15,5 +15,6 @@
     <dimen name="kg_widget_pager_top_padding">0.0dip</dimen>
     <dimen name="kg_widget_pager_bottom_padding">0.0dip</dimen>
     <dimen name="kg_squashed_layout_threshold">400.0dip</dimen>
+    <dimen name="immersive_mode_cling_width">380.0dip</dimen>
     <dimen name="kg_emergency_button_shift">30.0dip</dimen>
 </resources>

@@ -1,4 +1,4 @@
-.class Lcom/android/server/am/ConnectionRecord;
+.class final Lcom/android/server/am/ConnectionRecord;
 .super Ljava/lang/Object;
 .source "ConnectionRecord.java"
 
@@ -188,7 +188,7 @@
     .line 60
     iget-object v1, p0, Lcom/android/server/am/ConnectionRecord;->stringName:Ljava/lang/String;
 
-    .line 105
+    .line 108
     :goto_0
     return-object v1
 
@@ -343,14 +343,14 @@
     :cond_8
     iget v1, p0, Lcom/android/server/am/ConnectionRecord;->flags:I
 
-    const/high16 v2, 0x4000
+    const/high16 v2, 0x1000
 
     and-int/2addr v1, v2
 
     if-eqz v1, :cond_9
 
     .line 93
-    const-string v1, "!VIS "
+    const-string v1, "VIS "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -358,28 +358,45 @@
     :cond_9
     iget v1, p0, Lcom/android/server/am/ConnectionRecord;->flags:I
 
-    and-int/lit16 v1, v1, 0x100
+    const/high16 v2, 0x2000
+
+    and-int/2addr v1, v2
 
     if-eqz v1, :cond_a
 
     .line 96
-    const-string v1, "VIS "
+    const-string v1, "UI "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 98
     :cond_a
-    iget-boolean v1, p0, Lcom/android/server/am/ConnectionRecord;->serviceDead:Z
+    iget v1, p0, Lcom/android/server/am/ConnectionRecord;->flags:I
+
+    const/high16 v2, 0x4000
+
+    and-int/2addr v1, v2
 
     if-eqz v1, :cond_b
 
     .line 99
-    const-string v1, "DEAD "
+    const-string v1, "!VIS "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 101
     :cond_b
+    iget-boolean v1, p0, Lcom/android/server/am/ConnectionRecord;->serviceDead:Z
+
+    if-eqz v1, :cond_c
+
+    .line 102
+    const-string v1, "DEAD "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 104
+    :cond_c
     iget-object v1, p0, Lcom/android/server/am/ConnectionRecord;->binding:Lcom/android/server/am/AppBindRecord;
 
     iget-object v1, v1, Lcom/android/server/am/AppBindRecord;->service:Lcom/android/server/am/ServiceRecord;
@@ -388,12 +405,12 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 102
+    .line 105
     const-string v1, ":@"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 103
+    .line 106
     iget-object v1, p0, Lcom/android/server/am/ConnectionRecord;->conn:Landroid/app/IServiceConnection;
 
     invoke-interface {v1}, Landroid/app/IServiceConnection;->asBinder()Landroid/os/IBinder;
@@ -410,12 +427,12 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 104
+    .line 107
     const/16 v1, 0x7d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 105
+    .line 108
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

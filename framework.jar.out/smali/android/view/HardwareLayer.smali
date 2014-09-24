@@ -152,6 +152,9 @@
 .method abstract start(Landroid/graphics/Canvas;)Landroid/view/HardwareCanvas;
 .end method
 
+.method abstract start(Landroid/graphics/Canvas;Landroid/graphics/Rect;)Landroid/view/HardwareCanvas;
+.end method
+
 .method update(IIZ)V
     .locals 0
     .parameter "width"
@@ -159,15 +162,15 @@
     .parameter "isOpaque"
 
     .prologue
-    .line 187
+    .line 200
     iput p1, p0, Landroid/view/HardwareLayer;->mWidth:I
 
-    .line 188
+    .line 201
     iput p2, p0, Landroid/view/HardwareLayer;->mHeight:I
 
-    .line 189
+    .line 202
     iput-boolean p3, p0, Landroid/view/HardwareLayer;->mOpaque:Z
 
-    .line 190
+    .line 203
     return-void
 .end method

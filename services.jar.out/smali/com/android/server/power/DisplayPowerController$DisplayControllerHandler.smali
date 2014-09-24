@@ -25,17 +25,17 @@
     .parameter "looper"
 
     .prologue
-    .line 1389
+    .line 1461
     iput-object p1, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
 
-    .line 1390
+    .line 1462
     const/4 v0, 0x0
 
     const/4 v1, 0x1
 
     invoke-direct {p0, p2, v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;Landroid/os/Handler$Callback;Z)V
 
-    .line 1391
+    .line 1463
     return-void
 .end method
 
@@ -46,66 +46,66 @@
     .parameter "msg"
 
     .prologue
-    .line 1395
+    .line 1467
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 1414
+    .line 1486
     :goto_0
     return-void
 
-    .line 1397
+    .line 1469
     :pswitch_0
     iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     #calls: Lcom/android/server/power/DisplayPowerController;->updatePowerState()V
-    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$400(Lcom/android/server/power/DisplayPowerController;)V
-
-    goto :goto_0
-
-    .line 1401
-    :pswitch_1
-    iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
-
-    #calls: Lcom/android/server/power/DisplayPowerController;->debounceProximitySensor()V
     invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$500(Lcom/android/server/power/DisplayPowerController;)V
 
     goto :goto_0
 
-    .line 1405
-    :pswitch_2
+    .line 1473
+    :pswitch_1
     iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
 
-    #calls: Lcom/android/server/power/DisplayPowerController;->debounceLightSensor()V
+    #calls: Lcom/android/server/power/DisplayPowerController;->debounceProximitySensor()V
     invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$600(Lcom/android/server/power/DisplayPowerController;)V
 
     goto :goto_0
 
-    .line 1409
+    .line 1477
+    :pswitch_2
+    iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
+
+    #calls: Lcom/android/server/power/DisplayPowerController;->debounceLightSensor()V
+    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$700(Lcom/android/server/power/DisplayPowerController;)V
+
+    goto :goto_0
+
+    .line 1481
     :pswitch_3
     iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     const/4 v1, 0x1
 
     #setter for: Lcom/android/server/power/DisplayPowerController;->mAutoBrightnessSettingsChanged:Z
-    invoke-static {v0, v1}, Lcom/android/server/power/DisplayPowerController;->access$702(Lcom/android/server/power/DisplayPowerController;Z)Z
+    invoke-static {v0, v1}, Lcom/android/server/power/DisplayPowerController;->access$802(Lcom/android/server/power/DisplayPowerController;Z)Z
 
-    .line 1410
+    .line 1482
     iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     #calls: Lcom/android/server/power/DisplayPowerController;->updateAutomaticBrightnessSettings()V
-    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$800(Lcom/android/server/power/DisplayPowerController;)V
+    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$900(Lcom/android/server/power/DisplayPowerController;)V
 
-    .line 1411
+    .line 1483
     iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$DisplayControllerHandler;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     #calls: Lcom/android/server/power/DisplayPowerController;->updatePowerState()V
-    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$400(Lcom/android/server/power/DisplayPowerController;)V
+    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$500(Lcom/android/server/power/DisplayPowerController;)V
 
     goto :goto_0
 
-    .line 1395
+    .line 1467
     nop
 
     :pswitch_data_0

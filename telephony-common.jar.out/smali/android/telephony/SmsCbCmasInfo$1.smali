@@ -45,7 +45,7 @@
     .parameter "in"
 
     .prologue
-    .line 301
+    .line 302
     new-instance v0, Landroid/telephony/SmsCbCmasInfo;
 
     invoke-direct {v0, p1}, Landroid/telephony/SmsCbCmasInfo;-><init>(Landroid/os/Parcel;)V
@@ -71,7 +71,7 @@
     .parameter "size"
 
     .prologue
-    .line 305
+    .line 307
     new-array v0, p1, [Landroid/telephony/SmsCbCmasInfo;
 
     return-object v0

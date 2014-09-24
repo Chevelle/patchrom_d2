@@ -86,11 +86,11 @@
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 126
-    :goto_0
     iput-object v3, p0, Landroid/database/BulkCursorToCursorAdaptor;->mBulkCursor:Landroid/database/IBulkCursor;
 
     .line 129
     :cond_0
+    :goto_0
     return-void
 
     .line 123
@@ -108,9 +108,11 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
+    .line 126
+    iput-object v3, p0, Landroid/database/BulkCursorToCursorAdaptor;->mBulkCursor:Landroid/database/IBulkCursor;
+
     goto :goto_0
 
-    .line 126
     .end local v0           #ex:Landroid/os/RemoteException;
     :catchall_0
     move-exception v1

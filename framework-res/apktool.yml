@@ -1,9 +1,9 @@
-version: 1.5.2
+version: 1.5.3.SNAPSHOT_DEV
 apkFileName: framework-res.apk
 isFrameworkApk: true
 sdkInfo:
-  minSdkVersion: '17'
-  targetSdkVersion: '17'
+  minSdkVersion: '19'
+  targetSdkVersion: '19'
 packageInfo:
   cur_package: android
   orig_package: android

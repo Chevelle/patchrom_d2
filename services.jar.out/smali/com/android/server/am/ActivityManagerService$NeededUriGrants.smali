@@ -34,23 +34,23 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter "_targetPkg"
-    .parameter "_targetUid"
-    .parameter "_flags"
+    .parameter "targetPkg"
+    .parameter "targetUid"
+    .parameter "flags"
 
     .prologue
-    .line 5353
+    .line 6230
     invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 5354
+    .line 6231
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$NeededUriGrants;->targetPkg:Ljava/lang/String;
 
-    .line 5355
+    .line 6232
     iput p2, p0, Lcom/android/server/am/ActivityManagerService$NeededUriGrants;->targetUid:I
 
-    .line 5356
+    .line 6233
     iput p3, p0, Lcom/android/server/am/ActivityManagerService$NeededUriGrants;->flags:I
 
-    .line 5357
+    .line 6234
     return-void
 .end method

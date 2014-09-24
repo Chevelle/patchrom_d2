@@ -42,7 +42,7 @@
     .locals 1
 
     .prologue
-    .line 62
+    .line 64
     new-instance v0, Lcom/android/internal/telephony/cat/TextMessage$1;
 
     invoke-direct {v0}, Lcom/android/internal/telephony/cat/TextMessage$1;-><init>()V
@@ -259,7 +259,7 @@
     .locals 1
 
     .prologue
-    .line 48
+    .line 49
     const/4 v0, 0x0
 
     return v0
@@ -275,22 +275,22 @@
 
     const/4 v2, 0x0
 
-    .line 52
+    .line 54
     iget-object v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->title:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 53
+    .line 55
     iget-object v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->text:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 54
+    .line 56
     iget-object v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->icon:Landroid/graphics/Bitmap;
 
     invoke-virtual {p1, v0, v2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 55
+    .line 57
     iget-boolean v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->iconSelfExplanatory:Z
 
     if-eqz v0, :cond_0
@@ -300,7 +300,7 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 56
+    .line 58
     iget-boolean v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->isHighPriority:Z
 
     if-eqz v0, :cond_1
@@ -310,7 +310,7 @@
     :goto_1
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 57
+    .line 59
     iget-boolean v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->responseNeeded:Z
 
     if-eqz v0, :cond_2
@@ -320,7 +320,7 @@
     :goto_2
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 58
+    .line 60
     iget-boolean v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->userClear:Z
 
     if-eqz v0, :cond_3
@@ -328,35 +328,35 @@
     :goto_3
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 59
+    .line 61
     iget-object v0, p0, Lcom/android/internal/telephony/cat/TextMessage;->duration:Lcom/android/internal/telephony/cat/Duration;
 
     invoke-virtual {p1, v0, v2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 60
+    .line 62
     return-void
 
     :cond_0
     move v0, v2
 
-    .line 55
+    .line 57
     goto :goto_0
 
     :cond_1
     move v0, v2
 
-    .line 56
+    .line 58
     goto :goto_1
 
     :cond_2
     move v0, v2
 
-    .line 57
+    .line 59
     goto :goto_2
 
     :cond_3
     move v1, v2
 
-    .line 58
+    .line 60
     goto :goto_3
 .end method

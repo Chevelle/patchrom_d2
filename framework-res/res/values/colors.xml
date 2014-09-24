@@ -38,6 +38,7 @@
     <color name="link_text_dark">#ff5c5cff</color>
     <color name="link_text_light">#ff0000ee</color>
     <color name="suggestion_highlight_text">#ff177bbd</color>
+    <color name="input_method_navigation_guard">#ff000000</color>
     <color name="lighter_gray">#ffdddddd</color>
     <color name="perms_dangerous_grp_color">#ff33b5e5</color>
     <color name="perms_dangerous_perm_color">#ff33b5e5</color>
@@ -91,9 +92,16 @@
     <color name="legacy_pressed_highlight">#fffeaa0c</color>
     <color name="legacy_selected_highlight">#fff17a0a</color>
     <color name="legacy_long_pressed_highlight">#ffffffff</color>
+    <color name="holo_gray_light">#33999999</color>
+    <color name="holo_gray_bright">#33cccccc</color>
     <color name="keyguard_avatar_frame_color">#ffffffff</color>
     <color name="keyguard_avatar_frame_shadow_color">#80000000</color>
     <color name="keyguard_avatar_nick_color">#ffffffff</color>
     <color name="keyguard_avatar_frame_pressed_color">#ff35b5e5</color>
+    <color name="accessibility_focus_highlight">#80ffff00</color>
     <color name="config_defaultNotificationColor">#ffffffff</color>
+    <color name="webviewchromium_color_picker_border_color">#ffb0b0b0</color>
+    <color name="webviewchromium_color_picker_background_color">#ffffffff</color>
+    <color name="webviewchromium_autofill_divider_color">#ffe5e5e5</color>
+    <color name="webviewchromium_autofill_dark_divider_color">#ffc0c0c0</color>
 </resources>

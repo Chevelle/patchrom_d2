@@ -26,13 +26,13 @@
     .parameter
 
     .prologue
-    .line 793
+    .line 794
     .local p0, this:Landroid/widget/AdapterView$AdapterDataSetObserver;,"Landroid/widget/AdapterView<TT;>.AdapterDataSetObserver;"
     iput-object p1, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     invoke-direct {p0}, Landroid/database/DataSetObserver;-><init>()V
 
-    .line 795
+    .line 796
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->mInstanceState:Landroid/os/Parcelable;
@@ -46,13 +46,13 @@
     .locals 1
 
     .prologue
-    .line 840
+    .line 841
     .local p0, this:Landroid/widget/AdapterView$AdapterDataSetObserver;,"Landroid/widget/AdapterView<TT;>.AdapterDataSetObserver;"
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->mInstanceState:Landroid/os/Parcelable;
 
-    .line 841
+    .line 842
     return-void
 .end method
 
@@ -60,7 +60,7 @@
     .locals 2
 
     .prologue
-    .line 799
+    .line 800
     .local p0, this:Landroid/widget/AdapterView$AdapterDataSetObserver;,"Landroid/widget/AdapterView<TT;>.AdapterDataSetObserver;"
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
@@ -68,7 +68,7 @@
 
     iput-boolean v1, v0, Landroid/widget/AdapterView;->mDataChanged:Z
 
-    .line 800
+    .line 801
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iget-object v1, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
@@ -77,7 +77,7 @@
 
     iput v1, v0, Landroid/widget/AdapterView;->mOldItemCount:I
 
-    .line 801
+    .line 802
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iget-object v1, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
@@ -92,7 +92,7 @@
 
     iput v1, v0, Landroid/widget/AdapterView;->mItemCount:I
 
-    .line 805
+    .line 806
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     invoke-virtual {v0}, Landroid/widget/AdapterView;->getAdapter()Landroid/widget/Adapter;
@@ -121,7 +121,7 @@
 
     if-lez v0, :cond_0
 
-    .line 807
+    .line 808
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iget-object v1, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->mInstanceState:Landroid/os/Parcelable;
@@ -129,26 +129,26 @@
     #calls: Landroid/widget/AdapterView;->onRestoreInstanceState(Landroid/os/Parcelable;)V
     invoke-static {v0, v1}, Landroid/widget/AdapterView;->access$000(Landroid/widget/AdapterView;Landroid/os/Parcelable;)V
 
-    .line 808
+    .line 809
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->mInstanceState:Landroid/os/Parcelable;
 
-    .line 812
+    .line 813
     :goto_0
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     invoke-virtual {v0}, Landroid/widget/AdapterView;->checkFocus()V
 
-    .line 813
+    .line 814
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     invoke-virtual {v0}, Landroid/widget/AdapterView;->requestLayout()V
 
-    .line 814
+    .line 815
     return-void
 
-    .line 810
+    .line 811
     :cond_0
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
@@ -168,14 +168,14 @@
 
     const/4 v2, -0x1
 
-    .line 818
+    .line 819
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     const/4 v1, 0x1
 
     iput-boolean v1, v0, Landroid/widget/AdapterView;->mDataChanged:Z
 
-    .line 820
+    .line 821
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     invoke-virtual {v0}, Landroid/widget/AdapterView;->getAdapter()Landroid/widget/Adapter;
@@ -188,7 +188,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 823
+    .line 824
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     #calls: Landroid/widget/AdapterView;->onSaveInstanceState()Landroid/os/Parcelable;
@@ -198,7 +198,7 @@
 
     iput-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->mInstanceState:Landroid/os/Parcelable;
 
-    .line 827
+    .line 828
     :cond_0
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
@@ -208,46 +208,46 @@
 
     iput v1, v0, Landroid/widget/AdapterView;->mOldItemCount:I
 
-    .line 828
+    .line 829
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iput v3, v0, Landroid/widget/AdapterView;->mItemCount:I
 
-    .line 829
+    .line 830
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iput v2, v0, Landroid/widget/AdapterView;->mSelectedPosition:I
 
-    .line 830
+    .line 831
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iput-wide v4, v0, Landroid/widget/AdapterView;->mSelectedRowId:J
 
-    .line 831
+    .line 832
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iput v2, v0, Landroid/widget/AdapterView;->mNextSelectedPosition:I
 
-    .line 832
+    .line 833
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iput-wide v4, v0, Landroid/widget/AdapterView;->mNextSelectedRowId:J
 
-    .line 833
+    .line 834
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     iput-boolean v3, v0, Landroid/widget/AdapterView;->mNeedSync:Z
 
-    .line 835
+    .line 836
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     invoke-virtual {v0}, Landroid/widget/AdapterView;->checkFocus()V
 
-    .line 836
+    .line 837
     iget-object v0, p0, Landroid/widget/AdapterView$AdapterDataSetObserver;->this$0:Landroid/widget/AdapterView;
 
     invoke-virtual {v0}, Landroid/widget/AdapterView;->requestLayout()V
 
-    .line 837
+    .line 838
     return-void
 .end method

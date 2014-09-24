@@ -8,7 +8,7 @@
     .locals 0
 
     .prologue
-    .line 31
+    .line 33
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
     return-void
@@ -20,7 +20,7 @@
     .locals 0
 
     .prologue
-    .line 42
+    .line 44
     return-void
 .end method
 
@@ -28,6 +28,6 @@
     .locals 0
 
     .prologue
-    .line 36
+    .line 38
     return-void
 .end method

@@ -42,7 +42,7 @@
     .locals 1
 
     .prologue
-    .line 41
+    .line 38
     new-instance v0, Landroid/graphics/Matrix$1;
 
     invoke-direct {v0}, Landroid/graphics/Matrix$1;-><init>()V
@@ -56,10 +56,10 @@
     .locals 1
 
     .prologue
-    .line 230
+    .line 227
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 231
+    .line 228
     const/4 v0, 0x0
 
     invoke-static {v0}, Landroid/graphics/Matrix;->native_create(I)I
@@ -68,7 +68,7 @@
 
     iput v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
-    .line 232
+    .line 229
     return-void
 .end method
 
@@ -77,10 +77,10 @@
     .parameter "src"
 
     .prologue
-    .line 238
+    .line 235
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 239
+    .line 236
     if-eqz p1, :cond_0
 
     iget v0, p1, Landroid/graphics/Matrix;->native_instance:I
@@ -92,10 +92,10 @@
 
     iput v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
-    .line 240
+    .line 237
     return-void
 
-    .line 239
+    .line 236
     :cond_0
     const/4 v0, 0x0
 
@@ -111,18 +111,18 @@
     .parameter "pointCount"
 
     .prologue
-    .line 544
+    .line 551
     shl-int/lit8 v2, p4, 0x1
 
     add-int v1, p1, v2
 
-    .line 545
+    .line 552
     .local v1, srcStop:I
     shl-int/lit8 v2, p4, 0x1
 
     add-int v0, p3, v2
 
-    .line 546
+    .line 553
     .local v0, dstStop:I
     or-int v2, p4, p1
 
@@ -142,7 +142,7 @@
 
     if-le v0, v2, :cond_1
 
-    .line 548
+    .line 555
     :cond_0
     new-instance v2, Ljava/lang/ArrayIndexOutOfBoundsException;
 
@@ -150,7 +150,7 @@
 
     throw v2
 
-    .line 550
+    .line 557
     :cond_1
     return-void
 .end method
@@ -285,13 +285,20 @@
     .parameter "obj"
 
     .prologue
-    .line 274
-    if-eqz p1, :cond_0
-
+    .line 273
     instance-of v0, p1, Landroid/graphics/Matrix;
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
+    const/4 v0, 0x0
+
+    .line 274
+    .end local p1
+    :goto_0
+    return v0
+
+    .restart local p1
+    :cond_0
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     check-cast p1, Landroid/graphics/Matrix;
@@ -302,16 +309,6 @@
     invoke-static {v0, v1}, Landroid/graphics/Matrix;->native_equals(II)Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
 
     goto :goto_0
 .end method
@@ -325,13 +322,27 @@
     .end annotation
 
     .prologue
-    .line 787
+    .line 797
+    :try_start_0
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0}, Landroid/graphics/Matrix;->finalizer(I)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 788
+    .line 799
+    invoke-super {p0}, Ljava/lang/Object;->finalize()V
+
+    .line 801
     return-void
+
+    .line 799
+    :catchall_0
+    move-exception v0
+
+    invoke-super {p0}, Ljava/lang/Object;->finalize()V
+
+    throw v0
 .end method
 
 .method public getValues([F)V
@@ -339,28 +350,38 @@
     .parameter "values"
 
     .prologue
-    .line 720
+    .line 727
     array-length v0, p1
 
     const/16 v1, 0x9
 
     if-ge v0, v1, :cond_0
 
-    .line 721
+    .line 728
     new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
     invoke-direct {v0}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>()V
 
     throw v0
 
-    .line 723
+    .line 730
     :cond_0
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1}, Landroid/graphics/Matrix;->native_getValues(I[F)V
 
-    .line 724
+    .line 731
     return-void
+.end method
+
+.method public hashCode()I
+    .locals 1
+
+    .prologue
+    .line 283
+    const/16 v0, 0x2c
+
+    return v0
 .end method
 
 .method public invert(Landroid/graphics/Matrix;)Z
@@ -368,7 +389,7 @@
     .parameter "inverse"
 
     .prologue
-    .line 581
+    .line 588
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     iget v1, p1, Landroid/graphics/Matrix;->native_instance:I
@@ -384,7 +405,7 @@
     .locals 1
 
     .prologue
-    .line 247
+    .line 244
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0}, Landroid/graphics/Matrix;->native_isIdentity(I)Z
@@ -401,7 +422,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 664
+    .line 671
     array-length v0, p1
 
     shr-int/lit8 v5, v0, 0x1
@@ -416,7 +437,7 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Matrix;->mapPoints([FI[FII)V
 
-    .line 665
+    .line 672
     return-void
 .end method
 
@@ -429,10 +450,10 @@
     .parameter "pointCount"
 
     .prologue
-    .line 597
+    .line 604
     invoke-static {p3, p4, p1, p2, p5}, Landroid/graphics/Matrix;->checkPointArrays([FI[FII)V
 
-    .line 598
+    .line 605
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     const/4 v6, 0x1
@@ -449,7 +470,7 @@
 
     invoke-static/range {v0 .. v6}, Landroid/graphics/Matrix;->native_mapPoints(I[FI[FIIZ)V
 
-    .line 600
+    .line 607
     return-void
 .end method
 
@@ -461,21 +482,21 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 633
+    .line 640
     array-length v0, p1
 
     array-length v1, p2
 
     if-eq v0, v1, :cond_0
 
-    .line 634
+    .line 641
     new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
     invoke-direct {v0}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>()V
 
     throw v0
 
-    .line 636
+    .line 643
     :cond_0
     array-length v0, p1
 
@@ -491,7 +512,7 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Matrix;->mapPoints([FI[FII)V
 
-    .line 637
+    .line 644
     return-void
 .end method
 
@@ -500,7 +521,7 @@
     .parameter "radius"
 
     .prologue
-    .line 714
+    .line 721
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1}, Landroid/graphics/Matrix;->native_mapRadius(IF)F
@@ -515,7 +536,7 @@
     .parameter "rect"
 
     .prologue
-    .line 705
+    .line 712
     invoke-virtual {p0, p1, p1}, Landroid/graphics/Matrix;->mapRect(Landroid/graphics/RectF;Landroid/graphics/RectF;)Z
 
     move-result v0
@@ -529,12 +550,12 @@
     .parameter "src"
 
     .prologue
-    .line 690
+    .line 697
     if-eqz p1, :cond_0
 
     if-nez p2, :cond_1
 
-    .line 691
+    .line 698
     :cond_0
     new-instance v0, Ljava/lang/NullPointerException;
 
@@ -542,7 +563,7 @@
 
     throw v0
 
-    .line 693
+    .line 700
     :cond_1
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
@@ -560,7 +581,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 677
+    .line 684
     array-length v0, p1
 
     shr-int/lit8 v5, v0, 0x1
@@ -575,7 +596,7 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Matrix;->mapVectors([FI[FII)V
 
-    .line 678
+    .line 685
     return-void
 .end method
 
@@ -588,10 +609,10 @@
     .parameter "vectorCount"
 
     .prologue
-    .line 619
+    .line 626
     invoke-static {p3, p4, p1, p2, p5}, Landroid/graphics/Matrix;->checkPointArrays([FI[FII)V
 
-    .line 620
+    .line 627
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     const/4 v6, 0x0
@@ -608,7 +629,7 @@
 
     invoke-static/range {v0 .. v6}, Landroid/graphics/Matrix;->native_mapPoints(I[FI[FIIZ)V
 
-    .line 622
+    .line 629
     return-void
 .end method
 
@@ -620,21 +641,21 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 651
+    .line 658
     array-length v0, p1
 
     array-length v1, p2
 
     if-eq v0, v1, :cond_0
 
-    .line 652
+    .line 659
     new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
     invoke-direct {v0}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>()V
 
     throw v0
 
-    .line 654
+    .line 661
     :cond_0
     array-length v0, p1
 
@@ -650,7 +671,7 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Matrix;->mapVectors([FI[FII)V
 
-    .line 655
+    .line 662
     return-void
 .end method
 
@@ -658,7 +679,7 @@
     .locals 1
 
     .prologue
-    .line 791
+    .line 804
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     return v0
@@ -669,7 +690,7 @@
     .parameter "other"
 
     .prologue
-    .line 482
+    .line 489
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     iget v1, p1, Landroid/graphics/Matrix;->native_instance:I
@@ -686,7 +707,7 @@
     .parameter "degrees"
 
     .prologue
-    .line 458
+    .line 465
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1}, Landroid/graphics/Matrix;->native_postRotate(IF)Z
@@ -703,7 +724,7 @@
     .parameter "py"
 
     .prologue
-    .line 450
+    .line 457
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3}, Landroid/graphics/Matrix;->native_postRotate(IFFF)Z
@@ -719,7 +740,7 @@
     .parameter "sy"
 
     .prologue
-    .line 442
+    .line 449
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_postScale(IFF)Z
@@ -737,7 +758,7 @@
     .parameter "py"
 
     .prologue
-    .line 434
+    .line 441
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Matrix;->native_postScale(IFFFF)Z
@@ -753,7 +774,7 @@
     .parameter "ky"
 
     .prologue
-    .line 474
+    .line 481
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_postSkew(IFF)Z
@@ -771,7 +792,7 @@
     .parameter "py"
 
     .prologue
-    .line 466
+    .line 473
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Matrix;->native_postSkew(IFFFF)Z
@@ -787,7 +808,7 @@
     .parameter "dy"
 
     .prologue
-    .line 426
+    .line 433
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_postTranslate(IFF)Z
@@ -802,7 +823,7 @@
     .parameter "other"
 
     .prologue
-    .line 418
+    .line 425
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     iget v1, p1, Landroid/graphics/Matrix;->native_instance:I
@@ -819,7 +840,7 @@
     .parameter "degrees"
 
     .prologue
-    .line 394
+    .line 401
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1}, Landroid/graphics/Matrix;->native_preRotate(IF)Z
@@ -836,7 +857,7 @@
     .parameter "py"
 
     .prologue
-    .line 386
+    .line 393
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3}, Landroid/graphics/Matrix;->native_preRotate(IFFF)Z
@@ -852,7 +873,7 @@
     .parameter "sy"
 
     .prologue
-    .line 378
+    .line 385
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_preScale(IFF)Z
@@ -870,7 +891,7 @@
     .parameter "py"
 
     .prologue
-    .line 370
+    .line 377
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Matrix;->native_preScale(IFFFF)Z
@@ -886,7 +907,7 @@
     .parameter "ky"
 
     .prologue
-    .line 410
+    .line 417
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_preSkew(IFF)Z
@@ -904,7 +925,7 @@
     .parameter "py"
 
     .prologue
-    .line 402
+    .line 409
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Matrix;->native_preSkew(IFFFF)Z
@@ -920,7 +941,7 @@
     .parameter "dy"
 
     .prologue
-    .line 362
+    .line 369
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_preTranslate(IFF)Z
@@ -935,21 +956,21 @@
     .parameter "pw"
 
     .prologue
-    .line 774
+    .line 782
     const/16 v1, 0x9
 
     new-array v0, v1, [F
 
-    .line 775
+    .line 783
     .local v0, values:[F
     invoke-virtual {p0, v0}, Landroid/graphics/Matrix;->getValues([F)V
 
-    .line 776
+    .line 784
     const/16 v1, 0x5b
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->print(C)V
 
-    .line 777
+    .line 785
     const/4 v1, 0x0
 
     aget v1, v0, v1
@@ -970,7 +991,7 @@
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 778
+    .line 786
     const/4 v1, 0x2
 
     aget v1, v0, v1
@@ -981,7 +1002,7 @@
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 779
+    .line 787
     const/4 v1, 0x3
 
     aget v1, v0, v1
@@ -1002,7 +1023,7 @@
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 780
+    .line 788
     const/4 v1, 0x5
 
     aget v1, v0, v1
@@ -1013,7 +1034,7 @@
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 781
+    .line 789
     const/4 v1, 0x6
 
     aget v1, v0, v1
@@ -1034,7 +1055,7 @@
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 782
+    .line 790
     const/16 v1, 0x8
 
     aget v1, v0, v1
@@ -1045,7 +1066,7 @@
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->print(C)V
 
-    .line 784
+    .line 792
     return-void
 .end method
 
@@ -1053,7 +1074,7 @@
     .locals 1
 
     .prologue
-    .line 256
+    .line 253
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0}, Landroid/graphics/Matrix;->native_rectStaysRect(I)Z
@@ -1067,12 +1088,12 @@
     .locals 1
 
     .prologue
-    .line 281
+    .line 288
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0}, Landroid/graphics/Matrix;->native_reset(I)V
 
-    .line 282
+    .line 289
     return-void
 .end method
 
@@ -1081,17 +1102,17 @@
     .parameter "src"
 
     .prologue
-    .line 264
+    .line 261
     if-nez p1, :cond_0
 
-    .line 265
+    .line 262
     invoke-virtual {p0}, Landroid/graphics/Matrix;->reset()V
 
-    .line 269
+    .line 266
     :goto_0
     return-void
 
-    .line 267
+    .line 264
     :cond_0
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
@@ -1108,7 +1129,7 @@
     .parameter "b"
 
     .prologue
-    .line 353
+    .line 360
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     iget v1, p1, Landroid/graphics/Matrix;->native_instance:I
@@ -1131,23 +1152,23 @@
     .parameter "pointCount"
 
     .prologue
-    .line 567
+    .line 574
     const/4 v0, 0x4
 
     if-le p5, v0, :cond_0
 
-    .line 568
+    .line 575
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
 
     throw v0
 
-    .line 570
+    .line 577
     :cond_0
     invoke-static {p1, p2, p3, p4, p5}, Landroid/graphics/Matrix;->checkPointArrays([FI[FII)V
 
-    .line 571
+    .line 578
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     move-object v1, p1
@@ -1174,12 +1195,12 @@
     .parameter "stf"
 
     .prologue
-    .line 533
+    .line 540
     if-eqz p2, :cond_0
 
     if-nez p1, :cond_1
 
-    .line 534
+    .line 541
     :cond_0
     new-instance v0, Ljava/lang/NullPointerException;
 
@@ -1187,7 +1208,7 @@
 
     throw v0
 
-    .line 536
+    .line 543
     :cond_1
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
@@ -1205,12 +1226,12 @@
     .parameter "degrees"
 
     .prologue
-    .line 316
+    .line 323
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1}, Landroid/graphics/Matrix;->native_setRotate(IF)V
 
-    .line 317
+    .line 324
     return-void
 .end method
 
@@ -1221,12 +1242,12 @@
     .parameter "py"
 
     .prologue
-    .line 309
+    .line 316
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3}, Landroid/graphics/Matrix;->native_setRotate(IFFF)V
 
-    .line 310
+    .line 317
     return-void
 .end method
 
@@ -1236,12 +1257,12 @@
     .parameter "sy"
 
     .prologue
-    .line 300
+    .line 307
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_setScale(IFF)V
 
-    .line 301
+    .line 308
     return-void
 .end method
 
@@ -1253,12 +1274,12 @@
     .parameter "py"
 
     .prologue
-    .line 295
+    .line 302
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Matrix;->native_setScale(IFFFF)V
 
-    .line 296
+    .line 303
     return-void
 .end method
 
@@ -1268,12 +1289,12 @@
     .parameter "cosValue"
 
     .prologue
-    .line 330
+    .line 337
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_setSinCos(IFF)V
 
-    .line 331
+    .line 338
     return-void
 .end method
 
@@ -1285,12 +1306,12 @@
     .parameter "py"
 
     .prologue
-    .line 325
+    .line 332
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Matrix;->native_setSinCos(IFFFF)V
 
-    .line 326
+    .line 333
     return-void
 .end method
 
@@ -1300,12 +1321,12 @@
     .parameter "ky"
 
     .prologue
-    .line 344
+    .line 351
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_setSkew(IFF)V
 
-    .line 345
+    .line 352
     return-void
 .end method
 
@@ -1317,12 +1338,12 @@
     .parameter "py"
 
     .prologue
-    .line 339
+    .line 346
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Matrix;->native_setSkew(IFFFF)V
 
-    .line 340
+    .line 347
     return-void
 .end method
 
@@ -1332,12 +1353,12 @@
     .parameter "dy"
 
     .prologue
-    .line 286
+    .line 293
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1, p2}, Landroid/graphics/Matrix;->native_setTranslate(IFF)V
 
-    .line 287
+    .line 294
     return-void
 .end method
 
@@ -1346,27 +1367,27 @@
     .parameter "values"
 
     .prologue
-    .line 733
+    .line 740
     array-length v0, p1
 
     const/16 v1, 0x9
 
     if-ge v0, v1, :cond_0
 
-    .line 734
+    .line 741
     new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
     invoke-direct {v0}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>()V
 
     throw v0
 
-    .line 736
+    .line 743
     :cond_0
     iget v0, p0, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-static {v0, p1}, Landroid/graphics/Matrix;->native_setValues(I[F)V
 
-    .line 737
+    .line 744
     return-void
 .end method
 
@@ -1374,18 +1395,18 @@
     .locals 2
 
     .prologue
-    .line 749
+    .line 757
     new-instance v0, Ljava/lang/StringBuilder;
 
     const/16 v1, 0x40
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 750
+    .line 758
     .local v0, sb:Ljava/lang/StringBuilder;
     invoke-virtual {p0, v0}, Landroid/graphics/Matrix;->toShortString(Ljava/lang/StringBuilder;)V
 
-    .line 751
+    .line 759
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -1398,21 +1419,21 @@
     .parameter "sb"
 
     .prologue
-    .line 758
+    .line 766
     const/16 v1, 0x9
 
     new-array v0, v1, [F
 
-    .line 759
+    .line 767
     .local v0, values:[F
     invoke-virtual {p0, v0}, Landroid/graphics/Matrix;->getValues([F)V
 
-    .line 760
+    .line 768
     const/16 v1, 0x5b
 
     invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 761
+    .line 769
     const/4 v1, 0x0
 
     aget v1, v0, v1
@@ -1433,7 +1454,7 @@
 
     invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 762
+    .line 770
     const/4 v1, 0x2
 
     aget v1, v0, v1
@@ -1444,7 +1465,7 @@
 
     invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 763
+    .line 771
     const/4 v1, 0x3
 
     aget v1, v0, v1
@@ -1465,7 +1486,7 @@
 
     invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 764
+    .line 772
     const/4 v1, 0x5
 
     aget v1, v0, v1
@@ -1476,7 +1497,7 @@
 
     invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 765
+    .line 773
     const/4 v1, 0x6
 
     aget v1, v0, v1
@@ -1497,7 +1518,7 @@
 
     invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 766
+    .line 774
     const/16 v1, 0x8
 
     aget v1, v0, v1
@@ -1508,7 +1529,7 @@
 
     invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 767
+    .line 775
     return-void
 .end method
 
@@ -1516,28 +1537,28 @@
     .locals 2
 
     .prologue
-    .line 740
+    .line 748
     new-instance v0, Ljava/lang/StringBuilder;
 
     const/16 v1, 0x40
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 741
+    .line 749
     .local v0, sb:Ljava/lang/StringBuilder;
     const-string v1, "Matrix{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 742
+    .line 750
     invoke-virtual {p0, v0}, Landroid/graphics/Matrix;->toShortString(Ljava/lang/StringBuilder;)V
 
-    .line 743
+    .line 751
     const/16 v1, 0x7d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 744
+    .line 752
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

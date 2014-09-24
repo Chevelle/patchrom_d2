@@ -14,15 +14,27 @@
 # static fields
 .field public static final A2DP:I = 0x2
 
+.field public static final DUN:I = 0x15
+
 .field public static final EXTRA_PREVIOUS_STATE:Ljava/lang/String; = "android.bluetooth.profile.extra.PREVIOUS_STATE"
 
 .field public static final EXTRA_STATE:Ljava/lang/String; = "android.bluetooth.profile.extra.STATE"
+
+.field public static final GATT:I = 0x7
+
+.field public static final GATT_SERVER:I = 0x8
+
+.field public static final HANDSFREE_CLIENT:I = 0xa
 
 .field public static final HEADSET:I = 0x1
 
 .field public static final HEALTH:I = 0x3
 
+.field public static final HID_DEVICE:I = 0x16
+
 .field public static final INPUT_DEVICE:I = 0x4
+
+.field public static final MAP:I = 0x9
 
 .field public static final PAN:I = 0x5
 
@@ -35,6 +47,14 @@
 .field public static final PRIORITY_ON:I = 0x64
 
 .field public static final PRIORITY_UNDEFINED:I = -0x1
+
+.field public static final PROFILE_A2DP_SNK:I = 0x2
+
+.field public static final PROFILE_A2DP_SRC:I = 0x1
+
+.field public static final PROFILE_A2DP_UNDEFINED:I = -0x1
+
+.field public static final SAP:I = 0x14
 
 .field public static final STATE_CONNECTED:I = 0x2
 

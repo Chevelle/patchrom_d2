@@ -2,9 +2,6 @@
 .super Ljava/lang/Object;
 .source "ProgressBar.java"
 
-# interfaces
-.implements Landroid/util/Poolable;
-
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingClass;
@@ -16,24 +13,14 @@
     name = "RefreshData"
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Ljava/lang/Object;",
-        "Landroid/util/Poolable",
-        "<",
-        "Landroid/widget/ProgressBar$RefreshData;",
-        ">;"
-    }
-.end annotation
-
 
 # static fields
 .field private static final POOL_MAX:I = 0x18
 
-.field private static final sPool:Landroid/util/Pool;
+.field private static final sPool:Landroid/util/Pools$SynchronizedPool;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/util/Pool",
+            "Landroid/util/Pools$SynchronizedPool",
             "<",
             "Landroid/widget/ProgressBar$RefreshData;",
             ">;"
@@ -47,10 +34,6 @@
 
 .field public id:I
 
-.field private mIsPooled:Z
-
-.field private mNext:Landroid/widget/ProgressBar$RefreshData;
-
 .field public progress:I
 
 
@@ -60,21 +43,13 @@
 
     .prologue
     .line 616
-    new-instance v0, Landroid/widget/ProgressBar$RefreshData$1;
-
-    invoke-direct {v0}, Landroid/widget/ProgressBar$RefreshData$1;-><init>()V
+    new-instance v0, Landroid/util/Pools$SynchronizedPool;
 
     const/16 v1, 0x18
 
-    invoke-static {v0, v1}, Landroid/util/Pools;->finitePool(Landroid/util/PoolableManager;I)Landroid/util/Pool;
+    invoke-direct {v0, v1}, Landroid/util/Pools$SynchronizedPool;-><init>(I)V
 
-    move-result-object v0
-
-    invoke-static {v0}, Landroid/util/Pools;->synchronizedPool(Landroid/util/Pool;)Landroid/util/Pool;
-
-    move-result-object v0
-
-    sput-object v0, Landroid/widget/ProgressBar$RefreshData;->sPool:Landroid/util/Pool;
+    sput-object v0, Landroid/widget/ProgressBar$RefreshData;->sPool:Landroid/util/Pools$SynchronizedPool;
 
     return-void
 .end method
@@ -83,19 +58,8 @@
     .locals 0
 
     .prologue
-    .line 607
+    .line 614
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-.method synthetic constructor <init>(Landroid/widget/ProgressBar$1;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 607
-    invoke-direct {p0}, Landroid/widget/ProgressBar$RefreshData;-><init>()V
 
     return-void
 .end method
@@ -107,110 +71,51 @@
     .parameter "fromUser"
 
     .prologue
-    .line 633
-    sget-object v1, Landroid/widget/ProgressBar$RefreshData;->sPool:Landroid/util/Pool;
+    .line 624
+    sget-object v1, Landroid/widget/ProgressBar$RefreshData;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    invoke-interface {v1}, Landroid/util/Pool;->acquire()Landroid/util/Poolable;
+    invoke-virtual {v1}, Landroid/util/Pools$SynchronizedPool;->acquire()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/widget/ProgressBar$RefreshData;
 
-    .line 634
+    .line 625
     .local v0, rd:Landroid/widget/ProgressBar$RefreshData;
+    if-nez v0, :cond_0
+
+    .line 626
+    new-instance v0, Landroid/widget/ProgressBar$RefreshData;
+
+    .end local v0           #rd:Landroid/widget/ProgressBar$RefreshData;
+    invoke-direct {v0}, Landroid/widget/ProgressBar$RefreshData;-><init>()V
+
+    .line 628
+    .restart local v0       #rd:Landroid/widget/ProgressBar$RefreshData;
+    :cond_0
     iput p0, v0, Landroid/widget/ProgressBar$RefreshData;->id:I
 
-    .line 635
+    .line 629
     iput p1, v0, Landroid/widget/ProgressBar$RefreshData;->progress:I
 
-    .line 636
+    .line 630
     iput-boolean p2, v0, Landroid/widget/ProgressBar$RefreshData;->fromUser:Z
 
-    .line 637
+    .line 631
     return-object v0
 .end method
 
 
 # virtual methods
-.method public getNextPoolable()Landroid/widget/ProgressBar$RefreshData;
-    .locals 1
-
-    .prologue
-    .line 651
-    iget-object v0, p0, Landroid/widget/ProgressBar$RefreshData;->mNext:Landroid/widget/ProgressBar$RefreshData;
-
-    return-object v0
-.end method
-
-.method public bridge synthetic getNextPoolable()Ljava/lang/Object;
-    .locals 1
-
-    .prologue
-    .line 607
-    invoke-virtual {p0}, Landroid/widget/ProgressBar$RefreshData;->getNextPoolable()Landroid/widget/ProgressBar$RefreshData;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public isPooled()Z
-    .locals 1
-
-    .prologue
-    .line 656
-    iget-boolean v0, p0, Landroid/widget/ProgressBar$RefreshData;->mIsPooled:Z
-
-    return v0
-.end method
-
 .method public recycle()V
     .locals 1
 
     .prologue
-    .line 641
-    sget-object v0, Landroid/widget/ProgressBar$RefreshData;->sPool:Landroid/util/Pool;
+    .line 635
+    sget-object v0, Landroid/widget/ProgressBar$RefreshData;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    invoke-interface {v0, p0}, Landroid/util/Pool;->release(Landroid/util/Poolable;)V
+    invoke-virtual {v0, p0}, Landroid/util/Pools$SynchronizedPool;->release(Ljava/lang/Object;)Z
 
-    .line 642
-    return-void
-.end method
-
-.method public setNextPoolable(Landroid/widget/ProgressBar$RefreshData;)V
-    .locals 0
-    .parameter "element"
-
-    .prologue
-    .line 646
-    iput-object p1, p0, Landroid/widget/ProgressBar$RefreshData;->mNext:Landroid/widget/ProgressBar$RefreshData;
-
-    .line 647
-    return-void
-.end method
-
-.method public bridge synthetic setNextPoolable(Ljava/lang/Object;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 607
-    check-cast p1, Landroid/widget/ProgressBar$RefreshData;
-
-    .end local p1
-    invoke-virtual {p0, p1}, Landroid/widget/ProgressBar$RefreshData;->setNextPoolable(Landroid/widget/ProgressBar$RefreshData;)V
-
-    return-void
-.end method
-
-.method public setPooled(Z)V
-    .locals 0
-    .parameter "isPooled"
-
-    .prologue
-    .line 661
-    iput-boolean p1, p0, Landroid/widget/ProgressBar$RefreshData;->mIsPooled:Z
-
-    .line 662
+    .line 636
     return-void
 .end method

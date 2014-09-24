@@ -65,7 +65,7 @@
     .locals 1
 
     .prologue
-    .line 505
+    .line 511
     new-instance v0, Landroid/preference/PreferenceActivity$Header$1;
 
     invoke-direct {v0}, Landroid/preference/PreferenceActivity$Header$1;-><init>()V
@@ -79,15 +79,15 @@
     .locals 2
 
     .prologue
-    .line 401
+    .line 407
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 322
+    .line 328
     const-wide/16 v0, -0x1
 
     iput-wide v0, p0, Landroid/preference/PreferenceActivity$Header;->id:J
 
-    .line 403
+    .line 409
     return-void
 .end method
 
@@ -96,18 +96,18 @@
     .parameter "in"
 
     .prologue
-    .line 501
+    .line 507
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 322
+    .line 328
     const-wide/16 v0, -0x1
 
     iput-wide v0, p0, Landroid/preference/PreferenceActivity$Header;->id:J
 
-    .line 502
+    .line 508
     invoke-virtual {p0, p1}, Landroid/preference/PreferenceActivity$Header;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 503
+    .line 509
     return-void
 .end method
 
@@ -117,7 +117,7 @@
     .locals 1
 
     .prologue
-    .line 456
+    .line 462
     const/4 v0, 0x0
 
     return v0
@@ -128,19 +128,19 @@
     .parameter "res"
 
     .prologue
-    .line 448
+    .line 454
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitleRes:I
 
     if-eqz v0, :cond_0
 
-    .line 449
+    .line 455
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitleRes:I
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
     move-result-object v0
 
-    .line 451
+    .line 457
     :goto_0
     return-object v0
 
@@ -155,19 +155,19 @@
     .parameter "res"
 
     .prologue
-    .line 435
+    .line 441
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitleRes:I
 
     if-eqz v0, :cond_0
 
-    .line 436
+    .line 442
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitleRes:I
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
     move-result-object v0
 
-    .line 438
+    .line 444
     :goto_0
     return-object v0
 
@@ -182,19 +182,19 @@
     .parameter "res"
 
     .prologue
-    .line 423
+    .line 429
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->summaryRes:I
 
     if-eqz v0, :cond_0
 
-    .line 424
+    .line 430
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->summaryRes:I
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
     move-result-object v0
 
-    .line 426
+    .line 432
     :goto_0
     return-object v0
 
@@ -209,19 +209,19 @@
     .parameter "res"
 
     .prologue
-    .line 411
+    .line 417
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->titleRes:I
 
     if-eqz v0, :cond_0
 
-    .line 412
+    .line 418
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->titleRes:I
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
     move-result-object v0
 
-    .line 414
+    .line 420
     :goto_0
     return-object v0
 
@@ -236,73 +236,19 @@
     .parameter "in"
 
     .prologue
-    .line 483
+    .line 489
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/preference/PreferenceActivity$Header;->id:J
 
-    .line 484
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->titleRes:I
-
-    .line 485
-    sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/lang/CharSequence;
-
-    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->title:Ljava/lang/CharSequence;
-
-    .line 486
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->summaryRes:I
-
-    .line 487
-    sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/lang/CharSequence;
-
-    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->summary:Ljava/lang/CharSequence;
-
-    .line 488
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitleRes:I
-
-    .line 489
-    sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
-
-    invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/lang/CharSequence;
-
-    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitle:Ljava/lang/CharSequence;
-
     .line 490
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitleRes:I
+    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->titleRes:I
 
     .line 491
     sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
@@ -313,37 +259,91 @@
 
     check-cast v0, Ljava/lang/CharSequence;
 
-    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitle:Ljava/lang/CharSequence;
+    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->title:Ljava/lang/CharSequence;
 
     .line 492
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->iconRes:I
+    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->summaryRes:I
 
     .line 493
+    sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/CharSequence;
+
+    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->summary:Ljava/lang/CharSequence;
+
+    .line 494
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitleRes:I
+
+    .line 495
+    sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/CharSequence;
+
+    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitle:Ljava/lang/CharSequence;
+
+    .line 496
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitleRes:I
+
+    .line 497
+    sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/CharSequence;
+
+    iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitle:Ljava/lang/CharSequence;
+
+    .line 498
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/preference/PreferenceActivity$Header;->iconRes:I
+
+    .line 499
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->fragment:Ljava/lang/String;
 
-    .line 494
+    .line 500
     invoke-virtual {p1}, Landroid/os/Parcel;->readBundle()Landroid/os/Bundle;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->fragmentArguments:Landroid/os/Bundle;
 
-    .line 495
+    .line 501
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 496
+    .line 502
     sget-object v0, Landroid/content/Intent;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -354,7 +354,7 @@
 
     iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->intent:Landroid/content/Intent;
 
-    .line 498
+    .line 504
     :cond_0
     invoke-virtual {p1}, Landroid/os/Parcel;->readBundle()Landroid/os/Bundle;
 
@@ -362,7 +362,7 @@
 
     iput-object v0, p0, Landroid/preference/PreferenceActivity$Header;->extras:Landroid/os/Bundle;
 
-    .line 499
+    .line 505
     return-void
 .end method
 
@@ -372,91 +372,91 @@
     .parameter "flags"
 
     .prologue
-    .line 461
+    .line 467
     iget-wide v0, p0, Landroid/preference/PreferenceActivity$Header;->id:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 462
+    .line 468
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->titleRes:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 463
+    .line 469
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->title:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 464
+    .line 470
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->summaryRes:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 465
+    .line 471
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->summary:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 466
+    .line 472
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitleRes:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 467
+    .line 473
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbTitle:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 468
+    .line 474
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitleRes:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 469
+    .line 475
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->breadCrumbShortTitle:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 470
+    .line 476
     iget v0, p0, Landroid/preference/PreferenceActivity$Header;->iconRes:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 471
+    .line 477
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->fragment:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 472
+    .line 478
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->fragmentArguments:Landroid/os/Bundle;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeBundle(Landroid/os/Bundle;)V
 
-    .line 473
+    .line 479
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->intent:Landroid/content/Intent;
 
     if-eqz v0, :cond_0
 
-    .line 474
+    .line 480
     const/4 v0, 0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 475
+    .line 481
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->intent:Landroid/content/Intent;
 
     invoke-virtual {v0, p1, p2}, Landroid/content/Intent;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 479
+    .line 485
     :goto_0
     iget-object v0, p0, Landroid/preference/PreferenceActivity$Header;->extras:Landroid/os/Bundle;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeBundle(Landroid/os/Bundle;)V
 
-    .line 480
+    .line 486
     return-void
 
-    .line 477
+    .line 483
     :cond_0
     const/4 v0, 0x0
 

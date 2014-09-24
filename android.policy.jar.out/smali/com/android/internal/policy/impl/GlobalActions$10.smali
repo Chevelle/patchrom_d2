@@ -33,7 +33,7 @@
     .parameter
 
     .prologue
-    .line 559
+    .line 603
     iput-object p1, p0, Lcom/android/internal/policy/impl/GlobalActions$10;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     iput-object p2, p0, Lcom/android/internal/policy/impl/GlobalActions$10;->val$profiles:[Landroid/app/Profile;
@@ -53,14 +53,14 @@
     .parameter "which"
 
     .prologue
-    .line 561
+    .line 605
     if-gez p2, :cond_0
 
-    .line 566
+    .line 610
     :goto_0
     return-void
 
-    .line 563
+    .line 607
     :cond_0
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$10;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
@@ -69,15 +69,15 @@
     aget-object v1, v1, p2
 
     #setter for: Lcom/android/internal/policy/impl/GlobalActions;->mChosenProfile:Landroid/app/Profile;
-    invoke-static {v0, v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1302(Lcom/android/internal/policy/impl/GlobalActions;Landroid/app/Profile;)Landroid/app/Profile;
+    invoke-static {v0, v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1402(Lcom/android/internal/policy/impl/GlobalActions;Landroid/app/Profile;)Landroid/app/Profile;
 
-    .line 564
+    .line 608
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$10;->val$profileManager:Landroid/app/ProfileManager;
 
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions$10;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mChosenProfile:Landroid/app/Profile;
-    invoke-static {v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1300(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/app/Profile;
+    invoke-static {v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1400(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/app/Profile;
 
     move-result-object v1
 
@@ -87,7 +87,7 @@
 
     invoke-virtual {v0, v1}, Landroid/app/ProfileManager;->setActiveProfile(Ljava/util/UUID;)V
 
-    .line 565
+    .line 609
     invoke-interface {p1}, Landroid/content/DialogInterface;->cancel()V
 
     goto :goto_0

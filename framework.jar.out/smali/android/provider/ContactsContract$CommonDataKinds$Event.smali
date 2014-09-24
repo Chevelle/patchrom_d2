@@ -35,7 +35,7 @@
     .locals 0
 
     .prologue
-    .line 6413
+    .line 6522
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -46,17 +46,17 @@
     .parameter "type"
 
     .prologue
-    const v0, 0x104031d
+    const v0, 0x104038f
 
-    .line 6433
+    .line 6542
     if-nez p0, :cond_0
 
-    .line 6441
+    .line 6550
     :goto_0
     :pswitch_0
     return v0
 
-    .line 6436
+    .line 6545
     :cond_0
     invoke-virtual {p0}, Ljava/lang/Integer;->intValue()I
 
@@ -64,24 +64,24 @@
 
     packed-switch v1, :pswitch_data_0
 
-    .line 6441
-    const v0, 0x104031a
+    .line 6550
+    const v0, 0x104038c
 
     goto :goto_0
 
-    .line 6438
+    .line 6547
     :pswitch_1
-    const v0, 0x104031c
+    const v0, 0x104038e
 
     goto :goto_0
 
-    .line 6439
+    .line 6548
     :pswitch_2
-    const v0, 0x104031b
+    const v0, 0x104038d
 
     goto :goto_0
 
-    .line 6436
+    .line 6545
     nop
 
     :pswitch_data_0

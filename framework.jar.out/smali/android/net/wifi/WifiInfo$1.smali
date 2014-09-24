@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 340
+    .line 344
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -47,12 +47,12 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 342
+    .line 346
     new-instance v0, Landroid/net/wifi/WifiInfo;
 
     invoke-direct {v0}, Landroid/net/wifi/WifiInfo;-><init>()V
 
-    .line 343
+    .line 347
     .local v0, info:Landroid/net/wifi/WifiInfo;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
@@ -60,28 +60,28 @@
 
     invoke-virtual {v0, v1}, Landroid/net/wifi/WifiInfo;->setNetworkId(I)V
 
-    .line 344
+    .line 348
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     invoke-virtual {v0, v1}, Landroid/net/wifi/WifiInfo;->setRssi(I)V
 
-    .line 345
+    .line 349
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     invoke-virtual {v0, v1}, Landroid/net/wifi/WifiInfo;->setLinkSpeed(I)V
 
-    .line 346
+    .line 350
     invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B
 
     move-result v1
 
     if-ne v1, v2, :cond_0
 
-    .line 348
+    .line 352
     :try_start_0
     invoke-virtual {p1}, Landroid/os/Parcel;->createByteArray()[B
 
@@ -95,7 +95,7 @@
     :try_end_0
     .catch Ljava/net/UnknownHostException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 351
+    .line 355
     :cond_0
     :goto_0
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -104,7 +104,7 @@
 
     if-ne v1, v2, :cond_1
 
-    .line 352
+    .line 356
     sget-object v1, Landroid/net/wifi/WifiSsid;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v1, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -116,7 +116,7 @@
     #setter for: Landroid/net/wifi/WifiInfo;->mWifiSsid:Landroid/net/wifi/WifiSsid;
     invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access$002(Landroid/net/wifi/WifiInfo;Landroid/net/wifi/WifiSsid;)Landroid/net/wifi/WifiSsid;
 
-    .line 354
+    .line 358
     :cond_1
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
@@ -125,7 +125,7 @@
     #setter for: Landroid/net/wifi/WifiInfo;->mBSSID:Ljava/lang/String;
     invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access$102(Landroid/net/wifi/WifiInfo;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 355
+    .line 359
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -133,7 +133,7 @@
     #setter for: Landroid/net/wifi/WifiInfo;->mMacAddress:Ljava/lang/String;
     invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access$202(Landroid/net/wifi/WifiInfo;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 356
+    .line 360
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
@@ -150,9 +150,9 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access_setVendorInfo(Landroid/net/wifi/WifiInfo;Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v0, v1}, Landroid/net/wifi/WifiInfo;->setVendorInfo(Ljava/lang/String;)V
 
-    .line 357
+    .line 361
     sget-object v1, Landroid/net/wifi/SupplicantState;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v1, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -164,16 +164,16 @@
     #setter for: Landroid/net/wifi/WifiInfo;->mSupplicantState:Landroid/net/wifi/SupplicantState;
     invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access$402(Landroid/net/wifi/WifiInfo;Landroid/net/wifi/SupplicantState;)Landroid/net/wifi/SupplicantState;
 
-    .line 358
+    .line 362
     return-object v0
 
-    .line 356
+    .line 360
     :cond_2
     const/4 v1, 0x0
 
     goto :goto_1
 
-    .line 349
+    .line 353
     :catch_0
     move-exception v1
 
@@ -185,7 +185,7 @@
     .parameter "x0"
 
     .prologue
-    .line 340
+    .line 344
     invoke-virtual {p0, p1}, Landroid/net/wifi/WifiInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/WifiInfo;
 
     move-result-object v0
@@ -198,7 +198,7 @@
     .parameter "size"
 
     .prologue
-    .line 362
+    .line 366
     new-array v0, p1, [Landroid/net/wifi/WifiInfo;
 
     return-object v0
@@ -209,7 +209,7 @@
     .parameter "x0"
 
     .prologue
-    .line 340
+    .line 344
     invoke-virtual {p0, p1}, Landroid/net/wifi/WifiInfo$1;->newArray(I)[Landroid/net/wifi/WifiInfo;
 
     move-result-object v0

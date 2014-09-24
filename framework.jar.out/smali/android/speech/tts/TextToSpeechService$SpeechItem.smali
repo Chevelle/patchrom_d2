@@ -2,9 +2,6 @@
 .super Ljava/lang/Object;
 .source "TextToSpeechService.java"
 
-# interfaces
-.implements Landroid/speech/tts/TextToSpeechService$UtteranceProgressDispatcher;
-
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingClass;
@@ -45,136 +42,40 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 404
+    .line 418
     iput-object p1, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->this$0:Landroid/speech/tts/TextToSpeechService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 401
+    .line 415
     iput-boolean v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mStarted:Z
 
-    .line 402
+    .line 416
     iput-boolean v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mStopped:Z
 
-    .line 405
+    .line 419
     iput-object p2, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mCallerIdentity:Ljava/lang/Object;
 
-    .line 406
+    .line 420
     iput-object p5, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mParams:Landroid/os/Bundle;
 
-    .line 407
+    .line 421
     iput p3, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mCallerUid:I
 
-    .line 408
+    .line 422
     iput p4, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mCallerPid:I
 
-    .line 409
+    .line 423
     return-void
 .end method
 
 
 # virtual methods
-.method public dispatchOnDone()V
-    .locals 3
-
-    .prologue
-    .line 457
-    invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getUtteranceId()Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 458
-    .local v0, utteranceId:Ljava/lang/String;
-    if-eqz v0, :cond_0
-
-    .line 459
-    iget-object v1, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->this$0:Landroid/speech/tts/TextToSpeechService;
-
-    #getter for: Landroid/speech/tts/TextToSpeechService;->mCallbacks:Landroid/speech/tts/TextToSpeechService$CallbackMap;
-    invoke-static {v1}, Landroid/speech/tts/TextToSpeechService;->access$300(Landroid/speech/tts/TextToSpeechService;)Landroid/speech/tts/TextToSpeechService$CallbackMap;
-
-    move-result-object v1
-
-    invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getCallerIdentity()Ljava/lang/Object;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2, v0}, Landroid/speech/tts/TextToSpeechService$CallbackMap;->dispatchOnDone(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 461
-    :cond_0
-    return-void
-.end method
-
-.method public dispatchOnError()V
-    .locals 3
-
-    .prologue
-    .line 473
-    invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getUtteranceId()Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 474
-    .local v0, utteranceId:Ljava/lang/String;
-    if-eqz v0, :cond_0
-
-    .line 475
-    iget-object v1, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->this$0:Landroid/speech/tts/TextToSpeechService;
-
-    #getter for: Landroid/speech/tts/TextToSpeechService;->mCallbacks:Landroid/speech/tts/TextToSpeechService$CallbackMap;
-    invoke-static {v1}, Landroid/speech/tts/TextToSpeechService;->access$300(Landroid/speech/tts/TextToSpeechService;)Landroid/speech/tts/TextToSpeechService$CallbackMap;
-
-    move-result-object v1
-
-    invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getCallerIdentity()Ljava/lang/Object;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2, v0}, Landroid/speech/tts/TextToSpeechService$CallbackMap;->dispatchOnError(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 477
-    :cond_0
-    return-void
-.end method
-
-.method public dispatchOnStart()V
-    .locals 3
-
-    .prologue
-    .line 465
-    invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getUtteranceId()Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 466
-    .local v0, utteranceId:Ljava/lang/String;
-    if-eqz v0, :cond_0
-
-    .line 467
-    iget-object v1, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->this$0:Landroid/speech/tts/TextToSpeechService;
-
-    #getter for: Landroid/speech/tts/TextToSpeechService;->mCallbacks:Landroid/speech/tts/TextToSpeechService$CallbackMap;
-    invoke-static {v1}, Landroid/speech/tts/TextToSpeechService;->access$300(Landroid/speech/tts/TextToSpeechService;)Landroid/speech/tts/TextToSpeechService$CallbackMap;
-
-    move-result-object v1
-
-    invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getCallerIdentity()Ljava/lang/Object;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2, v0}, Landroid/speech/tts/TextToSpeechService$CallbackMap;->dispatchOnStart(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 469
-    :cond_0
-    return-void
-.end method
-
 .method public getCallerIdentity()Ljava/lang/Object;
     .locals 1
 
     .prologue
-    .line 412
+    .line 426
     iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mCallerIdentity:Ljava/lang/Object;
 
     return-object v0
@@ -184,7 +85,7 @@
     .locals 1
 
     .prologue
-    .line 484
+    .line 435
     iget v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mCallerPid:I
 
     return v0
@@ -194,150 +95,8 @@
     .locals 1
 
     .prologue
-    .line 480
+    .line 431
     iget v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mCallerUid:I
-
-    return v0
-.end method
-
-.method protected getFloatParam(Ljava/lang/String;F)F
-    .locals 1
-    .parameter "key"
-    .parameter "defaultValue"
-
-    .prologue
-    .line 520
-    iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mParams:Landroid/os/Bundle;
-
-    if-nez v0, :cond_0
-
-    .end local p2
-    :goto_0
-    return p2
-
-    .restart local p2
-    :cond_0
-    iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mParams:Landroid/os/Bundle;
-
-    invoke-virtual {v0, p1, p2}, Landroid/os/Bundle;->getFloat(Ljava/lang/String;F)F
-
-    move-result p2
-
-    goto :goto_0
-.end method
-
-.method protected getIntParam(Ljava/lang/String;I)I
-    .locals 1
-    .parameter "key"
-    .parameter "defaultValue"
-
-    .prologue
-    .line 516
-    iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mParams:Landroid/os/Bundle;
-
-    if-nez v0, :cond_0
-
-    .end local p2
-    :goto_0
-    return p2
-
-    .restart local p2
-    :cond_0
-    iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mParams:Landroid/os/Bundle;
-
-    invoke-virtual {v0, p1, p2}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
-
-    move-result p2
-
-    goto :goto_0
-.end method
-
-.method public getPan()F
-    .locals 2
-
-    .prologue
-    .line 504
-    const-string/jumbo v0, "pan"
-
-    const/4 v1, 0x0
-
-    invoke-virtual {p0, v0, v1}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getFloatParam(Ljava/lang/String;F)F
-
-    move-result v0
-
-    return v0
-.end method
-
-.method public getStreamType()I
-    .locals 2
-
-    .prologue
-    .line 496
-    const-string/jumbo v0, "streamType"
-
-    const/4 v1, 0x3
-
-    invoke-virtual {p0, v0, v1}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getIntParam(Ljava/lang/String;I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method protected getStringParam(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .parameter "key"
-    .parameter "defaultValue"
-
-    .prologue
-    .line 512
-    iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mParams:Landroid/os/Bundle;
-
-    if-nez v0, :cond_0
-
-    .end local p2
-    :goto_0
-    return-object p2
-
-    .restart local p2
-    :cond_0
-    iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mParams:Landroid/os/Bundle;
-
-    invoke-virtual {v0, p1, p2}, Landroid/os/Bundle;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p2
-
-    goto :goto_0
-.end method
-
-.method public getUtteranceId()Ljava/lang/String;
-    .locals 2
-
-    .prologue
-    .line 508
-    const-string/jumbo v0, "utteranceId"
-
-    const/4 v1, 0x0
-
-    invoke-virtual {p0, v0, v1}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getStringParam(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public getVolume()F
-    .locals 2
-
-    .prologue
-    .line 500
-    const-string/jumbo v0, "volume"
-
-    const/high16 v1, 0x3f80
-
-    invoke-virtual {p0, v0, v1}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->getFloatParam(Ljava/lang/String;F)F
-
-    move-result v0
 
     return v0
 .end method
@@ -346,7 +105,7 @@
     .locals 1
 
     .prologue
-    .line 488
+    .line 483
     monitor-enter p0
 
     :try_start_0
@@ -373,16 +132,16 @@
     .locals 2
 
     .prologue
-    .line 430
+    .line 453
     monitor-enter p0
 
-    .line 431
+    .line 454
     :try_start_0
     iget-boolean v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mStarted:Z
 
     if-eqz v0, :cond_0
 
-    .line 432
+    .line 455
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v1, "play() called twice"
@@ -391,7 +150,7 @@
 
     throw v0
 
-    .line 435
+    .line 458
     :catchall_0
     move-exception v0
 
@@ -401,19 +160,19 @@
 
     throw v0
 
-    .line 434
+    .line 457
     :cond_0
     const/4 v0, 0x1
 
     :try_start_1
     iput-boolean v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mStarted:Z
 
-    .line 435
+    .line 458
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 436
+    .line 459
     invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->playImpl()I
 
     move-result v0
@@ -428,16 +187,16 @@
     .locals 2
 
     .prologue
-    .line 446
+    .line 471
     monitor-enter p0
 
-    .line 447
+    .line 472
     :try_start_0
     iget-boolean v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mStopped:Z
 
     if-eqz v0, :cond_0
 
-    .line 448
+    .line 473
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v1, "stop() called twice"
@@ -446,7 +205,7 @@
 
     throw v0
 
-    .line 451
+    .line 476
     :catchall_0
     move-exception v0
 
@@ -456,22 +215,22 @@
 
     throw v0
 
-    .line 450
+    .line 475
     :cond_0
     const/4 v0, 0x1
 
     :try_start_1
     iput-boolean v0, p0, Landroid/speech/tts/TextToSpeechService$SpeechItem;->mStopped:Z
 
-    .line 451
+    .line 476
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 452
+    .line 477
     invoke-virtual {p0}, Landroid/speech/tts/TextToSpeechService$SpeechItem;->stopImpl()V
 
-    .line 453
+    .line 478
     return-void
 .end method
 

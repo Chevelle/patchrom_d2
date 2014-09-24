@@ -4,13 +4,13 @@
 
 
 # instance fields
-.field private line:Ljava/lang/String;
+.field private mLine:Ljava/lang/String;
 
-.field private next:I
+.field private mNext:I
 
-.field private tokEnd:I
+.field private mTokEnd:I
 
-.field private tokStart:I
+.field private mTokStart:I
 
 
 # direct methods
@@ -25,10 +25,10 @@
     .line 27
     const/4 v0, 0x0
 
-    iput v0, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v0, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     .line 35
-    iput-object p1, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iput-object p1, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
     .line 36
     return-void
@@ -43,7 +43,7 @@
     const/16 v7, 0x22
 
     .line 98
-    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
     invoke-virtual {v4}, Ljava/lang/String;->length()I
 
@@ -51,7 +51,7 @@
 
     .line 100
     .local v3, len:I
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-nez v4, :cond_0
 
@@ -60,7 +60,7 @@
 
     .line 104
     :cond_0
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-lt v4, v3, :cond_1
 
@@ -74,13 +74,13 @@
     .line 111
     :cond_1
     :try_start_0
-    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v6, v5, 0x1
 
-    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->charAt(I)C
 
@@ -100,7 +100,7 @@
     if-ne v0, v7, :cond_5
 
     .line 117
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-lt v4, v3, :cond_2
 
@@ -133,41 +133,41 @@
     .restart local v2       #hasQuote:Z
     :cond_2
     :try_start_1
-    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v6, v5, 0x1
 
-    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->charAt(I)C
 
     move-result v0
 
     .line 121
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v4, v4, -0x1
 
-    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->tokStart:I
+    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokStart:I
 
     .line 122
     :goto_0
     if-eq v0, v7, :cond_3
 
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-ge v4, v3, :cond_3
 
     .line 123
-    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v6, v5, 0x1
 
-    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->charAt(I)C
 
@@ -188,24 +188,24 @@
 
     .line 128
     :cond_4
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v4, v4, -0x1
 
-    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->tokEnd:I
+    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokEnd:I
 
     .line 129
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-ge v4, v3, :cond_7
 
-    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v6, v5, 0x1
 
-    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->charAt(I)C
 
@@ -222,16 +222,16 @@
 
     .line 133
     :cond_5
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v4, v4, -0x1
 
-    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->tokStart:I
+    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokStart:I
 
     .line 134
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->tokStart:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokStart:I
 
-    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->tokEnd:I
+    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokEnd:I
 
     .line 135
     :goto_1
@@ -245,13 +245,13 @@
     if-nez v4, :cond_6
 
     .line 137
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
-    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->tokEnd:I
+    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokEnd:I
 
     .line 139
     :cond_6
-    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-ne v4, v3, :cond_8
 
@@ -261,13 +261,13 @@
 
     .line 142
     :cond_8
-    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v5, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v6, v5, 0x1
 
-    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v6, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->charAt(I)C
     :try_end_1
@@ -285,10 +285,10 @@
     .line 173
     const/4 v2, 0x0
 
-    iput v2, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     .line 174
-    iget-object v2, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
     invoke-virtual {v2}, Ljava/lang/String;->length()I
 
@@ -297,18 +297,18 @@
     .line 175
     .local v1, s:I
     :cond_0
-    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-ge v2, v1, :cond_1
 
     .line 176
-    iget-object v2, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v4, v3, 0x1
 
-    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v4, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     invoke-virtual {v2, v3}, Ljava/lang/String;->charAt(I)C
 
@@ -341,7 +341,7 @@
 
     .prologue
     .line 156
-    iget-object v1, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v1, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
@@ -350,7 +350,7 @@
     .line 157
     .local v0, len:I
     :goto_0
-    iget v1, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v1, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     if-ge v1, v0, :cond_0
 
@@ -361,13 +361,13 @@
     if-eqz v1, :cond_0
 
     .line 158
-    iget-object v1, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v1, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     add-int/lit8 v3, v2, 0x1
 
-    iput v3, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iput v3, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->charAt(I)C
 
@@ -402,9 +402,9 @@
 
     .prologue
     .line 92
-    iget v0, p0, Lcom/android/internal/telephony/ATResponseParser;->next:I
+    iget v0, p0, Lcom/android/internal/telephony/ATResponseParser;->mNext:I
 
-    iget-object v1, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v1, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
@@ -433,9 +433,9 @@
     invoke-direct {p0}, Lcom/android/internal/telephony/ATResponseParser;->nextTok()V
 
     .line 46
-    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->tokEnd:I
+    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokEnd:I
 
-    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->tokStart:I
+    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokStart:I
 
     sub-int/2addr v2, v3
 
@@ -450,9 +450,9 @@
 
     .line 49
     :cond_0
-    iget-object v2, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->tokStart:I
+    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokStart:I
 
     invoke-virtual {v2, v3}, Ljava/lang/String;->charAt(I)C
 
@@ -495,16 +495,16 @@
     invoke-direct {p0}, Lcom/android/internal/telephony/ATResponseParser;->nextTok()V
 
     .line 66
-    iget v1, p0, Lcom/android/internal/telephony/ATResponseParser;->tokStart:I
+    iget v1, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokStart:I
 
     .local v1, i:I
     :goto_0
-    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->tokEnd:I
+    iget v3, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokEnd:I
 
     if-ge v1, v3, :cond_2
 
     .line 67
-    iget-object v3, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v3, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
     invoke-virtual {v3, v1}, Ljava/lang/String;->charAt(I)C
 
@@ -556,11 +556,11 @@
     invoke-direct {p0}, Lcom/android/internal/telephony/ATResponseParser;->nextTok()V
 
     .line 86
-    iget-object v0, p0, Lcom/android/internal/telephony/ATResponseParser;->line:Ljava/lang/String;
+    iget-object v0, p0, Lcom/android/internal/telephony/ATResponseParser;->mLine:Ljava/lang/String;
 
-    iget v1, p0, Lcom/android/internal/telephony/ATResponseParser;->tokStart:I
+    iget v1, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokStart:I
 
-    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->tokEnd:I
+    iget v2, p0, Lcom/android/internal/telephony/ATResponseParser;->mTokEnd:I
 
     invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 

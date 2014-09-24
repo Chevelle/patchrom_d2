@@ -42,7 +42,7 @@
     .locals 1
 
     .prologue
-    .line 279
+    .line 283
     new-instance v0, Landroid/telephony/CellSignalStrengthLte$1;
 
     invoke-direct {v0}, Landroid/telephony/CellSignalStrengthLte$1;-><init>()V
@@ -91,52 +91,56 @@
     .parameter "in"
 
     .prologue
-    .line 261
-    invoke-direct {p0}, Landroid/telephony/CellSignalStrength;-><init>()V
-
-    .line 262
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mSignalStrength:I
-
     .line 263
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRsrp:I
+    invoke-direct {p0}, Landroid/telephony/CellSignalStrength;-><init>()V
 
     .line 264
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRsrq:I
-
-    .line 265
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRssnr:I
-
-    .line 266
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mCqi:I
+    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mSignalStrength:I
 
     .line 267
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mTimingAdvance:I
+    mul-int/lit8 v0, v0, -0x1
+
+    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRsrp:I
+
+    .line 268
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    mul-int/lit8 v0, v0, -0x1
+
+    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRsrq:I
 
     .line 269
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRssnr:I
+
+    .line 270
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mCqi:I
+
+    .line 271
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/telephony/CellSignalStrengthLte;->mTimingAdvance:I
+
+    .line 273
     return-void
 .end method
 
@@ -172,12 +176,12 @@
     .parameter "s"
 
     .prologue
-    .line 296
+    .line 300
     const-string v0, "CellSignalStrengthLte"
 
-    invoke-static {v0, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 297
+    .line 301
     return-void
 .end method
 
@@ -250,7 +254,7 @@
     .locals 1
 
     .prologue
-    .line 274
+    .line 278
     const/4 v0, 0x0
 
     return v0
@@ -641,7 +645,7 @@
 
     .prologue
     .line 97
-    invoke-virtual {p1}, Landroid/telephony/SignalStrength;->getLteSignalStrenght()I
+    invoke-virtual {p1}, Landroid/telephony/SignalStrength;->getLteSignalStrength()I
 
     move-result v0
 
@@ -809,31 +813,35 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 250
+    .line 252
     iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRsrp:I
 
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 251
-    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRsrq:I
-
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 252
-    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRssnr:I
+    mul-int/lit8 v0, v0, -0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 253
-    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mCqi:I
+    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRsrq:I
+
+    mul-int/lit8 v0, v0, -0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 254
-    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mTimingAdvance:I
+    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mRssnr:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 255
+    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mCqi:I
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 256
+    iget v0, p0, Landroid/telephony/CellSignalStrengthLte;->mTimingAdvance:I
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 257
     return-void
 .end method

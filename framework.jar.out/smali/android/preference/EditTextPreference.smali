@@ -121,7 +121,7 @@
 
     .prologue
     .line 127
-    const v1, 0x1020340
+    const v1, 0x10202f7
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -188,6 +188,8 @@
 
     .line 119
     :cond_1
+    invoke-static {p0, p1}, Landroid/preference/Injector$EditTextPreferenceHook;->after_onBindDialogView(Landroid/preference/EditTextPreference;Landroid/view/View;)V
+
     return-void
 .end method
 

@@ -2,9 +2,6 @@
 .super Ljava/lang/Object;
 .source "View.java"
 
-# interfaces
-.implements Landroid/util/Poolable;
-
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingClass;
@@ -16,24 +13,14 @@
     name = "InvalidateInfo"
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Ljava/lang/Object;",
-        "Landroid/util/Poolable",
-        "<",
-        "Landroid/view/View$AttachInfo$InvalidateInfo;",
-        ">;"
-    }
-.end annotation
-
 
 # static fields
 .field private static final POOL_LIMIT:I = 0xa
 
-.field private static final sPool:Landroid/util/Pool;
+.field private static final sPool:Landroid/util/Pools$SynchronizedPool;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/util/Pool",
+            "Landroid/util/Pools$SynchronizedPool",
             "<",
             "Landroid/view/View$AttachInfo$InvalidateInfo;",
             ">;"
@@ -47,10 +34,6 @@
 
 .field left:I
 
-.field private mIsPooled:Z
-
-.field private mNext:Landroid/view/View$AttachInfo$InvalidateInfo;
-
 .field right:I
 
 .field target:Landroid/view/View;
@@ -63,22 +46,14 @@
     .locals 2
 
     .prologue
-    .line 17646
-    new-instance v0, Landroid/view/View$AttachInfo$InvalidateInfo$1;
-
-    invoke-direct {v0}, Landroid/view/View$AttachInfo$InvalidateInfo$1;-><init>()V
+    .line 18731
+    new-instance v0, Landroid/util/Pools$SynchronizedPool;
 
     const/16 v1, 0xa
 
-    invoke-static {v0, v1}, Landroid/util/Pools;->finitePool(Landroid/util/PoolableManager;I)Landroid/util/Pool;
+    invoke-direct {v0, v1}, Landroid/util/Pools$SynchronizedPool;-><init>(I)V
 
-    move-result-object v0
-
-    invoke-static {v0}, Landroid/util/Pools;->synchronizedPool(Landroid/util/Pool;)Landroid/util/Pool;
-
-    move-result-object v0
-
-    sput-object v0, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pool;
+    sput-object v0, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pools$SynchronizedPool;
 
     return-void
 .end method
@@ -87,109 +62,59 @@
     .locals 0
 
     .prologue
-    .line 17644
+    .line 18728
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method static acquire()Landroid/view/View$AttachInfo$InvalidateInfo;
-    .locals 1
+.method public static obtain()Landroid/view/View$AttachInfo$InvalidateInfo;
+    .locals 2
 
     .prologue
-    .line 17680
-    sget-object v0, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pool;
+    .line 18742
+    sget-object v1, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    invoke-interface {v0}, Landroid/util/Pool;->acquire()Landroid/util/Poolable;
+    invoke-virtual {v1}, Landroid/util/Pools$SynchronizedPool;->acquire()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/View$AttachInfo$InvalidateInfo;
 
+    .line 18743
+    .local v0, instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    if-eqz v0, :cond_0
+
+    .end local v0           #instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    :goto_0
     return-object v0
+
+    .restart local v0       #instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    :cond_0
+    new-instance v0, Landroid/view/View$AttachInfo$InvalidateInfo;
+
+    .end local v0           #instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    invoke-direct {v0}, Landroid/view/View$AttachInfo$InvalidateInfo;-><init>()V
+
+    goto :goto_0
 .end method
 
 
 # virtual methods
-.method public getNextPoolable()Landroid/view/View$AttachInfo$InvalidateInfo;
+.method public recycle()V
     .locals 1
 
     .prologue
-    .line 17676
-    iget-object v0, p0, Landroid/view/View$AttachInfo$InvalidateInfo;->mNext:Landroid/view/View$AttachInfo$InvalidateInfo;
+    .line 18747
+    const/4 v0, 0x0
 
-    return-object v0
-.end method
+    iput-object v0, p0, Landroid/view/View$AttachInfo$InvalidateInfo;->target:Landroid/view/View;
 
-.method public bridge synthetic getNextPoolable()Ljava/lang/Object;
-    .locals 1
+    .line 18748
+    sget-object v0, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    .prologue
-    .line 17644
-    invoke-virtual {p0}, Landroid/view/View$AttachInfo$InvalidateInfo;->getNextPoolable()Landroid/view/View$AttachInfo$InvalidateInfo;
+    invoke-virtual {v0, p0}, Landroid/util/Pools$SynchronizedPool;->release(Ljava/lang/Object;)Z
 
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public isPooled()Z
-    .locals 1
-
-    .prologue
-    .line 17688
-    iget-boolean v0, p0, Landroid/view/View$AttachInfo$InvalidateInfo;->mIsPooled:Z
-
-    return v0
-.end method
-
-.method release()V
-    .locals 1
-
-    .prologue
-    .line 17684
-    sget-object v0, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pool;
-
-    invoke-interface {v0, p0}, Landroid/util/Pool;->release(Landroid/util/Poolable;)V
-
-    .line 17685
-    return-void
-.end method
-
-.method public setNextPoolable(Landroid/view/View$AttachInfo$InvalidateInfo;)V
-    .locals 0
-    .parameter "element"
-
-    .prologue
-    .line 17672
-    iput-object p1, p0, Landroid/view/View$AttachInfo$InvalidateInfo;->mNext:Landroid/view/View$AttachInfo$InvalidateInfo;
-
-    .line 17673
-    return-void
-.end method
-
-.method public bridge synthetic setNextPoolable(Ljava/lang/Object;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 17644
-    check-cast p1, Landroid/view/View$AttachInfo$InvalidateInfo;
-
-    .end local p1
-    invoke-virtual {p0, p1}, Landroid/view/View$AttachInfo$InvalidateInfo;->setNextPoolable(Landroid/view/View$AttachInfo$InvalidateInfo;)V
-
-    return-void
-.end method
-
-.method public setPooled(Z)V
-    .locals 0
-    .parameter "isPooled"
-
-    .prologue
-    .line 17692
-    iput-boolean p1, p0, Landroid/view/View$AttachInfo$InvalidateInfo;->mIsPooled:Z
-
-    .line 17693
+    .line 18749
     return-void
 .end method

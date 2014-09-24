@@ -90,7 +90,7 @@
     iput v4, p0, Landroid/text/style/TextAppearanceSpan;->mStyle:I
 
     .line 71
-    const/16 v4, 0x8
+    const/16 v4, 0xc
 
     invoke-virtual {v0, v4}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 

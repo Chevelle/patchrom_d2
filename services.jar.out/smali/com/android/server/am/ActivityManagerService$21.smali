@@ -1,149 +1,105 @@
-.class Lcom/android/server/am/ActivityManagerService$21;
-.super Landroid/content/IIntentReceiver$Stub;
+.class final Lcom/android/server/am/ActivityManagerService$21;
+.super Ljava/lang/Object;
 .source "ActivityManagerService.java"
+
+# interfaces
+.implements Ljava/util/Comparator;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/am/ActivityManagerService;->stopUserLocked(ILandroid/app/IStopUserCallback;)I
+    value = Lcom/android/server/am/ActivityManagerService;->dumpMemItems(Ljava/io/PrintWriter;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;ZZ)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
-
-# instance fields
-.field final synthetic this$0:Lcom/android/server/am/ActivityManagerService;
-
-.field final synthetic val$shutdownIntent:Landroid/content/Intent;
-
-.field final synthetic val$shutdownReceiver:Landroid/content/IIntentReceiver;
-
-.field final synthetic val$userId:I
-
-.field final synthetic val$uss:Lcom/android/server/am/UserStartedState;
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Ljava/util/Comparator",
+        "<",
+        "Lcom/android/server/am/ActivityManagerService$MemItem;",
+        ">;"
+    }
+.end annotation
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Lcom/android/server/am/UserStartedState;Landroid/content/Intent;Landroid/content/IIntentReceiver;I)V
+.method constructor <init>()V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
 
     .prologue
-    .line 14632
-    iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$21;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    iput-object p2, p0, Lcom/android/server/am/ActivityManagerService$21;->val$uss:Lcom/android/server/am/UserStartedState;
-
-    iput-object p3, p0, Lcom/android/server/am/ActivityManagerService$21;->val$shutdownIntent:Landroid/content/Intent;
-
-    iput-object p4, p0, Lcom/android/server/am/ActivityManagerService$21;->val$shutdownReceiver:Landroid/content/IIntentReceiver;
-
-    iput p5, p0, Lcom/android/server/am/ActivityManagerService$21;->val$userId:I
-
-    invoke-direct {p0}, Landroid/content/IIntentReceiver$Stub;-><init>()V
+    .line 11950
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public performReceive(Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZI)V
-    .locals 15
-    .parameter "intent"
-    .parameter "resultCode"
-    .parameter "data"
-    .parameter "extras"
-    .parameter "ordered"
-    .parameter "sticky"
-    .parameter "sendingUser"
+.method public compare(Lcom/android/server/am/ActivityManagerService$MemItem;Lcom/android/server/am/ActivityManagerService$MemItem;)I
+    .locals 4
+    .parameter "lhs"
+    .parameter "rhs"
 
     .prologue
-    .line 14637
-    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$21;->this$0:Lcom/android/server/am/ActivityManagerService;
+    .line 11953
+    iget-wide v0, p1, Lcom/android/server/am/ActivityManagerService$MemItem;->pss:J
 
-    monitor-enter v1
+    iget-wide v2, p2, Lcom/android/server/am/ActivityManagerService$MemItem;->pss:J
 
-    .line 14638
-    :try_start_0
-    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$21;->val$uss:Lcom/android/server/am/UserStartedState;
+    cmp-long v0, v0, v2
 
-    iget v0, v0, Lcom/android/server/am/UserStartedState;->mState:I
+    if-gez v0, :cond_0
 
-    const/4 v2, 0x2
+    .line 11954
+    const/4 v0, 0x1
 
-    if-eq v0, v2, :cond_0
-
-    .line 14640
-    monitor-exit v1
-
-    .line 14647
+    .line 11958
     :goto_0
-    return-void
+    return v0
 
-    .line 14642
+    .line 11955
     :cond_0
-    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$21;->val$uss:Lcom/android/server/am/UserStartedState;
+    iget-wide v0, p1, Lcom/android/server/am/ActivityManagerService$MemItem;->pss:J
 
-    const/4 v2, 0x3
+    iget-wide v2, p2, Lcom/android/server/am/ActivityManagerService$MemItem;->pss:J
 
-    iput v2, v0, Lcom/android/server/am/UserStartedState;->mState:I
+    cmp-long v0, v0, v2
 
-    .line 14643
-    monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    if-lez v0, :cond_1
 
-    .line 14644
-    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$21;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    const/4 v1, 0x0
-
-    const/4 v2, 0x0
-
-    iget-object v3, p0, Lcom/android/server/am/ActivityManagerService$21;->val$shutdownIntent:Landroid/content/Intent;
-
-    const/4 v4, 0x0
-
-    iget-object v5, p0, Lcom/android/server/am/ActivityManagerService$21;->val$shutdownReceiver:Landroid/content/IIntentReceiver;
-
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
-
-    const/4 v8, 0x0
-
-    const/4 v9, 0x0
-
-    const/4 v10, 0x1
-
-    const/4 v11, 0x0
-
-    sget v12, Lcom/android/server/am/ActivityManagerService;->MY_PID:I
-
-    const/16 v13, 0x3e8
-
-    iget v14, p0, Lcom/android/server/am/ActivityManagerService$21;->val$userId:I
-
-    #calls: Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;ZZIII)I
-    invoke-static/range {v0 .. v14}, Lcom/android/server/am/ActivityManagerService;->access$300(Lcom/android/server/am/ActivityManagerService;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;Ljava/lang/String;ZZIII)I
+    .line 11956
+    const/4 v0, -0x1
 
     goto :goto_0
 
-    .line 14643
-    :catchall_0
-    move-exception v0
+    .line 11958
+    :cond_1
+    const/4 v0, 0x0
 
-    :try_start_1
-    monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    goto :goto_0
+.end method
 
-    throw v0
+.method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    .locals 1
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 11950
+    check-cast p1, Lcom/android/server/am/ActivityManagerService$MemItem;
+
+    .end local p1
+    check-cast p2, Lcom/android/server/am/ActivityManagerService$MemItem;
+
+    .end local p2
+    invoke-virtual {p0, p1, p2}, Lcom/android/server/am/ActivityManagerService$21;->compare(Lcom/android/server/am/ActivityManagerService$MemItem;Lcom/android/server/am/ActivityManagerService$MemItem;)I
+
+    move-result v0
+
+    return v0
 .end method

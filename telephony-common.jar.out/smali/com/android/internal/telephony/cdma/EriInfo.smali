@@ -16,17 +16,17 @@
 
 
 # instance fields
-.field public mAlertId:I
+.field public alertId:I
 
-.field public mCallPromptId:I
+.field public callPromptId:I
 
-.field public mEriText:Ljava/lang/String;
+.field public eriText:Ljava/lang/String;
 
-.field public mIconIndex:I
+.field public iconIndex:I
 
-.field public mIconMode:I
+.field public iconMode:I
 
-.field public mRoamingIndicator:I
+.field public roamingIndicator:I
 
 
 # direct methods
@@ -44,22 +44,22 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 38
-    iput p1, p0, Lcom/android/internal/telephony/cdma/EriInfo;->mRoamingIndicator:I
+    iput p1, p0, Lcom/android/internal/telephony/cdma/EriInfo;->roamingIndicator:I
 
     .line 39
-    iput p2, p0, Lcom/android/internal/telephony/cdma/EriInfo;->mIconIndex:I
+    iput p2, p0, Lcom/android/internal/telephony/cdma/EriInfo;->iconIndex:I
 
     .line 40
-    iput p3, p0, Lcom/android/internal/telephony/cdma/EriInfo;->mIconMode:I
+    iput p3, p0, Lcom/android/internal/telephony/cdma/EriInfo;->iconMode:I
 
     .line 41
-    iput-object p4, p0, Lcom/android/internal/telephony/cdma/EriInfo;->mEriText:Ljava/lang/String;
+    iput-object p4, p0, Lcom/android/internal/telephony/cdma/EriInfo;->eriText:Ljava/lang/String;
 
     .line 42
-    iput p5, p0, Lcom/android/internal/telephony/cdma/EriInfo;->mCallPromptId:I
+    iput p5, p0, Lcom/android/internal/telephony/cdma/EriInfo;->callPromptId:I
 
     .line 43
-    iput p6, p0, Lcom/android/internal/telephony/cdma/EriInfo;->mAlertId:I
+    iput p6, p0, Lcom/android/internal/telephony/cdma/EriInfo;->alertId:I
 
     .line 44
     return-void

@@ -1,6 +1,9 @@
 .class final Landroid/widget/GridLayout$1;
-.super Landroid/widget/GridLayout$Alignment;
+.super Ljava/lang/Object;
 .source "GridLayout.java"
+
+# interfaces
+.implements Landroid/util/Printer;
 
 
 # annotations
@@ -19,35 +22,19 @@
     .locals 0
 
     .prologue
-    .line 2530
-    invoke-direct {p0}, Landroid/widget/GridLayout$Alignment;-><init>()V
+    .line 228
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public getAlignmentValue(Landroid/view/View;II)I
-    .locals 1
-    .parameter "view"
-    .parameter "viewSize"
-    .parameter "mode"
+.method public println(Ljava/lang/String;)V
+    .locals 0
+    .parameter "x"
 
     .prologue
-    .line 2538
-    const/high16 v0, -0x8000
-
-    return v0
-.end method
-
-.method getGravityOffset(Landroid/view/View;I)I
-    .locals 1
-    .parameter "view"
-    .parameter "cellDelta"
-
-    .prologue
-    .line 2533
-    const/high16 v0, -0x8000
-
-    return v0
+    .line 231
+    return-void
 .end method

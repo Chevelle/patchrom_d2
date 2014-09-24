@@ -1,13 +1,13 @@
-.class Lcom/android/server/am/IntentBindRecord;
+.class final Lcom/android/server/am/IntentBindRecord;
 .super Ljava/lang/Object;
 .source "IntentBindRecord.java"
 
 
 # instance fields
-.field final apps:Ljava/util/HashMap;
+.field final apps:Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/HashMap",
+            "Landroid/util/ArrayMap",
             "<",
             "Lcom/android/server/am/ProcessRecord;",
             "Lcom/android/server/am/AppBindRecord;",
@@ -40,23 +40,23 @@
     .parameter "_intent"
 
     .prologue
-    .line 77
+    .line 75
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 36
-    new-instance v0, Ljava/util/HashMap;
+    .line 37
+    new-instance v0, Landroid/util/ArrayMap;
 
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
 
-    iput-object v0, p0, Lcom/android/server/am/IntentBindRecord;->apps:Ljava/util/HashMap;
+    iput-object v0, p0, Lcom/android/server/am/IntentBindRecord;->apps:Landroid/util/ArrayMap;
 
-    .line 78
+    .line 76
     iput-object p1, p0, Lcom/android/server/am/IntentBindRecord;->service:Lcom/android/server/am/ServiceRecord;
 
-    .line 79
+    .line 77
     iput-object p2, p0, Lcom/android/server/am/IntentBindRecord;->intent:Landroid/content/Intent$FilterComparison;
 
-    .line 80
+    .line 78
     return-void
 .end method
 
@@ -66,44 +66,33 @@
     .locals 6
 
     .prologue
-    .line 83
+    .line 81
     const/4 v2, 0x0
 
-    .line 84
+    .line 82
     .local v2, flags:I
-    iget-object v5, p0, Lcom/android/server/am/IntentBindRecord;->apps:Ljava/util/HashMap;
+    iget-object v5, p0, Lcom/android/server/am/IntentBindRecord;->apps:Landroid/util/ArrayMap;
 
-    invoke-virtual {v5}, Ljava/util/HashMap;->size()I
-
-    move-result v5
-
-    if-lez v5, :cond_1
-
-    .line 85
-    iget-object v5, p0, Lcom/android/server/am/IntentBindRecord;->apps:Ljava/util/HashMap;
-
-    invoke-virtual {v5}, Ljava/util/HashMap;->values()Ljava/util/Collection;
-
-    move-result-object v5
-
-    invoke-interface {v5}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
-
-    move-result-object v3
-
-    :cond_0
-    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
+    invoke-virtual {v5}, Landroid/util/ArrayMap;->size()I
 
     move-result v5
 
-    if-eqz v5, :cond_1
+    add-int/lit8 v3, v5, -0x1
 
-    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    .local v3, i:I
+    :goto_0
+    if-ltz v3, :cond_1
+
+    .line 83
+    iget-object v5, p0, Lcom/android/server/am/IntentBindRecord;->apps:Landroid/util/ArrayMap;
+
+    invoke-virtual {v5, v3}, Landroid/util/ArrayMap;->valueAt(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/server/am/AppBindRecord;
 
-    .line 86
+    .line 84
     .local v0, app:Lcom/android/server/am/AppBindRecord;
     iget-object v5, v0, Lcom/android/server/am/AppBindRecord;->connections:Ljava/util/HashSet;
 
@@ -113,7 +102,7 @@
 
     if-lez v5, :cond_0
 
-    .line 87
+    .line 85
     iget-object v5, v0, Lcom/android/server/am/AppBindRecord;->connections:Ljava/util/HashSet;
 
     invoke-virtual {v5}, Ljava/util/HashSet;->iterator()Ljava/util/Iterator;
@@ -121,7 +110,7 @@
     move-result-object v4
 
     .local v4, i$:Ljava/util/Iterator;
-    :goto_0
+    :goto_1
     invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v5
@@ -134,18 +123,24 @@
 
     check-cast v1, Lcom/android/server/am/ConnectionRecord;
 
-    .line 88
+    .line 86
     .local v1, conn:Lcom/android/server/am/ConnectionRecord;
     iget v5, v1, Lcom/android/server/am/ConnectionRecord;->flags:I
 
     or-int/2addr v2, v5
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 93
-    .end local v0           #app:Lcom/android/server/am/AppBindRecord;
+    .line 82
     .end local v1           #conn:Lcom/android/server/am/ConnectionRecord;
     .end local v4           #i$:Ljava/util/Iterator;
+    :cond_0
+    add-int/lit8 v3, v3, -0x1
+
+    goto :goto_0
+
+    .line 90
+    .end local v0           #app:Lcom/android/server/am/AppBindRecord;
     :cond_1
     return v2
 .end method
@@ -156,7 +151,7 @@
     .parameter "prefix"
 
     .prologue
-    .line 52
+    .line 53
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
     const-string v0, "service="
@@ -167,10 +162,10 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/Object;)V
 
-    .line 53
+    .line 54
     invoke-virtual {p0, p1, p2}, Lcom/android/server/am/IntentBindRecord;->dumpInService(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
-    .line 54
+    .line 55
     return-void
 .end method
 
@@ -184,14 +179,14 @@
 
     const/4 v4, 0x0
 
-    .line 57
+    .line 58
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
     const-string v2, "intent={"
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 58
+    .line 59
     iget-object v2, p0, Lcom/android/server/am/IntentBindRecord;->intent:Landroid/content/Intent$FilterComparison;
 
     invoke-virtual {v2}, Landroid/content/Intent$FilterComparison;->getIntent()Landroid/content/Intent;
@@ -206,10 +201,10 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 59
+    .line 60
     invoke-virtual {p1, v5}, Ljava/io/PrintWriter;->println(C)V
 
-    .line 60
+    .line 61
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
     const-string v2, "binder="
@@ -220,7 +215,7 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->println(Ljava/lang/Object;)V
 
-    .line 61
+    .line 62
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
     const-string v2, "requested="
@@ -231,7 +226,7 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Z)V
 
-    .line 62
+    .line 63
     const-string v2, " received="
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
@@ -240,7 +235,7 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Z)V
 
-    .line 63
+    .line 64
     const-string v2, " hasBound="
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
@@ -249,7 +244,7 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Z)V
 
-    .line 64
+    .line 65
     const-string v2, " doRebind="
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
@@ -258,43 +253,29 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->println(Z)V
 
-    .line 65
-    iget-object v2, p0, Lcom/android/server/am/IntentBindRecord;->apps:Ljava/util/HashMap;
+    .line 66
+    const/4 v1, 0x0
 
-    invoke-virtual {v2}, Ljava/util/HashMap;->size()I
+    .local v1, i:I
+    :goto_0
+    iget-object v2, p0, Lcom/android/server/am/IntentBindRecord;->apps:Landroid/util/ArrayMap;
+
+    invoke-virtual {v2}, Landroid/util/ArrayMap;->size()I
 
     move-result v2
 
-    if-lez v2, :cond_0
-
-    .line 66
-    iget-object v2, p0, Lcom/android/server/am/IntentBindRecord;->apps:Ljava/util/HashMap;
-
-    invoke-virtual {v2}, Ljava/util/HashMap;->values()Ljava/util/Collection;
-
-    move-result-object v2
-
-    invoke-interface {v2}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
+    if-ge v1, v2, :cond_0
 
     .line 67
-    .local v1, it:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/server/am/AppBindRecord;>;"
-    :goto_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+    iget-object v2, p0, Lcom/android/server/am/IntentBindRecord;->apps:Landroid/util/ArrayMap;
 
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 68
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-virtual {v2, v1}, Landroid/util/ArrayMap;->valueAt(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/server/am/AppBindRecord;
 
-    .line 69
+    .line 68
     .local v0, a:Lcom/android/server/am/AppBindRecord;
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -302,7 +283,7 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 70
+    .line 69
     invoke-static {v0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v2
@@ -313,7 +294,7 @@
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 71
+    .line 70
     const/16 v2, 0x20
 
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->print(C)V
@@ -324,7 +305,7 @@
 
     invoke-virtual {p1, v5}, Ljava/io/PrintWriter;->println(C)V
 
-    .line 72
+    .line 71
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -345,11 +326,13 @@
 
     invoke-virtual {v0, p1, v2}, Lcom/android/server/am/AppBindRecord;->dumpInIntentBind(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
+    .line 66
+    add-int/lit8 v1, v1, 0x1
+
     goto :goto_0
 
-    .line 75
+    .line 73
     .end local v0           #a:Lcom/android/server/am/AppBindRecord;
-    .end local v1           #it:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/server/am/AppBindRecord;>;"
     :cond_0
     return-void
 .end method
@@ -360,19 +343,19 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 97
+    .line 94
     iget-object v0, p0, Lcom/android/server/am/IntentBindRecord;->stringName:Ljava/lang/String;
 
     if-eqz v0, :cond_0
 
-    .line 98
+    .line 95
     iget-object v0, p0, Lcom/android/server/am/IntentBindRecord;->stringName:Ljava/lang/String;
 
-    .line 113
+    .line 110
     :goto_0
     return-object v0
 
-    .line 100
+    .line 97
     :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -380,13 +363,13 @@
 
     invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 101
+    .line 98
     .local v1, sb:Ljava/lang/StringBuilder;
     const-string v0, "IntentBindRecord{"
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 102
+    .line 99
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v0
@@ -397,12 +380,12 @@
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 103
+    .line 100
     const/16 v0, 0x20
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 104
+    .line 101
     invoke-virtual {p0}, Lcom/android/server/am/IntentBindRecord;->collectFlags()I
 
     move-result v0
@@ -411,12 +394,12 @@
 
     if-eqz v0, :cond_1
 
-    .line 105
+    .line 102
     const-string v0, "CR "
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 107
+    .line 104
     :cond_1
     iget-object v0, p0, Lcom/android/server/am/IntentBindRecord;->service:Lcom/android/server/am/ServiceRecord;
 
@@ -424,17 +407,17 @@
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 108
+    .line 105
     const/16 v0, 0x3a
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 109
+    .line 106
     iget-object v0, p0, Lcom/android/server/am/IntentBindRecord;->intent:Landroid/content/Intent$FilterComparison;
 
     if-eqz v0, :cond_2
 
-    .line 110
+    .line 107
     iget-object v0, p0, Lcom/android/server/am/IntentBindRecord;->intent:Landroid/content/Intent$FilterComparison;
 
     invoke-virtual {v0}, Landroid/content/Intent$FilterComparison;->getIntent()Landroid/content/Intent;
@@ -449,13 +432,13 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/content/Intent;->toShortString(Ljava/lang/StringBuilder;ZZZZ)V
 
-    .line 112
+    .line 109
     :cond_2
     const/16 v0, 0x7d
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 113
+    .line 110
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0

@@ -26,6 +26,12 @@
 # static fields
 .field private static final synthetic $VALUES:[Lcom/android/internal/telephony/CommandException$Error;
 
+.field public static final enum DIAL_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum DIAL_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum DIAL_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
 .field public static final enum FDN_CHECK_FAILURE:Lcom/android/internal/telephony/CommandException$Error;
 
 .field public static final enum GENERIC_FAILURE:Lcom/android/internal/telephony/CommandException$Error;
@@ -54,7 +60,21 @@
 
 .field public static final enum SMS_FAIL_RETRY:Lcom/android/internal/telephony/CommandException$Error;
 
+.field public static final enum SS_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum SS_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum SS_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
 .field public static final enum SUBSCRIPTION_NOT_AVAILABLE:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum SUBSCRIPTION_NOT_SUPPORTED:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum USSD_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum USSD_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+.field public static final enum USSD_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
 
 
 # direct methods
@@ -227,8 +247,118 @@
 
     sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->ILLEGAL_SIM_OR_ME:Lcom/android/internal/telephony/CommandException$Error;
 
+    .line 45
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "DIAL_MODIFIED_TO_USSD"
+
+    const/16 v2, 0xf
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->DIAL_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 46
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "DIAL_MODIFIED_TO_SS"
+
+    const/16 v2, 0x10
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->DIAL_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 47
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "DIAL_MODIFIED_TO_DIAL"
+
+    const/16 v2, 0x11
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->DIAL_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 48
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "USSD_MODIFIED_TO_DIAL"
+
+    const/16 v2, 0x12
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->USSD_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 49
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "USSD_MODIFIED_TO_SS"
+
+    const/16 v2, 0x13
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->USSD_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 50
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "USSD_MODIFIED_TO_USSD"
+
+    const/16 v2, 0x14
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->USSD_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 51
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "SS_MODIFIED_TO_DIAL"
+
+    const/16 v2, 0x15
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->SS_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 52
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "SS_MODIFIED_TO_USSD"
+
+    const/16 v2, 0x16
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->SS_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 53
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "SS_MODIFIED_TO_SS"
+
+    const/16 v2, 0x17
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->SS_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+    .line 54
+    new-instance v0, Lcom/android/internal/telephony/CommandException$Error;
+
+    const-string v1, "SUBSCRIPTION_NOT_SUPPORTED"
+
+    const/16 v2, 0x18
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandException$Error;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/CommandException$Error;->SUBSCRIPTION_NOT_SUPPORTED:Lcom/android/internal/telephony/CommandException$Error;
+
     .line 29
-    const/16 v0, 0xf
+    const/16 v0, 0x19
 
     new-array v0, v0, [Lcom/android/internal/telephony/CommandException$Error;
 
@@ -309,6 +439,66 @@
     const/16 v1, 0xe
 
     sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->ILLEGAL_SIM_OR_ME:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xf
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->DIAL_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x10
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->DIAL_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x11
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->DIAL_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x12
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->USSD_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x13
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->USSD_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x14
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->USSD_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x15
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->SS_MODIFIED_TO_DIAL:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x16
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->SS_MODIFIED_TO_USSD:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x17
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->SS_MODIFIED_TO_SS:Lcom/android/internal/telephony/CommandException$Error;
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x18
+
+    sget-object v2, Lcom/android/internal/telephony/CommandException$Error;->SUBSCRIPTION_NOT_SUPPORTED:Lcom/android/internal/telephony/CommandException$Error;
 
     aput-object v2, v0, v1
 

@@ -42,7 +42,7 @@
     .locals 1
 
     .prologue
-    .line 109
+    .line 113
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -54,7 +54,7 @@
     .locals 1
 
     .prologue
-    .line 90
+    .line 94
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -64,9 +64,11 @@
 
 .method public clearUsernamePassword()V
     .locals 1
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 67
+    .line 71
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -78,7 +80,7 @@
     .locals 1
 
     .prologue
-    .line 100
+    .line 104
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -90,7 +92,7 @@
     .locals 1
 
     .prologue
-    .line 79
+    .line 83
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -100,9 +102,11 @@
 
 .method public hasUsernamePassword()Z
     .locals 1
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 56
+    .line 58
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V

@@ -20,7 +20,9 @@
 # instance fields
 .field private final mCallback:Landroid/hardware/display/IDisplayManagerCallback;
 
-.field private final mPid:I
+.field public final mPid:I
+
+.field public mWifiDisplayScanRequested:Z
 
 .field final synthetic this$0:Lcom/android/server/display/DisplayManagerService;
 
@@ -33,36 +35,34 @@
     .parameter "callback"
 
     .prologue
-    .line 1045
+    .line 1308
     iput-object p1, p0, Lcom/android/server/display/DisplayManagerService$CallbackRecord;->this$0:Lcom/android/server/display/DisplayManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1046
+    .line 1309
     iput p2, p0, Lcom/android/server/display/DisplayManagerService$CallbackRecord;->mPid:I
 
-    .line 1047
+    .line 1310
     iput-object p3, p0, Lcom/android/server/display/DisplayManagerService$CallbackRecord;->mCallback:Landroid/hardware/display/IDisplayManagerCallback;
 
-    .line 1048
+    .line 1311
     return-void
 .end method
 
 
 # virtual methods
 .method public binderDied()V
-    .locals 2
+    .locals 1
 
     .prologue
-    .line 1055
+    .line 1318
     iget-object v0, p0, Lcom/android/server/display/DisplayManagerService$CallbackRecord;->this$0:Lcom/android/server/display/DisplayManagerService;
 
-    iget v1, p0, Lcom/android/server/display/DisplayManagerService$CallbackRecord;->mPid:I
+    #calls: Lcom/android/server/display/DisplayManagerService;->onCallbackDied(Lcom/android/server/display/DisplayManagerService$CallbackRecord;)V
+    invoke-static {v0, p0}, Lcom/android/server/display/DisplayManagerService;->access$1500(Lcom/android/server/display/DisplayManagerService;Lcom/android/server/display/DisplayManagerService$CallbackRecord;)V
 
-    #calls: Lcom/android/server/display/DisplayManagerService;->onCallbackDied(I)V
-    invoke-static {v0, v1}, Lcom/android/server/display/DisplayManagerService;->access$1500(Lcom/android/server/display/DisplayManagerService;I)V
-
-    .line 1056
+    .line 1319
     return-void
 .end method
 
@@ -72,7 +72,7 @@
     .parameter "event"
 
     .prologue
-    .line 1060
+    .line 1323
     :try_start_0
     iget-object v1, p0, Lcom/android/server/display/DisplayManagerService$CallbackRecord;->mCallback:Landroid/hardware/display/IDisplayManagerCallback;
 
@@ -80,15 +80,15 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1066
+    .line 1329
     :goto_0
     return-void
 
-    .line 1061
+    .line 1324
     :catch_0
     move-exception v0
 
-    .line 1062
+    .line 1325
     .local v0, ex:Landroid/os/RemoteException;
     const-string v1, "DisplayManagerService"
 
@@ -120,7 +120,7 @@
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 1064
+    .line 1327
     invoke-virtual {p0}, Lcom/android/server/display/DisplayManagerService$CallbackRecord;->binderDied()V
 
     goto :goto_0

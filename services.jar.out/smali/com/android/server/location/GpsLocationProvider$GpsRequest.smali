@@ -27,15 +27,15 @@
     .parameter "source"
 
     .prologue
-    .line 193
+    .line 230
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 194
+    .line 231
     iput-object p1, p0, Lcom/android/server/location/GpsLocationProvider$GpsRequest;->request:Lcom/android/internal/location/ProviderRequest;
 
-    .line 195
+    .line 232
     iput-object p2, p0, Lcom/android/server/location/GpsLocationProvider$GpsRequest;->source:Landroid/os/WorkSource;
 
-    .line 196
+    .line 233
     return-void
 .end method

@@ -7,8 +7,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/internal/policy/impl/PhoneWindowManager;->triggerVirtualKeypress(I)V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/internal/policy/impl/PhoneWindowManager;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,20 +20,15 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-.field final synthetic val$keyCode:I
-
 
 # direct methods
-.method constructor <init>(Lcom/android/internal/policy/impl/PhoneWindowManager;I)V
+.method constructor <init>(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
     .locals 0
-    .parameter
     .parameter
 
     .prologue
-    .line 971
+    .line 1036
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
-
-    iput p2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->val$keyCode:I
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -43,79 +38,115 @@
 
 # virtual methods
 .method public run()V
-    .locals 15
+    .locals 10
 
     .prologue
-    .line 973
-    invoke-static {}, Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager;
+    const/4 v5, 0x1
 
-    move-result-object v13
+    const/4 v9, 0x2
 
-    .line 974
-    .local v13, im:Landroid/hardware/input/InputManager;
-    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
+    const/4 v6, 0x0
 
-    move-result-wide v1
+    .line 1039
+    iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    .line 976
-    .local v1, now:J
-    new-instance v0, Landroid/view/KeyEvent;
+    iget-object v4, v4, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
 
-    const/4 v5, 0x0
+    const-string v7, "audio"
 
-    iget v6, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->val$keyCode:I
+    invoke-virtual {v4, v7}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    const/4 v7, 0x0
+    move-result-object v0
 
-    const/4 v8, 0x0
+    check-cast v0, Landroid/media/AudioManager;
 
-    const/4 v9, -0x1
+    .line 1040
+    .local v0, am:Landroid/media/AudioManager;
+    invoke-virtual {v0}, Landroid/media/AudioManager;->getRingerMode()I
 
-    const/4 v10, 0x0
+    move-result v1
 
-    const/16 v11, 0x8
+    .line 1041
+    .local v1, ringerMode:I
+    new-instance v3, Landroid/view/VolumePanel;
 
-    const/16 v12, 0x101
+    iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    move-wide v3, v1
+    #calls: Lcom/android/internal/policy/impl/PhoneWindowManager;->getUiContext()Landroid/content/Context;
+    invoke-static {v4}, Lcom/android/internal/policy/impl/PhoneWindowManager;->access$600(Lcom/android/internal/policy/impl/PhoneWindowManager;)Landroid/content/Context;
 
-    invoke-direct/range {v0 .. v12}, Landroid/view/KeyEvent;-><init>(JJIIIIIIII)V
+    move-result-object v7
 
-    .line 979
-    .local v0, downEvent:Landroid/view/KeyEvent;
-    const/4 v3, 0x1
+    invoke-static {}, Lcom/android/internal/policy/impl/PhoneWindowManager;->getAudioService()Landroid/media/IAudioService;
 
-    invoke-static {v0, v3}, Landroid/view/KeyEvent;->changeAction(Landroid/view/KeyEvent;I)Landroid/view/KeyEvent;
+    move-result-object v4
 
-    move-result-object v14
+    check-cast v4, Landroid/media/AudioService;
 
-    .line 981
-    .local v14, upEvent:Landroid/view/KeyEvent;
-    iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
+    invoke-direct {v3, v7, v4}, Landroid/view/VolumePanel;-><init>(Landroid/content/Context;Landroid/media/AudioService;)V
 
-    const/4 v4, 0x1
+    .line 1043
+    .local v3, volumePanel:Landroid/view/VolumePanel;
+    if-ne v1, v9, :cond_2
 
-    #setter for: Lcom/android/internal/policy/impl/PhoneWindowManager;->mIsVirtualKeypress:Z
-    invoke-static {v3, v4}, Lcom/android/internal/policy/impl/PhoneWindowManager;->access$402(Lcom/android/internal/policy/impl/PhoneWindowManager;Z)Z
+    .line 1044
+    iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    .line 982
-    const/4 v3, 0x1
+    iget-object v4, v4, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v13, v0, v3}, Landroid/hardware/input/InputManager;->injectInputEvent(Landroid/view/InputEvent;I)Z
+    invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    .line 983
-    const/4 v3, 0x1
+    move-result-object v4
 
-    invoke-virtual {v13, v14, v3}, Landroid/hardware/input/InputManager;->injectInputEvent(Landroid/view/InputEvent;I)Z
+    const-string v7, "vibrate_when_ringing"
 
-    .line 984
-    iget-object v3, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$6;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
+    const/4 v8, -0x2
 
-    const/4 v4, 0x0
+    invoke-static {v4, v7, v6, v8}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
 
-    #setter for: Lcom/android/internal/policy/impl/PhoneWindowManager;->mIsVirtualKeypress:Z
-    invoke-static {v3, v4}, Lcom/android/internal/policy/impl/PhoneWindowManager;->access$402(Lcom/android/internal/policy/impl/PhoneWindowManager;Z)Z
+    move-result v4
 
-    .line 985
+    if-eqz v4, :cond_0
+
+    move v2, v5
+
+    .line 1046
+    .local v2, vibrateSetting:Z
+    :goto_0
+    if-eqz v2, :cond_1
+
+    move v4, v5
+
+    :goto_1
+    invoke-virtual {v0, v4}, Landroid/media/AudioManager;->setRingerMode(I)V
+
+    .line 1051
+    .end local v2           #vibrateSetting:Z
+    :goto_2
+    const/16 v4, 0x11
+
+    invoke-virtual {v3, v9, v4}, Landroid/view/VolumePanel;->postVolumeChanged(II)V
+
+    .line 1053
     return-void
+
+    :cond_0
+    move v2, v6
+
+    .line 1044
+    goto :goto_0
+
+    .restart local v2       #vibrateSetting:Z
+    :cond_1
+    move v4, v6
+
+    .line 1046
+    goto :goto_1
+
+    .line 1049
+    .end local v2           #vibrateSetting:Z
+    :cond_2
+    invoke-virtual {v0, v9}, Landroid/media/AudioManager;->setRingerMode(I)V
+
+    goto :goto_2
 .end method

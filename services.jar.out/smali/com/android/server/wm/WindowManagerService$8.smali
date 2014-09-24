@@ -28,14 +28,17 @@
 
 .field final synthetic val$newConfig:Landroid/content/res/Configuration;
 
+.field final synthetic val$overscanInsets:Landroid/graphics/Rect;
+
 .field final synthetic val$reportDraw:Z
 
 .field final synthetic val$visibleInsets:Landroid/graphics/Rect;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/view/IWindow;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
+.method constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/view/IWindow;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
     .locals 0
+    .parameter
     .parameter
     .parameter
     .parameter
@@ -45,20 +48,22 @@
     .parameter
 
     .prologue
-    .line 9546
+    .line 9470
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$8;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$8;->val$client:Landroid/view/IWindow;
 
     iput-object p3, p0, Lcom/android/server/wm/WindowManagerService$8;->val$frame:Landroid/graphics/Rect;
 
-    iput-object p4, p0, Lcom/android/server/wm/WindowManagerService$8;->val$contentInsets:Landroid/graphics/Rect;
+    iput-object p4, p0, Lcom/android/server/wm/WindowManagerService$8;->val$overscanInsets:Landroid/graphics/Rect;
 
-    iput-object p5, p0, Lcom/android/server/wm/WindowManagerService$8;->val$visibleInsets:Landroid/graphics/Rect;
+    iput-object p5, p0, Lcom/android/server/wm/WindowManagerService$8;->val$contentInsets:Landroid/graphics/Rect;
 
-    iput-boolean p6, p0, Lcom/android/server/wm/WindowManagerService$8;->val$reportDraw:Z
+    iput-object p6, p0, Lcom/android/server/wm/WindowManagerService$8;->val$visibleInsets:Landroid/graphics/Rect;
 
-    iput-object p7, p0, Lcom/android/server/wm/WindowManagerService$8;->val$newConfig:Landroid/content/res/Configuration;
+    iput-boolean p7, p0, Lcom/android/server/wm/WindowManagerService$8;->val$reportDraw:Z
+
+    iput-object p8, p0, Lcom/android/server/wm/WindowManagerService$8;->val$newConfig:Landroid/content/res/Configuration;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -68,32 +73,34 @@
 
 # virtual methods
 .method public run()V
-    .locals 6
+    .locals 7
 
     .prologue
-    .line 9550
+    .line 9474
     :try_start_0
     iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$8;->val$client:Landroid/view/IWindow;
 
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$8;->val$frame:Landroid/graphics/Rect;
 
-    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$8;->val$contentInsets:Landroid/graphics/Rect;
+    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$8;->val$overscanInsets:Landroid/graphics/Rect;
 
-    iget-object v3, p0, Lcom/android/server/wm/WindowManagerService$8;->val$visibleInsets:Landroid/graphics/Rect;
+    iget-object v3, p0, Lcom/android/server/wm/WindowManagerService$8;->val$contentInsets:Landroid/graphics/Rect;
 
-    iget-boolean v4, p0, Lcom/android/server/wm/WindowManagerService$8;->val$reportDraw:Z
+    iget-object v4, p0, Lcom/android/server/wm/WindowManagerService$8;->val$visibleInsets:Landroid/graphics/Rect;
 
-    iget-object v5, p0, Lcom/android/server/wm/WindowManagerService$8;->val$newConfig:Landroid/content/res/Configuration;
+    iget-boolean v5, p0, Lcom/android/server/wm/WindowManagerService$8;->val$reportDraw:Z
 
-    invoke-interface/range {v0 .. v5}, Landroid/view/IWindow;->resized(Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
+    iget-object v6, p0, Lcom/android/server/wm/WindowManagerService$8;->val$newConfig:Landroid/content/res/Configuration;
+
+    invoke-interface/range {v0 .. v6}, Landroid/view/IWindow;->resized(Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 9556
+    .line 9479
     :goto_0
     return-void
 
-    .line 9552
+    .line 9476
     :catch_0
     move-exception v0
 

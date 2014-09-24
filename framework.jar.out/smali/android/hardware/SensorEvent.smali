@@ -16,17 +16,17 @@
 # direct methods
 .method constructor <init>(I)V
     .locals 1
-    .parameter "size"
+    .parameter "valueSize"
 
     .prologue
-    .line 455
+    .line 504
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 456
+    .line 505
     new-array v0, p1, [F
 
     iput-object v0, p0, Landroid/hardware/SensorEvent;->values:[F
 
-    .line 457
+    .line 506
     return-void
 .end method

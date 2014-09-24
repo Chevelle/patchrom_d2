@@ -6,7 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/net/wifi/WifiMonitor$MonitorThread;
+        Landroid/net/wifi/WifiMonitor$MonitorThread;,
+        Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;
     }
 .end annotation
 
@@ -20,6 +21,12 @@
 
 .field private static final AP_STA_DISCONNECTED_STR:Ljava/lang/String; = "AP-STA-DISCONNECTED"
 
+.field public static final ASSOCIATION_REJECTION_EVENT:I = 0x2402b
+
+.field private static final ASSOC_REJECT:I = 0x9
+
+.field private static final ASSOC_REJECT_STR:Ljava/lang/String; = "ASSOC-REJECT"
+
 .field public static final AUTHENTICATION_FAILURE_EVENT:I = 0x24007
 
 .field private static final BASE:I = 0x24000
@@ -31,6 +38,8 @@
 .field private static final CONNECTED:I = 0x1
 
 .field private static final CONNECTED_STR:Ljava/lang/String; = "CONNECTED"
+
+.field private static final DBG:Z = false
 
 .field private static final DISCONNECTED:I = 0x2
 
@@ -137,6 +146,10 @@
 
 .field private static final P2P_PROV_DISC_SHOW_PIN_STR:Ljava/lang/String; = "P2P-PROV-DISC-SHOW-PIN"
 
+.field public static final P2P_REMOVE_AND_REFORM_GROUP_EVENT:I = 0x24028
+
+.field private static final P2P_REMOVE_AND_REFORM_GROUP_STR:Ljava/lang/String; = "P2P-REMOVE-AND-REFORM-GROUP"
+
 .field public static final P2P_SERV_DISC_RESP_EVENT:I = 0x24026
 
 .field private static final P2P_SERV_DISC_RESP_STR:Ljava/lang/String; = "P2P-SERV-DISC-RESP"
@@ -169,7 +182,9 @@
 
 .field private static final TERMINATING_STR:Ljava/lang/String; = "TERMINATING"
 
-.field private static final UNKNOWN:I = 0x9
+.field private static final UNKNOWN:I = 0xa
+
+.field private static final WAPI_EVENT_PREFIX_STR:Ljava/lang/String; = "WAPI:"
 
 .field private static final WPA_EVENT_PREFIX_STR:Ljava/lang/String; = "WPA:"
 
@@ -197,11 +212,13 @@
 
 
 # instance fields
-.field private mRecvErrors:I
+.field private final mInterfaceName:Ljava/lang/String;
 
-.field private final mStateMachine:Lcom/android/internal/util/StateMachine;
+.field private mMonitoring:Z
 
 .field private final mWifiNative:Landroid/net/wifi/WifiNative;
+
+.field private final mWifiStateMachine:Lcom/android/internal/util/StateMachine;
 
 
 # direct methods
@@ -209,7 +226,7 @@
     .locals 1
 
     .prologue
-    .line 63
+    .line 68
     const-string v0, "CTRL-EVENT-"
 
     invoke-virtual {v0}, Ljava/lang/String;->length()I
@@ -218,7 +235,7 @@
 
     sput v0, Landroid/net/wifi/WifiMonitor;->EVENT_PREFIX_LEN_STR:I
 
-    .line 160
+    .line 170
     const-string v0, "((?:[0-9a-f]{2}:){5}[0-9a-f]{2}) .* \\[id=([0-9]+) "
 
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
@@ -231,312 +248,171 @@
 .end method
 
 .method public constructor <init>(Lcom/android/internal/util/StateMachine;Landroid/net/wifi/WifiNative;)V
-    .locals 1
+    .locals 2
     .parameter "wifiStateMachine"
     .parameter "wifiNative"
 
     .prologue
-    .line 351
+    .line 367
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 344
-    const/4 v0, 0x0
-
-    iput v0, p0, Landroid/net/wifi/WifiMonitor;->mRecvErrors:I
-
-    .line 352
-    iput-object p1, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
-
-    .line 353
+    .line 369
     iput-object p2, p0, Landroid/net/wifi/WifiMonitor;->mWifiNative:Landroid/net/wifi/WifiNative;
 
-    .line 354
+    .line 370
+    iget-object v0, p2, Landroid/net/wifi/WifiNative;->mInterfaceName:Ljava/lang/String;
+
+    iput-object v0, p0, Landroid/net/wifi/WifiMonitor;->mInterfaceName:Ljava/lang/String;
+
+    .line 371
+    iput-object p1, p0, Landroid/net/wifi/WifiMonitor;->mWifiStateMachine:Lcom/android/internal/util/StateMachine;
+
+    .line 372
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Landroid/net/wifi/WifiMonitor;->mMonitoring:Z
+
+    .line 374
+    invoke-static {}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->getMonitor()Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mInterfaceName:Ljava/lang/String;
+
+    invoke-virtual {v0, v1, p0}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->registerInterfaceMonitor(Ljava/lang/String;Landroid/net/wifi/WifiMonitor;)V
+
+    .line 375
     return-void
 .end method
 
-.method static synthetic access$000(Landroid/net/wifi/WifiMonitor;)Lcom/android/internal/util/StateMachine;
+.method static synthetic access$000(Landroid/net/wifi/WifiMonitor;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 45
-    iget-object v0, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
+    .line 48
+    iget-boolean v0, p0, Landroid/net/wifi/WifiMonitor;->mMonitoring:Z
+
+    return v0
+.end method
+
+.method static synthetic access$002(Landroid/net/wifi/WifiMonitor;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 48
+    iput-boolean p1, p0, Landroid/net/wifi/WifiMonitor;->mMonitoring:Z
+
+    return p1
+.end method
+
+.method static synthetic access$100(Landroid/net/wifi/WifiMonitor;)Lcom/android/internal/util/StateMachine;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 48
+    iget-object v0, p0, Landroid/net/wifi/WifiMonitor;->mWifiStateMachine:Lcom/android/internal/util/StateMachine;
 
     return-object v0
 .end method
 
-.method static synthetic access$100(Landroid/net/wifi/WifiMonitor;)Landroid/net/wifi/WifiNative;
+.method static synthetic access$200(Landroid/net/wifi/WifiMonitor;)Landroid/net/wifi/WifiNative;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 45
+    .line 48
     iget-object v0, p0, Landroid/net/wifi/WifiMonitor;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     return-object v0
 .end method
 
-.method static synthetic access$200()I
+.method static synthetic access$600()I
     .locals 1
 
     .prologue
-    .line 45
+    .line 48
     sget v0, Landroid/net/wifi/WifiMonitor;->EVENT_PREFIX_LEN_STR:I
 
     return v0
 .end method
 
-.method static synthetic access$302(Landroid/net/wifi/WifiMonitor;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 45
-    iput p1, p0, Landroid/net/wifi/WifiMonitor;->mRecvErrors:I
-
-    return p1
-.end method
-
-.method static synthetic access$304(Landroid/net/wifi/WifiMonitor;)I
+.method static synthetic access$700()Ljava/util/regex/Pattern;
     .locals 1
-    .parameter "x0"
 
     .prologue
-    .line 45
-    iget v0, p0, Landroid/net/wifi/WifiMonitor;->mRecvErrors:I
+    .line 48
+    sget-object v0, Landroid/net/wifi/WifiMonitor;->mConnectedEventPattern:Ljava/util/regex/Pattern;
 
-    add-int/lit8 v0, v0, 0x1
-
-    iput v0, p0, Landroid/net/wifi/WifiMonitor;->mRecvErrors:I
-
-    return v0
-.end method
-
-.method static synthetic access$400(I)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    invoke-static {p0}, Landroid/net/wifi/WifiMonitor;->nap(I)V
-
-    return-void
-.end method
-
-.method static synthetic access$500(Landroid/net/wifi/WifiMonitor;Landroid/net/NetworkInfo$DetailedState;Ljava/lang/String;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-
-    .prologue
-    .line 45
-    invoke-direct {p0, p1, p2}, Landroid/net/wifi/WifiMonitor;->handleNetworkStateChange(Landroid/net/NetworkInfo$DetailedState;Ljava/lang/String;)V
-
-    return-void
-.end method
-
-.method private handleNetworkStateChange(Landroid/net/NetworkInfo$DetailedState;Ljava/lang/String;)V
-    .locals 5
-    .parameter "newState"
-    .parameter "data"
-
-    .prologue
-    .line 717
-    const/4 v0, 0x0
-
-    .line 718
-    .local v0, BSSID:Ljava/lang/String;
-    const/4 v3, -0x1
-
-    .line 719
-    .local v3, networkId:I
-    sget-object v4, Landroid/net/NetworkInfo$DetailedState;->CONNECTED:Landroid/net/NetworkInfo$DetailedState;
-
-    if-ne p1, v4, :cond_0
-
-    .line 720
-    sget-object v4, Landroid/net/wifi/WifiMonitor;->mConnectedEventPattern:Ljava/util/regex/Pattern;
-
-    invoke-virtual {v4, p2}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-
-    move-result-object v2
-
-    .line 721
-    .local v2, match:Ljava/util/regex/Matcher;
-    invoke-virtual {v2}, Ljava/util/regex/Matcher;->find()Z
-
-    move-result v4
-
-    if-nez v4, :cond_1
-
-    .line 732
-    .end local v2           #match:Ljava/util/regex/Matcher;
-    :cond_0
-    :goto_0
-    invoke-virtual {p0, p1, v0, v3}, Landroid/net/wifi/WifiMonitor;->notifyNetworkStateChange(Landroid/net/NetworkInfo$DetailedState;Ljava/lang/String;I)V
-
-    .line 733
-    return-void
-
-    .line 724
-    .restart local v2       #match:Ljava/util/regex/Matcher;
-    :cond_1
-    const/4 v4, 0x1
-
-    invoke-virtual {v2, v4}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 726
-    const/4 v4, 0x2
-
-    :try_start_0
-    invoke-virtual {v2, v4}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
-    :try_end_0
-    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
-
-    move-result v3
-
-    goto :goto_0
-
-    .line 727
-    :catch_0
-    move-exception v1
-
-    .line 728
-    .local v1, e:Ljava/lang/NumberFormatException;
-    const/4 v3, -0x1
-
-    goto :goto_0
-.end method
-
-.method private static nap(I)V
-    .locals 2
-    .parameter "secs"
-
-    .prologue
-    .line 777
-    mul-int/lit16 v0, p0, 0x3e8
-
-    int-to-long v0, v0
-
-    :try_start_0
-    invoke-static {v0, v1}, Ljava/lang/Thread;->sleep(J)V
-    :try_end_0
-    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 780
-    :goto_0
-    return-void
-
-    .line 778
-    :catch_0
-    move-exception v0
-
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
-.method notifyNetworkStateChange(Landroid/net/NetworkInfo$DetailedState;Ljava/lang/String;I)V
-    .locals 4
-    .parameter "newState"
-    .parameter "BSSID"
-    .parameter "netId"
+.method public killSupplicant(Z)V
+    .locals 1
+    .parameter "p2pSupported"
 
     .prologue
-    const/4 v3, 0x0
-
-    .line 746
-    sget-object v1, Landroid/net/NetworkInfo$DetailedState;->CONNECTED:Landroid/net/NetworkInfo$DetailedState;
-
-    if-ne p1, v1, :cond_0
-
-    .line 747
-    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
-
-    const v2, 0x24003
-
-    invoke-virtual {v1, v2, p3, v3, p2}, Lcom/android/internal/util/StateMachine;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
+    .line 390
+    invoke-static {}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->getMonitor()Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;
 
     move-result-object v0
 
-    .line 749
-    .local v0, m:Landroid/os/Message;
-    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
+    invoke-virtual {v0, p1}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->killSupplicant(Z)V
 
-    invoke-virtual {v1, v0}, Lcom/android/internal/util/StateMachine;->sendMessage(Landroid/os/Message;)V
-
-    .line 755
-    :goto_0
-    return-void
-
-    .line 751
-    .end local v0           #m:Landroid/os/Message;
-    :cond_0
-    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
-
-    const v2, 0x24004
-
-    invoke-virtual {v1, v2, p3, v3, p2}, Lcom/android/internal/util/StateMachine;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v0
-
-    .line 753
-    .restart local v0       #m:Landroid/os/Message;
-    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
-
-    invoke-virtual {v1, v0}, Lcom/android/internal/util/StateMachine;->sendMessage(Landroid/os/Message;)V
-
-    goto :goto_0
-.end method
-
-.method notifySupplicantStateChange(ILandroid/net/wifi/WifiSsid;Ljava/lang/String;Landroid/net/wifi/SupplicantState;)V
-    .locals 4
-    .parameter "networkId"
-    .parameter "wifiSsid"
-    .parameter "BSSID"
-    .parameter "newState"
-
-    .prologue
-    .line 767
-    iget-object v0, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
-
-    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mStateMachine:Lcom/android/internal/util/StateMachine;
-
-    const v2, 0x24006
-
-    new-instance v3, Landroid/net/wifi/StateChangeResult;
-
-    invoke-direct {v3, p1, p2, p3, p4}, Landroid/net/wifi/StateChangeResult;-><init>(ILandroid/net/wifi/WifiSsid;Ljava/lang/String;Landroid/net/wifi/SupplicantState;)V
-
-    invoke-virtual {v1, v2, v3}, Lcom/android/internal/util/StateMachine;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Lcom/android/internal/util/StateMachine;->sendMessage(Landroid/os/Message;)V
-
-    .line 769
+    .line 391
     return-void
 .end method
 
 .method public startMonitoring()V
+    .locals 2
+
+    .prologue
+    .line 378
+    invoke-static {}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->getMonitor()Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mInterfaceName:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->startMonitoring(Ljava/lang/String;)V
+
+    .line 379
+    return-void
+.end method
+
+.method public stopMonitoring()V
+    .locals 2
+
+    .prologue
+    .line 382
+    invoke-static {}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->getMonitor()Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/net/wifi/WifiMonitor;->mInterfaceName:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->stopMonitoring(Ljava/lang/String;)V
+
+    .line 383
+    return-void
+.end method
+
+.method public stopSupplicant()V
     .locals 1
 
     .prologue
-    .line 357
-    new-instance v0, Landroid/net/wifi/WifiMonitor$MonitorThread;
+    .line 386
+    invoke-static {}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->getMonitor()Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;
 
-    invoke-direct {v0, p0}, Landroid/net/wifi/WifiMonitor$MonitorThread;-><init>(Landroid/net/wifi/WifiMonitor;)V
+    move-result-object v0
 
-    invoke-virtual {v0}, Landroid/net/wifi/WifiMonitor$MonitorThread;->start()V
+    invoke-virtual {v0}, Landroid/net/wifi/WifiMonitor$WifiMonitorSingleton;->stopSupplicant()V
 
-    .line 358
+    .line 387
     return-void
 .end method

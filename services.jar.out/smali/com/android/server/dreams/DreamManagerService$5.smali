@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 399
+    .line 405
     iput-object p1, p0, Lcom/android/server/dreams/DreamManagerService$5;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .parameter "token"
 
     .prologue
-    .line 402
+    .line 408
     iget-object v0, p0, Lcom/android/server/dreams/DreamManagerService$5;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
     #getter for: Lcom/android/server/dreams/DreamManagerService;->mLock:Ljava/lang/Object;
@@ -52,7 +52,7 @@
 
     monitor-enter v1
 
-    .line 403
+    .line 409
     :try_start_0
     iget-object v0, p0, Lcom/android/server/dreams/DreamManagerService$5;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
@@ -63,20 +63,20 @@
 
     if-ne v0, p1, :cond_0
 
-    .line 404
+    .line 410
     iget-object v0, p0, Lcom/android/server/dreams/DreamManagerService$5;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
     #calls: Lcom/android/server/dreams/DreamManagerService;->cleanupDreamLocked()V
     invoke-static {v0}, Lcom/android/server/dreams/DreamManagerService;->access$400(Lcom/android/server/dreams/DreamManagerService;)V
 
-    .line 406
+    .line 412
     :cond_0
     monitor-exit v1
 
-    .line 407
+    .line 413
     return-void
 
-    .line 406
+    .line 412
     :catchall_0
     move-exception v0
 

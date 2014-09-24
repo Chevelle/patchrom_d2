@@ -447,6 +447,9 @@
 .field public static final GL_STENCIL_FUNC:I = 0xb92
 
 .field public static final GL_STENCIL_INDEX:I = 0x1901
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final GL_STENCIL_INDEX8:I = 0x8d48
 
@@ -614,10 +617,10 @@
     .locals 0
 
     .prologue
-    .line 330
+    .line 334
     invoke-static {}, Landroid/opengl/GLES20;->_nativeClassInit()V
 
-    .line 331
+    .line 335
     return-void
 .end method
 
@@ -1217,7 +1220,7 @@
     .parameter "ptr"
 
     .prologue
-    .line 1963
+    .line 1903
     invoke-virtual {p5}, Ljava/nio/Buffer;->remaining()I
 
     move-result v6
@@ -1236,7 +1239,7 @@
 
     invoke-static/range {v0 .. v6}, Landroid/opengl/GLES20;->glVertexAttribPointerBounds(IIIZILjava/nio/Buffer;I)V
 
-    .line 1972
+    .line 1912
     return-void
 .end method
 

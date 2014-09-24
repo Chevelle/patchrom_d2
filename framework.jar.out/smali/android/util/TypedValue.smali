@@ -237,7 +237,7 @@
 
     .line 329
     :pswitch_2
-    invoke-static {p1, p2}, Landroid/util/TypedValue;->miuiScale(FLandroid/util/DisplayMetrics;)F
+    invoke-static {p0, p1, p2}, Landroid/util/Injector$TypedValueHook;->miuiScale(IFLandroid/util/DisplayMetrics;)F
 
     move-result p1
 
@@ -278,6 +278,7 @@
     .line 323
     nop
 
+    nop
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -830,37 +831,6 @@
         :pswitch_0
         :pswitch_1
     .end packed-switch
-.end method
-
-.method private static miuiScale(FLandroid/util/DisplayMetrics;)F
-    .locals 2
-    .parameter "value"
-    .parameter "metrics"
-
-    .prologue
-    const/high16 v0, 0x41a0
-
-    cmpl-float v0, p0, v0
-
-    if-ltz v0, :cond_0
-
-    iget v0, p1, Landroid/util/DisplayMetrics;->density:F
-
-    mul-float/2addr v0, p0
-
-    :goto_0
-    return v0
-
-    :cond_0
-    iget v0, p1, Landroid/util/DisplayMetrics;->scaledDensity:F
-
-    mul-float/2addr v0, p0
-
-    sget v1, Landroid/util/TypedValue;->miui_font_scale:F
-
-    mul-float/2addr v0, v1
-
-    goto :goto_0
 .end method
 
 

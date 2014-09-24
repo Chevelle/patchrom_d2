@@ -24,61 +24,14 @@
     <string name="VideoView_error_text_invalid_progressive_playback">Maaf, video ini tidak sah untuk penstriman ke peranti ini.</string>
     <string name="selectTextMode">Pilih teks</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="hour_minute_24" formatted="false">%-k:%M</string>
-    <string name="hour_minute_ampm" formatted="false">%-l:%M %p</string>
-    <string name="hour_minute_cap_ampm" formatted="false">%-l:%M %^p</string>
-    <string name="twelve_hour_time_format">h:mm a</string>
-    <string name="twenty_four_hour_time_format">H:mm</string>
-    <string name="numeric_date" formatted="false">%d/%m/%Y</string>
-    <string name="numeric_date_format">dd/MM/yyyy</string>
+    <string name="media_route_chooser_grouping_done">Selesai</string>
+    <string name="wifi_display_notification_message">Skrin ini ditunjukkan pada peranti lain</string>
+    <string name="wifi_display_notification_title">Paparan wayarles disambungkan</string>
     <string name="numeric_date_template" formatted="false">%s/%s/%s</string>
     <string name="month_day_year" formatted="false">%d %B %Y</string>
     <string name="time_of_day" formatted="false">%-l:%M:%S %p</string>
     <string name="date_and_time" formatted="false">%-l:%M:%S %p %d %b %Y</string>
     <string name="date_time">%2$s %1$s</string>
-    <string name="time_date">%1$s %3$s</string>
-    <string name="abbrev_month_day_year" formatted="false">%d %b %Y</string>
-    <string name="month_day" formatted="false">%B %-e</string>
-    <string name="month">%-B</string>
-    <string name="month_year" formatted="false">%B %Y</string>
-    <string name="abbrev_month_day" formatted="false">%b %-e</string>
-    <string name="abbrev_month">%-b</string>
-    <string name="abbrev_month_year" formatted="false">%Y %b</string>
-    <string name="time1_time2">%1$s – %2$s</string>
-    <string name="date1_date2">%2$s – %5$s</string>
-    <string name="numeric_md1_md2">%2$s-%3$s – %7$s-%8$s</string>
-    <string name="numeric_wday1_md1_wday2_md2">%1$s, %2$s-%3$s – %6$s, %7$s-%8$s</string>
-    <string name="numeric_mdy1_mdy2">%4$s-%2$s-%3$s – %9$s-%7$s-%8$s</string>
-    <string name="numeric_wday1_mdy1_wday2_mdy2">%1$s, %4$s-%2$s-%3$s – %6$s, %9$s-%7$s-%8$s</string>
-    <string name="numeric_wday1_mdy1_time1_wday2_mdy2_time2">%5$s %1$s, %4$s-%2$s-%3$s – %10$s %6$s, %9$s-%7$s-%8$s</string>
-    <string name="numeric_md1_time1_md2_time2">%5$s %2$s-%3$s – %10$s %7$s-%8$s</string>
-    <string name="numeric_wday1_md1_time1_wday2_md2_time2">%5$s %1$s, %2$s-%3$s – %10$s %6$s, %7$s-%8$s</string>
-    <string name="numeric_mdy1_time1_mdy2_time2">%5$s %3$s/%2$s/%4$s – %10$s %8$s/%7$s/%9$s</string>
-    <string name="wday1_date1_time1_wday2_date2_time2">%3$s %1$s %2$s – %6$s %4$s %5$s</string>
-    <string name="wday1_date1_wday2_date2">%1$s %2$s – %4$s %5$s</string>
-    <string name="date1_time1_date2_time2">%3$s %2$s – %6$s %5$s</string>
-    <string name="time_wday_date">%1$s %2$s %3$s</string>
-    <string name="wday_date">%2$s %3$s</string>
-    <string name="time_wday">%1$s %2$s</string>
-    <string name="same_year_md1_md2">%2$s %3$s – %7$s %8$s</string>
-    <string name="same_year_wday1_md1_wday2_md2">%1$s %2$s %3$s – %6$s %7$s %8$s</string>
-    <string name="same_year_md1_time1_md2_time2">%5$s %2$s %3$s – %10$s %7$s %8$s</string>
-    <string name="same_month_md1_time1_md2_time2">%5$s %2$s %3$s – %10$s %7$s %8$s</string>
-    <string name="same_year_wday1_md1_time1_wday2_md2_time2">%5$s %1$s %2$s %3$s – %10$s %6$s %7$s %8$s</string>
-    <string name="same_month_wday1_md1_time1_wday2_md2_time2">%5$s %1$s %2$s %3$s – %10$s %6$s %7$s %8$s</string>
-    <string name="same_year_mdy1_time1_mdy2_time2">%5$s %4$s-%2$s-%3$s – %10$s %9$s-%7$s-%8$s</string>
-    <string name="same_month_mdy1_time1_mdy2_time2">%5$s %4$s-%2$s-%3$s – %10$s %9$s-%7$s-%8$s</string>
-    <string name="same_year_wday1_mdy1_time1_wday2_mdy2_time2">%5$s %1$s, %4$s %2$s %3$s – %10$s %6$s, %9$s %7$s %8$s</string>
-    <string name="same_month_wday1_mdy1_time1_wday2_mdy2_time2">%5$s %1$s, %4$s %2$s %3$s – %10$s %6$s, %9$s %7$s %8$s</string>
-    <string name="same_month_wday1_mdy1_wday2_mdy2">%1$s, %4$s %2$s %3$s – %6$s, %9$s %7$s %8$s</string>
-    <string name="same_month_md1_md2">%2$s-%3$s – %8$s</string>
-    <string name="same_month_wday1_md1_wday2_md2">%1$s %2$s %3$s – %6$s %7$s %8$s</string>
-    <string name="same_year_mdy1_mdy2">%9$s-%2$s-%3$s – %7$s-%8$s</string>
-    <string name="same_month_mdy1_mdy2">%9$s-%2$s-%3$s – %8$s</string>
-    <string name="same_year_wday1_mdy1_wday2_mdy2">%1$s, %9$s-%2$s-%3$s – %6$s, yyyy-%7$s-%8$s</string>
-    <string name="short_format_month">%b</string>
-    <string name="full_wday_month_day_no_year">E MMMM d</string>
-    <string name="abbrev_wday_month_day_year">EEE, y MMM d</string>
     <string name="byteShort">B.</string>
     <string name="kilobyteShort">KB</string>
     <string name="megabyteShort">MB</string>
@@ -247,6 +200,8 @@
     <string name="permgroupdesc_microphone">Akses langsung ke mikrofon untuk merakam audio.</string>
     <string name="permgrouplab_camera">Kamera</string>
     <string name="permgroupdesc_camera">Akses langsung ke kamera untuk merakam imej atau video.</string>
+    <string name="permgrouplab_screenlock">Kunci skrin</string>
+    <string name="permgroupdesc_screenlock">Keupayaan untuk mempengaruhi kelakuan skrin kunci pada peranti anda.</string>
     <string name="permgrouplab_appInfo">Maklumat aplikasi anda</string>
     <string name="permgroupdesc_appInfo">Keupayaan untuk mempengaruhi tingkah laku aplikasi lain pada peranti anda.</string>
     <string name="permgrouplab_wallpaper">Kertas dinding</string>
@@ -271,6 +226,16 @@
     <string name="permgroupdesc_display">Mempengaruhi UI aplikasi lain.</string>
     <string name="permgrouplab_storage">Storan</string>
     <string name="permgroupdesc_storage">Akses kad SD.</string>
+    <string name="permgrouplab_accessibilityFeatures">Ciri kebolehaksesan</string>
+    <string name="permgroupdesc_accessibilityFeatures">Ciri yang boleh diminta oleh teknologi bantuan.</string>
+    <string name="capability_title_canRetrieveWindowContent">Dapatkan kembali kandungan tetingkap</string>
+    <string name="capability_desc_canRetrieveWindowContent">Periksa kandungan tetingkap yang berinteraksi dengan anda.</string>
+    <string name="capability_title_canRequestTouchExploration">Hidupkan Jelajah melalui Sentuhan</string>
+    <string name="capability_desc_canRequestTouchExploration">Item yang disentuh akan disebut dengan kuat dan skrin boleh dijelajah menggunakan gerak isyarat.</string>
+    <string name="capability_title_canRequestEnhancedWebAccessibility">Hidupkan kebolehcapaian web dipertingkat</string>
+    <string name="capability_desc_canRequestEnhancedWebAccessibility">Skrip boleh dipasang untuk menjadikan kandungan apl lebih mudah diakses.</string>
+    <string name="capability_title_canRequestFilterKeyEvents">Perhatikan teks yang anda taip</string>
+    <string name="capability_desc_canRequestFilterKeyEvents">Berserta data peribadi seperti nombor kad kredit dan kata laluan.</string>
     <string name="permlab_statusBar">lumpuhkan atau ubah suai bar status</string>
     <string name="permdesc_statusBar">Membenarkan apl melumpuhkan bar status atau menambah dan mengalih keluar ikon sistem.</string>
     <string name="permlab_statusBarService">bar status</string>
@@ -289,8 +254,8 @@
     <string name="permdesc_readCellBroadcasts">Membolehkan apl membaca mesej siaran sel yang diterima oleh peranti anda. Isyarat siaran sel dihantar di beberapa lokasi untuk memberi amaran kepada anda tentang situasi kecemasan. Apl hasad boleh mengganggu prestasi atau operasi peranti anda apabila siaran sel kecemasan diterima.</string>
     <string name="permlab_sendSms">hantar mesej SMS</string>
     <string name="permdesc_sendSms">Membenarkan apl menghantar mesej SMS. Ini boleh menyebabkan caj di luar jangkaan. Apl hasad boleh membuat anda kerugian wang dengan menghantar mesej tanpa pengesahan anda.</string>
-    <string name="permlab_sendSmsNoConfirmation">hantar mesej SMS tanpa pengesahan</string>
-    <string name="permdesc_sendSmsNoConfirmation">Membenarkan apl menghantar mesej SMS. Ini boleh menyebabkan caj di luar jangkaan. Apl hasad boleh membuat anda kerugian wang dengan menghantar mesej tanpa pengesahan anda.</string>
+    <string name="permlab_sendRespondViaMessageRequest">acara hantar respons-melalui-mesej</string>
+    <string name="permdesc_sendRespondViaMessageRequest">Membenarkan apl menghantar permintaan kepada apl permesejan lain untuk mengendalikan acara respons-melalui-mesej untuk panggilan masuk.</string>
     <string name="permlab_readSms">baca mesej teks anda (SMS atau MMS)</string>
     <string name="permdesc_readSms">Membenarkan apl membaca mesej SMS yang tersimpan pada telefon atau kad SIM anda. Ini membenarkan apl membaca semua mesej SMS, tanpa mengira kandungan atau kerahsiaan.</string>
     <string name="permlab_writeSms">edit mesej teks (SMS atau MMS)</string>
@@ -311,6 +276,8 @@
     <string name="permdesc_reorderTasks">Membenarkan apl memindahkan tugasan ke latar depan dan latar belakang. Apl boleh melakukan ini tanpa input anda.</string>
     <string name="permlab_removeTasks">hentikan apl yang sedang dijalankan</string>
     <string name="permdesc_removeTasks">Membenarkan apl untuk mengalih keluar tugasan dan melupuskan aplnya. Apl hasad boleh mengganggu tingkah laku apl lain.</string>
+    <string name="permlab_manageActivityStacks">urus tindanan aktiviti</string>
+    <string name="permdesc_manageActivityStacks">Membenarkan apl menambah, mengalih keluar dan mengubah suai tindanan aktiviti tempat apl lain berjalan. Apl hasad boleh mengganggu tingkah laku apl lain.</string>
     <string name="permlab_startAnyActivity">mulakan sebarang aktiviti</string>
     <string name="permdesc_startAnyActivity">Membenarkan apl untuk memulakan apa-apa aktiviti, tanpa mengira perlindungan kebenaran atau keadaan eksport.</string>
     <string name="permlab_setScreenCompatibility">tetapkan keserasian skrin</string>
@@ -343,6 +310,8 @@
     <string name="permdesc_shutdown">Meletakkan pengurus aktiviti dalam keadaan tutup. Tidak melaksanakan penutupan lengkap.</string>
     <string name="permlab_stopAppSwitches">halang pertukaran apl</string>
     <string name="permdesc_stopAppSwitches">Menghalang pengguna daripada bertukar kepada apl lain.</string>
+    <string name="permlab_getTopActivityInfo">dapatkan maklumat apl semasa</string>
+    <string name="permdesc_getTopActivityInfo">Membenarkan pemegang mendapatkan maklumat peribadi tentang aplikasi dan perkhidmatan semasa di latar hadapan skrin.</string>
     <string name="permlab_runSetActivityWatcher">pantau dan kawal semua pelancaran apl</string>
     <string name="permdesc_runSetActivityWatcher">Membenarkan apl untuk memantau dan mengawal cara sistem melancarkan aktiviti. Apl hasad boleh menjejaskan sistem sepenuhnya. Kebenaran ini hanya diperlukan untuk pembangunan, tidak sekali-kali untuk penggunaan biasa.</string>
     <string name="permlab_broadcastPackageRemoved">hantar siaran bahawa pakej telah dialih keluar</string>
@@ -359,6 +328,10 @@
     <string name="permdesc_batteryStats">Membenarkan aplikasi membaca data penggunaan bateri tahap rendah semasa. Boleh membenarkan aplikasi untuk mencari maklumat terperinci tentang apl yang anda gunakan.</string>
     <string name="permlab_updateBatteryStats">ubah suai statistik bateri</string>
     <string name="permdesc_updateBatteryStats">Membenarkan apl mengubah suai statistik bateri yang dikumpul. Bukan untuk penggunaan apl normal.</string>
+    <string name="permlab_getAppOpsStats">dapatkan semula statistik pengendalian apl</string>
+    <string name="permdesc_getAppOpsStats">Membenarkan apl mendapatkan semula statistik pengendalian aplikasi yang dikumpul. Bukan untuk kegunaan apl biasa.</string>
+    <string name="permlab_updateAppOpsStats">ubah suai apl ops statistik</string>
+    <string name="permdesc_updateAppOpsStats">Membenarkan apl mengubah suai statistik operasi aplikasi yang dikumpul. Bukan untuk kegunaan apl biasa.</string>
     <string name="permlab_backup">sandaran dan pemulihan sistem kawalan</string>
     <string name="permdesc_backup">Membenarkan apl untuk mengawal sandaran sistem dan memulihkan mekanisme. Bukan untuk digunakan oleh apl biasa.</string>
     <string name="permlab_confirm_full_backup">sahkan penyandaran penuh atau pemulihan operasi</string>
@@ -381,6 +354,10 @@
     <string name="permdesc_bindInputMethod">Membenarkan pemegang terikat dengan antara muka peringkat tertinggi bagi kaedah input itu. Tidak sekali-kali diperlukan untuk apl biasa.</string>
     <string name="permlab_bindAccessibilityService">terikat kepada perkhidmatan yang boleh diakses</string>
     <string name="permdesc_bindAccessibilityService">Membenarkan pemegang terikat dengan antara muka peringkat tertinggi bagi perkhidmatan yang boleh diakses. Tidak sekali-kali diperlukan untuk apl biasa.</string>
+    <string name="permlab_bindPrintService">terikat kepada perkhidmatan cetakan</string>
+    <string name="permdesc_bindPrintService">Membenarkan pemegang terikat dengan antara muka peringkat tertinggi bagi perkhidmatan cetakan. Tidak sekali-kali diperlukan untuk apl biasa.</string>
+    <string name="permlab_bindNfcService">terikat kepada perkhidmatan NFC</string>
+    <string name="permdesc_bindNfcService">Membenarkan pemegang untuk terikat kepada aplikasi yang mengikut kad NFC. Tidak sekali-kali diperlukan untuk apl normal.</string>
     <string name="permlab_bindTextService">terikat kepada perkhidmatan teks</string>
     <string name="permdesc_bindTextService">Membenarkan pemegang mengikat kepada antara muka peringkat atasan perkhidmatan teks(mis. PerkhidmatanPenyemakEjaan). Tidak seharusnya diperlukan untuk apl biasa.</string>
     <string name="permlab_bindVpnService">terikat kepada perkhidmatan VPN</string>
@@ -391,6 +368,8 @@
     <string name="permdesc_bindRemoteViews">Membenarkan pemegang terikat dengan antara muka peringkat tertinggi bagi perkhidmatan widget. Tidak sekali-kali diperlukan untuk apl biasa.</string>
     <string name="permlab_bindDeviceAdmin">berinteraksi dengan pentadbir peranti</string>
     <string name="permdesc_bindDeviceAdmin">Membenarkan pemegang menghantar tujuan kepada pentadbir peranti. Tidak sekali-kali diperlukan untuk apl biasa.</string>
+    <string name="permlab_manageDeviceAdmins">tambah atau alih keluar pentadbir peranti</string>
+    <string name="permdesc_manageDeviceAdmins">Membenarkan pemegang menambah atau mengalih keluar pentadbir peranti aktif. Tidak sekali-kali diperlukan untuk apl biasa.</string>
     <string name="permlab_setOrientation">tukar orientasi skrin</string>
     <string name="permdesc_setOrientation">Membenarkan apl untuk menukar putaran skrin pada bila-bila masa. Tidak sekali-kali diperlukan untuk apl biasa.</string>
     <string name="permlab_setPointerSpeed">tukar kelajuan penuding</string>
@@ -475,12 +454,20 @@
     <string name="permdesc_configureWifiDisplay">Membenarkan apl mengkonfigurasi dan menyambung ke paparan Wifi.</string>
     <string name="permlab_controlWifiDisplay">kawal paparan Wifi</string>
     <string name="permdesc_controlWifiDisplay">Membenarkan apl mengawal ciri tahap rendah paparan Wifi.</string>
+    <string name="permlab_captureAudioOutput">tangkap output audio</string>
+    <string name="permdesc_captureAudioOutput">Membenarkan apl menangkap dan mengubah hala output audio.</string>
+    <string name="permlab_captureVideoOutput">tangkap output video</string>
+    <string name="permdesc_captureVideoOutput">Membenarkan apl menangkap dan mengubah hala output video.</string>
+    <string name="permlab_captureSecureVideoOutput">tangkap output video selamat</string>
+    <string name="permdesc_captureSecureVideoOutput">Membenarkan apl menangkap dan mengubah hala output video selamat.</string>
     <string name="permlab_modifyAudioSettings">tukar tetapan audio anda</string>
     <string name="permdesc_modifyAudioSettings">Membenarkan apl untuk mengubah suai tetapan audio global seperti kelantangan dan pembesar suara mana digunakan untuk output.</string>
     <string name="permlab_recordAudio">rakam audio</string>
     <string name="permdesc_recordAudio">Membenarkan apl untuk merakam audio menggunakan mikrofon. Kebenaran ini membenarkan apl untuk merakam audio pada bila-bila masa tanpa pengesahan anda.</string>
     <string name="permlab_camera">ambil gambar dan video</string>
     <string name="permdesc_camera">Membenarkan apl mengambil gambar dan video menggunakan kamera. Kebenaran ini membenarkan apl untuk menggunakan kamera pada bila-bila masa tanpa pengesahan anda.</string>
+    <string name="permlab_cameraDisableTransmitLed">lumpuhkan LED penunjuk penghantaran semasa kamera sedang digunakan</string>
+    <string name="permdesc_cameraDisableTransmitLed">Membenarkan aplikasi sistem yang diprapasang untuk melumpuhkan LED penunjuk penggunaan kamera.</string>
     <string name="permlab_brick">lumpuhkan telefon secara kekal</string>
     <string name="permdesc_brick">Membenarkan apl melumpuhkan keseluruhan telefon secara kekal. Ini amat berbahaya.</string>
     <string name="permlab_reboot">paksa telefon but semula</string>
@@ -601,6 +588,8 @@
     <string name="permdesc_sdcardWrite">Membenarkan apl menulis ke kad SD.</string>
     <string name="permlab_mediaStorageWrite">ubh suai/pdm kdg strn mdia dlm</string>
     <string name="permdesc_mediaStorageWrite">Membenarkan apl mengubah suai kandungan storan media dalaman.</string>
+    <string name="permlab_manageDocs">urus storan dokumen</string>
+    <string name="permdesc_manageDocs">Membenarkan apl mengurus storan dokumen.</string>
     <string name="permlab_sdcardAccessAll">mengakses storan luaran untuk semua pengguna</string>
     <string name="permdesc_sdcardAccessAll">Membenarkan apl untuk mengakses storan luaran untuk semua pengguna.</string>
     <string name="permlab_cache_filesystem">akses sistem fail cache</string>
@@ -613,6 +602,16 @@
     <string name="permdesc_manageNetworkPolicy">Membenarkan apl mengurus dasar rangkaian dan menentukan peraturan khusus apl.</string>
     <string name="permlab_modifyNetworkAccounting">ubah suai perakaunan penggunaan rangkaian</string>
     <string name="permdesc_modifyNetworkAccounting">Membenarkan apl untuk mengubah suai bagaimana penggunaan rangkaian diambil kira terhadap apl. Bukan untuk digunakan oleh apl biasa.</string>
+    <string name="permlab_markNetworkSocket">ubah tanda soket</string>
+    <string name="permdesc_markNetworkSocket">Membenarkan apl mengubah suai tanda soket untuk laluan</string>
+    <string name="permlab_accessNotifications">pemberitahuan akses</string>
+    <string name="permdesc_accessNotifications">Membenarkan apl untuk mendapatkan semula, memeriksa dan memadam bersih pemberitahuan, termasuk yang disiarkan oleh apl lain.</string>
+    <string name="permlab_bindNotificationListenerService">ikat kepada perkhidmatan pendengar pemberitahuan</string>
+    <string name="permdesc_bindNotificationListenerService">Membenarkan pemegang terikat dengan antara muka peringkat tertinggi bagi perkhidmatan pendengar pemberitahuan. Tidak sekali-kali diperlukan untuk apl biasa.</string>
+    <string name="permlab_invokeCarrierSetup">gunakan apl konfigurasi yang disediakan oleh pembawa</string>
+    <string name="permdesc_invokeCarrierSetup">Membenarkan pemegang menggunakan apl konfigurasi yang diberikan oleh pembawa. Tidak sekali-kali diperlukan untuk apl biasa.</string>
+    <string name="permlab_accessNetworkConditions">dengar pemerhatian mengenai keadaan rangkaian</string>
+    <string name="permdesc_accessNetworkConditions">Membenarkan aplikasi mendengar pemerhatian tentang keadaan rangkaian. Tidak sekali-kali diperlukan untuk apl biasa.</string>
     <string name="policylab_limitPassword">Tetapkan peraturan kata laluan</string>
     <string name="policydesc_limitPassword">Mengawal panjang dan aksara yang dibenarkan dalam kata laluan buka kunci skrin.</string>
     <string name="policylab_watchLogin">Memantau percubaan buka kunci skrin</string>
@@ -677,7 +676,7 @@
     <string name="imProtocolYahoo">Yahoo</string>
     <string name="imProtocolSkype">Skype</string>
     <string name="imProtocolQq">QQ</string>
-    <string name="imProtocolGoogleTalk">Bual Google</string>
+    <string name="imProtocolGoogleTalk">Hangouts</string>
     <string name="imProtocolIcq">ICQ</string>
     <string name="imProtocolJabber">Jabber</string>
     <string name="imProtocolNetMeeting">NetMeeting</string>
@@ -779,6 +778,7 @@ Lawati "<b>google.com/accounts/recovery</b>.</string>
     <string name="lockscreen_access_pattern_cleared">Corak dipadamkan</string>
     <string name="lockscreen_access_pattern_cell_added">Sel ditambahkan</string>
     <string name="lockscreen_access_pattern_detected">Corak siap</string>
+    <string name="keyguard_accessibility_widget_changed">%1$s. Widget %2$d dari %3$d.</string>
     <string name="keyguard_accessibility_add_widget">Tambah widget.</string>
     <string name="keyguard_accessibility_widget_empty_slot">Kosong</string>
     <string name="keyguard_accessibility_unlock_area_expanded">Bahagian buka kunci dikembangkan.</string>
@@ -814,11 +814,12 @@ Lawati "<b>google.com/accounts/recovery</b>.</string>
     <string name="factorytest_reboot">But semula</string>
     <string name="js_dialog_title">"Halaman di '%s' berkata:"</string>
     <string name="js_dialog_title_default">JavaScript</string>
-    <string name="js_dialog_before_unload">"Navigasi keluar dari halaman ini?
+    <string name="js_dialog_before_unload_title">Sahkan Navigasi</string>
+    <string name="js_dialog_before_unload_positive_button">Tinggalkan Halaman ini</string>
+    <string name="js_dialog_before_unload_negative_button">Kekal di Halaman ini</string>
+    <string name="js_dialog_before_unload">"%s
 
-%s
-
-Sentuh OK untuk meneruskan, atau Batal untuk terus berada di halaman semasa."</string>
+Adakah anda pasti anda mahu menavigasi keluar dari halaman ini?"</string>
     <string name="save_password_label">Sahkan</string>
     <string name="double_tap_toast">Petua: Ketik dua kali untuk mengezum masuk dan keluar.</string>
     <string name="autofill_this_form">Auto isi</string>
@@ -912,9 +913,11 @@ Sentuh OK untuk meneruskan, atau Batal untuk terus berada di halaman semasa."</s
     <string name="editTextMenuTitle">Tindakan teks</string>
     <string name="low_internal_storage_view_title">Ruang storan semakin berkurangan</string>
     <string name="low_internal_storage_view_text">Beberapa fungsi sistem mungkin tidak berfungsi</string>
+    <string name="app_running_notification_title">%1$s sedang berjalan</string>
+    <string name="app_running_notification_text">Sentuh untuk maklumat lanjut atau untuk menghentikan apl.</string>
     <string name="loading">Memuatkan…</string>
-    <string name="capital_on">HIDUP</string>
-    <string name="capital_off">MATIKAN</string>
+    <string name="capital_on">❙</string>
+    <string name="capital_off">〇</string>
     <string name="whichApplication">Selesaikan tindakan menggunakan</string>
     <string name="alwaysUse">Gunakannya secara lalai untuk tindakan ini.</string>
     <string name="clearDefaultHintMsg">Padam bersih lalai dalam tetapan Sistem > Apl > Dimuat turun.</string>
@@ -1082,6 +1085,10 @@ Adakah anda mahu menutupnya?"</string>
     <string name="permdesc_copyProtectedData">Membenarkan apl untuk menggunakan perkhidmatan bekas lalai untuk menyalin kandungan. Bukan untuk digunakan oleh apl biasa.</string>
     <string name="permlab_route_media_output">Buat laluan output media</string>
     <string name="permdesc_route_media_output">Membenarkan apl untuk membuat laluan output media ke peranti luaran lain.</string>
+    <string name="permlab_access_keyguard_secure_storage">Akses storan selamat pengawal kekunci</string>
+    <string name="permdesc_access_keyguard_secure_storage">Membenarkan aplikasi mengakses storan selamat pengawal kekunci.</string>
+    <string name="permlab_control_keyguard">Kawal paparkan dan sembunyikan pengawal kekunci</string>
+    <string name="permdesc_control_keyguard">Membenarkan aplikasi untuk mengawal pengawal kekunci.</string>
     <string name="tutorial_double_tap_to_zoom_message_short">Sentuh dua kali untuk mendapatkan kawalan zum</string>
     <string name="gadget_host_error_inflating">Tidak dapat menambahkan widget.</string>
     <string name="ime_action_go">Pergi</string>
@@ -1108,6 +1115,7 @@ untuk akaun %s."</string>
     <string name="accessibility_binding_label">Kebolehaksesan</string>
     <string name="wallpaper_binding_label">Kertas dinding</string>
     <string name="chooser_wallpaper">Tukar kertas dinding</string>
+    <string name="notification_listener_binding_label">Pendengar pemberitahuan</string>
     <string name="vpn_title">VPN diaktifkan</string>
     <string name="vpn_title_long">VPN diaktifkan oleh %s</string>
     <string name="vpn_text">Sentuh untuk mengurus rangkaian.</string>
@@ -1115,7 +1123,7 @@ untuk akaun %s."</string>
     <string name="vpn_lockdown_connecting">VPN sentiasa hidup sedang disambungkan...</string>
     <string name="vpn_lockdown_connected">VPN sentiasa hidup telah disambungkan</string>
     <string name="vpn_lockdown_error">Ralat VPN sentiasa hidup</string>
-    <string name="vpn_lockdown_reset">Sentuh untuk menetapkan semula sambungan</string>
+    <string name="vpn_lockdown_config">Sentuh untuk mengkonfigurasikan</string>
     <string name="upload_file">Pilih fail</string>
     <string name="no_file_chosen">Tiada fail dipilih</string>
     <string name="reset">Tetapkan semula</string>
@@ -1202,6 +1210,8 @@ untuk akaun %s."</string>
     <string name="action_bar_home_description">Navigasi laman utama</string>
     <string name="action_bar_up_description">Navigasi ke atas</string>
     <string name="action_menu_overflow_description">Lagi pilihan</string>
+    <string name="action_bar_home_description_format">%1$s, %2$s</string>
+    <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
     <string name="storage_internal">Storan dalaman</string>
     <string name="storage_sd_card">Kad SD</string>
     <string name="storage_usb">Storan USB</string>
@@ -1237,7 +1247,6 @@ untuk akaun %s."</string>
     <string name="activity_chooser_view_see_all">Lihat semua</string>
     <string name="activity_chooser_view_dialog_title_default">Pilih aktiviti</string>
     <string name="share_action_provider_share_with">Kongsi dengan</string>
-    <string name="status_bar_device_locked">Peranti dikunci.</string>
     <string name="list_delimeter">", "</string>
     <string name="sending">Menghantar…</string>
     <string name="launchBrowserDefault">Lancarkan Penyemak Imbas?</string>
@@ -1250,25 +1259,25 @@ untuk akaun %s."</string>
     <string name="default_media_route_name_hdmi">HDMI</string>
     <string name="default_audio_route_category_name">Sistem</string>
     <string name="bluetooth_a2dp_audio_route_name">Audio Bluetooth</string>
-    <string name="media_route_chooser_grouping_done">Selesai</string>
+    <string name="wireless_display_route_description">Paparan wayarles</string>
     <string name="media_route_button_content_description">Output media</string>
     <string name="media_route_status_scanning">Mengimbas…</string>
     <string name="media_route_status_connecting">Menyambung...</string>
     <string name="media_route_status_available">Tersedia</string>
     <string name="media_route_status_not_available">Tidak tersedia</string>
+    <string name="media_route_status_in_use">Sedang digunakan</string>
     <string name="display_manager_built_in_display_name">Skrin Terbina Dalam</string>
     <string name="display_manager_hdmi_display_name">Skrin HDMI</string>
     <string name="display_manager_overlay_display_name">Tindih #%1$d</string>
     <string name="display_manager_overlay_display_title">%1$s: %2$dx%3$d, %4$d dpi</string>
-    <string name="wifi_display_notification_title">Paparan wayarles disambungkan</string>
-    <string name="wifi_display_notification_message">Skrin ini ditunjukkan pada peranti lain</string>
+    <string name="display_manager_overlay_display_secure_suffix">, selamat</string>
     <string name="wifi_display_notification_disconnect">Putus sambungan</string>
     <string name="kg_emergency_call_label">Panggilan kecemasan</string>
     <string name="kg_forgot_pattern_button_text">Lupa Corak</string>
     <string name="kg_wrong_pattern">Corak Salah</string>
     <string name="kg_wrong_password">Kata Laluan Salah</string>
     <string name="kg_wrong_pin">PIN salah</string>
-    <string name="kg_too_many_failed_attempts_countdown">Cuba lagi dalam %d saat.</string>
+    <string name="kg_too_many_failed_attempts_countdown">Cuba lagi dalam %1$d saat.</string>
     <string name="kg_pattern_instructions">Lukiskan corak anda</string>
     <string name="kg_sim_pin_instructions">Masukkan PIN SIM</string>
     <string name="kg_pin_instructions">Masukkan PIN</string>
@@ -1307,11 +1316,25 @@ Cuba lagi dalam %d saat."</string>
  Cuba lagi dalam %d saat."</string>
     <string name="kg_text_message_separator">" — "</string>
     <string name="kg_reordering_delete_drop_target_text">Alih keluar</string>
-    <string name="safe_media_volume_warning">"Tingkatkan kelantangan di atas tahap selamat?
+    <string name="safe_media_volume_warning">"Tingkatkan kelantangan melebihi aras yang dicadangkan?
 Mendengar pada kelantangan tinggi untuk tempoh yang panjang boleh merosakkan pendengaran anda."</string>
     <string name="continue_to_enable_accessibility">Teruskan menahan dengan dua jari untuk mendayakan kebolehcapaian.</string>
     <string name="accessibility_enabled">Kebolehcapaian didayakan.</string>
     <string name="enable_accessibility_canceled">Kebolehcapaian dibatalkan.</string>
     <string name="user_switched">Pengguna semasa %1$s.</string>
     <string name="owner_name">Pemilik</string>
+    <string name="error_message_title">Ralat</string>
+    <string name="app_no_restricted_accounts">Apl ini tidak menyokong akaun untuk profil yang disekat</string>
+    <string name="app_not_found">Tidak menemui aplikasi untuk mengendalikan tindakan ini</string>
+    <string name="revoke">Batalkan</string>
+    <string name="write_fail_reason_cancelled">Dibatalkan</string>
+    <string name="write_fail_reason_cannot_write">Ralat menulis kandungan</string>
+    <string name="restr_pin_enter_pin">Masukkan PIN</string>
+    <string name="restr_pin_enter_old_pin">PIN semasa</string>
+    <string name="restr_pin_enter_new_pin">PIN baharu</string>
+    <string name="restr_pin_confirm_pin">Sahkan PIN baharu</string>
+    <string name="restr_pin_create_pin">Buat PIN untuk mengubah suai sekatan</string>
+    <string name="restr_pin_error_doesnt_match">PIN tidak sepadan. Cuba lagi.</string>
+    <string name="restr_pin_error_too_short">PIN terlalu pendek. Mesti sekurang-kurangnya 4 angka.</string>
+    <string name="immersive_mode_confirmation">Leret bhg tepi skrin utk serlah bar</string>
 </resources>

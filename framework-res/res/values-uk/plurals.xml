@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">У вас залишилося стільки спроб: %d. Після цього SIM-карту буде заблоковано.</item>
+        <item quantity="one">У вас залишилась %d спроба. Після цього SIM-карту буде заблоковано.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d сек. тому</item>
         <item quantity="one">1 сек. тому</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d з %2$d</item>
         <item quantity="one">1 збіг</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Повтор за %d с</item>
+        <item quantity="one">Повтор за 1 с</item>
     </plurals>
 </resources>

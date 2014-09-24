@@ -92,8 +92,6 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .end local v2           #e:Ljava/lang/IllegalArgumentException;
-    :goto_1
     move-object v1, v0
 
     .line 72
@@ -103,6 +101,7 @@
 
     .line 67
     .end local v1           #agc:Landroid/media/audiofx/AutomaticGainControl;
+    .end local v2           #e:Ljava/lang/IllegalArgumentException;
     .restart local v0       #agc:Landroid/media/audiofx/AutomaticGainControl;
     :catch_1
     move-exception v2
@@ -115,16 +114,17 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_1
+    move-object v1, v0
 
     .line 72
-    .end local v2           #e:Ljava/lang/UnsupportedOperationException;
-    :catchall_0
-    move-exception v3
-
-    goto :goto_1
+    .end local v0           #agc:Landroid/media/audiofx/AutomaticGainControl;
+    .restart local v1       #agc:Landroid/media/audiofx/AutomaticGainControl;
+    goto :goto_0
 
     .line 69
+    .end local v1           #agc:Landroid/media/audiofx/AutomaticGainControl;
+    .end local v2           #e:Ljava/lang/UnsupportedOperationException;
+    .restart local v0       #agc:Landroid/media/audiofx/AutomaticGainControl;
     :catch_2
     move-exception v2
 
@@ -138,7 +138,24 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_1
+    move-object v1, v0
+
+    .line 72
+    .end local v0           #agc:Landroid/media/audiofx/AutomaticGainControl;
+    .restart local v1       #agc:Landroid/media/audiofx/AutomaticGainControl;
+    goto :goto_0
+
+    .end local v1           #agc:Landroid/media/audiofx/AutomaticGainControl;
+    .end local v2           #e:Ljava/lang/RuntimeException;
+    .restart local v0       #agc:Landroid/media/audiofx/AutomaticGainControl;
+    :catchall_0
+    move-exception v3
+
+    move-object v1, v0
+
+    .end local v0           #agc:Landroid/media/audiofx/AutomaticGainControl;
+    .restart local v1       #agc:Landroid/media/audiofx/AutomaticGainControl;
+    goto :goto_0
 .end method
 
 .method public static isAvailable()Z

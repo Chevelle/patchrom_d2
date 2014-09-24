@@ -4,6 +4,8 @@
 
 
 # instance fields
+.field private mMatrix:Landroid/graphics/Matrix;
+
 .field native_instance:I
 
 
@@ -12,13 +14,13 @@
     .locals 0
 
     .prologue
-    .line 28
+    .line 30
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 29
+    .line 31
     invoke-direct {p0}, Landroid/graphics/Camera;->nativeConstructor()V
 
-    .line 30
+    .line 32
     return-void
 .end method
 
@@ -41,13 +43,46 @@
     .parameter "canvas"
 
     .prologue
-    .line 150
+    .line 152
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->isHardwareAccelerated()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 153
+    iget-object v0, p0, Landroid/graphics/Camera;->mMatrix:Landroid/graphics/Matrix;
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Landroid/graphics/Matrix;
+
+    invoke-direct {v0}, Landroid/graphics/Matrix;-><init>()V
+
+    iput-object v0, p0, Landroid/graphics/Camera;->mMatrix:Landroid/graphics/Matrix;
+
+    .line 154
+    :cond_0
+    iget-object v0, p0, Landroid/graphics/Camera;->mMatrix:Landroid/graphics/Matrix;
+
+    invoke-virtual {p0, v0}, Landroid/graphics/Camera;->getMatrix(Landroid/graphics/Matrix;)V
+
+    .line 155
+    iget-object v0, p0, Landroid/graphics/Camera;->mMatrix:Landroid/graphics/Matrix;
+
+    invoke-virtual {p1, v0}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
+
+    .line 159
+    :goto_0
+    return-void
+
+    .line 157
+    :cond_1
     iget v0, p1, Landroid/graphics/Canvas;->mNativeCanvas:I
 
     invoke-direct {p0, v0}, Landroid/graphics/Camera;->nativeApplyToCanvas(I)V
 
-    .line 151
-    return-void
+    goto :goto_0
 .end method
 
 .method public native dotWithNormal(FFF)F
@@ -62,19 +97,19 @@
     .end annotation
 
     .prologue
-    .line 157
+    .line 165
     :try_start_0
     invoke-direct {p0}, Landroid/graphics/Camera;->nativeDestructor()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 159
+    .line 167
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 161
+    .line 169
     return-void
 
-    .line 159
+    .line 167
     :catchall_0
     move-exception v0
 
@@ -97,12 +132,12 @@
     .parameter "matrix"
 
     .prologue
-    .line 140
+    .line 142
     iget v0, p1, Landroid/graphics/Matrix;->native_instance:I
 
     invoke-direct {p0, v0}, Landroid/graphics/Camera;->nativeGetMatrix(I)V
 
-    .line 141
+    .line 143
     return-void
 .end method
 

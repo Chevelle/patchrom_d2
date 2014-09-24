@@ -820,14 +820,14 @@
     .parameter "pointer"
 
     .prologue
-    .line 975
+    .line 959
     invoke-virtual {p2}, Ljava/nio/Buffer;->remaining()I
 
     move-result v0
 
     invoke-static {p0, p1, p2, v0}, Landroid/opengl/GLES10;->glNormalPointerBounds(IILjava/nio/Buffer;I)V
 
-    .line 981
+    .line 965
     const/16 v0, 0x1406
 
     if-eq p0, v0, :cond_0
@@ -847,10 +847,10 @@
     :cond_0
     if-ltz p1, :cond_1
 
-    .line 986
+    .line 970
     sput-object p2, Landroid/opengl/GLES10;->_normalPointer:Ljava/nio/Buffer;
 
-    .line 988
+    .line 972
     :cond_1
     return-void
 .end method
@@ -929,14 +929,14 @@
     .parameter "pointer"
 
     .prologue
-    .line 1168
+    .line 1152
     invoke-virtual {p3}, Ljava/nio/Buffer;->remaining()I
 
     move-result v0
 
     invoke-static {p0, p1, p2, p3, v0}, Landroid/opengl/GLES10;->glTexCoordPointerBounds(IIILjava/nio/Buffer;I)V
 
-    .line 1175
+    .line 1159
     const/4 v0, 0x2
 
     if-eq p0, v0, :cond_0
@@ -969,10 +969,10 @@
     :cond_1
     if-ltz p2, :cond_2
 
-    .line 1183
+    .line 1167
     sput-object p3, Landroid/opengl/GLES10;->_texCoordPointer:Ljava/nio/Buffer;
 
-    .line 1185
+    .line 1169
     :cond_2
     return-void
 .end method
@@ -1024,14 +1024,14 @@
     .parameter "pointer"
 
     .prologue
-    .line 1313
+    .line 1297
     invoke-virtual {p3}, Ljava/nio/Buffer;->remaining()I
 
     move-result v0
 
     invoke-static {p0, p1, p2, p3, v0}, Landroid/opengl/GLES10;->glVertexPointerBounds(IIILjava/nio/Buffer;I)V
 
-    .line 1320
+    .line 1304
     const/4 v0, 0x2
 
     if-eq p0, v0, :cond_0
@@ -1064,10 +1064,10 @@
     :cond_1
     if-ltz p2, :cond_2
 
-    .line 1328
+    .line 1312
     sput-object p3, Landroid/opengl/GLES10;->_vertexPointer:Ljava/nio/Buffer;
 
-    .line 1330
+    .line 1314
     :cond_2
     return-void
 .end method

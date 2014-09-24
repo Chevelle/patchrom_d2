@@ -2,9 +2,6 @@
 .super Ljava/lang/Object;
 .source "VelocityTracker.java"
 
-# interfaces
-.implements Landroid/util/Poolable;
-
 
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
@@ -13,24 +10,14 @@
     }
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Ljava/lang/Object;",
-        "Landroid/util/Poolable",
-        "<",
-        "Landroid/view/VelocityTracker;",
-        ">;"
-    }
-.end annotation
-
 
 # static fields
 .field private static final ACTIVE_POINTER_ID:I = -0x1
 
-.field private static final sPool:Landroid/util/Pool;
+.field private static final sPool:Landroid/util/Pools$SynchronizedPool;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/util/Pool",
+            "Landroid/util/Pools$SynchronizedPool",
             "<",
             "Landroid/view/VelocityTracker;",
             ">;"
@@ -40,10 +27,6 @@
 
 
 # instance fields
-.field private mIsPooled:Z
-
-.field private mNext:Landroid/view/VelocityTracker;
-
 .field private mPtr:I
 
 .field private final mStrategy:Ljava/lang/String;
@@ -54,22 +37,14 @@
     .locals 2
 
     .prologue
-    .line 35
-    new-instance v0, Landroid/view/VelocityTracker$1;
-
-    invoke-direct {v0}, Landroid/view/VelocityTracker$1;-><init>()V
+    .line 32
+    new-instance v0, Landroid/util/Pools$SynchronizedPool;
 
     const/4 v1, 0x2
 
-    invoke-static {v0, v1}, Landroid/util/Pools;->finitePool(Landroid/util/PoolableManager;I)Landroid/util/Pool;
+    invoke-direct {v0, v1}, Landroid/util/Pools$SynchronizedPool;-><init>(I)V
 
-    move-result-object v0
-
-    invoke-static {v0}, Landroid/util/Pools;->synchronizedPool(Landroid/util/Pool;)Landroid/util/Pool;
-
-    move-result-object v0
-
-    sput-object v0, Landroid/view/VelocityTracker;->sPool:Landroid/util/Pool;
+    sput-object v0, Landroid/view/VelocityTracker;->sPool:Landroid/util/Pools$SynchronizedPool;
 
     return-void
 .end method
@@ -79,32 +54,20 @@
     .parameter "strategy"
 
     .prologue
-    .line 133
+    .line 89
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 134
+    .line 90
     invoke-static {p1}, Landroid/view/VelocityTracker;->nativeInitialize(Ljava/lang/String;)I
 
     move-result v0
 
     iput v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
-    .line 135
+    .line 91
     iput-object p1, p0, Landroid/view/VelocityTracker;->mStrategy:Ljava/lang/String;
 
-    .line 136
-    return-void
-.end method
-
-.method synthetic constructor <init>(Ljava/lang/String;Landroid/view/VelocityTracker$1;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 34
-    invoke-direct {p0, p1}, Landroid/view/VelocityTracker;-><init>(Ljava/lang/String;)V
-
+    .line 92
     return-void
 .end method
 
@@ -133,19 +96,36 @@
 .end method
 
 .method public static obtain()Landroid/view/VelocityTracker;
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 76
-    sget-object v0, Landroid/view/VelocityTracker;->sPool:Landroid/util/Pool;
+    .line 58
+    sget-object v1, Landroid/view/VelocityTracker;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    invoke-interface {v0}, Landroid/util/Pool;->acquire()Landroid/util/Poolable;
+    invoke-virtual {v1}, Landroid/util/Pools$SynchronizedPool;->acquire()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/VelocityTracker;
 
+    .line 59
+    .local v0, instance:Landroid/view/VelocityTracker;
+    if-eqz v0, :cond_0
+
+    .end local v0           #instance:Landroid/view/VelocityTracker;
+    :goto_0
     return-object v0
+
+    .restart local v0       #instance:Landroid/view/VelocityTracker;
+    :cond_0
+    new-instance v0, Landroid/view/VelocityTracker;
+
+    .end local v0           #instance:Landroid/view/VelocityTracker;
+    const/4 v1, 0x0
+
+    invoke-direct {v0, v1}, Landroid/view/VelocityTracker;-><init>(Ljava/lang/String;)V
+
+    goto :goto_0
 .end method
 
 .method public static obtain(Ljava/lang/String;)Landroid/view/VelocityTracker;
@@ -153,15 +133,15 @@
     .parameter "strategy"
 
     .prologue
-    .line 89
+    .line 72
     if-nez p0, :cond_0
 
-    .line 90
+    .line 73
     invoke-static {}, Landroid/view/VelocityTracker;->obtain()Landroid/view/VelocityTracker;
 
     move-result-object v0
 
-    .line 92
+    .line 75
     :goto_0
     return-object v0
 
@@ -180,10 +160,10 @@
     .parameter "event"
 
     .prologue
-    .line 167
+    .line 123
     if-nez p1, :cond_0
 
-    .line 168
+    .line 124
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "event must not be null"
@@ -192,13 +172,13 @@
 
     throw v0
 
-    .line 170
+    .line 126
     :cond_0
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     invoke-static {v0, p1}, Landroid/view/VelocityTracker;->nativeAddMovement(ILandroid/view/MotionEvent;)V
 
-    .line 171
+    .line 127
     return-void
 .end method
 
@@ -206,12 +186,12 @@
     .locals 1
 
     .prologue
-    .line 154
+    .line 110
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     invoke-static {v0}, Landroid/view/VelocityTracker;->nativeClear(I)V
 
-    .line 155
+    .line 111
     return-void
 .end method
 
@@ -220,14 +200,14 @@
     .parameter "units"
 
     .prologue
-    .line 180
+    .line 136
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     const v1, 0x7f7fffff
 
     invoke-static {v0, p1, v1}, Landroid/view/VelocityTracker;->nativeComputeCurrentVelocity(IIF)V
 
-    .line 181
+    .line 137
     return-void
 .end method
 
@@ -237,12 +217,12 @@
     .parameter "maxVelocity"
 
     .prologue
-    .line 197
+    .line 153
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     invoke-static {v0, p1, p2}, Landroid/view/VelocityTracker;->nativeComputeCurrentVelocity(IIF)V
 
-    .line 198
+    .line 154
     return-void
 .end method
 
@@ -255,32 +235,32 @@
     .end annotation
 
     .prologue
-    .line 141
+    .line 97
     :try_start_0
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     if-eqz v0, :cond_0
 
-    .line 142
+    .line 98
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     invoke-static {v0}, Landroid/view/VelocityTracker;->nativeDispose(I)V
 
-    .line 143
+    .line 99
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/view/VelocityTracker;->mPtr:I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 146
+    .line 102
     :cond_0
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 148
+    .line 104
     return-void
 
-    .line 146
+    .line 102
     :catchall_0
     move-exception v0
 
@@ -295,10 +275,10 @@
     .parameter "outEstimator"
 
     .prologue
-    .line 257
+    .line 213
     if-nez p2, :cond_0
 
-    .line 258
+    .line 214
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v1, "outEstimator must not be null"
@@ -307,7 +287,7 @@
 
     throw v0
 
-    .line 260
+    .line 216
     :cond_0
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
@@ -318,33 +298,11 @@
     return v0
 .end method
 
-.method public getNextPoolable()Landroid/view/VelocityTracker;
-    .locals 1
-
-    .prologue
-    .line 116
-    iget-object v0, p0, Landroid/view/VelocityTracker;->mNext:Landroid/view/VelocityTracker;
-
-    return-object v0
-.end method
-
-.method public bridge synthetic getNextPoolable()Ljava/lang/Object;
-    .locals 1
-
-    .prologue
-    .line 34
-    invoke-virtual {p0}, Landroid/view/VelocityTracker;->getNextPoolable()Landroid/view/VelocityTracker;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
 .method public getXVelocity()F
     .locals 2
 
     .prologue
-    .line 207
+    .line 163
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     const/4 v1, -0x1
@@ -361,7 +319,7 @@
     .parameter "id"
 
     .prologue
-    .line 228
+    .line 184
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     invoke-static {v0, p1}, Landroid/view/VelocityTracker;->nativeGetXVelocity(II)F
@@ -375,7 +333,7 @@
     .locals 2
 
     .prologue
-    .line 217
+    .line 173
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     const/4 v1, -0x1
@@ -392,7 +350,7 @@
     .parameter "id"
 
     .prologue
-    .line 239
+    .line 195
     iget v0, p0, Landroid/view/VelocityTracker;->mPtr:I
 
     invoke-static {v0, p1}, Landroid/view/VelocityTracker;->nativeGetYVelocity(II)F
@@ -402,69 +360,24 @@
     return v0
 .end method
 
-.method public isPooled()Z
-    .locals 1
-
-    .prologue
-    .line 123
-    iget-boolean v0, p0, Landroid/view/VelocityTracker;->mIsPooled:Z
-
-    return v0
-.end method
-
 .method public recycle()V
     .locals 1
 
     .prologue
-    .line 100
+    .line 83
     iget-object v0, p0, Landroid/view/VelocityTracker;->mStrategy:Ljava/lang/String;
 
     if-nez v0, :cond_0
 
-    .line 101
-    sget-object v0, Landroid/view/VelocityTracker;->sPool:Landroid/util/Pool;
+    .line 84
+    invoke-virtual {p0}, Landroid/view/VelocityTracker;->clear()V
 
-    invoke-interface {v0, p0}, Landroid/util/Pool;->release(Landroid/util/Poolable;)V
+    .line 85
+    sget-object v0, Landroid/view/VelocityTracker;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    .line 103
+    invoke-virtual {v0, p0}, Landroid/util/Pools$SynchronizedPool;->release(Ljava/lang/Object;)Z
+
+    .line 87
     :cond_0
-    return-void
-.end method
-
-.method public setNextPoolable(Landroid/view/VelocityTracker;)V
-    .locals 0
-    .parameter "element"
-
-    .prologue
-    .line 109
-    iput-object p1, p0, Landroid/view/VelocityTracker;->mNext:Landroid/view/VelocityTracker;
-
-    .line 110
-    return-void
-.end method
-
-.method public bridge synthetic setNextPoolable(Ljava/lang/Object;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    check-cast p1, Landroid/view/VelocityTracker;
-
-    .end local p1
-    invoke-virtual {p0, p1}, Landroid/view/VelocityTracker;->setNextPoolable(Landroid/view/VelocityTracker;)V
-
-    return-void
-.end method
-
-.method public setPooled(Z)V
-    .locals 0
-    .parameter "isPooled"
-
-    .prologue
-    .line 130
-    iput-boolean p1, p0, Landroid/view/VelocityTracker;->mIsPooled:Z
-
-    .line 131
     return-void
 .end method

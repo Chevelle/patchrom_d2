@@ -90,27 +90,20 @@
 
     .line 78
     :cond_2
-    invoke-virtual {p4}, Landroid/view/KeyEvent;->isAltPressed()Z
-
-    move-result v4
-
-    if-nez v4, :cond_3
-
     const/4 v4, 0x2
 
-    invoke-static {p2, v4}, Landroid/text/method/BaseKeyListener;->getMetaState(Ljava/lang/CharSequence;I)I
+    invoke-static {p2, v4, p4}, Landroid/text/method/BaseKeyListener;->getMetaState(Ljava/lang/CharSequence;ILandroid/view/KeyEvent;)I
 
     move-result v4
 
-    if-ne v4, v3, :cond_4
+    if-ne v4, v3, :cond_3
 
     .line 79
-    :cond_3
     invoke-direct {p0, p1, p2}, Landroid/text/method/BaseKeyListener;->deleteLine(Landroid/view/View;Landroid/text/Editable;)Z
 
     move-result v4
 
-    if-eqz v4, :cond_4
+    if-eqz v4, :cond_3
 
     move v2, v3
 
@@ -118,29 +111,29 @@
     goto :goto_0
 
     .line 85
-    :cond_4
+    :cond_3
     invoke-static {p2}, Landroid/text/Selection;->getSelectionEnd(Ljava/lang/CharSequence;)I
 
     move-result v1
 
     .line 87
     .local v1, start:I
-    if-nez p5, :cond_5
+    if-nez p5, :cond_4
 
     invoke-virtual {p4}, Landroid/view/KeyEvent;->isShiftPressed()Z
 
     move-result v4
 
-    if-nez v4, :cond_5
+    if-nez v4, :cond_4
 
     invoke-static {p2, v3}, Landroid/text/method/BaseKeyListener;->getMetaState(Ljava/lang/CharSequence;I)I
 
     move-result v4
 
-    if-ne v4, v3, :cond_6
+    if-ne v4, v3, :cond_5
 
     .line 89
-    :cond_5
+    :cond_4
     invoke-static {p2, v1}, Landroid/text/TextUtils;->getOffsetAfter(Ljava/lang/CharSequence;I)I
 
     move-result v0
@@ -168,7 +161,7 @@
 
     .line 91
     .end local v0           #end:I
-    :cond_6
+    :cond_5
     invoke-static {p2, v1}, Landroid/text/TextUtils;->getOffsetBefore(Ljava/lang/CharSequence;I)I
 
     move-result v0

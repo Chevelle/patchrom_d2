@@ -72,7 +72,7 @@
 .method public constructor <init>(Landroid/content/Context;I)V
     .locals 2
     .parameter "context"
-    .parameter "textViewResourceId"
+    .parameter "resource"
 
     .prologue
     .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
@@ -243,7 +243,7 @@
 .method public constructor <init>(Landroid/content/Context;ILjava/util/List;)V
     .locals 2
     .parameter "context"
-    .parameter "textViewResourceId"
+    .parameter "resource"
     .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -288,7 +288,7 @@
 .method public constructor <init>(Landroid/content/Context;I[Ljava/lang/Object;)V
     .locals 2
     .parameter "context"
-    .parameter "textViewResourceId"
+    .parameter "resource"
     .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {

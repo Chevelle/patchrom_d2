@@ -30,14 +30,14 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 43
+    .line 45
     invoke-static {v1}, Landroid/graphics/Picture;->nativeConstructor(I)I
 
     move-result v0
 
     invoke-direct {p0, v0, v1}, Landroid/graphics/Picture;-><init>(IZ)V
 
-    .line 44
+    .line 46
     return-void
 .end method
 
@@ -47,27 +47,27 @@
     .parameter "fromStream"
 
     .prologue
-    .line 151
+    .line 171
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 152
+    .line 172
     if-nez p1, :cond_0
 
-    .line 153
+    .line 173
     new-instance v0, Ljava/lang/RuntimeException;
 
     invoke-direct {v0}, Ljava/lang/RuntimeException;-><init>()V
 
     throw v0
 
-    .line 155
+    .line 175
     :cond_0
     iput p1, p0, Landroid/graphics/Picture;->mNativePicture:I
 
-    .line 156
+    .line 176
     iput-boolean p2, p0, Landroid/graphics/Picture;->createdFromStream:Z
 
-    .line 157
+    .line 177
     return-void
 .end method
 
@@ -78,7 +78,7 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 52
+    .line 54
     if-eqz p1, :cond_0
 
     iget v0, p1, Landroid/graphics/Picture;->mNativePicture:I
@@ -90,22 +90,24 @@
 
     invoke-direct {p0, v0, v1}, Landroid/graphics/Picture;-><init>(IZ)V
 
-    .line 53
+    .line 55
     return-void
 
     :cond_0
     move v0, v1
 
-    .line 52
+    .line 54
     goto :goto_0
 .end method
 
 .method public static createFromStream(Ljava/io/InputStream;)Landroid/graphics/Picture;
     .locals 3
     .parameter "stream"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 116
+    .line 130
     new-instance v0, Landroid/graphics/Picture;
 
     const/16 v1, 0x4000
@@ -152,14 +154,14 @@
     .parameter "height"
 
     .prologue
-    .line 63
+    .line 66
     iget v1, p0, Landroid/graphics/Picture;->mNativePicture:I
 
     invoke-static {v1, p1, p2}, Landroid/graphics/Picture;->nativeBeginRecording(III)I
 
     move-result v0
 
-    .line 64
+    .line 67
     .local v0, ni:I
     new-instance v1, Landroid/graphics/Picture$RecordingCanvas;
 
@@ -167,7 +169,7 @@
 
     iput-object v1, p0, Landroid/graphics/Picture;->mRecordingCanvas:Landroid/graphics/Canvas;
 
-    .line 65
+    .line 68
     iget-object v1, p0, Landroid/graphics/Picture;->mRecordingCanvas:Landroid/graphics/Canvas;
 
     return-object v1
@@ -178,15 +180,15 @@
     .parameter "canvas"
 
     .prologue
-    .line 100
+    .line 107
     iget-object v0, p0, Landroid/graphics/Picture;->mRecordingCanvas:Landroid/graphics/Canvas;
 
     if-eqz v0, :cond_0
 
-    .line 101
+    .line 108
     invoke-virtual {p0}, Landroid/graphics/Picture;->endRecording()V
 
-    .line 103
+    .line 110
     :cond_0
     iget v0, p1, Landroid/graphics/Canvas;->mNativeCanvas:I
 
@@ -194,7 +196,7 @@
 
     invoke-static {v0, v1}, Landroid/graphics/Picture;->nativeDraw(II)V
 
-    .line 104
+    .line 111
     return-void
 .end method
 
@@ -202,22 +204,22 @@
     .locals 1
 
     .prologue
-    .line 75
+    .line 78
     iget-object v0, p0, Landroid/graphics/Picture;->mRecordingCanvas:Landroid/graphics/Canvas;
 
     if-eqz v0, :cond_0
 
-    .line 76
+    .line 79
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/graphics/Picture;->mRecordingCanvas:Landroid/graphics/Canvas;
 
-    .line 77
+    .line 80
     iget v0, p0, Landroid/graphics/Picture;->mNativePicture:I
 
     invoke-static {v0}, Landroid/graphics/Picture;->nativeEndRecording(I)V
 
-    .line 79
+    .line 82
     :cond_0
     return-void
 .end method
@@ -231,7 +233,7 @@
     .end annotation
 
     .prologue
-    .line 141
+    .line 161
     :try_start_0
     iget v0, p0, Landroid/graphics/Picture;->mNativePicture:I
 
@@ -239,13 +241,13 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 143
+    .line 163
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 145
+    .line 165
     return-void
 
-    .line 143
+    .line 163
     :catchall_0
     move-exception v0
 
@@ -264,7 +266,7 @@
     .locals 1
 
     .prologue
-    .line 148
+    .line 168
     iget v0, p0, Landroid/graphics/Picture;->mNativePicture:I
 
     return v0
@@ -273,19 +275,21 @@
 .method public writeToStream(Ljava/io/OutputStream;)V
     .locals 2
     .parameter "stream"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 130
+    .line 150
     if-nez p1, :cond_0
 
-    .line 131
+    .line 151
     new-instance v0, Ljava/lang/NullPointerException;
 
     invoke-direct {v0}, Ljava/lang/NullPointerException;-><init>()V
 
     throw v0
 
-    .line 133
+    .line 153
     :cond_0
     iget v0, p0, Landroid/graphics/Picture;->mNativePicture:I
 
@@ -299,14 +303,14 @@
 
     if-nez v0, :cond_1
 
-    .line 135
+    .line 155
     new-instance v0, Ljava/lang/RuntimeException;
 
     invoke-direct {v0}, Ljava/lang/RuntimeException;-><init>()V
 
     throw v0
 
-    .line 137
+    .line 157
     :cond_1
     return-void
 .end method

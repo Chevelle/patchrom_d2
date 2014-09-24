@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/widget/AbsListView;->clearScrollingCache()V
+    value = Landroid/widget/AbsListView;->setFastScrollAlwaysVisible(Z)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,15 +20,20 @@
 # instance fields
 .field final synthetic this$0:Landroid/widget/AbsListView;
 
+.field final synthetic val$alwaysShow:Z
+
 
 # direct methods
-.method constructor <init>(Landroid/widget/AbsListView;)V
+.method constructor <init>(Landroid/widget/AbsListView;Z)V
     .locals 0
+    .parameter
     .parameter
 
     .prologue
-    .line 4768
+    .line 1280
     iput-object p1, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
+
+    iput-boolean p2, p0, Landroid/widget/AbsListView$2;->val$alwaysShow:Z
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -38,67 +43,17 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 2
 
     .prologue
-    const/4 v2, 0x0
-
-    .line 4770
+    .line 1283
     iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
 
-    iget-boolean v0, v0, Landroid/widget/AbsListView;->mCachingStarted:Z
+    iget-boolean v1, p0, Landroid/widget/AbsListView$2;->val$alwaysShow:Z
 
-    if-eqz v0, :cond_1
+    #calls: Landroid/widget/AbsListView;->setFastScrollerAlwaysVisibleUiThread(Z)V
+    invoke-static {v0, v1}, Landroid/widget/AbsListView;->access$100(Landroid/widget/AbsListView;Z)V
 
-    .line 4771
-    iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
-
-    iget-object v1, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
-
-    iput-boolean v2, v1, Landroid/widget/AbsListView;->mCachingActive:Z
-
-    iput-boolean v2, v0, Landroid/widget/AbsListView;->mCachingStarted:Z
-
-    .line 4772
-    iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
-
-    #calls: Landroid/widget/AbsListView;->setChildrenDrawnWithCacheEnabled(Z)V
-    invoke-static {v0, v2}, Landroid/widget/AbsListView;->access$3000(Landroid/widget/AbsListView;Z)V
-
-    .line 4773
-    iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
-
-    #getter for: Landroid/widget/AbsListView;->mPersistentDrawingCache:I
-    invoke-static {v0}, Landroid/widget/AbsListView;->access$3100(Landroid/widget/AbsListView;)I
-
-    move-result v0
-
-    and-int/lit8 v0, v0, 0x2
-
-    if-nez v0, :cond_0
-
-    .line 4774
-    iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
-
-    #calls: Landroid/widget/AbsListView;->setChildrenDrawingCacheEnabled(Z)V
-    invoke-static {v0, v2}, Landroid/widget/AbsListView;->access$3200(Landroid/widget/AbsListView;Z)V
-
-    .line 4776
-    :cond_0
-    iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
-
-    invoke-virtual {v0}, Landroid/widget/AbsListView;->isAlwaysDrawnWithCacheEnabled()Z
-
-    move-result v0
-
-    if-nez v0, :cond_1
-
-    .line 4777
-    iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
-
-    invoke-virtual {v0}, Landroid/widget/AbsListView;->invalidate()V
-
-    .line 4780
-    :cond_1
+    .line 1284
     return-void
 .end method

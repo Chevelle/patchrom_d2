@@ -20,10 +20,10 @@
     .parameter "rs"
 
     .prologue
-    .line 56
+    .line 57
     invoke-direct {p0, p1}, Landroid/renderscript/Program$BaseProgramBuilder;-><init>(Landroid/renderscript/RenderScript;)V
 
-    .line 57
+    .line 58
     return-void
 .end method
 
@@ -33,12 +33,12 @@
     .locals 9
 
     .prologue
-    .line 66
+    .line 67
     iget-object v7, p0, Landroid/renderscript/ProgramFragment$Builder;->mRS:Landroid/renderscript/RenderScript;
 
     invoke-virtual {v7}, Landroid/renderscript/RenderScript;->validate()V
 
-    .line 67
+    .line 68
     iget v7, p0, Landroid/renderscript/ProgramFragment$Builder;->mInputCount:I
 
     iget v8, p0, Landroid/renderscript/ProgramFragment$Builder;->mOutputCount:I
@@ -57,17 +57,17 @@
 
     new-array v6, v7, [I
 
-    .line 68
+    .line 69
     .local v6, tmp:[I
     iget v7, p0, Landroid/renderscript/ProgramFragment$Builder;->mTextureCount:I
 
     new-array v5, v7, [Ljava/lang/String;
 
-    .line 69
+    .line 70
     .local v5, texNames:[Ljava/lang/String;
     const/4 v2, 0x0
 
-    .line 71
+    .line 72
     .local v2, idx:I
     const/4 v0, 0x0
 
@@ -77,7 +77,7 @@
 
     if-ge v0, v7, :cond_0
 
-    .line 72
+    .line 73
     add-int/lit8 v3, v2, 0x1
 
     .end local v2           #idx:I
@@ -88,7 +88,7 @@
 
     aput v7, v6, v2
 
-    .line 73
+    .line 74
     add-int/lit8 v2, v3, 0x1
 
     .end local v3           #idx:I
@@ -105,12 +105,12 @@
 
     aput v7, v6, v3
 
-    .line 71
+    .line 72
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 75
+    .line 76
     :cond_0
     const/4 v0, 0x0
 
@@ -119,7 +119,7 @@
 
     if-ge v0, v7, :cond_1
 
-    .line 76
+    .line 77
     add-int/lit8 v3, v2, 0x1
 
     .end local v2           #idx:I
@@ -130,7 +130,7 @@
 
     aput v7, v6, v2
 
-    .line 77
+    .line 78
     add-int/lit8 v2, v3, 0x1
 
     .end local v3           #idx:I
@@ -147,12 +147,12 @@
 
     aput v7, v6, v3
 
-    .line 75
+    .line 76
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 79
+    .line 80
     :cond_1
     const/4 v0, 0x0
 
@@ -161,7 +161,7 @@
 
     if-ge v0, v7, :cond_2
 
-    .line 80
+    .line 81
     add-int/lit8 v3, v2, 0x1
 
     .end local v2           #idx:I
@@ -172,7 +172,7 @@
 
     aput v7, v6, v2
 
-    .line 81
+    .line 82
     add-int/lit8 v2, v3, 0x1
 
     .end local v3           #idx:I
@@ -189,12 +189,12 @@
 
     aput v7, v6, v3
 
-    .line 79
+    .line 80
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_2
 
-    .line 83
+    .line 84
     :cond_2
     const/4 v0, 0x0
 
@@ -203,7 +203,7 @@
 
     if-ge v0, v7, :cond_3
 
-    .line 84
+    .line 85
     add-int/lit8 v3, v2, 0x1
 
     .end local v2           #idx:I
@@ -214,7 +214,7 @@
 
     aput v7, v6, v2
 
-    .line 85
+    .line 86
     add-int/lit8 v2, v3, 0x1
 
     .end local v3           #idx:I
@@ -227,19 +227,19 @@
 
     aput v7, v6, v3
 
-    .line 86
+    .line 87
     iget-object v7, p0, Landroid/renderscript/ProgramFragment$Builder;->mTextureNames:[Ljava/lang/String;
 
     aget-object v7, v7, v0
 
     aput-object v7, v5, v0
 
-    .line 83
+    .line 84
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_3
 
-    .line 89
+    .line 90
     :cond_3
     iget-object v7, p0, Landroid/renderscript/ProgramFragment$Builder;->mRS:Landroid/renderscript/RenderScript;
 
@@ -249,7 +249,7 @@
 
     move-result v1
 
-    .line 90
+    .line 91
     .local v1, id:I
     new-instance v4, Landroid/renderscript/ProgramFragment;
 
@@ -257,10 +257,10 @@
 
     invoke-direct {v4, v1, v7}, Landroid/renderscript/ProgramFragment;-><init>(ILandroid/renderscript/RenderScript;)V
 
-    .line 91
+    .line 92
     .local v4, pf:Landroid/renderscript/ProgramFragment;
     invoke-virtual {p0, v4}, Landroid/renderscript/ProgramFragment$Builder;->initProgram(Landroid/renderscript/Program;)V
 
-    .line 92
+    .line 93
     return-object v4
 .end method

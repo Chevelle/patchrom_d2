@@ -26,6 +26,8 @@
 # static fields
 .field private static final DESCRIPTOR:Ljava/lang/String; = "android.app.IWallpaperManagerCallback"
 
+.field static final TRANSACTION_onKeyguardWallpaperChanged:I = 0x2
+
 .field static final TRANSACTION_onWallpaperChanged:I = 0x1
 
 
@@ -120,7 +122,7 @@
     .line 45
     sparse-switch p1, :sswitch_data_0
 
-    .line 59
+    .line 65
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v0
@@ -147,10 +149,24 @@
 
     goto :goto_0
 
+    .line 60
+    :sswitch_2
+    const-string v1, "android.app.IWallpaperManagerCallback"
+
+    invoke-virtual {p2, v1}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 61
+    invoke-virtual {p0}, Landroid/app/IWallpaperManagerCallback$Stub;->onKeyguardWallpaperChanged()V
+
+    goto :goto_0
+
     .line 45
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_1
+        0x2 -> :sswitch_2
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

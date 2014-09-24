@@ -4,38 +4,36 @@
 
 
 # instance fields
-.field final mDeltaX:I
+.field private final mDeltaX:I
 
-.field final mDeltaY:I
+.field private final mDeltaY:I
 
-.field final mDisplay:Landroid/view/Display;
+.field private final mDisplay:Landroid/view/Display;
 
-.field mDrawNeeded:Z
+.field private mDrawNeeded:Z
 
-.field mLastDH:I
+.field private mLastDH:I
 
-.field mLastDW:I
+.field private mLastDW:I
 
-.field mSurface:Landroid/view/Surface;
+.field private final mSurface:Landroid/view/Surface;
 
-.field final mText:Ljava/lang/String;
+.field private final mSurfaceControl:Landroid/view/SurfaceControl;
 
-.field final mTextAscent:I
+.field private final mText:Ljava/lang/String;
 
-.field final mTextDescent:I
+.field private final mTextHeight:I
 
-.field final mTextHeight:I
+.field private final mTextPaint:Landroid/graphics/Paint;
 
-.field final mTextPaint:Landroid/graphics/Paint;
+.field private final mTextWidth:I
 
-.field final mTextWidth:I
-
-.field final mTokens:[Ljava/lang/String;
+.field private final mTokens:[Ljava/lang/String;
 
 
 # direct methods
 .method constructor <init>(Landroid/view/Display;Landroid/util/DisplayMetrics;Landroid/view/SurfaceSession;[Ljava/lang/String;)V
-    .locals 21
+    .locals 22
     .parameter "display"
     .parameter "dm"
     .parameter "session"
@@ -44,6 +42,15 @@
     .prologue
     .line 54
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+
+    .line 49
+    new-instance v3, Landroid/view/Surface;
+
+    invoke-direct {v3}, Landroid/view/Surface;-><init>()V
+
+    move-object/from16 v0, p0
+
+    iput-object v3, v0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
 
     .line 62
     move-object/from16 v0, p1
@@ -62,47 +69,51 @@
     .line 65
     new-instance v9, Ljava/lang/StringBuilder;
 
-    const/16 v2, 0x20
+    const/16 v3, 0x20
 
-    invoke-direct {v9, v2}, Ljava/lang/StringBuilder;-><init>(I)V
+    invoke-direct {v9, v3}, Ljava/lang/StringBuilder;-><init>(I)V
 
     .line 66
     .local v9, builder:Ljava/lang/StringBuilder;
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTokens:[Ljava/lang/String;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTokens:[Ljava/lang/String;
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    aget-object v2, v2, v3
+    aget-object v3, v3, v4
 
-    invoke-virtual {v2}, Ljava/lang/String;->length()I
+    invoke-virtual {v3}, Ljava/lang/String;->length()I
 
-    move-result v16
+    move-result v17
 
     .line 67
-    .local v16, len:I
-    and-int/lit8 v16, v16, -0x2
+    .local v17, len:I
+    and-int/lit8 v17, v17, -0x2
 
     .line 68
-    const/4 v15, 0x0
+    const/16 v16, 0x0
 
-    .local v15, i:I
+    .local v16, i:I
     :goto_0
     move/from16 v0, v16
 
-    if-ge v15, v0, :cond_4
+    move/from16 v1, v17
+
+    if-ge v0, v1, :cond_4
 
     .line 69
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTokens:[Ljava/lang/String;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTokens:[Ljava/lang/String;
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    aget-object v2, v2, v3
+    aget-object v3, v3, v4
 
-    invoke-virtual {v2, v15}, Ljava/lang/String;->charAt(I)C
+    move/from16 v0, v16
+
+    invoke-virtual {v3, v0}, Ljava/lang/String;->charAt(I)C
 
     move-result v10
 
@@ -110,76 +121,76 @@
     .local v10, c1:I
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTokens:[Ljava/lang/String;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTokens:[Ljava/lang/String;
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    aget-object v2, v2, v3
+    aget-object v3, v3, v4
 
-    add-int/lit8 v3, v15, 0x1
+    add-int/lit8 v4, v16, 0x1
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->charAt(I)C
+    invoke-virtual {v3, v4}, Ljava/lang/String;->charAt(I)C
 
     move-result v11
 
     .line 71
     .local v11, c2:I
-    const/16 v2, 0x61
+    const/16 v3, 0x61
 
-    if-lt v10, v2, :cond_0
+    if-lt v10, v3, :cond_0
 
-    const/16 v2, 0x66
+    const/16 v3, 0x66
 
-    if-gt v10, v2, :cond_0
+    if-gt v10, v3, :cond_0
 
-    add-int/lit8 v2, v10, -0x61
+    add-int/lit8 v3, v10, -0x61
 
-    add-int/lit8 v10, v2, 0xa
+    add-int/lit8 v10, v3, 0xa
 
     .line 74
     :goto_1
-    const/16 v2, 0x61
+    const/16 v3, 0x61
 
-    if-lt v11, v2, :cond_2
+    if-lt v11, v3, :cond_2
 
-    const/16 v2, 0x66
+    const/16 v3, 0x66
 
-    if-gt v11, v2, :cond_2
+    if-gt v11, v3, :cond_2
 
-    add-int/lit8 v2, v11, -0x61
+    add-int/lit8 v3, v11, -0x61
 
-    add-int/lit8 v11, v2, 0xa
+    add-int/lit8 v11, v3, 0xa
 
     .line 77
     :goto_2
-    mul-int/lit8 v2, v10, 0x10
+    mul-int/lit8 v3, v10, 0x10
 
-    add-int/2addr v2, v11
+    add-int/2addr v3, v11
 
-    rsub-int v2, v2, 0xff
+    rsub-int v3, v3, 0xff
 
-    int-to-char v2, v2
+    int-to-char v3, v3
 
-    invoke-virtual {v9, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v3}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 68
-    add-int/lit8 v15, v15, 0x2
+    add-int/lit8 v16, v16, 0x2
 
     goto :goto_0
 
     .line 72
     :cond_0
-    const/16 v2, 0x41
+    const/16 v3, 0x41
 
-    if-lt v10, v2, :cond_1
+    if-lt v10, v3, :cond_1
 
-    const/16 v2, 0x46
+    const/16 v3, 0x46
 
-    if-gt v10, v2, :cond_1
+    if-gt v10, v3, :cond_1
 
-    add-int/lit8 v2, v10, -0x41
+    add-int/lit8 v3, v10, -0x41
 
-    add-int/lit8 v10, v2, 0xa
+    add-int/lit8 v10, v3, 0xa
 
     goto :goto_1
 
@@ -191,17 +202,17 @@
 
     .line 75
     :cond_2
-    const/16 v2, 0x41
+    const/16 v3, 0x41
 
-    if-lt v11, v2, :cond_3
+    if-lt v11, v3, :cond_3
 
-    const/16 v2, 0x46
+    const/16 v3, 0x46
 
-    if-gt v11, v2, :cond_3
+    if-gt v11, v3, :cond_3
 
-    add-int/lit8 v2, v11, -0x41
+    add-int/lit8 v3, v11, -0x41
 
-    add-int/lit8 v11, v2, 0xa
+    add-int/lit8 v11, v3, 0xa
 
     goto :goto_2
 
@@ -217,260 +228,242 @@
     :cond_4
     invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v3
 
     move-object/from16 v0, p0
 
-    iput-object v2, v0, Lcom/android/server/wm/Watermark;->mText:Ljava/lang/String;
+    iput-object v3, v0, Lcom/android/server/wm/Watermark;->mText:Ljava/lang/String;
 
     .line 84
-    const/4 v2, 0x1
-
     const/4 v3, 0x1
 
-    const/16 v4, 0x14
+    const/4 v4, 0x1
+
+    const/16 v5, 0x14
 
     move-object/from16 v0, p4
 
     move-object/from16 v1, p2
 
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
 
-    move-result v14
+    move-result v15
 
     .line 87
-    .local v14, fontSize:I
-    new-instance v2, Landroid/graphics/Paint;
+    .local v15, fontSize:I
+    new-instance v3, Landroid/graphics/Paint;
 
-    const/4 v3, 0x1
+    const/4 v4, 0x1
 
-    invoke-direct {v2, v3}, Landroid/graphics/Paint;-><init>(I)V
+    invoke-direct {v3, v4}, Landroid/graphics/Paint;-><init>(I)V
 
     move-object/from16 v0, p0
 
-    iput-object v2, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
+    iput-object v3, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
 
     .line 88
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
 
-    int-to-float v3, v14
+    int-to-float v4, v15
 
-    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTextSize(F)V
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setTextSize(F)V
 
     .line 89
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
 
-    sget-object v3, Landroid/graphics/Typeface;->SANS_SERIF:Landroid/graphics/Typeface;
+    sget-object v4, Landroid/graphics/Typeface;->SANS_SERIF:Landroid/graphics/Typeface;
 
-    const/4 v4, 0x1
+    const/4 v5, 0x1
 
-    invoke-static {v3, v4}, Landroid/graphics/Typeface;->create(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
+    invoke-static {v4, v5}, Landroid/graphics/Typeface;->create(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
 
     .line 91
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
 
-    invoke-virtual {v2}, Landroid/graphics/Paint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
+    invoke-virtual {v3}, Landroid/graphics/Paint;->getFontMetricsInt()Landroid/graphics/Paint$FontMetricsInt;
 
-    move-result-object v13
+    move-result-object v14
 
     .line 92
-    .local v13, fm:Landroid/graphics/Paint$FontMetricsInt;
+    .local v14, fm:Landroid/graphics/Paint$FontMetricsInt;
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
-
-    move-object/from16 v0, p0
-
-    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mText:Ljava/lang/String;
-
-    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
-
-    move-result v2
-
-    float-to-int v2, v2
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
 
     move-object/from16 v0, p0
 
-    iput v2, v0, Lcom/android/server/wm/Watermark;->mTextWidth:I
+    iget-object v4, v0, Lcom/android/server/wm/Watermark;->mText:Ljava/lang/String;
+
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v3
+
+    float-to-int v3, v3
+
+    move-object/from16 v0, p0
+
+    iput v3, v0, Lcom/android/server/wm/Watermark;->mTextWidth:I
 
     .line 93
-    iget v2, v13, Landroid/graphics/Paint$FontMetricsInt;->ascent:I
+    iget v3, v14, Landroid/graphics/Paint$FontMetricsInt;->descent:I
+
+    iget v4, v14, Landroid/graphics/Paint$FontMetricsInt;->ascent:I
+
+    sub-int/2addr v3, v4
 
     move-object/from16 v0, p0
 
-    iput v2, v0, Lcom/android/server/wm/Watermark;->mTextAscent:I
-
-    .line 94
-    iget v2, v13, Landroid/graphics/Paint$FontMetricsInt;->descent:I
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/server/wm/Watermark;->mTextDescent:I
+    iput v3, v0, Lcom/android/server/wm/Watermark;->mTextHeight:I
 
     .line 95
-    iget v2, v13, Landroid/graphics/Paint$FontMetricsInt;->descent:I
-
-    iget v3, v13, Landroid/graphics/Paint$FontMetricsInt;->ascent:I
-
-    sub-int/2addr v2, v3
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/server/wm/Watermark;->mTextHeight:I
-
-    .line 97
-    const/4 v2, 0x2
-
-    const/4 v3, 0x0
-
-    move-object/from16 v0, p0
-
-    iget v4, v0, Lcom/android/server/wm/Watermark;->mTextWidth:I
-
-    mul-int/lit8 v4, v4, 0x2
-
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p2
-
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
-
-    move-result v2
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/server/wm/Watermark;->mDeltaX:I
-
-    .line 99
-    const/4 v2, 0x3
-
-    const/4 v3, 0x0
-
-    move-object/from16 v0, p0
-
-    iget v4, v0, Lcom/android/server/wm/Watermark;->mTextHeight:I
-
-    mul-int/lit8 v4, v4, 0x3
-
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p2
-
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
-
-    move-result v2
-
-    move-object/from16 v0, p0
-
-    iput v2, v0, Lcom/android/server/wm/Watermark;->mDeltaY:I
-
-    .line 101
-    const/4 v2, 0x4
-
-    const/4 v3, 0x0
-
-    const/high16 v4, -0x5000
-
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p2
-
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
-
-    move-result v17
-
-    .line 103
-    .local v17, shadowColor:I
-    const/4 v2, 0x5
-
-    const/4 v3, 0x0
-
-    const v4, 0x60ffffff
-
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p2
-
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
-
-    move-result v12
-
-    .line 105
-    .local v12, color:I
-    const/4 v2, 0x6
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x7
-
-    move-object/from16 v0, p4
-
-    move-object/from16 v1, p2
-
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
-
-    move-result v20
-
-    .line 107
-    .local v20, shadowRadius:I
-    const/16 v2, 0x8
-
-    const/4 v3, 0x0
+    const/4 v3, 0x2
 
     const/4 v4, 0x0
 
+    move-object/from16 v0, p0
+
+    iget v5, v0, Lcom/android/server/wm/Watermark;->mTextWidth:I
+
+    mul-int/lit8 v5, v5, 0x2
+
     move-object/from16 v0, p4
 
     move-object/from16 v1, p2
 
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+
+    move-result v3
+
+    move-object/from16 v0, p0
+
+    iput v3, v0, Lcom/android/server/wm/Watermark;->mDeltaX:I
+
+    .line 97
+    const/4 v3, 0x3
+
+    const/4 v4, 0x0
+
+    move-object/from16 v0, p0
+
+    iget v5, v0, Lcom/android/server/wm/Watermark;->mTextHeight:I
+
+    mul-int/lit8 v5, v5, 0x3
+
+    move-object/from16 v0, p4
+
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+
+    move-result v3
+
+    move-object/from16 v0, p0
+
+    iput v3, v0, Lcom/android/server/wm/Watermark;->mDeltaY:I
+
+    .line 99
+    const/4 v3, 0x4
+
+    const/4 v4, 0x0
+
+    const/high16 v5, -0x5000
+
+    move-object/from16 v0, p4
+
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
 
     move-result v18
 
-    .line 109
-    .local v18, shadowDx:I
-    const/16 v2, 0x9
-
-    const/4 v3, 0x0
+    .line 101
+    .local v18, shadowColor:I
+    const/4 v3, 0x5
 
     const/4 v4, 0x0
+
+    const v5, 0x60ffffff
 
     move-object/from16 v0, p4
 
     move-object/from16 v1, p2
 
-    invoke-static {v0, v2, v3, v4, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+
+    move-result v12
+
+    .line 103
+    .local v12, color:I
+    const/4 v3, 0x6
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x7
+
+    move-object/from16 v0, p4
+
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+
+    move-result v21
+
+    .line 105
+    .local v21, shadowRadius:I
+    const/16 v3, 0x8
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x0
+
+    move-object/from16 v0, p4
+
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
 
     move-result v19
 
-    .line 112
-    .local v19, shadowDy:I
+    .line 107
+    .local v19, shadowDx:I
+    const/16 v3, 0x9
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x0
+
+    move-object/from16 v0, p4
+
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v3, v4, v5, v1}, Lcom/android/server/wm/WindowManagerService;->getPropertyInt([Ljava/lang/String;IIILandroid/util/DisplayMetrics;)I
+
+    move-result v20
+
+    .line 110
+    .local v20, shadowDy:I
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
 
-    invoke-virtual {v2, v12}, Landroid/graphics/Paint;->setColor(I)V
+    invoke-virtual {v3, v12}, Landroid/graphics/Paint;->setColor(I)V
 
-    .line 113
+    .line 111
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mTextPaint:Landroid/graphics/Paint;
 
-    move/from16 v0, v20
-
-    int-to-float v3, v0
-
-    move/from16 v0, v18
+    move/from16 v0, v21
 
     int-to-float v4, v0
 
@@ -478,13 +471,21 @@
 
     int-to-float v5, v0
 
-    move/from16 v0, v17
+    move/from16 v0, v20
 
-    invoke-virtual {v2, v3, v4, v5, v0}, Landroid/graphics/Paint;->setShadowLayer(FFFI)V
+    int-to-float v6, v0
 
-    .line 116
+    move/from16 v0, v18
+
+    invoke-virtual {v3, v4, v5, v6, v0}, Landroid/graphics/Paint;->setShadowLayer(FFFI)V
+
+    .line 113
+    const/4 v13, 0x0
+
+    .line 115
+    .local v13, ctrl:Landroid/view/SurfaceControl;
     :try_start_0
-    new-instance v2, Landroid/view/Surface;
+    new-instance v2, Landroid/view/SurfaceControl;
 
     const-string v4, "WatermarkSurface"
 
@@ -498,17 +499,14 @@
 
     move-object/from16 v3, p3
 
-    invoke-direct/range {v2 .. v8}, Landroid/view/Surface;-><init>(Landroid/view/SurfaceSession;Ljava/lang/String;IIII)V
+    invoke-direct/range {v2 .. v8}, Landroid/view/SurfaceControl;-><init>(Landroid/view/SurfaceSession;Ljava/lang/String;IIII)V
+    :try_end_0
+    .catch Landroid/view/Surface$OutOfResourcesException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-object/from16 v0, p0
-
-    iput-object v2, v0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
-
-    .line 118
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
-
+    .line 117
+    .end local v13           #ctrl:Landroid/view/SurfaceControl;
+    .local v2, ctrl:Landroid/view/SurfaceControl;
+    :try_start_1
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/wm/Watermark;->mDisplay:Landroid/view/Display;
@@ -517,44 +515,55 @@
 
     move-result v3
 
-    invoke-virtual {v2, v3}, Landroid/view/Surface;->setLayerStack(I)V
+    invoke-virtual {v2, v3}, Landroid/view/SurfaceControl;->setLayerStack(I)V
 
-    .line 119
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
-
+    .line 118
     const v3, 0xf4240
 
-    invoke-virtual {v2, v3}, Landroid/view/Surface;->setLayer(I)V
+    invoke-virtual {v2, v3}, Landroid/view/SurfaceControl;->setLayer(I)V
 
-    .line 120
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
-
+    .line 119
     const/4 v3, 0x0
 
     const/4 v4, 0x0
 
-    invoke-virtual {v2, v3, v4}, Landroid/view/Surface;->setPosition(II)V
+    invoke-virtual {v2, v3, v4}, Landroid/view/SurfaceControl;->setPosition(FF)V
+
+    .line 120
+    invoke-virtual {v2}, Landroid/view/SurfaceControl;->show()V
 
     .line 121
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
+    iget-object v3, v0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
 
-    invoke-virtual {v2}, Landroid/view/Surface;->show()V
-    :try_end_0
-    .catch Landroid/view/Surface$OutOfResourcesException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v3, v2}, Landroid/view/Surface;->copyFrom(Landroid/view/SurfaceControl;)V
+    :try_end_1
+    .catch Landroid/view/Surface$OutOfResourcesException; {:try_start_1 .. :try_end_1} :catch_1
 
     .line 124
     :goto_3
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Lcom/android/server/wm/Watermark;->mSurfaceControl:Landroid/view/SurfaceControl;
+
+    .line 125
     return-void
 
     .line 122
+    .end local v2           #ctrl:Landroid/view/SurfaceControl;
+    .restart local v13       #ctrl:Landroid/view/SurfaceControl;
     :catch_0
-    move-exception v2
+    move-exception v3
+
+    move-object v2, v13
+
+    .end local v13           #ctrl:Landroid/view/SurfaceControl;
+    .restart local v2       #ctrl:Landroid/view/SurfaceControl;
+    goto :goto_3
+
+    :catch_1
+    move-exception v3
 
     goto :goto_3
 .end method
@@ -567,32 +576,32 @@
     .prologue
     const/4 v12, 0x0
 
-    .line 136
+    .line 137
     iget-boolean v11, p0, Lcom/android/server/wm/Watermark;->mDrawNeeded:Z
 
     if-eqz v11, :cond_4
 
-    .line 137
+    .line 138
     iget v6, p0, Lcom/android/server/wm/Watermark;->mLastDW:I
 
-    .line 138
+    .line 139
     .local v6, dw:I
     iget v3, p0, Lcom/android/server/wm/Watermark;->mLastDH:I
 
-    .line 140
+    .line 141
     .local v3, dh:I
     iput-boolean v12, p0, Lcom/android/server/wm/Watermark;->mDrawNeeded:Z
 
-    .line 141
+    .line 142
     new-instance v4, Landroid/graphics/Rect;
 
     invoke-direct {v4, v12, v12, v6, v3}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    .line 142
+    .line 143
     .local v4, dirty:Landroid/graphics/Rect;
     const/4 v0, 0x0
 
-    .line 144
+    .line 145
     .local v0, c:Landroid/graphics/Canvas;
     :try_start_0
     iget-object v11, p0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
@@ -604,23 +613,23 @@
 
     move-result-object v0
 
-    .line 148
+    .line 149
     :goto_0
     if-eqz v0, :cond_4
 
-    .line 149
+    .line 150
     sget-object v11, Landroid/graphics/PorterDuff$Mode;->CLEAR:Landroid/graphics/PorterDuff$Mode;
 
     invoke-virtual {v0, v12, v11}, Landroid/graphics/Canvas;->drawColor(ILandroid/graphics/PorterDuff$Mode;)V
 
-    .line 151
+    .line 152
     iget v1, p0, Lcom/android/server/wm/Watermark;->mDeltaX:I
 
-    .line 152
+    .line 153
     .local v1, deltaX:I
     iget v2, p0, Lcom/android/server/wm/Watermark;->mDeltaY:I
 
-    .line 156
+    .line 157
     .local v2, deltaY:I
     iget v11, p0, Lcom/android/server/wm/Watermark;->mTextWidth:I
 
@@ -628,7 +637,7 @@
 
     div-int v5, v11, v1
 
-    .line 157
+    .line 158
     .local v5, div:I
     iget v11, p0, Lcom/android/server/wm/Watermark;->mTextWidth:I
 
@@ -638,11 +647,11 @@
 
     sub-int v8, v11, v12
 
-    .line 158
+    .line 159
     .local v8, rem:I
     div-int/lit8 v7, v1, 0x4
 
-    .line 159
+    .line 160
     .local v7, qdelta:I
     if-lt v8, v7, :cond_0
 
@@ -650,25 +659,25 @@
 
     if-le v8, v11, :cond_1
 
-    .line 160
+    .line 161
     :cond_0
     div-int/lit8 v11, v1, 0x3
 
     add-int/2addr v1, v11
 
-    .line 163
+    .line 164
     :cond_1
     iget v11, p0, Lcom/android/server/wm/Watermark;->mTextHeight:I
 
     neg-int v10, v11
 
-    .line 164
+    .line 165
     .local v10, y:I
     iget v11, p0, Lcom/android/server/wm/Watermark;->mTextWidth:I
 
     neg-int v9, v11
 
-    .line 165
+    .line 166
     .local v9, x:I
     :cond_2
     :goto_1
@@ -678,7 +687,7 @@
 
     if-ge v10, v11, :cond_3
 
-    .line 166
+    .line 167
     iget-object v11, p0, Lcom/android/server/wm/Watermark;->mText:Ljava/lang/String;
 
     int-to-float v12, v9
@@ -689,31 +698,31 @@
 
     invoke-virtual {v0, v11, v12, v13, v14}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
 
-    .line 167
+    .line 168
     add-int/2addr v9, v1
 
-    .line 168
+    .line 169
     if-lt v9, v6, :cond_2
 
-    .line 169
+    .line 170
     iget v11, p0, Lcom/android/server/wm/Watermark;->mTextWidth:I
 
     add-int/2addr v11, v6
 
     sub-int/2addr v9, v11
 
-    .line 170
+    .line 171
     add-int/2addr v10, v2
 
     goto :goto_1
 
-    .line 173
+    .line 174
     :cond_3
     iget-object v11, p0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
 
     invoke-virtual {v11, v0}, Landroid/view/Surface;->unlockCanvasAndPost(Landroid/graphics/Canvas;)V
 
-    .line 176
+    .line 177
     .end local v0           #c:Landroid/graphics/Canvas;
     .end local v1           #deltaX:I
     .end local v2           #deltaY:I
@@ -728,7 +737,7 @@
     :cond_4
     return-void
 
-    .line 146
+    .line 147
     .restart local v0       #c:Landroid/graphics/Canvas;
     .restart local v3       #dh:I
     .restart local v4       #dirty:Landroid/graphics/Rect;
@@ -738,7 +747,7 @@
 
     goto :goto_0
 
-    .line 145
+    .line 146
     :catch_1
     move-exception v11
 
@@ -751,7 +760,7 @@
     .parameter "dh"
 
     .prologue
-    .line 127
+    .line 128
     iget v0, p0, Lcom/android/server/wm/Watermark;->mLastDW:I
 
     if-ne v0, p1, :cond_0
@@ -760,24 +769,24 @@
 
     if-eq v0, p2, :cond_1
 
-    .line 128
+    .line 129
     :cond_0
     iput p1, p0, Lcom/android/server/wm/Watermark;->mLastDW:I
 
-    .line 129
+    .line 130
     iput p2, p0, Lcom/android/server/wm/Watermark;->mLastDH:I
 
-    .line 130
-    iget-object v0, p0, Lcom/android/server/wm/Watermark;->mSurface:Landroid/view/Surface;
-
-    invoke-virtual {v0, p1, p2}, Landroid/view/Surface;->setSize(II)V
-
     .line 131
+    iget-object v0, p0, Lcom/android/server/wm/Watermark;->mSurfaceControl:Landroid/view/SurfaceControl;
+
+    invoke-virtual {v0, p1, p2}, Landroid/view/SurfaceControl;->setSize(II)V
+
+    .line 132
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/wm/Watermark;->mDrawNeeded:Z
 
-    .line 133
+    .line 134
     :cond_1
     return-void
 .end method

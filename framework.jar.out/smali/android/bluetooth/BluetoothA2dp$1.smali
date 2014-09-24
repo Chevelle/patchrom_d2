@@ -35,7 +35,7 @@
 
 # virtual methods
 .method public onBluetoothStateChange(Z)V
-    .locals 6
+    .locals 4
     .parameter "up"
 
     .prologue
@@ -109,7 +109,7 @@
     :try_start_1
     monitor-exit v2
 
-    .line 140
+    .line 138
     :goto_1
     return-void
 
@@ -163,47 +163,12 @@
     .line 131
     iget-object v1, p0, Landroid/bluetooth/BluetoothA2dp$1;->this$0:Landroid/bluetooth/BluetoothA2dp;
 
-    #getter for: Landroid/bluetooth/BluetoothA2dp;->mContext:Landroid/content/Context;
-    invoke-static {v1}, Landroid/bluetooth/BluetoothA2dp;->access$200(Landroid/bluetooth/BluetoothA2dp;)Landroid/content/Context;
-
-    move-result-object v1
-
-    new-instance v3, Landroid/content/Intent;
-
-    const-class v4, Landroid/bluetooth/IBluetoothA2dp;
-
-    invoke-virtual {v4}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    iget-object v4, p0, Landroid/bluetooth/BluetoothA2dp$1;->this$0:Landroid/bluetooth/BluetoothA2dp;
-
-    #getter for: Landroid/bluetooth/BluetoothA2dp;->mConnection:Landroid/content/ServiceConnection;
-    invoke-static {v4}, Landroid/bluetooth/BluetoothA2dp;->access$000(Landroid/bluetooth/BluetoothA2dp;)Landroid/content/ServiceConnection;
-
-    move-result-object v4
-
-    const/4 v5, 0x0
-
-    invoke-virtual {v1, v3, v4, v5}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    .line 132
-    const-string v1, "BluetoothA2dp"
-
-    const-string v3, "Could not bind to Bluetooth A2DP Service"
-
-    invoke-static {v1, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v1}, Landroid/bluetooth/BluetoothA2dp;->doBind()Z
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
 
-    .line 138
+    .line 136
     :cond_1
     :goto_2
     :try_start_3
@@ -220,11 +185,11 @@
 
     throw v1
 
-    .line 135
+    .line 133
     :catch_1
     move-exception v0
 
-    .line 136
+    .line 134
     .restart local v0       #re:Ljava/lang/Exception;
     :try_start_4
     const-string v1, "BluetoothA2dp"

@@ -25,7 +25,7 @@
     .parameter "x0"
 
     .prologue
-    .line 1185
+    .line 1190
     iput-object p1, p0, Lcom/android/server/input/InputManagerService$8;->this$0:Lcom/android/server/input/InputManagerService;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -40,11 +40,11 @@
     .parameter "selfChange"
 
     .prologue
-    .line 1188
+    .line 1193
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$8;->this$0:Lcom/android/server/input/InputManagerService;
 
     invoke-virtual {v0}, Lcom/android/server/input/InputManagerService;->updateStylusIconEnabledFromSettings()V
 
-    .line 1189
+    .line 1194
     return-void
 .end method

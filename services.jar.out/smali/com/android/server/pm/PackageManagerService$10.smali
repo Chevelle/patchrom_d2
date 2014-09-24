@@ -3,12 +3,12 @@
 .source "PackageManagerService.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Ljava/io/FilenameFilter;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/pm/PackageManagerService;->updateExternalMediaStatus(ZZ)V
+    value = Lcom/android/server/pm/PackageManagerService;->deleteTempPackageFiles()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,25 +20,15 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/pm/PackageManagerService;
 
-.field final synthetic val$mediaStatus:Z
-
-.field final synthetic val$reportStatus:Z
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/pm/PackageManagerService;ZZ)V
+.method constructor <init>(Lcom/android/server/pm/PackageManagerService;)V
     .locals 0
-    .parameter
-    .parameter
     .parameter
 
     .prologue
-    .line 9805
+    .line 9968
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$10;->this$0:Lcom/android/server/pm/PackageManagerService;
-
-    iput-boolean p2, p0, Lcom/android/server/pm/PackageManagerService$10;->val$mediaStatus:Z
-
-    iput-boolean p3, p0, Lcom/android/server/pm/PackageManagerService$10;->val$reportStatus:Z
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -47,22 +37,36 @@
 
 
 # virtual methods
-.method public run()V
-    .locals 4
+.method public accept(Ljava/io/File;Ljava/lang/String;)Z
+    .locals 1
+    .parameter "dir"
+    .parameter "name"
 
     .prologue
-    .line 9807
-    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$10;->this$0:Lcom/android/server/pm/PackageManagerService;
+    .line 9970
+    const-string v0, "vmdl"
 
-    iget-boolean v1, p0, Lcom/android/server/pm/PackageManagerService$10;->val$mediaStatus:Z
+    invoke-virtual {p2, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    iget-boolean v2, p0, Lcom/android/server/pm/PackageManagerService$10;->val$reportStatus:Z
+    move-result v0
 
-    const/4 v3, 0x1
+    if-eqz v0, :cond_0
 
-    #calls: Lcom/android/server/pm/PackageManagerService;->updateExternalMediaStatusInner(ZZZ)V
-    invoke-static {v0, v1, v2, v3}, Lcom/android/server/pm/PackageManagerService;->access$4200(Lcom/android/server/pm/PackageManagerService;ZZZ)V
+    const-string v0, ".tmp"
 
-    .line 9808
-    return-void
+    invoke-virtual {p2, v0}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method

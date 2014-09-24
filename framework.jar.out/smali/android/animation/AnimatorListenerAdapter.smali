@@ -4,6 +4,7 @@
 
 # interfaces
 .implements Landroid/animation/Animator$AnimatorListener;
+.implements Landroid/animation/Animator$AnimatorPauseListener;
 
 
 # direct methods
@@ -24,7 +25,7 @@
     .parameter "animation"
 
     .prologue
-    .line 31
+    .line 32
     return-void
 .end method
 
@@ -33,7 +34,16 @@
     .parameter "animation"
 
     .prologue
-    .line 38
+    .line 39
+    return-void
+.end method
+
+.method public onAnimationPause(Landroid/animation/Animator;)V
+    .locals 0
+    .parameter "animation"
+
+    .prologue
+    .line 60
     return-void
 .end method
 
@@ -42,7 +52,16 @@
     .parameter "animation"
 
     .prologue
-    .line 45
+    .line 46
+    return-void
+.end method
+
+.method public onAnimationResume(Landroid/animation/Animator;)V
+    .locals 0
+    .parameter "animation"
+
+    .prologue
+    .line 67
     return-void
 .end method
 
@@ -51,6 +70,6 @@
     .parameter "animation"
 
     .prologue
-    .line 52
+    .line 53
     return-void
 .end method

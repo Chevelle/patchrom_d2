@@ -25,7 +25,7 @@
     .parameter "x0"
 
     .prologue
-    .line 226
+    .line 243
     iput-object p1, p0, Landroid/view/VolumePanel$1;->this$0:Landroid/view/VolumePanel;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -42,7 +42,7 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 229
+    .line 246
     iget-object v3, p0, Landroid/view/VolumePanel$1;->this$0:Landroid/view/VolumePanel;
 
     iget-object v1, p0, Landroid/view/VolumePanel$1;->this$0:Landroid/view/VolumePanel;
@@ -67,7 +67,7 @@
     #setter for: Landroid/view/VolumePanel;->mVolumeLinkNotification:Z
     invoke-static {v3, v1}, Landroid/view/VolumePanel;->access$002(Landroid/view/VolumePanel;Z)Z
 
-    .line 231
+    .line 248
     iget-object v1, p0, Landroid/view/VolumePanel$1;->this$0:Landroid/view/VolumePanel;
 
     iget-object v1, v1, Landroid/view/VolumePanel;->mContext:Landroid/content/Context;
@@ -82,17 +82,17 @@
 
     move-result v0
 
-    .line 233
+    .line 250
     .local v0, overlayStyle:I
     iget-object v1, p0, Landroid/view/VolumePanel$1;->this$0:Landroid/view/VolumePanel;
 
     #calls: Landroid/view/VolumePanel;->changeOverlayStyle(I)V
     invoke-static {v1, v0}, Landroid/view/VolumePanel;->access$100(Landroid/view/VolumePanel;I)V
 
-    .line 234
+    .line 251
     return-void
 
-    .line 229
+    .line 246
     .end local v0           #overlayStyle:I
     :cond_0
     const/4 v1, 0x0

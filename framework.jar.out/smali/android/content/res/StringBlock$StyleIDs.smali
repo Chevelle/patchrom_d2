@@ -45,40 +45,40 @@
     .prologue
     const/4 v0, -0x1
 
-    .line 147
+    .line 152
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 148
+    .line 153
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->boldId:I
 
-    .line 149
+    .line 154
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->italicId:I
 
-    .line 150
+    .line 155
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->underlineId:I
 
-    .line 151
+    .line 156
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->ttId:I
 
-    .line 152
+    .line 157
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->bigId:I
 
-    .line 153
+    .line 158
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->smallId:I
 
-    .line 154
+    .line 159
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->subId:I
 
-    .line 155
+    .line 160
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->supId:I
 
-    .line 156
+    .line 161
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->strikeId:I
 
-    .line 157
+    .line 162
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->listItemId:I
 
-    .line 158
+    .line 163
     iput v0, p0, Landroid/content/res/StringBlock$StyleIDs;->marqueeId:I
 
     return-void
@@ -89,7 +89,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->boldId:I
 
     return v0
@@ -101,7 +101,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->boldId:I
 
     return p1
@@ -112,7 +112,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->italicId:I
 
     return v0
@@ -123,7 +123,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->marqueeId:I
 
     return v0
@@ -135,7 +135,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->marqueeId:I
 
     return p1
@@ -147,7 +147,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->italicId:I
 
     return p1
@@ -158,7 +158,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->underlineId:I
 
     return v0
@@ -170,7 +170,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->underlineId:I
 
     return p1
@@ -181,7 +181,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->ttId:I
 
     return v0
@@ -193,7 +193,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->ttId:I
 
     return p1
@@ -204,7 +204,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->bigId:I
 
     return v0
@@ -216,7 +216,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->bigId:I
 
     return p1
@@ -227,7 +227,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->smallId:I
 
     return v0
@@ -239,7 +239,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->smallId:I
 
     return p1
@@ -250,7 +250,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->subId:I
 
     return v0
@@ -262,7 +262,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->subId:I
 
     return p1
@@ -273,7 +273,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->supId:I
 
     return v0
@@ -285,7 +285,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->supId:I
 
     return p1
@@ -296,7 +296,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->strikeId:I
 
     return v0
@@ -308,7 +308,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->strikeId:I
 
     return p1
@@ -319,7 +319,7 @@
     .parameter "x0"
 
     .prologue
-    .line 147
+    .line 152
     iget v0, p0, Landroid/content/res/StringBlock$StyleIDs;->listItemId:I
 
     return v0
@@ -331,7 +331,7 @@
     .parameter "x1"
 
     .prologue
-    .line 147
+    .line 152
     iput p1, p0, Landroid/content/res/StringBlock$StyleIDs;->listItemId:I
 
     return p1

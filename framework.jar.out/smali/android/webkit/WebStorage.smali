@@ -17,7 +17,7 @@
     .locals 0
 
     .prologue
-    .line 214
+    .line 213
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -27,7 +27,7 @@
     .locals 1
 
     .prologue
-    .line 203
+    .line 202
     invoke-static {}, Landroid/webkit/WebViewFactory;->getProvider()Landroid/webkit/WebViewFactoryProvider;
 
     move-result-object v0
@@ -45,7 +45,7 @@
     .locals 0
 
     .prologue
-    .line 195
+    .line 194
     return-void
 .end method
 
@@ -54,7 +54,7 @@
     .parameter "origin"
 
     .prologue
-    .line 186
+    .line 185
     return-void
 .end method
 
@@ -72,7 +72,7 @@
     .end annotation
 
     .prologue
-    .line 145
+    .line 142
     .local p1, callback:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<Ljava/util/Map;>;"
     return-void
 .end method
@@ -93,7 +93,7 @@
     .end annotation
 
     .prologue
-    .line 167
+    .line 164
     .local p2, callback:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<Ljava/lang/Long;>;"
     return-void
 .end method
@@ -114,7 +114,7 @@
     .end annotation
 
     .prologue
-    .line 156
+    .line 153
     .local p2, callback:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<Ljava/lang/Long;>;"
     return-void
 .end method
@@ -123,8 +123,10 @@
     .locals 0
     .parameter "origin"
     .parameter "quota"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 177
+    .line 176
     return-void
 .end method

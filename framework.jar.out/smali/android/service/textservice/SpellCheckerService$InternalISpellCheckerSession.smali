@@ -166,7 +166,6 @@
     .line 295
     iput-object v2, p0, Landroid/service/textservice/SpellCheckerService$InternalISpellCheckerSession;->mListener:Lcom/android/internal/textservice/ISpellCheckerSessionListener;
 
-    .line 294
     throw v1
 .end method
 
@@ -239,23 +238,25 @@
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 263
-    :goto_0
     invoke-static {v0}, Landroid/os/Process;->setThreadPriority(I)V
 
     .line 265
+    :goto_0
     return-void
 
+    .line 261
+    :catch_0
+    move-exception v1
+
     .line 263
+    invoke-static {v0}, Landroid/os/Process;->setThreadPriority(I)V
+
+    goto :goto_0
+
     :catchall_0
     move-exception v1
 
     invoke-static {v0}, Landroid/os/Process;->setThreadPriority(I)V
 
     throw v1
-
-    .line 261
-    :catch_0
-    move-exception v1
-
-    goto :goto_0
 .end method

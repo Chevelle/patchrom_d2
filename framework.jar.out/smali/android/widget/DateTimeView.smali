@@ -52,14 +52,14 @@
 
     iput v0, p0, Landroid/widget/DateTimeView;->mLastDisplay:I
 
-    .line 238
+    .line 230
     new-instance v0, Landroid/widget/DateTimeView$1;
 
     invoke-direct {v0, p0}, Landroid/widget/DateTimeView$1;-><init>(Landroid/widget/DateTimeView;)V
 
     iput-object v0, p0, Landroid/widget/DateTimeView;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 256
+    .line 248
     new-instance v0, Landroid/widget/DateTimeView$2;
 
     new-instance v1, Landroid/os/Handler;
@@ -88,14 +88,14 @@
 
     iput v0, p0, Landroid/widget/DateTimeView;->mLastDisplay:I
 
-    .line 238
+    .line 230
     new-instance v0, Landroid/widget/DateTimeView$1;
 
     invoke-direct {v0, p0}, Landroid/widget/DateTimeView$1;-><init>(Landroid/widget/DateTimeView;)V
 
     iput-object v0, p0, Landroid/widget/DateTimeView;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 256
+    .line 248
     new-instance v0, Landroid/widget/DateTimeView$2;
 
     new-instance v1, Landroid/os/Handler;
@@ -127,7 +127,7 @@
     .prologue
     const/4 v4, 0x3
 
-    .line 204
+    .line 196
     invoke-virtual {p0}, Landroid/widget/DateTimeView;->getContext()Landroid/content/Context;
 
     move-result-object v2
@@ -142,7 +142,7 @@
 
     move-result-object v1
 
-    .line 206
+    .line 198
     .local v1, format:Ljava/lang/String;
     if-eqz v1, :cond_0
 
@@ -154,17 +154,17 @@
 
     if-eqz v2, :cond_1
 
-    .line 207
+    .line 199
     :cond_0
     invoke-static {v4}, Ljava/text/DateFormat;->getDateInstance(I)Ljava/text/DateFormat;
 
     move-result-object v2
 
-    .line 213
+    .line 205
     :goto_0
     return-object v2
 
-    .line 210
+    .line 202
     :cond_1
     :try_start_0
     new-instance v2, Ljava/text/SimpleDateFormat;
@@ -175,11 +175,11 @@
 
     goto :goto_0
 
-    .line 211
+    .line 203
     :catch_0
     move-exception v0
 
-    .line 213
+    .line 205
     .local v0, e:Ljava/lang/IllegalArgumentException;
     invoke-static {v4}, Ljava/text/DateFormat;->getDateInstance(I)Ljava/text/DateFormat;
 
@@ -189,99 +189,70 @@
 .end method
 
 .method private getTimeFormat()Ljava/text/DateFormat;
-    .locals 4
+    .locals 1
 
     .prologue
-    .line 193
+    .line 192
     invoke-virtual {p0}, Landroid/widget/DateTimeView;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
-    .line 194
-    .local v0, context:Landroid/content/Context;
-    invoke-static {v0}, Landroid/text/format/DateFormat;->is24HourFormat(Landroid/content/Context;)Z
+    invoke-static {v0}, Landroid/text/format/DateFormat;->getTimeFormat(Landroid/content/Context;)Ljava/text/DateFormat;
 
-    move-result v3
+    move-result-object v0
 
-    if-eqz v3, :cond_0
-
-    .line 195
-    const v2, 0x104009f
-
-    .line 199
-    .local v2, res:I
-    :goto_0
-    invoke-virtual {v0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    .line 200
-    .local v1, format:Ljava/lang/String;
-    new-instance v3, Ljava/text/SimpleDateFormat;
-
-    invoke-direct {v3, v1}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
-
-    return-object v3
-
-    .line 197
-    .end local v1           #format:Ljava/lang/String;
-    .end local v2           #res:I
-    :cond_0
-    const v2, 0x104009e
-
-    .restart local v2       #res:I
-    goto :goto_0
+    return-object v0
 .end method
 
 .method private registerReceivers()V
     .locals 6
 
     .prologue
-    .line 219
+    .line 211
     invoke-virtual {p0}, Landroid/widget/DateTimeView;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
-    .line 221
+    .line 213
     .local v0, context:Landroid/content/Context;
     new-instance v1, Landroid/content/IntentFilter;
 
     invoke-direct {v1}, Landroid/content/IntentFilter;-><init>()V
 
-    .line 222
+    .line 214
     .local v1, filter:Landroid/content/IntentFilter;
     const-string v3, "android.intent.action.TIME_TICK"
 
     invoke-virtual {v1, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 223
+    .line 215
     const-string v3, "android.intent.action.TIME_SET"
 
     invoke-virtual {v1, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 224
+    .line 216
     const-string v3, "android.intent.action.CONFIGURATION_CHANGED"
 
     invoke-virtual {v1, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 225
+    .line 217
     const-string v3, "android.intent.action.TIMEZONE_CHANGED"
 
     invoke-virtual {v1, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 226
+    .line 218
     iget-object v3, p0, Landroid/widget/DateTimeView;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {v0, v3, v1}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 228
+    .line 220
     const-string v3, "date_format"
 
     invoke-static {v3}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v2
 
-    .line 229
+    .line 221
     .local v2, uri:Landroid/net/Uri;
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -293,7 +264,7 @@
 
     invoke-virtual {v3, v2, v4, v5}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 230
+    .line 222
     return-void
 .end method
 
@@ -301,18 +272,18 @@
     .locals 3
 
     .prologue
-    .line 233
+    .line 225
     invoke-virtual {p0}, Landroid/widget/DateTimeView;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
-    .line 234
+    .line 226
     .local v0, context:Landroid/content/Context;
     iget-object v1, p0, Landroid/widget/DateTimeView;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 235
+    .line 227
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
@@ -321,7 +292,7 @@
 
     invoke-virtual {v1, v2}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 236
+    .line 228
     return-void
 .end method
 

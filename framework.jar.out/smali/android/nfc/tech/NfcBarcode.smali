@@ -141,18 +141,18 @@
     .locals 1
 
     .prologue
-    .line 94
+    .line 122
     iget v0, p0, Landroid/nfc/tech/NfcBarcode;->mType:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 99
+    .line 127
     const/4 v0, 0x0
 
     :goto_0
     return-object v0
 
-    .line 97
+    .line 125
     :pswitch_0
     iget-object v0, p0, Landroid/nfc/tech/NfcBarcode;->mTag:Landroid/nfc/Tag;
 
@@ -162,7 +162,7 @@
 
     goto :goto_0
 
-    .line 94
+    .line 122
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

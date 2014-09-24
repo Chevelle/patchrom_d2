@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 534
+    .line 560
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -27,48 +27,29 @@
 
 
 # virtual methods
-.method public getService(Landroid/app/ContextImpl;)Ljava/lang/Object;
-    .locals 4
+.method public createService(Landroid/app/ContextImpl;)Ljava/lang/Object;
+    .locals 3
     .parameter "ctx"
 
     .prologue
-    .line 536
-    #getter for: Landroid/app/ContextImpl;->mDisplay:Landroid/view/Display;
-    invoke-static {p1}, Landroid/app/ContextImpl;->access$100(Landroid/app/ContextImpl;)Landroid/view/Display;
+    .line 562
+    const-string/jumbo v2, "wifip2p"
+
+    invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 537
-    .local v0, display:Landroid/view/Display;
-    if-nez v0, :cond_0
-
-    .line 538
-    invoke-virtual {p1}, Landroid/app/ContextImpl;->getOuterContext()Landroid/content/Context;
-
-    move-result-object v2
-
-    const-string v3, "display"
-
-    invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    .line 563
+    .local v0, b:Landroid/os/IBinder;
+    invoke-static {v0}, Landroid/net/wifi/p2p/IWifiP2pManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/net/wifi/p2p/IWifiP2pManager;
 
     move-result-object v1
 
-    check-cast v1, Landroid/hardware/display/DisplayManager;
+    .line 564
+    .local v1, service:Landroid/net/wifi/p2p/IWifiP2pManager;
+    new-instance v2, Landroid/net/wifi/p2p/WifiP2pManager;
 
-    .line 540
-    .local v1, dm:Landroid/hardware/display/DisplayManager;
-    const/4 v2, 0x0
-
-    invoke-virtual {v1, v2}, Landroid/hardware/display/DisplayManager;->getDisplay(I)Landroid/view/Display;
-
-    move-result-object v0
-
-    .line 542
-    .end local v1           #dm:Landroid/hardware/display/DisplayManager;
-    :cond_0
-    new-instance v2, Landroid/view/WindowManagerImpl;
-
-    invoke-direct {v2, v0}, Landroid/view/WindowManagerImpl;-><init>(Landroid/view/Display;)V
+    invoke-direct {v2, v1}, Landroid/net/wifi/p2p/WifiP2pManager;-><init>(Landroid/net/wifi/p2p/IWifiP2pManager;)V
 
     return-object v2
 .end method

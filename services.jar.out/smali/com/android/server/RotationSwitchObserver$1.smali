@@ -72,7 +72,7 @@
     :cond_0
     if-eqz v0, :cond_1
 
-    const v1, 0x104003b
+    const v1, 0x104007c
 
     .line 134
     .local v1, toastId:I
@@ -129,7 +129,7 @@
     .line 130
     .restart local v0       #autoRotate:Z
     :cond_1
-    const v1, 0x104003c
+    const v1, 0x104007d
 
     goto :goto_1
 

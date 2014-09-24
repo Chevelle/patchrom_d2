@@ -19,7 +19,7 @@
     .locals 1
 
     .prologue
-    .line 180
+    .line 188
     invoke-static {}, Landroid/webkit/CookieManager;->getInstance()Landroid/webkit/CookieManager;
 
     move-result-object v0
@@ -68,14 +68,14 @@
     .parameter "accept"
 
     .prologue
-    .line 204
+    .line 212
     invoke-static {}, Landroid/webkit/CookieManager;->getInstance()Landroid/webkit/CookieManager;
 
     move-result-object v0
 
     invoke-virtual {v0, p0}, Landroid/webkit/CookieManager;->setAcceptFileSchemeCookiesImpl(Z)V
 
-    .line 205
+    .line 213
     return-void
 .end method
 
@@ -109,7 +109,7 @@
     .locals 1
 
     .prologue
-    .line 189
+    .line 197
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -136,11 +136,23 @@
     throw v0
 .end method
 
+.method public countCookies()I
+    .locals 1
+
+    .prologue
+    .line 134
+    new-instance v0, Landroid/webkit/MustOverrideException;
+
+    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
+
+    throw v0
+.end method
+
 .method protected flushCookieStore()V
     .locals 1
 
     .prologue
-    .line 168
+    .line 176
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -204,7 +216,7 @@
     .locals 1
 
     .prologue
-    .line 142
+    .line 150
     monitor-enter p0
 
     :try_start_0
@@ -229,7 +241,7 @@
     .parameter "privateBrowsing"
 
     .prologue
-    .line 152
+    .line 160
     monitor-enter p0
 
     :try_start_0
@@ -253,7 +265,7 @@
     .locals 1
 
     .prologue
-    .line 133
+    .line 141
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -265,7 +277,7 @@
     .locals 1
 
     .prologue
-    .line 159
+    .line 167
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
@@ -315,7 +327,7 @@
     .parameter "accept"
 
     .prologue
-    .line 213
+    .line 221
     new-instance v0, Landroid/webkit/MustOverrideException;
 
     invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V

@@ -4,7 +4,5 @@
     <item android:duration="500" android:drawable="@drawable/ic_media_route_on_0_holo_dark" />
     <item android:duration="500" android:drawable="@drawable/ic_media_route_on_1_holo_dark" />
     <item android:duration="500" android:drawable="@drawable/ic_media_route_on_2_holo_dark" />
-    <item android:duration="500" android:drawable="@drawable/ic_media_route_on_holo_dark" />
-    <item android:duration="500" android:drawable="@drawable/ic_media_route_on_2_holo_dark" />
     <item android:duration="500" android:drawable="@drawable/ic_media_route_on_1_holo_dark" />
 </animation-list>

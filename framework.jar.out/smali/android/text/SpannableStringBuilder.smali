@@ -64,7 +64,7 @@
     .locals 1
 
     .prologue
-    .line 1320
+    .line 1340
     const/4 v0, 0x0
 
     new-array v0, v0, [Landroid/text/InputFilter;
@@ -117,7 +117,7 @@
     .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1321
+    .line 1341
     sget-object v0, Landroid/text/SpannableStringBuilder;->NO_FILTERS:[Landroid/text/InputFilter;
 
     iput-object v0, p0, Landroid/text/SpannableStringBuilder;->mFilters:[Landroid/text/InputFilter;
@@ -3813,6 +3813,180 @@
     goto :goto_0
 .end method
 
+.method public equals(Ljava/lang/Object;)Z
+    .locals 8
+    .parameter "o"
+
+    .prologue
+    const/4 v5, 0x0
+
+    .line 1294
+    instance-of v6, p1, Landroid/text/Spanned;
+
+    if-eqz v6, :cond_0
+
+    invoke-virtual {p0}, Landroid/text/SpannableStringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-virtual {v6, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_0
+
+    move-object v1, p1
+
+    .line 1296
+    check-cast v1, Landroid/text/Spanned;
+
+    .line 1298
+    .local v1, other:Landroid/text/Spanned;
+    invoke-interface {v1}, Landroid/text/Spanned;->length()I
+
+    move-result v6
+
+    const-class v7, Ljava/lang/Object;
+
+    invoke-interface {v1, v5, v6, v7}, Landroid/text/Spanned;->getSpans(IILjava/lang/Class;)[Ljava/lang/Object;
+
+    move-result-object v3
+
+    .line 1299
+    .local v3, otherSpans:[Ljava/lang/Object;
+    iget v6, p0, Landroid/text/SpannableStringBuilder;->mSpanCount:I
+
+    array-length v7, v3
+
+    if-ne v6, v7, :cond_0
+
+    .line 1300
+    const/4 v0, 0x0
+
+    .local v0, i:I
+    :goto_0
+    iget v6, p0, Landroid/text/SpannableStringBuilder;->mSpanCount:I
+
+    if-ge v0, v6, :cond_3
+
+    .line 1301
+    iget-object v6, p0, Landroid/text/SpannableStringBuilder;->mSpans:[Ljava/lang/Object;
+
+    aget-object v4, v6, v0
+
+    .line 1302
+    .local v4, thisSpan:Ljava/lang/Object;
+    aget-object v2, v3, v0
+
+    .line 1303
+    .local v2, otherSpan:Ljava/lang/Object;
+    if-ne v4, p0, :cond_1
+
+    .line 1304
+    if-ne v1, v2, :cond_0
+
+    invoke-virtual {p0, v4}, Landroid/text/SpannableStringBuilder;->getSpanStart(Ljava/lang/Object;)I
+
+    move-result v6
+
+    invoke-interface {v1, v2}, Landroid/text/Spanned;->getSpanStart(Ljava/lang/Object;)I
+
+    move-result v7
+
+    if-ne v6, v7, :cond_0
+
+    invoke-virtual {p0, v4}, Landroid/text/SpannableStringBuilder;->getSpanEnd(Ljava/lang/Object;)I
+
+    move-result v6
+
+    invoke-interface {v1, v2}, Landroid/text/Spanned;->getSpanEnd(Ljava/lang/Object;)I
+
+    move-result v7
+
+    if-ne v6, v7, :cond_0
+
+    invoke-virtual {p0, v4}, Landroid/text/SpannableStringBuilder;->getSpanFlags(Ljava/lang/Object;)I
+
+    move-result v6
+
+    invoke-interface {v1, v2}, Landroid/text/Spanned;->getSpanFlags(Ljava/lang/Object;)I
+
+    move-result v7
+
+    if-eq v6, v7, :cond_2
+
+    .line 1320
+    .end local v0           #i:I
+    .end local v1           #other:Landroid/text/Spanned;
+    .end local v2           #otherSpan:Ljava/lang/Object;
+    .end local v3           #otherSpans:[Ljava/lang/Object;
+    .end local v4           #thisSpan:Ljava/lang/Object;
+    :cond_0
+    :goto_1
+    return v5
+
+    .line 1310
+    .restart local v0       #i:I
+    .restart local v1       #other:Landroid/text/Spanned;
+    .restart local v2       #otherSpan:Ljava/lang/Object;
+    .restart local v3       #otherSpans:[Ljava/lang/Object;
+    .restart local v4       #thisSpan:Ljava/lang/Object;
+    :cond_1
+    invoke-virtual {v4, v2}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_0
+
+    invoke-virtual {p0, v4}, Landroid/text/SpannableStringBuilder;->getSpanStart(Ljava/lang/Object;)I
+
+    move-result v6
+
+    invoke-interface {v1, v2}, Landroid/text/Spanned;->getSpanStart(Ljava/lang/Object;)I
+
+    move-result v7
+
+    if-ne v6, v7, :cond_0
+
+    invoke-virtual {p0, v4}, Landroid/text/SpannableStringBuilder;->getSpanEnd(Ljava/lang/Object;)I
+
+    move-result v6
+
+    invoke-interface {v1, v2}, Landroid/text/Spanned;->getSpanEnd(Ljava/lang/Object;)I
+
+    move-result v7
+
+    if-ne v6, v7, :cond_0
+
+    invoke-virtual {p0, v4}, Landroid/text/SpannableStringBuilder;->getSpanFlags(Ljava/lang/Object;)I
+
+    move-result v6
+
+    invoke-interface {v1, v2}, Landroid/text/Spanned;->getSpanFlags(Ljava/lang/Object;)I
+
+    move-result v7
+
+    if-ne v6, v7, :cond_0
+
+    .line 1300
+    :cond_2
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    .line 1317
+    .end local v2           #otherSpan:Ljava/lang/Object;
+    .end local v4           #thisSpan:Ljava/lang/Object;
+    :cond_3
+    const/4 v5, 0x1
+
+    goto :goto_1
+.end method
+
 .method public getChars(II[CI)V
     .locals 4
     .parameter "start"
@@ -3899,7 +4073,7 @@
     .locals 1
 
     .prologue
-    .line 1317
+    .line 1288
     iget-object v0, p0, Landroid/text/SpannableStringBuilder;->mFilters:[Landroid/text/InputFilter;
 
     return-object v0
@@ -4650,132 +4824,6 @@
     goto :goto_0
 .end method
 
-.method public getTextRunAdvances(IIIII[FILandroid/graphics/Paint;I)F
-    .locals 11
-    .parameter "start"
-    .parameter "end"
-    .parameter "contextStart"
-    .parameter "contextEnd"
-    .parameter "flags"
-    .parameter "advances"
-    .parameter "advancesPos"
-    .parameter "p"
-    .parameter "reserved"
-
-    .prologue
-    .line 1237
-    sub-int v5, p4, p3
-
-    .line 1238
-    .local v5, contextLen:I
-    sub-int v3, p2, p1
-
-    .line 1240
-    .local v3, len:I
-    iget v0, p0, Landroid/text/SpannableStringBuilder;->mGapStart:I
-
-    if-gt p2, v0, :cond_0
-
-    .line 1241
-    iget-object v1, p0, Landroid/text/SpannableStringBuilder;->mText:[C
-
-    move-object/from16 v0, p8
-
-    move v2, p1
-
-    move v4, p3
-
-    move/from16 v6, p5
-
-    move-object/from16 v7, p6
-
-    move/from16 v8, p7
-
-    move/from16 v9, p9
-
-    invoke-virtual/range {v0 .. v9}, Landroid/graphics/Paint;->getTextRunAdvances([CIIIII[FII)F
-
-    move-result v10
-
-    .line 1254
-    .local v10, ret:F
-    :goto_0
-    return v10
-
-    .line 1243
-    .end local v10           #ret:F
-    :cond_0
-    iget v0, p0, Landroid/text/SpannableStringBuilder;->mGapStart:I
-
-    if-lt p1, v0, :cond_1
-
-    .line 1244
-    iget-object v1, p0, Landroid/text/SpannableStringBuilder;->mText:[C
-
-    iget v0, p0, Landroid/text/SpannableStringBuilder;->mGapLength:I
-
-    add-int v2, p1, v0
-
-    iget v0, p0, Landroid/text/SpannableStringBuilder;->mGapLength:I
-
-    add-int v4, p3, v0
-
-    move-object/from16 v0, p8
-
-    move/from16 v6, p5
-
-    move-object/from16 v7, p6
-
-    move/from16 v8, p7
-
-    move/from16 v9, p9
-
-    invoke-virtual/range {v0 .. v9}, Landroid/graphics/Paint;->getTextRunAdvances([CIIIII[FII)F
-
-    move-result v10
-
-    .restart local v10       #ret:F
-    goto :goto_0
-
-    .line 1247
-    .end local v10           #ret:F
-    :cond_1
-    invoke-static {v5}, Landroid/text/TextUtils;->obtain(I)[C
-
-    move-result-object v1
-
-    .line 1248
-    .local v1, buf:[C
-    const/4 v0, 0x0
-
-    invoke-virtual {p0, p3, p4, v1, v0}, Landroid/text/SpannableStringBuilder;->getChars(II[CI)V
-
-    .line 1249
-    sub-int v2, p1, p3
-
-    const/4 v4, 0x0
-
-    move-object/from16 v0, p8
-
-    move/from16 v6, p5
-
-    move-object/from16 v7, p6
-
-    move/from16 v8, p7
-
-    move/from16 v9, p9
-
-    invoke-virtual/range {v0 .. v9}, Landroid/graphics/Paint;->getTextRunAdvances([CIIIII[FII)F
-
-    move-result v10
-
-    .line 1251
-    .restart local v10       #ret:F
-    invoke-static {v1}, Landroid/text/TextUtils;->recycle([C)V
-
-    goto :goto_0
-.end method
-
 .method public getTextRunCursor(IIIIILandroid/graphics/Paint;)I
     .locals 8
     .parameter "contextStart"
@@ -4790,16 +4838,16 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 1288
+    .line 1259
     sub-int v3, p2, p1
 
-    .line 1289
+    .line 1260
     .local v3, contextLen:I
     iget v0, p0, Landroid/text/SpannableStringBuilder;->mGapStart:I
 
     if-gt p2, v0, :cond_0
 
-    .line 1290
+    .line 1261
     iget-object v1, p0, Landroid/text/SpannableStringBuilder;->mText:[C
 
     move-object v0, p6
@@ -4816,19 +4864,19 @@
 
     move-result v7
 
-    .line 1303
+    .line 1274
     .local v7, ret:I
     :goto_0
     return v7
 
-    .line 1292
+    .line 1263
     .end local v7           #ret:I
     :cond_0
     iget v0, p0, Landroid/text/SpannableStringBuilder;->mGapStart:I
 
     if-lt p1, v0, :cond_1
 
-    .line 1293
+    .line 1264
     iget-object v1, p0, Landroid/text/SpannableStringBuilder;->mText:[C
 
     iget v0, p0, Landroid/text/SpannableStringBuilder;->mGapLength:I
@@ -4856,18 +4904,18 @@
     .restart local v7       #ret:I
     goto :goto_0
 
-    .line 1296
+    .line 1267
     .end local v7           #ret:I
     :cond_1
     invoke-static {v3}, Landroid/text/TextUtils;->obtain(I)[C
 
     move-result-object v1
 
-    .line 1297
+    .line 1268
     .local v1, buf:[C
     invoke-virtual {p0, p1, p2, v1, v2}, Landroid/text/SpannableStringBuilder;->getChars(II[CI)V
 
-    .line 1298
+    .line 1269
     sub-int v5, p4, p1
 
     move-object v0, p6
@@ -4882,7 +4930,7 @@
 
     add-int v7, v0, p1
 
-    .line 1300
+    .line 1271
     .restart local v7       #ret:I
     invoke-static {v1}, Landroid/text/TextUtils;->recycle([C)V
 
@@ -4971,6 +5019,93 @@
     invoke-static {v0}, Landroid/text/TextUtils;->recycle([C)V
 
     goto :goto_0
+.end method
+
+.method public hashCode()I
+    .locals 5
+
+    .prologue
+    .line 1326
+    invoke-virtual {p0}, Landroid/text/SpannableStringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/String;->hashCode()I
+
+    move-result v0
+
+    .line 1327
+    .local v0, hash:I
+    mul-int/lit8 v3, v0, 0x1f
+
+    iget v4, p0, Landroid/text/SpannableStringBuilder;->mSpanCount:I
+
+    add-int v0, v3, v4
+
+    .line 1328
+    const/4 v1, 0x0
+
+    .local v1, i:I
+    :goto_0
+    iget v3, p0, Landroid/text/SpannableStringBuilder;->mSpanCount:I
+
+    if-ge v1, v3, :cond_1
+
+    .line 1329
+    iget-object v3, p0, Landroid/text/SpannableStringBuilder;->mSpans:[Ljava/lang/Object;
+
+    aget-object v2, v3, v1
+
+    .line 1330
+    .local v2, span:Ljava/lang/Object;
+    if-eq v2, p0, :cond_0
+
+    .line 1331
+    mul-int/lit8 v3, v0, 0x1f
+
+    invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I
+
+    move-result v4
+
+    add-int v0, v3, v4
+
+    .line 1333
+    :cond_0
+    mul-int/lit8 v3, v0, 0x1f
+
+    invoke-virtual {p0, v2}, Landroid/text/SpannableStringBuilder;->getSpanStart(Ljava/lang/Object;)I
+
+    move-result v4
+
+    add-int v0, v3, v4
+
+    .line 1334
+    mul-int/lit8 v3, v0, 0x1f
+
+    invoke-virtual {p0, v2}, Landroid/text/SpannableStringBuilder;->getSpanEnd(Ljava/lang/Object;)I
+
+    move-result v4
+
+    add-int v0, v3, v4
+
+    .line 1335
+    mul-int/lit8 v3, v0, 0x1f
+
+    invoke-virtual {p0, v2}, Landroid/text/SpannableStringBuilder;->getSpanFlags(Ljava/lang/Object;)I
+
+    move-result v4
+
+    add-int v0, v3, v4
+
+    .line 1328
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 1337
+    .end local v2           #span:Ljava/lang/Object;
+    :cond_1
+    return v0
 .end method
 
 .method public bridge synthetic insert(ILjava/lang/CharSequence;)Landroid/text/Editable;
@@ -5662,21 +5797,21 @@
     .parameter "filters"
 
     .prologue
-    .line 1308
+    .line 1279
     if-nez p1, :cond_0
 
-    .line 1309
+    .line 1280
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
 
     throw v0
 
-    .line 1312
+    .line 1283
     :cond_0
     iput-object p1, p0, Landroid/text/SpannableStringBuilder;->mFilters:[Landroid/text/InputFilter;
 
-    .line 1313
+    .line 1284
     return-void
 .end method
 

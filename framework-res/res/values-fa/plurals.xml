@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">%d بار دیگر می‌توانید تلاش کنید و پس از آن سیم کارت قفل می‌شود.</item>
+        <item quantity="one">%d بار دیگر می‌توانید تلاش کنید و پس از آن سیم کارت قفل می‌شود.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d ثانیه قبل</item>
         <item quantity="one">۱ ثانیه قبل</item>
@@ -80,15 +84,19 @@
         <item quantity="one">۱ ساعت</item>
     </plurals>
     <plurals name="wifi_available">
-        <item quantity="other">شبکه‌های Wi-Fi موجود هستند</item>
-        <item quantity="one">شبکه Wi-Fi موجود است</item>
+        <item quantity="other">‏شبکه‌های Wi-Fi موجود هستند</item>
+        <item quantity="one">‏شبکه Wi-Fi موجود است</item>
     </plurals>
     <plurals name="wifi_available_detailed">
-        <item quantity="other">شبکه‌های Wi-Fi موجود را باز کنید</item>
-        <item quantity="one">شبکه Wi-Fi موجود را باز کنید</item>
+        <item quantity="other">‏شبکه‌های Wi-Fi موجود را باز کنید</item>
+        <item quantity="one">‏شبکه Wi-Fi موجود را باز کنید</item>
     </plurals>
     <plurals name="matches_found">
         <item quantity="other">%1$d از %2$d</item>
         <item quantity="one">1 مورد منطبق</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">امتحان پس از %d ثانیه</item>
+        <item quantity="one">امتحان پس از ۱ ثانیه</item>
     </plurals>
 </resources>

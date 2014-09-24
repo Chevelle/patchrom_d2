@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 132
+    .line 214
     iput-object p1, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,114 +38,61 @@
 
 # virtual methods
 .method public run()V
-    .locals 5
+    .locals 3
 
     .prologue
-    .line 134
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
+    .line 217
+    iget-object v1, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
 
-    iget-object v2, v2, Landroid/widget/FastScroller;->mList:Landroid/widget/AbsListView;
+    #getter for: Landroid/widget/FastScroller;->mList:Landroid/widget/AbsListView;
+    invoke-static {v1}, Landroid/widget/FastScroller;->access$000(Landroid/widget/FastScroller;)Landroid/widget/AbsListView;
 
-    iget-boolean v2, v2, Landroid/widget/AbsListView;->mIsAttached:Z
+    move-result-object v1
 
-    if-eqz v2, :cond_1
-
-    .line 135
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
-
-    invoke-virtual {v2}, Landroid/widget/FastScroller;->beginDrag()V
-
-    .line 137
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
-
-    iget-object v2, v2, Landroid/widget/FastScroller;->mList:Landroid/widget/AbsListView;
-
-    invoke-virtual {v2}, Landroid/widget/AbsListView;->getHeight()I
+    invoke-virtual {v1}, Landroid/widget/AbsListView;->isAttachedToWindow()Z
 
     move-result v1
 
-    .line 139
-    .local v1, viewHeight:I
+    if-eqz v1, :cond_0
+
+    .line 218
+    iget-object v1, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
+
+    #calls: Landroid/widget/FastScroller;->beginDrag()V
+    invoke-static {v1}, Landroid/widget/FastScroller;->access$100(Landroid/widget/FastScroller;)V
+
+    .line 220
+    iget-object v1, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
+
     iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
 
-    iget v2, v2, Landroid/widget/FastScroller;->mInitialTouchY:F
+    #getter for: Landroid/widget/FastScroller;->mInitialTouchY:F
+    invoke-static {v2}, Landroid/widget/FastScroller;->access$200(Landroid/widget/FastScroller;)F
 
-    float-to-int v2, v2
+    move-result v2
 
-    iget-object v3, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
+    #calls: Landroid/widget/FastScroller;->getPosFromMotionEvent(F)F
+    invoke-static {v1, v2}, Landroid/widget/FastScroller;->access$300(Landroid/widget/FastScroller;F)F
 
-    iget v3, v3, Landroid/widget/FastScroller;->mThumbH:I
+    move-result v0
 
-    sub-int/2addr v2, v3
+    .line 221
+    .local v0, pos:F
+    iget-object v1, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
 
-    add-int/lit8 v0, v2, 0xa
+    #calls: Landroid/widget/FastScroller;->scrollTo(F)V
+    invoke-static {v1, v0}, Landroid/widget/FastScroller;->access$400(Landroid/widget/FastScroller;F)V
 
-    .line 140
-    .local v0, newThumbY:I
-    if-gez v0, :cond_2
-
-    .line 141
-    const/4 v0, 0x0
-
-    .line 145
+    .line 224
+    .end local v0           #pos:F
     :cond_0
-    :goto_0
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
+    iget-object v1, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
 
-    iput v0, v2, Landroid/widget/FastScroller;->mThumbY:I
+    const/4 v2, 0x0
 
-    .line 146
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
+    #setter for: Landroid/widget/FastScroller;->mHasPendingDrag:Z
+    invoke-static {v1, v2}, Landroid/widget/FastScroller;->access$502(Landroid/widget/FastScroller;Z)Z
 
-    iget-object v3, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
-
-    iget v3, v3, Landroid/widget/FastScroller;->mThumbY:I
-
-    int-to-float v3, v3
-
-    iget-object v4, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
-
-    iget v4, v4, Landroid/widget/FastScroller;->mThumbH:I
-
-    sub-int v4, v1, v4
-
-    int-to-float v4, v4
-
-    div-float/2addr v3, v4
-
-    invoke-virtual {v2, v3}, Landroid/widget/FastScroller;->scrollTo(F)V
-
-    .line 149
-    .end local v0           #newThumbY:I
-    .end local v1           #viewHeight:I
-    :cond_1
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
-
-    const/4 v3, 0x0
-
-    iput-boolean v3, v2, Landroid/widget/FastScroller;->mPendingDrag:Z
-
-    .line 150
+    .line 225
     return-void
-
-    .line 142
-    .restart local v0       #newThumbY:I
-    .restart local v1       #viewHeight:I
-    :cond_2
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
-
-    iget v2, v2, Landroid/widget/FastScroller;->mThumbH:I
-
-    add-int/2addr v2, v0
-
-    if-le v2, v1, :cond_0
-
-    .line 143
-    iget-object v2, p0, Landroid/widget/FastScroller$1;->this$0:Landroid/widget/FastScroller;
-
-    iget v2, v2, Landroid/widget/FastScroller;->mThumbH:I
-
-    sub-int v0, v1, v2
-
-    goto :goto_0
 .end method

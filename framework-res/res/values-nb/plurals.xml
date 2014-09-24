@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Du har %d forsøk igjen før SIM-kortet låses.</item>
+        <item quantity="one">Du har %d forsøk igjen før SIM-kortet låses.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">for %d sekunder siden</item>
         <item quantity="one">for et sekund siden</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d av %2$d</item>
         <item quantity="one">1 treff</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Prøv på nytt om %d sekunder</item>
+        <item quantity="one">Prøv på nytt om 1 sekund</item>
     </plurals>
 </resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="config_tether_apndata">T-Mobile Tethering,pcweb.tmobile.com,,,,,,,,,310,260,,DUN</string>
+</resources>

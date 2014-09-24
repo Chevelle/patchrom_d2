@@ -12,20 +12,9 @@
 
 
 # instance fields
-.field final mBitmaps:Ljava/util/ArrayList;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/ArrayList",
-            "<",
-            "Landroid/graphics/Bitmap;",
-            ">;"
-        }
-    .end annotation
-.end field
-
 .field private mCanvas:Landroid/view/GLES20RecordingCanvas;
 
-.field final mChildDisplayLists:Ljava/util/ArrayList;
+.field private mChildDisplayLists:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/ArrayList",
@@ -45,40 +34,92 @@
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+    .locals 0
     .parameter "name"
 
     .prologue
-    .line 45
+    .line 39
     invoke-direct {p0}, Landroid/view/DisplayList;-><init>()V
 
-    .line 32
-    new-instance v0, Ljava/util/ArrayList;
-
-    const/4 v1, 0x5
-
-    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
-
-    iput-object v0, p0, Landroid/view/GLES20DisplayList;->mBitmaps:Ljava/util/ArrayList;
-
-    .line 33
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Landroid/view/GLES20DisplayList;->mChildDisplayLists:Ljava/util/ArrayList;
-
-    .line 46
+    .line 40
     iput-object p1, p0, Landroid/view/GLES20DisplayList;->mName:Ljava/lang/String;
 
-    .line 47
+    .line 41
     return-void
 .end method
 
-.method private static native nOffsetLeftRight(II)V
+.method static synthetic access$000(I)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 26
+    invoke-static {p0}, Landroid/view/GLES20DisplayList;->nDestroyDisplayList(I)V
+
+    return-void
 .end method
 
-.method private static native nOffsetTopBottom(II)V
+.method private static native nDestroyDisplayList(I)V
+.end method
+
+.method private static native nGetAlpha(I)F
+.end method
+
+.method private static native nGetBottom(I)F
+.end method
+
+.method private static native nGetCameraDistance(I)F
+.end method
+
+.method private static native nGetDisplayListSize(I)I
+.end method
+
+.method private static native nGetLeft(I)F
+.end method
+
+.method private static native nGetMatrix(II)V
+.end method
+
+.method private static native nGetPivotX(I)F
+.end method
+
+.method private static native nGetPivotY(I)F
+.end method
+
+.method private static native nGetRight(I)F
+.end method
+
+.method private static native nGetRotation(I)F
+.end method
+
+.method private static native nGetRotationX(I)F
+.end method
+
+.method private static native nGetRotationY(I)F
+.end method
+
+.method private static native nGetScaleX(I)F
+.end method
+
+.method private static native nGetScaleY(I)F
+.end method
+
+.method private static native nGetTop(I)F
+.end method
+
+.method private static native nGetTranslationX(I)F
+.end method
+
+.method private static native nGetTranslationY(I)F
+.end method
+
+.method private static native nHasOverlappingRendering(I)Z
+.end method
+
+.method private static native nOffsetLeftAndRight(IF)V
+.end method
+
+.method private static native nOffsetTopAndBottom(IF)V
 .end method
 
 .method private static native nReset(I)V
@@ -99,16 +140,16 @@
 .method private static native nSetCameraDistance(IF)V
 .end method
 
-.method private static native nSetClipChildren(IZ)V
+.method private static native nSetClipToBounds(IZ)V
+.end method
+
+.method private static native nSetDisplayListName(ILjava/lang/String;)V
 .end method
 
 .method private static native nSetHasOverlappingRendering(IZ)V
 .end method
 
 .method private static native nSetLeft(II)V
-.end method
-
-.method private static native nSetLeftTop(III)V
 .end method
 
 .method private static native nSetLeftTopRightBottom(IIIII)V
@@ -159,184 +200,9 @@
     .locals 1
 
     .prologue
-    .line 83
-    iget-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
+    .line 72
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->clearDirty()V
 
-    if-nez v0, :cond_0
-
-    .line 84
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mBitmaps:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
-
-    .line 85
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mChildDisplayLists:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
-
-    .line 87
-    :cond_0
-    return-void
-.end method
-
-.method public end()V
-    .locals 3
-
-    .prologue
-    .line 103
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
-
-    if-eqz v0, :cond_0
-
-    .line 104
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    if-eqz v0, :cond_1
-
-    .line 105
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
-
-    iget-object v1, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v1, v1, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-virtual {v0, v1}, Landroid/view/GLES20RecordingCanvas;->end(I)I
-
-    .line 110
-    :goto_0
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
-
-    invoke-virtual {v0}, Landroid/view/GLES20RecordingCanvas;->recycle()V
-
-    .line 111
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
-
-    .line 112
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
-
-    .line 114
-    :cond_0
-    return-void
-
-    .line 107
-    :cond_1
-    new-instance v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget-object v1, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v1, v2}, Landroid/view/GLES20RecordingCanvas;->end(I)I
-
-    move-result v1
-
-    invoke-direct {v0, v1}, Landroid/view/GLES20DisplayList$DisplayListFinalizer;-><init>(I)V
-
-    iput-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    .line 108
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    iget-object v1, p0, Landroid/view/GLES20DisplayList;->mName:Ljava/lang/String;
-
-    invoke-static {v0, v1}, Landroid/view/GLES20Canvas;->setDisplayListName(ILjava/lang/String;)V
-
-    goto :goto_0
-.end method
-
-.method getNativeDisplayList()I
-    .locals 2
-
-    .prologue
-    .line 54
-    iget-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    if-nez v0, :cond_1
-
-    .line 55
-    :cond_0
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "The display list is not valid."
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 57
-    :cond_1
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    return v0
-.end method
-
-.method public getSize()I
-    .locals 1
-
-    .prologue
-    .line 118
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    if-nez v0, :cond_0
-
-    const/4 v0, 0x0
-
-    .line 119
-    :goto_0
-    return v0
-
-    :cond_0
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0}, Landroid/view/GLES20Canvas;->getDisplayListSize(I)I
-
-    move-result v0
-
-    goto :goto_0
-.end method
-
-.method hasNativeDisplayList()Z
-    .locals 1
-
-    .prologue
-    .line 50
-    iget-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
-.end method
-
-.method public invalidate()V
-    .locals 1
-
-    .prologue
     .line 74
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
@@ -358,567 +224,438 @@
 
     iput-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
 
-    .line 79
+    .line 80
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->clearReferences()V
+
+    .line 81
     return-void
 .end method
 
-.method public isValid()Z
+.method clearReferences()V
     .locals 1
 
     .prologue
-    .line 98
-    iget-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
-
-    return v0
-.end method
-
-.method public offsetLeftRight(I)V
-    .locals 1
-    .parameter "offset"
-
-    .prologue
-    .line 292
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
+    .line 84
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mChildDisplayLists:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
 
-    .line 293
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mChildDisplayLists:Ljava/util/ArrayList;
 
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+    invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nOffsetLeftRight(II)V
-
-    .line 295
+    .line 85
     :cond_0
     return-void
 .end method
 
-.method public offsetTopBottom(I)V
-    .locals 1
-    .parameter "offset"
+.method public end()V
+    .locals 3
 
     .prologue
-    .line 299
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
+    .line 107
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
     if-eqz v0, :cond_0
 
-    .line 300
+    .line 108
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
+
+    invoke-virtual {v0}, Landroid/view/GLES20RecordingCanvas;->onPostDraw()V
+
+    .line 109
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+    if-eqz v0, :cond_1
 
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nOffsetTopBottom(II)V
+    .line 110
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
-    .line 302
-    :cond_0
-    return-void
-.end method
+    iget-object v1, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
-.method public reset()V
-    .locals 1
+    iget v1, v1, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
 
-    .prologue
-    .line 91
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+    invoke-virtual {v0, v1}, Landroid/view/GLES20RecordingCanvas;->end(I)I
 
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 92
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nReset(I)V
-
-    .line 94
-    :cond_0
-    return-void
-.end method
-
-.method public setAlpha(F)V
-    .locals 1
-    .parameter "alpha"
-
-    .prologue
-    .line 157
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 158
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetAlpha(IF)V
-
-    .line 160
-    :cond_0
-    return-void
-.end method
-
-.method public setAnimationMatrix(Landroid/graphics/Matrix;)V
-    .locals 2
-    .parameter "matrix"
-
-    .prologue
-    .line 149
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 150
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v1, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    if-eqz p1, :cond_1
-
-    iget v0, p1, Landroid/graphics/Matrix;->native_instance:I
-
+    .line 115
     :goto_0
-    invoke-static {v1, v0}, Landroid/view/GLES20DisplayList;->nSetAnimationMatrix(II)V
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
-    .line 153
+    invoke-virtual {v0}, Landroid/view/GLES20RecordingCanvas;->recycle()V
+
+    .line 116
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
+
+    .line 117
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
+
+    .line 119
     :cond_0
     return-void
 
-    .line 150
+    .line 112
     :cond_1
+    new-instance v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget-object v1, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v1, v2}, Landroid/view/GLES20RecordingCanvas;->end(I)I
+
+    move-result v1
+
+    invoke-direct {v0, v1}, Landroid/view/GLES20DisplayList$DisplayListFinalizer;-><init>(I)V
+
+    iput-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    .line 113
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    iget-object v1, p0, Landroid/view/GLES20DisplayList;->mName:Ljava/lang/String;
+
+    invoke-static {v0, v1}, Landroid/view/GLES20DisplayList;->nSetDisplayListName(ILjava/lang/String;)V
+
+    goto :goto_0
+.end method
+
+.method public getAlpha()F
+    .locals 1
+
+    .prologue
+    .line 181
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 182
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetAlpha(I)F
+
+    move-result v0
+
+    .line 184
+    :goto_0
+    return v0
+
+    :cond_0
+    const/high16 v0, 0x3f80
+
+    goto :goto_0
+.end method
+
+.method public getBottom()F
+    .locals 1
+
+    .prologue
+    .line 416
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 417
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetBottom(I)F
+
+    move-result v0
+
+    .line 419
+    :goto_0
+    return v0
+
+    :cond_0
     const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
-.method public setBottom(I)V
+.method public getCameraDistance()F
     .locals 1
-    .parameter "bottom"
 
     .prologue
-    .line 271
+    .line 356
     invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 272
+    .line 357
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
     iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
 
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetBottom(II)V
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetCameraDistance(I)F
 
-    .line 274
+    move-result v0
+
+    .line 359
+    :goto_0
+    return v0
+
     :cond_0
-    return-void
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
-.method public setCaching(Z)V
+.method getChildDisplayLists()Ljava/util/ArrayList;
     .locals 1
-    .parameter "caching"
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Landroid/view/DisplayList;",
+            ">;"
+        }
+    .end annotation
 
     .prologue
-    .line 128
+    .line 88
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mChildDisplayLists:Ljava/util/ArrayList;
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v0, p0, Landroid/view/GLES20DisplayList;->mChildDisplayLists:Ljava/util/ArrayList;
+
+    .line 89
+    :cond_0
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mChildDisplayLists:Ljava/util/ArrayList;
+
+    return-object v0
+.end method
+
+.method public getLeft()F
+    .locals 1
+
+    .prologue
+    .line 371
     invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 129
+    .line 372
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
     iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
 
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetCaching(IZ)V
-
-    .line 131
-    :cond_0
-    return-void
-.end method
-
-.method public setCameraDistance(F)V
-    .locals 1
-    .parameter "distance"
-
-    .prologue
-    .line 243
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetLeft(I)F
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    .line 374
+    :goto_0
+    return v0
 
-    .line 244
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetCameraDistance(IF)V
-
-    .line 246
     :cond_0
-    return-void
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
-.method public setClipChildren(Z)V
-    .locals 1
-    .parameter "clipChildren"
-
-    .prologue
-    .line 135
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 136
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetClipChildren(IZ)V
-
-    .line 138
-    :cond_0
-    return-void
-.end method
-
-.method public setHasOverlappingRendering(Z)V
-    .locals 1
-    .parameter "hasOverlappingRendering"
-
-    .prologue
-    .line 164
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 165
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetHasOverlappingRendering(IZ)V
-
-    .line 167
-    :cond_0
-    return-void
-.end method
-
-.method public setLeft(I)V
-    .locals 1
-    .parameter "left"
-
-    .prologue
-    .line 250
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 251
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetLeft(II)V
-
-    .line 253
-    :cond_0
-    return-void
-.end method
-
-.method public setLeftTop(II)V
-    .locals 1
-    .parameter "left"
-    .parameter "top"
-
-    .prologue
-    .line 278
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 279
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1, p2}, Landroid/view/GLES20DisplayList;->nSetLeftTop(III)V
-
-    .line 281
-    :cond_0
-    return-void
-.end method
-
-.method public setLeftTopRightBottom(IIII)V
-    .locals 1
-    .parameter "left"
-    .parameter "top"
-    .parameter "right"
-    .parameter "bottom"
-
-    .prologue
-    .line 285
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 286
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1, p2, p3, p4}, Landroid/view/GLES20DisplayList;->nSetLeftTopRightBottom(IIIII)V
-
-    .line 288
-    :cond_0
-    return-void
-.end method
-
-.method public setPivotX(F)V
-    .locals 1
-    .parameter "pivotX"
-
-    .prologue
-    .line 229
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 230
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetPivotX(IF)V
-
-    .line 232
-    :cond_0
-    return-void
-.end method
-
-.method public setPivotY(F)V
-    .locals 1
-    .parameter "pivotY"
-
-    .prologue
-    .line 236
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 237
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetPivotY(IF)V
-
-    .line 239
-    :cond_0
-    return-void
-.end method
-
-.method public setRight(I)V
-    .locals 1
-    .parameter "right"
-
-    .prologue
-    .line 264
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 265
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRight(II)V
-
-    .line 267
-    :cond_0
-    return-void
-.end method
-
-.method public setRotation(F)V
-    .locals 1
-    .parameter "rotation"
-
-    .prologue
-    .line 185
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 186
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRotation(IF)V
-
-    .line 188
-    :cond_0
-    return-void
-.end method
-
-.method public setRotationX(F)V
-    .locals 1
-    .parameter "rotationX"
-
-    .prologue
-    .line 192
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 193
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRotationX(IF)V
-
-    .line 195
-    :cond_0
-    return-void
-.end method
-
-.method public setRotationY(F)V
-    .locals 1
-    .parameter "rotationY"
-
-    .prologue
-    .line 199
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 200
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRotationY(IF)V
-
-    .line 202
-    :cond_0
-    return-void
-.end method
-
-.method public setScaleX(F)V
-    .locals 1
-    .parameter "scaleX"
-
-    .prologue
-    .line 206
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 207
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetScaleX(IF)V
-
-    .line 209
-    :cond_0
-    return-void
-.end method
-
-.method public setScaleY(F)V
-    .locals 1
-    .parameter "scaleY"
-
-    .prologue
-    .line 213
-    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 214
-    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
-
-    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
-
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetScaleY(IF)V
-
-    .line 216
-    :cond_0
-    return-void
-.end method
-
-.method public setStaticMatrix(Landroid/graphics/Matrix;)V
+.method public getMatrix(Landroid/graphics/Matrix;)Landroid/graphics/Matrix;
     .locals 2
     .parameter "matrix"
 
     .prologue
-    .line 142
+    .line 158
     invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 143
+    .line 159
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
     iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
 
     iget v1, p1, Landroid/graphics/Matrix;->native_instance:I
 
-    invoke-static {v0, v1}, Landroid/view/GLES20DisplayList;->nSetStaticMatrix(II)V
+    invoke-static {v0, v1}, Landroid/view/GLES20DisplayList;->nGetMatrix(II)V
 
-    .line 145
+    .line 161
     :cond_0
-    return-void
+    return-object p1
 .end method
 
-.method public setTop(I)V
+.method getNativeDisplayList()I
+    .locals 2
+
+    .prologue
+    .line 48
+    iget-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    if-nez v0, :cond_1
+
+    .line 49
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "The display list is not valid."
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 51
+    :cond_1
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    return v0
+.end method
+
+.method public getPivotX()F
     .locals 1
-    .parameter "top"
+
+    .prologue
+    .line 326
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 327
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetPivotX(I)F
+
+    move-result v0
+
+    .line 329
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getPivotY()F
+    .locals 1
+
+    .prologue
+    .line 341
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 342
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetPivotY(I)F
+
+    move-result v0
+
+    .line 344
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getRight()F
+    .locals 1
+
+    .prologue
+    .line 401
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 402
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetRight(I)F
+
+    move-result v0
+
+    .line 404
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getRotation()F
+    .locals 1
+
+    .prologue
+    .line 242
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 243
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetRotation(I)F
+
+    move-result v0
+
+    .line 245
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getRotationX()F
+    .locals 1
 
     .prologue
     .line 257
@@ -933,9 +670,833 @@
 
     iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
 
-    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetTop(II)V
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetRotationX(I)F
+
+    move-result v0
 
     .line 260
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getRotationY()F
+    .locals 1
+
+    .prologue
+    .line 272
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 273
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetRotationY(I)F
+
+    move-result v0
+
+    .line 275
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getScaleX()F
+    .locals 1
+
+    .prologue
+    .line 287
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 288
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetScaleX(I)F
+
+    move-result v0
+
+    .line 290
+    :goto_0
+    return v0
+
+    :cond_0
+    const/high16 v0, 0x3f80
+
+    goto :goto_0
+.end method
+
+.method public getScaleY()F
+    .locals 1
+
+    .prologue
+    .line 302
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 303
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetScaleY(I)F
+
+    move-result v0
+
+    .line 305
+    :goto_0
+    return v0
+
+    :cond_0
+    const/high16 v0, 0x3f80
+
+    goto :goto_0
+.end method
+
+.method public getSize()I
+    .locals 1
+
+    .prologue
+    .line 123
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x0
+
+    .line 124
+    :goto_0
+    return v0
+
+    :cond_0
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetDisplayListSize(I)I
+
+    move-result v0
+
+    goto :goto_0
+.end method
+
+.method public getTop()F
+    .locals 1
+
+    .prologue
+    .line 386
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 387
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetTop(I)F
+
+    move-result v0
+
+    .line 389
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getTranslationX()F
+    .locals 1
+
+    .prologue
+    .line 212
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 213
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetTranslationX(I)F
+
+    move-result v0
+
+    .line 215
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getTranslationY()F
+    .locals 1
+
+    .prologue
+    .line 227
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 228
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nGetTranslationY(I)F
+
+    move-result v0
+
+    .line 230
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method hasNativeDisplayList()Z
+    .locals 1
+
+    .prologue
+    .line 44
+    iget-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public hasOverlappingRendering()Z
+    .locals 1
+
+    .prologue
+    .line 197
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 198
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nHasOverlappingRendering(I)Z
+
+    move-result v0
+
+    .line 200
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
+.end method
+
+.method public isValid()Z
+    .locals 1
+
+    .prologue
+    .line 102
+    iget-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
+
+    return v0
+.end method
+
+.method public offsetLeftAndRight(F)V
+    .locals 1
+    .parameter "offset"
+
+    .prologue
+    .line 431
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 432
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nOffsetLeftAndRight(IF)V
+
+    .line 434
+    :cond_0
+    return-void
+.end method
+
+.method public offsetTopAndBottom(F)V
+    .locals 1
+    .parameter "offset"
+
+    .prologue
+    .line 438
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 439
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nOffsetTopAndBottom(IF)V
+
+    .line 441
+    :cond_0
+    return-void
+.end method
+
+.method public reset()V
+    .locals 1
+
+    .prologue
+    .line 94
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 95
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0}, Landroid/view/GLES20DisplayList;->nReset(I)V
+
+    .line 97
+    :cond_0
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->clear()V
+
+    .line 98
+    return-void
+.end method
+
+.method public setAlpha(F)V
+    .locals 1
+    .parameter "alpha"
+
+    .prologue
+    .line 174
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 175
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetAlpha(IF)V
+
+    .line 177
+    :cond_0
+    return-void
+.end method
+
+.method public setAnimationMatrix(Landroid/graphics/Matrix;)V
+    .locals 2
+    .parameter "matrix"
+
+    .prologue
+    .line 166
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 167
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v1, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    if-eqz p1, :cond_1
+
+    iget v0, p1, Landroid/graphics/Matrix;->native_instance:I
+
+    :goto_0
+    invoke-static {v1, v0}, Landroid/view/GLES20DisplayList;->nSetAnimationMatrix(II)V
+
+    .line 170
+    :cond_0
+    return-void
+
+    .line 167
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public setBottom(I)V
+    .locals 1
+    .parameter "bottom"
+
+    .prologue
+    .line 409
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 410
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetBottom(II)V
+
+    .line 412
+    :cond_0
+    return-void
+.end method
+
+.method public setCaching(Z)V
+    .locals 1
+    .parameter "caching"
+
+    .prologue
+    .line 137
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 138
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetCaching(IZ)V
+
+    .line 140
+    :cond_0
+    return-void
+.end method
+
+.method public setCameraDistance(F)V
+    .locals 1
+    .parameter "distance"
+
+    .prologue
+    .line 349
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 350
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetCameraDistance(IF)V
+
+    .line 352
+    :cond_0
+    return-void
+.end method
+
+.method public setClipToBounds(Z)V
+    .locals 1
+    .parameter "clipToBounds"
+
+    .prologue
+    .line 144
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 145
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetClipToBounds(IZ)V
+
+    .line 147
+    :cond_0
+    return-void
+.end method
+
+.method public setHasOverlappingRendering(Z)V
+    .locals 1
+    .parameter "hasOverlappingRendering"
+
+    .prologue
+    .line 189
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 190
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetHasOverlappingRendering(IZ)V
+
+    .line 192
+    :cond_0
+    return-void
+.end method
+
+.method public setLeft(I)V
+    .locals 1
+    .parameter "left"
+
+    .prologue
+    .line 364
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 365
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetLeft(II)V
+
+    .line 367
+    :cond_0
+    return-void
+.end method
+
+.method public setLeftTopRightBottom(IIII)V
+    .locals 1
+    .parameter "left"
+    .parameter "top"
+    .parameter "right"
+    .parameter "bottom"
+
+    .prologue
+    .line 424
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 425
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1, p2, p3, p4}, Landroid/view/GLES20DisplayList;->nSetLeftTopRightBottom(IIIII)V
+
+    .line 427
+    :cond_0
+    return-void
+.end method
+
+.method public setMatrix(Landroid/graphics/Matrix;)V
+    .locals 2
+    .parameter "matrix"
+
+    .prologue
+    .line 151
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 152
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    iget v1, p1, Landroid/graphics/Matrix;->native_instance:I
+
+    invoke-static {v0, v1}, Landroid/view/GLES20DisplayList;->nSetStaticMatrix(II)V
+
+    .line 154
+    :cond_0
+    return-void
+.end method
+
+.method public setPivotX(F)V
+    .locals 1
+    .parameter "pivotX"
+
+    .prologue
+    .line 319
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 320
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetPivotX(IF)V
+
+    .line 322
+    :cond_0
+    return-void
+.end method
+
+.method public setPivotY(F)V
+    .locals 1
+    .parameter "pivotY"
+
+    .prologue
+    .line 334
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 335
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetPivotY(IF)V
+
+    .line 337
+    :cond_0
+    return-void
+.end method
+
+.method public setRight(I)V
+    .locals 1
+    .parameter "right"
+
+    .prologue
+    .line 394
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 395
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRight(II)V
+
+    .line 397
+    :cond_0
+    return-void
+.end method
+
+.method public setRotation(F)V
+    .locals 1
+    .parameter "rotation"
+
+    .prologue
+    .line 235
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 236
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRotation(IF)V
+
+    .line 238
+    :cond_0
+    return-void
+.end method
+
+.method public setRotationX(F)V
+    .locals 1
+    .parameter "rotationX"
+
+    .prologue
+    .line 250
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 251
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRotationX(IF)V
+
+    .line 253
+    :cond_0
+    return-void
+.end method
+
+.method public setRotationY(F)V
+    .locals 1
+    .parameter "rotationY"
+
+    .prologue
+    .line 265
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 266
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetRotationY(IF)V
+
+    .line 268
+    :cond_0
+    return-void
+.end method
+
+.method public setScaleX(F)V
+    .locals 1
+    .parameter "scaleX"
+
+    .prologue
+    .line 280
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 281
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetScaleX(IF)V
+
+    .line 283
+    :cond_0
+    return-void
+.end method
+
+.method public setScaleY(F)V
+    .locals 1
+    .parameter "scaleY"
+
+    .prologue
+    .line 295
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 296
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetScaleY(IF)V
+
+    .line 298
+    :cond_0
+    return-void
+.end method
+
+.method public setTop(I)V
+    .locals 1
+    .parameter "top"
+
+    .prologue
+    .line 379
+    invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 380
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
+
+    iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
+
+    invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetTop(II)V
+
+    .line 382
     :cond_0
     return-void
 .end method
@@ -952,14 +1513,14 @@
     .parameter "scaleY"
 
     .prologue
-    .line 221
+    .line 311
     invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 222
+    .line 312
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
     iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
@@ -982,7 +1543,7 @@
 
     invoke-static/range {v0 .. v8}, Landroid/view/GLES20DisplayList;->nSetTransformationInfo(IFFFFFFFF)V
 
-    .line 225
+    .line 315
     :cond_0
     return-void
 .end method
@@ -992,21 +1553,21 @@
     .parameter "translationX"
 
     .prologue
-    .line 171
+    .line 205
     invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 172
+    .line 206
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
     iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
 
     invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetTranslationX(IF)V
 
-    .line 174
+    .line 208
     :cond_0
     return-void
 .end method
@@ -1016,35 +1577,37 @@
     .parameter "translationY"
 
     .prologue
-    .line 178
+    .line 220
     invoke-virtual {p0}, Landroid/view/GLES20DisplayList;->hasNativeDisplayList()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 179
+    .line 221
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mFinalizer:Landroid/view/GLES20DisplayList$DisplayListFinalizer;
 
     iget v0, v0, Landroid/view/GLES20DisplayList$DisplayListFinalizer;->mNativeDisplayList:I
 
     invoke-static {v0, p1}, Landroid/view/GLES20DisplayList;->nSetTranslationY(IF)V
 
-    .line 181
+    .line 223
     :cond_0
     return-void
 .end method
 
-.method public start()Landroid/view/HardwareCanvas;
+.method public start(II)Landroid/view/HardwareCanvas;
     .locals 2
+    .parameter "width"
+    .parameter "height"
 
     .prologue
-    .line 62
+    .line 56
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
     if-eqz v0, :cond_0
 
-    .line 63
+    .line 57
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "Recording has already started"
@@ -1053,25 +1616,37 @@
 
     throw v0
 
-    .line 66
+    .line 60
     :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/view/GLES20DisplayList;->mValid:Z
 
-    .line 67
+    .line 61
     invoke-static {p0}, Landroid/view/GLES20RecordingCanvas;->obtain(Landroid/view/GLES20DisplayList;)Landroid/view/GLES20RecordingCanvas;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
-    .line 68
+    .line 62
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
     invoke-virtual {v0}, Landroid/view/GLES20RecordingCanvas;->start()V
 
-    .line 69
+    .line 64
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
+
+    invoke-virtual {v0, p1, p2}, Landroid/view/GLES20RecordingCanvas;->setViewport(II)V
+
+    .line 66
+    iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/view/GLES20RecordingCanvas;->onPreDraw(Landroid/graphics/Rect;)I
+
+    .line 68
     iget-object v0, p0, Landroid/view/GLES20DisplayList;->mCanvas:Landroid/view/GLES20RecordingCanvas;
 
     return-object v0

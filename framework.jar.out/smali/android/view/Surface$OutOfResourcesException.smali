@@ -1,5 +1,5 @@
 .class public Landroid/view/Surface$OutOfResourcesException;
-.super Ljava/lang/Exception;
+.super Ljava/lang/RuntimeException;
 .source "Surface.java"
 
 
@@ -19,10 +19,10 @@
     .locals 0
 
     .prologue
-    .line 759
-    invoke-direct {p0}, Ljava/lang/Exception;-><init>()V
+    .line 429
+    invoke-direct {p0}, Ljava/lang/RuntimeException;-><init>()V
 
-    .line 760
+    .line 430
     return-void
 .end method
 
@@ -31,9 +31,9 @@
     .parameter "name"
 
     .prologue
-    .line 763
-    invoke-direct {p0, p1}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+    .line 432
+    invoke-direct {p0, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 764
+    .line 433
     return-void
 .end method

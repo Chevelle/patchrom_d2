@@ -33,7 +33,7 @@
     .parameter "notification_class"
 
     .prologue
-    .line 800
+    .line 810
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
@@ -56,6 +56,6 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/ContentResolver;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 802
+    .line 812
     return-void
 .end method

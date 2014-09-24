@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">‏يتبقى لديك %d من المحاولات يتم بعدها قفل بطاقة SIM.</item>
+        <item quantity="one">‏يتبقى لديك محاولة واحدة (%d) يتم بعدها قفل بطاقة SIM.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">قبل %d ثانية</item>
         <item quantity="one">قبل ثانية واحدة</item>
@@ -80,15 +84,19 @@
         <item quantity="one">ساعة واحدة</item>
     </plurals>
     <plurals name="wifi_available">
-        <item quantity="other">شبكات Wi-Fi متاحة</item>
-        <item quantity="one">شبكة Wi-Fi متاحة</item>
+        <item quantity="other">‏شبكات Wi-Fi متاحة</item>
+        <item quantity="one">‏شبكة Wi-Fi متاحة</item>
     </plurals>
     <plurals name="wifi_available_detailed">
-        <item quantity="other">هناك شبكات Wi-Fi مفتوحة متاحة</item>
-        <item quantity="one">هناك شبكة Wi-Fi مفتوحة متاحة</item>
+        <item quantity="other">‏هناك شبكات Wi-Fi مفتوحة متاحة</item>
+        <item quantity="one">‏هناك شبكة Wi-Fi مفتوحة متاحة</item>
     </plurals>
     <plurals name="matches_found">
         <item quantity="other">%1$d من %2$d</item>
         <item quantity="one">مطابقة واحدة</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">أعد المحاولة خلال %d ثانية</item>
+        <item quantity="one">أعد المحاولة خلال ثانية واحدة.</item>
     </plurals>
 </resources>

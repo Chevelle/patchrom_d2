@@ -206,12 +206,12 @@
     invoke-virtual {p0, v2}, Landroid/text/method/CharacterPickerDialog;->setCanceledOnTouchOutside(Z)V
 
     .line 75
-    const v2, 0x1090031
+    const v2, 0x1090032
 
     invoke-virtual {p0, v2}, Landroid/text/method/CharacterPickerDialog;->setContentView(I)V
 
     .line 77
-    const v2, 0x1020273
+    const v2, 0x102028e
 
     invoke-virtual {p0, v2}, Landroid/text/method/CharacterPickerDialog;->findViewById(I)Landroid/view/View;
 

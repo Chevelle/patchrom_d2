@@ -58,7 +58,7 @@
 
     const/4 v3, 0x0
 
-    .line 136
+    .line 137
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "TOP_BOTTOM"
@@ -67,7 +67,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->TOP_BOTTOM:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 138
+    .line 139
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "TR_BL"
@@ -76,7 +76,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->TR_BL:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 140
+    .line 141
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "RIGHT_LEFT"
@@ -85,7 +85,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->RIGHT_LEFT:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 142
+    .line 143
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "BR_TL"
@@ -94,7 +94,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->BR_TL:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 144
+    .line 145
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "BOTTOM_TOP"
@@ -103,7 +103,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->BOTTOM_TOP:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 146
+    .line 147
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "BL_TR"
@@ -114,7 +114,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->BL_TR:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 148
+    .line 149
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "LEFT_RIGHT"
@@ -125,7 +125,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->LEFT_RIGHT:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 150
+    .line 151
     new-instance v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     const-string v1, "TL_BR"
@@ -136,7 +136,7 @@
 
     sput-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->TL_BR:Landroid/graphics/drawable/GradientDrawable$Orientation;
 
-    .line 134
+    .line 135
     const/16 v0, 0x8
 
     new-array v0, v0, [Landroid/graphics/drawable/GradientDrawable$Orientation;
@@ -195,7 +195,7 @@
     .end annotation
 
     .prologue
-    .line 134
+    .line 135
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -206,7 +206,7 @@
     .parameter "name"
 
     .prologue
-    .line 134
+    .line 135
     const-class v0, Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -222,7 +222,7 @@
     .locals 1
 
     .prologue
-    .line 134
+    .line 135
     sget-object v0, Landroid/graphics/drawable/GradientDrawable$Orientation;->$VALUES:[Landroid/graphics/drawable/GradientDrawable$Orientation;
 
     invoke-virtual {v0}, [Landroid/graphics/drawable/GradientDrawable$Orientation;->clone()Ljava/lang/Object;

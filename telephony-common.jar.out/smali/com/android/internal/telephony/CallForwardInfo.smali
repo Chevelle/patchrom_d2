@@ -34,7 +34,7 @@
     .locals 3
 
     .prologue
-    .line 35
+    .line 36
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 710
+    .line 712
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -30,12 +30,12 @@
     .parameter "in"
 
     .prologue
-    .line 712
+    .line 714
     invoke-virtual {p0}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
-    .line 713
+    .line 715
     .local v1, size:I
     const/4 v3, -0x1
 
@@ -43,15 +43,15 @@
 
     const/4 v2, 0x0
 
-    .line 718
+    .line 720
     :cond_0
     return-object v2
 
-    .line 714
+    .line 716
     :cond_1
     new-array v2, v1, [J
 
-    .line 715
+    .line 717
     .local v2, values:[J
     const/4 v0, 0x0
 
@@ -61,14 +61,14 @@
 
     if-ge v0, v3, :cond_0
 
-    .line 716
+    .line 718
     invoke-virtual {p0}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v3
 
     aput-wide v3, v2, v0
 
-    .line 715
+    .line 717
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
@@ -81,25 +81,25 @@
     .parameter "size"
 
     .prologue
-    .line 722
+    .line 724
     if-nez p1, :cond_1
 
-    .line 723
+    .line 725
     const/4 v1, -0x1
 
     invoke-virtual {p0, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 733
+    .line 735
     :cond_0
     return-void
 
-    .line 726
+    .line 728
     :cond_1
     array-length v1, p1
 
     if-le p2, v1, :cond_2
 
-    .line 727
+    .line 729
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v2, "size larger than length"
@@ -108,23 +108,23 @@
 
     throw v1
 
-    .line 729
+    .line 731
     :cond_2
     invoke-virtual {p0, p2}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 730
+    .line 732
     const/4 v0, 0x0
 
     .local v0, i:I
     :goto_0
     if-ge v0, p2, :cond_0
 
-    .line 731
+    .line 733
     aget-wide v1, p1, v0
 
     invoke-virtual {p0, v1, v2}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 730
+    .line 732
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0

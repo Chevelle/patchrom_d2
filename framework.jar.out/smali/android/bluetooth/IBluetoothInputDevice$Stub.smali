@@ -36,6 +36,8 @@
 
 .field static final TRANSACTION_getDevicesMatchingConnectionStates:I = 0x4
 
+.field static final TRANSACTION_getIdleTime:I = 0xe
+
 .field static final TRANSACTION_getPriority:I = 0x7
 
 .field static final TRANSACTION_getProtocolMode:I = 0x8
@@ -43,6 +45,8 @@
 .field static final TRANSACTION_getReport:I = 0xb
 
 .field static final TRANSACTION_sendData:I = 0xd
+
+.field static final TRANSACTION_setIdleTime:I = 0xf
 
 .field static final TRANSACTION_setPriority:I = 0x6
 
@@ -146,7 +150,7 @@
     .line 43
     sparse-switch p1, :sswitch_data_0
 
-    .line 250
+    .line 282
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v7
@@ -839,6 +843,119 @@
     .restart local v0       #_arg0:Landroid/bluetooth/BluetoothDevice;
     goto :goto_b
 
+    .line 251
+    .end local v0           #_arg0:Landroid/bluetooth/BluetoothDevice;
+    :sswitch_e
+    const-string v8, "android.bluetooth.IBluetoothInputDevice"
+
+    invoke-virtual {p2, v8}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 253
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v8
+
+    if-eqz v8, :cond_15
+
+    .line 254
+    sget-object v8, Landroid/bluetooth/BluetoothDevice;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v8, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/bluetooth/BluetoothDevice;
+
+    .line 259
+    .restart local v0       #_arg0:Landroid/bluetooth/BluetoothDevice;
+    :goto_c
+    invoke-virtual {p0, v0}, Landroid/bluetooth/IBluetoothInputDevice$Stub;->getIdleTime(Landroid/bluetooth/BluetoothDevice;)Z
+
+    move-result v4
+
+    .line 260
+    .restart local v4       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 261
+    if-eqz v4, :cond_14
+
+    move v6, v7
+
+    :cond_14
+    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 257
+    .end local v0           #_arg0:Landroid/bluetooth/BluetoothDevice;
+    .end local v4           #_result:Z
+    :cond_15
+    const/4 v0, 0x0
+
+    .restart local v0       #_arg0:Landroid/bluetooth/BluetoothDevice;
+    goto :goto_c
+
+    .line 266
+    .end local v0           #_arg0:Landroid/bluetooth/BluetoothDevice;
+    :sswitch_f
+    const-string v8, "android.bluetooth.IBluetoothInputDevice"
+
+    invoke-virtual {p2, v8}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 268
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v8
+
+    if-eqz v8, :cond_17
+
+    .line 269
+    sget-object v8, Landroid/bluetooth/BluetoothDevice;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v8, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/bluetooth/BluetoothDevice;
+
+    .line 275
+    .restart local v0       #_arg0:Landroid/bluetooth/BluetoothDevice;
+    :goto_d
+    invoke-virtual {p2}, Landroid/os/Parcel;->readByte()B
+
+    move-result v1
+
+    .line 276
+    .local v1, _arg1:B
+    invoke-virtual {p0, v0, v1}, Landroid/bluetooth/IBluetoothInputDevice$Stub;->setIdleTime(Landroid/bluetooth/BluetoothDevice;B)Z
+
+    move-result v4
+
+    .line 277
+    .restart local v4       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 278
+    if-eqz v4, :cond_16
+
+    move v6, v7
+
+    :cond_16
+    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 272
+    .end local v0           #_arg0:Landroid/bluetooth/BluetoothDevice;
+    .end local v1           #_arg1:B
+    .end local v4           #_result:Z
+    :cond_17
+    const/4 v0, 0x0
+
+    .restart local v0       #_arg0:Landroid/bluetooth/BluetoothDevice;
+    goto :goto_d
+
     .line 43
     :sswitch_data_0
     .sparse-switch
@@ -855,6 +972,8 @@
         0xb -> :sswitch_b
         0xc -> :sswitch_c
         0xd -> :sswitch_d
+        0xe -> :sswitch_e
+        0xf -> :sswitch_f
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

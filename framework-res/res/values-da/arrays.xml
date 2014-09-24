@@ -3,7 +3,7 @@
     <string-array name="emailAddressTypes">
         <item>Hjem</item>
         <item>Arbejde</item>
-        <item>Andre</item>
+        <item>Andet</item>
         <item>Tilpasset</item>
     </string-array>
     <string-array name="imProtocols">
@@ -18,7 +18,7 @@
     </string-array>
     <string-array name="organizationTypes">
         <item>Arbejde</item>
-        <item>Andre</item>
+        <item>Andet</item>
         <item>Tilpasset</item>
     </string-array>
     <string-array name="phoneTypes">
@@ -34,7 +34,7 @@
     <string-array name="postalAddressTypes">
         <item>Hjem</item>
         <item>Arbejde</item>
-        <item>Andre</item>
+        <item>Andet</item>
         <item>Tilpasset</item>
     </string-array>
     <string-array name="imAddressTypes">

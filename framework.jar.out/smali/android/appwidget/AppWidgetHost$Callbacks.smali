@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 59
+    .line 65
     iput-object p1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
 
     invoke-direct {p0}, Lcom/android/internal/appwidget/IAppWidgetHost$Stub;-><init>()V
@@ -34,13 +34,14 @@
 
 
 # virtual methods
-.method public providerChanged(ILandroid/appwidget/AppWidgetProviderInfo;)V
+.method public providerChanged(ILandroid/appwidget/AppWidgetProviderInfo;I)V
     .locals 3
     .parameter "appWidgetId"
     .parameter "info"
+    .parameter "userId"
 
     .prologue
-    .line 72
+    .line 76
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
 
     #calls: Landroid/appwidget/AppWidgetHost;->isLocalBinder()Z
@@ -52,12 +53,12 @@
 
     if-eqz p2, :cond_0
 
-    .line 73
+    .line 77
     invoke-virtual {p2}, Landroid/appwidget/AppWidgetProviderInfo;->clone()Landroid/appwidget/AppWidgetProviderInfo;
 
     move-result-object p2
 
-    .line 75
+    .line 79
     :cond_0
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
 
@@ -65,54 +66,52 @@
 
     const/4 v2, 0x2
 
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+    invoke-virtual {v1, v2, p1, p3, p2}, Landroid/os/Handler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 76
+    .line 81
     .local v0, msg:Landroid/os/Message;
-    iput p1, v0, Landroid/os/Message;->arg1:I
-
-    .line 77
-    iput-object p2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    .line 78
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 79
+    .line 82
     return-void
 .end method
 
-.method public providersChanged()V
-    .locals 3
+.method public providersChanged(I)V
+    .locals 4
+    .parameter "userId"
 
     .prologue
-    .line 82
+    .line 85
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
 
     iget-object v1, v1, Landroid/appwidget/AppWidgetHost;->mHandler:Landroid/os/Handler;
 
     const/4 v2, 0x3
 
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v2, p1, v3}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 83
+    .line 86
     .local v0, msg:Landroid/os/Message;
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 84
+    .line 87
     return-void
 .end method
 
-.method public updateAppWidget(ILandroid/widget/RemoteViews;)V
+.method public updateAppWidget(ILandroid/widget/RemoteViews;I)V
     .locals 3
     .parameter "appWidgetId"
     .parameter "views"
+    .parameter "userId"
 
     .prologue
-    .line 61
+    .line 67
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
 
     #calls: Landroid/appwidget/AppWidgetHost;->isLocalBinder()Z
@@ -124,22 +123,19 @@
 
     if-eqz p2, :cond_0
 
-    .line 62
+    .line 68
     invoke-virtual {p2}, Landroid/widget/RemoteViews;->clone()Landroid/widget/RemoteViews;
 
     move-result-object p2
 
-    .line 63
-    iget-object v1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
+    .line 69
+    new-instance v1, Landroid/os/UserHandle;
 
-    #getter for: Landroid/appwidget/AppWidgetHost;->mUser:Landroid/os/UserHandle;
-    invoke-static {v1}, Landroid/appwidget/AppWidgetHost;->access$100(Landroid/appwidget/AppWidgetHost;)Landroid/os/UserHandle;
-
-    move-result-object v1
+    invoke-direct {v1, p3}, Landroid/os/UserHandle;-><init>(I)V
 
     invoke-virtual {p2, v1}, Landroid/widget/RemoteViews;->setUser(Landroid/os/UserHandle;)V
 
-    .line 65
+    .line 71
     :cond_0
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
 
@@ -147,51 +143,44 @@
 
     const/4 v2, 0x1
 
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+    invoke-virtual {v1, v2, p1, p3, p2}, Landroid/os/Handler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 66
+    .line 72
     .local v0, msg:Landroid/os/Message;
-    iput p1, v0, Landroid/os/Message;->arg1:I
-
-    .line 67
-    iput-object p2, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    .line 68
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 69
+    .line 73
     return-void
 .end method
 
-.method public viewDataChanged(II)V
-    .locals 3
+.method public viewDataChanged(III)V
+    .locals 4
     .parameter "appWidgetId"
     .parameter "viewId"
+    .parameter "userId"
 
     .prologue
-    .line 87
+    .line 90
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$Callbacks;->this$0:Landroid/appwidget/AppWidgetHost;
 
     iget-object v1, v1, Landroid/appwidget/AppWidgetHost;->mHandler:Landroid/os/Handler;
 
     const/4 v2, 0x4
 
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+    invoke-static {p3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v2, p1, p2, v3}, Landroid/os/Handler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 88
+    .line 92
     .local v0, msg:Landroid/os/Message;
-    iput p1, v0, Landroid/os/Message;->arg1:I
-
-    .line 89
-    iput p2, v0, Landroid/os/Message;->arg2:I
-
-    .line 90
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 91
+    .line 93
     return-void
 .end method

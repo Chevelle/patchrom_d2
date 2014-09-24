@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 408
+    .line 431
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -27,19 +27,15 @@
 
 
 # virtual methods
-.method public createService(Landroid/app/ContextImpl;)Ljava/lang/Object;
+.method public getService(Landroid/app/ContextImpl;)Ljava/lang/Object;
     .locals 1
     .parameter "ctx"
 
     .prologue
-    .line 410
-    invoke-virtual {p1}, Landroid/app/ContextImpl;->getOuterContext()Landroid/content/Context;
+    .line 437
+    new-instance v0, Landroid/app/KeyguardManager;
 
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/android/internal/policy/PolicyManager;->makeNewLayoutInflater(Landroid/content/Context;)Landroid/view/LayoutInflater;
-
-    move-result-object v0
+    invoke-direct {v0}, Landroid/app/KeyguardManager;-><init>()V
 
     return-object v0
 .end method

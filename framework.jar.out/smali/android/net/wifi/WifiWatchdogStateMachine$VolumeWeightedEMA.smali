@@ -35,25 +35,36 @@
     .prologue
     const-wide/16 v0, 0x0
 
-    .line 1015
+    .line 1004
     iput-object p1, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->this$0:Landroid/net/wifi/WifiWatchdogStateMachine;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1016
+    .line 1005
     iput-wide v0, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mValue:D
 
-    .line 1017
+    .line 1006
     iput-wide v0, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mVolume:D
 
-    .line 1018
+    .line 1007
     iput-wide v0, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mProduct:D
 
-    .line 1019
+    .line 1008
     iput-wide p2, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mAlpha:D
 
-    .line 1020
+    .line 1009
     return-void
+.end method
+
+.method static synthetic access$4200(Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;)D
+    .locals 2
+    .parameter "x0"
+
+    .prologue
+    .line 998
+    iget-wide v0, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mValue:D
+
+    return-wide v0
 .end method
 
 .method static synthetic access$4300(Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;)D
@@ -61,18 +72,7 @@
     .parameter "x0"
 
     .prologue
-    .line 1009
-    iget-wide v0, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mValue:D
-
-    return-wide v0
-.end method
-
-.method static synthetic access$4400(Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;)D
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 1009
+    .line 998
     iget-wide v0, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mVolume:D
 
     return-wide v0
@@ -88,20 +88,20 @@
     .prologue
     const-wide/high16 v8, 0x3ff0
 
-    .line 1023
+    .line 1012
     if-gtz p3, :cond_0
 
-    .line 1029
+    .line 1018
     :goto_0
     return-void
 
-    .line 1025
+    .line 1014
     :cond_0
     int-to-double v2, p3
 
     mul-double v0, p1, v2
 
-    .line 1026
+    .line 1015
     .local v0, newProduct:D
     iget-wide v2, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mAlpha:D
 
@@ -119,7 +119,7 @@
 
     iput-wide v2, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mProduct:D
 
-    .line 1027
+    .line 1016
     iget-wide v2, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mAlpha:D
 
     int-to-double v4, p3
@@ -138,7 +138,7 @@
 
     iput-wide v2, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mVolume:D
 
-    .line 1028
+    .line 1017
     iget-wide v2, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mProduct:D
 
     iget-wide v4, p0, Landroid/net/wifi/WifiWatchdogStateMachine$VolumeWeightedEMA;->mVolume:D

@@ -5,7 +5,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/WallpaperManagerService;->systemReady()V
+    value = Lcom/android/server/WallpaperManagerService;->systemRunning()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 462
+    .line 526
     iput-object p1, p0, Lcom/android/server/WallpaperManagerService$1;->this$0:Lcom/android/server/WallpaperManagerService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,12 +40,12 @@
     .parameter "intent"
 
     .prologue
-    .line 465
+    .line 529
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 466
+    .line 530
     .local v0, action:Ljava/lang/String;
     const-string v1, "android.intent.action.USER_REMOVED"
 
@@ -55,7 +55,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 467
+    .line 531
     iget-object v1, p0, Lcom/android/server/WallpaperManagerService$1;->this$0:Lcom/android/server/WallpaperManagerService;
 
     const-string v2, "android.intent.extra.user_handle"
@@ -68,7 +68,7 @@
 
     invoke-virtual {v1, v2}, Lcom/android/server/WallpaperManagerService;->onRemoveUser(I)V
 
-    .line 476
+    .line 540
     :cond_0
     return-void
 .end method

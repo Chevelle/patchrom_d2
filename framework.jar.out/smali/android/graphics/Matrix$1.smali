@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 41
+    .line 38
     invoke-direct {p0}, Landroid/graphics/Matrix;-><init>()V
 
     return-void
@@ -31,7 +31,7 @@
     .locals 2
 
     .prologue
-    .line 43
+    .line 40
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v1, "Matrix can not be modified"
@@ -46,10 +46,10 @@
     .parameter "other"
 
     .prologue
-    .line 199
+    .line 196
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 200
+    .line 197
     const/4 v0, 0x0
 
     return v0
@@ -60,10 +60,10 @@
     .parameter "degrees"
 
     .prologue
-    .line 181
+    .line 178
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 182
+    .line 179
     const/4 v0, 0x0
 
     return v0
@@ -76,10 +76,10 @@
     .parameter "py"
 
     .prologue
-    .line 175
+    .line 172
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 176
+    .line 173
     const/4 v0, 0x0
 
     return v0
@@ -91,10 +91,10 @@
     .parameter "sy"
 
     .prologue
-    .line 169
+    .line 166
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 170
+    .line 167
     const/4 v0, 0x0
 
     return v0
@@ -108,10 +108,10 @@
     .parameter "py"
 
     .prologue
-    .line 163
+    .line 160
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 164
+    .line 161
     const/4 v0, 0x0
 
     return v0
@@ -123,10 +123,10 @@
     .parameter "ky"
 
     .prologue
-    .line 193
+    .line 190
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 194
+    .line 191
     const/4 v0, 0x0
 
     return v0
@@ -140,10 +140,10 @@
     .parameter "py"
 
     .prologue
-    .line 187
+    .line 184
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 188
+    .line 185
     const/4 v0, 0x0
 
     return v0
@@ -155,10 +155,10 @@
     .parameter "dy"
 
     .prologue
-    .line 157
+    .line 154
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 158
+    .line 155
     const/4 v0, 0x0
 
     return v0
@@ -169,10 +169,10 @@
     .parameter "other"
 
     .prologue
-    .line 151
+    .line 148
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 152
+    .line 149
     const/4 v0, 0x0
 
     return v0
@@ -183,10 +183,10 @@
     .parameter "degrees"
 
     .prologue
-    .line 133
+    .line 130
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 134
+    .line 131
     const/4 v0, 0x0
 
     return v0
@@ -199,10 +199,10 @@
     .parameter "py"
 
     .prologue
-    .line 127
+    .line 124
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 128
+    .line 125
     const/4 v0, 0x0
 
     return v0
@@ -214,10 +214,10 @@
     .parameter "sy"
 
     .prologue
-    .line 121
+    .line 118
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 122
+    .line 119
     const/4 v0, 0x0
 
     return v0
@@ -231,10 +231,10 @@
     .parameter "py"
 
     .prologue
-    .line 115
+    .line 112
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 116
+    .line 113
     const/4 v0, 0x0
 
     return v0
@@ -246,10 +246,10 @@
     .parameter "ky"
 
     .prologue
-    .line 145
+    .line 142
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 146
+    .line 143
     const/4 v0, 0x0
 
     return v0
@@ -263,10 +263,10 @@
     .parameter "py"
 
     .prologue
-    .line 139
+    .line 136
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 140
+    .line 137
     const/4 v0, 0x0
 
     return v0
@@ -278,10 +278,10 @@
     .parameter "dy"
 
     .prologue
-    .line 109
+    .line 106
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 110
+    .line 107
     const/4 v0, 0x0
 
     return v0
@@ -291,10 +291,10 @@
     .locals 0
 
     .prologue
-    .line 53
+    .line 50
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 54
+    .line 51
     return-void
 .end method
 
@@ -303,10 +303,10 @@
     .parameter "src"
 
     .prologue
-    .line 48
+    .line 45
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 49
+    .line 46
     return-void
 .end method
 
@@ -316,10 +316,10 @@
     .parameter "b"
 
     .prologue
-    .line 103
+    .line 100
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 104
+    .line 101
     const/4 v0, 0x0
 
     return v0
@@ -334,10 +334,10 @@
     .parameter "pointCount"
 
     .prologue
-    .line 212
+    .line 209
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 213
+    .line 210
     const/4 v0, 0x0
 
     return v0
@@ -350,10 +350,10 @@
     .parameter "stf"
 
     .prologue
-    .line 205
+    .line 202
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 206
+    .line 203
     const/4 v0, 0x0
 
     return v0
@@ -364,10 +364,10 @@
     .parameter "degrees"
 
     .prologue
-    .line 78
+    .line 75
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 79
+    .line 76
     return-void
 .end method
 
@@ -378,10 +378,10 @@
     .parameter "py"
 
     .prologue
-    .line 73
+    .line 70
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 74
+    .line 71
     return-void
 .end method
 
@@ -391,10 +391,10 @@
     .parameter "sy"
 
     .prologue
-    .line 68
+    .line 65
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 69
+    .line 66
     return-void
 .end method
 
@@ -406,10 +406,10 @@
     .parameter "py"
 
     .prologue
-    .line 63
+    .line 60
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 64
+    .line 61
     return-void
 .end method
 
@@ -419,10 +419,10 @@
     .parameter "cosValue"
 
     .prologue
-    .line 88
+    .line 85
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 89
+    .line 86
     return-void
 .end method
 
@@ -434,10 +434,10 @@
     .parameter "py"
 
     .prologue
-    .line 83
+    .line 80
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 84
+    .line 81
     return-void
 .end method
 
@@ -447,10 +447,10 @@
     .parameter "ky"
 
     .prologue
-    .line 98
+    .line 95
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 99
+    .line 96
     return-void
 .end method
 
@@ -462,10 +462,10 @@
     .parameter "py"
 
     .prologue
-    .line 93
+    .line 90
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 94
+    .line 91
     return-void
 .end method
 
@@ -475,10 +475,10 @@
     .parameter "dy"
 
     .prologue
-    .line 58
+    .line 55
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 59
+    .line 56
     return-void
 .end method
 
@@ -487,9 +487,9 @@
     .parameter "values"
 
     .prologue
-    .line 218
+    .line 215
     invoke-virtual {p0}, Landroid/graphics/Matrix$1;->oops()V
 
-    .line 219
+    .line 216
     return-void
 .end method

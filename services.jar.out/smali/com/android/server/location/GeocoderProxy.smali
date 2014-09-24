@@ -16,33 +16,22 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Ljava/util/List;I)V
-    .locals 8
+.method private constructor <init>(Landroid/content/Context;IIILandroid/os/Handler;)V
+    .locals 9
     .parameter "context"
-    .parameter
-    .parameter "userId"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/content/Context;",
-            "Ljava/util/List",
-            "<",
-            "Ljava/lang/String;",
-            ">;I)V"
-        }
-    .end annotation
+    .parameter "overlaySwitchResId"
+    .parameter "defaultServicePackageNameResId"
+    .parameter "initialPackageNamesResId"
+    .parameter "handler"
 
     .prologue
-    .local p2, initialPackageNames:Ljava/util/List;,"Ljava/util/List<Ljava/lang/String;>;"
-    const/4 v5, 0x0
-
-    .line 51
+    .line 56
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 52
+    .line 57
     iput-object p1, p0, Lcom/android/server/location/GeocoderProxy;->mContext:Landroid/content/Context;
 
-    .line 54
+    .line 59
     new-instance v0, Lcom/android/server/ServiceWatcher;
 
     iget-object v1, p0, Lcom/android/server/location/GeocoderProxy;->mContext:Landroid/content/Context;
@@ -51,17 +40,21 @@
 
     const-string v3, "com.android.location.service.GeocodeProvider"
 
-    move-object v4, p2
+    const/4 v7, 0x0
 
-    move-object v6, v5
+    move v4, p2
 
-    move v7, p3
+    move v5, p3
 
-    invoke-direct/range {v0 .. v7}, Lcom/android/server/ServiceWatcher;-><init>(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Runnable;Landroid/os/Handler;I)V
+    move v6, p4
+
+    move-object v8, p5
+
+    invoke-direct/range {v0 .. v8}, Lcom/android/server/ServiceWatcher;-><init>(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/Runnable;Landroid/os/Handler;)V
 
     iput-object v0, p0, Lcom/android/server/location/GeocoderProxy;->mServiceWatcher:Lcom/android/server/ServiceWatcher;
 
-    .line 56
+    .line 61
     return-void
 .end method
 
@@ -69,7 +62,7 @@
     .locals 1
 
     .prologue
-    .line 59
+    .line 64
     iget-object v0, p0, Lcom/android/server/location/GeocoderProxy;->mServiceWatcher:Lcom/android/server/ServiceWatcher;
 
     invoke-virtual {v0}, Lcom/android/server/ServiceWatcher;->start()Z
@@ -79,31 +72,31 @@
     return v0
 .end method
 
-.method public static createAndBind(Landroid/content/Context;Ljava/util/List;I)Lcom/android/server/location/GeocoderProxy;
-    .locals 2
+.method public static createAndBind(Landroid/content/Context;IIILandroid/os/Handler;)Lcom/android/server/location/GeocoderProxy;
+    .locals 6
     .parameter "context"
-    .parameter
-    .parameter "userId"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/content/Context;",
-            "Ljava/util/List",
-            "<",
-            "Ljava/lang/String;",
-            ">;I)",
-            "Lcom/android/server/location/GeocoderProxy;"
-        }
-    .end annotation
+    .parameter "overlaySwitchResId"
+    .parameter "defaultServicePackageNameResId"
+    .parameter "initialPackageNamesResId"
+    .parameter "handler"
 
     .prologue
-    .line 43
-    .local p1, initialPackageNames:Ljava/util/List;,"Ljava/util/List<Ljava/lang/String;>;"
+    .line 45
     new-instance v0, Lcom/android/server/location/GeocoderProxy;
 
-    invoke-direct {v0, p0, p1, p2}, Lcom/android/server/location/GeocoderProxy;-><init>(Landroid/content/Context;Ljava/util/List;I)V
+    move-object v1, p0
 
-    .line 44
+    move v2, p1
+
+    move v3, p2
+
+    move v4, p3
+
+    move-object v5, p4
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/server/location/GeocoderProxy;-><init>(Landroid/content/Context;IIILandroid/os/Handler;)V
+
+    .line 47
     .local v0, proxy:Lcom/android/server/location/GeocoderProxy;
     invoke-direct {v0}, Lcom/android/server/location/GeocoderProxy;->bind()Z
 
@@ -111,7 +104,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 47
+    .line 50
     .end local v0           #proxy:Lcom/android/server/location/GeocoderProxy;
     :goto_0
     return-object v0
@@ -127,7 +120,7 @@
     .locals 1
 
     .prologue
-    .line 63
+    .line 68
     iget-object v0, p0, Lcom/android/server/location/GeocoderProxy;->mServiceWatcher:Lcom/android/server/ServiceWatcher;
 
     invoke-virtual {v0}, Lcom/android/server/ServiceWatcher;->getBinder()Landroid/os/IBinder;
@@ -147,7 +140,7 @@
     .locals 1
 
     .prologue
-    .line 67
+    .line 72
     iget-object v0, p0, Lcom/android/server/location/GeocoderProxy;->mServiceWatcher:Lcom/android/server/ServiceWatcher;
 
     invoke-virtual {v0}, Lcom/android/server/ServiceWatcher;->getBestPackageName()Ljava/lang/String;
@@ -177,13 +170,13 @@
     .end annotation
 
     .prologue
-    .line 72
+    .line 77
     .local p7, addrs:Ljava/util/List;,"Ljava/util/List<Landroid/location/Address;>;"
     invoke-direct {p0}, Lcom/android/server/location/GeocoderProxy;->getService()Landroid/location/IGeocodeProvider;
 
     move-result-object v0
 
-    .line 73
+    .line 78
     .local v0, provider:Landroid/location/IGeocodeProvider;
     if-eqz v0, :cond_0
 
@@ -197,7 +190,7 @@
 
     move-object/from16 v7, p7
 
-    .line 75
+    .line 80
     :try_start_0
     invoke-interface/range {v0 .. v7}, Landroid/location/IGeocodeProvider;->getFromLocation(DDILandroid/location/GeocoderParams;Ljava/util/List;)Ljava/lang/String;
     :try_end_0
@@ -205,21 +198,21 @@
 
     move-result-object v1
 
-    .line 80
+    .line 85
     :goto_0
     return-object v1
 
-    .line 76
+    .line 81
     :catch_0
     move-exception v8
 
-    .line 77
+    .line 82
     .local v8, e:Landroid/os/RemoteException;
     const-string v1, "GeocoderProxy"
 
     invoke-static {v1, v8}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 80
+    .line 85
     .end local v8           #e:Landroid/os/RemoteException;
     :cond_0
     const-string v1, "Service not Available"
@@ -252,13 +245,13 @@
     .end annotation
 
     .prologue
-    .line 87
+    .line 92
     .local p12, addrs:Ljava/util/List;,"Ljava/util/List<Landroid/location/Address;>;"
     invoke-direct {p0}, Lcom/android/server/location/GeocoderProxy;->getService()Landroid/location/IGeocodeProvider;
 
     move-result-object v0
 
-    .line 88
+    .line 93
     .local v0, provider:Landroid/location/IGeocodeProvider;
     if-eqz v0, :cond_0
 
@@ -278,7 +271,7 @@
 
     move-object/from16 v12, p12
 
-    .line 90
+    .line 95
     :try_start_0
     invoke-interface/range {v0 .. v12}, Landroid/location/IGeocodeProvider;->getFromLocationName(Ljava/lang/String;DDDDILandroid/location/GeocoderParams;Ljava/util/List;)Ljava/lang/String;
     :try_end_0
@@ -286,21 +279,21 @@
 
     move-result-object v1
 
-    .line 97
+    .line 102
     :goto_0
     return-object v1
 
-    .line 93
+    .line 98
     :catch_0
     move-exception v13
 
-    .line 94
+    .line 99
     .local v13, e:Landroid/os/RemoteException;
     const-string v1, "GeocoderProxy"
 
     invoke-static {v1, v13}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 97
+    .line 102
     .end local v13           #e:Landroid/os/RemoteException;
     :cond_0
     const-string v1, "Service not Available"

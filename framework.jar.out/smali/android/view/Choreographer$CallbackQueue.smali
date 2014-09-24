@@ -26,7 +26,7 @@
     .parameter
 
     .prologue
-    .line 754
+    .line 766
     iput-object p1, p0, Landroid/view/Choreographer$CallbackQueue;->this$0:Landroid/view/Choreographer;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,7 +40,7 @@
     .parameter "x1"
 
     .prologue
-    .line 754
+    .line 766
     invoke-direct {p0, p1}, Landroid/view/Choreographer$CallbackQueue;-><init>(Landroid/view/Choreographer;)V
 
     return-void
@@ -55,7 +55,7 @@
     .parameter "token"
 
     .prologue
-    .line 782
+    .line 794
     iget-object v2, p0, Landroid/view/Choreographer$CallbackQueue;->this$0:Landroid/view/Choreographer;
 
     #calls: Landroid/view/Choreographer;->obtainCallbackLocked(JLjava/lang/Object;Ljava/lang/Object;)Landroid/view/Choreographer$CallbackRecord;
@@ -63,22 +63,22 @@
 
     move-result-object v0
 
-    .line 783
+    .line 795
     .local v0, callback:Landroid/view/Choreographer$CallbackRecord;
     iget-object v1, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 784
+    .line 796
     .local v1, entry:Landroid/view/Choreographer$CallbackRecord;
     if-nez v1, :cond_0
 
-    .line 785
+    .line 797
     iput-object v0, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 801
+    .line 813
     :goto_0
     return-void
 
-    .line 788
+    .line 800
     :cond_0
     iget-wide v2, v1, Landroid/view/Choreographer$CallbackRecord;->dueTime:J
 
@@ -86,25 +86,25 @@
 
     if-gez v2, :cond_2
 
-    .line 789
+    .line 801
     iput-object v1, v0, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 790
+    .line 802
     iput-object v0, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
     goto :goto_0
 
-    .line 798
+    .line 810
     :cond_1
     iget-object v1, v1, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 793
+    .line 805
     :cond_2
     iget-object v2, v1, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
     if-eqz v2, :cond_3
 
-    .line 794
+    .line 806
     iget-object v2, v1, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
     iget-wide v2, v2, Landroid/view/Choreographer$CallbackRecord;->dueTime:J
@@ -113,12 +113,12 @@
 
     if-gez v2, :cond_1
 
-    .line 795
+    .line 807
     iget-object v2, v1, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
     iput-object v2, v0, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 800
+    .line 812
     :cond_3
     iput-object v0, v1, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
@@ -132,10 +132,10 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 762
+    .line 774
     iget-object v0, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 763
+    .line 775
     .local v0, callbacks:Landroid/view/Choreographer$CallbackRecord;
     if-eqz v0, :cond_0
 
@@ -148,46 +148,46 @@
     :cond_0
     move-object v0, v3
 
-    .line 778
+    .line 790
     .end local v0           #callbacks:Landroid/view/Choreographer$CallbackRecord;
     :goto_0
     return-object v0
 
-    .line 767
+    .line 779
     .restart local v0       #callbacks:Landroid/view/Choreographer$CallbackRecord;
     :cond_1
     move-object v1, v0
 
-    .line 768
+    .line 780
     .local v1, last:Landroid/view/Choreographer$CallbackRecord;
     iget-object v2, v1, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 769
+    .line 781
     .local v2, next:Landroid/view/Choreographer$CallbackRecord;
     :goto_1
     if-eqz v2, :cond_2
 
-    .line 770
+    .line 782
     iget-wide v4, v2, Landroid/view/Choreographer$CallbackRecord;->dueTime:J
 
     cmp-long v4, v4, p1
 
     if-lez v4, :cond_3
 
-    .line 771
+    .line 783
     iput-object v3, v1, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 777
+    .line 789
     :cond_2
     iput-object v2, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
     goto :goto_0
 
-    .line 774
+    .line 786
     :cond_3
     move-object v1, v2
 
-    .line 775
+    .line 787
     iget-object v2, v2, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
     goto :goto_1
@@ -198,7 +198,7 @@
     .parameter "now"
 
     .prologue
-    .line 758
+    .line 770
     iget-object v0, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
     if-eqz v0, :cond_0
@@ -228,10 +228,10 @@
     .parameter "token"
 
     .prologue
-    .line 804
+    .line 816
     const/4 v2, 0x0
 
-    .line 805
+    .line 817
     .local v2, predecessor:Landroid/view/Choreographer$CallbackRecord;
     iget-object v0, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
@@ -239,10 +239,10 @@
     :goto_0
     if-eqz v0, :cond_4
 
-    .line 806
+    .line 818
     iget-object v1, v0, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 807
+    .line 819
     .local v1, next:Landroid/view/Choreographer$CallbackRecord;
     if-eqz p1, :cond_0
 
@@ -257,40 +257,40 @@
 
     if-ne v3, p2, :cond_3
 
-    .line 809
+    .line 821
     :cond_1
     if-eqz v2, :cond_2
 
-    .line 810
+    .line 822
     iput-object v1, v2, Landroid/view/Choreographer$CallbackRecord;->next:Landroid/view/Choreographer$CallbackRecord;
 
-    .line 814
+    .line 826
     :goto_1
     iget-object v3, p0, Landroid/view/Choreographer$CallbackQueue;->this$0:Landroid/view/Choreographer;
 
     #calls: Landroid/view/Choreographer;->recycleCallbackLocked(Landroid/view/Choreographer$CallbackRecord;)V
     invoke-static {v3, v0}, Landroid/view/Choreographer;->access$600(Landroid/view/Choreographer;Landroid/view/Choreographer$CallbackRecord;)V
 
-    .line 818
+    .line 830
     :goto_2
     move-object v0, v1
 
-    .line 819
+    .line 831
     goto :goto_0
 
-    .line 812
+    .line 824
     :cond_2
     iput-object v1, p0, Landroid/view/Choreographer$CallbackQueue;->mHead:Landroid/view/Choreographer$CallbackRecord;
 
     goto :goto_1
 
-    .line 816
+    .line 828
     :cond_3
     move-object v2, v0
 
     goto :goto_2
 
-    .line 820
+    .line 832
     .end local v1           #next:Landroid/view/Choreographer$CallbackRecord;
     :cond_4
     return-void

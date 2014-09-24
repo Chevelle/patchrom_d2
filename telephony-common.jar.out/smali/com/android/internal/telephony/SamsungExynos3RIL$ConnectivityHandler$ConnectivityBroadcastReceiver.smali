@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 977
+    .line 1037
     iput-object p1, p0, Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler$ConnectivityBroadcastReceiver;->this$1:Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 977
+    .line 1037
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler$ConnectivityBroadcastReceiver;-><init>(Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;)V
 
     return-void
@@ -52,12 +52,12 @@
     .parameter "intent"
 
     .prologue
-    .line 981
+    .line 1041
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 982
+    .line 1042
     .local v0, action:Ljava/lang/String;
     const-string v2, "android.net.conn.CONNECTIVITY_CHANGE"
 
@@ -67,7 +67,7 @@
 
     if-nez v2, :cond_1
 
-    .line 983
+    .line 1043
     const-string v2, "RILJ"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -88,14 +88,14 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v2, v3}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 996
+    .line 1056
     :cond_0
     :goto_0
     return-void
 
-    .line 986
+    .line 1046
     :cond_1
     const-string v2, "noConnectivity"
 
@@ -105,24 +105,24 @@
 
     move-result v1
 
-    .line 989
+    .line 1049
     .local v1, noConnectivity:Z
     if-eqz v1, :cond_0
 
-    .line 991
+    .line 1051
     const-string v2, "RILJ"
 
     const-string v3, "Mobile Dataconnection is now down setting preferred NetworkType"
 
-    invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v2, v3}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 992
+    .line 1052
     iget-object v2, p0, Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler$ConnectivityBroadcastReceiver;->this$1:Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;
 
     #calls: Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;->stopListening()V
     invoke-static {v2}, Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;->access$100(Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;)V
 
-    .line 993
+    .line 1053
     iget-object v2, p0, Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler$ConnectivityBroadcastReceiver;->this$1:Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;
 
     iget-object v2, v2, Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;->this$0:Lcom/android/internal/telephony/SamsungExynos3RIL;
@@ -145,7 +145,7 @@
     #calls: Lcom/android/internal/telephony/SamsungExynos3RIL;->sendPreferedNetworktype(ILandroid/os/Message;)V
     invoke-static {v2, v3, v4}, Lcom/android/internal/telephony/SamsungExynos3RIL;->access$300(Lcom/android/internal/telephony/SamsungExynos3RIL;ILandroid/os/Message;)V
 
-    .line 994
+    .line 1054
     iget-object v2, p0, Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler$ConnectivityBroadcastReceiver;->this$1:Lcom/android/internal/telephony/SamsungExynos3RIL$ConnectivityHandler;
 
     const/4 v3, -0x1

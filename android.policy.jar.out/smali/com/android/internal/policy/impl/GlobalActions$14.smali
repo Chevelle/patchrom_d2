@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 1145
+    .line 1195
     iput-object p1, p0, Lcom/android/internal/policy/impl/GlobalActions$14;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -40,14 +40,14 @@
     .parameter "intent"
 
     .prologue
-    .line 1147
+    .line 1197
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$14;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     const/4 v1, 0x0
 
     #setter for: Lcom/android/internal/policy/impl/GlobalActions;->mUiContext:Landroid/content/Context;
-    invoke-static {v0, v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1802(Lcom/android/internal/policy/impl/GlobalActions;Landroid/content/Context;)Landroid/content/Context;
+    invoke-static {v0, v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1902(Lcom/android/internal/policy/impl/GlobalActions;Landroid/content/Context;)Landroid/content/Context;
 
-    .line 1148
+    .line 1198
     return-void
 .end method

@@ -30,24 +30,24 @@
     .parameter "src"
 
     .prologue
-    .line 642
+    .line 662
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 643
+    .line 663
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mOrigHost:Ljava/lang/String;
 
-    .line 644
+    .line 664
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mHost:Ljava/lang/String;
 
-    .line 645
+    .line 665
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
@@ -59,17 +59,17 @@
     :goto_0
     iput-boolean v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mWild:Z
 
-    .line 646
+    .line 666
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mPort:I
 
-    .line 647
+    .line 667
     return-void
 
-    .line 645
+    .line 665
     :cond_0
     const/4 v0, 0x0
 
@@ -86,13 +86,13 @@
 
     const/4 v0, 0x0
 
-    .line 635
+    .line 655
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 636
+    .line 656
     iput-object p1, p0, Landroid/content/IntentFilter$AuthorityEntry;->mOrigHost:Ljava/lang/String;
 
-    .line 637
+    .line 657
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v2
@@ -112,7 +112,7 @@
     :cond_0
     iput-boolean v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mWild:Z
 
-    .line 638
+    .line 658
     iget-boolean v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mWild:Z
 
     if-eqz v0, :cond_1
@@ -129,7 +129,7 @@
     :cond_1
     iput-object p1, p0, Landroid/content/IntentFilter$AuthorityEntry;->mHost:Ljava/lang/String;
 
-    .line 639
+    .line 659
     if-eqz p2, :cond_2
 
     invoke-static {p2}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
@@ -139,10 +139,10 @@
     :goto_0
     iput v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mPort:I
 
-    .line 640
+    .line 660
     return-void
 
-    .line 639
+    .line 659
     :cond_2
     const/4 v0, -0x1
 
@@ -154,7 +154,7 @@
     .parameter "x0"
 
     .prologue
-    .line 629
+    .line 649
     iget-object v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mHost:Ljava/lang/String;
 
     return-object v0
@@ -165,7 +165,7 @@
     .parameter "x0"
 
     .prologue
-    .line 629
+    .line 649
     iget v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mPort:I
 
     return v0
@@ -176,7 +176,7 @@
     .parameter "x0"
 
     .prologue
-    .line 629
+    .line 649
     iget-boolean v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mWild:Z
 
     return v0
@@ -188,7 +188,7 @@
     .locals 1
 
     .prologue
-    .line 657
+    .line 677
     iget-object v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mOrigHost:Ljava/lang/String;
 
     return-object v0
@@ -198,7 +198,7 @@
     .locals 1
 
     .prologue
-    .line 661
+    .line 681
     iget v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mPort:I
 
     return v0
@@ -211,27 +211,27 @@
     .prologue
     const/4 v1, -0x2
 
-    .line 675
+    .line 695
     invoke-virtual {p1}, Landroid/net/Uri;->getHost()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 676
+    .line 696
     .local v0, host:Ljava/lang/String;
     if-nez v0, :cond_1
 
-    .line 696
+    .line 716
     :cond_0
     :goto_0
     return v1
 
-    .line 681
+    .line 701
     :cond_1
     iget-boolean v2, p0, Landroid/content/IntentFilter$AuthorityEntry;->mWild:Z
 
     if-eqz v2, :cond_2
 
-    .line 682
+    .line 702
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
     move-result v2
@@ -244,7 +244,7 @@
 
     if-lt v2, v3, :cond_0
 
-    .line 685
+    .line 705
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
     move-result v2
@@ -261,7 +261,7 @@
 
     move-result-object v0
 
-    .line 687
+    .line 707
     :cond_2
     iget-object v2, p0, Landroid/content/IntentFilter$AuthorityEntry;->mHost:Ljava/lang/String;
 
@@ -271,12 +271,12 @@
 
     if-nez v2, :cond_0
 
-    .line 690
+    .line 710
     iget v2, p0, Landroid/content/IntentFilter$AuthorityEntry;->mPort:I
 
     if-ltz v2, :cond_3
 
-    .line 691
+    .line 711
     iget v2, p0, Landroid/content/IntentFilter$AuthorityEntry;->mPort:I
 
     invoke-virtual {p1}, Landroid/net/Uri;->getPort()I
@@ -285,12 +285,12 @@
 
     if-ne v2, v3, :cond_0
 
-    .line 694
+    .line 714
     const/high16 v1, 0x40
 
     goto :goto_0
 
-    .line 696
+    .line 716
     :cond_3
     const/high16 v1, 0x30
 
@@ -302,17 +302,17 @@
     .parameter "dest"
 
     .prologue
-    .line 650
+    .line 670
     iget-object v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mOrigHost:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 651
+    .line 671
     iget-object v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mHost:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 652
+    .line 672
     iget-boolean v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mWild:Z
 
     if-eqz v0, :cond_0
@@ -322,15 +322,15 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 653
+    .line 673
     iget v0, p0, Landroid/content/IntentFilter$AuthorityEntry;->mPort:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 654
+    .line 674
     return-void
 
-    .line 652
+    .line 672
     :cond_0
     const/4 v0, 0x0
 

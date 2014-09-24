@@ -1,4 +1,4 @@
-.class Landroid/app/Notification$Action;
+.class public Landroid/app/Notification$Action;
 .super Ljava/lang/Object;
 .source "Notification.java"
 
@@ -12,7 +12,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0xa
+    accessFlags = 0x9
     name = "Action"
 .end annotation
 
@@ -43,7 +43,7 @@
     .locals 1
 
     .prologue
-    .line 487
+    .line 652
     new-instance v0, Landroid/app/Notification$Action$1;
 
     invoke-direct {v0}, Landroid/app/Notification$Action$1;-><init>()V
@@ -53,11 +53,11 @@
     return-void
 .end method
 
-.method public constructor <init>()V
+.method private constructor <init>()V
     .locals 0
 
     .prologue
-    .line 451
+    .line 612
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -65,24 +65,24 @@
 
 .method public constructor <init>(ILjava/lang/CharSequence;Landroid/app/PendingIntent;)V
     .locals 0
-    .parameter "icon_"
-    .parameter "title_"
-    .parameter "intent_"
+    .parameter "icon"
+    .parameter "title"
+    .parameter "intent"
 
     .prologue
-    .line 459
+    .line 623
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 460
+    .line 624
     iput p1, p0, Landroid/app/Notification$Action;->icon:I
 
-    .line 461
+    .line 625
     iput-object p2, p0, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
 
-    .line 462
+    .line 626
     iput-object p3, p0, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
 
-    .line 463
+    .line 627
     return-void
 .end method
 
@@ -91,17 +91,17 @@
     .parameter "in"
 
     .prologue
-    .line 452
+    .line 613
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 453
+    .line 614
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/app/Notification$Action;->icon:I
 
-    .line 454
+    .line 615
     sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -112,7 +112,7 @@
 
     iput-object v0, p0, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
 
-    .line 455
+    .line 616
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
@@ -121,7 +121,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 456
+    .line 617
     sget-object v0, Landroid/app/PendingIntent;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -132,7 +132,7 @@
 
     iput-object v0, p0, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
 
-    .line 458
+    .line 619
     :cond_0
     return-void
 .end method
@@ -143,7 +143,7 @@
     .parameter "x1"
 
     .prologue
-    .line 446
+    .line 597
     invoke-direct {p0, p1}, Landroid/app/Notification$Action;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -155,16 +155,12 @@
     .locals 4
 
     .prologue
-    .line 466
+    .line 631
     new-instance v0, Landroid/app/Notification$Action;
 
     iget v1, p0, Landroid/app/Notification$Action;->icon:I
 
     iget-object v2, p0, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
-
-    invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v2
 
     iget-object v3, p0, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
 
@@ -182,7 +178,7 @@
     .end annotation
 
     .prologue
-    .line 446
+    .line 597
     invoke-virtual {p0}, Landroid/app/Notification$Action;->clone()Landroid/app/Notification$Action;
 
     move-result-object v0
@@ -194,7 +190,7 @@
     .locals 1
 
     .prologue
-    .line 474
+    .line 639
     const/4 v0, 0x0
 
     return v0
@@ -206,36 +202,36 @@
     .parameter "flags"
 
     .prologue
-    .line 478
+    .line 643
     iget v0, p0, Landroid/app/Notification$Action;->icon:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 479
+    .line 644
     iget-object v0, p0, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 480
+    .line 645
     iget-object v0, p0, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
 
     if-eqz v0, :cond_0
 
-    .line 481
+    .line 646
     const/4 v0, 0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 482
+    .line 647
     iget-object v0, p0, Landroid/app/Notification$Action;->actionIntent:Landroid/app/PendingIntent;
 
     invoke-virtual {v0, p1, p2}, Landroid/app/PendingIntent;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 486
+    .line 651
     :goto_0
     return-void
 
-    .line 484
+    .line 649
     :cond_0
     const/4 v0, 0x0
 

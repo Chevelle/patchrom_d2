@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 146
+    .line 155
     iput-object p1, p0, Landroid/widget/TextClock$3;->this$0:Landroid/widget/TextClock;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,18 +43,18 @@
     .prologue
     const-wide/16 v6, 0x3e8
 
-    .line 148
+    .line 157
     iget-object v4, p0, Landroid/widget/TextClock$3;->this$0:Landroid/widget/TextClock;
 
     #calls: Landroid/widget/TextClock;->onTimeChanged()V
     invoke-static {v4}, Landroid/widget/TextClock;->access$100(Landroid/widget/TextClock;)V
 
-    .line 150
+    .line 159
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v2
 
-    .line 151
+    .line 160
     .local v2, now:J
     rem-long v4, v2, v6
 
@@ -62,7 +62,7 @@
 
     add-long v0, v2, v4
 
-    .line 153
+    .line 162
     .local v0, next:J
     iget-object v4, p0, Landroid/widget/TextClock$3;->this$0:Landroid/widget/TextClock;
 
@@ -79,6 +79,6 @@
 
     invoke-virtual {v4, v5, v0, v1}, Landroid/os/Handler;->postAtTime(Ljava/lang/Runnable;J)Z
 
-    .line 154
+    .line 163
     return-void
 .end method

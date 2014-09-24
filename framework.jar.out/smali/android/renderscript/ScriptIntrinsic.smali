@@ -10,9 +10,9 @@
     .parameter "rs"
 
     .prologue
-    .line 34
+    .line 29
     invoke-direct {p0, p1, p2}, Landroid/renderscript/Script;-><init>(ILandroid/renderscript/RenderScript;)V
 
-    .line 35
+    .line 30
     return-void
 .end method

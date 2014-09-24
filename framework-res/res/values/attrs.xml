@@ -55,6 +55,10 @@
         <enum name="reverseLandscape" value="8" />
         <enum name="reversePortrait" value="9" />
         <enum name="fullSensor" value="10" />
+        <enum name="userLandscape" value="11" />
+        <enum name="userPortrait" value="12" />
+        <enum name="fullUser" value="13" />
+        <enum name="locked" value="14" />
     </attr>
     <attr name="configChanges">
         <flag name="locale" value="0x00000004" />
@@ -70,6 +74,7 @@
         <flag name="screenSize" value="0x00000400" />
         <flag name="smallestScreenSize" value="0x00000800" />
         <flag name="layoutDirection" value="0x00002000" />
+        <flag name="themeChange" value="0x00008000" />
         <flag name="fontScale" value="0x40000000" />
     </attr>
     <attr name="description" format="reference" />
@@ -517,6 +522,10 @@
         <enum name="KEYCODE_YEN" value="216" />
         <enum name="KEYCODE_RO" value="217" />
         <enum name="KEYCODE_KANA" value="218" />
+        <enum name="KEYCODE_ASSIST" value="219" />
+        <enum name="KEYCODE_BRIGHTNESS_DOWN" value="220" />
+        <enum name="KEYCODE_BRIGHTNESS_UP" value="221" />
+        <enum name="KEYCODE_MEDIA_AUDIO_TRACK" value="222" />
     </attr>
     <attr name="fullDark" format="reference|color" />
     <attr name="topDark" format="reference|color" />
@@ -1591,6 +1600,9 @@
         <flag name="flagDefault" value="0x00000001" />
         <flag name="flagIncludeNotImportantViews" value="0x00000002" />
         <flag name="flagRequestTouchExplorationMode" value="0x00000004" />
+        <flag name="flagRequestEnhancedWebAccessibility" value="0x00000008" />
+        <flag name="flagReportViewIds" value="0x00000010" />
+        <flag name="flagRequestFilterKeyEvents" value="0x00000020" />
     </attr>
     <attr name="canRetrieveWindowContent" format="boolean" />
     <attr name="listPreferredItemHeightLarge" format="dimension" />
@@ -1640,6 +1652,7 @@
         <enum name="auto" value="0" />
         <enum name="yes" value="1" />
         <enum name="no" value="2" />
+        <enum name="noHideDescendants" value="4" />
     </attr>
     <attr name="keyboardLayout" format="reference" />
     <attr name="fontFamily" format="string" />
@@ -1705,6 +1718,57 @@
     <attr name="format12Hour" format="string" />
     <attr name="format24Hour" format="string" />
     <attr name="timeZone" format="string" />
+    <attr name="mipMap" format="boolean" />
+    <attr name="mirrorForRtl" format="boolean" />
+    <attr name="windowOverscan" format="boolean" />
+    <attr name="requiredForAllUsers" format="boolean" />
+    <attr name="indicatorStart" format="dimension" />
+    <attr name="indicatorEnd" format="dimension" />
+    <attr name="childIndicatorStart" format="dimension" />
+    <attr name="childIndicatorEnd" format="dimension" />
+    <attr name="restrictedAccountType" format="string" />
+    <attr name="requiredAccountType" format="string" />
+    <attr name="canRequestTouchExplorationMode" format="boolean" />
+    <attr name="canRequestEnhancedWebAccessibility" format="boolean" />
+    <attr name="canRequestFilterKeyEvents" format="boolean" />
+    <attr name="layoutMode">
+        <enum name="clipBounds" value="0" />
+        <enum name="opticalBounds" value="1" />
+    </attr>
+    <attr name="keySet" format="reference|string|integer|boolean|color|float|dimension|fraction" />
+    <attr name="targetId" format="reference" />
+    <attr name="fromScene" format="reference" />
+    <attr name="toScene" format="reference" />
+    <attr name="transition" format="reference" />
+    <attr name="transitionOrdering">
+        <enum name="together" value="0" />
+        <enum name="sequential" value="1" />
+    </attr>
+    <attr name="fadingMode">
+        <enum name="fade_in" value="1" />
+        <enum name="fade_out" value="2" />
+        <enum name="fade_in_out" value="3" />
+    </attr>
+    <attr name="startDelay" format="integer" />
+    <attr name="ssp" format="string" />
+    <attr name="sspPrefix" format="string" />
+    <attr name="sspPattern" format="string" />
+    <attr name="addPrintersActivity" format="string" />
+    <attr name="vendor" format="string" />
+    <attr name="category" format="string" />
+    <attr name="isAsciiCapable" format="boolean" />
+    <attr name="autoMirrored" format="boolean" />
+    <attr name="supportsSwitchingToNextInputMethod" format="boolean" />
+    <attr name="requireDeviceUnlock" format="boolean" />
+    <attr name="apduServiceBanner" format="reference" />
+    <attr name="accessibilityLiveRegion" format="integer">
+        <enum name="none" value="0" />
+        <enum name="polite" value="1" />
+        <enum name="assertive" value="2" />
+    </attr>
+    <attr name="windowTranslucentStatus" format="boolean" />
+    <attr name="windowTranslucentNavigation" format="boolean" />
+    <attr name="advancedPrintOptionsActivity" format="string" />
     <attr name="textAppearanceMisspelledSuggestion" format="reference" />
     <attr name="textAppearanceAutoCorrectionSuggestion" format="reference" />
     <attr name="textUnderlineColor" format="reference|color" />
@@ -1731,6 +1795,10 @@
     <attr name="actionModePopupWindowStyle" format="reference" />
     <attr name="preferenceFragmentStyle" format="reference" />
     <attr name="preferencePanelStyle" format="reference" />
+    <attr name="preferenceHeaderPanelStyle" format="reference" />
+    <attr name="preferenceListStyle" format="reference" />
+    <attr name="preferenceFragmentListStyle" format="reference" />
+    <attr name="preferenceFragmentPaddingSide" format="dimension" />
     <attr name="dialogTitleIconsDecorLayout" format="reference" />
     <attr name="dialogCustomTitleDecorLayout" format="reference" />
     <attr name="dialogTitleDecorLayout" format="reference" />
@@ -1798,6 +1866,7 @@
     <attr name="state_accessibility_focused" format="boolean" />
     <attr name="initialActivityCount" format="string" />
     <attr name="expandActivityOverflowButtonDrawable" format="reference" />
+    <attr name="dialogStyle" format="reference" />
     <attr name="keyboardViewStyle" format="reference" />
     <attr name="outerRingDrawable" format="reference" />
     <attr name="pointDrawable" format="reference" />
@@ -1859,4 +1928,6 @@
     <attr name="neverEncrypt" format="boolean" />
     <attr name="cantSaveState" format="boolean" />
     <attr name="primaryUserOnly" format="boolean" />
+    <attr name="webviewchromium_select_dialog_multichoice" format="reference" />
+    <attr name="webviewchromium_select_dialog_singlechoice" format="reference" />
 </resources>

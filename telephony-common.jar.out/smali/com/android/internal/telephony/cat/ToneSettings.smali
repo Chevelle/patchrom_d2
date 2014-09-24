@@ -32,7 +32,7 @@
     .locals 1
 
     .prologue
-    .line 53
+    .line 55
     new-instance v0, Lcom/android/internal/telephony/cat/ToneSettings$1;
 
     invoke-direct {v0}, Lcom/android/internal/telephony/cat/ToneSettings$1;-><init>()V
@@ -135,7 +135,7 @@
     .locals 1
 
     .prologue
-    .line 44
+    .line 45
     const/4 v0, 0x0
 
     return v0
@@ -149,17 +149,17 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 48
+    .line 50
     iget-object v1, p0, Lcom/android/internal/telephony/cat/ToneSettings;->duration:Lcom/android/internal/telephony/cat/Duration;
 
     invoke-virtual {p1, v1, v0}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 49
+    .line 51
     iget-object v1, p0, Lcom/android/internal/telephony/cat/ToneSettings;->tone:Lcom/android/internal/telephony/cat/Tone;
 
     invoke-virtual {p1, v1, v0}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 50
+    .line 52
     iget-boolean v1, p0, Lcom/android/internal/telephony/cat/ToneSettings;->vibrate:Z
 
     if-eqz v1, :cond_0
@@ -169,6 +169,6 @@
     :cond_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 51
+    .line 53
     return-void
 .end method

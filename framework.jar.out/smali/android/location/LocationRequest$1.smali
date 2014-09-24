@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 529
+    .line 577
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,72 +41,108 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/location/LocationRequest;
-    .locals 4
+    .locals 5
     .parameter "in"
 
     .prologue
-    .line 532
+    .line 580
     new-instance v1, Landroid/location/LocationRequest;
 
     invoke-direct {v1}, Landroid/location/LocationRequest;-><init>()V
 
-    .line 533
+    .line 581
     .local v1, request:Landroid/location/LocationRequest;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
-    invoke-virtual {v1, v2}, Landroid/location/LocationRequest;->setQuality(I)Landroid/location/LocationRequest;
+    invoke-virtual {v1, v3}, Landroid/location/LocationRequest;->setQuality(I)Landroid/location/LocationRequest;
 
-    .line 534
+    .line 582
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v2
+    move-result-wide v3
 
-    invoke-virtual {v1, v2, v3}, Landroid/location/LocationRequest;->setFastestInterval(J)Landroid/location/LocationRequest;
+    invoke-virtual {v1, v3, v4}, Landroid/location/LocationRequest;->setFastestInterval(J)Landroid/location/LocationRequest;
 
-    .line 535
+    .line 583
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v2
+    move-result-wide v3
 
-    invoke-virtual {v1, v2, v3}, Landroid/location/LocationRequest;->setInterval(J)Landroid/location/LocationRequest;
+    invoke-virtual {v1, v3, v4}, Landroid/location/LocationRequest;->setInterval(J)Landroid/location/LocationRequest;
 
-    .line 536
+    .line 584
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v2
+    move-result-wide v3
 
-    invoke-virtual {v1, v2, v3}, Landroid/location/LocationRequest;->setExpireAt(J)Landroid/location/LocationRequest;
+    invoke-virtual {v1, v3, v4}, Landroid/location/LocationRequest;->setExpireAt(J)Landroid/location/LocationRequest;
 
-    .line 537
+    .line 585
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
-    invoke-virtual {v1, v2}, Landroid/location/LocationRequest;->setNumUpdates(I)Landroid/location/LocationRequest;
+    invoke-virtual {v1, v3}, Landroid/location/LocationRequest;->setNumUpdates(I)Landroid/location/LocationRequest;
 
-    .line 538
+    .line 586
     invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
 
-    move-result v2
+    move-result v3
 
-    invoke-virtual {v1, v2}, Landroid/location/LocationRequest;->setSmallestDisplacement(F)Landroid/location/LocationRequest;
+    invoke-virtual {v1, v3}, Landroid/location/LocationRequest;->setSmallestDisplacement(F)Landroid/location/LocationRequest;
 
-    .line 539
+    .line 587
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    if-eqz v3, :cond_2
+
+    const/4 v3, 0x1
+
+    :goto_0
+    invoke-virtual {v1, v3}, Landroid/location/LocationRequest;->setHideFromAppOps(Z)V
+
+    .line 588
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 540
+    .line 589
     .local v0, provider:Ljava/lang/String;
     if-eqz v0, :cond_0
 
     invoke-virtual {v1, v0}, Landroid/location/LocationRequest;->setProvider(Ljava/lang/String;)Landroid/location/LocationRequest;
 
-    .line 541
+    .line 590
     :cond_0
+    const/4 v3, 0x0
+
+    invoke-virtual {p1, v3}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/os/WorkSource;
+
+    .line 591
+    .local v2, workSource:Landroid/os/WorkSource;
+    if-eqz v2, :cond_1
+
+    invoke-virtual {v1, v2}, Landroid/location/LocationRequest;->setWorkSource(Landroid/os/WorkSource;)V
+
+    .line 592
+    :cond_1
     return-object v1
+
+    .line 587
+    .end local v0           #provider:Ljava/lang/String;
+    .end local v2           #workSource:Landroid/os/WorkSource;
+    :cond_2
+    const/4 v3, 0x0
+
+    goto :goto_0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -114,7 +150,7 @@
     .parameter "x0"
 
     .prologue
-    .line 529
+    .line 577
     invoke-virtual {p0, p1}, Landroid/location/LocationRequest$1;->createFromParcel(Landroid/os/Parcel;)Landroid/location/LocationRequest;
 
     move-result-object v0
@@ -127,7 +163,7 @@
     .parameter "size"
 
     .prologue
-    .line 545
+    .line 596
     new-array v0, p1, [Landroid/location/LocationRequest;
 
     return-object v0
@@ -138,7 +174,7 @@
     .parameter "x0"
 
     .prologue
-    .line 529
+    .line 577
     invoke-virtual {p0, p1}, Landroid/location/LocationRequest$1;->newArray(I)[Landroid/location/LocationRequest;
 
     move-result-object v0

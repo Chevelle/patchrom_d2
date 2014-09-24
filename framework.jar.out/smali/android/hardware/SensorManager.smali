@@ -3,14 +3,6 @@
 .source "SensorManager.java"
 
 
-# annotations
-.annotation system Ldalvik/annotation/MemberClasses;
-    value = {
-        Landroid/hardware/SensorManager$SensorEventPool;
-    }
-.end annotation
-
-
 # static fields
 .field public static final AXIS_MINUS_X:I = 0x81
 
@@ -69,7 +61,7 @@
 
 .field public static final LIGHT_FULLMOON:F = 0.25f
 
-.field public static final LIGHT_NO_MOON:F = 0.0010f
+.field public static final LIGHT_NO_MOON:F = 0.001f
 
 .field public static final LIGHT_OVERCAST:F = 10000.0f
 
@@ -207,7 +199,7 @@
     .locals 1
 
     .prologue
-    .line 79
+    .line 83
     const/16 v0, 0x10
 
     new-array v0, v0, [F
@@ -221,17 +213,17 @@
     .locals 1
 
     .prologue
-    .line 357
+    .line 361
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 82
+    .line 86
     new-instance v0, Landroid/util/SparseArray;
 
     invoke-direct {v0}, Landroid/util/SparseArray;-><init>()V
 
     iput-object v0, p0, Landroid/hardware/SensorManager;->mSensorListByType:Landroid/util/SparseArray;
 
-    .line 358
+    .line 362
     return-void
 .end method
 
@@ -241,10 +233,12 @@
     .parameter "p"
 
     .prologue
-    .line 1119
+    invoke-static {p0}, Landroid/hardware/Injector$SensorManagerHook;->getSeaLevelPressure(F)F
+
+    move-result p0
+
     const v0, 0x3e42dcae
 
-    .line 1120
     .local v0, coef:F
     const v1, 0x472d2a00
 
@@ -276,7 +270,7 @@
     .parameter "prevR"
 
     .prologue
-    .line 1150
+    .line 1273
     const/4 v11, 0x0
 
     .local v11, rd1:F
@@ -291,7 +285,7 @@
     .local v14, rd7:F
     const/4 v15, 0x0
 
-    .line 1151
+    .line 1274
     .local v15, rd8:F
     const/16 v16, 0x0
 
@@ -319,7 +313,7 @@
     .local v23, ri7:F
     const/16 v24, 0x0
 
-    .line 1152
+    .line 1275
     .local v24, ri8:F
     const/4 v2, 0x0
 
@@ -347,7 +341,7 @@
     .local v9, pri7:F
     const/4 v10, 0x0
 
-    .line 1154
+    .line 1277
     .local v10, pri8:F
     move-object/from16 v0, p1
 
@@ -363,52 +357,52 @@
 
     if-ne v0, v1, :cond_2
 
-    .line 1155
+    .line 1278
     const/16 v25, 0x0
 
     aget v16, p1, v25
 
-    .line 1156
+    .line 1279
     const/16 v25, 0x1
 
     aget v17, p1, v25
 
-    .line 1157
+    .line 1280
     const/16 v25, 0x2
 
     aget v18, p1, v25
 
-    .line 1158
+    .line 1281
     const/16 v25, 0x3
 
     aget v19, p1, v25
 
-    .line 1159
+    .line 1282
     const/16 v25, 0x4
 
     aget v20, p1, v25
 
-    .line 1160
+    .line 1283
     const/16 v25, 0x5
 
     aget v21, p1, v25
 
-    .line 1161
+    .line 1284
     const/16 v25, 0x6
 
     aget v22, p1, v25
 
-    .line 1162
+    .line 1285
     const/16 v25, 0x7
 
     aget v23, p1, v25
 
-    .line 1163
+    .line 1286
     const/16 v25, 0x8
 
     aget v24, p1, v25
 
-    .line 1176
+    .line 1299
     :cond_0
     :goto_0
     move-object/from16 v0, p2
@@ -425,52 +419,52 @@
 
     if-ne v0, v1, :cond_3
 
-    .line 1177
+    .line 1300
     const/16 v25, 0x0
 
     aget v2, p2, v25
 
-    .line 1178
+    .line 1301
     const/16 v25, 0x1
 
     aget v3, p2, v25
 
-    .line 1179
+    .line 1302
     const/16 v25, 0x2
 
     aget v4, p2, v25
 
-    .line 1180
+    .line 1303
     const/16 v25, 0x3
 
     aget v5, p2, v25
 
-    .line 1181
+    .line 1304
     const/16 v25, 0x4
 
     aget v6, p2, v25
 
-    .line 1182
+    .line 1305
     const/16 v25, 0x5
 
     aget v7, p2, v25
 
-    .line 1183
+    .line 1306
     const/16 v25, 0x6
 
     aget v8, p2, v25
 
-    .line 1184
+    .line 1307
     const/16 v25, 0x7
 
     aget v9, p2, v25
 
-    .line 1185
+    .line 1308
     const/16 v25, 0x8
 
     aget v10, p2, v25
 
-    .line 1201
+    .line 1324
     :cond_1
     :goto_1
     mul-float v25, v2, v17
@@ -483,7 +477,7 @@
 
     add-float v11, v25, v26
 
-    .line 1202
+    .line 1325
     mul-float v25, v3, v17
 
     mul-float v26, v6, v20
@@ -494,7 +488,7 @@
 
     add-float v12, v25, v26
 
-    .line 1203
+    .line 1326
     mul-float v25, v4, v16
 
     mul-float v26, v7, v19
@@ -505,7 +499,7 @@
 
     add-float v13, v25, v26
 
-    .line 1204
+    .line 1327
     mul-float v25, v4, v17
 
     mul-float v26, v7, v20
@@ -516,7 +510,7 @@
 
     add-float v14, v25, v26
 
-    .line 1205
+    .line 1328
     mul-float v25, v4, v18
 
     mul-float v26, v7, v21
@@ -527,7 +521,7 @@
 
     add-float v15, v25, v26
 
-    .line 1207
+    .line 1330
     const/16 v25, 0x0
 
     float-to-double v0, v11
@@ -550,7 +544,7 @@
 
     aput v26, p0, v25
 
-    .line 1208
+    .line 1331
     const/16 v25, 0x1
 
     neg-float v0, v14
@@ -575,7 +569,7 @@
 
     aput v26, p0, v25
 
-    .line 1209
+    .line 1332
     const/16 v25, 0x2
 
     neg-float v0, v13
@@ -604,10 +598,10 @@
 
     aput v26, p0, v25
 
-    .line 1211
+    .line 1334
     return-void
 
-    .line 1164
+    .line 1287
     :cond_2
     move-object/from16 v0, p1
 
@@ -623,54 +617,54 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 1165
+    .line 1288
     const/16 v25, 0x0
 
     aget v16, p1, v25
 
-    .line 1166
+    .line 1289
     const/16 v25, 0x1
 
     aget v17, p1, v25
 
-    .line 1167
+    .line 1290
     const/16 v25, 0x2
 
     aget v18, p1, v25
 
-    .line 1168
+    .line 1291
     const/16 v25, 0x4
 
     aget v19, p1, v25
 
-    .line 1169
+    .line 1292
     const/16 v25, 0x5
 
     aget v20, p1, v25
 
-    .line 1170
+    .line 1293
     const/16 v25, 0x6
 
     aget v21, p1, v25
 
-    .line 1171
+    .line 1294
     const/16 v25, 0x8
 
     aget v22, p1, v25
 
-    .line 1172
+    .line 1295
     const/16 v25, 0x9
 
     aget v23, p1, v25
 
-    .line 1173
+    .line 1296
     const/16 v25, 0xa
 
     aget v24, p1, v25
 
     goto/16 :goto_0
 
-    .line 1186
+    .line 1309
     :cond_3
     move-object/from16 v0, p2
 
@@ -686,52 +680,111 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 1187
+    .line 1310
     const/16 v25, 0x0
 
     aget v2, p2, v25
 
-    .line 1188
+    .line 1311
     const/16 v25, 0x1
 
     aget v3, p2, v25
 
-    .line 1189
+    .line 1312
     const/16 v25, 0x2
 
     aget v4, p2, v25
 
-    .line 1190
+    .line 1313
     const/16 v25, 0x4
 
     aget v5, p2, v25
 
-    .line 1191
+    .line 1314
     const/16 v25, 0x5
 
     aget v6, p2, v25
 
-    .line 1192
+    .line 1315
     const/16 v25, 0x6
 
     aget v7, p2, v25
 
-    .line 1193
+    .line 1316
     const/16 v25, 0x8
 
     aget v8, p2, v25
 
-    .line 1194
+    .line 1317
     const/16 v25, 0x9
 
     aget v9, p2, v25
 
-    .line 1195
+    .line 1318
     const/16 v25, 0xa
 
     aget v10, p2, v25
 
     goto/16 :goto_1
+.end method
+
+.method private static getDelay(I)I
+    .locals 1
+    .parameter "rate"
+
+    .prologue
+    .line 1504
+    const/4 v0, -0x1
+
+    .line 1505
+    .local v0, delay:I
+    packed-switch p0, :pswitch_data_0
+
+    .line 1519
+    move v0, p0
+
+    .line 1522
+    :goto_0
+    return v0
+
+    .line 1507
+    :pswitch_0
+    const/4 v0, 0x0
+
+    .line 1508
+    goto :goto_0
+
+    .line 1510
+    :pswitch_1
+    const/16 v0, 0x4e20
+
+    .line 1511
+    goto :goto_0
+
+    .line 1513
+    :pswitch_2
+    const v0, 0x1046b
+
+    .line 1514
+    goto :goto_0
+
+    .line 1516
+    :pswitch_3
+    const v0, 0x30d40
+
+    .line 1517
+    goto :goto_0
+
+    .line 1505
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+        :pswitch_1
+        :pswitch_2
+        :pswitch_3
+    .end packed-switch
 .end method
 
 .method public static getInclination([F)F
@@ -741,14 +794,14 @@
     .prologue
     const/4 v2, 0x5
 
-    .line 864
+    .line 987
     array-length v0, p0
 
     const/16 v1, 0x9
 
     if-ne v0, v1, :cond_0
 
-    .line 865
+    .line 988
     aget v0, p0, v2
 
     float-to-double v0, v0
@@ -765,7 +818,7 @@
 
     double-to-float v0, v0
 
-    .line 867
+    .line 990
     :goto_0
     return v0
 
@@ -793,32 +846,32 @@
     .locals 3
 
     .prologue
-    .line 1308
+    .line 1493
     iget-object v1, p0, Landroid/hardware/SensorManager;->mSensorListByType:Landroid/util/SparseArray;
 
     monitor-enter v1
 
-    .line 1309
+    .line 1494
     :try_start_0
     iget-object v0, p0, Landroid/hardware/SensorManager;->mLegacySensorManager:Landroid/hardware/LegacySensorManager;
 
     if-nez v0, :cond_0
 
-    .line 1310
+    .line 1495
     const-string v0, "SensorManager"
 
     const-string v2, "This application is using deprecated SensorManager API which will be removed someday.  Please consider switching to the new API."
 
     invoke-static {v0, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1312
+    .line 1497
     new-instance v0, Landroid/hardware/LegacySensorManager;
 
     invoke-direct {v0, p0}, Landroid/hardware/LegacySensorManager;-><init>(Landroid/hardware/SensorManager;)V
 
     iput-object v0, p0, Landroid/hardware/SensorManager;->mLegacySensorManager:Landroid/hardware/LegacySensorManager;
 
-    .line 1314
+    .line 1499
     :cond_0
     iget-object v0, p0, Landroid/hardware/SensorManager;->mLegacySensorManager:Landroid/hardware/LegacySensorManager;
 
@@ -826,7 +879,7 @@
 
     return-object v0
 
-    .line 1315
+    .line 1500
     :catchall_0
     move-exception v0
 
@@ -853,12 +906,12 @@
 
     const/4 v4, 0x1
 
-    .line 1077
+    .line 1200
     array-length v0, p0
 
     if-ne v0, v8, :cond_0
 
-    .line 1078
+    .line 1201
     aget v0, p0, v4
 
     float-to-double v0, v0
@@ -877,7 +930,7 @@
 
     aput v0, p1, v5
 
-    .line 1079
+    .line 1202
     const/4 v0, 0x7
 
     aget v0, p0, v0
@@ -894,7 +947,7 @@
 
     aput v0, p1, v4
 
-    .line 1080
+    .line 1203
     const/4 v0, 0x6
 
     aget v0, p0, v0
@@ -915,11 +968,11 @@
 
     aput v0, p1, v6
 
-    .line 1086
+    .line 1209
     :goto_0
     return-object p1
 
-    .line 1082
+    .line 1205
     :cond_0
     aget v0, p0, v4
 
@@ -939,7 +992,7 @@
 
     aput v0, p1, v5
 
-    .line 1083
+    .line 1206
     aget v0, p0, v8
 
     neg-float v0, v0
@@ -954,7 +1007,7 @@
 
     aput v0, p1, v4
 
-    .line 1084
+    .line 1207
     aget v0, p0, v7
 
     neg-float v0, v0
@@ -994,38 +1047,38 @@
 
     const/4 v4, 0x0
 
-    .line 1296
+    .line 1419
     array-length v1, p1
 
     const/4 v2, 0x4
 
     if-ne v1, v2, :cond_0
 
-    .line 1297
+    .line 1420
     aget v0, p1, v7
 
     aput v0, p0, v4
 
-    .line 1302
+    .line 1425
     :goto_0
     aget v0, p1, v4
 
     aput v0, p0, v5
 
-    .line 1303
+    .line 1426
     aget v0, p1, v5
 
     aput v0, p0, v6
 
-    .line 1304
+    .line 1427
     aget v0, p1, v6
 
     aput v0, p0, v7
 
-    .line 1305
+    .line 1428
     return-void
 
-    .line 1299
+    .line 1422
     :cond_0
     const/high16 v1, 0x3f80
 
@@ -1055,7 +1108,7 @@
 
     aput v1, p0, v4
 
-    .line 1300
+    .line 1423
     aget v1, p0, v4
 
     cmpl-float v1, v1, v0
@@ -1086,42 +1139,42 @@
     .parameter "geomagnetic"
 
     .prologue
-    .line 789
+    .line 912
     const/16 v20, 0x0
 
     aget v2, p2, v20
 
-    .line 790
+    .line 913
     .local v2, Ax:F
     const/16 v20, 0x1
 
     aget v3, p2, v20
 
-    .line 791
+    .line 914
     .local v3, Ay:F
     const/16 v20, 0x2
 
     aget v4, p2, v20
 
-    .line 792
+    .line 915
     .local v4, Az:F
     const/16 v20, 0x0
 
     aget v5, p3, v20
 
-    .line 793
+    .line 916
     .local v5, Ex:F
     const/16 v20, 0x1
 
     aget v6, p3, v20
 
-    .line 794
+    .line 917
     .local v6, Ey:F
     const/16 v20, 0x2
 
     aget v7, p3, v20
 
-    .line 795
+    .line 918
     .local v7, Ez:F
     mul-float v20, v6, v4
 
@@ -1129,7 +1182,7 @@
 
     sub-float v8, v20, v21
 
-    .line 796
+    .line 919
     .local v8, Hx:F
     mul-float v20, v7, v2
 
@@ -1137,7 +1190,7 @@
 
     sub-float v9, v20, v21
 
-    .line 797
+    .line 920
     .local v9, Hy:F
     mul-float v20, v5, v3
 
@@ -1145,7 +1198,7 @@
 
     sub-float v10, v20, v21
 
-    .line 798
+    .line 921
     .local v10, Hz:F
     mul-float v20, v8, v8
 
@@ -1173,7 +1226,7 @@
 
     move/from16 v18, v0
 
-    .line 799
+    .line 922
     .local v18, normH:F
     const v20, 0x3dcccccd
 
@@ -1181,30 +1234,30 @@
 
     if-gez v20, :cond_0
 
-    .line 802
+    .line 925
     const/16 v20, 0x0
 
-    .line 846
+    .line 969
     :goto_0
     return v20
 
-    .line 804
+    .line 927
     :cond_0
     const/high16 v20, 0x3f80
 
     div-float v17, v20, v18
 
-    .line 805
+    .line 928
     .local v17, invH:F
     mul-float v8, v8, v17
 
-    .line 806
+    .line 929
     mul-float v9, v9, v17
 
-    .line 807
+    .line 930
     mul-float v10, v10, v17
 
-    .line 808
+    .line 931
     const/high16 v20, 0x3f80
 
     mul-float v21, v2, v2
@@ -1235,24 +1288,24 @@
 
     div-float v15, v20, v21
 
-    .line 809
+    .line 932
     .local v15, invA:F
     mul-float/2addr v2, v15
 
-    .line 810
+    .line 933
     mul-float/2addr v3, v15
 
-    .line 811
+    .line 934
     mul-float/2addr v4, v15
 
-    .line 812
+    .line 935
     mul-float v20, v3, v10
 
     mul-float v21, v4, v9
 
     sub-float v11, v20, v21
 
-    .line 813
+    .line 936
     .local v11, Mx:F
     mul-float v20, v4, v8
 
@@ -1260,7 +1313,7 @@
 
     sub-float v12, v20, v21
 
-    .line 814
+    .line 937
     .local v12, My:F
     mul-float v20, v2, v9
 
@@ -1268,11 +1321,11 @@
 
     sub-float v13, v20, v21
 
-    .line 815
+    .line 938
     .local v13, Mz:F
     if-eqz p0, :cond_1
 
-    .line 816
+    .line 939
     move-object/from16 v0, p0
 
     array-length v0, v0
@@ -1287,7 +1340,7 @@
 
     if-ne v0, v1, :cond_3
 
-    .line 817
+    .line 940
     const/16 v20, 0x0
 
     aput v8, p0, v20
@@ -1300,7 +1353,7 @@
 
     aput v10, p0, v20
 
-    .line 818
+    .line 941
     const/16 v20, 0x3
 
     aput v11, p0, v20
@@ -1313,7 +1366,7 @@
 
     aput v13, p0, v20
 
-    .line 819
+    .line 942
     const/16 v20, 0x6
 
     aput v2, p0, v20
@@ -1326,12 +1379,12 @@
 
     aput v4, p0, v20
 
-    .line 827
+    .line 950
     :cond_1
     :goto_1
     if-eqz p1, :cond_2
 
-    .line 831
+    .line 954
     const/high16 v20, 0x3f80
 
     mul-float v21, v5, v5
@@ -1362,7 +1415,7 @@
 
     div-float v16, v20, v21
 
-    .line 832
+    .line 955
     .local v16, invE:F
     mul-float v20, v5, v11
 
@@ -1376,7 +1429,7 @@
 
     mul-float v14, v20, v16
 
-    .line 833
+    .line 956
     .local v14, c:F
     mul-float v20, v5, v2
 
@@ -1390,7 +1443,7 @@
 
     mul-float v19, v20, v16
 
-    .line 834
+    .line 957
     .local v19, s:F
     move-object/from16 v0, p1
 
@@ -1406,7 +1459,7 @@
 
     if-ne v0, v1, :cond_4
 
-    .line 835
+    .line 958
     const/16 v20, 0x0
 
     const/high16 v21, 0x3f80
@@ -1425,7 +1478,7 @@
 
     aput v21, p1, v20
 
-    .line 836
+    .line 959
     const/16 v20, 0x3
 
     const/16 v21, 0x0
@@ -1440,7 +1493,7 @@
 
     aput v19, p1, v20
 
-    .line 837
+    .line 960
     const/16 v20, 0x6
 
     const/16 v21, 0x0
@@ -1461,7 +1514,7 @@
 
     aput v14, p1, v20
 
-    .line 846
+    .line 969
     .end local v14           #c:F
     .end local v16           #invE:F
     .end local v19           #s:F
@@ -1471,7 +1524,7 @@
 
     goto/16 :goto_0
 
-    .line 820
+    .line 943
     :cond_3
     move-object/from16 v0, p0
 
@@ -1487,7 +1540,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 821
+    .line 944
     const/16 v20, 0x0
 
     aput v8, p0, v20
@@ -1506,7 +1559,7 @@
 
     aput v21, p0, v20
 
-    .line 822
+    .line 945
     const/16 v20, 0x4
 
     aput v11, p0, v20
@@ -1525,7 +1578,7 @@
 
     aput v21, p0, v20
 
-    .line 823
+    .line 946
     const/16 v20, 0x8
 
     aput v2, p0, v20
@@ -1544,7 +1597,7 @@
 
     aput v21, p0, v20
 
-    .line 824
+    .line 947
     const/16 v20, 0xc
 
     const/16 v21, 0x0
@@ -1571,7 +1624,7 @@
 
     goto/16 :goto_1
 
-    .line 838
+    .line 961
     .restart local v14       #c:F
     .restart local v16       #invE:F
     .restart local v19       #s:F
@@ -1590,7 +1643,7 @@
 
     if-ne v0, v1, :cond_2
 
-    .line 839
+    .line 962
     const/16 v20, 0x0
 
     const/high16 v21, 0x3f80
@@ -1609,7 +1662,7 @@
 
     aput v21, p1, v20
 
-    .line 840
+    .line 963
     const/16 v20, 0x4
 
     const/16 v21, 0x0
@@ -1624,7 +1677,7 @@
 
     aput v19, p1, v20
 
-    .line 841
+    .line 964
     const/16 v20, 0x8
 
     const/16 v21, 0x0
@@ -1645,7 +1698,7 @@
 
     aput v14, p1, v20
 
-    .line 842
+    .line 965
     const/16 v20, 0x3
 
     const/16 v21, 0x7
@@ -1672,7 +1725,7 @@
 
     aput v26, p1, v20
 
-    .line 843
+    .line 966
     const/16 v20, 0xf
 
     const/high16 v21, 0x3f80
@@ -1688,24 +1741,24 @@
     .parameter "rotationVector"
 
     .prologue
-    .line 1235
+    .line 1358
     const/4 v14, 0x0
 
     aget v2, p1, v14
 
-    .line 1236
+    .line 1359
     .local v2, q1:F
     const/4 v14, 0x1
 
     aget v6, p1, v14
 
-    .line 1237
+    .line 1360
     .local v6, q2:F
     const/4 v14, 0x2
 
     aget v9, p1, v14
 
-    .line 1239
+    .line 1362
     .local v9, q3:F
     move-object/from16 v0, p1
 
@@ -1715,12 +1768,12 @@
 
     if-ne v14, v15, :cond_1
 
-    .line 1240
+    .line 1363
     const/4 v14, 0x3
 
     aget v1, p1, v14
 
-    .line 1246
+    .line 1369
     .local v1, q0:F
     :goto_0
     const/high16 v14, 0x4000
@@ -1729,7 +1782,7 @@
 
     mul-float v11, v14, v2
 
-    .line 1247
+    .line 1370
     .local v11, sq_q1:F
     const/high16 v14, 0x4000
 
@@ -1737,7 +1790,7 @@
 
     mul-float v12, v14, v6
 
-    .line 1248
+    .line 1371
     .local v12, sq_q2:F
     const/high16 v14, 0x4000
 
@@ -1745,7 +1798,7 @@
 
     mul-float v13, v14, v9
 
-    .line 1249
+    .line 1372
     .local v13, sq_q3:F
     const/high16 v14, 0x4000
 
@@ -1753,7 +1806,7 @@
 
     mul-float v4, v14, v6
 
-    .line 1250
+    .line 1373
     .local v4, q1_q2:F
     const/high16 v14, 0x4000
 
@@ -1761,7 +1814,7 @@
 
     mul-float v10, v14, v1
 
-    .line 1251
+    .line 1374
     .local v10, q3_q0:F
     const/high16 v14, 0x4000
 
@@ -1769,7 +1822,7 @@
 
     mul-float v5, v14, v9
 
-    .line 1252
+    .line 1375
     .local v5, q1_q3:F
     const/high16 v14, 0x4000
 
@@ -1777,7 +1830,7 @@
 
     mul-float v7, v14, v1
 
-    .line 1253
+    .line 1376
     .local v7, q2_q0:F
     const/high16 v14, 0x4000
 
@@ -1785,7 +1838,7 @@
 
     mul-float v8, v14, v9
 
-    .line 1254
+    .line 1377
     .local v8, q2_q3:F
     const/high16 v14, 0x4000
 
@@ -1793,7 +1846,7 @@
 
     mul-float v3, v14, v1
 
-    .line 1256
+    .line 1379
     .local v3, q1_q0:F
     move-object/from16 v0, p0
 
@@ -1803,7 +1856,7 @@
 
     if-ne v14, v15, :cond_3
 
-    .line 1257
+    .line 1380
     const/4 v14, 0x0
 
     const/high16 v15, 0x3f80
@@ -1814,28 +1867,28 @@
 
     aput v15, p0, v14
 
-    .line 1258
+    .line 1381
     const/4 v14, 0x1
 
     sub-float v15, v4, v10
 
     aput v15, p0, v14
 
-    .line 1259
+    .line 1382
     const/4 v14, 0x2
 
     add-float v15, v5, v7
 
     aput v15, p0, v14
 
-    .line 1261
+    .line 1384
     const/4 v14, 0x3
 
     add-float v15, v4, v10
 
     aput v15, p0, v14
 
-    .line 1262
+    .line 1385
     const/4 v14, 0x4
 
     const/high16 v15, 0x3f80
@@ -1846,28 +1899,28 @@
 
     aput v15, p0, v14
 
-    .line 1263
+    .line 1386
     const/4 v14, 0x5
 
     sub-float v15, v8, v3
 
     aput v15, p0, v14
 
-    .line 1265
+    .line 1388
     const/4 v14, 0x6
 
     sub-float v15, v5, v7
 
     aput v15, p0, v14
 
-    .line 1266
+    .line 1389
     const/4 v14, 0x7
 
     add-float v15, v8, v3
 
     aput v15, p0, v14
 
-    .line 1267
+    .line 1390
     const/16 v14, 0x8
 
     const/high16 v15, 0x3f80
@@ -1878,12 +1931,12 @@
 
     aput v15, p0, v14
 
-    .line 1287
+    .line 1410
     :cond_0
     :goto_1
     return-void
 
-    .line 1242
+    .line 1365
     .end local v1           #q0:F
     .end local v3           #q1_q0:F
     .end local v4           #q1_q2:F
@@ -1909,7 +1962,7 @@
 
     sub-float v1, v14, v15
 
-    .line 1243
+    .line 1366
     .restart local v1       #q0:F
     const/4 v14, 0x0
 
@@ -1933,7 +1986,7 @@
 
     goto :goto_2
 
-    .line 1268
+    .line 1391
     .restart local v3       #q1_q0:F
     .restart local v4       #q1_q2:F
     .restart local v5       #q1_q3:F
@@ -1952,7 +2005,7 @@
 
     if-ne v14, v15, :cond_0
 
-    .line 1269
+    .line 1392
     const/4 v14, 0x0
 
     const/high16 v15, 0x3f80
@@ -1963,35 +2016,35 @@
 
     aput v15, p0, v14
 
-    .line 1270
+    .line 1393
     const/4 v14, 0x1
 
     sub-float v15, v4, v10
 
     aput v15, p0, v14
 
-    .line 1271
+    .line 1394
     const/4 v14, 0x2
 
     add-float v15, v5, v7
 
     aput v15, p0, v14
 
-    .line 1272
+    .line 1395
     const/4 v14, 0x3
 
     const/4 v15, 0x0
 
     aput v15, p0, v14
 
-    .line 1274
+    .line 1397
     const/4 v14, 0x4
 
     add-float v15, v4, v10
 
     aput v15, p0, v14
 
-    .line 1275
+    .line 1398
     const/4 v14, 0x5
 
     const/high16 v15, 0x3f80
@@ -2002,35 +2055,35 @@
 
     aput v15, p0, v14
 
-    .line 1276
+    .line 1399
     const/4 v14, 0x6
 
     sub-float v15, v8, v3
 
     aput v15, p0, v14
 
-    .line 1277
+    .line 1400
     const/4 v14, 0x7
 
     const/4 v15, 0x0
 
     aput v15, p0, v14
 
-    .line 1279
+    .line 1402
     const/16 v14, 0x8
 
     sub-float v15, v5, v7
 
     aput v15, p0, v14
 
-    .line 1280
+    .line 1403
     const/16 v14, 0x9
 
     add-float v15, v8, v3
 
     aput v15, p0, v14
 
-    .line 1281
+    .line 1404
     const/16 v14, 0xa
 
     const/high16 v15, 0x3f80
@@ -2041,14 +2094,14 @@
 
     aput v15, p0, v14
 
-    .line 1282
+    .line 1405
     const/16 v14, 0xb
 
     const/4 v15, 0x0
 
     aput v15, p0, v14
 
-    .line 1284
+    .line 1407
     const/16 v14, 0xc
 
     const/16 v15, 0xd
@@ -2063,7 +2116,7 @@
 
     aput v17, p0, v14
 
-    .line 1285
+    .line 1408
     const/16 v14, 0xf
 
     const/high16 v15, 0x3f80
@@ -2081,17 +2134,17 @@
     .parameter "outR"
 
     .prologue
-    .line 949
+    .line 1072
     if-ne p0, p3, :cond_2
 
-    .line 950
+    .line 1073
     sget-object v2, Landroid/hardware/SensorManager;->mTempMatrix:[F
 
-    .line 951
+    .line 1074
     .local v2, temp:[F
     monitor-enter v2
 
-    .line 953
+    .line 1076
     :try_start_0
     invoke-static {p0, p1, p2, v2}, Landroid/hardware/SensorManager;->remapCoordinateSystemImpl([FII[F)Z
 
@@ -2099,10 +2152,10 @@
 
     if-eqz v3, :cond_1
 
-    .line 954
+    .line 1077
     array-length v1, p3
 
-    .line 955
+    .line 1078
     .local v1, size:I
     const/4 v0, 0x0
 
@@ -2110,37 +2163,37 @@
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 956
+    .line 1079
     aget v3, v2, v0
 
     aput v3, p3, v0
 
-    .line 955
+    .line 1078
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 957
+    .line 1080
     :cond_0
     const/4 v3, 0x1
 
     monitor-exit v2
 
-    .line 961
+    .line 1084
     .end local v0           #i:I
     .end local v1           #size:I
     .end local v2           #temp:[F
     :goto_1
     return v3
 
-    .line 959
+    .line 1082
     .restart local v2       #temp:[F
     :cond_1
     monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 961
+    .line 1084
     .end local v2           #temp:[F
     :cond_2
     invoke-static {p0, p1, p2, p3}, Landroid/hardware/SensorManager;->remapCoordinateSystemImpl([FII[F)Z
@@ -2149,7 +2202,7 @@
 
     goto :goto_1
 
-    .line 959
+    .line 1082
     .restart local v2       #temp:[F
     :catchall_0
     move-exception v3
@@ -2170,12 +2223,12 @@
     .parameter "outR"
 
     .prologue
-    .line 978
+    .line 1101
     move-object/from16 v0, p3
 
     array-length v6, v0
 
-    .line 979
+    .line 1102
     .local v6, length:I
     move-object/from16 v0, p0
 
@@ -2183,14 +2236,14 @@
 
     if-eq v15, v6, :cond_0
 
-    .line 980
+    .line 1103
     const/4 v15, 0x0
 
-    .line 1022
+    .line 1145
     :goto_0
     return v15
 
-    .line 981
+    .line 1104
     :cond_0
     and-int/lit8 v15, p1, 0x7c
 
@@ -2200,13 +2253,13 @@
 
     if-eqz v15, :cond_2
 
-    .line 982
+    .line 1105
     :cond_1
     const/4 v15, 0x0
 
     goto :goto_0
 
-    .line 983
+    .line 1106
     :cond_2
     and-int/lit8 v15, p1, 0x3
 
@@ -2216,13 +2269,13 @@
 
     if-nez v15, :cond_4
 
-    .line 984
+    .line 1107
     :cond_3
     const/4 v15, 0x0
 
     goto :goto_0
 
-    .line 985
+    .line 1108
     :cond_4
     and-int/lit8 v15, p1, 0x3
 
@@ -2232,46 +2285,46 @@
 
     if-ne v15, v0, :cond_5
 
-    .line 986
+    .line 1109
     const/4 v15, 0x0
 
     goto :goto_0
 
-    .line 991
+    .line 1114
     :cond_5
     xor-int v1, p1, p2
 
-    .line 994
+    .line 1117
     .local v1, Z:I
     and-int/lit8 v15, p1, 0x3
 
     add-int/lit8 v12, v15, -0x1
 
-    .line 995
+    .line 1118
     .local v12, x:I
     and-int/lit8 v15, p2, 0x3
 
     add-int/lit8 v13, v15, -0x1
 
-    .line 996
+    .line 1119
     .local v13, y:I
     and-int/lit8 v15, v1, 0x3
 
     add-int/lit8 v14, v15, -0x1
 
-    .line 999
+    .line 1122
     .local v14, z:I
     add-int/lit8 v15, v14, 0x1
 
     rem-int/lit8 v2, v15, 0x3
 
-    .line 1000
+    .line 1123
     .local v2, axis_y:I
     add-int/lit8 v15, v14, 0x2
 
     rem-int/lit8 v3, v15, 0x3
 
-    .line 1001
+    .line 1124
     .local v3, axis_z:I
     xor-int v15, v12, v2
 
@@ -2281,10 +2334,10 @@
 
     if-eqz v15, :cond_6
 
-    .line 1002
+    .line 1125
     xor-int/lit16 v1, v1, 0x80
 
-    .line 1004
+    .line 1127
     :cond_6
     const/16 v15, 0x80
 
@@ -2294,7 +2347,7 @@
 
     const/4 v9, 0x1
 
-    .line 1005
+    .line 1128
     .local v9, sx:Z
     :goto_1
     const/16 v15, 0x80
@@ -2305,7 +2358,7 @@
 
     const/4 v10, 0x1
 
-    .line 1006
+    .line 1129
     .local v10, sy:Z
     :goto_2
     const/16 v15, 0x80
@@ -2314,7 +2367,7 @@
 
     const/4 v11, 0x1
 
-    .line 1009
+    .line 1132
     .local v11, sz:Z
     :goto_3
     const/16 v15, 0x10
@@ -2323,7 +2376,7 @@
 
     const/4 v8, 0x4
 
-    .line 1010
+    .line 1133
     .local v8, rowLength:I
     :goto_4
     const/4 v5, 0x0
@@ -2334,10 +2387,10 @@
 
     if-ge v5, v15, :cond_12
 
-    .line 1011
+    .line 1134
     mul-int v7, v5, v8
 
-    .line 1012
+    .line 1135
     .local v7, offset:I
     const/4 v4, 0x0
 
@@ -2347,7 +2400,7 @@
 
     if-ge v4, v15, :cond_11
 
-    .line 1013
+    .line 1136
     if-ne v12, v4, :cond_7
 
     add-int v16, v7, v4
@@ -2363,7 +2416,7 @@
     :goto_7
     aput v15, p3, v16
 
-    .line 1014
+    .line 1137
     :cond_7
     if-ne v13, v4, :cond_8
 
@@ -2380,7 +2433,7 @@
     :goto_8
     aput v15, p3, v16
 
-    .line 1015
+    .line 1138
     :cond_8
     if-ne v14, v4, :cond_9
 
@@ -2397,13 +2450,13 @@
     :goto_9
     aput v15, p3, v16
 
-    .line 1012
+    .line 1135
     :cond_9
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_6
 
-    .line 1004
+    .line 1127
     .end local v4           #i:I
     .end local v5           #j:I
     .end local v7           #offset:I
@@ -2416,28 +2469,28 @@
 
     goto :goto_1
 
-    .line 1005
+    .line 1128
     .restart local v9       #sx:Z
     :cond_b
     const/4 v10, 0x0
 
     goto :goto_2
 
-    .line 1006
+    .line 1129
     .restart local v10       #sy:Z
     :cond_c
     const/4 v11, 0x0
 
     goto :goto_3
 
-    .line 1009
+    .line 1132
     .restart local v11       #sz:Z
     :cond_d
     const/4 v8, 0x3
 
     goto :goto_4
 
-    .line 1013
+    .line 1136
     .restart local v4       #i:I
     .restart local v5       #j:I
     .restart local v7       #offset:I
@@ -2449,7 +2502,7 @@
 
     goto :goto_7
 
-    .line 1014
+    .line 1137
     :cond_f
     add-int/lit8 v15, v7, 0x1
 
@@ -2457,7 +2510,7 @@
 
     goto :goto_8
 
-    .line 1015
+    .line 1138
     :cond_10
     add-int/lit8 v15, v7, 0x2
 
@@ -2465,13 +2518,13 @@
 
     goto :goto_9
 
-    .line 1010
+    .line 1133
     :cond_11
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_5
 
-    .line 1018
+    .line 1141
     .end local v4           #i:I
     .end local v7           #offset:I
     :cond_12
@@ -2479,7 +2532,7 @@
 
     if-ne v6, v15, :cond_13
 
-    .line 1019
+    .line 1142
     const/4 v15, 0x3
 
     const/16 v16, 0x7
@@ -2506,14 +2559,14 @@
 
     aput v21, p3, v15
 
-    .line 1020
+    .line 1143
     const/16 v15, 0xf
 
     const/high16 v16, 0x3f80
 
     aput v16, p3, v15
 
-    .line 1022
+    .line 1145
     :cond_13
     const/4 v15, 0x1
 
@@ -2532,17 +2585,52 @@
     return v0
 .end method
 
+.method public cancelTriggerSensor(Landroid/hardware/TriggerEventListener;Landroid/hardware/Sensor;)Z
+    .locals 1
+    .parameter "listener"
+    .parameter "sensor"
+
+    .prologue
+    .line 1482
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, p1, p2, v0}, Landroid/hardware/SensorManager;->cancelTriggerSensorImpl(Landroid/hardware/TriggerEventListener;Landroid/hardware/Sensor;Z)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method protected abstract cancelTriggerSensorImpl(Landroid/hardware/TriggerEventListener;Landroid/hardware/Sensor;Z)Z
+.end method
+
+.method public flush(Landroid/hardware/SensorEventListener;)Z
+    .locals 1
+    .parameter "listener"
+
+    .prologue
+    .line 770
+    invoke-virtual {p0, p1}, Landroid/hardware/SensorManager;->flushImpl(Landroid/hardware/SensorEventListener;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method protected abstract flushImpl(Landroid/hardware/SensorEventListener;)Z
+.end method
+
 .method public getDefaultSensor(I)Landroid/hardware/Sensor;
     .locals 2
     .parameter "type"
 
     .prologue
-    .line 429
+    .line 433
     invoke-virtual {p0, p1}, Landroid/hardware/SensorManager;->getSensorList(I)Ljava/util/List;
 
     move-result-object v0
 
-    .line 430
+    .line 434
     .local v0, l:Ljava/util/List;,"Ljava/util/List<Landroid/hardware/Sensor;>;"
     invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
 
@@ -2593,18 +2681,18 @@
     .end annotation
 
     .prologue
-    .line 393
+    .line 397
     invoke-virtual {p0}, Landroid/hardware/SensorManager;->getFullSensorList()Ljava/util/List;
 
     move-result-object v0
 
-    .line 394
+    .line 398
     .local v0, fullList:Ljava/util/List;,"Ljava/util/List<Landroid/hardware/Sensor;>;"
     iget-object v5, p0, Landroid/hardware/SensorManager;->mSensorListByType:Landroid/util/SparseArray;
 
     monitor-enter v5
 
-    .line 395
+    .line 399
     :try_start_0
     iget-object v4, p0, Landroid/hardware/SensorManager;->mSensorListByType:Landroid/util/SparseArray;
 
@@ -2614,44 +2702,44 @@
 
     check-cast v3, Ljava/util/List;
 
-    .line 396
+    .line 400
     .local v3, list:Ljava/util/List;,"Ljava/util/List<Landroid/hardware/Sensor;>;"
     if-nez v3, :cond_1
 
-    .line 397
+    .line 401
     const/4 v4, -0x1
 
     if-ne p1, v4, :cond_2
 
-    .line 398
+    .line 402
     move-object v3, v0
 
-    .line 406
+    .line 410
     :cond_0
     invoke-static {v3}, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
 
     move-result-object v3
 
-    .line 407
+    .line 411
     iget-object v4, p0, Landroid/hardware/SensorManager;->mSensorListByType:Landroid/util/SparseArray;
 
     invoke-virtual {v4, p1, v3}, Landroid/util/SparseArray;->append(ILjava/lang/Object;)V
 
-    .line 409
+    .line 413
     :cond_1
     monitor-exit v5
 
-    .line 410
+    .line 414
     return-object v3
 
-    .line 400
+    .line 404
     :cond_2
     new-instance v3, Ljava/util/ArrayList;
 
     .end local v3           #list:Ljava/util/List;,"Ljava/util/List<Landroid/hardware/Sensor;>;"
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
 
-    .line 401
+    .line 405
     .restart local v3       #list:Ljava/util/List;,"Ljava/util/List<Landroid/hardware/Sensor;>;"
     invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -2672,7 +2760,7 @@
 
     check-cast v1, Landroid/hardware/Sensor;
 
-    .line 402
+    .line 406
     .local v1, i:Landroid/hardware/Sensor;
     invoke-virtual {v1}, Landroid/hardware/Sensor;->getType()I
 
@@ -2680,12 +2768,12 @@
 
     if-ne v4, p1, :cond_3
 
-    .line 403
+    .line 407
     invoke-interface {v3, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
-    .line 409
+    .line 413
     .end local v1           #i:Landroid/hardware/Sensor;
     .end local v2           #i$:Ljava/util/Iterator;
     .end local v3           #list:Ljava/util/List;,"Ljava/util/List<Landroid/hardware/Sensor;>;"
@@ -2705,7 +2793,7 @@
     .end annotation
 
     .prologue
-    .line 373
+    .line 377
     invoke-direct {p0}, Landroid/hardware/SensorManager;->getLegacySensorManager()Landroid/hardware/LegacySensorManager;
 
     move-result-object v0
@@ -2721,10 +2809,10 @@
     .locals 1
     .parameter "listener"
     .parameter "sensor"
-    .parameter "rate"
+    .parameter "rateUs"
 
     .prologue
-    .line 586
+    .line 604
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, p2, p3, v0}, Landroid/hardware/SensorManager;->registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;)Z
@@ -2734,84 +2822,107 @@
     return v0
 .end method
 
-.method public registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;)Z
-    .locals 2
+.method public registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;II)Z
+    .locals 7
     .parameter "listener"
     .parameter "sensor"
-    .parameter "rate"
+    .parameter "rateUs"
+    .parameter "maxBatchReportLatencyUs"
+
+    .prologue
+    .line 661
+    invoke-static {p3}, Landroid/hardware/SensorManager;->getDelay(I)I
+
+    move-result v3
+
+    .line 662
+    .local v3, delay:I
+    const/4 v4, 0x0
+
+    const/4 v6, 0x0
+
+    move-object v0, p0
+
+    move-object v1, p1
+
+    move-object v2, p2
+
+    move v5, p4
+
+    invoke-virtual/range {v0 .. v6}, Landroid/hardware/SensorManager;->registerListenerImpl(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;II)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;IILandroid/os/Handler;)Z
+    .locals 7
+    .parameter "listener"
+    .parameter "sensor"
+    .parameter "rateUs"
+    .parameter "maxBatchReportLatencyUs"
     .parameter "handler"
 
     .prologue
-    .line 623
-    if-eqz p1, :cond_0
+    .line 740
+    invoke-static {p3}, Landroid/hardware/SensorManager;->getDelay(I)I
 
-    if-nez p2, :cond_1
+    move-result v3
 
-    .line 624
-    :cond_0
-    const/4 v1, 0x0
+    .line 741
+    .local v3, delayUs:I
+    const/4 v6, 0x0
 
-    .line 646
-    :goto_0
-    return v1
+    move-object v0, p0
 
-    .line 627
-    :cond_1
-    const/4 v0, -0x1
+    move-object v1, p1
 
-    .line 628
-    .local v0, delay:I
-    packed-switch p3, :pswitch_data_0
+    move-object v2, p2
 
-    .line 642
-    move v0, p3
+    move-object v4, p5
 
-    .line 646
-    :goto_1
-    invoke-virtual {p0, p1, p2, v0, p4}, Landroid/hardware/SensorManager;->registerListenerImpl(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;)Z
+    move v5, p4
 
-    move-result v1
+    invoke-virtual/range {v0 .. v6}, Landroid/hardware/SensorManager;->registerListenerImpl(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;II)Z
 
-    goto :goto_0
+    move-result v0
 
-    .line 630
-    :pswitch_0
-    const/4 v0, 0x0
+    return v0
+.end method
 
-    .line 631
-    goto :goto_1
+.method public registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;)Z
+    .locals 7
+    .parameter "listener"
+    .parameter "sensor"
+    .parameter "rateUs"
+    .parameter "handler"
 
-    .line 633
-    :pswitch_1
-    const/16 v0, 0x4e20
+    .prologue
+    const/4 v5, 0x0
 
-    .line 634
-    goto :goto_1
+    .line 709
+    invoke-static {p3}, Landroid/hardware/SensorManager;->getDelay(I)I
 
-    .line 636
-    :pswitch_2
-    const v0, 0x1046b
+    move-result v3
 
-    .line 637
-    goto :goto_1
+    .local v3, delay:I
+    move-object v0, p0
 
-    .line 639
-    :pswitch_3
-    const v0, 0x30d40
+    move-object v1, p1
 
-    .line 640
-    goto :goto_1
+    move-object v2, p2
 
-    .line 628
-    nop
+    move-object v4, p4
 
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
-        :pswitch_3
-    .end packed-switch
+    move v6, v5
+
+    .line 710
+    invoke-virtual/range {v0 .. v6}, Landroid/hardware/SensorManager;->registerListenerImpl(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;II)Z
+
+    move-result v0
+
+    return v0
 .end method
 
 .method public registerListener(Landroid/hardware/SensorListener;I)Z
@@ -2822,7 +2933,7 @@
     .end annotation
 
     .prologue
-    .line 451
+    .line 455
     const/4 v0, 0x3
 
     invoke-virtual {p0, p1, p2, v0}, Landroid/hardware/SensorManager;->registerListener(Landroid/hardware/SensorListener;II)Z
@@ -2841,7 +2952,7 @@
     .end annotation
 
     .prologue
-    .line 479
+    .line 483
     invoke-direct {p0}, Landroid/hardware/SensorManager;->getLegacySensorManager()Landroid/hardware/LegacySensorManager;
 
     move-result-object v0
@@ -2853,7 +2964,24 @@
     return v0
 .end method
 
-.method protected abstract registerListenerImpl(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;)Z
+.method protected abstract registerListenerImpl(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;ILandroid/os/Handler;II)Z
+.end method
+
+.method public requestTriggerSensor(Landroid/hardware/TriggerEventListener;Landroid/hardware/Sensor;)Z
+    .locals 1
+    .parameter "listener"
+    .parameter "sensor"
+
+    .prologue
+    .line 1450
+    invoke-virtual {p0, p1, p2}, Landroid/hardware/SensorManager;->requestTriggerSensorImpl(Landroid/hardware/TriggerEventListener;Landroid/hardware/Sensor;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method protected abstract requestTriggerSensorImpl(Landroid/hardware/TriggerEventListener;Landroid/hardware/Sensor;)Z
 .end method
 
 .method public unregisterListener(Landroid/hardware/SensorEventListener;)V
@@ -2861,14 +2989,14 @@
     .parameter "listener"
 
     .prologue
-    .line 547
+    .line 556
     if-nez p1, :cond_0
 
-    .line 552
+    .line 561
     :goto_0
     return-void
 
-    .line 551
+    .line 560
     :cond_0
     const/4 v0, 0x0
 
@@ -2883,17 +3011,17 @@
     .parameter "sensor"
 
     .prologue
-    .line 529
+    .line 538
     if-eqz p1, :cond_0
 
     if-nez p2, :cond_1
 
-    .line 534
+    .line 543
     :cond_0
     :goto_0
     return-void
 
-    .line 533
+    .line 542
     :cond_1
     invoke-virtual {p0, p1, p2}, Landroid/hardware/SensorManager;->unregisterListenerImpl(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;)V
 
@@ -2907,12 +3035,12 @@
     .end annotation
 
     .prologue
-    .line 494
+    .line 498
     const/16 v0, 0xff
 
     invoke-virtual {p0, p1, v0}, Landroid/hardware/SensorManager;->unregisterListener(Landroid/hardware/SensorListener;I)V
 
-    .line 495
+    .line 499
     return-void
 .end method
 
@@ -2924,14 +3052,14 @@
     .end annotation
 
     .prologue
-    .line 512
+    .line 516
     invoke-direct {p0}, Landroid/hardware/SensorManager;->getLegacySensorManager()Landroid/hardware/LegacySensorManager;
 
     move-result-object v0
 
     invoke-virtual {v0, p1, p2}, Landroid/hardware/LegacySensorManager;->unregisterListener(Landroid/hardware/SensorListener;I)V
 
-    .line 513
+    .line 517
     return-void
 .end method
 

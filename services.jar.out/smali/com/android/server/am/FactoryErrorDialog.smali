@@ -1,4 +1,4 @@
-.class Lcom/android/server/am/FactoryErrorDialog;
+.class final Lcom/android/server/am/FactoryErrorDialog;
 .super Lcom/android/server/am/BaseErrorDialog;
 .source "FactoryErrorDialog.java"
 
@@ -30,7 +30,7 @@
     invoke-virtual {p0, v4}, Lcom/android/server/am/FactoryErrorDialog;->setCancelable(Z)V
 
     .line 29
-    const v1, 0x10403aa
+    const v1, 0x104041e
 
     invoke-virtual {p1, v1}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -44,7 +44,7 @@
     .line 31
     const/4 v1, -0x1
 
-    const v2, 0x10403ad
+    const v2, 0x1040421
 
     invoke-virtual {p1, v2}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 

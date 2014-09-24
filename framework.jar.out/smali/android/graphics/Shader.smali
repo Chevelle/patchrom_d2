@@ -39,6 +39,59 @@
 
 
 # virtual methods
+.method protected copy()Landroid/graphics/Shader;
+    .locals 1
+
+    .prologue
+    .line 97
+    new-instance v0, Landroid/graphics/Shader;
+
+    invoke-direct {v0}, Landroid/graphics/Shader;-><init>()V
+
+    .line 98
+    .local v0, copy:Landroid/graphics/Shader;
+    invoke-virtual {p0, v0}, Landroid/graphics/Shader;->copyLocalMatrix(Landroid/graphics/Shader;)V
+
+    .line 99
+    return-object v0
+.end method
+
+.method protected copyLocalMatrix(Landroid/graphics/Shader;)V
+    .locals 2
+    .parameter "dest"
+
+    .prologue
+    .line 106
+    iget-object v1, p0, Landroid/graphics/Shader;->mLocalMatrix:Landroid/graphics/Matrix;
+
+    if-eqz v1, :cond_0
+
+    .line 107
+    new-instance v0, Landroid/graphics/Matrix;
+
+    invoke-direct {v0}, Landroid/graphics/Matrix;-><init>()V
+
+    .line 108
+    .local v0, lm:Landroid/graphics/Matrix;
+    invoke-virtual {p0, v0}, Landroid/graphics/Shader;->getLocalMatrix(Landroid/graphics/Matrix;)Z
+
+    .line 109
+    invoke-virtual {p1, v0}, Landroid/graphics/Shader;->setLocalMatrix(Landroid/graphics/Matrix;)V
+
+    .line 113
+    .end local v0           #lm:Landroid/graphics/Matrix;
+    :goto_0
+    return-void
+
+    .line 111
+    :cond_0
+    const/4 v1, 0x0
+
+    invoke-virtual {p1, v1}, Landroid/graphics/Shader;->setLocalMatrix(Landroid/graphics/Matrix;)V
+
+    goto :goto_0
+.end method
+
 .method protected finalize()V
     .locals 3
     .annotation system Ldalvik/annotation/Throws;

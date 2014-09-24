@@ -26,7 +26,7 @@
     .parameter "x1"
 
     .prologue
-    .line 371
+    .line 407
     iput-object p1, p0, Lcom/android/internal/policy/impl/GlobalActions$6;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     invoke-direct {p0, p2, p3}, Lcom/android/internal/policy/impl/GlobalActions$SinglePressAction;-><init>(II)V
@@ -40,13 +40,13 @@
     .locals 1
 
     .prologue
-    .line 373
+    .line 409
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$6;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     #calls: Lcom/android/internal/policy/impl/GlobalActions;->takeScreenshot()V
-    invoke-static {v0}, Lcom/android/internal/policy/impl/GlobalActions;->access$800(Lcom/android/internal/policy/impl/GlobalActions;)V
+    invoke-static {v0}, Lcom/android/internal/policy/impl/GlobalActions;->access$900(Lcom/android/internal/policy/impl/GlobalActions;)V
 
-    .line 374
+    .line 410
     return-void
 .end method
 
@@ -54,7 +54,7 @@
     .locals 1
 
     .prologue
-    .line 381
+    .line 417
     const/4 v0, 0x1
 
     return v0
@@ -64,7 +64,7 @@
     .locals 1
 
     .prologue
-    .line 377
+    .line 413
     const/4 v0, 0x1
 
     return v0

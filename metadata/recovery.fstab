@@ -1,7 +1,24 @@
-/boot       emmc        /dev/block/mmcblk0p7
-/system     ext4        /dev/block/mmcblk0p14
-/data       ext4        /dev/block/mmcblk0p15 length=-16384
-/cache      ext4        /dev/block/mmcblk0p17
-/recovery   emmc        /dev/block/mmcblk0p18
-/sdcard     datamedia   /dev/null
-/external_sd auto       /dev/block/mmcblk1p1    /dev/block/mmcblk1
+#	Android	fstab
+#	The	filesystem
+#	specify	MF_CHECK,
+		
+#TODO:	Add	'check'
+#	Currently	we
+		
+#<src>	<mnt_point>	<type>
+#/dev/block/platform/msm_sdcc.1/by-name/boot	/boot	emmc
+#/dev/block/platform/msm_sdcc.1/by-name/recovery	/recovery	emmc
+#/dev/block/platform/msm_sdcc.1/by-name/cache	/cache	ext4
+#/dev/block/platform/msm_sdcc.1/by-name/system	/system	ext4
+#/dev/block/platform/msm_sdcc.1/by-name/userdata	/data	ext4
+#/devices/platform/msm_sdcc.3/mmc_host/mmc1/	/storage/sdcard1	auto
+#/devices/platform/msm_hsusb_host/usb	/storage/usbdisk0	auto
+		
+/boot	emmc	/dev/block/mmcblk0p7
+/system	ext4	/dev/block/mmcblk0p14
+/data	ext4	/dev/block/mmcblk0p15
+/cache	ext4	/dev/block/mmcblk0p17
+/recovery	emmc	/dev/block/mmcblk0p18
+/external_sd	vfat	/dev/block/mmcblk1p1
+/usb-otg	vfat	/dev/block/sda1
+		

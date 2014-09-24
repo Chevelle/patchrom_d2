@@ -20,6 +20,10 @@
 
 .field private static final TYPE_RX_PACKETS:I = 0x1
 
+.field private static final TYPE_TCP_RX_PACKETS:I = 0x4
+
+.field private static final TYPE_TCP_TX_PACKETS:I = 0x5
+
 .field private static final TYPE_TX_BYTES:I = 0x2
 
 .field private static final TYPE_TX_PACKETS:I = 0x3
@@ -66,12 +70,12 @@
     .locals 1
 
     .prologue
-    .line 137
+    .line 147
     const/4 v0, -0x1
 
     invoke-static {v0}, Lcom/android/server/NetworkManagementSocketTagger;->setThreadSocketStatsTag(I)V
 
-    .line 138
+    .line 148
     return-void
 .end method
 
@@ -79,12 +83,12 @@
     .locals 1
 
     .prologue
-    .line 159
+    .line 169
     const/4 v0, -0x1
 
     invoke-static {v0}, Lcom/android/server/NetworkManagementSocketTagger;->setThreadSocketStatsUid(I)V
 
-    .line 160
+    .line 170
     return-void
 .end method
 
@@ -93,30 +97,30 @@
     .parameter "session"
 
     .prologue
-    .line 252
+    .line 262
     if-eqz p0, :cond_0
 
-    .line 254
+    .line 264
     :try_start_0
     invoke-interface {p0}, Landroid/net/INetworkStatsSession;->close()V
     :try_end_0
     .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
-    .line 260
+    .line 270
     :cond_0
     :goto_0
     return-void
 
-    .line 255
+    .line 265
     :catch_0
     move-exception v0
 
-    .line 256
+    .line 266
     .local v0, rethrown:Ljava/lang/RuntimeException;
     throw v0
 
-    .line 257
+    .line 267
     .end local v0           #rethrown:Ljava/lang/RuntimeException;
     :catch_1
     move-exception v1
@@ -129,12 +133,12 @@
     .parameter "context"
 
     .prologue
-    .line 564
+    .line 594
     invoke-static {}, Landroid/os/Process;->myUid()I
 
     move-result v1
 
-    .line 566
+    .line 596
     .local v1, uid:I
     :try_start_0
     invoke-static {}, Landroid/net/TrafficStats;->getStatsService()Landroid/net/INetworkStatsService;
@@ -149,11 +153,11 @@
 
     return-object v2
 
-    .line 567
+    .line 597
     :catch_0
     move-exception v0
 
-    .line 568
+    .line 598
     .local v0, e:Landroid/os/RemoteException;
     new-instance v2, Ljava/lang/RuntimeException;
 
@@ -166,7 +170,7 @@
     .locals 2
 
     .prologue
-    .line 579
+    .line 609
     :try_start_0
     invoke-static {}, Landroid/net/TrafficStats;->getStatsService()Landroid/net/INetworkStatsService;
 
@@ -180,11 +184,11 @@
 
     return-object v1
 
-    .line 580
+    .line 610
     :catch_0
     move-exception v0
 
-    .line 581
+    .line 611
     .local v0, e:Landroid/os/RemoteException;
     new-instance v1, Ljava/lang/RuntimeException;
 
@@ -197,10 +201,10 @@
     .locals 8
 
     .prologue
-    .line 311
+    .line 333
     const-wide/16 v4, 0x0
 
-    .line 312
+    .line 334
     .local v4, total:J
     invoke-static {}, Landroid/net/TrafficStats;->getMobileIfaces()[Ljava/lang/String;
 
@@ -218,7 +222,7 @@
 
     aget-object v2, v0, v1
 
-    .line 313
+    .line 335
     .local v2, iface:Ljava/lang/String;
     invoke-static {v2}, Landroid/net/TrafficStats;->getRxBytes(Ljava/lang/String;)J
 
@@ -226,12 +230,12 @@
 
     add-long/2addr v4, v6
 
-    .line 312
+    .line 334
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 315
+    .line 337
     .end local v2           #iface:Ljava/lang/String;
     :cond_0
     return-wide v4
@@ -241,10 +245,10 @@
     .locals 8
 
     .prologue
-    .line 283
+    .line 299
     const-wide/16 v4, 0x0
 
-    .line 284
+    .line 300
     .local v4, total:J
     invoke-static {}, Landroid/net/TrafficStats;->getMobileIfaces()[Ljava/lang/String;
 
@@ -262,7 +266,7 @@
 
     aget-object v2, v0, v1
 
-    .line 285
+    .line 301
     .local v2, iface:Ljava/lang/String;
     invoke-static {v2}, Landroid/net/TrafficStats;->getRxPackets(Ljava/lang/String;)J
 
@@ -270,25 +274,139 @@
 
     add-long/2addr v4, v6
 
-    .line 284
+    .line 300
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 287
+    .line 303
     .end local v2           #iface:Ljava/lang/String;
     :cond_0
     return-wide v4
+.end method
+
+.method public static getMobileTcpRxPackets()J
+    .locals 10
+
+    .prologue
+    .line 342
+    const-wide/16 v6, 0x0
+
+    .line 343
+    .local v6, total:J
+    invoke-static {}, Landroid/net/TrafficStats;->getMobileIfaces()[Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, arr$:[Ljava/lang/String;
+    array-length v3, v0
+
+    .local v3, len$:I
+    const/4 v1, 0x0
+
+    .local v1, i$:I
+    :goto_0
+    if-ge v1, v3, :cond_1
+
+    aget-object v2, v0, v1
+
+    .line 344
+    .local v2, iface:Ljava/lang/String;
+    const/4 v8, 0x4
+
+    invoke-static {v2, v8}, Landroid/net/TrafficStats;->nativeGetIfaceStat(Ljava/lang/String;I)J
+
+    move-result-wide v4
+
+    .line 345
+    .local v4, stat:J
+    const-wide/16 v8, -0x1
+
+    cmp-long v8, v4, v8
+
+    if-eqz v8, :cond_0
+
+    .line 346
+    add-long/2addr v6, v4
+
+    .line 343
+    :cond_0
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 349
+    .end local v2           #iface:Ljava/lang/String;
+    .end local v4           #stat:J
+    :cond_1
+    return-wide v6
+.end method
+
+.method public static getMobileTcpTxPackets()J
+    .locals 10
+
+    .prologue
+    .line 354
+    const-wide/16 v6, 0x0
+
+    .line 355
+    .local v6, total:J
+    invoke-static {}, Landroid/net/TrafficStats;->getMobileIfaces()[Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, arr$:[Ljava/lang/String;
+    array-length v3, v0
+
+    .local v3, len$:I
+    const/4 v1, 0x0
+
+    .local v1, i$:I
+    :goto_0
+    if-ge v1, v3, :cond_1
+
+    aget-object v2, v0, v1
+
+    .line 356
+    .local v2, iface:Ljava/lang/String;
+    const/4 v8, 0x5
+
+    invoke-static {v2, v8}, Landroid/net/TrafficStats;->nativeGetIfaceStat(Ljava/lang/String;I)J
+
+    move-result-wide v4
+
+    .line 357
+    .local v4, stat:J
+    const-wide/16 v8, -0x1
+
+    cmp-long v8, v4, v8
+
+    if-eqz v8, :cond_0
+
+    .line 358
+    add-long/2addr v6, v4
+
+    .line 355
+    :cond_0
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 361
+    .end local v2           #iface:Ljava/lang/String;
+    .end local v4           #stat:J
+    :cond_1
+    return-wide v6
 .end method
 
 .method public static getMobileTxBytes()J
     .locals 8
 
     .prologue
-    .line 297
+    .line 316
     const-wide/16 v4, 0x0
 
-    .line 298
+    .line 317
     .local v4, total:J
     invoke-static {}, Landroid/net/TrafficStats;->getMobileIfaces()[Ljava/lang/String;
 
@@ -306,7 +424,7 @@
 
     aget-object v2, v0, v1
 
-    .line 299
+    .line 318
     .local v2, iface:Ljava/lang/String;
     invoke-static {v2}, Landroid/net/TrafficStats;->getTxBytes(Ljava/lang/String;)J
 
@@ -314,12 +432,12 @@
 
     add-long/2addr v4, v6
 
-    .line 298
+    .line 317
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 301
+    .line 320
     .end local v2           #iface:Ljava/lang/String;
     :cond_0
     return-wide v4
@@ -329,10 +447,10 @@
     .locals 8
 
     .prologue
-    .line 269
+    .line 282
     const-wide/16 v4, 0x0
 
-    .line 270
+    .line 283
     .local v4, total:J
     invoke-static {}, Landroid/net/TrafficStats;->getMobileIfaces()[Ljava/lang/String;
 
@@ -350,7 +468,7 @@
 
     aget-object v2, v0, v1
 
-    .line 271
+    .line 284
     .local v2, iface:Ljava/lang/String;
     invoke-static {v2}, Landroid/net/TrafficStats;->getTxPackets(Ljava/lang/String;)J
 
@@ -358,12 +476,12 @@
 
     add-long/2addr v4, v6
 
-    .line 270
+    .line 283
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 273
+    .line 286
     .end local v2           #iface:Ljava/lang/String;
     :cond_0
     return-wide v4
@@ -374,7 +492,7 @@
     .parameter "iface"
 
     .prologue
-    .line 359
+    .line 381
     const/4 v0, 0x0
 
     invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetIfaceStat(Ljava/lang/String;I)J
@@ -389,7 +507,7 @@
     .parameter "iface"
 
     .prologue
-    .line 337
+    .line 371
     const/4 v0, 0x1
 
     invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetIfaceStat(Ljava/lang/String;I)J
@@ -449,7 +567,7 @@
     .locals 1
 
     .prologue
-    .line 133
+    .line 137
     invoke-static {}, Lcom/android/server/NetworkManagementSocketTagger;->getThreadSocketStatsTag()I
 
     move-result v0
@@ -461,7 +579,7 @@
     .locals 2
 
     .prologue
-    .line 399
+    .line 433
     const/4 v0, 0x0
 
     invoke-static {v0}, Landroid/net/TrafficStats;->nativeGetTotalStat(I)J
@@ -475,7 +593,7 @@
     .locals 2
 
     .prologue
-    .line 379
+    .line 407
     const/4 v0, 0x1
 
     invoke-static {v0}, Landroid/net/TrafficStats;->nativeGetTotalStat(I)J
@@ -489,7 +607,7 @@
     .locals 2
 
     .prologue
-    .line 389
+    .line 420
     const/4 v0, 0x2
 
     invoke-static {v0}, Landroid/net/TrafficStats;->nativeGetTotalStat(I)J
@@ -503,7 +621,7 @@
     .locals 2
 
     .prologue
-    .line 369
+    .line 394
     const/4 v0, 0x3
 
     invoke-static {v0}, Landroid/net/TrafficStats;->nativeGetTotalStat(I)J
@@ -518,7 +636,7 @@
     .parameter "iface"
 
     .prologue
-    .line 348
+    .line 376
     const/4 v0, 0x2
 
     invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetIfaceStat(Ljava/lang/String;I)J
@@ -533,7 +651,7 @@
     .parameter "iface"
 
     .prologue
-    .line 326
+    .line 366
     const/4 v0, 0x3
 
     invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetIfaceStat(Ljava/lang/String;I)J
@@ -543,40 +661,168 @@
     return-wide v0
 .end method
 
-.method public static native getUidRxBytes(I)J
+.method public static getUidRxBytes(I)J
+    .locals 2
+    .parameter "uid"
+
+    .prologue
+    .line 465
+    const/4 v0, 0x0
+
+    invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetUidStat(II)J
+
+    move-result-wide v0
+
+    return-wide v0
 .end method
 
-.method public static native getUidRxPackets(I)J
+.method public static getUidRxPackets(I)J
+    .locals 2
+    .parameter "uid"
+
+    .prologue
+    .line 497
+    const/4 v0, 0x1
+
+    invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetUidStat(II)J
+
+    move-result-wide v0
+
+    return-wide v0
 .end method
 
-.method public static native getUidTcpRxBytes(I)J
+.method public static getUidTcpRxBytes(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 519
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
-.method public static native getUidTcpRxSegments(I)J
+.method public static getUidTcpRxSegments(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 563
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
-.method public static native getUidTcpTxBytes(I)J
+.method public static getUidTcpTxBytes(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 508
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
-.method public static native getUidTcpTxSegments(I)J
+.method public static getUidTcpTxSegments(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 552
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
-.method public static native getUidTxBytes(I)J
+.method public static getUidTxBytes(I)J
+    .locals 2
+    .parameter "uid"
+
+    .prologue
+    .line 449
+    const/4 v0, 0x2
+
+    invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetUidStat(II)J
+
+    move-result-wide v0
+
+    return-wide v0
 .end method
 
-.method public static native getUidTxPackets(I)J
+.method public static getUidTxPackets(I)J
+    .locals 2
+    .parameter "uid"
+
+    .prologue
+    .line 481
+    const/4 v0, 0x3
+
+    invoke-static {p0, v0}, Landroid/net/TrafficStats;->nativeGetUidStat(II)J
+
+    move-result-wide v0
+
+    return-wide v0
 .end method
 
-.method public static native getUidUdpRxBytes(I)J
+.method public static getUidUdpRxBytes(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 541
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
-.method public static native getUidUdpRxPackets(I)J
+.method public static getUidUdpRxPackets(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 585
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
-.method public static native getUidUdpTxBytes(I)J
+.method public static getUidUdpTxBytes(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 530
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
-.method public static native getUidUdpTxPackets(I)J
+.method public static getUidUdpTxPackets(I)J
+    .locals 2
+    .parameter "uid"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 574
+    const-wide/16 v0, -0x1
+
+    return-wide v0
 .end method
 
 .method public static incrementOperationCount(I)V
@@ -584,16 +830,16 @@
     .parameter "operationCount"
 
     .prologue
-    .line 229
+    .line 239
     invoke-static {}, Landroid/net/TrafficStats;->getThreadStatsTag()I
 
     move-result v0
 
-    .line 230
+    .line 240
     .local v0, tag:I
     invoke-static {v0, p0}, Landroid/net/TrafficStats;->incrementOperationCount(II)V
 
-    .line 231
+    .line 241
     return-void
 .end method
 
@@ -603,12 +849,12 @@
     .parameter "operationCount"
 
     .prologue
-    .line 241
+    .line 251
     invoke-static {}, Landroid/os/Process;->myUid()I
 
     move-result v1
 
-    .line 243
+    .line 253
     .local v1, uid:I
     :try_start_0
     invoke-static {}, Landroid/net/TrafficStats;->getStatsService()Landroid/net/INetworkStatsService;
@@ -619,14 +865,14 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 247
+    .line 257
     return-void
 
-    .line 244
+    .line 254
     :catch_0
     move-exception v0
 
-    .line 245
+    .line 255
     .local v0, e:Landroid/os/RemoteException;
     new-instance v2, Ljava/lang/RuntimeException;
 
@@ -641,15 +887,18 @@
 .method private static native nativeGetTotalStat(I)J
 .end method
 
+.method private static native nativeGetUidStat(II)J
+.end method
+
 .method public static setThreadStatsTag(I)V
     .locals 0
     .parameter "tag"
 
     .prologue
-    .line 124
+    .line 126
     invoke-static {p0}, Lcom/android/server/NetworkManagementSocketTagger;->setThreadSocketStatsTag(I)V
 
-    .line 125
+    .line 127
     return-void
 .end method
 
@@ -658,10 +907,10 @@
     .parameter "uid"
 
     .prologue
-    .line 154
+    .line 164
     invoke-static {p0}, Lcom/android/server/NetworkManagementSocketTagger;->setThreadSocketStatsUid(I)V
 
-    .line 155
+    .line 165
     return-void
 .end method
 
@@ -670,18 +919,18 @@
     .parameter "context"
 
     .prologue
-    .line 189
+    .line 199
     sget-object v1, Landroid/net/TrafficStats;->sProfilingLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 190
+    .line 200
     :try_start_0
     sget-object v0, Landroid/net/TrafficStats;->sActiveProfilingStart:Landroid/net/NetworkStats;
 
     if-eqz v0, :cond_0
 
-    .line 191
+    .line 201
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string v2, "already profiling data"
@@ -690,7 +939,7 @@
 
     throw v0
 
-    .line 196
+    .line 206
     :catchall_0
     move-exception v0
 
@@ -700,7 +949,7 @@
 
     throw v0
 
-    .line 195
+    .line 205
     :cond_0
     :try_start_1
     invoke-static {p0}, Landroid/net/TrafficStats;->getDataLayerSnapshotForUid(Landroid/content/Context;)Landroid/net/NetworkStats;
@@ -709,12 +958,12 @@
 
     sput-object v0, Landroid/net/TrafficStats;->sActiveProfilingStart:Landroid/net/NetworkStats;
 
-    .line 196
+    .line 206
     monitor-exit v1
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 197
+    .line 207
     return-void
 .end method
 
@@ -723,18 +972,18 @@
     .parameter "context"
 
     .prologue
-    .line 207
+    .line 217
     sget-object v3, Landroid/net/TrafficStats;->sProfilingLock:Ljava/lang/Object;
 
     monitor-enter v3
 
-    .line 208
+    .line 218
     :try_start_0
     sget-object v2, Landroid/net/TrafficStats;->sActiveProfilingStart:Landroid/net/NetworkStats;
 
     if-nez v2, :cond_0
 
-    .line 209
+    .line 219
     new-instance v2, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v4, "not profiling data"
@@ -743,7 +992,7 @@
 
     throw v2
 
-    .line 218
+    .line 228
     :catchall_0
     move-exception v2
 
@@ -753,14 +1002,14 @@
 
     throw v2
 
-    .line 213
+    .line 223
     :cond_0
     :try_start_1
     invoke-static {p0}, Landroid/net/TrafficStats;->getDataLayerSnapshotForUid(Landroid/content/Context;)Landroid/net/NetworkStats;
 
     move-result-object v1
 
-    .line 214
+    .line 224
     .local v1, profilingStop:Landroid/net/NetworkStats;
     sget-object v2, Landroid/net/TrafficStats;->sActiveProfilingStart:Landroid/net/NetworkStats;
 
@@ -772,13 +1021,13 @@
 
     move-result-object v0
 
-    .line 216
+    .line 226
     .local v0, profilingDelta:Landroid/net/NetworkStats;
     const/4 v2, 0x0
 
     sput-object v2, Landroid/net/TrafficStats;->sActiveProfilingStart:Landroid/net/NetworkStats;
 
-    .line 217
+    .line 227
     monitor-exit v3
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -796,14 +1045,14 @@
     .end annotation
 
     .prologue
-    .line 172
+    .line 182
     invoke-static {}, Ldalvik/system/SocketTagger;->get()Ldalvik/system/SocketTagger;
 
     move-result-object v0
 
     invoke-virtual {v0, p0}, Ldalvik/system/SocketTagger;->tag(Ljava/net/Socket;)V
 
-    .line 173
+    .line 183
     return-void
 .end method
 
@@ -817,13 +1066,13 @@
     .end annotation
 
     .prologue
-    .line 179
+    .line 189
     invoke-static {}, Ldalvik/system/SocketTagger;->get()Ldalvik/system/SocketTagger;
 
     move-result-object v0
 
     invoke-virtual {v0, p0}, Ldalvik/system/SocketTagger;->untag(Ljava/net/Socket;)V
 
-    .line 180
+    .line 190
     return-void
 .end method

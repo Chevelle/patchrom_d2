@@ -38,7 +38,7 @@
     .locals 1
 
     .prologue
-    .line 70
+    .line 72
     new-instance v0, Lcom/android/internal/telephony/cat/Duration$1;
 
     invoke-direct {v0}, Lcom/android/internal/telephony/cat/Duration$1;-><init>()V
@@ -117,7 +117,7 @@
     .locals 1
 
     .prologue
-    .line 67
+    .line 69
     const/4 v0, 0x0
 
     return v0
@@ -129,12 +129,12 @@
     .parameter "flags"
 
     .prologue
-    .line 62
+    .line 63
     iget v0, p0, Lcom/android/internal/telephony/cat/Duration;->timeInterval:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 63
+    .line 64
     iget-object v0, p0, Lcom/android/internal/telephony/cat/Duration;->timeUnit:Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/cat/Duration$TimeUnit;->ordinal()I
@@ -143,6 +143,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 64
+    .line 65
     return-void
 .end method

@@ -4,7 +4,7 @@
 
 
 # instance fields
-.field private mInput:Landroid/renderscript/Allocation;
+.field private final mAdd:Landroid/renderscript/Float4;
 
 .field private final mMatrix:Landroid/renderscript/Matrix4f;
 
@@ -16,55 +16,42 @@
     .parameter "rs"
 
     .prologue
-    .line 37
+    .line 47
     invoke-direct {p0, p1, p2}, Landroid/renderscript/ScriptIntrinsic;-><init>(ILandroid/renderscript/RenderScript;)V
 
-    .line 33
+    .line 43
     new-instance v0, Landroid/renderscript/Matrix4f;
 
     invoke-direct {v0}, Landroid/renderscript/Matrix4f;-><init>()V
 
     iput-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
-    .line 38
+    .line 44
+    new-instance v0, Landroid/renderscript/Float4;
+
+    invoke-direct {v0}, Landroid/renderscript/Float4;-><init>()V
+
+    iput-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    .line 48
     return-void
 .end method
 
-.method public static create(Landroid/renderscript/RenderScript;Landroid/renderscript/Element;)Landroid/renderscript/ScriptIntrinsicColorMatrix;
+.method public static create(Landroid/renderscript/RenderScript;)Landroid/renderscript/ScriptIntrinsicColorMatrix;
     .locals 3
     .parameter "rs"
-    .parameter "e"
 
     .prologue
-    .line 52
-    invoke-static {p0}, Landroid/renderscript/Element;->U8_4(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
-
-    move-result-object v1
-
-    if-eq p1, v1, :cond_0
-
-    .line 53
-    new-instance v1, Landroid/renderscript/RSIllegalArgumentException;
-
-    const-string v2, "Unsuported element type."
-
-    invoke-direct {v1, v2}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 55
-    :cond_0
+    .line 78
     const/4 v1, 0x2
 
-    invoke-virtual {p1, p0}, Landroid/renderscript/Element;->getID(Landroid/renderscript/RenderScript;)I
-
-    move-result v2
+    const/4 v2, 0x0
 
     invoke-virtual {p0, v1, v2}, Landroid/renderscript/RenderScript;->nScriptIntrinsicCreate(II)I
 
     move-result v0
 
-    .line 56
+    .line 79
     .local v0, id:I
     new-instance v1, Landroid/renderscript/ScriptIntrinsicColorMatrix;
 
@@ -73,29 +60,45 @@
     return-object v1
 .end method
 
+.method public static create(Landroid/renderscript/RenderScript;Landroid/renderscript/Element;)Landroid/renderscript/ScriptIntrinsicColorMatrix;
+    .locals 1
+    .parameter "rs"
+    .parameter "e"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    .prologue
+    .line 66
+    invoke-static {p0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->create(Landroid/renderscript/RenderScript;)Landroid/renderscript/ScriptIntrinsicColorMatrix;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method private setMatrix()V
     .locals 2
 
     .prologue
-    .line 61
+    .line 84
     new-instance v0, Landroid/renderscript/FieldPacker;
 
     const/16 v1, 0x40
 
     invoke-direct {v0, v1}, Landroid/renderscript/FieldPacker;-><init>(I)V
 
-    .line 62
+    .line 85
     .local v0, fp:Landroid/renderscript/FieldPacker;
     iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addMatrix(Landroid/renderscript/Matrix4f;)V
 
-    .line 63
+    .line 86
     const/4 v1, 0x0
 
     invoke-virtual {p0, v1, v0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setVar(ILandroid/renderscript/FieldPacker;)V
 
-    .line 64
+    .line 87
     return-void
 .end method
 
@@ -107,14 +110,292 @@
     .parameter "aout"
 
     .prologue
-    .line 154
+    .line 228
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8_2(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8_3(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8_4(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32_2(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32_3(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32_4(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 237
+    new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
+
+    const-string v1, "Unsuported element type."
+
+    invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 240
+    :cond_0
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8_2(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8_3(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->U8_4(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32_2(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32_3(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    invoke-virtual {p2}, Landroid/renderscript/Allocation;->getElement()Landroid/renderscript/Element;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-static {v1}, Landroid/renderscript/Element;->F32_4(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    .line 249
+    new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
+
+    const-string v1, "Unsuported element type."
+
+    invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 252
+    :cond_1
     const/4 v0, 0x0
 
     const/4 v1, 0x0
 
     invoke-virtual {p0, v0, p1, p2, v1}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->forEach(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;Landroid/renderscript/FieldPacker;)V
 
-    .line 155
+    .line 253
     return-void
 .end method
 
@@ -124,7 +405,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 163
+    .line 261
     const/4 v0, 0x0
 
     const/4 v1, 0x3
@@ -136,20 +417,163 @@
     return-object v0
 .end method
 
+.method public setAdd(FFFF)V
+    .locals 2
+    .parameter "r"
+    .parameter "g"
+    .parameter "b"
+    .parameter "a"
+
+    .prologue
+    .line 141
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iput p1, v1, Landroid/renderscript/Float4;->x:F
+
+    .line 142
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iput p2, v1, Landroid/renderscript/Float4;->y:F
+
+    .line 143
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iput p3, v1, Landroid/renderscript/Float4;->z:F
+
+    .line 144
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iput p4, v1, Landroid/renderscript/Float4;->w:F
+
+    .line 146
+    new-instance v0, Landroid/renderscript/FieldPacker;
+
+    const/16 v1, 0x10
+
+    invoke-direct {v0, v1}, Landroid/renderscript/FieldPacker;-><init>(I)V
+
+    .line 147
+    .local v0, fp:Landroid/renderscript/FieldPacker;
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v1, v1, Landroid/renderscript/Float4;->x:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 148
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v1, v1, Landroid/renderscript/Float4;->y:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 149
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v1, v1, Landroid/renderscript/Float4;->z:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 150
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v1, v1, Landroid/renderscript/Float4;->w:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 151
+    const/4 v1, 0x1
+
+    invoke-virtual {p0, v1, v0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setVar(ILandroid/renderscript/FieldPacker;)V
+
+    .line 152
+    return-void
+.end method
+
+.method public setAdd(Landroid/renderscript/Float4;)V
+    .locals 3
+    .parameter "f"
+
+    .prologue
+    .line 118
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v2, p1, Landroid/renderscript/Float4;->x:F
+
+    iput v2, v1, Landroid/renderscript/Float4;->x:F
+
+    .line 119
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v2, p1, Landroid/renderscript/Float4;->y:F
+
+    iput v2, v1, Landroid/renderscript/Float4;->y:F
+
+    .line 120
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v2, p1, Landroid/renderscript/Float4;->z:F
+
+    iput v2, v1, Landroid/renderscript/Float4;->z:F
+
+    .line 121
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mAdd:Landroid/renderscript/Float4;
+
+    iget v2, p1, Landroid/renderscript/Float4;->w:F
+
+    iput v2, v1, Landroid/renderscript/Float4;->w:F
+
+    .line 123
+    new-instance v0, Landroid/renderscript/FieldPacker;
+
+    const/16 v1, 0x10
+
+    invoke-direct {v0, v1}, Landroid/renderscript/FieldPacker;-><init>(I)V
+
+    .line 124
+    .local v0, fp:Landroid/renderscript/FieldPacker;
+    iget v1, p1, Landroid/renderscript/Float4;->x:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 125
+    iget v1, p1, Landroid/renderscript/Float4;->y:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 126
+    iget v1, p1, Landroid/renderscript/Float4;->z:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 127
+    iget v1, p1, Landroid/renderscript/Float4;->w:F
+
+    invoke-virtual {v0, v1}, Landroid/renderscript/FieldPacker;->addF32(F)V
+
+    .line 128
+    const/4 v1, 0x1
+
+    invoke-virtual {p0, v1, v0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setVar(ILandroid/renderscript/FieldPacker;)V
+
+    .line 129
+    return-void
+.end method
+
 .method public setColorMatrix(Landroid/renderscript/Matrix3f;)V
     .locals 1
     .parameter "m"
 
     .prologue
-    .line 84
+    .line 107
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, p1}, Landroid/renderscript/Matrix4f;->load(Landroid/renderscript/Matrix3f;)V
 
-    .line 85
+    .line 108
     invoke-direct {p0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setMatrix()V
 
-    .line 86
+    .line 109
     return-void
 .end method
 
@@ -158,15 +582,15 @@
     .parameter "m"
 
     .prologue
-    .line 73
+    .line 96
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, p1}, Landroid/renderscript/Matrix4f;->load(Landroid/renderscript/Matrix4f;)V
 
-    .line 74
+    .line 97
     invoke-direct {p0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setMatrix()V
 
-    .line 75
+    .line 98
     return-void
 .end method
 
@@ -184,66 +608,66 @@
 
     const/4 v2, 0x0
 
-    .line 94
+    .line 160
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0}, Landroid/renderscript/Matrix4f;->loadIdentity()V
 
-    .line 95
+    .line 161
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v2, v2, v6}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 96
+    .line 162
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3f1645a2
 
     invoke-virtual {v0, v3, v2, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 97
+    .line 163
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v4, v2, v5}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 98
+    .line 164
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v2, v3, v6}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 99
+    .line 165
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3f1645a2
 
     invoke-virtual {v0, v3, v3, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 100
+    .line 166
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v4, v3, v5}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 101
+    .line 167
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v2, v4, v6}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 102
+    .line 168
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3f1645a2
 
     invoke-virtual {v0, v3, v4, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 103
+    .line 169
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v4, v4, v5}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 104
+    .line 170
     invoke-direct {p0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setMatrix()V
 
-    .line 105
+    .line 171
     return-void
 .end method
 
@@ -257,78 +681,78 @@
 
     const/4 v2, 0x0
 
-    .line 132
+    .line 198
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0}, Landroid/renderscript/Matrix4f;->loadIdentity()V
 
-    .line 133
+    .line 199
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3e991687
 
     invoke-virtual {v0, v2, v2, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 134
+    .line 200
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3f1645a2
 
     invoke-virtual {v0, v3, v2, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 135
+    .line 201
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3de978d5
 
     invoke-virtual {v0, v4, v2, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 136
+    .line 202
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, -0x41e956c1
 
     invoke-virtual {v0, v2, v3, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 137
+    .line 203
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, -0x416c1a8b
 
     invoke-virtual {v0, v3, v3, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 138
+    .line 204
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3edf3b64
 
     invoke-virtual {v0, v4, v3, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 139
+    .line 205
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3f1d70a4
 
     invoke-virtual {v0, v2, v4, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 140
+    .line 206
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, -0x40fc299e
 
     invoke-virtual {v0, v3, v4, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 141
+    .line 207
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, -0x42332df5
 
     invoke-virtual {v0, v4, v4, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 142
+    .line 208
     invoke-direct {p0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setMatrix()V
 
-    .line 143
+    .line 209
     return-void
 .end method
 
@@ -346,67 +770,67 @@
 
     const/4 v2, 0x0
 
-    .line 113
+    .line 179
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0}, Landroid/renderscript/Matrix4f;->loadIdentity()V
 
-    .line 114
+    .line 180
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v2, v2, v5}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 115
+    .line 181
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v3, v2, v6}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 116
+    .line 182
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x3f91e5f3
 
     invoke-virtual {v0, v4, v2, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 117
+    .line 183
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v2, v3, v5}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 118
+    .line 184
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, -0x4135f06f
 
     invoke-virtual {v0, v3, v3, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 119
+    .line 185
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, -0x40eb5dcc
 
     invoke-virtual {v0, v4, v3, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 120
+    .line 186
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v2, v4, v5}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 121
+    .line 187
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     const v1, 0x40020e17
 
     invoke-virtual {v0, v3, v4, v1}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 122
+    .line 188
     iget-object v0, p0, Landroid/renderscript/ScriptIntrinsicColorMatrix;->mMatrix:Landroid/renderscript/Matrix4f;
 
     invoke-virtual {v0, v4, v4, v6}, Landroid/renderscript/Matrix4f;->set(IIF)V
 
-    .line 123
+    .line 189
     invoke-direct {p0}, Landroid/renderscript/ScriptIntrinsicColorMatrix;->setMatrix()V
 
-    .line 124
+    .line 190
     return-void
 .end method

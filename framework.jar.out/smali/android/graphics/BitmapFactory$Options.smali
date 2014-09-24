@@ -31,6 +31,8 @@
 
 .field public inPreferredConfig:Landroid/graphics/Bitmap$Config;
 
+.field public inPremultiplied:Z
+
 .field public inPurgeable:Z
 
 .field public inSampleSize:I
@@ -54,13 +56,15 @@
 
 # direct methods
 .method public constructor <init>()V
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v1, 0x1
+
     .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 107
+    .line 139
     sget-object v0, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
     iput-object v0, p0, Landroid/graphics/BitmapFactory$Options;->inPreferredConfig:Landroid/graphics/Bitmap$Config;
@@ -71,11 +75,12 @@
     iput-boolean v0, p0, Landroid/graphics/BitmapFactory$Options;->inDither:Z
 
     .line 45
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/graphics/BitmapFactory$Options;->inScaled:Z
+    iput-boolean v1, p0, Landroid/graphics/BitmapFactory$Options;->inScaled:Z
 
     .line 46
+    iput-boolean v1, p0, Landroid/graphics/BitmapFactory$Options;->inPremultiplied:Z
+
+    .line 47
     return-void
 .end method
 
@@ -88,14 +93,14 @@
     .locals 1
 
     .prologue
-    .line 281
+    .line 355
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/graphics/BitmapFactory$Options;->mCancel:Z
 
-    .line 282
+    .line 356
     invoke-direct {p0}, Landroid/graphics/BitmapFactory$Options;->requestCancel()V
 
-    .line 283
+    .line 357
     return-void
 .end method

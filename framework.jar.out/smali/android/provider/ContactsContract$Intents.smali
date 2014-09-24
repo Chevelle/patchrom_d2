@@ -28,6 +28,8 @@
 
 .field public static final ATTACH_IMAGE:Ljava/lang/String; = "com.android.contacts.action.ATTACH_IMAGE"
 
+.field public static final CONTACTS_DATABASE_CREATED:Ljava/lang/String; = "android.provider.Contacts.DATABASE_CREATED"
+
 .field public static final EXTRA_CREATE_DESCRIPTION:Ljava/lang/String; = "com.android.contacts.action.CREATE_DESCRIPTION"
 
 .field public static final EXTRA_EXCLUDE_MIMES:Ljava/lang/String; = "exclude_mimes"
@@ -80,9 +82,9 @@
     .locals 0
 
     .prologue
-    .line 7840
+    .line 8122
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 8112
+    .line 8401
     return-void
 .end method

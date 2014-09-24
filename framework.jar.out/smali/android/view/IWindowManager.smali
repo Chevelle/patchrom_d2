@@ -15,15 +15,7 @@
 
 
 # virtual methods
-.method public abstract addAppToken(IILandroid/view/IApplicationToken;IIZZ)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract addDisplayContentChangeListener(ILandroid/view/IDisplayContentChangeListener;)V
+.method public abstract addAppToken(ILandroid/view/IApplicationToken;IIIZZII)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -127,7 +119,63 @@
     .end annotation
 .end method
 
+.method public abstract getBaseDisplayDensity(I)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getBaseDisplaySize(ILandroid/graphics/Point;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getCompatibleMagnificationSpecForWindow(Landroid/os/IBinder;)Landroid/view/MagnificationSpec;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getFocusedWindowToken()Landroid/os/IBinder;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getInitialDisplayDensity(I)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getInitialDisplaySize(ILandroid/graphics/Point;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getLastWallpaperX()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getLastWallpaperY()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -159,33 +207,7 @@
     .end annotation
 .end method
 
-.method public abstract getVisibleWindowsForDisplay(ILjava/util/List;)V
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I",
-            "Ljava/util/List",
-            "<",
-            "Landroid/view/WindowInfo;",
-            ">;)V"
-        }
-    .end annotation
-
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getWindowCompatibilityScale(Landroid/os/IBinder;)F
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getWindowInfo(Landroid/os/IBinder;)Landroid/view/WindowInfo;
+.method public abstract getWindowFrame(Landroid/os/IBinder;Landroid/graphics/Rect;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -202,14 +224,6 @@
 .end method
 
 .method public abstract hasNavigationBar()Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract hasSystemNavBar()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -249,6 +263,14 @@
     .end annotation
 .end method
 
+.method public abstract isRotationFrozen()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract isSafeModeEnabled()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -273,51 +295,7 @@
     .end annotation
 .end method
 
-.method public abstract magnifyDisplay(IFFF)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract moveAppToken(ILandroid/os/IBinder;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract moveAppTokensToBottom(Ljava/util/List;)V
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/List",
-            "<",
-            "Landroid/os/IBinder;",
-            ">;)V"
-        }
-    .end annotation
-
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract moveAppTokensToTop(Ljava/util/List;)V
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/util/List",
-            "<",
-            "Landroid/os/IBinder;",
-            ">;)V"
-        }
-    .end annotation
-
+.method public abstract needsNavigationBar()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -389,7 +367,7 @@
     .end annotation
 .end method
 
-.method public abstract removeDisplayContentChangeListener(ILandroid/view/IDisplayContentChangeListener;)V
+.method public abstract removeRotationWatcher(Landroid/view/IRotationWatcher;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -413,7 +391,7 @@
     .end annotation
 .end method
 
-.method public abstract screenshotApplications(Landroid/os/IBinder;III)Landroid/graphics/Bitmap;
+.method public abstract screenshotApplications(Landroid/os/IBinder;IIIZ)Landroid/graphics/Bitmap;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -453,7 +431,7 @@
     .end annotation
 .end method
 
-.method public abstract setAppStartingWindow(Landroid/os/IBinder;Ljava/lang/String;ILandroid/content/res/CompatibilityInfo;Ljava/lang/CharSequence;IIILandroid/os/IBinder;Z)V
+.method public abstract setAppStartingWindow(Landroid/os/IBinder;Ljava/lang/String;ILandroid/content/res/CompatibilityInfo;Ljava/lang/CharSequence;IIIILandroid/os/IBinder;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -525,7 +503,31 @@
     .end annotation
 .end method
 
+.method public abstract setMagnificationCallbacks(Landroid/view/IMagnificationCallbacks;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setMagnificationSpec(Landroid/view/MagnificationSpec;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setNewConfiguration(Landroid/content/res/Configuration;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setOverscan(IIIII)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -541,7 +543,7 @@
     .end annotation
 .end method
 
-.method public abstract showAssistant()V
+.method public abstract setTouchExplorationEnabled(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -614,14 +616,6 @@
 .end method
 
 .method public abstract thawRotation()V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract updateDisplayMetrics()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

@@ -34,7 +34,7 @@
     .locals 1
 
     .prologue
-    .line 224
+    .line 225
     new-instance v0, Landroid/net/wifi/WifiSsid$1;
 
     invoke-direct {v0}, Landroid/net/wifi/WifiSsid$1;-><init>()V
@@ -48,10 +48,10 @@
     .locals 2
 
     .prologue
-    .line 49
+    .line 50
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 44
+    .line 45
     new-instance v0, Ljava/io/ByteArrayOutputStream;
 
     const/16 v1, 0x20
@@ -60,7 +60,7 @@
 
     iput-object v0, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
-    .line 50
+    .line 51
     return-void
 .end method
 
@@ -69,7 +69,7 @@
     .parameter "x0"
 
     .prologue
-    .line 41
+    .line 42
     invoke-direct {p0}, Landroid/net/wifi/WifiSsid;-><init>()V
 
     return-void
@@ -88,14 +88,14 @@
 
     const/16 v6, 0x10
 
-    .line 82
+    .line 83
     const/4 v2, 0x0
 
-    .line 83
+    .line 84
     .local v2, i:I
     const/4 v3, 0x0
 
-    .line 84
+    .line 85
     .local v3, val:I
     :cond_0
     :goto_0
@@ -105,44 +105,44 @@
 
     if-ge v2, v4, :cond_5
 
-    .line 85
+    .line 86
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
 
     move-result v0
 
-    .line 86
+    .line 87
     .local v0, c:C
     packed-switch v0, :pswitch_data_0
 
-    .line 161
+    .line 162
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v4, v0}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 162
+    .line 163
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 88
+    .line 89
     :pswitch_0
     add-int/lit8 v2, v2, 0x1
 
-    .line 89
+    .line 90
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v4
 
     if-lt v2, v4, :cond_1
 
-    .line 90
+    .line 91
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v4, v9}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
     goto :goto_0
 
-    .line 94
+    .line 95
     :cond_1
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
 
@@ -152,7 +152,7 @@
 
     goto :goto_0
 
-    .line 100
+    .line 101
     :sswitch_0
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
@@ -160,25 +160,25 @@
 
     invoke-virtual {v4, v5}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 101
+    .line 102
     add-int/lit8 v2, v2, 0x1
 
-    .line 102
+    .line 103
     goto :goto_0
 
-    .line 96
+    .line 97
     :sswitch_1
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v4, v9}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 97
+    .line 98
     add-int/lit8 v2, v2, 0x1
 
-    .line 98
+    .line 99
     goto :goto_0
 
-    .line 104
+    .line 105
     :sswitch_2
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
@@ -186,13 +186,13 @@
 
     invoke-virtual {v4, v5}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 105
+    .line 106
     add-int/lit8 v2, v2, 0x1
 
-    .line 106
+    .line 107
     goto :goto_0
 
-    .line 108
+    .line 109
     :sswitch_3
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
@@ -200,13 +200,13 @@
 
     invoke-virtual {v4, v5}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 109
+    .line 110
     add-int/lit8 v2, v2, 0x1
 
-    .line 110
+    .line 111
     goto :goto_0
 
-    .line 112
+    .line 113
     :sswitch_4
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
@@ -214,13 +214,13 @@
 
     invoke-virtual {v4, v5}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 113
+    .line 114
     add-int/lit8 v2, v2, 0x1
 
-    .line 114
+    .line 115
     goto :goto_0
 
-    .line 116
+    .line 117
     :sswitch_5
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
@@ -228,17 +228,17 @@
 
     invoke-virtual {v4, v5}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 117
+    .line 118
     add-int/lit8 v2, v2, 0x1
 
-    .line 118
+    .line 119
     goto :goto_0
 
-    .line 120
+    .line 121
     :sswitch_6
     add-int/lit8 v2, v2, 0x1
 
-    .line 122
+    .line 123
     add-int/lit8 v4, v2, 0x2
 
     :try_start_0
@@ -254,11 +254,11 @@
 
     move-result v3
 
-    .line 126
+    .line 127
     :goto_1
     if-gez v3, :cond_2
 
-    .line 127
+    .line 128
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
 
     move-result v4
@@ -267,43 +267,43 @@
 
     move-result v3
 
-    .line 128
+    .line 129
     if-ltz v3, :cond_0
 
-    .line 129
+    .line 130
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v4, v3}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 130
+    .line 131
     add-int/lit8 v2, v2, 0x1
 
     goto/16 :goto_0
 
-    .line 123
+    .line 124
     :catch_0
     move-exception v1
 
-    .line 124
+    .line 125
     .local v1, e:Ljava/lang/NumberFormatException;
     const/4 v3, -0x1
 
     goto :goto_1
 
-    .line 132
+    .line 133
     .end local v1           #e:Ljava/lang/NumberFormatException;
     :cond_2
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v4, v3}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 133
+    .line 134
     add-int/lit8 v2, v2, 0x2
 
-    .line 135
+    .line 136
     goto/16 :goto_0
 
-    .line 144
+    .line 145
     :sswitch_7
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
 
@@ -311,10 +311,10 @@
 
     add-int/lit8 v3, v4, -0x30
 
-    .line 145
+    .line 146
     add-int/lit8 v2, v2, 0x1
 
-    .line 146
+    .line 147
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
 
     move-result v4
@@ -327,7 +327,7 @@
 
     if-gt v4, v8, :cond_3
 
-    .line 147
+    .line 148
     mul-int/lit8 v4, v3, 0x8
 
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
@@ -338,10 +338,10 @@
 
     add-int/lit8 v3, v4, -0x30
 
-    .line 148
+    .line 149
     add-int/lit8 v2, v2, 0x1
 
-    .line 150
+    .line 151
     :cond_3
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
 
@@ -355,7 +355,7 @@
 
     if-gt v4, v8, :cond_4
 
-    .line 151
+    .line 152
     mul-int/lit8 v4, v3, 0x8
 
     invoke-virtual {p1, v2}, Ljava/lang/String;->charAt(I)C
@@ -366,10 +366,10 @@
 
     add-int/lit8 v3, v4, -0x30
 
-    .line 152
+    .line 153
     add-int/lit8 v2, v2, 0x1
 
-    .line 154
+    .line 155
     :cond_4
     iget-object v4, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
@@ -377,18 +377,18 @@
 
     goto/16 :goto_0
 
-    .line 166
+    .line 167
     .end local v0           #c:C
     :cond_5
     return-void
 
-    .line 86
+    .line 87
     :pswitch_data_0
     .packed-switch 0x5c
         :pswitch_0
     .end packed-switch
 
-    .line 94
+    .line 95
     :sswitch_data_0
     .sparse-switch
         0x22 -> :sswitch_0
@@ -414,16 +414,16 @@
     .parameter "asciiEncoded"
 
     .prologue
-    .line 53
+    .line 54
     new-instance v0, Landroid/net/wifi/WifiSsid;
 
     invoke-direct {v0}, Landroid/net/wifi/WifiSsid;-><init>()V
 
-    .line 54
+    .line 55
     .local v0, a:Landroid/net/wifi/WifiSsid;
     invoke-direct {v0, p0}, Landroid/net/wifi/WifiSsid;->convertToBytes(Ljava/lang/String;)V
 
-    .line 55
+    .line 56
     return-object v0
 .end method
 
@@ -432,24 +432,24 @@
     .parameter "hexStr"
 
     .prologue
-    .line 59
+    .line 60
     new-instance v0, Landroid/net/wifi/WifiSsid;
 
     invoke-direct {v0}, Landroid/net/wifi/WifiSsid;-><init>()V
 
-    .line 60
+    .line 61
     .local v0, a:Landroid/net/wifi/WifiSsid;
     const/4 v3, 0x0
 
-    .line 61
+    .line 62
     .local v3, length:I
     if-nez p0, :cond_1
 
-    .line 76
+    .line 77
     :cond_0
     return-object v0
 
-    .line 63
+    .line 64
     :cond_1
     const-string v5, "0x"
 
@@ -467,7 +467,7 @@
 
     if-eqz v5, :cond_3
 
-    .line 64
+    .line 65
     :cond_2
     const/4 v5, 0x2
 
@@ -475,7 +475,7 @@
 
     move-result-object p0
 
-    .line 67
+    .line 68
     :cond_3
     const/4 v2, 0x0
 
@@ -489,7 +489,7 @@
 
     if-ge v2, v5, :cond_0
 
-    .line 70
+    .line 71
     add-int/lit8 v5, v2, 0x2
 
     :try_start_0
@@ -505,24 +505,24 @@
 
     move-result v4
 
-    .line 74
+    .line 75
     .local v4, val:I
     :goto_1
     iget-object v5, v0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v5, v4}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 67
+    .line 68
     add-int/lit8 v2, v2, 0x2
 
     goto :goto_0
 
-    .line 71
+    .line 72
     .end local v4           #val:I
     :catch_0
     move-exception v1
 
-    .line 72
+    .line 73
     .local v1, e:Ljava/lang/NumberFormatException;
     const/4 v4, 0x0
 
@@ -535,7 +535,7 @@
     .parameter "ssidBytes"
 
     .prologue
-    .line 191
+    .line 192
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -544,24 +544,24 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 192
+    .line 193
     aget-byte v1, p1, v0
 
     if-eqz v1, :cond_0
 
     const/4 v1, 0x0
 
-    .line 194
+    .line 195
     :goto_1
     return v1
 
-    .line 191
+    .line 192
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 194
+    .line 195
     :cond_1
     const/4 v1, 0x1
 
@@ -574,26 +574,26 @@
     .locals 1
 
     .prologue
-    .line 214
+    .line 215
     const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public getHexString()Ljava/lang/String;
-    .locals 8
+    .locals 9
 
     .prologue
-    .line 204
+    .line 205
     const-string v1, "0x"
 
-    .line 205
+    .line 206
     .local v1, out:Ljava/lang/String;
     invoke-virtual {p0}, Landroid/net/wifi/WifiSsid;->getOctets()[B
 
     move-result-object v2
 
-    .line 206
+    .line 207
     .local v2, ssidbytes:[B
     const/4 v0, 0x0
 
@@ -607,7 +607,7 @@
 
     if-ge v0, v3, :cond_0
 
-    .line 207
+    .line 208
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -616,23 +616,25 @@
 
     move-result-object v3
 
-    const-string v4, "%02x"
+    sget-object v4, Ljava/util/Locale;->US:Ljava/util/Locale;
 
-    const/4 v5, 0x1
+    const-string v5, "%02x"
 
-    new-array v5, v5, [Ljava/lang/Object;
+    const/4 v6, 0x1
 
-    const/4 v6, 0x0
+    new-array v6, v6, [Ljava/lang/Object;
 
-    aget-byte v7, v2, v0
+    const/4 v7, 0x0
 
-    invoke-static {v7}, Ljava/lang/Byte;->valueOf(B)Ljava/lang/Byte;
+    aget-byte v8, v2, v0
 
-    move-result-object v7
+    invoke-static {v8}, Ljava/lang/Byte;->valueOf(B)Ljava/lang/Byte;
 
-    aput-object v7, v5, v6
+    move-result-object v8
 
-    invoke-static {v4, v5}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    aput-object v8, v6, v7
+
+    invoke-static {v4, v5, v6}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v4
 
@@ -644,12 +646,12 @@
 
     move-result-object v1
 
-    .line 206
+    .line 207
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 209
+    .line 210
     :cond_0
     return-object v1
 .end method
@@ -658,7 +660,7 @@
     .locals 1
 
     .prologue
-    .line 199
+    .line 200
     iget-object v0, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
@@ -672,14 +674,14 @@
     .locals 7
 
     .prologue
-    .line 170
+    .line 171
     iget-object v5, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v5}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object v4
 
-    .line 174
+    .line 175
     .local v4, ssidBytes:[B
     iget-object v5, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
@@ -698,11 +700,11 @@
     :cond_0
     const-string v5, ""
 
-    .line 187
+    .line 188
     :goto_0
     return-object v5
 
-    .line 176
+    .line 177
     :cond_1
     const-string v5, "UTF-8"
 
@@ -710,7 +712,7 @@
 
     move-result-object v0
 
-    .line 177
+    .line 178
     .local v0, charset:Ljava/nio/charset/Charset;
     invoke-virtual {v0}, Ljava/nio/charset/Charset;->newDecoder()Ljava/nio/charset/CharsetDecoder;
 
@@ -728,7 +730,7 @@
 
     move-result-object v1
 
-    .line 180
+    .line 181
     .local v1, decoder:Ljava/nio/charset/CharsetDecoder;
     const/16 v5, 0x20
 
@@ -736,7 +738,7 @@
 
     move-result-object v2
 
-    .line 182
+    .line 183
     .local v2, out:Ljava/nio/CharBuffer;
     invoke-static {v4}, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;
 
@@ -748,23 +750,23 @@
 
     move-result-object v3
 
-    .line 183
+    .line 184
     .local v3, result:Ljava/nio/charset/CoderResult;
     invoke-virtual {v2}, Ljava/nio/CharBuffer;->flip()Ljava/nio/Buffer;
 
-    .line 184
+    .line 185
     invoke-virtual {v3}, Ljava/nio/charset/CoderResult;->isError()Z
 
     move-result v5
 
     if-eqz v5, :cond_2
 
-    .line 185
+    .line 186
     const-string v5, "<unknown ssid>"
 
     goto :goto_0
 
-    .line 187
+    .line 188
     :cond_2
     invoke-virtual {v2}, Ljava/nio/CharBuffer;->toString()Ljava/lang/String;
 
@@ -779,7 +781,7 @@
     .parameter "flags"
 
     .prologue
-    .line 219
+    .line 220
     iget-object v0, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->size()I
@@ -788,7 +790,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 220
+    .line 221
     iget-object v0, p0, Landroid/net/wifi/WifiSsid;->octets:Ljava/io/ByteArrayOutputStream;
 
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
@@ -797,6 +799,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 221
+    .line 222
     return-void
 .end method

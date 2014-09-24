@@ -30,7 +30,7 @@
     .parameter
 
     .prologue
-    .line 563
+    .line 673
     iput-object p1, p0, Lcom/android/server/BatteryService$7;->this$0:Lcom/android/server/BatteryService;
 
     iput-object p2, p0, Lcom/android/server/BatteryService$7;->val$intent:Landroid/content/Intent;
@@ -46,7 +46,7 @@
     .locals 3
 
     .prologue
-    .line 566
+    .line 676
     iget-object v0, p0, Lcom/android/server/BatteryService$7;->val$intent:Landroid/content/Intent;
 
     const/4 v1, 0x0
@@ -55,6 +55,6 @@
 
     invoke-static {v0, v1, v2}, Landroid/app/ActivityManagerNative;->broadcastStickyIntent(Landroid/content/Intent;Ljava/lang/String;I)V
 
-    .line 567
+    .line 677
     return-void
 .end method

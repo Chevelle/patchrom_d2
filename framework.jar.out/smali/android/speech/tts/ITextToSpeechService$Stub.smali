@@ -26,27 +26,29 @@
 # static fields
 .field private static final DESCRIPTOR:Ljava/lang/String; = "android.speech.tts.ITextToSpeechService"
 
-.field static final TRANSACTION_getFeaturesForLanguage:I = 0x9
+.field static final TRANSACTION_getClientDefaultLanguage:I = 0x8
+
+.field static final TRANSACTION_getFeaturesForLanguage:I = 0xa
 
 .field static final TRANSACTION_getLanguage:I = 0x7
 
-.field static final TRANSACTION_isLanguageAvailable:I = 0x8
+.field static final TRANSACTION_isLanguageAvailable:I = 0x9
 
 .field static final TRANSACTION_isSpeaking:I = 0x5
 
-.field static final TRANSACTION_loadLanguage:I = 0xa
+.field static final TRANSACTION_loadLanguage:I = 0xb
 
 .field static final TRANSACTION_playAudio:I = 0x3
 
 .field static final TRANSACTION_playSilence:I = 0x4
 
-.field static final TRANSACTION_setCallback:I = 0xb
+.field static final TRANSACTION_setCallback:I = 0xc
 
 .field static final TRANSACTION_speak:I = 0x1
 
 .field static final TRANSACTION_stop:I = 0x6
 
-.field static final TRANSACTION_synthesizeToFile:I = 0x2
+.field static final TRANSACTION_synthesizeToFileDescriptor:I = 0x2
 
 
 # direct methods
@@ -140,7 +142,7 @@
     .line 43
     sparse-switch p1, :sswitch_data_0
 
-    .line 219
+    .line 234
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v7
@@ -244,19 +246,31 @@
 
     .line 79
     .restart local v2       #_arg1:Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v4
-
-    .line 81
-    .local v4, _arg2:Ljava/lang/String;
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 82
+    .line 80
+    sget-object v0, Landroid/os/ParcelFileDescriptor;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/os/ParcelFileDescriptor;
+
+    .line 86
+    .local v4, _arg2:Landroid/os/ParcelFileDescriptor;
+    :goto_2
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    .line 87
     sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -265,55 +279,63 @@
 
     check-cast v5, Landroid/os/Bundle;
 
-    .line 87
+    .line 92
     .restart local v5       #_arg3:Landroid/os/Bundle;
-    :goto_2
-    invoke-virtual {p0, v1, v2, v4, v5}, Landroid/speech/tts/ITextToSpeechService$Stub;->synthesizeToFile(Landroid/os/IBinder;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)I
+    :goto_3
+    invoke-virtual {p0, v1, v2, v4, v5}, Landroid/speech/tts/ITextToSpeechService$Stub;->synthesizeToFileDescriptor(Landroid/os/IBinder;Ljava/lang/String;Landroid/os/ParcelFileDescriptor;Landroid/os/Bundle;)I
 
     move-result v6
 
-    .line 88
+    .line 93
     .restart local v6       #_result:I
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 89
+    .line 94
     invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
 
     goto :goto_0
 
-    .line 85
+    .line 83
+    .end local v4           #_arg2:Landroid/os/ParcelFileDescriptor;
     .end local v5           #_arg3:Landroid/os/Bundle;
     .end local v6           #_result:I
     :cond_1
+    const/4 v4, 0x0
+
+    .restart local v4       #_arg2:Landroid/os/ParcelFileDescriptor;
+    goto :goto_2
+
+    .line 90
+    :cond_2
     const/4 v5, 0x0
 
     .restart local v5       #_arg3:Landroid/os/Bundle;
-    goto :goto_2
+    goto :goto_3
 
-    .line 94
+    .line 99
     .end local v1           #_arg0:Landroid/os/IBinder;
     .end local v2           #_arg1:Ljava/lang/String;
-    .end local v4           #_arg2:Ljava/lang/String;
+    .end local v4           #_arg2:Landroid/os/ParcelFileDescriptor;
     .end local v5           #_arg3:Landroid/os/Bundle;
     :sswitch_3
     const-string v0, "android.speech.tts.ITextToSpeechService"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 96
+    .line 101
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v1
 
-    .line 98
+    .line 103
     .restart local v1       #_arg0:Landroid/os/IBinder;
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_3
 
-    .line 99
+    .line 104
     sget-object v0, Landroid/net/Uri;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -322,22 +344,22 @@
 
     check-cast v2, Landroid/net/Uri;
 
-    .line 105
+    .line 110
     .local v2, _arg1:Landroid/net/Uri;
-    :goto_3
+    :goto_4
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v4
 
-    .line 107
+    .line 112
     .local v4, _arg2:I
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_4
 
-    .line 108
+    .line 113
     sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -346,42 +368,42 @@
 
     check-cast v5, Landroid/os/Bundle;
 
-    .line 113
+    .line 118
     .restart local v5       #_arg3:Landroid/os/Bundle;
-    :goto_4
+    :goto_5
     invoke-virtual {p0, v1, v2, v4, v5}, Landroid/speech/tts/ITextToSpeechService$Stub;->playAudio(Landroid/os/IBinder;Landroid/net/Uri;ILandroid/os/Bundle;)I
 
     move-result v6
 
-    .line 114
+    .line 119
     .restart local v6       #_result:I
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 115
+    .line 120
     invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
 
-    .line 102
+    .line 107
     .end local v2           #_arg1:Landroid/net/Uri;
     .end local v4           #_arg2:I
     .end local v5           #_arg3:Landroid/os/Bundle;
     .end local v6           #_result:I
-    :cond_2
+    :cond_3
     const/4 v2, 0x0
 
     .restart local v2       #_arg1:Landroid/net/Uri;
-    goto :goto_3
+    goto :goto_4
 
-    .line 111
+    .line 116
     .restart local v4       #_arg2:I
-    :cond_3
+    :cond_4
     const/4 v5, 0x0
 
     .restart local v5       #_arg3:Landroid/os/Bundle;
-    goto :goto_4
+    goto :goto_5
 
-    .line 120
+    .line 125
     .end local v1           #_arg0:Landroid/os/IBinder;
     .end local v2           #_arg1:Landroid/net/Uri;
     .end local v4           #_arg2:I
@@ -391,32 +413,32 @@
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 122
+    .line 127
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v1
 
-    .line 124
+    .line 129
     .restart local v1       #_arg0:Landroid/os/IBinder;
     invoke-virtual {p2}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v2
 
-    .line 126
+    .line 131
     .local v2, _arg1:J
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v4
 
-    .line 128
+    .line 133
     .restart local v4       #_arg2:I
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_5
 
-    .line 129
+    .line 134
     sget-object v0, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -426,33 +448,33 @@
     check-cast v5, Landroid/os/Bundle;
 
     .restart local v5       #_arg3:Landroid/os/Bundle;
-    :goto_5
+    :goto_6
     move-object v0, p0
 
-    .line 134
+    .line 139
     invoke-virtual/range {v0 .. v5}, Landroid/speech/tts/ITextToSpeechService$Stub;->playSilence(Landroid/os/IBinder;JILandroid/os/Bundle;)I
 
     move-result v6
 
-    .line 135
+    .line 140
     .restart local v6       #_result:I
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 136
+    .line 141
     invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
 
-    .line 132
+    .line 137
     .end local v5           #_arg3:Landroid/os/Bundle;
     .end local v6           #_result:I
-    :cond_4
+    :cond_5
     const/4 v5, 0x0
 
     .restart local v5       #_arg3:Landroid/os/Bundle;
-    goto :goto_5
+    goto :goto_6
 
-    .line 141
+    .line 146
     .end local v1           #_arg0:Landroid/os/IBinder;
     .end local v2           #_arg1:J
     .end local v4           #_arg2:I
@@ -462,58 +484,58 @@
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 142
+    .line 147
     invoke-virtual {p0}, Landroid/speech/tts/ITextToSpeechService$Stub;->isSpeaking()Z
 
     move-result v6
 
-    .line 143
+    .line 148
     .local v6, _result:Z
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 144
-    if-eqz v6, :cond_5
+    .line 149
+    if-eqz v6, :cond_6
 
     move v0, v7
 
-    :goto_6
+    :goto_7
     invoke-virtual {p3, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
 
-    :cond_5
+    :cond_6
     const/4 v0, 0x0
 
-    goto :goto_6
+    goto :goto_7
 
-    .line 149
+    .line 154
     .end local v6           #_result:Z
     :sswitch_6
     const-string v0, "android.speech.tts.ITextToSpeechService"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 151
+    .line 156
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v1
 
-    .line 152
+    .line 157
     .restart local v1       #_arg0:Landroid/os/IBinder;
     invoke-virtual {p0, v1}, Landroid/speech/tts/ITextToSpeechService$Stub;->stop(Landroid/os/IBinder;)I
 
     move-result v6
 
-    .line 153
+    .line 158
     .local v6, _result:I
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 154
+    .line 159
     invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
 
-    .line 159
+    .line 164
     .end local v1           #_arg0:Landroid/os/IBinder;
     .end local v6           #_result:I
     :sswitch_7
@@ -521,160 +543,188 @@
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 160
+    .line 165
     invoke-virtual {p0}, Landroid/speech/tts/ITextToSpeechService$Stub;->getLanguage()[Ljava/lang/String;
 
     move-result-object v6
 
-    .line 161
+    .line 166
     .local v6, _result:[Ljava/lang/String;
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 162
+    .line 167
     invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 167
+    .line 172
     .end local v6           #_result:[Ljava/lang/String;
     :sswitch_8
     const-string v0, "android.speech.tts.ITextToSpeechService"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 169
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v1
-
-    .line 171
-    .local v1, _arg0:Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v2
-
     .line 173
-    .local v2, _arg1:Ljava/lang/String;
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+    invoke-virtual {p0}, Landroid/speech/tts/ITextToSpeechService$Stub;->getClientDefaultLanguage()[Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v6
 
     .line 174
-    .local v4, _arg2:Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v4}, Landroid/speech/tts/ITextToSpeechService$Stub;->isLanguageAvailable(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
-
-    move-result v6
-
-    .line 175
-    .local v6, _result:I
+    .restart local v6       #_result:[Ljava/lang/String;
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 176
-    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
+    .line 175
+    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 181
-    .end local v1           #_arg0:Ljava/lang/String;
-    .end local v2           #_arg1:Ljava/lang/String;
-    .end local v4           #_arg2:Ljava/lang/String;
-    .end local v6           #_result:I
+    .line 180
+    .end local v6           #_result:[Ljava/lang/String;
     :sswitch_9
     const-string v0, "android.speech.tts.ITextToSpeechService"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 183
+    .line 182
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 185
-    .restart local v1       #_arg0:Ljava/lang/String;
+    .line 184
+    .local v1, _arg0:Ljava/lang/String;
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 187
-    .restart local v2       #_arg1:Ljava/lang/String;
+    .line 186
+    .local v2, _arg1:Ljava/lang/String;
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v4
 
+    .line 187
+    .local v4, _arg2:Ljava/lang/String;
+    invoke-virtual {p0, v1, v2, v4}, Landroid/speech/tts/ITextToSpeechService$Stub;->isLanguageAvailable(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v6
+
     .line 188
-    .restart local v4       #_arg2:Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v4}, Landroid/speech/tts/ITextToSpeechService$Stub;->getFeaturesForLanguage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v6
-
-    .line 189
-    .local v6, _result:[Ljava/lang/String;
+    .local v6, _result:I
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 190
-    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
+    .line 189
+    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
 
-    .line 195
+    .line 194
     .end local v1           #_arg0:Ljava/lang/String;
     .end local v2           #_arg1:Ljava/lang/String;
     .end local v4           #_arg2:Ljava/lang/String;
-    .end local v6           #_result:[Ljava/lang/String;
+    .end local v6           #_result:I
     :sswitch_a
     const-string v0, "android.speech.tts.ITextToSpeechService"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 197
+    .line 196
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 199
+    .line 198
     .restart local v1       #_arg0:Ljava/lang/String;
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 201
+    .line 200
     .restart local v2       #_arg1:Ljava/lang/String;
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 202
+    .line 201
     .restart local v4       #_arg2:Ljava/lang/String;
-    invoke-virtual {p0, v1, v2, v4}, Landroid/speech/tts/ITextToSpeechService$Stub;->loadLanguage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {p0, v1, v2, v4}, Landroid/speech/tts/ITextToSpeechService$Stub;->getFeaturesForLanguage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
 
-    move-result v6
+    move-result-object v6
 
-    .line 203
-    .local v6, _result:I
+    .line 202
+    .local v6, _result:[Ljava/lang/String;
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 204
-    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
+    .line 203
+    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
 
     goto/16 :goto_0
 
-    .line 209
+    .line 208
     .end local v1           #_arg0:Ljava/lang/String;
     .end local v2           #_arg1:Ljava/lang/String;
     .end local v4           #_arg2:Ljava/lang/String;
-    .end local v6           #_result:I
+    .end local v6           #_result:[Ljava/lang/String;
     :sswitch_b
     const-string v0, "android.speech.tts.ITextToSpeechService"
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 211
+    .line 210
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v1
 
-    .line 213
+    .line 212
     .local v1, _arg0:Landroid/os/IBinder;
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 214
+    .restart local v2       #_arg1:Ljava/lang/String;
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 216
+    .restart local v4       #_arg2:Ljava/lang/String;
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 217
+    .local v5, _arg3:Ljava/lang/String;
+    invoke-virtual {p0, v1, v2, v4, v5}, Landroid/speech/tts/ITextToSpeechService$Stub;->loadLanguage(Landroid/os/IBinder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v6
+
+    .line 218
+    .local v6, _result:I
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 219
+    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 224
+    .end local v1           #_arg0:Landroid/os/IBinder;
+    .end local v2           #_arg1:Ljava/lang/String;
+    .end local v4           #_arg2:Ljava/lang/String;
+    .end local v5           #_arg3:Ljava/lang/String;
+    .end local v6           #_result:I
+    :sswitch_c
+    const-string v0, "android.speech.tts.ITextToSpeechService"
+
+    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 226
+    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v1
+
+    .line 228
+    .restart local v1       #_arg0:Landroid/os/IBinder;
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
@@ -683,16 +733,18 @@
 
     move-result-object v2
 
-    .line 214
+    .line 229
     .local v2, _arg1:Landroid/speech/tts/ITextToSpeechCallback;
     invoke-virtual {p0, v1, v2}, Landroid/speech/tts/ITextToSpeechService$Stub;->setCallback(Landroid/os/IBinder;Landroid/speech/tts/ITextToSpeechCallback;)V
 
-    .line 215
+    .line 230
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
     goto/16 :goto_0
 
     .line 43
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_1
@@ -706,6 +758,7 @@
         0x9 -> :sswitch_9
         0xa -> :sswitch_a
         0xb -> :sswitch_b
+        0xc -> :sswitch_c
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

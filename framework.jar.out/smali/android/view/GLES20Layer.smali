@@ -49,7 +49,7 @@
     .locals 1
 
     .prologue
-    .line 71
+    .line 74
     iget v0, p0, Landroid/view/GLES20Layer;->mLayer:I
 
     if-eqz v0, :cond_0
@@ -58,12 +58,12 @@
 
     invoke-static {v0}, Landroid/view/GLES20Canvas;->nClearLayerTexture(I)V
 
-    .line 72
+    .line 75
     :cond_0
     return-void
 .end method
 
-.method copyInto(Landroid/graphics/Bitmap;)Z
+.method public copyInto(Landroid/graphics/Bitmap;)Z
     .locals 2
     .parameter "bitmap"
 
@@ -80,32 +80,43 @@
     return v0
 .end method
 
-.method destroy()V
+.method public destroy()V
     .locals 1
 
     .prologue
     .line 62
-    iget-object v0, p0, Landroid/view/GLES20Layer;->mFinalizer:Landroid/view/GLES20Layer$Finalizer;
+    iget-object v0, p0, Landroid/view/GLES20Layer;->mDisplayList:Landroid/view/DisplayList;
 
     if-eqz v0, :cond_0
 
     .line 63
+    iget-object v0, p0, Landroid/view/GLES20Layer;->mDisplayList:Landroid/view/DisplayList;
+
+    invoke-virtual {v0}, Landroid/view/DisplayList;->reset()V
+
+    .line 65
+    :cond_0
+    iget-object v0, p0, Landroid/view/GLES20Layer;->mFinalizer:Landroid/view/GLES20Layer$Finalizer;
+
+    if-eqz v0, :cond_1
+
+    .line 66
     iget-object v0, p0, Landroid/view/GLES20Layer;->mFinalizer:Landroid/view/GLES20Layer$Finalizer;
 
     invoke-virtual {v0}, Landroid/view/GLES20Layer$Finalizer;->destroy()V
 
-    .line 64
+    .line 67
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/view/GLES20Layer;->mFinalizer:Landroid/view/GLES20Layer$Finalizer;
 
-    .line 66
-    :cond_0
+    .line 69
+    :cond_1
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/view/GLES20Layer;->mLayer:I
 
-    .line 67
+    .line 70
     return-void
 .end method
 

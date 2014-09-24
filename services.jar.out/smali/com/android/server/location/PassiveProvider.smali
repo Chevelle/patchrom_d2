@@ -83,7 +83,7 @@
     .parameter "args"
 
     .prologue
-    .line 122
+    .line 117
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -106,7 +106,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 123
+    .line 118
     return-void
 .end method
 
@@ -187,7 +187,7 @@
     .parameter "extras"
 
     .prologue
-    .line 117
+    .line 112
     const/4 v0, 0x0
 
     return v0
@@ -208,26 +208,17 @@
     return-void
 .end method
 
-.method public switchUser(I)V
-    .locals 0
-    .parameter "userId"
-
-    .prologue
-    .line 102
-    return-void
-.end method
-
 .method public updateLocation(Landroid/location/Location;)V
     .locals 3
     .parameter "location"
 
     .prologue
-    .line 105
+    .line 100
     iget-boolean v1, p0, Lcom/android/server/location/PassiveProvider;->mReportLocation:Z
 
     if-eqz v1, :cond_0
 
-    .line 108
+    .line 103
     :try_start_0
     iget-object v1, p0, Lcom/android/server/location/PassiveProvider;->mLocationManager:Landroid/location/ILocationManager;
 
@@ -237,16 +228,16 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 113
+    .line 108
     :cond_0
     :goto_0
     return-void
 
-    .line 109
+    .line 104
     :catch_0
     move-exception v0
 
-    .line 110
+    .line 105
     .local v0, e:Landroid/os/RemoteException;
     const-string v1, "PassiveProvider"
 

@@ -28,7 +28,7 @@
     .locals 1
 
     .prologue
-    .line 345
+    .line 352
     const/4 v0, 0x0
 
     return-object v0
@@ -38,7 +38,7 @@
     .locals 1
 
     .prologue
-    .line 357
+    .line 364
     const/4 v0, 0x0
 
     return-object v0
@@ -58,7 +58,7 @@
     .end annotation
 
     .prologue
-    .line 363
+    .line 370
     .local p1, callback:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<[Ljava/lang/String;>;"
     return-void
 .end method
@@ -68,7 +68,7 @@
     .parameter "window"
 
     .prologue
-    .line 143
+    .line 148
     return-void
 .end method
 
@@ -81,7 +81,7 @@
     .end annotation
 
     .prologue
-    .line 320
+    .line 327
     return-void
 .end method
 
@@ -90,7 +90,7 @@
     .parameter "consoleMessage"
 
     .prologue
-    .line 330
+    .line 337
     invoke-virtual {p1}, Landroid/webkit/ConsoleMessage;->message()Ljava/lang/String;
 
     move-result-object v0
@@ -105,7 +105,7 @@
 
     invoke-virtual {p0, v0, v1, v2}, Landroid/webkit/WebChromeClient;->onConsoleMessage(Ljava/lang/String;ILjava/lang/String;)V
 
-    .line 332
+    .line 339
     const/4 v0, 0x0
 
     return v0
@@ -119,7 +119,7 @@
     .parameter "resultMsg"
 
     .prologue
-    .line 125
+    .line 130
     const/4 v0, 0x0
 
     return v0
@@ -133,12 +133,14 @@
     .parameter "estimatedDatabaseSize"
     .parameter "totalQuota"
     .parameter "quotaUpdater"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 244
+    .line 250
     invoke-interface {p9, p3, p4}, Landroid/webkit/WebStorage$QuotaUpdater;->updateQuota(J)V
 
-    .line 245
+    .line 251
     return-void
 .end method
 
@@ -146,7 +148,7 @@
     .locals 0
 
     .prologue
-    .line 289
+    .line 296
     return-void
 .end method
 
@@ -156,7 +158,7 @@
     .parameter "callback"
 
     .prologue
-    .line 281
+    .line 288
     return-void
 .end method
 
@@ -164,7 +166,7 @@
     .locals 0
 
     .prologue
-    .line 95
+    .line 100
     return-void
 .end method
 
@@ -176,7 +178,7 @@
     .parameter "result"
 
     .prologue
-    .line 157
+    .line 162
     const/4 v0, 0x0
 
     return v0
@@ -190,7 +192,7 @@
     .parameter "result"
 
     .prologue
-    .line 215
+    .line 220
     const/4 v0, 0x0
 
     return v0
@@ -204,7 +206,7 @@
     .parameter "result"
 
     .prologue
-    .line 175
+    .line 180
     const/4 v0, 0x0
 
     return v0
@@ -219,7 +221,7 @@
     .parameter "result"
 
     .prologue
-    .line 194
+    .line 199
     const/4 v0, 0x0
 
     return v0
@@ -229,7 +231,7 @@
     .locals 1
 
     .prologue
-    .line 307
+    .line 314
     const/4 v0, 0x1
 
     return v0
@@ -250,12 +252,14 @@
     .parameter "requiredStorage"
     .parameter "quota"
     .parameter "quotaUpdater"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 266
+    .line 273
     invoke-interface {p5, p3, p4}, Landroid/webkit/WebStorage$QuotaUpdater;->updateQuota(J)V
 
-    .line 267
+    .line 274
     return-void
 .end method
 
@@ -295,7 +299,7 @@
     .parameter "view"
 
     .prologue
-    .line 134
+    .line 139
     return-void
 .end method
 
@@ -304,9 +308,11 @@
     .parameter "view"
     .parameter "requestedOrientation"
     .parameter "callback"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 89
+    .line 94
     return-void
 .end method
 
@@ -316,7 +322,7 @@
     .parameter "callback"
 
     .prologue
-    .line 77
+    .line 79
     return-void
 .end method
 
@@ -339,13 +345,13 @@
     .end annotation
 
     .prologue
-    .line 376
+    .line 383
     .local p1, uploadFile:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<Landroid/net/Uri;>;"
     const/4 v0, 0x0
 
     invoke-interface {p1, v0}, Landroid/webkit/ValueCallback;->onReceiveValue(Ljava/lang/Object;)V
 
-    .line 377
+    .line 384
     return-void
 .end method
 
@@ -354,6 +360,34 @@
     .parameter "msg"
 
     .prologue
-    .line 387
+    .line 410
+    return-void
+.end method
+
+.method public showFileChooser(Landroid/webkit/ValueCallback;Ljava/lang/String;Z)V
+    .locals 1
+    .parameter
+    .parameter "acceptTypes"
+    .parameter "capture"
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/webkit/ValueCallback",
+            "<[",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/lang/String;",
+            "Z)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 399
+    .local p1, uploadFilePaths:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<[Ljava/lang/String;>;"
+    const/4 v0, 0x0
+
+    invoke-interface {p1, v0}, Landroid/webkit/ValueCallback;->onReceiveValue(Ljava/lang/Object;)V
+
+    .line 400
     return-void
 .end method

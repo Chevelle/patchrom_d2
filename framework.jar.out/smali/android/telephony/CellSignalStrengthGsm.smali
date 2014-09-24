@@ -24,7 +24,7 @@
 
 .field private static final GSM_SIGNAL_STRENGTH_GREAT:I = 0xc
 
-.field private static final GSM_SIGNAL_STRENGTH_MODERATE:I = 0x8
+.field private static final GSM_SIGNAL_STRENGTH_MODERATE:I = 0x5
 
 .field private static final LOG_TAG:Ljava/lang/String; = "CellSignalStrengthGsm"
 
@@ -40,7 +40,7 @@
     .locals 1
 
     .prologue
-    .line 215
+    .line 216
     new-instance v0, Landroid/telephony/CellSignalStrengthGsm$1;
 
     invoke-direct {v0}, Landroid/telephony/CellSignalStrengthGsm$1;-><init>()V
@@ -85,24 +85,24 @@
     .parameter "in"
 
     .prologue
-    .line 201
-    invoke-direct {p0}, Landroid/telephony/CellSignalStrength;-><init>()V
-
     .line 202
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
+    invoke-direct {p0}, Landroid/telephony/CellSignalStrength;-><init>()V
 
     .line 203
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
+    iput v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
+
+    .line 204
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
     iput v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mBitErrorRate:I
 
-    .line 205
+    .line 206
     return-void
 .end method
 
@@ -138,12 +138,12 @@
     .parameter "s"
 
     .prologue
-    .line 232
+    .line 233
     const-string v0, "CellSignalStrengthGsm"
 
-    invoke-static {v0, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 233
+    .line 234
     return-void
 .end method
 
@@ -165,7 +165,7 @@
     .locals 1
 
     .prologue
-    .line 92
+    .line 93
     new-instance v0, Landroid/telephony/CellSignalStrengthGsm;
 
     invoke-direct {v0, p0}, Landroid/telephony/CellSignalStrengthGsm;-><init>(Landroid/telephony/CellSignalStrengthGsm;)V
@@ -178,17 +178,17 @@
     .parameter "s"
 
     .prologue
-    .line 83
+    .line 84
     iget v0, p1, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
-    .line 84
+    .line 85
     iget v0, p1, Landroid/telephony/CellSignalStrengthGsm;->mBitErrorRate:I
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mBitErrorRate:I
 
-    .line 85
+    .line 86
     return-void
 .end method
 
@@ -196,7 +196,7 @@
     .locals 1
 
     .prologue
-    .line 210
+    .line 211
     const/4 v0, 0x0
 
     return v0
@@ -209,7 +209,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 167
+    .line 168
     :try_start_0
     move-object v0, p1
 
@@ -219,25 +219,25 @@
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 172
+    .line 173
     .local v2, s:Landroid/telephony/CellSignalStrengthGsm;
     if-nez p1, :cond_1
 
-    .line 176
+    .line 177
     .end local v2           #s:Landroid/telephony/CellSignalStrengthGsm;
     :cond_0
     :goto_0
     return v3
 
-    .line 168
+    .line 169
     :catch_0
     move-exception v1
 
-    .line 169
+    .line 170
     .local v1, ex:Ljava/lang/ClassCastException;
     goto :goto_0
 
-    .line 176
+    .line 177
     .end local v1           #ex:Ljava/lang/ClassCastException;
     .restart local v2       #s:Landroid/telephony/CellSignalStrengthGsm;
     :cond_1
@@ -262,10 +262,10 @@
     .locals 1
 
     .prologue
-    .line 151
+    .line 152
     iget v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
-    .line 153
+    .line 154
     .local v0, level:I
     return v0
 .end method
@@ -276,10 +276,10 @@
     .prologue
     const v3, 0x7fffffff
 
-    .line 130
+    .line 131
     iget v2, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
-    .line 131
+    .line 132
     .local v2, level:I
     const/16 v4, 0x63
 
@@ -287,17 +287,17 @@
 
     move v0, v3
 
-    .line 132
+    .line 133
     .local v0, asu:I
     :goto_0
     if-eq v0, v3, :cond_1
 
-    .line 133
+    .line 134
     mul-int/lit8 v3, v0, 0x2
 
     add-int/lit8 v1, v3, -0x71
 
-    .line 138
+    .line 139
     .local v1, dBm:I
     :goto_1
     return v1
@@ -307,10 +307,10 @@
     :cond_0
     move v0, v2
 
-    .line 131
+    .line 132
     goto :goto_0
 
-    .line 135
+    .line 136
     .restart local v0       #asu:I
     :cond_1
     const v1, 0x7fffffff
@@ -320,15 +320,13 @@
 .end method
 
 .method public getLevel()I
-    .locals 4
+    .locals 3
 
     .prologue
-    const/16 v3, 0x8
-
-    .line 113
+    .line 114
     iget v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
-    .line 114
+    .line 115
     .local v0, asu:I
     const/4 v2, 0x2
 
@@ -341,12 +339,12 @@
     :cond_0
     const/4 v1, 0x0
 
-    .line 120
+    .line 121
     .local v1, level:I
     :goto_0
     return v1
 
-    .line 115
+    .line 116
     .end local v1           #level:I
     :cond_1
     const/16 v2, 0xc
@@ -358,27 +356,31 @@
     .restart local v1       #level:I
     goto :goto_0
 
-    .line 116
+    .line 117
     .end local v1           #level:I
     :cond_2
-    if-lt v0, v3, :cond_3
+    const/16 v2, 0x8
+
+    if-lt v0, v2, :cond_3
 
     const/4 v1, 0x3
 
     .restart local v1       #level:I
     goto :goto_0
 
-    .line 117
+    .line 118
     .end local v1           #level:I
     :cond_3
-    if-lt v0, v3, :cond_4
+    const/4 v2, 0x5
+
+    if-lt v0, v2, :cond_4
 
     const/4 v1, 0x2
 
     .restart local v1       #level:I
     goto :goto_0
 
-    .line 118
+    .line 119
     .end local v1           #level:I
     :cond_4
     const/4 v1, 0x1
@@ -391,10 +393,10 @@
     .locals 3
 
     .prologue
-    .line 158
+    .line 159
     const/16 v0, 0x1f
 
-    .line 159
+    .line 160
     .local v0, primeNum:I
     iget v1, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
@@ -415,13 +417,13 @@
     .parameter "ber"
 
     .prologue
-    .line 75
+    .line 76
     iput p1, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
-    .line 76
+    .line 77
     iput p2, p0, Landroid/telephony/CellSignalStrengthGsm;->mBitErrorRate:I
 
-    .line 77
+    .line 78
     return-void
 .end method
 
@@ -431,13 +433,13 @@
     .prologue
     const v0, 0x7fffffff
 
-    .line 98
+    .line 99
     iput v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
-    .line 99
+    .line 100
     iput v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mBitErrorRate:I
 
-    .line 100
+    .line 101
     return-void
 .end method
 
@@ -445,7 +447,7 @@
     .locals 2
 
     .prologue
-    .line 184
+    .line 185
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -487,16 +489,16 @@
     .parameter "flags"
 
     .prologue
-    .line 193
+    .line 194
     iget v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mSignalStrength:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 194
+    .line 195
     iget v0, p0, Landroid/telephony/CellSignalStrengthGsm;->mBitErrorRate:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 195
+    .line 196
     return-void
 .end method

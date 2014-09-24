@@ -25,7 +25,7 @@
 
 
 # direct methods
-.method public constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/os/Looper;Landroid/view/InputEventReceiver$Factory;Ljava/lang/String;IIZZZ)V
+.method public constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/os/Looper;Landroid/view/InputEventReceiver$Factory;Ljava/lang/String;IIIZZZ)V
     .locals 5
     .parameter "service"
     .parameter "looper"
@@ -33,6 +33,7 @@
     .parameter "name"
     .parameter "windowType"
     .parameter "layoutParamsFlags"
+    .parameter "layoutParamsPrivateFlags"
     .parameter "canReceiveKeys"
     .parameter "hasFocus"
     .parameter "touchFullscreen"
@@ -152,47 +153,52 @@
     .line 66
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
-    iput p5, v1, Lcom/android/server/input/InputWindowHandle;->layoutParamsType:I
+    iput p7, v1, Lcom/android/server/input/InputWindowHandle;->layoutParamsPrivateFlags:I
 
     .line 67
+    iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
+
+    iput p5, v1, Lcom/android/server/input/InputWindowHandle;->layoutParamsType:I
+
+    .line 68
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     const-wide v2, 0x12a05f200L
 
     iput-wide v2, v1, Lcom/android/server/input/InputWindowHandle;->dispatchingTimeoutNanos:J
 
-    .line 69
+    .line 70
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     const/4 v2, 0x1
 
     iput-boolean v2, v1, Lcom/android/server/input/InputWindowHandle;->visible:Z
 
-    .line 70
-    iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
-
-    iput-boolean p7, v1, Lcom/android/server/input/InputWindowHandle;->canReceiveKeys:Z
-
     .line 71
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
-    iput-boolean p8, v1, Lcom/android/server/input/InputWindowHandle;->hasFocus:Z
+    iput-boolean p8, v1, Lcom/android/server/input/InputWindowHandle;->canReceiveKeys:Z
 
     .line 72
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
-    const/4 v2, 0x0
-
-    iput-boolean v2, v1, Lcom/android/server/input/InputWindowHandle;->hasWallpaper:Z
+    iput-boolean p9, v1, Lcom/android/server/input/InputWindowHandle;->hasFocus:Z
 
     .line 73
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     const/4 v2, 0x0
 
-    iput-boolean v2, v1, Lcom/android/server/input/InputWindowHandle;->paused:Z
+    iput-boolean v2, v1, Lcom/android/server/input/InputWindowHandle;->hasWallpaper:Z
 
     .line 74
+    iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
+
+    const/4 v2, 0x0
+
+    iput-boolean v2, v1, Lcom/android/server/input/InputWindowHandle;->paused:Z
+
+    .line 75
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     invoke-static {}, Landroid/os/Process;->myPid()I
@@ -201,7 +207,7 @@
 
     iput v2, v1, Lcom/android/server/input/InputWindowHandle;->ownerPid:I
 
-    .line 75
+    .line 76
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     invoke-static {}, Landroid/os/Process;->myUid()I
@@ -210,24 +216,24 @@
 
     iput v2, v1, Lcom/android/server/input/InputWindowHandle;->ownerUid:I
 
-    .line 76
+    .line 77
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     const/4 v2, 0x0
 
     iput v2, v1, Lcom/android/server/input/InputWindowHandle;->inputFeatures:I
 
-    .line 77
+    .line 78
     iget-object v1, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     const/high16 v2, 0x3f80
 
     iput v2, v1, Lcom/android/server/input/InputWindowHandle;->scaleFactor:F
 
-    .line 79
-    iput-boolean p9, p0, Lcom/android/server/wm/FakeWindowImpl;->mTouchFullscreen:Z
-
     .line 80
+    iput-boolean p10, p0, Lcom/android/server/wm/FakeWindowImpl;->mTouchFullscreen:Z
+
+    .line 81
     return-void
 .end method
 
@@ -236,7 +242,7 @@
     .parameter "windowType"
 
     .prologue
-    .line 107
+    .line 108
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mService:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v0, v0, Lcom/android/server/wm/WindowManagerService;->mPolicy:Landroid/view/WindowManagerPolicy;
@@ -258,14 +264,14 @@
     .locals 3
 
     .prologue
-    .line 96
+    .line 97
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mService:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v1, v0, Lcom/android/server/wm/WindowManagerService;->mWindowMap:Ljava/util/HashMap;
 
     monitor-enter v1
 
-    .line 97
+    .line 98
     :try_start_0
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mService:Lcom/android/server/wm/WindowManagerService;
 
@@ -275,12 +281,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 98
+    .line 99
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mInputEventReceiver:Landroid/view/InputEventReceiver;
 
     invoke-virtual {v0}, Landroid/view/InputEventReceiver;->dispose()V
 
-    .line 99
+    .line 100
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mService:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v0, v0, Lcom/android/server/wm/WindowManagerService;->mInputManager:Lcom/android/server/input/InputManagerService;
@@ -289,24 +295,24 @@
 
     invoke-virtual {v0, v2}, Lcom/android/server/input/InputManagerService;->unregisterInputChannel(Landroid/view/InputChannel;)V
 
-    .line 100
+    .line 101
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mClientChannel:Landroid/view/InputChannel;
 
     invoke-virtual {v0}, Landroid/view/InputChannel;->dispose()V
 
-    .line 101
+    .line 102
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mServerChannel:Landroid/view/InputChannel;
 
     invoke-virtual {v0}, Landroid/view/InputChannel;->dispose()V
 
-    .line 103
+    .line 104
     :cond_0
     monitor-exit v1
 
-    .line 104
+    .line 105
     return-void
 
-    .line 103
+    .line 104
     :catchall_0
     move-exception v0
 
@@ -325,43 +331,43 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 83
+    .line 84
     iget-boolean v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mTouchFullscreen:Z
 
     if-eqz v0, :cond_0
 
-    .line 84
+    .line 85
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     iget-object v0, v0, Lcom/android/server/input/InputWindowHandle;->touchableRegion:Landroid/graphics/Region;
 
     invoke-virtual {v0, v1, v1, p1, p2}, Landroid/graphics/Region;->set(IIII)Z
 
-    .line 88
+    .line 89
     :goto_0
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     iput v1, v0, Lcom/android/server/input/InputWindowHandle;->frameLeft:I
 
-    .line 89
+    .line 90
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     iput v1, v0, Lcom/android/server/input/InputWindowHandle;->frameTop:I
 
-    .line 90
+    .line 91
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     iput p1, v0, Lcom/android/server/input/InputWindowHandle;->frameRight:I
 
-    .line 91
+    .line 92
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 
     iput p2, v0, Lcom/android/server/input/InputWindowHandle;->frameBottom:I
 
-    .line 92
+    .line 93
     return-void
 
-    .line 86
+    .line 87
     :cond_0
     iget-object v0, p0, Lcom/android/server/wm/FakeWindowImpl;->mWindowHandle:Lcom/android/server/input/InputWindowHandle;
 

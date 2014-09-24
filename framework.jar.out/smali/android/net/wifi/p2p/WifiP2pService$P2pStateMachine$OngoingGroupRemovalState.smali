@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 1747
+    .line 2010
     iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$OngoingGroupRemovalState;->this$1:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
     invoke-direct {p0}, Lcom/android/internal/util/State;-><init>()V
@@ -38,7 +38,7 @@
     .locals 0
 
     .prologue
-    .line 1751
+    .line 2014
     return-void
 .end method
 
@@ -47,33 +47,33 @@
     .parameter "message"
 
     .prologue
-    .line 1756
+    .line 2019
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 1765
+    .line 2028
     const/4 v0, 0x0
 
-    .line 1767
+    .line 2030
     :goto_0
     return v0
 
-    .line 1760
+    .line 2023
     :pswitch_0
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$OngoingGroupRemovalState;->this$1:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
     const v1, 0x22012
 
     #calls: Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->replyToMessage(Landroid/os/Message;I)V
-    invoke-static {v0, p1, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->access$1300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;I)V
+    invoke-static {v0, p1, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->access$3500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;I)V
 
-    .line 1767
+    .line 2030
     const/4 v0, 0x1
 
     goto :goto_0
 
-    .line 1756
+    .line 2019
     nop
 
     :pswitch_data_0

@@ -2,9 +2,6 @@
 .super Ljava/lang/Object;
 .source "RelativeLayout.java"
 
-# interfaces
-.implements Landroid/util/Poolable;
-
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingClass;
@@ -16,24 +13,14 @@
     name = "Node"
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Ljava/lang/Object;",
-        "Landroid/util/Poolable",
-        "<",
-        "Landroid/widget/RelativeLayout$DependencyGraph$Node;",
-        ">;"
-    }
-.end annotation
-
 
 # static fields
 .field private static final POOL_LIMIT:I = 0x64
 
-.field private static final sPool:Landroid/util/Pool;
+.field private static final sPool:Landroid/util/Pools$SynchronizedPool;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Landroid/util/Pool",
+            "Landroid/util/Pools$SynchronizedPool",
             "<",
             "Landroid/widget/RelativeLayout$DependencyGraph$Node;",
             ">;"
@@ -54,10 +41,10 @@
     .end annotation
 .end field
 
-.field final dependents:Ljava/util/HashMap;
+.field final dependents:Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/HashMap",
+            "Landroid/util/ArrayMap",
             "<",
             "Landroid/widget/RelativeLayout$DependencyGraph$Node;",
             "Landroid/widget/RelativeLayout$DependencyGraph;",
@@ -65,10 +52,6 @@
         }
     .end annotation
 .end field
-
-.field private mIsPooled:Z
-
-.field private mNext:Landroid/widget/RelativeLayout$DependencyGraph$Node;
 
 .field view:Landroid/view/View;
 
@@ -78,22 +61,14 @@
     .locals 2
 
     .prologue
-    .line 1681
-    new-instance v0, Landroid/widget/RelativeLayout$DependencyGraph$Node$1;
-
-    invoke-direct {v0}, Landroid/widget/RelativeLayout$DependencyGraph$Node$1;-><init>()V
+    .line 1787
+    new-instance v0, Landroid/util/Pools$SynchronizedPool;
 
     const/16 v1, 0x64
 
-    invoke-static {v0, v1}, Landroid/util/Pools;->finitePool(Landroid/util/PoolableManager;I)Landroid/util/Pool;
+    invoke-direct {v0, v1}, Landroid/util/Pools$SynchronizedPool;-><init>(I)V
 
-    move-result-object v0
-
-    invoke-static {v0}, Landroid/util/Pools;->synchronizedPool(Landroid/util/Pool;)Landroid/util/Pool;
-
-    move-result-object v0
-
-    sput-object v0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->sPool:Landroid/util/Pool;
+    sput-object v0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->sPool:Landroid/util/Pools$SynchronizedPool;
 
     return-void
 .end method
@@ -102,17 +77,17 @@
     .locals 1
 
     .prologue
-    .line 1658
+    .line 1763
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1668
-    new-instance v0, Ljava/util/HashMap;
+    .line 1773
+    new-instance v0, Landroid/util/ArrayMap;
 
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
 
-    iput-object v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->dependents:Ljava/util/HashMap;
+    iput-object v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->dependents:Landroid/util/ArrayMap;
 
-    .line 1673
+    .line 1779
     new-instance v0, Landroid/util/SparseArray;
 
     invoke-direct {v0}, Landroid/util/SparseArray;-><init>()V
@@ -127,119 +102,60 @@
     .parameter "view"
 
     .prologue
-    .line 1715
-    sget-object v1, Landroid/widget/RelativeLayout$DependencyGraph$Node;->sPool:Landroid/util/Pool;
+    .line 1791
+    sget-object v1, Landroid/widget/RelativeLayout$DependencyGraph$Node;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    invoke-interface {v1}, Landroid/util/Pool;->acquire()Landroid/util/Poolable;
+    invoke-virtual {v1}, Landroid/util/Pools$SynchronizedPool;->acquire()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/widget/RelativeLayout$DependencyGraph$Node;
 
-    .line 1716
+    .line 1792
     .local v0, node:Landroid/widget/RelativeLayout$DependencyGraph$Node;
+    if-nez v0, :cond_0
+
+    .line 1793
+    new-instance v0, Landroid/widget/RelativeLayout$DependencyGraph$Node;
+
+    .end local v0           #node:Landroid/widget/RelativeLayout$DependencyGraph$Node;
+    invoke-direct {v0}, Landroid/widget/RelativeLayout$DependencyGraph$Node;-><init>()V
+
+    .line 1795
+    .restart local v0       #node:Landroid/widget/RelativeLayout$DependencyGraph$Node;
+    :cond_0
     iput-object p0, v0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->view:Landroid/view/View;
 
-    .line 1718
+    .line 1796
     return-object v0
 .end method
 
 
 # virtual methods
-.method public getNextPoolable()Landroid/widget/RelativeLayout$DependencyGraph$Node;
-    .locals 1
-
-    .prologue
-    .line 1703
-    iget-object v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->mNext:Landroid/widget/RelativeLayout$DependencyGraph$Node;
-
-    return-object v0
-.end method
-
-.method public bridge synthetic getNextPoolable()Ljava/lang/Object;
-    .locals 1
-
-    .prologue
-    .line 1658
-    invoke-virtual {p0}, Landroid/widget/RelativeLayout$DependencyGraph$Node;->getNextPoolable()Landroid/widget/RelativeLayout$DependencyGraph$Node;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public isPooled()Z
-    .locals 1
-
-    .prologue
-    .line 1707
-    iget-boolean v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->mIsPooled:Z
-
-    return v0
-.end method
-
 .method release()V
     .locals 1
 
     .prologue
-    .line 1722
+    .line 1800
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->view:Landroid/view/View;
 
-    .line 1723
-    iget-object v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->dependents:Ljava/util/HashMap;
+    .line 1801
+    iget-object v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->dependents:Landroid/util/ArrayMap;
 
-    invoke-virtual {v0}, Ljava/util/HashMap;->clear()V
+    invoke-virtual {v0}, Landroid/util/ArrayMap;->clear()V
 
-    .line 1724
+    .line 1802
     iget-object v0, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->dependencies:Landroid/util/SparseArray;
 
     invoke-virtual {v0}, Landroid/util/SparseArray;->clear()V
 
-    .line 1726
-    sget-object v0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->sPool:Landroid/util/Pool;
+    .line 1804
+    sget-object v0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->sPool:Landroid/util/Pools$SynchronizedPool;
 
-    invoke-interface {v0, p0}, Landroid/util/Pool;->release(Landroid/util/Poolable;)V
+    invoke-virtual {v0, p0}, Landroid/util/Pools$SynchronizedPool;->release(Ljava/lang/Object;)Z
 
-    .line 1727
-    return-void
-.end method
-
-.method public setNextPoolable(Landroid/widget/RelativeLayout$DependencyGraph$Node;)V
-    .locals 0
-    .parameter "element"
-
-    .prologue
-    .line 1699
-    iput-object p1, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->mNext:Landroid/widget/RelativeLayout$DependencyGraph$Node;
-
-    .line 1700
-    return-void
-.end method
-
-.method public bridge synthetic setNextPoolable(Ljava/lang/Object;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 1658
-    check-cast p1, Landroid/widget/RelativeLayout$DependencyGraph$Node;
-
-    .end local p1
-    invoke-virtual {p0, p1}, Landroid/widget/RelativeLayout$DependencyGraph$Node;->setNextPoolable(Landroid/widget/RelativeLayout$DependencyGraph$Node;)V
-
-    return-void
-.end method
-
-.method public setPooled(Z)V
-    .locals 0
-    .parameter "isPooled"
-
-    .prologue
-    .line 1711
-    iput-boolean p1, p0, Landroid/widget/RelativeLayout$DependencyGraph$Node;->mIsPooled:Z
-
-    .line 1712
+    .line 1805
     return-void
 .end method

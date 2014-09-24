@@ -68,6 +68,8 @@
 
 .field private mIncludePad:Z
 
+.field private mIndexFirstChangedBlock:I
+
 .field private mInts:Landroid/text/PackedIntVector;
 
 .field private mNumberOfBlocks:I
@@ -93,7 +95,7 @@
     .locals 2
 
     .prologue
-    .line 703
+    .line 728
     new-instance v0, Landroid/text/StaticLayout;
 
     const/4 v1, 0x0
@@ -102,7 +104,7 @@
 
     sput-object v0, Landroid/text/DynamicLayout;->sStaticLayout:Landroid/text/StaticLayout;
 
-    .line 705
+    .line 730
     const/4 v0, 0x0
 
     new-array v0, v0, [Ljava/lang/Object;
@@ -1691,7 +1693,7 @@
     .locals 1
 
     .prologue
-    .line 545
+    .line 554
     iget-object v0, p0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
     return-object v0
@@ -1701,7 +1703,7 @@
     .locals 1
 
     .prologue
-    .line 552
+    .line 561
     iget-object v0, p0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
     return-object v0
@@ -1711,7 +1713,7 @@
     .locals 1
 
     .prologue
-    .line 604
+    .line 627
     iget v0, p0, Landroid/text/DynamicLayout;->mBottomPadding:I
 
     return v0
@@ -1722,15 +1724,15 @@
     .parameter "line"
 
     .prologue
-    .line 669
+    .line 692
     iget-object v0, p0, Landroid/text/DynamicLayout;->mEllipsizeAt:Landroid/text/TextUtils$TruncateAt;
 
     if-nez v0, :cond_0
 
-    .line 670
+    .line 693
     const/4 v0, 0x0
 
-    .line 673
+    .line 696
     :goto_0
     return v0
 
@@ -1751,15 +1753,15 @@
     .parameter "line"
 
     .prologue
-    .line 660
+    .line 683
     iget-object v0, p0, Landroid/text/DynamicLayout;->mEllipsizeAt:Landroid/text/TextUtils$TruncateAt;
 
     if-nez v0, :cond_0
 
-    .line 661
+    .line 684
     const/4 v0, 0x0
 
-    .line 664
+    .line 687
     :goto_0
     return v0
 
@@ -1779,8 +1781,18 @@
     .locals 1
 
     .prologue
-    .line 609
+    .line 632
     iget v0, p0, Landroid/text/DynamicLayout;->mEllipsizedWidth:I
+
+    return v0
+.end method
+
+.method public getIndexFirstChangedBlock()I
+    .locals 1
+
+    .prologue
+    .line 575
+    iget v0, p0, Landroid/text/DynamicLayout;->mIndexFirstChangedBlock:I
 
     return v0
 .end method
@@ -1792,7 +1804,7 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 584
+    .line 607
     iget-object v1, p0, Landroid/text/DynamicLayout;->mInts:Landroid/text/PackedIntVector;
 
     invoke-virtual {v1, p1, v0}, Landroid/text/PackedIntVector;->getValue(II)I
@@ -1815,7 +1827,7 @@
     .locals 1
 
     .prologue
-    .line 564
+    .line 587
     iget-object v0, p0, Landroid/text/DynamicLayout;->mInts:Landroid/text/PackedIntVector;
 
     invoke-virtual {v0}, Landroid/text/PackedIntVector;->size()I
@@ -1832,7 +1844,7 @@
     .parameter "line"
 
     .prologue
-    .line 574
+    .line 597
     iget-object v0, p0, Landroid/text/DynamicLayout;->mInts:Landroid/text/PackedIntVector;
 
     const/4 v1, 0x2
@@ -1849,7 +1861,7 @@
     .parameter "line"
 
     .prologue
-    .line 594
+    .line 617
     iget-object v0, p0, Landroid/text/DynamicLayout;->mObjects:Landroid/text/PackedObjectVector;
 
     const/4 v1, 0x0
@@ -1868,7 +1880,7 @@
     .parameter "line"
 
     .prologue
-    .line 579
+    .line 602
     iget-object v0, p0, Landroid/text/DynamicLayout;->mInts:Landroid/text/PackedIntVector;
 
     const/4 v1, 0x0
@@ -1889,7 +1901,7 @@
     .parameter "line"
 
     .prologue
-    .line 569
+    .line 592
     iget-object v0, p0, Landroid/text/DynamicLayout;->mInts:Landroid/text/PackedIntVector;
 
     const/4 v1, 0x1
@@ -1905,7 +1917,7 @@
     .locals 1
 
     .prologue
-    .line 559
+    .line 568
     iget v0, p0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
     return v0
@@ -1916,7 +1928,7 @@
     .parameter "line"
 
     .prologue
-    .line 589
+    .line 612
     iget-object v0, p0, Landroid/text/DynamicLayout;->mInts:Landroid/text/PackedIntVector;
 
     const/4 v1, 0x0
@@ -1934,7 +1946,7 @@
     .locals 1
 
     .prologue
-    .line 599
+    .line 622
     iget v0, p0, Landroid/text/DynamicLayout;->mTopPadding:I
 
     return v0
@@ -1949,43 +1961,55 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 534
+    .line 543
     array-length v0, p1
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    .line 535
+    .line 544
     array-length v0, p2
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
-    .line 536
+    .line 545
     iget-object v0, p0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
     array-length v1, p1
 
     invoke-static {p1, v2, v0, v2, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 537
+    .line 546
     iget-object v0, p0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
     array-length v1, p2
 
     invoke-static {p2, v2, v0, v2, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 538
+    .line 547
     iput p3, p0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
-    .line 539
+    .line 548
+    return-void
+.end method
+
+.method public setIndexFirstChangedBlock(I)V
+    .locals 0
+    .parameter "i"
+
+    .prologue
+    .line 582
+    iput p1, p0, Landroid/text/DynamicLayout;->mIndexFirstChangedBlock:I
+
+    .line 583
     return-void
 .end method
 
 .method updateBlocks(III)V
-    .locals 24
+    .locals 25
     .parameter "startLine"
     .parameter "endLine"
     .parameter "newLineCount"
@@ -1996,14 +2020,14 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    if-nez v19, :cond_1
+    if-nez v20, :cond_1
 
     .line 444
     invoke-direct/range {p0 .. p0}, Landroid/text/DynamicLayout;->createBlocks()V
 
-    .line 527
+    .line 536
     :cond_0
     :goto_0
     return-void
@@ -2026,9 +2050,9 @@
 
     iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
-    move/from16 v19, v0
+    move/from16 v20, v0
 
-    move/from16 v0, v19
+    move/from16 v0, v20
 
     if-ge v12, v0, :cond_2
 
@@ -2037,11 +2061,11 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    aget v19, v19, v12
+    aget v20, v20, v12
 
-    move/from16 v0, v19
+    move/from16 v0, v20
 
     move/from16 v1, p1
 
@@ -2059,9 +2083,9 @@
 
     iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
-    move/from16 v19, v0
+    move/from16 v20, v0
 
-    move/from16 v0, v19
+    move/from16 v0, v20
 
     if-ge v12, v0, :cond_3
 
@@ -2070,11 +2094,11 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    aget v19, v19, v12
+    aget v20, v20, v12
 
-    move/from16 v0, v19
+    move/from16 v0, v20
 
     move/from16 v1, p2
 
@@ -2089,20 +2113,20 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    aget v14, v19, v13
+    aget v14, v20, v13
 
     .line 464
     .local v14, lastBlockEndLine:I
     if-nez v11, :cond_9
 
-    const/16 v19, 0x0
+    const/16 v20, 0x0
 
     :goto_3
     move/from16 v0, p1
 
-    move/from16 v1, v19
+    move/from16 v1, v20
 
     if-le v0, v1, :cond_a
 
@@ -2122,13 +2146,13 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    aget v19, v19, v13
+    aget v20, v20, v13
 
     move/from16 v0, p2
 
-    move/from16 v1, v19
+    move/from16 v1, v20
 
     if-ge v0, v1, :cond_c
 
@@ -2137,78 +2161,78 @@
     .line 469
     .local v8, createBlockAfter:Z
     :goto_6
-    const/16 v17, 0x0
+    const/16 v18, 0x0
 
     .line 470
-    .local v17, numAddedBlocks:I
+    .local v18, numAddedBlocks:I
     if-eqz v9, :cond_4
 
-    add-int/lit8 v17, v17, 0x1
+    add-int/lit8 v18, v18, 0x1
 
     .line 471
     :cond_4
     if-eqz v7, :cond_5
 
-    add-int/lit8 v17, v17, 0x1
+    add-int/lit8 v18, v18, 0x1
 
     .line 472
     :cond_5
     if-eqz v8, :cond_6
 
-    add-int/lit8 v17, v17, 0x1
+    add-int/lit8 v18, v18, 0x1
 
     .line 474
     :cond_6
-    sub-int v19, v13, v11
+    sub-int v20, v13, v11
 
-    add-int/lit8 v18, v19, 0x1
+    add-int/lit8 v19, v20, 0x1
 
     .line 475
-    .local v18, numRemovedBlocks:I
+    .local v19, numRemovedBlocks:I
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
-    move/from16 v19, v0
+    move/from16 v20, v0
 
-    add-int v19, v19, v17
+    add-int v20, v20, v18
 
-    sub-int v15, v19, v18
+    sub-int v16, v20, v19
 
     .line 477
-    .local v15, newNumberOfBlocks:I
-    if-nez v15, :cond_d
+    .local v16, newNumberOfBlocks:I
+    if-nez v16, :cond_d
 
     .line 479
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
-
-    const/16 v20, 0x0
+    move-object/from16 v20, v0
 
     const/16 v21, 0x0
 
-    aput v21, v19, v20
+    const/16 v22, 0x0
+
+    aput v22, v20, v21
 
     .line 480
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    const/16 v20, 0x0
+    const/16 v21, 0x0
 
-    const/16 v21, -0x1
+    const/16 v22, -0x1
 
-    aput v21, v19, v20
+    aput v22, v20, v21
 
     .line 481
-    const/16 v19, 0x1
+    const/16 v20, 0x1
 
-    move/from16 v0, v19
+    move/from16 v0, v20
 
     move-object/from16 v1, p0
 
@@ -2221,9 +2245,9 @@
     .end local v8           #createBlockAfter:Z
     .end local v9           #createBlockBefore:Z
     .end local v14           #lastBlockEndLine:I
-    .end local v15           #newNumberOfBlocks:I
-    .end local v17           #numAddedBlocks:I
-    .end local v18           #numRemovedBlocks:I
+    .end local v16           #newNumberOfBlocks:I
+    .end local v18           #numAddedBlocks:I
+    .end local v19           #numRemovedBlocks:I
     :cond_7
     add-int/lit8 v12, v12, 0x1
 
@@ -2242,13 +2266,13 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    add-int/lit8 v20, v11, -0x1
+    add-int/lit8 v21, v11, -0x1
 
-    aget v19, v19, v20
+    aget v20, v20, v21
 
-    add-int/lit8 v19, v19, 0x1
+    add-int/lit8 v20, v20, 0x1
 
     goto :goto_3
 
@@ -2273,40 +2297,42 @@
 
     .line 485
     .restart local v8       #createBlockAfter:Z
-    .restart local v15       #newNumberOfBlocks:I
-    .restart local v17       #numAddedBlocks:I
-    .restart local v18       #numRemovedBlocks:I
+    .restart local v16       #newNumberOfBlocks:I
+    .restart local v18       #numAddedBlocks:I
+    .restart local v19       #numRemovedBlocks:I
     :cond_d
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
     array-length v0, v0
 
-    move/from16 v19, v0
+    move/from16 v20, v0
 
-    move/from16 v0, v19
+    move/from16 v0, v16
 
-    if-le v15, v0, :cond_e
+    move/from16 v1, v20
+
+    if-le v0, v1, :cond_e
 
     .line 486
-    invoke-static {v15}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
+    invoke-static/range {v16 .. v16}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
 
-    move-result v16
+    move-result v17
 
     .line 487
-    .local v16, newSize:I
-    move/from16 v0, v16
+    .local v17, newSize:I
+    move/from16 v0, v17
 
     new-array v4, v0, [I
 
     .line 488
     .local v4, blockEndLines:[I
-    move/from16 v0, v16
+    move/from16 v0, v17
 
     new-array v6, v0, [I
 
@@ -2316,17 +2342,17 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
-
-    const/16 v20, 0x0
+    move-object/from16 v20, v0
 
     const/16 v21, 0x0
 
-    move-object/from16 v0, v19
+    const/16 v22, 0x0
 
-    move/from16 v1, v20
+    move-object/from16 v0, v20
 
-    move/from16 v2, v21
+    move/from16 v1, v21
+
+    move/from16 v2, v22
 
     invoke-static {v0, v1, v4, v2, v11}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
@@ -2335,17 +2361,17 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
-    move-object/from16 v19, v0
-
-    const/16 v20, 0x0
+    move-object/from16 v20, v0
 
     const/16 v21, 0x0
 
-    move-object/from16 v0, v19
+    const/16 v22, 0x0
 
-    move/from16 v1, v20
+    move-object/from16 v0, v20
 
-    move/from16 v2, v21
+    move/from16 v1, v21
+
+    move/from16 v2, v22
 
     invoke-static {v0, v1, v6, v2, v11}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
@@ -2354,29 +2380,29 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    add-int/lit8 v20, v13, 0x1
+    add-int/lit8 v21, v13, 0x1
 
-    add-int v21, v11, v17
+    add-int v22, v11, v18
 
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
-    move/from16 v22, v0
+    move/from16 v23, v0
 
-    sub-int v22, v22, v13
+    sub-int v23, v23, v13
 
-    add-int/lit8 v22, v22, -0x1
+    add-int/lit8 v23, v23, -0x1
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
-    move/from16 v1, v20
+    move/from16 v1, v21
 
-    move/from16 v2, v21
+    move/from16 v2, v22
 
-    move/from16 v3, v22
+    move/from16 v3, v23
 
     invoke-static {v0, v1, v4, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
@@ -2385,29 +2411,29 @@
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    add-int/lit8 v20, v13, 0x1
+    add-int/lit8 v21, v13, 0x1
 
-    add-int v21, v11, v17
+    add-int v22, v11, v18
 
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
-    move/from16 v22, v0
+    move/from16 v23, v0
 
-    sub-int v22, v22, v13
+    sub-int v23, v23, v13
 
-    add-int/lit8 v22, v22, -0x1
+    add-int/lit8 v23, v23, -0x1
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
-    move/from16 v1, v20
+    move/from16 v1, v21
 
-    move/from16 v2, v21
+    move/from16 v2, v22
 
-    move/from16 v3, v22
+    move/from16 v3, v23
 
     invoke-static {v0, v1, v6, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
@@ -2424,204 +2450,240 @@
     .line 504
     .end local v4           #blockEndLines:[I
     .end local v6           #blockIndices:[I
-    .end local v16           #newSize:I
+    .end local v17           #newSize:I
     :goto_7
-    move-object/from16 v0, p0
+    move/from16 v0, v16
 
-    iput v15, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
+    move-object/from16 v1, p0
 
-    .line 505
-    sub-int v19, p2, p1
-
-    add-int/lit8 v19, v19, 0x1
-
-    sub-int v10, p3, v19
+    iput v0, v1, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
     .line 506
+    sub-int v20, p2, p1
+
+    add-int/lit8 v20, v20, 0x1
+
+    sub-int v10, p3, v20
+
+    .line 507
     .local v10, deltaLines:I
-    add-int v12, v11, v17
+    if-eqz v10, :cond_f
+
+    .line 510
+    add-int v15, v11, v18
+
+    .line 511
+    .local v15, newFirstChangedBlock:I
+    move v12, v15
 
     :goto_8
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
-    move/from16 v19, v0
+    move/from16 v20, v0
 
-    move/from16 v0, v19
+    move/from16 v0, v20
 
-    if-ge v12, v0, :cond_f
-
-    .line 507
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
-
-    move-object/from16 v19, v0
-
-    aget v20, v19, v12
-
-    add-int v20, v20, v10
-
-    aput v20, v19, v12
-
-    .line 506
-    add-int/lit8 v12, v12, 0x1
-
-    goto :goto_8
-
-    .line 498
-    .end local v10           #deltaLines:I
-    :cond_e
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
-
-    move-object/from16 v19, v0
-
-    add-int/lit8 v20, v13, 0x1
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
-
-    move-object/from16 v21, v0
-
-    add-int v22, v11, v17
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
-
-    move/from16 v23, v0
-
-    sub-int v23, v23, v13
-
-    add-int/lit8 v23, v23, -0x1
-
-    invoke-static/range {v19 .. v23}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 500
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
-
-    move-object/from16 v19, v0
-
-    add-int/lit8 v20, v13, 0x1
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
-
-    move-object/from16 v21, v0
-
-    add-int v22, v11, v17
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
-
-    move/from16 v23, v0
-
-    sub-int v23, v23, v13
-
-    add-int/lit8 v23, v23, -0x1
-
-    invoke-static/range {v19 .. v23}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    goto :goto_7
-
-    .line 510
-    .restart local v10       #deltaLines:I
-    :cond_f
-    move v5, v11
-
-    .line 511
-    .local v5, blockIndex:I
-    if-eqz v9, :cond_10
+    if-ge v12, v0, :cond_10
 
     .line 512
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    add-int/lit8 v20, p1, -0x1
+    aget v21, v20, v12
 
-    aput v20, v19, v5
+    add-int v21, v21, v10
 
-    .line 513
+    aput v21, v20, v12
+
+    .line 511
+    add-int/lit8 v12, v12, 0x1
+
+    goto :goto_8
+
+    .line 498
+    .end local v10           #deltaLines:I
+    .end local v15           #newFirstChangedBlock:I
+    :cond_e
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
+
+    move-object/from16 v20, v0
+
+    add-int/lit8 v21, v13, 0x1
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
+
+    move-object/from16 v22, v0
+
+    add-int v23, v11, v18
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
+
+    move/from16 v24, v0
+
+    sub-int v24, v24, v13
+
+    add-int/lit8 v24, v24, -0x1
+
+    invoke-static/range {v20 .. v24}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 500
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    const/16 v20, -0x1
+    add-int/lit8 v21, v13, 0x1
 
-    aput v20, v19, v5
+    move-object/from16 v0, p0
 
-    .line 514
-    add-int/lit8 v5, v5, 0x1
+    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
+
+    move-object/from16 v22, v0
+
+    add-int v23, v11, v18
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
+
+    move/from16 v24, v0
+
+    sub-int v24, v24, v13
+
+    add-int/lit8 v24, v24, -0x1
+
+    invoke-static/range {v20 .. v24}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    goto :goto_7
+
+    .line 515
+    .restart local v10       #deltaLines:I
+    :cond_f
+    move-object/from16 v0, p0
+
+    iget v15, v0, Landroid/text/DynamicLayout;->mNumberOfBlocks:I
 
     .line 517
+    .restart local v15       #newFirstChangedBlock:I
     :cond_10
-    if-eqz v7, :cond_11
-
-    .line 518
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
+    iget v0, v0, Landroid/text/DynamicLayout;->mIndexFirstChangedBlock:I
 
-    move-object/from16 v19, v0
+    move/from16 v20, v0
 
-    add-int v20, p1, p3
+    move/from16 v0, v20
 
-    add-int/lit8 v20, v20, -0x1
+    invoke-static {v0, v15}, Ljava/lang/Math;->min(II)I
 
-    aput v20, v19, v5
+    move-result v20
+
+    move/from16 v0, v20
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Landroid/text/DynamicLayout;->mIndexFirstChangedBlock:I
 
     .line 519
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
-
-    move-object/from16 v19, v0
-
-    const/16 v20, -0x1
-
-    aput v20, v19, v5
+    move v5, v11
 
     .line 520
-    add-int/lit8 v5, v5, 0x1
+    .local v5, blockIndex:I
+    if-eqz v9, :cond_11
 
-    .line 523
-    :cond_11
-    if-eqz v8, :cond_0
-
-    .line 524
+    .line 521
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    add-int v20, v14, v10
+    add-int/lit8 v21, p1, -0x1
 
-    aput v20, v19, v5
+    aput v21, v20, v5
 
-    .line 525
+    .line 522
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    const/16 v20, -0x1
+    const/16 v21, -0x1
 
-    aput v20, v19, v5
+    aput v21, v20, v5
+
+    .line 523
+    add-int/lit8 v5, v5, 0x1
+
+    .line 526
+    :cond_11
+    if-eqz v7, :cond_12
+
+    .line 527
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
+
+    move-object/from16 v20, v0
+
+    add-int v21, p1, p3
+
+    add-int/lit8 v21, v21, -0x1
+
+    aput v21, v20, v5
+
+    .line 528
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
+
+    move-object/from16 v20, v0
+
+    const/16 v21, -0x1
+
+    aput v21, v20, v5
+
+    .line 529
+    add-int/lit8 v5, v5, 0x1
+
+    .line 532
+    :cond_12
+    if-eqz v8, :cond_0
+
+    .line 533
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockEndLines:[I
+
+    move-object/from16 v20, v0
+
+    add-int v21, v14, v10
+
+    aput v21, v20, v5
+
+    .line 534
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/text/DynamicLayout;->mBlockIndices:[I
+
+    move-object/from16 v20, v0
+
+    const/16 v21, -0x1
+
+    aput v21, v20, v5
 
     goto/16 :goto_0
 .end method

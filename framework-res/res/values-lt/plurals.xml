@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Liko %d band. Paskui SIM kortelė bus užrakinta.</item>
+        <item quantity="one">Liko %d band. Paskui SIM kortelė bus užrakinta.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">Prieš %d sek.</item>
         <item quantity="one">Prieš 1 sek.</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d iš %2$d</item>
         <item quantity="one">1 atitiktis</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Band. dar po %d s</item>
+        <item quantity="one">Band. dar po 1 s</item>
     </plurals>
 </resources>

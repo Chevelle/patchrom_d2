@@ -143,117 +143,134 @@
 .end method
 
 .method private fillWindow(I)V
-    .locals 4
+    .locals 5
     .parameter "requiredPos"
 
     .prologue
-    const/4 v3, 0x0
-
     .line 139
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteCursor;->getDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->getPath()Ljava/lang/String;
+    invoke-virtual {v2}, Landroid/database/sqlite/SQLiteDatabase;->getPath()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {p0, v1}, Landroid/database/sqlite/SQLiteCursor;->clearOrCreateWindow(Ljava/lang/String;)V
-
-    .line 141
-    iget v1, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
-
-    const/4 v2, -0x1
-
-    if-ne v1, v2, :cond_1
+    invoke-virtual {p0, v2}, Landroid/database/sqlite/SQLiteCursor;->clearOrCreateWindow(Ljava/lang/String;)V
 
     .line 142
-    invoke-static {p1, v3}, Landroid/database/DatabaseUtils;->cursorPickFillWindowStartPosition(II)I
+    :try_start_0
+    iget v2, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
 
-    move-result v0
+    const/4 v3, -0x1
+
+    if-ne v2, v3, :cond_1
 
     .line 143
-    .local v0, startPos:I
-    iget-object v1, p0, Landroid/database/sqlite/SQLiteCursor;->mQuery:Landroid/database/sqlite/SQLiteQuery;
+    const/4 v2, 0x0
 
-    iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
-
-    const/4 v3, 0x1
-
-    invoke-virtual {v1, v2, v0, p1, v3}, Landroid/database/sqlite/SQLiteQuery;->fillWindow(Landroid/database/CursorWindow;IIZ)I
+    invoke-static {p1, v2}, Landroid/database/DatabaseUtils;->cursorPickFillWindowStartPosition(II)I
 
     move-result v1
-
-    iput v1, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
 
     .line 144
-    iget-object v1, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
+    .local v1, startPos:I
+    iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mQuery:Landroid/database/sqlite/SQLiteQuery;
 
-    invoke-virtual {v1}, Landroid/database/CursorWindow;->getNumRows()I
+    iget-object v3, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
 
-    move-result v1
+    const/4 v4, 0x1
 
-    iput v1, p0, Landroid/database/sqlite/SQLiteCursor;->mCursorWindowCapacity:I
+    invoke-virtual {v2, v3, v1, p1, v4}, Landroid/database/sqlite/SQLiteQuery;->fillWindow(Landroid/database/CursorWindow;IIZ)I
+
+    move-result v2
+
+    iput v2, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
 
     .line 145
-    const-string v1, "SQLiteCursor"
+    iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
 
-    const/4 v2, 0x3
+    invoke-virtual {v2}, Landroid/database/CursorWindow;->getNumRows()I
 
-    invoke-static {v1, v2}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+    move-result v2
 
-    move-result v1
-
-    if-eqz v1, :cond_0
+    iput v2, p0, Landroid/database/sqlite/SQLiteCursor;->mCursorWindowCapacity:I
 
     .line 146
-    const-string v1, "SQLiteCursor"
+    const-string v2, "SQLiteCursor"
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    const/4 v3, 0x3
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-static {v2, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
 
-    const-string/jumbo v3, "received count(*) from native_fill_window: "
+    move-result v2
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    if-eqz v2, :cond_0
 
-    move-result-object v2
+    .line 147
+    const-string v2, "SQLiteCursor"
 
-    iget v3, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v2
+    const-string/jumbo v4, "received count(*) from native_fill_window: "
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    iget v4, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
 
-    .line 153
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 162
     :cond_0
     :goto_0
     return-void
 
-    .line 149
-    .end local v0           #startPos:I
+    .line 150
+    .end local v1           #startPos:I
     :cond_1
-    iget v1, p0, Landroid/database/sqlite/SQLiteCursor;->mCursorWindowCapacity:I
+    iget v2, p0, Landroid/database/sqlite/SQLiteCursor;->mCursorWindowCapacity:I
 
-    invoke-static {p1, v1}, Landroid/database/DatabaseUtils;->cursorPickFillWindowStartPosition(II)I
+    invoke-static {p1, v2}, Landroid/database/DatabaseUtils;->cursorPickFillWindowStartPosition(II)I
 
-    move-result v0
+    move-result v1
 
-    .line 151
-    .restart local v0       #startPos:I
-    iget-object v1, p0, Landroid/database/sqlite/SQLiteCursor;->mQuery:Landroid/database/sqlite/SQLiteQuery;
+    .line 152
+    .restart local v1       #startPos:I
+    iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mQuery:Landroid/database/sqlite/SQLiteQuery;
 
-    iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
+    iget-object v3, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
 
-    invoke-virtual {v1, v2, v0, p1, v3}, Landroid/database/sqlite/SQLiteQuery;->fillWindow(Landroid/database/CursorWindow;IIZ)I
+    const/4 v4, 0x0
+
+    invoke-virtual {v2, v3, v1, p1, v4}, Landroid/database/sqlite/SQLiteQuery;->fillWindow(Landroid/database/CursorWindow;IIZ)I
+    :try_end_0
+    .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
+
+    .line 154
+    .end local v1           #startPos:I
+    :catch_0
+    move-exception v0
+
+    .line 159
+    .local v0, ex:Ljava/lang/RuntimeException;
+    invoke-virtual {p0}, Landroid/database/sqlite/SQLiteCursor;->closeWindow()V
+
+    .line 160
+    throw v0
 .end method
 
 
@@ -262,30 +279,30 @@
     .locals 1
 
     .prologue
-    .line 197
+    .line 206
     invoke-super {p0}, Landroid/database/AbstractWindowedCursor;->close()V
 
-    .line 198
+    .line 207
     monitor-enter p0
 
-    .line 199
+    .line 208
     :try_start_0
     iget-object v0, p0, Landroid/database/sqlite/SQLiteCursor;->mQuery:Landroid/database/sqlite/SQLiteQuery;
 
     invoke-virtual {v0}, Landroid/database/sqlite/SQLiteQuery;->close()V
 
-    .line 200
+    .line 209
     iget-object v0, p0, Landroid/database/sqlite/SQLiteCursor;->mDriver:Landroid/database/sqlite/SQLiteCursorDriver;
 
     invoke-interface {v0}, Landroid/database/sqlite/SQLiteCursorDriver;->cursorClosed()V
 
-    .line 201
+    .line 210
     monitor-exit p0
 
-    .line 202
+    .line 211
     return-void
 
-    .line 201
+    .line 210
     :catchall_0
     move-exception v0
 
@@ -300,15 +317,15 @@
     .locals 1
 
     .prologue
-    .line 191
+    .line 200
     invoke-super {p0}, Landroid/database/AbstractWindowedCursor;->deactivate()V
 
-    .line 192
+    .line 201
     iget-object v0, p0, Landroid/database/sqlite/SQLiteCursor;->mDriver:Landroid/database/sqlite/SQLiteCursorDriver;
 
     invoke-interface {v0}, Landroid/database/sqlite/SQLiteCursorDriver;->cursorDeactivated()V
 
-    .line 193
+    .line 202
     return-void
 .end method
 
@@ -318,31 +335,31 @@
     .prologue
     const/16 v2, 0x3e8
 
-    .line 253
+    .line 262
     :try_start_0
     iget-object v3, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
 
     if-eqz v3, :cond_2
 
-    .line 254
+    .line 263
     iget-object v3, p0, Landroid/database/sqlite/SQLiteCursor;->mStackTrace:Ljava/lang/Throwable;
 
     if-eqz v3, :cond_1
 
-    .line 255
+    .line 264
     iget-object v3, p0, Landroid/database/sqlite/SQLiteCursor;->mQuery:Landroid/database/sqlite/SQLiteQuery;
 
     invoke-virtual {v3}, Landroid/database/sqlite/SQLiteQuery;->getSql()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 256
+    .line 265
     .local v1, sql:Ljava/lang/String;
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
     move-result v0
 
-    .line 257
+    .line 266
     .local v0, len:I
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -410,21 +427,21 @@
 
     invoke-static {v2, v3}, Landroid/os/StrictMode;->onSqliteObjectLeaked(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 264
+    .line 273
     .end local v1           #sql:Ljava/lang/String;
     :cond_1
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteCursor;->close()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 267
+    .line 276
     :cond_2
     invoke-super {p0}, Landroid/database/AbstractWindowedCursor;->finalize()V
 
-    .line 269
+    .line 278
     return-void
 
-    .line 267
+    .line 276
     :catchall_0
     move-exception v2
 
@@ -440,19 +457,19 @@
     .prologue
     const/4 v6, -0x1
 
-    .line 158
+    .line 167
     iget-object v7, p0, Landroid/database/sqlite/SQLiteCursor;->mColumnNameMap:Ljava/util/Map;
 
     if-nez v7, :cond_1
 
-    .line 159
+    .line 168
     iget-object v1, p0, Landroid/database/sqlite/SQLiteCursor;->mColumns:[Ljava/lang/String;
 
-    .line 160
+    .line 169
     .local v1, columns:[Ljava/lang/String;
     array-length v0, v1
 
-    .line 161
+    .line 170
     .local v0, columnCount:I
     new-instance v4, Ljava/util/HashMap;
 
@@ -460,7 +477,7 @@
 
     invoke-direct {v4, v0, v7}, Ljava/util/HashMap;-><init>(IF)V
 
-    .line 162
+    .line 171
     .local v4, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/Integer;>;"
     const/4 v3, 0x0
 
@@ -468,7 +485,7 @@
     :goto_0
     if-ge v3, v0, :cond_0
 
-    .line 163
+    .line 172
     aget-object v7, v1, v3
 
     invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -477,16 +494,16 @@
 
     invoke-virtual {v4, v7, v8}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 162
+    .line 171
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 165
+    .line 174
     :cond_0
     iput-object v4, p0, Landroid/database/sqlite/SQLiteCursor;->mColumnNameMap:Ljava/util/Map;
 
-    .line 169
+    .line 178
     .end local v0           #columnCount:I
     .end local v1           #columns:[Ljava/lang/String;
     .end local v3           #i:I
@@ -498,16 +515,16 @@
 
     move-result v5
 
-    .line 170
+    .line 179
     .local v5, periodIndex:I
     if-eq v5, v6, :cond_2
 
-    .line 171
+    .line 180
     new-instance v2, Ljava/lang/Exception;
 
     invoke-direct {v2}, Ljava/lang/Exception;-><init>()V
 
-    .line 172
+    .line 181
     .local v2, e:Ljava/lang/Exception;
     const-string v7, "SQLiteCursor"
 
@@ -531,14 +548,14 @@
 
     invoke-static {v7, v8, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 173
+    .line 182
     add-int/lit8 v7, v5, 0x1
 
     invoke-virtual {p1, v7}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object p1
 
-    .line 176
+    .line 185
     .end local v2           #e:Ljava/lang/Exception;
     :cond_2
     iget-object v7, p0, Landroid/database/sqlite/SQLiteCursor;->mColumnNameMap:Ljava/util/Map;
@@ -549,16 +566,16 @@
 
     check-cast v3, Ljava/lang/Integer;
 
-    .line 177
+    .line 186
     .local v3, i:Ljava/lang/Integer;
     if-eqz v3, :cond_3
 
-    .line 178
+    .line 187
     invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
 
     move-result v6
 
-    .line 180
+    .line 189
     :cond_3
     return v6
 .end method
@@ -567,7 +584,7 @@
     .locals 1
 
     .prologue
-    .line 186
+    .line 195
     iget-object v0, p0, Landroid/database/sqlite/SQLiteCursor;->mColumns:[Ljava/lang/String;
 
     return-object v0
@@ -662,22 +679,22 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 206
+    .line 215
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteCursor;->isClosed()Z
 
     move-result v2
 
     if-eqz v2, :cond_0
 
-    .line 229
+    .line 238
     :goto_0
     return v1
 
-    .line 210
+    .line 219
     :cond_0
     monitor-enter p0
 
-    .line 211
+    .line 220
     :try_start_0
     iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mQuery:Landroid/database/sqlite/SQLiteQuery;
 
@@ -691,12 +708,12 @@
 
     if-nez v2, :cond_1
 
-    .line 212
+    .line 221
     monitor-exit p0
 
     goto :goto_0
 
-    .line 222
+    .line 231
     :catchall_0
     move-exception v1
 
@@ -706,40 +723,40 @@
 
     throw v1
 
-    .line 215
+    .line 224
     :cond_1
     :try_start_1
     iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
 
     if-eqz v2, :cond_2
 
-    .line 216
+    .line 225
     iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mWindow:Landroid/database/CursorWindow;
 
     invoke-virtual {v2}, Landroid/database/CursorWindow;->clear()V
 
-    .line 218
+    .line 227
     :cond_2
     const/4 v2, -0x1
 
     iput v2, p0, Landroid/database/sqlite/SQLiteCursor;->mPos:I
 
-    .line 219
+    .line 228
     const/4 v2, -0x1
 
     iput v2, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
 
-    .line 221
+    .line 230
     iget-object v2, p0, Landroid/database/sqlite/SQLiteCursor;->mDriver:Landroid/database/sqlite/SQLiteCursorDriver;
 
     invoke-interface {v2, p0}, Landroid/database/sqlite/SQLiteCursorDriver;->cursorRequeried(Landroid/database/Cursor;)V
 
-    .line 222
+    .line 231
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 225
+    .line 234
     :try_start_2
     invoke-super {p0}, Landroid/database/AbstractWindowedCursor;->requery()Z
     :try_end_2
@@ -749,11 +766,11 @@
 
     goto :goto_0
 
-    .line 226
+    .line 235
     :catch_0
     move-exception v0
 
-    .line 228
+    .line 237
     .local v0, e:Ljava/lang/IllegalStateException;
     const-string v2, "SQLiteCursor"
 
@@ -789,12 +806,12 @@
     .parameter "selectionArgs"
 
     .prologue
-    .line 243
+    .line 252
     iget-object v0, p0, Landroid/database/sqlite/SQLiteCursor;->mDriver:Landroid/database/sqlite/SQLiteCursorDriver;
 
     invoke-interface {v0, p1}, Landroid/database/sqlite/SQLiteCursorDriver;->setBindArguments([Ljava/lang/String;)V
 
-    .line 244
+    .line 253
     return-void
 .end method
 
@@ -803,14 +820,14 @@
     .parameter "window"
 
     .prologue
-    .line 235
+    .line 244
     invoke-super {p0, p1}, Landroid/database/AbstractWindowedCursor;->setWindow(Landroid/database/CursorWindow;)V
 
-    .line 236
+    .line 245
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/database/sqlite/SQLiteCursor;->mCount:I
 
-    .line 237
+    .line 246
     return-void
 .end method

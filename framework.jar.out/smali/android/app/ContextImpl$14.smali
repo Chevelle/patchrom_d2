@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 368
+    .line 395
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -28,14 +28,24 @@
 
 # virtual methods
 .method public createService(Landroid/app/ContextImpl;)Ljava/lang/Object;
-    .locals 1
+    .locals 3
     .parameter "ctx"
 
     .prologue
-    .line 370
-    new-instance v0, Landroid/nfc/NfcManager;
+    .line 397
+    new-instance v0, Landroid/app/DownloadManager;
 
-    invoke-direct {v0, p1}, Landroid/nfc/NfcManager;-><init>(Landroid/content/Context;)V
+    invoke-virtual {p1}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v1
+
+    invoke-virtual {p1}, Landroid/app/ContextImpl;->getPackageName()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/app/Injector$ContextImplHook;->createDownloadManager(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
 
     return-object v0
 .end method

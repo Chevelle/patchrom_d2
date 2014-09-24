@@ -25,10 +25,10 @@
     .locals 0
 
     .prologue
-    .line 534
+    .line 537
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 535
+    .line 538
     return-void
 .end method
 
@@ -37,24 +37,24 @@
     .parameter "in"
 
     .prologue
-    .line 540
+    .line 543
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 541
+    .line 544
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->durationMillis:J
 
-    .line 542
+    .line 545
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->serviceDetails:Ljava/lang/String;
 
-    .line 543
+    .line 546
     return-void
 .end method
 
@@ -66,7 +66,7 @@
     .parameter "prefix"
 
     .prologue
-    .line 557
+    .line 560
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -93,7 +93,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 558
+    .line 561
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -120,7 +120,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 559
+    .line 562
     return-void
 .end method
 
@@ -130,16 +130,16 @@
     .parameter "flags"
 
     .prologue
-    .line 549
+    .line 552
     iget-wide v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->durationMillis:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 550
+    .line 553
     iget-object v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->serviceDetails:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 551
+    .line 554
     return-void
 .end method

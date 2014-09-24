@@ -37,13 +37,6 @@
         <item>Ander</item>
         <item>Gepasmaak</item>
     </string-array>
-    <integer-array name="maps_starting_lat_lng">
-        <item>-26183333</item>
-        <item>28050000</item>
-    </integer-array>
-    <integer-array name="maps_starting_zoom">
-        <item>5</item>
-    </integer-array>
     <string-array name="imAddressTypes">
         <item>Tuis</item>
         <item>Werk</item>

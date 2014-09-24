@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 400
+    .line 398
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,16 +41,14 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/widget/AbsSpinner$SavedState;
-    .locals 2
+    .locals 1
     .parameter "in"
 
     .prologue
-    .line 402
+    .line 400
     new-instance v0, Landroid/widget/AbsSpinner$SavedState;
 
-    const/4 v1, 0x0
-
-    invoke-direct {v0, p1, v1}, Landroid/widget/AbsSpinner$SavedState;-><init>(Landroid/os/Parcel;Landroid/widget/AbsSpinner$1;)V
+    invoke-direct {v0, p1}, Landroid/widget/AbsSpinner$SavedState;-><init>(Landroid/os/Parcel;)V
 
     return-object v0
 .end method
@@ -60,7 +58,7 @@
     .parameter "x0"
 
     .prologue
-    .line 400
+    .line 398
     invoke-virtual {p0, p1}, Landroid/widget/AbsSpinner$SavedState$1;->createFromParcel(Landroid/os/Parcel;)Landroid/widget/AbsSpinner$SavedState;
 
     move-result-object v0
@@ -73,7 +71,7 @@
     .parameter "size"
 
     .prologue
-    .line 406
+    .line 404
     new-array v0, p1, [Landroid/widget/AbsSpinner$SavedState;
 
     return-object v0
@@ -84,7 +82,7 @@
     .parameter "x0"
 
     .prologue
-    .line 400
+    .line 398
     invoke-virtual {p0, p1}, Landroid/widget/AbsSpinner$SavedState$1;->newArray(I)[Landroid/widget/AbsSpinner$SavedState;
 
     move-result-object v0

@@ -1,15 +1,15 @@
 #
-# Makefile for SCH-i535
+# Makefile for SCH-I535
 #
 
 # The original zip file, MUST be specified by each product
 local-zip-file     := stockrom.zip
 
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
-local-out-zip-file := miui_$(PORT_PRODUCT)_$(BUILD_NUMBER)_4.2.zip
+local-out-zip-file := miui_$(PORT_PRODUCT)_$(BUILD_NUMBER)_4.4.zip
 
 # the location for local-ota to save target-file
-local-previous-target-dir := ~/workspace/ota_base/d2vzw
+local-previous-target-dir := ~/workspace/ota_base/4.4/d2vzw
 
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps :=
@@ -17,27 +17,23 @@ local-modified-apps :=
 local-modified-jars :=
 
 # All apks from MIUI
-local-miui-removed-apps := 	MediaProvider \
-				BaiduNetworkLocation \
-				Userbook \
+local-miui-removed-apps := 	BaiduNetworkLocation \
 				VoiceAssist \
 				GameCenter \
 				GameCenterSDKService \
-				SuperMarket \
-				AlipayMsp \
-				ota-miui-MiShop \
-				ota-partner-XunfeiSpeechService3
+				O2O
 
-local-miui-modified-apps :=	MiuiSystemUI \
-				Settings \
-				SettingsProvider \
-				Phone \
-				Mms
+local-miui-removed-priv-apps :=
+
+local-miui-modified-apps :=	SettingsProvider
+
+local-modified-priv-apps :=	
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
 local-density := XHDPI
 
+# Config for files to include from original zip
 include phoneapps.mk
 
 # To include the local targets before and after zip the final ZIP file, 
@@ -57,7 +53,6 @@ updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
 pre_install_data_packages := out/pre_install_apk_pkgname.txt
 local-pre-zip-misc:
 	cp other/build.prop $(ZIP_DIR)/system/build.prop
-	cp other/system_fonts.xml $(ZIP_DIR)/system/etc/system_fonts.xml
 	cp other/backuptool.functions $(ZIP_DIR)/system/bin/backuptool.functions
 	cp other/backuptool.sh $(ZIP_DIR)/system/bin/backuptool.sh
 # To replace spn
@@ -65,6 +60,7 @@ local-pre-zip-misc:
 # To replace kernel
 	cp other/boot.img $(ZIP_DIR)/boot.img
 	cp other/installd $(ZIP_DIR)/system/bin/installd
+	cp other/lbesec $(ZIP_DIR)/system/xbin/lbesec
 	cp other/apns-conf.xml $(ZIP_DIR)/system/etc/apns-conf.xml
 # To replace FM icon
 #	cp -rf other/miui_mod_icons/* $(ZIP_DIR)/system/media/theme/miui_mod_icons/
@@ -73,21 +69,3 @@ local-pre-zip-misc:
 	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/miui/apps/de.mangelow.network-1.apk
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
 	rm -rf $(ZIP_DIR)/system/tts/lang_pico/*.bin
-
-out/framework2.jar : out/framework.jar
-
-%.phone : out/%.jar
-	@echo push -- to --- phone
-	adb remount
-	adb push $< /system/framework
-	adb shell chmod 644 /system/framework/$*.jar
-	#adb shell stop
-	#adb shell start
-	#adb reboot
-
-%.sign-plat : out/%
-	java -jar $(TOOL_DIR)/signapk.jar $(PORT_ROOT)/build/security/platform.x509.pem $(PORT_ROOT)/build/security/platform.pk8  $< $<.signed
-	@echo push -- to --- phone
-	adb remount
-	adb push $<.signed /system/app/$*
-	adb shell chmod 644 /system/app/$*

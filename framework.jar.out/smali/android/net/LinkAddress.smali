@@ -20,9 +20,9 @@
 
 
 # instance fields
-.field private final address:Ljava/net/InetAddress;
+.field private address:Ljava/net/InetAddress;
 
-.field private final prefixLength:I
+.field private prefixLength:I
 
 
 # direct methods
@@ -30,7 +30,7 @@
     .locals 1
 
     .prologue
-    .line 129
+    .line 158
     new-instance v0, Landroid/net/LinkAddress$1;
 
     invoke-direct {v0}, Landroid/net/LinkAddress$1;-><init>()V
@@ -40,15 +40,168 @@
     return-void
 .end method
 
+.method public constructor <init>(Ljava/lang/String;)V
+    .locals 6
+    .parameter "address"
+
+    .prologue
+    .line 67
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 68
+    const/4 v0, 0x0
+
+    .line 69
+    .local v0, inetAddress:Ljava/net/InetAddress;
+    const/4 v2, -0x1
+
+    .line 71
+    .local v2, prefixLength:I
+    :try_start_0
+    const-string v3, "/"
+
+    const/4 v4, 0x2
+
+    invoke-virtual {p1, v3, v4}, Ljava/lang/String;->split(Ljava/lang/String;I)[Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 72
+    .local v1, pieces:[Ljava/lang/String;
+    const/4 v3, 0x1
+
+    aget-object v3, v1, v3
+
+    invoke-static {v3}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v2
+
+    .line 73
+    const/4 v3, 0x0
+
+    aget-object v3, v1, v3
+
+    invoke-static {v3}, Ljava/net/InetAddress;->parseNumericAddress(Ljava/lang/String;)Ljava/net/InetAddress;
+    :try_end_0
+    .catch Ljava/lang/NullPointerException; {:try_start_0 .. :try_end_0} :catch_3
+    .catch Ljava/lang/ArrayIndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v0
+
+    .line 80
+    .end local v1           #pieces:[Ljava/lang/String;
+    :goto_0
+    if-eqz v0, :cond_0
+
+    const/4 v3, -0x1
+
+    if-ne v2, v3, :cond_1
+
+    .line 81
+    :cond_0
+    new-instance v3, Ljava/lang/IllegalArgumentException;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "Bad LinkAddress params "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v3
+
+    .line 84
+    :cond_1
+    invoke-direct {p0, v0, v2}, Landroid/net/LinkAddress;->init(Ljava/net/InetAddress;I)V
+
+    .line 85
+    return-void
+
+    .line 77
+    :catch_0
+    move-exception v3
+
+    goto :goto_0
+
+    .line 76
+    :catch_1
+    move-exception v3
+
+    goto :goto_0
+
+    .line 75
+    :catch_2
+    move-exception v3
+
+    goto :goto_0
+
+    .line 74
+    :catch_3
+    move-exception v3
+
+    goto :goto_0
+.end method
+
 .method public constructor <init>(Ljava/net/InetAddress;I)V
+    .locals 0
+    .parameter "address"
+    .parameter "prefixLength"
+
+    .prologue
+    .line 53
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 54
+    invoke-direct {p0, p1, p2}, Landroid/net/LinkAddress;->init(Ljava/net/InetAddress;I)V
+
+    .line 55
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/net/InterfaceAddress;)V
+    .locals 2
+    .parameter "interfaceAddress"
+
+    .prologue
+    .line 57
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 58
+    invoke-virtual {p1}, Ljava/net/InterfaceAddress;->getAddress()Ljava/net/InetAddress;
+
+    move-result-object v0
+
+    invoke-virtual {p1}, Ljava/net/InterfaceAddress;->getNetworkPrefixLength()S
+
+    move-result v1
+
+    invoke-direct {p0, v0, v1}, Landroid/net/LinkAddress;->init(Ljava/net/InetAddress;I)V
+
+    .line 60
+    return-void
+.end method
+
+.method private init(Ljava/net/InetAddress;I)V
     .locals 3
     .parameter "address"
     .parameter "prefixLength"
 
     .prologue
-    .line 42
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 43
     if-eqz p1, :cond_1
 
@@ -85,6 +238,12 @@
 
     move-result-object v1
 
+    const-string v2, "/"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
     invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -108,39 +267,13 @@
     return-void
 .end method
 
-.method public constructor <init>(Ljava/net/InterfaceAddress;)V
-    .locals 1
-    .parameter "interfaceAddress"
-
-    .prologue
-    .line 53
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 54
-    invoke-virtual {p1}, Ljava/net/InterfaceAddress;->getAddress()Ljava/net/InetAddress;
-
-    move-result-object v0
-
-    iput-object v0, p0, Landroid/net/LinkAddress;->address:Ljava/net/InetAddress;
-
-    .line 55
-    invoke-virtual {p1}, Ljava/net/InterfaceAddress;->getNetworkPrefixLength()S
-
-    move-result v0
-
-    iput v0, p0, Landroid/net/LinkAddress;->prefixLength:I
-
-    .line 56
-    return-void
-.end method
-
 
 # virtual methods
 .method public describeContents()I
     .locals 1
 
     .prologue
-    .line 108
+    .line 137
     const/4 v0, 0x0
 
     return v0
@@ -153,12 +286,12 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 73
+    .line 102
     instance-of v2, p1, Landroid/net/LinkAddress;
 
     if-nez v2, :cond_1
 
-    .line 77
+    .line 106
     :cond_0
     :goto_0
     return v1
@@ -166,10 +299,10 @@
     :cond_1
     move-object v0, p1
 
-    .line 76
+    .line 105
     check-cast v0, Landroid/net/LinkAddress;
 
-    .line 77
+    .line 106
     .local v0, linkAddress:Landroid/net/LinkAddress;
     iget-object v2, p0, Landroid/net/LinkAddress;->address:Ljava/net/InetAddress;
 
@@ -196,7 +329,7 @@
     .locals 1
 
     .prologue
-    .line 93
+    .line 122
     iget-object v0, p0, Landroid/net/LinkAddress;->address:Ljava/net/InetAddress;
 
     return-object v0
@@ -206,7 +339,7 @@
     .locals 1
 
     .prologue
-    .line 100
+    .line 129
     iget v0, p0, Landroid/net/LinkAddress;->prefixLength:I
 
     return v0
@@ -216,7 +349,7 @@
     .locals 2
 
     .prologue
-    .line 86
+    .line 115
     iget-object v0, p0, Landroid/net/LinkAddress;->address:Ljava/net/InetAddress;
 
     if-nez v0, :cond_0
@@ -244,7 +377,7 @@
     .locals 2
 
     .prologue
-    .line 60
+    .line 89
     iget-object v0, p0, Landroid/net/LinkAddress;->address:Ljava/net/InetAddress;
 
     if-nez v0, :cond_0
@@ -294,17 +427,17 @@
     .parameter "flags"
 
     .prologue
-    .line 116
+    .line 145
     iget-object v0, p0, Landroid/net/LinkAddress;->address:Ljava/net/InetAddress;
 
     if-eqz v0, :cond_0
 
-    .line 117
+    .line 146
     const/4 v0, 0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
-    .line 118
+    .line 147
     iget-object v0, p0, Landroid/net/LinkAddress;->address:Ljava/net/InetAddress;
 
     invoke-virtual {v0}, Ljava/net/InetAddress;->getAddress()[B
@@ -313,16 +446,16 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 119
+    .line 148
     iget v0, p0, Landroid/net/LinkAddress;->prefixLength:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 123
+    .line 152
     :goto_0
     return-void
 
-    .line 121
+    .line 150
     :cond_0
     const/4 v0, 0x0
 

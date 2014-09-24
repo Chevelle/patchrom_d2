@@ -28,16 +28,16 @@
     .parameter "looper"
 
     .prologue
-    .line 557
+    .line 652
     iput-object p1, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->this$0:Landroid/media/audiofx/Visualizer;
 
-    .line 558
+    .line 653
     invoke-direct {p0, p3}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 559
+    .line 654
     iput-object p2, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->mVisualizer:Landroid/media/audiofx/Visualizer;
 
-    .line 560
+    .line 655
     return-void
 .end method
 
@@ -46,10 +46,10 @@
     .parameter "msg"
 
     .prologue
-    .line 563
+    .line 658
     const/4 v1, 0x0
 
-    .line 564
+    .line 659
     .local v1, l:Landroid/media/audiofx/Visualizer$OnDataCaptureListener;
     iget-object v3, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->this$0:Landroid/media/audiofx/Visualizer;
 
@@ -60,7 +60,7 @@
 
     monitor-enter v4
 
-    .line 565
+    .line 660
     :try_start_0
     iget-object v3, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->mVisualizer:Landroid/media/audiofx/Visualizer;
 
@@ -69,15 +69,15 @@
 
     move-result-object v1
 
-    .line 566
+    .line 661
     monitor-exit v4
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 568
+    .line 663
     if-eqz v1, :cond_0
 
-    .line 569
+    .line 664
     iget-object v3, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v3, [B
@@ -86,17 +86,17 @@
 
     check-cast v0, [B
 
-    .line 570
+    .line 665
     .local v0, data:[B
     iget v2, p1, Landroid/os/Message;->arg1:I
 
-    .line 572
+    .line 667
     .local v2, samplingRate:I
     iget v3, p1, Landroid/os/Message;->what:I
 
     packed-switch v3, :pswitch_data_0
 
-    .line 580
+    .line 675
     const-string v3, "Visualizer-JAVA"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -121,14 +121,14 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 584
+    .line 679
     .end local v0           #data:[B
     .end local v2           #samplingRate:I
     :cond_0
     :goto_0
     return-void
 
-    .line 566
+    .line 661
     :catchall_0
     move-exception v3
 
@@ -139,7 +139,7 @@
 
     throw v3
 
-    .line 574
+    .line 669
     .restart local v0       #data:[B
     .restart local v2       #samplingRate:I
     :pswitch_0
@@ -149,7 +149,7 @@
 
     goto :goto_0
 
-    .line 577
+    .line 672
     :pswitch_1
     iget-object v3, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->mVisualizer:Landroid/media/audiofx/Visualizer;
 
@@ -157,7 +157,7 @@
 
     goto :goto_0
 
-    .line 572
+    .line 667
     nop
 
     :pswitch_data_0
@@ -172,10 +172,10 @@
     .parameter "msg"
 
     .prologue
-    .line 587
+    .line 682
     const/4 v0, 0x0
 
-    .line 588
+    .line 683
     .local v0, l:Landroid/media/audiofx/Visualizer$OnServerDiedListener;
     iget-object v1, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->this$0:Landroid/media/audiofx/Visualizer;
 
@@ -186,7 +186,7 @@
 
     monitor-enter v2
 
-    .line 589
+    .line 684
     :try_start_0
     iget-object v1, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->mVisualizer:Landroid/media/audiofx/Visualizer;
 
@@ -195,22 +195,22 @@
 
     move-result-object v0
 
-    .line 590
+    .line 685
     monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 592
+    .line 687
     if-eqz v0, :cond_0
 
-    .line 593
+    .line 688
     invoke-interface {v0}, Landroid/media/audiofx/Visualizer$OnServerDiedListener;->onServerDied()V
 
-    .line 594
+    .line 689
     :cond_0
     return-void
 
-    .line 590
+    .line 685
     :catchall_0
     move-exception v1
 
@@ -229,22 +229,22 @@
     .parameter "msg"
 
     .prologue
-    .line 598
+    .line 693
     iget-object v0, p0, Landroid/media/audiofx/Visualizer$NativeEventHandler;->mVisualizer:Landroid/media/audiofx/Visualizer;
 
     if-nez v0, :cond_0
 
-    .line 614
+    .line 709
     :goto_0
     return-void
 
-    .line 602
+    .line 697
     :cond_0
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 611
+    .line 706
     const-string v0, "Visualizer-JAVA"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -271,19 +271,19 @@
 
     goto :goto_0
 
-    .line 605
+    .line 700
     :pswitch_0
     invoke-direct {p0, p1}, Landroid/media/audiofx/Visualizer$NativeEventHandler;->handleCaptureMessage(Landroid/os/Message;)V
 
     goto :goto_0
 
-    .line 608
+    .line 703
     :pswitch_1
     invoke-direct {p0, p1}, Landroid/media/audiofx/Visualizer$NativeEventHandler;->handleServerDiedMessage(Landroid/os/Message;)V
 
     goto :goto_0
 
-    .line 602
+    .line 697
     nop
 
     :pswitch_data_0

@@ -250,6 +250,20 @@
     return-wide v0
 .end method
 
+.method public getNotificationUri()Landroid/net/Uri;
+    .locals 1
+
+    .prologue
+    .line 198
+    iget-object v0, p0, Landroid/database/CursorWrapper;->mCursor:Landroid/database/Cursor;
+
+    invoke-interface {v0}, Landroid/database/Cursor;->getNotificationUri()Landroid/net/Uri;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method public getPosition()I
     .locals 1
 
@@ -581,12 +595,12 @@
     .parameter "observer"
 
     .prologue
-    .line 198
+    .line 202
     iget-object v0, p0, Landroid/database/CursorWrapper;->mCursor:Landroid/database/Cursor;
 
     invoke-interface {v0, p1}, Landroid/database/Cursor;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 199
+    .line 203
     return-void
 .end method
 
@@ -595,11 +609,11 @@
     .parameter "observer"
 
     .prologue
-    .line 202
+    .line 206
     iget-object v0, p0, Landroid/database/CursorWrapper;->mCursor:Landroid/database/Cursor;
 
     invoke-interface {v0, p1}, Landroid/database/Cursor;->unregisterDataSetObserver(Landroid/database/DataSetObserver;)V
 
-    .line 203
+    .line 207
     return-void
 .end method

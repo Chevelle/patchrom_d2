@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 507
+    .line 534
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -32,22 +32,22 @@
     .parameter "ctx"
 
     .prologue
-    .line 509
-    const-string/jumbo v1, "serial"
+    .line 536
+    const-string/jumbo v1, "usb"
 
     invoke-static {v1}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 510
+    .line 537
     .local v0, b:Landroid/os/IBinder;
-    new-instance v1, Landroid/hardware/SerialManager;
+    new-instance v1, Landroid/hardware/usb/UsbManager;
 
-    invoke-static {v0}, Landroid/hardware/ISerialManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/hardware/ISerialManager;
+    invoke-static {v0}, Landroid/hardware/usb/IUsbManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/hardware/usb/IUsbManager;
 
     move-result-object v2
 
-    invoke-direct {v1, p1, v2}, Landroid/hardware/SerialManager;-><init>(Landroid/content/Context;Landroid/hardware/ISerialManager;)V
+    invoke-direct {v1, p1, v2}, Landroid/hardware/usb/UsbManager;-><init>(Landroid/content/Context;Landroid/hardware/usb/IUsbManager;)V
 
     return-object v1
 .end method

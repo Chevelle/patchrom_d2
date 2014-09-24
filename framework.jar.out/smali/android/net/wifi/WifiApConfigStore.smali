@@ -283,7 +283,7 @@
     .local v0, config:Landroid/net/wifi/WifiConfiguration;
     iget-object v2, p0, Landroid/net/wifi/WifiApConfigStore;->mContext:Landroid/content/Context;
 
-    const v3, 0x104047b
+    const v3, 0x10404f5
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -291,12 +291,14 @@
 
     iput-object v2, v0, Landroid/net/wifi/WifiConfiguration;->SSID:Ljava/lang/String;
 
+    .line 206
     iget-object v2, v0, Landroid/net/wifi/WifiConfiguration;->allowedKeyManagement:Ljava/util/BitSet;
 
-    const/4 v3, 0x6
+    const/4 v3, 0x4
 
     invoke-virtual {v2, v3}, Ljava/util/BitSet;->set(I)V
 
+    .line 207
     invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
 
     move-result-object v2
@@ -376,7 +378,7 @@
     invoke-direct {v3, v4}, Ljava/io/DataOutputStream;-><init>(Ljava/io/OutputStream;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1
 
     .line 181
     .end local v2           #out:Ljava/io/DataOutputStream;
@@ -413,33 +415,45 @@
 
     .line 191
     :cond_0
-    if-eqz v3, :cond_1
+    if-eqz v3, :cond_3
 
     .line 193
     :try_start_2
     invoke-virtual {v3}, Ljava/io/DataOutputStream;->close()V
     :try_end_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_3
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
 
-    :cond_1
-    :goto_0
     move-object v2, v3
 
     .line 197
     .end local v0           #authType:I
     .end local v3           #out:Ljava/io/DataOutputStream;
     .restart local v2       #out:Ljava/io/DataOutputStream;
-    :cond_2
-    :goto_1
+    :cond_1
+    :goto_0
     return-void
 
-    .line 188
+    .line 194
+    .end local v2           #out:Ljava/io/DataOutputStream;
+    .restart local v0       #authType:I
+    .restart local v3       #out:Ljava/io/DataOutputStream;
     :catch_0
+    move-exception v4
+
+    move-object v2, v3
+
+    .end local v3           #out:Ljava/io/DataOutputStream;
+    .restart local v2       #out:Ljava/io/DataOutputStream;
+    goto :goto_0
+
+    .line 188
+    .end local v0           #authType:I
+    :catch_1
     move-exception v1
 
     .line 189
     .local v1, e:Ljava/io/IOException;
-    :goto_2
+    :goto_1
     :try_start_3
     const-string v4, "WifiApConfigStore"
 
@@ -466,57 +480,49 @@
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     .line 191
-    if-eqz v2, :cond_2
+    if-eqz v2, :cond_1
 
     .line 193
     :try_start_4
     invoke-virtual {v2}, Ljava/io/DataOutputStream;->close()V
     :try_end_4
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_2
 
-    goto :goto_1
+    goto :goto_0
 
     .line 194
-    :catch_1
+    :catch_2
     move-exception v4
 
-    goto :goto_1
+    goto :goto_0
 
     .line 191
     .end local v1           #e:Ljava/io/IOException;
     :catchall_0
     move-exception v4
 
-    :goto_3
-    if-eqz v2, :cond_3
+    :goto_2
+    if-eqz v2, :cond_2
 
     .line 193
     :try_start_5
     invoke-virtual {v2}, Ljava/io/DataOutputStream;->close()V
     :try_end_5
-    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_2
-
-    .line 191
-    :cond_3
-    :goto_4
-    throw v4
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_3
 
     .line 194
-    :catch_2
+    :cond_2
+    :goto_3
+    throw v4
+
+    :catch_3
     move-exception v5
 
-    goto :goto_4
-
-    .end local v2           #out:Ljava/io/DataOutputStream;
-    .restart local v0       #authType:I
-    .restart local v3       #out:Ljava/io/DataOutputStream;
-    :catch_3
-    move-exception v4
-
-    goto :goto_0
+    goto :goto_3
 
     .line 191
-    .end local v0           #authType:I
+    .end local v2           #out:Ljava/io/DataOutputStream;
+    .restart local v3       #out:Ljava/io/DataOutputStream;
     :catchall_1
     move-exception v4
 
@@ -524,7 +530,7 @@
 
     .end local v3           #out:Ljava/io/DataOutputStream;
     .restart local v2       #out:Ljava/io/DataOutputStream;
-    goto :goto_3
+    goto :goto_2
 
     .line 188
     .end local v2           #out:Ljava/io/DataOutputStream;
@@ -536,7 +542,17 @@
 
     .end local v3           #out:Ljava/io/DataOutputStream;
     .restart local v2       #out:Ljava/io/DataOutputStream;
-    goto :goto_2
+    goto :goto_1
+
+    .end local v2           #out:Ljava/io/DataOutputStream;
+    .restart local v0       #authType:I
+    .restart local v3       #out:Ljava/io/DataOutputStream;
+    :cond_3
+    move-object v2, v3
+
+    .end local v3           #out:Ljava/io/DataOutputStream;
+    .restart local v2       #out:Ljava/io/DataOutputStream;
+    goto :goto_0
 .end method
 
 
@@ -588,7 +604,7 @@
     invoke-direct {v4, v6}, Ljava/io/DataInputStream;-><init>(Ljava/io/InputStream;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1
 
     .line 147
     .end local v3           #in:Ljava/io/DataInputStream;
@@ -681,19 +697,28 @@
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_5
 
     .line 163
-    if-eqz v4, :cond_4
+    if-eqz v4, :cond_5
 
     .line 165
     :try_start_4
     invoke-virtual {v4}, Ljava/io/DataInputStream;->close()V
     :try_end_4
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_4
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_0
 
-    :cond_4
-    :goto_2
     move-object v3, v4
 
-    .line 168
+    .line 166
+    .end local v4           #in:Ljava/io/DataInputStream;
+    .restart local v3       #in:Ljava/io/DataInputStream;
+    goto :goto_1
+
+    .end local v3           #in:Ljava/io/DataInputStream;
+    .restart local v4       #in:Ljava/io/DataInputStream;
+    :catch_0
+    move-exception v6
+
+    move-object v3, v4
+
     .end local v4           #in:Ljava/io/DataInputStream;
     .restart local v3       #in:Ljava/io/DataInputStream;
     goto :goto_1
@@ -702,12 +727,12 @@
     .end local v0           #authType:I
     .end local v1           #config:Landroid/net/wifi/WifiConfiguration;
     .end local v5           #version:I
-    :catch_0
+    :catch_1
     move-exception v2
 
     .line 161
     .local v2, ignore:Ljava/io/IOException;
-    :goto_3
+    :goto_2
     :try_start_5
     invoke-direct {p0}, Landroid/net/wifi/WifiApConfigStore;->setDefaultApConfiguration()V
     :try_end_5
@@ -720,12 +745,12 @@
     :try_start_6
     invoke-virtual {v3}, Ljava/io/DataInputStream;->close()V
     :try_end_6
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_1
+    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_2
 
     goto :goto_1
 
     .line 166
-    :catch_1
+    :catch_2
     move-exception v6
 
     goto :goto_1
@@ -735,25 +760,19 @@
     :catchall_0
     move-exception v6
 
-    :goto_4
-    if-eqz v3, :cond_5
+    :goto_3
+    if-eqz v3, :cond_4
 
     .line 165
     :try_start_7
     invoke-virtual {v3}, Ljava/io/DataInputStream;->close()V
     :try_end_7
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_2
-
-    .line 163
-    :cond_5
-    :goto_5
-    throw v6
+    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_4
 
     .line 166
-    :catch_2
-    move-exception v7
-
-    goto :goto_5
+    :cond_4
+    :goto_4
+    throw v6
 
     .end local v3           #in:Ljava/io/DataInputStream;
     .restart local v1       #config:Landroid/net/wifi/WifiConfiguration;
@@ -764,15 +783,19 @@
 
     goto :goto_0
 
-    .restart local v0       #authType:I
+    .end local v1           #config:Landroid/net/wifi/WifiConfiguration;
+    .end local v4           #in:Ljava/io/DataInputStream;
+    .end local v5           #version:I
+    .restart local v3       #in:Ljava/io/DataInputStream;
     :catch_4
-    move-exception v6
+    move-exception v7
 
-    goto :goto_2
+    goto :goto_4
 
     .line 163
-    .end local v0           #authType:I
-    .end local v5           #version:I
+    .end local v3           #in:Ljava/io/DataInputStream;
+    .restart local v1       #config:Landroid/net/wifi/WifiConfiguration;
+    .restart local v4       #in:Ljava/io/DataInputStream;
     :catchall_1
     move-exception v6
 
@@ -780,7 +803,7 @@
 
     .end local v4           #in:Ljava/io/DataInputStream;
     .restart local v3       #in:Ljava/io/DataInputStream;
-    goto :goto_4
+    goto :goto_3
 
     .line 160
     .end local v3           #in:Ljava/io/DataInputStream;
@@ -792,5 +815,16 @@
 
     .end local v4           #in:Ljava/io/DataInputStream;
     .restart local v3       #in:Ljava/io/DataInputStream;
-    goto :goto_3
+    goto :goto_2
+
+    .end local v3           #in:Ljava/io/DataInputStream;
+    .restart local v0       #authType:I
+    .restart local v4       #in:Ljava/io/DataInputStream;
+    .restart local v5       #version:I
+    :cond_5
+    move-object v3, v4
+
+    .end local v4           #in:Ljava/io/DataInputStream;
+    .restart local v3       #in:Ljava/io/DataInputStream;
+    goto :goto_1
 .end method

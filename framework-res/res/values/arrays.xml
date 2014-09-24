@@ -38,7 +38,7 @@
         <item>Custom</item>
     </string-array>
     <array name="preloaded_drawables">
-        <item>@drawable/toast_frame_holo</item>
+        <item>@drawable/toast_frame</item>
         <item>@drawable/btn_check_on_pressed_holo_light</item>
         <item>@drawable/btn_check_on_pressed_holo_dark</item>
         <item>@drawable/btn_check_on_holo_light</item>
@@ -157,6 +157,10 @@
         <item>@drawable/menu_submenu_background</item>
         <item>@drawable/menu_dropdown_panel_holo_light</item>
         <item>@drawable/menu_dropdown_panel_holo_dark</item>
+        <item>@drawable/menu_popup_panel_holo_light</item>
+        <item>@drawable/menu_popup_panel_holo_dark</item>
+        <item>@drawable/menu_panel_holo_light</item>
+        <item>@drawable/menu_panel_holo_dark</item>
         <item>@drawable/overscroll_edge</item>
         <item>@drawable/overscroll_glow</item>
         <item>@drawable/spinner_16_outer_holo</item>
@@ -350,66 +354,6 @@
         <item>中文 (简体)</item>
         <item>中文 (繁體)</item>
     </string-array>
-    <array name="lockscreen_targets_when_silent">
-        <item>@drawable/ic_lockscreen_unlock</item>
-        <item>@drawable/ic_action_assist_generic</item>
-        <item>@drawable/ic_lockscreen_soundon</item>
-        <item>@null</item>
-    </array>
-    <string-array name="lockscreen_target_descriptions_when_silent">
-        <item>@string/description_target_unlock</item>
-        <item>@string/description_target_search</item>
-        <item>@string/description_target_soundon</item>
-        <item>@null</item>
-    </string-array>
-    <string-array name="lockscreen_direction_descriptions">
-        <item>@string/description_direction_right</item>
-        <item>@string/description_direction_up</item>
-        <item>@string/description_direction_left</item>
-        <item>@null</item>
-    </string-array>
-    <array name="lockscreen_targets_when_soundon">
-        <item>@drawable/ic_lockscreen_unlock</item>
-        <item>@drawable/ic_action_assist_generic</item>
-        <item>@drawable/ic_lockscreen_silent</item>
-        <item>@null</item>
-    </array>
-    <string-array name="lockscreen_target_descriptions_when_soundon">
-        <item>@string/description_target_unlock</item>
-        <item>@string/description_target_search</item>
-        <item>@string/description_target_silent</item>
-        <item>@null</item>
-    </string-array>
-    <array name="lockscreen_targets_with_camera">
-        <item>@drawable/ic_lockscreen_unlock</item>
-        <item>@drawable/ic_action_assist_generic</item>
-        <item>@drawable/ic_lockscreen_camera</item>
-        <item>@null</item>
-    </array>
-    <string-array name="lockscreen_target_descriptions_with_camera">
-        <item>@string/description_target_unlock</item>
-        <item>@string/description_target_search</item>
-        <item>@string/description_target_camera</item>
-        <item>@null</item>
-    </string-array>
-    <string-array name="lockscreen_targets_unlock_only">
-        <item>@drawable/ic_lockscreen_unlock</item>
-    </string-array>
-    <string-array name="lockscreen_target_descriptions_unlock_only">
-        <item>@string/description_target_unlock</item>
-    </string-array>
-    <string-array name="lockscreen_num_pad_klondike">
-        <item></item>
-        <item></item>
-        <item>ABC</item>
-        <item>DEF</item>
-        <item>GHI</item>
-        <item>JKL</item>
-        <item>MNO</item>
-        <item>PQRS</item>
-        <item>TUV</item>
-        <item>WXYZ</item>
-    </string-array>
     <string-array name="shutdown_reboot_options">
         <item>@string/reboot_reboot</item>
         <item>@string/reboot_recovery</item>
@@ -420,14 +364,90 @@
         <item>recovery</item>
         <item>download</item>
     </string-array>
+    <string-array name="networkAttributes">
+        <item>wifi,1,1,1,-1,true</item>
+        <item>mobile,0,0,0,-1,true</item>
+        <item>mobile_mms,2,0,2,60000,true</item>
+        <item>mobile_supl,3,0,2,60000,true</item>
+        <item>mobile_dun,4,0,2,60000,true</item>
+        <item>mobile_hipri,5,0,3,60000,true</item>
+        <item>mobile_fota,10,0,2,60000,true</item>
+        <item>mobile_ims,11,0,2,60000,true</item>
+        <item>mobile_cbs,12,0,2,60000,true</item>
+        <item>wifi_p2p,13,1,0,-1,true</item>
+        <item>mobile_ia,14,0,2,-1,true</item>
+    </string-array>
     <string-array name="notification_light_package_mapping">
         <item>com.google.android.gsf|com.google.android.talk</item>
+    </string-array>
+    <string-array name="perf_profile_entries">
+        <item>@string/perf_profile_pwrsv</item>
+        <item>@string/perf_profile_bal</item>
+        <item>@string/perf_profile_perf</item>
+    </string-array>
+    <string-array name="perf_profile_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="app_ops_labels">
+        <item>@string/app_ops_access_location</item>
+        <item>@string/app_ops_access_location</item>
+        <item>@string/app_ops_access_location</item>
+        <item>@string/app_ops_use_vibrate</item>
+        <item>@string/app_ops_read_contacts</item>
+        <item>@string/app_ops_modify_contacts</item>
+        <item>@string/app_ops_read_call_log</item>
+        <item>@string/app_ops_modify_call_log</item>
+        <item>@string/app_ops_read_calendar</item>
+        <item>@string/app_ops_modify_calendar</item>
+        <item>@string/app_ops_access_location</item>
+        <item>@string/app_ops_post_notification</item>
+        <item>@string/app_ops_access_location</item>
+        <item>@string/app_ops_make_phone_call</item>
+        <item>@string/app_ops_read_sms</item>
+        <item>@string/app_ops_write_sms</item>
+        <item>@string/app_ops_receive_sms</item>
+        <item>@string/app_ops_receive_sms</item>
+        <item>@string/app_ops_receive_sms</item>
+        <item>@string/app_ops_receive_sms</item>
+        <item>@string/app_ops_send_sms</item>
+        <item>@string/app_ops_read_sms</item>
+        <item>@string/app_ops_write_sms</item>
+        <item>@string/app_ops_modify_settings</item>
+        <item>@string/app_ops_draw_on_top</item>
+        <item>@string/app_ops_access_notifications</item>
+        <item>@string/app_ops_access_camera</item>
+        <item>@string/app_ops_record_audio</item>
+        <item>@string/app_ops_play_audio</item>
+        <item>@string/app_ops_read_clipboard</item>
+        <item>@string/app_ops_modify_clipboard</item>
+        <item>@string/app_ops_use_media_buttons</item>
+        <item>@string/app_ops_use_audio_focus</item>
+        <item>@string/app_ops_use_master_volume</item>
+        <item>@string/app_ops_use_voice_volume</item>
+        <item>@string/app_ops_use_ring_volume</item>
+        <item>@string/app_ops_use_media_volume</item>
+        <item>@string/app_ops_use_alarm_volume</item>
+        <item>@string/app_ops_use_notification_volume</item>
+        <item>@string/app_ops_use_bluetooth_volume</item>
+        <item>@string/app_ops_keep_device_awake</item>
+        <item>@string/app_ops_access_location</item>
+        <item>@string/app_ops_access_location</item>
+        <item>@string/app_ops_toggle_wifi</item>
+        <item>@string/app_ops_toggle_bluetooth</item>
+        <item>@string/app_ops_toggle_mobile_data</item>
+        <item>@string/app_ops_alarm_wakeup</item>
+        <item>@string/app_ops_send_mms</item>
+        <item>@string/app_ops_read_mms</item>
+        <item>@string/app_ops_write_mms</item>
+        <item>@string/app_ops_start_at_bootup</item>
     </string-array>
     <string-array name="config_statusBarIcons">
         <item>ime</item>
         <item>sync_failing</item>
         <item>sync_active</item>
-        <item>gps</item>
+        <item>location</item>
         <item>bluetooth</item>
         <item>nfc</item>
         <item>tty</item>
@@ -436,6 +456,7 @@
         <item>volume</item>
         <item>wifi</item>
         <item>cdma_eri</item>
+        <item>phone_signal_second_sub</item>
         <item>data_connection</item>
         <item>phone_evdo_signal</item>
         <item>phone_signal</item>
@@ -448,20 +469,11 @@
         <item>0</item>
         <item>5</item>
     </integer-array>
-    <string-array name="networkAttributes">
-        <item>wifi,1,1,1,-1,true</item>
-        <item>mobile,0,0,0,-1,true</item>
-        <item>mobile_mms,2,0,2,60000,true</item>
-        <item>mobile_supl,3,0,2,60000,true</item>
-        <item>mobile_dun,4,0,3,60000,true</item>
-        <item>mobile_hipri,5,0,3,60000,true</item>
-        <item>mobile_bluetooth,7,7,1,-1,true</item>
-        <item>wifi_p2p,13,1,0,-1,true</item>
-    </string-array>
     <integer-array name="config_protectedNetworks">
         <item>10</item>
         <item>11</item>
         <item>12</item>
+        <item>14</item>
     </integer-array>
     <string-array name="radioAttributes">
         <item>1,1</item>
@@ -477,6 +489,7 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
+        <item>14</item>
     </integer-array>
     <string-array name="config_tether_usb_regexs">
         <item>rndis0</item>
@@ -484,6 +497,7 @@
     </string-array>
     <string-array name="config_tether_wifi_regexs">
         <item>wlan0</item>
+        <item>softap.*</item>
     </string-array>
     <array name="config_tether_wimax_regexs" />
     <string-array name="config_tether_bluetooth_regexs">
@@ -494,10 +508,13 @@
     <integer-array name="config_tether_upstream_types">
         <item>0</item>
         <item>1</item>
+        <item>4</item>
         <item>5</item>
         <item>7</item>
+        <item>9</item>
     </integer-array>
     <array name="config_cdma_dun_supported_types" />
+    <array name="config_smartCoverWindowCoords" />
     <array name="config_usbHostBlacklist" />
     <array name="config_serialPorts" />
     <integer-array name="config_longPressVibePattern">
@@ -627,14 +644,21 @@
         <item>1</item>
     </integer-array>
     <string-array name="config_locationProviderPackageNames">
+        <item>com.google.android.gms</item>
         <item>com.android.location.fused</item>
-        <item>com.google.android.location</item>
     </string-array>
     <array name="config_twoDigitNumberPattern" />
-    <array name="config_telephony_set_audioparameters" />
     <array name="config_sms_enabled_single_shift_tables" />
     <array name="config_sms_enabled_locking_shift_tables" />
     <array name="config_oemUsbModeOverride" />
+    <integer-array name="config_onlySingleDcAllowed">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>12</item>
+    </integer-array>
     <integer-array name="config_defaultNotificationVibePattern">
         <item>0</item>
         <item>350</item>
@@ -653,10 +677,37 @@
         <item>100</item>
         <item>50</item>
     </integer-array>
+    <string-array name="config_disabledUntilUsedPreinstalledImes">
+        <item>com.android.inputmethod.latin</item>
+    </string-array>
+    <string-array name="config_notificationScorers">
+        <item>com.android.internal.notification.DemoContactNotificationScorer</item>
+    </string-array>
+    <array name="config_operatorConsideredNonRoaming" />
+    <array name="config_sameNamedOperatorConsideredRoaming" />
+    <string-array name="config_callBarringMMI">
+        <item>33</item>
+        <item>331</item>
+        <item>332</item>
+        <item>35</item>
+        <item>351</item>
+        <item>330</item>
+        <item>333</item>
+        <item>353</item>
+    </string-array>
     <string-array name="config_disabledComponents">
         <item>com.google.android.gsf/com.google.android.gsf.update.SystemUpdateActivity</item>
         <item>com.google.android.gsf/com.google.android.gsf.update.SystemUpdateService</item>
         <item>com.google.android.gsf/com.google.android.gsf.update.SystemUpdateService$Receiver</item>
+        <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateActivity</item>
+        <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateService</item>
+        <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateService$Receiver</item>
+        <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateService$ActiveReceiver</item>
+    </string-array>
+    <string-array name="config_auto_perf_activities">
+        <item>com.aurorasoftworks.quadrant.*BenchmarkExecutionActivity,2</item>
+        <item>com.antutu.ABenchMark.*,2</item>
+        <item>.*com.antutu.benchmark.*,2</item>
     </string-array>
     <integer-array name="maps_starting_lat_lng">
         <item>36149777</item>

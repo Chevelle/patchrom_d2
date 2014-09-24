@@ -32,15 +32,13 @@
 
 .field private final mMnc:I
 
-.field private final mPsc:I
-
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 190
+    .line 176
     new-instance v0, Landroid/telephony/CellIdentityGsm$1;
 
     invoke-direct {v0}, Landroid/telephony/CellIdentityGsm$1;-><init>()V
@@ -56,56 +54,49 @@
     .prologue
     const v0, 0x7fffffff
 
-    .line 46
+    .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 47
+    .line 44
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
-    .line 48
+    .line 45
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
-    .line 49
+    .line 46
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mLac:I
 
-    .line 50
+    .line 47
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mCid:I
 
-    .line 51
-    iput v0, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    .line 52
+    .line 48
     return-void
 .end method
 
-.method public constructor <init>(IIIII)V
+.method public constructor <init>(IIII)V
     .locals 0
     .parameter "mcc"
     .parameter "mnc"
     .parameter "lac"
     .parameter "cid"
-    .parameter "psc"
 
     .prologue
-    .line 63
+    .line 58
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 64
+    .line 59
     iput p1, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
-    .line 65
+    .line 60
     iput p2, p0, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
-    .line 66
+    .line 61
     iput p3, p0, Landroid/telephony/CellIdentityGsm;->mLac:I
 
-    .line 67
+    .line 62
     iput p4, p0, Landroid/telephony/CellIdentityGsm;->mCid:I
 
-    .line 68
-    iput p5, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    .line 69
+    .line 63
     return-void
 .end method
 
@@ -114,45 +105,38 @@
     .parameter "in"
 
     .prologue
-    .line 179
+    .line 166
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 180
+    .line 167
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
-    .line 181
+    .line 168
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
-    .line 182
+    .line 169
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mLac:I
 
-    .line 183
+    .line 170
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mCid:I
 
-    .line 184
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    .line 186
+    .line 172
     return-void
 .end method
 
@@ -173,35 +157,30 @@
     .parameter "cid"
 
     .prologue
-    .line 71
+    .line 65
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 72
+    .line 66
     iget v0, p1, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
-    .line 73
+    .line 67
     iget v0, p1, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
-    .line 74
+    .line 68
     iget v0, p1, Landroid/telephony/CellIdentityGsm;->mLac:I
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mLac:I
 
-    .line 75
+    .line 69
     iget v0, p1, Landroid/telephony/CellIdentityGsm;->mCid:I
 
     iput v0, p0, Landroid/telephony/CellIdentityGsm;->mCid:I
 
-    .line 76
-    iget v0, p1, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    iput v0, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    .line 77
+    .line 70
     return-void
 .end method
 
@@ -210,12 +189,12 @@
     .parameter "s"
 
     .prologue
-    .line 207
+    .line 193
     const-string v0, "CellIdentityGsm"
 
-    invoke-static {v0, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 208
+    .line 194
     return-void
 .end method
 
@@ -225,7 +204,7 @@
     .locals 1
 
     .prologue
-    .line 80
+    .line 73
     new-instance v0, Landroid/telephony/CellIdentityGsm;
 
     invoke-direct {v0, p0}, Landroid/telephony/CellIdentityGsm;-><init>(Landroid/telephony/CellIdentityGsm;)V
@@ -237,7 +216,7 @@
     .locals 1
 
     .prologue
-    .line 164
+    .line 152
     const/4 v0, 0x0
 
     return v0
@@ -250,14 +229,14 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 132
+    .line 122
     invoke-super {p0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     move-result v4
 
     if-eqz v4, :cond_0
 
-    .line 134
+    .line 124
     :try_start_0
     move-object v0, p1
 
@@ -265,7 +244,7 @@
 
     move-object v2, v0
 
-    .line 135
+    .line 125
     .local v2, o:Landroid/telephony/CellIdentityGsm;
     iget v4, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
@@ -288,12 +267,6 @@
     iget v4, p0, Landroid/telephony/CellIdentityGsm;->mCid:I
 
     iget v5, v2, Landroid/telephony/CellIdentityGsm;->mCid:I
-
-    if-ne v4, v5, :cond_0
-
-    iget v4, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    iget v5, v2, Landroid/telephony/CellIdentityGsm;->mPsc:I
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -301,17 +274,17 @@
 
     const/4 v3, 0x1
 
-    .line 144
+    .line 133
     .end local v2           #o:Landroid/telephony/CellIdentityGsm;
     :cond_0
     :goto_0
     return v3
 
-    .line 140
+    .line 129
     :catch_0
     move-exception v1
 
-    .line 141
+    .line 130
     .local v1, e:Ljava/lang/ClassCastException;
     goto :goto_0
 .end method
@@ -320,7 +293,7 @@
     .locals 1
 
     .prologue
-    .line 112
+    .line 103
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mCid:I
 
     return v0
@@ -330,7 +303,7 @@
     .locals 1
 
     .prologue
-    .line 101
+    .line 94
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mLac:I
 
     return v0
@@ -340,7 +313,7 @@
     .locals 1
 
     .prologue
-    .line 87
+    .line 80
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
     return v0
@@ -350,7 +323,7 @@
     .locals 1
 
     .prologue
-    .line 94
+    .line 87
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
     return v0
@@ -358,10 +331,12 @@
 
 .method public getPsc()I
     .locals 1
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 120
-    iget v0, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
+    .line 111
+    const v0, 0x7fffffff
 
     return v0
 .end method
@@ -370,10 +345,10 @@
     .locals 3
 
     .prologue
-    .line 125
+    .line 116
     const/16 v0, 0x1f
 
-    .line 126
+    .line 117
     .local v0, primeNum:I
     iget v1, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
@@ -397,12 +372,6 @@
 
     add-int/2addr v1, v2
 
-    iget v2, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    mul-int/2addr v2, v0
-
-    add-int/2addr v1, v2
-
     return v1
 .end method
 
@@ -410,22 +379,15 @@
     .locals 3
 
     .prologue
-    .line 150
+    .line 139
     new-instance v0, Ljava/lang/StringBuilder;
 
-    const-string v1, "GsmCellIdentitiy:"
+    const-string v1, "CellIdentityGsm:{"
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    .line 151
+    .line 140
     .local v0, sb:Ljava/lang/StringBuilder;
-    invoke-super {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 152
     const-string v1, " mMcc="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -436,18 +398,18 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 153
+    .line 141
     const-string v1, " mMnc="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    iget v2, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
+    iget v2, p0, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 154
+    .line 142
     const-string v1, " mLac="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -458,7 +420,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 155
+    .line 143
     const-string v1, " mCid="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -469,18 +431,12 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 156
-    const-string v1, " mPsc="
+    .line 144
+    const-string/jumbo v1, "}"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    iget v2, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    .line 158
+    .line 146
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -494,31 +450,26 @@
     .parameter "flags"
 
     .prologue
-    .line 171
+    .line 159
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mMcc:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 172
+    .line 160
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mMnc:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 173
+    .line 161
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mLac:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 174
+    .line 162
     iget v0, p0, Landroid/telephony/CellIdentityGsm;->mCid:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 175
-    iget v0, p0, Landroid/telephony/CellIdentityGsm;->mPsc:I
-
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 176
+    .line 163
     return-void
 .end method

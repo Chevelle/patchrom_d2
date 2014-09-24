@@ -27,6 +27,8 @@
 
 .field private mInitialRules:[I
 
+.field private mIsRtlCompatibilityMode:Z
+
 .field private mLeft:I
 
 .field private mRight:I
@@ -147,512 +149,551 @@
 
 # direct methods
 .method public constructor <init>(II)V
-    .locals 3
+    .locals 4
     .parameter "w"
     .parameter "h"
 
     .prologue
-    const/16 v2, 0x16
+    const/16 v3, 0x16
+
+    const/4 v2, 0x0
 
     const/high16 v1, -0x8000
 
-    .line 1282
+    .line 1320
     invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(II)V
 
-    .line 1144
-    new-array v0, v2, [I
+    .line 1178
+    new-array v0, v3, [I
 
     iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1173
-    new-array v0, v2, [I
+    .line 1207
+    new-array v0, v3, [I
 
     iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
-    .line 1177
+    .line 1211
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
 
-    .line 1178
+    .line 1212
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
 
-    .line 1180
-    const/4 v0, 0x0
+    .line 1214
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
-    iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+    .line 1215
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
 
-    .line 1283
+    .line 1321
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 12
+    .locals 13
     .parameter "c"
     .parameter "attrs"
 
     .prologue
-    const/high16 v10, -0x8000
+    const/high16 v11, -0x8000
 
-    const/16 v11, 0x16
+    const/16 v12, 0x16
 
-    const/4 v8, -0x1
+    const/4 v9, 0x1
 
-    const/4 v9, 0x0
+    const/4 v10, -0x1
 
-    .line 1190
+    const/4 v8, 0x0
+
+    .line 1225
     invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 1144
-    new-array v7, v11, [I
+    .line 1178
+    new-array v7, v12, [I
 
     iput-object v7, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1173
-    new-array v7, v11, [I
+    .line 1207
+    new-array v7, v12, [I
 
     iput-object v7, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
-    .line 1177
-    iput v10, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
+    .line 1211
+    iput v11, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
 
-    .line 1178
-    iput v10, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
+    .line 1212
+    iput v11, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
 
-    .line 1180
-    iput-boolean v9, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+    .line 1214
+    iput-boolean v8, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
-    .line 1192
+    .line 1215
+    iput-boolean v8, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
+
+    .line 1227
     sget-object v7, Lcom/android/internal/R$styleable;->RelativeLayout_Layout:[I
 
     invoke-virtual {p1, p2, v7}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v1
 
-    .line 1195
+    .line 1230
     .local v1, a:Landroid/content/res/TypedArray;
-    iget-object v6, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    invoke-virtual {p1}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
-    .line 1196
-    .local v6, rules:[I
+    move-result-object v7
+
+    iget v6, v7, Landroid/content/pm/ApplicationInfo;->targetSdkVersion:I
+
+    .line 1231
+    .local v6, targetSdkVersion:I
+    const/16 v7, 0x11
+
+    if-lt v6, v7, :cond_0
+
+    invoke-virtual {p1}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Landroid/content/pm/ApplicationInfo;->hasRtlSupport()Z
+
+    move-result v7
+
+    if-nez v7, :cond_1
+
+    :cond_0
+    move v7, v9
+
+    :goto_0
+    iput-boolean v7, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
+
+    .line 1234
+    iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    .line 1236
+    .local v5, rules:[I
     iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
-    .line 1198
+    .line 1238
     .local v4, initialRules:[I
     invoke-virtual {v1}, Landroid/content/res/TypedArray;->getIndexCount()I
 
     move-result v0
 
-    .line 1199
+    .line 1239
     .local v0, N:I
     const/4 v3, 0x0
 
     .local v3, i:I
-    :goto_0
-    if-ge v3, v0, :cond_9
+    :goto_1
+    if-ge v3, v0, :cond_b
 
-    .line 1200
+    .line 1240
     invoke-virtual {v1, v3}, Landroid/content/res/TypedArray;->getIndex(I)I
 
     move-result v2
 
-    .line 1201
+    .line 1241
     .local v2, attr:I
     packed-switch v2, :pswitch_data_0
 
-    .line 1199
-    :goto_1
+    .line 1239
+    :goto_2
     add-int/lit8 v3, v3, 0x1
 
+    goto :goto_1
+
+    .end local v0           #N:I
+    .end local v2           #attr:I
+    .end local v3           #i:I
+    .end local v4           #initialRules:[I
+    .end local v5           #rules:[I
+    :cond_1
+    move v7, v8
+
+    .line 1231
     goto :goto_0
 
-    .line 1203
+    .line 1243
+    .restart local v0       #N:I
+    .restart local v2       #attr:I
+    .restart local v3       #i:I
+    .restart local v4       #initialRules:[I
+    .restart local v5       #rules:[I
     :pswitch_0
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     iput-boolean v7, p0, Landroid/widget/RelativeLayout$LayoutParams;->alignWithParent:Z
 
-    goto :goto_1
+    goto :goto_2
 
-    .line 1206
+    .line 1246
     :pswitch_1
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
     move-result v7
 
-    aput v7, v6, v9
-
-    goto :goto_1
-
-    .line 1209
-    :pswitch_2
-    const/4 v7, 0x1
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1212
-    :pswitch_3
-    const/4 v7, 0x2
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1215
-    :pswitch_4
-    const/4 v7, 0x3
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1218
-    :pswitch_5
-    const/4 v7, 0x4
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1221
-    :pswitch_6
-    const/4 v7, 0x5
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1224
-    :pswitch_7
-    const/4 v7, 0x6
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1227
-    :pswitch_8
-    const/4 v7, 0x7
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1230
-    :pswitch_9
-    const/16 v7, 0x8
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto :goto_1
-
-    .line 1233
-    :pswitch_a
-    const/16 v10, 0x9
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_0
-
-    move v7, v8
-
-    :goto_2
-    aput v7, v6, v10
-
-    goto :goto_1
-
-    :cond_0
-    move v7, v9
+    aput v7, v5, v8
 
     goto :goto_2
 
-    .line 1236
-    :pswitch_b
-    const/16 v10, 0xa
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    .line 1249
+    :pswitch_2
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
     move-result v7
 
-    if-eqz v7, :cond_1
+    aput v7, v5, v9
 
-    move v7, v8
+    goto :goto_2
 
-    :goto_3
-    aput v7, v6, v10
+    .line 1252
+    :pswitch_3
+    const/4 v7, 0x2
 
-    goto :goto_1
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
-    :cond_1
-    move v7, v9
+    move-result v11
 
-    goto :goto_3
+    aput v11, v5, v7
 
-    .line 1239
-    :pswitch_c
-    const/16 v10, 0xb
+    goto :goto_2
 
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    .line 1255
+    :pswitch_4
+    const/4 v7, 0x3
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto :goto_2
+
+    .line 1258
+    :pswitch_5
+    const/4 v7, 0x4
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto :goto_2
+
+    .line 1261
+    :pswitch_6
+    const/4 v7, 0x5
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto :goto_2
+
+    .line 1264
+    :pswitch_7
+    const/4 v7, 0x6
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto :goto_2
+
+    .line 1267
+    :pswitch_8
+    const/4 v7, 0x7
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto :goto_2
+
+    .line 1270
+    :pswitch_9
+    const/16 v7, 0x8
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto :goto_2
+
+    .line 1273
+    :pswitch_a
+    const/16 v11, 0x9
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     if-eqz v7, :cond_2
 
-    move v7, v8
+    move v7, v10
 
-    :goto_4
-    aput v7, v6, v10
+    :goto_3
+    aput v7, v5, v11
 
-    goto :goto_1
+    goto :goto_2
 
     :cond_2
-    move v7, v9
+    move v7, v8
 
-    goto :goto_4
+    goto :goto_3
 
-    .line 1242
-    :pswitch_d
-    const/16 v10, 0xc
+    .line 1276
+    :pswitch_b
+    const/16 v11, 0xa
 
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     if-eqz v7, :cond_3
 
-    move v7, v8
+    move v7, v10
 
-    :goto_5
-    aput v7, v6, v10
+    :goto_4
+    aput v7, v5, v11
 
-    goto/16 :goto_1
+    goto :goto_2
 
     :cond_3
-    move v7, v9
+    move v7, v8
 
-    goto :goto_5
+    goto :goto_4
 
-    .line 1245
-    :pswitch_e
-    const/16 v10, 0xd
+    .line 1279
+    :pswitch_c
+    const/16 v11, 0xb
 
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     if-eqz v7, :cond_4
 
-    move v7, v8
+    move v7, v10
 
-    :goto_6
-    aput v7, v6, v10
+    :goto_5
+    aput v7, v5, v11
 
-    goto/16 :goto_1
+    goto :goto_2
 
     :cond_4
-    move v7, v9
+    move v7, v8
 
-    goto :goto_6
+    goto :goto_5
 
-    .line 1248
-    :pswitch_f
-    const/16 v10, 0xe
+    .line 1282
+    :pswitch_d
+    const/16 v11, 0xc
 
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     if-eqz v7, :cond_5
 
-    move v7, v8
+    move v7, v10
 
-    :goto_7
-    aput v7, v6, v10
+    :goto_6
+    aput v7, v5, v11
 
-    goto/16 :goto_1
+    goto/16 :goto_2
 
     :cond_5
-    move v7, v9
+    move v7, v8
 
-    goto :goto_7
+    goto :goto_6
 
-    .line 1251
-    :pswitch_10
-    const/16 v10, 0xf
+    .line 1285
+    :pswitch_e
+    const/16 v11, 0xd
 
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     if-eqz v7, :cond_6
 
-    move v7, v8
+    move v7, v10
 
-    :goto_8
-    aput v7, v6, v10
+    :goto_7
+    aput v7, v5, v11
 
-    goto/16 :goto_1
+    goto/16 :goto_2
 
     :cond_6
-    move v7, v9
+    move v7, v8
 
-    goto :goto_8
+    goto :goto_7
 
-    .line 1254
-    :pswitch_11
-    const/16 v7, 0x10
+    .line 1288
+    :pswitch_f
+    const/16 v11, 0xe
 
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto/16 :goto_1
-
-    .line 1257
-    :pswitch_12
-    const/16 v7, 0x11
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto/16 :goto_1
-
-    .line 1260
-    :pswitch_13
-    const/16 v7, 0x12
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto/16 :goto_1
-
-    .line 1263
-    :pswitch_14
-    const/16 v7, 0x13
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v10
-
-    aput v10, v6, v7
-
-    goto/16 :goto_1
-
-    .line 1266
-    :pswitch_15
-    const/16 v10, 0x14
-
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     if-eqz v7, :cond_7
 
-    move v7, v8
+    move v7, v10
 
-    :goto_9
-    aput v7, v6, v10
+    :goto_8
+    aput v7, v5, v11
 
-    goto/16 :goto_1
+    goto/16 :goto_2
 
     :cond_7
-    move v7, v9
+    move v7, v8
 
-    goto :goto_9
+    goto :goto_8
 
-    .line 1269
-    :pswitch_16
-    const/16 v10, 0x15
+    .line 1291
+    :pswitch_10
+    const/16 v11, 0xf
 
-    invoke-virtual {v1, v2, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v7
 
     if-eqz v7, :cond_8
 
-    move v7, v8
+    move v7, v10
 
-    :goto_a
-    aput v7, v6, v10
+    :goto_9
+    aput v7, v5, v11
 
-    goto/16 :goto_1
+    goto/16 :goto_2
 
     :cond_8
-    move v7, v9
+    move v7, v8
+
+    goto :goto_9
+
+    .line 1294
+    :pswitch_11
+    const/16 v7, 0x10
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto/16 :goto_2
+
+    .line 1297
+    :pswitch_12
+    const/16 v7, 0x11
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto/16 :goto_2
+
+    .line 1300
+    :pswitch_13
+    const/16 v7, 0x12
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto/16 :goto_2
+
+    .line 1303
+    :pswitch_14
+    const/16 v7, 0x13
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    aput v11, v5, v7
+
+    goto/16 :goto_2
+
+    .line 1306
+    :pswitch_15
+    const/16 v11, 0x14
+
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_9
+
+    move v7, v10
+
+    :goto_a
+    aput v7, v5, v11
+
+    goto/16 :goto_2
+
+    :cond_9
+    move v7, v8
 
     goto :goto_a
 
-    .line 1274
-    .end local v2           #attr:I
-    :cond_9
-    const/4 v5, 0x0
+    .line 1309
+    :pswitch_16
+    const/16 v11, 0x15
 
-    .local v5, n:I
+    invoke-virtual {v1, v2, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_a
+
+    move v7, v10
+
     :goto_b
-    if-ge v5, v11, :cond_a
+    aput v7, v5, v11
 
-    .line 1275
-    aget v7, v6, v5
+    goto/16 :goto_2
 
-    aput v7, v4, v5
-
-    .line 1274
-    add-int/lit8 v5, v5, 0x1
+    :cond_a
+    move v7, v8
 
     goto :goto_b
 
-    .line 1278
-    :cond_a
+    .line 1313
+    .end local v2           #attr:I
+    :cond_b
+    iput-boolean v9, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+
+    .line 1314
+    invoke-static {v5, v8, v4, v8, v12}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 1316
     invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 1279
+    .line 1317
     return-void
 
-    .line 1201
+    .line 1241
     nop
 
     :pswitch_data_0
@@ -684,76 +725,151 @@
 .end method
 
 .method public constructor <init>(Landroid/view/ViewGroup$LayoutParams;)V
-    .locals 3
+    .locals 4
     .parameter "source"
 
     .prologue
-    const/16 v2, 0x16
+    const/16 v3, 0x16
+
+    const/4 v2, 0x0
 
     const/high16 v1, -0x8000
 
-    .line 1289
+    .line 1327
     invoke-direct {p0, p1}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 1144
-    new-array v0, v2, [I
+    .line 1178
+    new-array v0, v3, [I
 
     iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1173
-    new-array v0, v2, [I
+    .line 1207
+    new-array v0, v3, [I
 
     iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
-    .line 1177
+    .line 1211
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
 
-    .line 1178
+    .line 1212
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
 
-    .line 1180
-    const/4 v0, 0x0
+    .line 1214
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
-    iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+    .line 1215
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
 
-    .line 1290
+    .line 1328
     return-void
 .end method
 
 .method public constructor <init>(Landroid/view/ViewGroup$MarginLayoutParams;)V
-    .locals 3
+    .locals 4
     .parameter "source"
 
     .prologue
-    const/16 v2, 0x16
+    const/16 v3, 0x16
+
+    const/4 v2, 0x0
 
     const/high16 v1, -0x8000
 
-    .line 1296
+    .line 1334
     invoke-direct {p0, p1}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(Landroid/view/ViewGroup$MarginLayoutParams;)V
 
-    .line 1144
-    new-array v0, v2, [I
+    .line 1178
+    new-array v0, v3, [I
 
     iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1173
-    new-array v0, v2, [I
+    .line 1207
+    new-array v0, v3, [I
 
     iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
-    .line 1177
+    .line 1211
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
 
-    .line 1178
+    .line 1212
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
 
-    .line 1180
-    const/4 v0, 0x0
+    .line 1214
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+
+    .line 1215
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
+
+    .line 1335
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/widget/RelativeLayout$LayoutParams;)V
+    .locals 4
+    .parameter "source"
+
+    .prologue
+    const/high16 v1, -0x8000
+
+    const/16 v3, 0x16
+
+    const/4 v2, 0x0
+
+    .line 1344
+    invoke-direct {p0, p1}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(Landroid/view/ViewGroup$MarginLayoutParams;)V
+
+    .line 1178
+    new-array v0, v3, [I
+
+    iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    .line 1207
+    new-array v0, v3, [I
+
+    iput-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
+
+    .line 1211
+    iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
+
+    .line 1212
+    iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
+
+    .line 1214
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+
+    .line 1215
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
+
+    .line 1346
+    iget-boolean v0, p1, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
+
+    iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
+
+    .line 1347
+    iget-boolean v0, p1, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
     iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
-    .line 1297
+    .line 1348
+    iget-boolean v0, p1, Landroid/widget/RelativeLayout$LayoutParams;->alignWithParent:Z
+
+    iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->alignWithParent:Z
+
+    .line 1350
+    iget-object v0, p1, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    invoke-static {v0, v2, v1, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 1351
+    iget-object v0, p1, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
+
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
+
+    invoke-static {v0, v2, v1, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 1353
     return-void
 .end method
 
@@ -762,8 +878,8 @@
     .parameter "x0"
 
     .prologue
-    .line 1143
-    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
 
     return v0
 .end method
@@ -774,8 +890,8 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
-    iput p1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
+    .line 1177
+    iput p1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
 
     return p1
 .end method
@@ -786,12 +902,28 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
-    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
 
     add-int/2addr v0, p1
 
-    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
+    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
+
+    return v0
+.end method
+
+.method static synthetic access$120(Landroid/widget/RelativeLayout$LayoutParams;I)I
+    .locals 1
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
+
+    sub-int/2addr v0, p1
+
+    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
 
     return v0
 .end method
@@ -801,8 +933,8 @@
     .parameter "x0"
 
     .prologue
-    .line 1143
-    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
 
     return v0
 .end method
@@ -813,8 +945,8 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
-    iput p1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
+    .line 1177
+    iput p1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
 
     return p1
 .end method
@@ -825,12 +957,28 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
-    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
 
     add-int/2addr v0, p1
 
-    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
+    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
+
+    return v0
+.end method
+
+.method static synthetic access$220(Landroid/widget/RelativeLayout$LayoutParams;I)I
+    .locals 1
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
+
+    sub-int/2addr v0, p1
+
+    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
 
     return v0
 .end method
@@ -840,8 +988,8 @@
     .parameter "x0"
 
     .prologue
-    .line 1143
-    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
 
     return v0
 .end method
@@ -852,8 +1000,8 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
-    iput p1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
+    .line 1177
+    iput p1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
 
     return p1
 .end method
@@ -864,12 +1012,12 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
-    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
+    .line 1177
+    iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
 
     add-int/2addr v0, p1
 
-    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
+    iput v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mBottom:I
 
     return v0
 .end method
@@ -879,7 +1027,7 @@
     .parameter "x0"
 
     .prologue
-    .line 1143
+    .line 1177
     iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mTop:I
 
     return v0
@@ -891,7 +1039,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
+    .line 1177
     iput p1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mTop:I
 
     return p1
@@ -903,7 +1051,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1143
+    .line 1177
     iget v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mTop:I
 
     add-int/2addr v0, p1
@@ -918,7 +1066,7 @@
     .parameter "x0"
 
     .prologue
-    .line 1143
+    .line 1177
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
     return-object v0
@@ -928,7 +1076,7 @@
     .locals 2
 
     .prologue
-    .line 1359
+    .line 1415
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
     const/16 v1, 0x10
@@ -990,178 +1138,540 @@
 .end method
 
 .method private resolveRules(I)V
-    .locals 11
+    .locals 10
     .parameter "layoutDirection"
 
     .prologue
-    const/16 v7, 0x9
+    const/16 v9, 0x11
+
+    const/16 v8, 0x10
+
+    const/16 v4, 0xb
+
+    const/4 v1, 0x1
+
+    const/4 v2, 0x0
+
+    .line 1434
+    if-ne p1, v1, :cond_c
+
+    move v0, v1
+
+    .line 1437
+    .local v0, isLayoutRtl:Z
+    :goto_0
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
+
+    iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v6, 0x16
+
+    invoke-static {v3, v2, v5, v2, v6}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 1440
+    iget-boolean v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mIsRtlCompatibilityMode:Z
+
+    if-eqz v3, :cond_d
+
+    .line 1441
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x12
+
+    aget v3, v3, v5
+
+    if-eqz v3, :cond_1
+
+    .line 1442
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/4 v5, 0x5
+
+    aget v3, v3, v5
+
+    if-nez v3, :cond_0
+
+    .line 1445
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/4 v5, 0x5
+
+    iget-object v6, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v7, 0x12
+
+    aget v6, v6, v7
+
+    aput v6, v3, v5
+
+    .line 1447
+    :cond_0
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x12
+
+    aput v2, v3, v5
+
+    .line 1450
+    :cond_1
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x13
+
+    aget v3, v3, v5
+
+    if-eqz v3, :cond_3
+
+    .line 1451
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
     const/4 v5, 0x7
 
-    const/4 v6, 0x5
+    aget v3, v3, v5
 
-    const/4 v2, 0x1
+    if-nez v3, :cond_2
 
-    const/4 v3, 0x0
+    .line 1454
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1365
-    if-ne p1, v2, :cond_0
+    const/4 v5, 0x7
 
-    move v0, v2
+    iget-object v6, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1367
-    .local v0, isLayoutRtl:Z
-    :goto_0
-    const/4 v1, 0x0
+    const/16 v7, 0x13
 
-    .local v1, n:I
-    :goto_1
-    const/16 v4, 0x16
+    aget v6, v6, v7
 
-    if-ge v1, v4, :cond_1
+    aput v6, v3, v5
 
-    .line 1368
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
-
-    iget-object v8, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
-
-    aget v8, v8, v1
-
-    aput v8, v4, v1
-
-    .line 1367
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_1
-
-    .end local v0           #isLayoutRtl:Z
-    .end local v1           #n:I
-    :cond_0
-    move v0, v3
-
-    .line 1365
-    goto :goto_0
-
-    .line 1371
-    .restart local v0       #isLayoutRtl:Z
-    .restart local v1       #n:I
-    :cond_1
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
-
-    const/16 v8, 0x12
-
-    aget v4, v4, v8
-
-    if-eqz v4, :cond_2
-
-    .line 1372
-    iget-object v8, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
-
-    if-eqz v0, :cond_9
-
-    move v4, v5
-
-    :goto_2
-    iget-object v9, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
-
-    const/16 v10, 0x12
-
-    aget v9, v9, v10
-
-    aput v9, v8, v4
-
-    .line 1374
+    .line 1456
     :cond_2
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    const/16 v8, 0x13
+    const/16 v5, 0x13
 
-    aget v4, v4, v8
+    aput v2, v3, v5
 
-    if-eqz v4, :cond_3
+    .line 1459
+    :cond_3
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1375
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    aget v3, v3, v8
 
-    if-eqz v0, :cond_a
+    if-eqz v3, :cond_5
 
-    :goto_3
+    .line 1460
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v3, v3, v2
+
+    if-nez v3, :cond_4
+
+    .line 1463
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
     iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
-
-    const/16 v8, 0x13
 
     aget v5, v5, v8
 
-    aput v5, v4, v6
+    aput v5, v3, v2
 
-    .line 1377
-    :cond_3
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    .line 1465
+    :cond_4
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    const/16 v5, 0x10
+    aput v2, v3, v8
 
-    aget v4, v4, v5
+    .line 1468
+    :cond_5
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    if-eqz v4, :cond_4
+    aget v3, v3, v9
 
-    .line 1378
+    if-eqz v3, :cond_7
+
+    .line 1469
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v3, v3, v1
+
+    if-nez v3, :cond_6
+
+    .line 1472
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
     iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    if-eqz v0, :cond_b
+    aget v5, v5, v9
 
-    move v4, v2
+    aput v5, v3, v1
+
+    .line 1474
+    :cond_6
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aput v2, v1, v9
+
+    .line 1477
+    :cond_7
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x14
+
+    aget v1, v1, v3
+
+    if-eqz v1, :cond_9
+
+    .line 1478
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x9
+
+    aget v1, v1, v3
+
+    if-nez v1, :cond_8
+
+    .line 1481
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x9
+
+    iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v6, 0x14
+
+    aget v5, v5, v6
+
+    aput v5, v1, v3
+
+    .line 1483
+    :cond_8
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x14
+
+    aput v2, v1, v3
+
+    .line 1486
+    :cond_9
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v1, v1, v4
+
+    if-nez v1, :cond_b
+
+    .line 1487
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v1, v1, v4
+
+    if-nez v1, :cond_a
+
+    .line 1490
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x15
+
+    aget v3, v3, v5
+
+    aput v3, v1, v4
+
+    .line 1492
+    :cond_a
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x15
+
+    aput v2, v1, v3
+
+    .line 1547
+    :cond_b
+    :goto_1
+    iput-boolean v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+
+    .line 1548
+    return-void
+
+    .end local v0           #isLayoutRtl:Z
+    :cond_c
+    move v0, v2
+
+    .line 1434
+    goto/16 :goto_0
+
+    .line 1496
+    .restart local v0       #isLayoutRtl:Z
+    :cond_d
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x12
+
+    aget v3, v3, v5
+
+    if-nez v3, :cond_e
+
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x13
+
+    aget v3, v3, v5
+
+    if-eqz v3, :cond_10
+
+    :cond_e
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/4 v5, 0x5
+
+    aget v3, v3, v5
+
+    if-nez v3, :cond_f
+
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/4 v5, 0x7
+
+    aget v3, v3, v5
+
+    if-eqz v3, :cond_10
+
+    .line 1499
+    :cond_f
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/4 v5, 0x5
+
+    aput v2, v3, v5
+
+    .line 1500
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/4 v5, 0x7
+
+    aput v2, v3, v5
+
+    .line 1502
+    :cond_10
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x12
+
+    aget v3, v3, v5
+
+    if-eqz v3, :cond_11
+
+    .line 1504
+    iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    if-eqz v0, :cond_1e
+
+    const/4 v3, 0x7
+
+    :goto_2
+    iget-object v6, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v7, 0x12
+
+    aget v6, v6, v7
+
+    aput v6, v5, v3
+
+    .line 1505
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x12
+
+    aput v2, v3, v5
+
+    .line 1507
+    :cond_11
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x13
+
+    aget v3, v3, v5
+
+    if-eqz v3, :cond_12
+
+    .line 1509
+    iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    if-eqz v0, :cond_1f
+
+    const/4 v3, 0x5
+
+    :goto_3
+    iget-object v6, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v7, 0x13
+
+    aget v6, v6, v7
+
+    aput v6, v5, v3
+
+    .line 1510
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v5, 0x13
+
+    aput v2, v3, v5
+
+    .line 1513
+    :cond_12
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v3, v3, v8
+
+    if-nez v3, :cond_13
+
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v3, v3, v9
+
+    if-eqz v3, :cond_15
+
+    :cond_13
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v3, v3, v2
+
+    if-nez v3, :cond_14
+
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v3, v3, v1
+
+    if-eqz v3, :cond_15
+
+    .line 1516
+    :cond_14
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aput v2, v3, v2
+
+    .line 1517
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aput v2, v3, v1
+
+    .line 1519
+    :cond_15
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v3, v3, v8
+
+    if-eqz v3, :cond_16
+
+    .line 1521
+    iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    if-eqz v0, :cond_20
+
+    move v3, v1
 
     :goto_4
     iget-object v6, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    const/16 v8, 0x10
-
     aget v6, v6, v8
 
-    aput v6, v5, v4
+    aput v6, v5, v3
 
-    .line 1380
-    :cond_4
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    .line 1522
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    const/16 v5, 0x11
+    aput v2, v3, v8
 
-    aget v4, v4, v5
+    .line 1524
+    :cond_16
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    if-eqz v4, :cond_6
+    aget v3, v3, v9
 
-    .line 1381
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    if-eqz v3, :cond_18
 
-    if-eqz v0, :cond_5
+    .line 1526
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    move v2, v3
+    if-eqz v0, :cond_17
 
-    :cond_5
+    move v1, v2
+
+    :cond_17
     iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    const/16 v6, 0x11
+    aget v5, v5, v9
 
-    aget v5, v5, v6
+    aput v5, v3, v1
 
-    aput v5, v4, v2
+    .line 1527
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1383
-    :cond_6
-    iget-object v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    aput v2, v1, v9
 
-    const/16 v4, 0x14
+    .line 1530
+    :cond_18
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    aget v2, v2, v4
+    const/16 v3, 0x14
 
-    if-eqz v2, :cond_7
+    aget v1, v1, v3
 
-    .line 1384
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    if-nez v1, :cond_19
 
-    if-eqz v0, :cond_c
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    const/16 v2, 0xb
+    const/16 v3, 0x15
+
+    aget v1, v1, v3
+
+    if-eqz v1, :cond_1b
+
+    :cond_19
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x9
+
+    aget v1, v1, v3
+
+    if-nez v1, :cond_1a
+
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aget v1, v1, v4
+
+    if-eqz v1, :cond_1b
+
+    .line 1533
+    :cond_1a
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x9
+
+    aput v2, v1, v3
+
+    .line 1534
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    aput v2, v1, v4
+
+    .line 1536
+    :cond_1b
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    const/16 v3, 0x14
+
+    aget v1, v1, v3
+
+    if-eqz v1, :cond_1c
+
+    .line 1538
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    if-eqz v0, :cond_21
+
+    move v1, v4
 
     :goto_5
     iget-object v5, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
@@ -1170,68 +1680,73 @@
 
     aget v5, v5, v6
 
-    aput v5, v4, v2
+    aput v5, v3, v1
 
-    .line 1386
-    :cond_7
-    iget-object v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    .line 1539
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    const/16 v4, 0x15
+    const/16 v3, 0x14
 
-    aget v2, v2, v4
+    aput v2, v1, v3
 
-    if-eqz v2, :cond_8
+    .line 1541
+    :cond_1c
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1387
-    iget-object v2, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    const/16 v3, 0x15
 
-    if-eqz v0, :cond_d
+    aget v1, v1, v3
 
-    :goto_6
-    iget-object v4, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+    if-eqz v1, :cond_b
+
+    .line 1543
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
+
+    if-eqz v0, :cond_1d
+
+    const/16 v4, 0x9
+
+    :cond_1d
+    iget-object v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
     const/16 v5, 0x15
 
-    aget v4, v4, v5
+    aget v3, v3, v5
 
-    aput v4, v2, v7
+    aput v3, v1, v4
 
-    .line 1389
-    :cond_8
-    iput-boolean v3, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
+    .line 1544
+    iget-object v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
-    .line 1390
-    return-void
+    const/16 v3, 0x15
 
-    :cond_9
-    move v4, v6
+    aput v2, v1, v3
 
-    .line 1372
-    goto :goto_2
+    goto/16 :goto_1
 
-    :cond_a
-    move v6, v5
+    .line 1504
+    :cond_1e
+    const/4 v3, 0x5
 
-    .line 1375
-    goto :goto_3
+    goto/16 :goto_2
 
-    :cond_b
-    move v4, v3
+    .line 1509
+    :cond_1f
+    const/4 v3, 0x7
 
-    .line 1378
-    goto :goto_4
+    goto/16 :goto_3
 
-    :cond_c
-    move v2, v7
+    :cond_20
+    move v3, v2
 
-    .line 1384
+    .line 1521
+    goto/16 :goto_4
+
+    .line 1538
+    :cond_21
+    const/16 v1, 0x9
+
     goto :goto_5
-
-    .line 1387
-    :cond_d
-    const/16 v7, 0xb
-
-    goto :goto_6
 .end method
 
 
@@ -1243,22 +1758,22 @@
     .prologue
     const/4 v1, -0x1
 
-    .line 1318
+    .line 1374
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
     aput v1, v0, p1
 
-    .line 1319
+    .line 1375
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
     aput v1, v0, p1
 
-    .line 1320
+    .line 1376
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
-    .line 1321
+    .line 1377
     return-void
 .end method
 
@@ -1268,22 +1783,22 @@
     .parameter "anchor"
 
     .prologue
-    .line 1338
+    .line 1394
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
     aput p2, v0, p1
 
-    .line 1339
+    .line 1395
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
     aput p2, v0, p1
 
-    .line 1340
+    .line 1396
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
-    .line 1341
+    .line 1397
     return-void
 .end method
 
@@ -1292,7 +1807,7 @@
     .parameter "output"
 
     .prologue
-    .line 1301
+    .line 1357
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -1350,7 +1865,7 @@
     .locals 1
 
     .prologue
-    .line 1426
+    .line 1584
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
     return-object v0
@@ -1361,7 +1876,7 @@
     .parameter "layoutDirection"
 
     .prologue
-    .line 1407
+    .line 1565
     invoke-direct {p0}, Landroid/widget/RelativeLayout$LayoutParams;->hasRelativeRules()Z
 
     move-result v0
@@ -1378,21 +1893,21 @@
 
     if-eq p1, v0, :cond_1
 
-    .line 1409
+    .line 1567
     :cond_0
     invoke-direct {p0, p1}, Landroid/widget/RelativeLayout$LayoutParams;->resolveRules(I)V
 
-    .line 1410
+    .line 1568
     invoke-virtual {p0}, Landroid/widget/RelativeLayout$LayoutParams;->getLayoutDirection()I
 
     move-result v0
 
     if-eq p1, v0, :cond_1
 
-    .line 1411
+    .line 1569
     invoke-virtual {p0, p1}, Landroid/widget/RelativeLayout$LayoutParams;->setLayoutDirection(I)V
 
-    .line 1414
+    .line 1572
     :cond_1
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
@@ -1406,22 +1921,22 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 1353
+    .line 1409
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRules:[I
 
     aput v1, v0, p1
 
-    .line 1354
+    .line 1410
     iget-object v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mInitialRules:[I
 
     aput v1, v0, p1
 
-    .line 1355
+    .line 1411
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRulesChanged:Z
 
-    .line 1356
+    .line 1412
     return-void
 .end method
 
@@ -1432,16 +1947,16 @@
     .prologue
     const/high16 v2, -0x8000
 
-    .line 1431
+    .line 1589
     invoke-virtual {p0}, Landroid/widget/RelativeLayout$LayoutParams;->isLayoutRtl()Z
 
     move-result v0
 
-    .line 1432
+    .line 1590
     .local v0, isLayoutRtl:Z
     if-eqz v0, :cond_3
 
-    .line 1433
+    .line 1591
     iget v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
 
     if-eq v1, v2, :cond_0
@@ -1450,7 +1965,7 @@
 
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mRight:I
 
-    .line 1434
+    .line 1592
     :cond_0
     iget v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
 
@@ -1460,7 +1975,7 @@
 
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
 
-    .line 1440
+    .line 1598
     :cond_1
     :goto_0
     invoke-direct {p0}, Landroid/widget/RelativeLayout$LayoutParams;->hasRelativeRules()Z
@@ -1475,17 +1990,17 @@
 
     if-eq p1, v1, :cond_2
 
-    .line 1441
+    .line 1599
     invoke-direct {p0, p1}, Landroid/widget/RelativeLayout$LayoutParams;->resolveRules(I)V
 
-    .line 1444
+    .line 1602
     :cond_2
     invoke-super {p0, p1}, Landroid/view/ViewGroup$MarginLayoutParams;->resolveLayoutDirection(I)V
 
-    .line 1445
+    .line 1603
     return-void
 
-    .line 1436
+    .line 1594
     :cond_3
     iget v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mStart:I
 
@@ -1495,7 +2010,7 @@
 
     iput v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mLeft:I
 
-    .line 1437
+    .line 1595
     :cond_4
     iget v1, p0, Landroid/widget/RelativeLayout$LayoutParams;->mEnd:I
 

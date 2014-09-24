@@ -15,9 +15,9 @@
 
 
 # instance fields
-.field code:I
+.field final code:I
 
-.field raw:Ljava/lang/String;
+.field final raw:Ljava/lang/String;
 
 .field final synthetic this$0:Lcom/android/server/NsdService;
 
@@ -30,17 +30,17 @@
     .parameter "raw"
 
     .prologue
-    .line 489
+    .line 624
     iput-object p1, p0, Lcom/android/server/NsdService$NativeEvent;->this$0:Lcom/android/server/NsdService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 490
+    .line 625
     iput p2, p0, Lcom/android/server/NsdService$NativeEvent;->code:I
 
-    .line 491
+    .line 626
     iput-object p3, p0, Lcom/android/server/NsdService$NativeEvent;->raw:Ljava/lang/String;
 
-    .line 492
+    .line 627
     return-void
 .end method

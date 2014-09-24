@@ -22,6 +22,8 @@
     <dimen name="system_bar_icon_size">32.0dip</dimen>
     <dimen name="status_bar_edge_ignore">5.0dip</dimen>
     <dimen name="fastscroll_overlay_size">104.0dip</dimen>
+    <dimen name="fastscroll_overlay_text_size">52.0sp</dimen>
+    <dimen name="fastscroll_overlay_padding">16.0dip</dimen>
     <dimen name="fastscroll_thumb_width">64.0dip</dimen>
     <dimen name="fastscroll_thumb_height">52.0dip</dimen>
     <dimen name="min_xlarge_screen_width">800.0dip</dimen>
@@ -47,7 +49,7 @@
     <dimen name="preference_icon_minWidth">0.0dip</dimen>
     <dimen name="dialog_fixed_width_major">320.0dip</dimen>
     <dimen name="dialog_fixed_width_minor">320.0dip</dimen>
-    <item type="dimen" name="dialog_fixed_height_major">80.00001%</item>
+    <item type="dimen" name="dialog_fixed_height_major">79.99999%</item>
     <item type="dimen" name="dialog_fixed_height_minor">100.0%</item>
     <dimen name="preference_screen_header_vertical_padding">0.0dip</dimen>
     <dimen name="preference_screen_header_padding_side">16.0dip</dimen>
@@ -88,7 +90,6 @@
     <dimen name="notification_text_size">14.0dip</dimen>
     <dimen name="notification_title_text_size">18.0dip</dimen>
     <dimen name="notification_subtext_size">12.0dip</dimen>
-    <dimen name="lockscreen_target_inset">30.0dip</dimen>
     <dimen name="kg_security_panel_height">600.0dip</dimen>
     <dimen name="kg_security_view_height">480.0dip</dimen>
     <dimen name="kg_widget_view_width">0.0dip</dimen>
@@ -110,8 +111,7 @@
     <dimen name="kg_runway_lights_top_margin">0.0dip</dimen>
     <dimen name="accessibility_touch_slop">80.0dip</dimen>
     <dimen name="keyguard_security_width">320.0dip</dimen>
-    <dimen name="keyguard_security_height">350.0dip</dimen>
-    <dimen name="keyguard_security_no_widget_height">450.0dip</dimen>
+    <dimen name="keyguard_security_height">400.0dip</dimen>
     <dimen name="keyguard_security_view_margin">8.0dip</dimen>
     <dimen name="keyguard_muliuser_selector_margin">8.0dip</dimen>
     <dimen name="keyguard_avatar_frame_stroke_width">2.0dip</dimen>
@@ -121,9 +121,19 @@
     <dimen name="kg_edge_swipe_region_size">24.0dip</dimen>
     <dimen name="kg_squashed_layout_threshold">600.0dip</dimen>
     <dimen name="kg_small_widget_height">160.0dip</dimen>
-    <dimen name="kg_num_pad_key_padding_left">10.0dip</dimen>
-    <dimen name="pie_trigger_distance">12.0dip</dimen>
-    <dimen name="pie_perpendicular_distance">15.0dip</dimen>
-    <dimen name="pie_trigger_thickness">10.0dip</dimen>
-    <item type="dimen" name="APKTOOL_DUMMY_007e">false</item>
+    <dimen name="subtitle_corner_radius">2.0dip</dimen>
+    <dimen name="subtitle_shadow_radius">2.0dip</dimen>
+    <dimen name="subtitle_shadow_offset">2.0dip</dimen>
+    <dimen name="subtitle_outline_width">2.0dip</dimen>
+    <dimen name="immersive_mode_cling_width">-1.0px</dimen>
+    <dimen name="edge_gesture_trigger_distance">12.0dip</dimen>
+    <dimen name="edge_gesture_perpendicular_distance">15.0dip</dimen>
+    <dimen name="edge_gesture_trigger_thickness">12.0dip</dimen>
+    <dimen name="navigation_ring_icon_size">88.0dip</dimen>
+    <dimen name="navigation_ring_activity_icon_size">36.0dip</dimen>
+    <dimen name="webviewchromium_link_preview_overlay_radius">7.0dip</dimen>
+    <dimen name="webviewchromium_color_button_height">60.0dip</dimen>
+    <dimen name="webviewchromium_color_picker_gradient_margin">14.5dip</dimen>
+    <dimen name="webviewchromium_autofill_text_height">44.0dip</dimen>
+    <dimen name="webviewchromium_autofill_text_divider_height">1.0px</dimen>
 </resources>

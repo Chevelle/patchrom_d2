@@ -48,7 +48,7 @@
 
     const/4 v2, 0x0
 
-    .line 125
+    .line 126
     new-instance v0, Landroid/bluetooth/BluetoothSocket$SocketState;
 
     const-string v1, "INIT"
@@ -57,7 +57,7 @@
 
     sput-object v0, Landroid/bluetooth/BluetoothSocket$SocketState;->INIT:Landroid/bluetooth/BluetoothSocket$SocketState;
 
-    .line 126
+    .line 127
     new-instance v0, Landroid/bluetooth/BluetoothSocket$SocketState;
 
     const-string v1, "CONNECTED"
@@ -66,7 +66,7 @@
 
     sput-object v0, Landroid/bluetooth/BluetoothSocket$SocketState;->CONNECTED:Landroid/bluetooth/BluetoothSocket$SocketState;
 
-    .line 127
+    .line 128
     new-instance v0, Landroid/bluetooth/BluetoothSocket$SocketState;
 
     const-string v1, "LISTENING"
@@ -75,7 +75,7 @@
 
     sput-object v0, Landroid/bluetooth/BluetoothSocket$SocketState;->LISTENING:Landroid/bluetooth/BluetoothSocket$SocketState;
 
-    .line 128
+    .line 129
     new-instance v0, Landroid/bluetooth/BluetoothSocket$SocketState;
 
     const-string v1, "CLOSED"
@@ -84,7 +84,7 @@
 
     sput-object v0, Landroid/bluetooth/BluetoothSocket$SocketState;->CLOSED:Landroid/bluetooth/BluetoothSocket$SocketState;
 
-    .line 124
+    .line 125
     const/4 v0, 0x4
 
     new-array v0, v0, [Landroid/bluetooth/BluetoothSocket$SocketState;
@@ -121,7 +121,7 @@
     .end annotation
 
     .prologue
-    .line 124
+    .line 125
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -132,7 +132,7 @@
     .parameter "name"
 
     .prologue
-    .line 124
+    .line 125
     const-class v0, Landroid/bluetooth/BluetoothSocket$SocketState;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -148,7 +148,7 @@
     .locals 1
 
     .prologue
-    .line 124
+    .line 125
     sget-object v0, Landroid/bluetooth/BluetoothSocket$SocketState;->$VALUES:[Landroid/bluetooth/BluetoothSocket$SocketState;
 
     invoke-virtual {v0}, [Landroid/bluetooth/BluetoothSocket$SocketState;->clone()Ljava/lang/Object;

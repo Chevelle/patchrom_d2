@@ -24,116 +24,137 @@
     <string name="VideoView_error_text_invalid_progressive_playback">この動画はこの端末にストリーミングできません。</string>
     <string name="selectTextMode">テキストを選択</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="pinpuk_attempts">"
+残り試行回数:"</string>
+    <string name="lockscreen_sim_error_message_short">無効なSIMカードです。</string>
+    <string name="lockscreen_airplane_mode_on">機内モード</string>
+    <string name="progress_nomediapresent">取り外し可能なメディアが挿入されていません…</string>
+    <string name="storage_uicc">UICCストレージ</string>
+    <string name="stk_cc_ussd_to_dial">USSDリクエストはDIALリクエストに変更されます。</string>
+    <string name="stk_cc_ussd_to_ss">USSDリクエストはSSリクエストに変更されます。</string>
+    <string name="stk_cc_ussd_to_ussd">USSDリクエストは新しいUSSDに変更されます。</string>
+    <string name="stk_cc_ss_to_dial">SSリクエストはDIALリクエストに変更されます。</string>
+    <string name="stk_cc_ss_to_ussd">SSリクエストはUSSDリクエストに変更されます。</string>
+    <string name="stk_cc_ss_to_ss">SSリクエストは新しいSSリクエストに変更されます。</string>
     <string name="profileNameDefault">デフォルト</string>
     <string name="profileNameWork">仕事</string>
     <string name="profileNameHome">自宅</string>
     <string name="profileNameSilent">サイレント</string>
     <string name="profileNameNight">夜</string>
+    <string name="profileNameAutomobile">車</string>
     <string name="profileGroupPhone">電話</string>
     <string name="profileGroupCalendar">カレンダー</string>
     <string name="profileGroupGmail">Gmail</string>
-    <string name="profileGroupEmail">Eメール</string>
+    <string name="profileGroupEmail">メール</string>
     <string name="profileGroupSMS">SMS</string>
     <string name="wildcardProfile">その他</string>
-    <string name="reboot_system">携帯電話を再起動</string>
     <string name="global_action_screenshot">スクリーンショット</string>
     <string name="global_actions_toggle_expanded_desktop_mode">拡張デスクトップ</string>
     <string name="global_actions_expanded_desktop_mode_on_status">有効</string>
     <string name="global_actions_expanded_desktop_mode_off_status">無効</string>
+    <string name="reboot_system">携帯電話を再起動</string>
     <string name="reboot_reboot">再起動</string>
     <string name="reboot_recovery">リカバリー</string>
-    <string name="reboot_bootloader">ブートローダー</string>
+    <string name="reboot_bootloader">ブートローダ</string>
     <string name="reboot_bootmenu">ブートメニュー</string>
     <string name="reboot_fastboot">ファストブート</string>
     <string name="reboot_download">ダウンロード</string>
     <string name="reboot_progress">再起動中…</string>
     <string name="reboot_confirm">携帯電話は再起動します。</string>
-    <string name="permlab_preventpower">電源キーを保護</string>
-    <string name="permdesc_preventpower">電源キーを置き換えるのをアプリに許可します。</string>
-    <string name="permlab_fm_radio_receiver">FMレシーバの制御</string>
-    <string name="permdesc_fm_radio_receiver">FMレシーバの制御をアプリに許可します。</string>
-    <string name="permlab_fm_radio_transmitter">FMトランスミッターの制御</string>
-    <string name="permdesc_fm_radio_transmitter">FMトランスミッターの制御をアプリに許可します。</string>
-    <string name="lockscreen_discharging">放電中, %d%%</string>
+    <string name="permlab_preventpower">電源キーを無効にする</string>
+    <string name="permdesc_preventpower">電源キーの無効化をアプリに許可します。</string>
+    <string name="permlab_sendMockSms">疑似SMSメッセージの送信</string>
+    <string name="permdesc_sendMockSms">疑似SMSメッセージの送信をアプリに許可します。これによりアプリは、信頼されたアプリケーションへメッセージを送信できます。悪意のあるアプリが連続的にメッセージを送信したり、通知を阻止したり、ユーザーを混乱させるおそれがあります。</string>
     <string name="storage_sd_dock_card">SDカードを接続</string>
-    <string name="app_killed_message">アプリケーションを強制終了しました</string>
+    <string name="app_killed_message">アプリを終了しました</string>
     <string name="global_action_reboot">再起動</string>
-    <string name="global_action_choose_profile">プロファイル選択</string>
-    <string name="toast_rotation_unlocked">ディスプレイの回転をロック解除しました</string>
-    <string name="toast_rotation_locked">ディスプレイの回転をロックしました</string>
-    <string name="stylus_app_not_installed">%s はインストールされていません</string>
-    <string name="permlab_changePrivacyGuardState">プライバシー保護を有効/無効にする</string>
-    <string name="permdesc_changePrivacyGuardState">アプリに、他のアプリがプライバシー保護のもとで実行するかどうか変更することを許可します。アプリがプライバシー保護の元で実行されるとそのアプリは連絡先、通話履歴、メッセージなどの個人データにアクセスできなくなります。</string>
-    <string name="privacy_guard_notification">プライバシー保護はアクティブ</string>
-    <string name="privacy_guard_notification_detail">%1$s は、個人データにアクセスできません</string>
+    <string name="global_action_choose_profile">プロファイル</string>
+    <string name="toast_rotation_unlocked">画面の回転をロック解除しました</string>
+    <string name="toast_rotation_locked">画面の回転をロックしました</string>
+    <string name="stylus_app_not_installed">%sはインストールされていません</string>
+    <string name="permlab_changePrivacyGuardState">プライバシーガードを有効/無効にする</string>
+    <string name="permdesc_changePrivacyGuardState">他のアプリでプライバシーガードを有効にするかどうかの変更をアプリに許可します。プライバシーガードを有効にしてアプリを実行すると、そのアプリは連絡先、通話履歴、メッセージなどの個人データにアクセスできなくなります。</string>
+    <string name="privacy_guard_notification">プライバシーガードが有効です</string>
+    <string name="privacy_guard_notification_detail">%1$sは個人データにアクセスできません</string>
     <string name="profile_picker_title">プロファイル</string>
     <string name="profile_none">なし</string>
-    <string name="permlab_cancelNotifications">アプリの通知をキャンセル</string>
-    <string name="permdesc_cancelNotifications">アプリに、他のアプリで生成された通知をキャンセルすることを許可します。</string>
-    <string name="permlab_interceptSmsSent">SMS送信への割り込み</string>
-    <string name="permdesc_interceptSmsSent">アプリに送信するSMSを傍受することを許可します。 悪意のあるアプリはSMSメッセージの送信を妨害する可能性があります。</string>
-    <string name="policylab_enforceSelinux">SELinuxを強制</string>
-    <string name="policydesc_enforceSelinux">SELinuxポリシーを強制あるいは任意モードに切り替えます。</string>
-    <string name="policylab_enforceMmac">MMACを強制</string>
-    <string name="policydesc_enforceMmac">MMACポリシーを強制あるいは任意モードに切り替えます。</string>
-    <string name="hour_minute_24" formatted="false">%-k:%M</string>
-    <string name="hour_minute_ampm" formatted="false">%-l:%M%p</string>
-    <string name="hour_minute_cap_ampm" formatted="false">%-l:%M%^p</string>
-    <string name="twelve_hour_time_format">h:mma</string>
-    <string name="twenty_four_hour_time_format">H:mm</string>
-    <string name="numeric_date" formatted="false">%Y/%m/%d</string>
-    <string name="numeric_date_format">yyyy/MM/dd</string>
+    <string name="perf_profile_pwrsv">省電力</string>
+    <string name="perf_profile_bal">バランス</string>
+    <string name="perf_profile_perf">パフォーマンス</string>
+    <string name="permlab_interceptSmsSent">送信するSMSの傍受</string>
+    <string name="permdesc_interceptSmsSent">送信するSMSの傍受をアプリに許可します。悪意のあるアプリがメッセージの送信を阻止するおそれがあります。</string>
+    <string name="permlab_resetBatteryStats">電池統計情報のリセット</string>
+    <string name="permdesc_resetBatteryStats">現在の電池消費量の低レベルデータをリセットすることをアプリに許可します。</string>
+    <string name="permgrouplab_security">セキュリティ</string>
+    <string name="permgroupdesc_security">端末のセキュリティ情報に関連する権限です。</string>
+    <string name="permlab_readPhoneBlacklist">携帯電話のブラックリストの読み取り</string>
+    <string name="permdesc_readPhoneBlacklist">着信やメッセージをブロックしている電話番号に関する情報の読み取りをアプリに許可します。</string>
+    <string name="permlab_changePhoneBlacklist">携帯電話のブラックリストの変更</string>
+    <string name="permdesc_changePhoneBlacklist">着信やメッセージをブロックしている電話番号の変更をアプリに許可します。</string>
+    <string name="permlab_accessThemeService">テーマサービスへのアクセス</string>
+    <string name="permdesc_accessThemeService">テーマサービスへのアクセスをアプリに許可します。通常のアプリでは使用しません。</string>
+    <string name="permlab_readThemes">テーマ情報の読み取り</string>
+    <string name="permdesc_readThemesDesc">テーマの読み取りや適応しているテーマの特定をアプリに許可します。</string>
+    <string name="permlab_writeThemes">テーマの変更</string>
+    <string name="permdesc_writeThemesDesc">新しいテーマの挿入や適応しているテーマの変更をアプリに許可します。</string>
+    <string name="permlab_setKeyguardWallpaper">キーガードの壁紙の設定</string>
+    <string name="permdesc_setKeyguardWallpaper">ロック画面の壁紙の変更をアプリに許可します。</string>
+    <string name="permlab_useHardwareFramework">ハードウェアフレームワークの使用</string>
+    <string name="permdesc_useHardwareFramework">CMハードウェアフレームワークへのアクセスをアプリに許可します。</string>
+    <string name="immersive_mode_confirmation_bottom">全画面表示を終了するには、上から下にスワイプ</string>
+    <string name="app_ops_access_camera">カメラへのアクセス</string>
+    <string name="app_ops_access_location">位置情報へのアクセス</string>
+    <string name="app_ops_access_notifications">通知の読み取り</string>
+    <string name="app_ops_alarm_wakeup">端末のスリープの解除</string>
+    <string name="app_ops_draw_on_top">上部への描画</string>
+    <string name="app_ops_keep_device_awake">端末のスリープの無効化</string>
+    <string name="app_ops_make_phone_call">通話の発信</string>
+    <string name="app_ops_modify_calendar">カレンダーの更新</string>
+    <string name="app_ops_modify_call_log">通話履歴の更新</string>
+    <string name="app_ops_modify_clipboard">クリップボードの変更</string>
+    <string name="app_ops_modify_contacts">連絡先の更新</string>
+    <string name="app_ops_modify_settings">システムの設定の更新</string>
+    <string name="app_ops_play_audio">音声の再生</string>
+    <string name="app_ops_post_notification">通知の配信</string>
+    <string name="app_ops_read_calendar">カレンダーの読み取り</string>
+    <string name="app_ops_read_call_log">通話履歴の読み取り</string>
+    <string name="app_ops_read_clipboard">クリップボードの読み取り</string>
+    <string name="app_ops_read_contacts">連絡先の読み取り</string>
+    <string name="app_ops_read_mms">MMSメッセージの読み取り</string>
+    <string name="app_ops_read_sms">SMSメッセージの読み取り</string>
+    <string name="app_ops_receive_sms">SMSメッセージの受信</string>
+    <string name="app_ops_record_audio">音声の録音</string>
+    <string name="app_ops_send_mms">MMSメッセージの送信</string>
+    <string name="app_ops_send_sms">SMSメッセージの送信</string>
+    <string name="app_ops_start_at_bootup">起動時の実行</string>
+    <string name="app_ops_toggle_bluetooth">Bluetoothの切り替え</string>
+    <string name="app_ops_toggle_mobile_data">データ通信の切り替え</string>
+    <string name="app_ops_toggle_wifi">WiFiの切り替え</string>
+    <string name="app_ops_use_alarm_volume">アラームの音量の制御</string>
+    <string name="app_ops_use_audio_focus">音声フォーカスの制御</string>
+    <string name="app_ops_use_bluetooth_volume">Bluetoothの音量の制御</string>
+    <string name="app_ops_use_master_volume">主音量の制御</string>
+    <string name="app_ops_use_media_buttons">メディアボタンの使用</string>
+    <string name="app_ops_use_media_volume">メディアの音量の制御</string>
+    <string name="app_ops_use_notification_volume">通知音量の制御</string>
+    <string name="app_ops_use_ring_volume">着信音の音量の制御</string>
+    <string name="app_ops_use_vibrate">触覚フィードバックの使用</string>
+    <string name="app_ops_use_voice_volume">音声の音量の制御</string>
+    <string name="app_ops_write_mms">MMSメッセージの書き込み</string>
+    <string name="app_ops_write_sms">SMSメッセージの書き込み</string>
+    <string name="notify_turn_wifi_off_title">Wi-FiをOFFにする</string>
+    <string name="privacy_guard_dialog_title">プライバシーガード</string>
+    <string name="privacy_guard_dialog_summary">%1$sが%2$sをしようとしています。</string>
+    <string name="permission_remember_choice">選択を記憶する</string>
+    <string name="adb_net_active_notification_title">ネットワーク経由のADBが有効です</string>
+    <string name="adb_both_active_notification_title">USBとネットワーク経由のADBが有効です。</string>
+    <string name="adb_active_generic_notification_message">タップしてデバッグを無効にします。</string>
+    <string name="extmedia_format_message_cm">カード上のすべてのデータ（ 「%1$s」パス配下）が消去されます。この操作は元に戻せません。</string>
     <string name="numeric_date_template" formatted="false">%s/%s/%s</string>
     <string name="month_day_year" formatted="false">%Y年%-m月%-e日</string>
     <string name="time_of_day" formatted="false">%-k:%M:%S</string>
     <string name="date_and_time" formatted="false">%Y/%m/%d %-k:%M:%S</string>
     <string name="date_time">%1$s %2$s</string>
-    <string name="time_date">%3$s %1$s</string>
-    <string name="abbrev_month_day_year" formatted="false">%Y/%m/%d</string>
-    <string name="month_day" formatted="false">%-m月%-e日</string>
-    <string name="month">%-B</string>
-    <string name="month_year" formatted="false">%Y年%-m月</string>
-    <string name="abbrev_month_day" formatted="false">%-m月%-e日</string>
-    <string name="abbrev_month">%-b</string>
-    <string name="abbrev_month_year" formatted="false">%Y年%-m月</string>
-    <string name="time1_time2">%1$s～%2$s</string>
-    <string name="date1_date2">%2$s～%5$s</string>
-    <string name="numeric_md1_md2">%2$s/%3$s～%7$s/%8$s</string>
-    <string name="numeric_wday1_md1_wday2_md2">%2$s/%3$s (%1$s)～%7$s/%8$s (%6$s)</string>
-    <string name="numeric_mdy1_mdy2">%4$s/%2$s/%3$s～%9$s/%7$s/%8$s</string>
-    <string name="numeric_wday1_mdy1_wday2_mdy2">%4$s/%2$s/%3$s (%1$s)～%9$s/%7$s/%8$s (%6$s)</string>
-    <string name="numeric_wday1_mdy1_time1_wday2_mdy2_time2">%4$s/%2$s/%3$s (%1$s) %5$s～%9$s/%7$s/%8$s (%6$s) %10$s</string>
-    <string name="numeric_md1_time1_md2_time2">%2$s/%3$s %5$s～%7$s/%8$s %10$s</string>
-    <string name="numeric_wday1_md1_time1_wday2_md2_time2">%2$s/%3$s (%1$s) %5$s～%7$s/%8$s (%6$s) %10$s</string>
-    <string name="numeric_mdy1_time1_mdy2_time2">%4$s/%2$s/%3$s %5$s～%9$s/%7$s/%8$s %10$s</string>
-    <string name="wday1_date1_time1_wday2_date2_time2">%2$s (%1$s) %3$s～%5$s (%4$s) %6$s</string>
-    <string name="wday1_date1_wday2_date2">%2$s (%1$s)～%5$s (%4$s)</string>
-    <string name="date1_time1_date2_time2">%2$s%3$s～%5$s%6$s</string>
-    <string name="time_wday_date">%3$s (%2$s) %1$s</string>
-    <string name="wday_date">%3$s (%2$s)</string>
-    <string name="time_wday">%2$s %1$s</string>
-    <string name="same_year_md1_md2">%2$s%3$s日～%7$s%8$s日</string>
-    <string name="same_year_wday1_md1_wday2_md2">%2$s%3$s日 (%1$s)～%7$s%8$s日 (%6$s)</string>
-    <string name="same_year_md1_time1_md2_time2">%2$s%3$s日%5$s～%7$s%8$s日%10$s</string>
-    <string name="same_month_md1_time1_md2_time2">%2$s%3$s日%5$s～%7$s%8$s日%10$s</string>
-    <string name="same_year_wday1_md1_time1_wday2_md2_time2">%2$s%3$s日 (%1$s) %5$s～%7$s%8$s日 (%6$s) %10$s</string>
-    <string name="same_month_wday1_md1_time1_wday2_md2_time2">%2$s%3$s日 (%1$s) %5$s～%7$s%8$s日 (%6$s) %10$s</string>
-    <string name="same_year_mdy1_time1_mdy2_time2">%4$s年%2$s%3$s日%5$s～%9$s年%7$s%8$s日%10$s</string>
-    <string name="same_month_mdy1_time1_mdy2_time2">%4$s年%2$s%3$s日%5$s～%9$s年%7$s%8$s日%10$s</string>
-    <string name="same_year_wday1_mdy1_time1_wday2_mdy2_time2">%4$s年%2$s%3$s日 (%1$s) %5$s～%9$s年%7$s%8$s日 (%6$s) %10$s</string>
-    <string name="same_month_wday1_mdy1_time1_wday2_mdy2_time2">%4$s年%2$s%3$s日 (%1$s) %5$s～%9$s年%7$s%8$s日 (%6$s) %10$s</string>
-    <string name="same_month_wday1_mdy1_wday2_mdy2">%4$s年%2$s%3$s日 (%1$s)～%9$s年%7$s%8$s日 (%6$s)</string>
-    <string name="same_month_md1_md2">%2$s%3$s日～%8$s日</string>
-    <string name="same_month_wday1_md1_wday2_md2">%2$s%3$s日 (%1$s)～%7$s%8$s日 (%6$s)</string>
-    <string name="same_year_mdy1_mdy2">%9$s年%2$s%3$s日～%7$s%8$s日</string>
-    <string name="same_month_mdy1_mdy2">%9$s年%2$s%3$s日～%8$s日</string>
-    <string name="same_year_wday1_mdy1_wday2_mdy2">%9$s年%2$s%3$s日 (%1$s)～%7$s%8$s日 (%6$s)</string>
-    <string name="short_format_month">%b</string>
-    <string name="full_wday_month_day_no_year">M月d日 (E)</string>
-    <string name="abbrev_wday_month_day_no_year">M月d日 (E)</string>
-    <string name="abbrev_wday_month_day_year">yyyy年M月d日 (E)</string>
-    <string name="full_wday_month_day_no_year_split">"M月d日
-(EEEE)"</string>
     <string name="default_text_encoding">Shift_JIS</string>
     <string name="byteShort">B</string>
     <string name="kilobyteShort">KB</string>
@@ -160,6 +181,7 @@
     <string name="invalidPuk">PUKは8桁以上で入力してください。</string>
     <string name="needPuk">SIMカードはPUKでロックされています。ロックを解除するにはPUKコードを入力してください。</string>
     <string name="needPuk2">SIMカードのロック解除のためPUK2を入力します。</string>
+    <string name="enablePin">SIM/RUIMロックを有効にしてください。</string>
     <string name="imei">IMEI</string>
     <string name="meid">MEID</string>
     <string name="ClipMmi">着信時の発信者番号</string>
@@ -238,6 +260,9 @@
     <string name="contentServiceSyncNotificationTitle">同期</string>
     <string name="contentServiceTooManyDeletesNotificationDesc">%sでの削除が多すぎます。</string>
     <string name="low_memory">端末のストレージに空き領域がありません。ファイルを削除して空き領域を確保してください。</string>
+    <string name="ssl_ca_cert_warning">ネットワークが監視される場合があります</string>
+    <string name="ssl_ca_cert_noti_by_unknown">不明な第三者</string>
+    <string name="ssl_ca_cert_noti_managed">%sによって監視される場合があります</string>
     <string name="me">自分</string>
     <string name="power_dialog">携帯電話オプション</string>
     <string name="silent_mode">マナーモード</string>
@@ -303,6 +328,8 @@
     <string name="permgroupdesc_microphone">マイクに直接アクセスして音声を記録します。</string>
     <string name="permgrouplab_camera">カメラ</string>
     <string name="permgroupdesc_camera">カメラに直接アクセスして画像または動画を撮影します。</string>
+    <string name="permgrouplab_screenlock">ロック画面</string>
+    <string name="permgroupdesc_screenlock">端末でのロック画面の動作に影響を与えることができます。</string>
     <string name="permgrouplab_appInfo">アプリ情報</string>
     <string name="permgroupdesc_appInfo">端末上の他のアプリの動作に影響を及ぼします。</string>
     <string name="permgrouplab_wallpaper">壁紙</string>
@@ -327,26 +354,40 @@
     <string name="permgroupdesc_display">他のアプリのUIに影響を及ぼします。</string>
     <string name="permgrouplab_storage">ストレージ</string>
     <string name="permgroupdesc_storage">SDカードにアクセスします。</string>
+    <string name="permgrouplab_accessibilityFeatures">ユーザー補助機能</string>
+    <string name="permgroupdesc_accessibilityFeatures">補助テクノロジーがリクエストできる機能です。</string>
+    <string name="capability_title_canRetrieveWindowContent">ウィンドウコンテンツの取得</string>
+    <string name="capability_desc_canRetrieveWindowContent">ユーザーがアクセスしているウィンドウのコンテンツを検査します。</string>
+    <string name="capability_title_canRequestTouchExploration">タッチガイドの有効化</string>
+    <string name="capability_desc_canRequestTouchExploration">触れたアイテムが読み上げられ、ジェスチャーで画面のガイドを利用できます。</string>
+    <string name="capability_title_canRequestEnhancedWebAccessibility">ウェブアクセシビリティ拡張の有効化</string>
+    <string name="capability_desc_canRequestEnhancedWebAccessibility">アプリコンテンツのアクティビティをもっと向上させるためにスクリプトをインストールできます。</string>
+    <string name="capability_title_canRequestFilterKeyEvents">入力テキストの監視</string>
+    <string name="capability_desc_canRequestFilterKeyEvents">クレジットカードの番号やパスワードなどの個人データが含まれます。</string>
     <string name="permlab_statusBar">ステータスバーの無効化や変更</string>
     <string name="permdesc_statusBar">ステータスバーの無効化、システムアイコンの追加や削除をアプリに許可します。</string>
     <string name="permlab_statusBarService">ステータスバーへの表示</string>
     <string name="permdesc_statusBarService">ステータスバーへの表示をアプリに許可します。</string>
     <string name="permlab_expandStatusBar">ステータスバーの拡大/縮小</string>
     <string name="permdesc_expandStatusBar">ステータスバーの展開/折りたたみをアプリに許可します。</string>
+    <string name="permlab_install_shortcut">ショートカットのインストール</string>
+    <string name="permdesc_install_shortcut">ユーザー操作なしでホーム画面にショートカットを追加することをアプリに許可します。</string>
+    <string name="permlab_uninstall_shortcut">ショートカットのアンインストール</string>
+    <string name="permdesc_uninstall_shortcut">ユーザー操作なしでホーム画面のショートカットを削除することをアプリに許可します。</string>
     <string name="permlab_processOutgoingCalls">発信先の変更</string>
-    <string name="permdesc_processOutgoingCalls">通話の発信とダイヤルする番号の変更をアプリに許可します。これにより、アプリが発信を監視、転送、阻止できるようになります。</string>
+    <string name="permdesc_processOutgoingCalls">発信を別の番号に転送するか完全に中止するオプションで、発信中にダイヤルされた番号にアクセスすることをアプリに許可します。</string>
     <string name="permlab_receiveSms">テキストメッセージ（SMS）の受信</string>
     <string name="permdesc_receiveSms">SMSメッセージの受信と処理をアプリに許可します。これにより、アプリが端末に届いたメッセージを表示することなく監視または削除できるようになります。</string>
     <string name="permlab_receiveMms">テキストメッセージ（MMS）の受信</string>
     <string name="permdesc_receiveMms">MMSメッセージの受信と処理をアプリに許可します。これにより、アプリが端末に届いたメッセージを表示することなく監視または削除できるようになります。</string>
     <string name="permlab_receiveEmergencyBroadcast">緊急放送の受信</string>
     <string name="permdesc_receiveEmergencyBroadcast">緊急ブロードキャストメッセージの受信と処理をアプリに許可します。これはシステムアプリのみが利用できる権限です。</string>
-    <string name="permlab_readCellBroadcasts">エリアメールSMSの読み取り</string>
-    <string name="permdesc_readCellBroadcasts">端末で受信したエリアメールSMSの読み取りをアプリに許可します。エリアメール警報は、緊急事態を警告する目的で一部の地域に配信されます。緊急エリアメールの受信時に、悪意のあるアプリによって端末の動作や処理が妨害される恐れがあります。</string>
+    <string name="permlab_readCellBroadcasts">緊急警報SMSの読み取り</string>
+    <string name="permdesc_readCellBroadcasts">端末で受信した緊急警報SMSの読み取りをアプリに許可します。緊急警報は、緊急事態を警告する目的で一部の地域に配信されます。緊急警報の受信時に、悪意のあるアプリによって端末の動作や処理が妨害される恐れがあります。</string>
     <string name="permlab_sendSms">SMSメッセージの送信</string>
     <string name="permdesc_sendSms">SMSメッセージの送信をアプリに許可します。これにより、予期せぬ料金が発生する可能性があります。悪意のあるアプリが確認なしでメッセージを送信し、料金が発生する恐れがあります。</string>
-    <string name="permlab_sendSmsNoConfirmation">確認せずにSMSメッセージを送信する</string>
-    <string name="permdesc_sendSmsNoConfirmation">SMSメッセージの送信をアプリに許可します。これにより、予期せぬ料金が発生する可能性があります。悪意のあるアプリが確認なしでメッセージを送信し、料金が発生する恐れがあります。</string>
+    <string name="permlab_sendRespondViaMessageRequest">メッセージ応答イベントの送信</string>
+    <string name="permdesc_sendRespondViaMessageRequest">着信時にメッセージ応答イベントを処理するよう他のSMSアプリにリクエストを送信することをアプリに許可します。</string>
     <string name="permlab_readSms">テキストメッセージ（SMSまたはMMS）の読み取り</string>
     <string name="permdesc_readSms">携帯端末またはSIMカードに保存されているSMSメッセージの読み取りをアプリに許可します。これにより、すべてのSMSメッセージをコンテンツや機密性に関係なくアプリから読み取ることができるようになります。</string>
     <string name="permlab_writeSms">テキストメッセージ（SMSまたはMMS）の編集</string>
@@ -367,6 +408,8 @@
     <string name="permdesc_reorderTasks">タスクをフォアグラウンドやバックグラウンドに移動することをアプリに許可します。これにより、アプリがユーザーからの入力なしでこの処理を実行する可能性があります。</string>
     <string name="permlab_removeTasks">実行中のアプリの停止</string>
     <string name="permdesc_removeTasks">タスクの削除とアプリの終了をアプリに許可します。この許可を悪意のあるアプリケーションに利用されると、他のアプリの動作が妨害される恐れがあります。</string>
+    <string name="permlab_manageActivityStacks">アクティビティスタックの管理</string>
+    <string name="permdesc_manageActivityStacks">他のアプリを実行するアクティビティスタックを追加、削除、変更することをアプリに許可します。この許可を悪意のあるアプリに利用されると、他のアプリの動作が妨害される恐れがあります。</string>
     <string name="permlab_startAnyActivity">すべてのアクティビティの開始</string>
     <string name="permdesc_startAnyActivity">権限による保護やエクスポートされた状態を問わず、すべてのアクティビティを開始することをアプリに許可します。</string>
     <string name="permlab_setScreenCompatibility">画面互換性の設定</string>
@@ -399,6 +442,8 @@
     <string name="permdesc_shutdown">アクティビティマネージャをシャットダウン状態にします。完全なシャットダウンは実行しません。</string>
     <string name="permlab_stopAppSwitches">アプリケーションの切り替えを禁止する</string>
     <string name="permdesc_stopAppSwitches">ユーザーが別のアプリに切り替えられないようにします。</string>
+    <string name="permlab_getTopActivityInfo">現在のアプリ情報の取得</string>
+    <string name="permdesc_getTopActivityInfo">画面のフォアグラウンドで現在のアプリに関する非公開情報を取得することを所有者に許可します。</string>
     <string name="permlab_runSetActivityWatcher">すべてのアプリ起動の監視と制御</string>
     <string name="permdesc_runSetActivityWatcher">システムによるアクティビティ起動方法を監視し制御することをアプリに許可します。この許可を悪意のあるアプリに利用されると、システム全体のセキュリティが侵害される恐れがあります。この許可は開発時にのみ必要で、通常の使用では不要です。</string>
     <string name="permlab_broadcastPackageRemoved">パッケージ削除ブロードキャストの送信</string>
@@ -415,6 +460,10 @@
     <string name="permdesc_batteryStats">現在の電池消費量の低レベルデータを読み取ることをアプリに許可します。このアプリが、使用しているアプリの詳細情報を確認できるようになります。</string>
     <string name="permlab_updateBatteryStats">電池統計情報の変更</string>
     <string name="permdesc_updateBatteryStats">電池に関して収集した統計情報の変更をアプリに許可します。通常のアプリでは使用しません。</string>
+    <string name="permlab_getAppOpsStats">アプリの操作状況に関する統計情報の取得</string>
+    <string name="permdesc_getAppOpsStats">アプリの操作状況に関して収集された統計情報の取得をアプリに許可します。通常のアプリでは使用しません。</string>
+    <string name="permlab_updateAppOpsStats">アプリの操作状況に関する統計情報の変更</string>
+    <string name="permdesc_updateAppOpsStats">アプリの操作状況に関して収集された統計情報の変更をアプリに許可します。通常のアプリでは使用しません。</string>
     <string name="permlab_backup">システムのバックアップと復元を制御する</string>
     <string name="permdesc_backup">システムのバックアップと復元メカニズムの制御をアプリに許可します。通常のアプリでは使用しません。</string>
     <string name="permlab_confirm_full_backup">フルバックアップや復元の操作の確認</string>
@@ -437,16 +486,26 @@
     <string name="permdesc_bindInputMethod">入力方法のトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
     <string name="permlab_bindAccessibilityService">ユーザー補助サービスにバインド</string>
     <string name="permdesc_bindAccessibilityService">ユーザー補助サービスのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
+    <string name="permlab_bindPrintService">印刷サービスへのバインド</string>
+    <string name="permdesc_bindPrintService">印刷サービスのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
+    <string name="permlab_bindPrintSpoolerService">印刷スプーラサービスへのバインド</string>
+    <string name="permdesc_bindPrintSpoolerService">印刷スプーラサービスのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
+    <string name="permlab_bindNfcService">NFCサービスへのバインド</string>
+    <string name="permdesc_bindNfcService">NFCカードをエミュレートしているアプリにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
     <string name="permlab_bindTextService">テキストサービスにバインド</string>
     <string name="permdesc_bindTextService">テキストサービス（SpellCheckerServiceなど）のトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
     <string name="permlab_bindVpnService">VPNサービスにバインド</string>
     <string name="permdesc_bindVpnService">VPNサービスのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
     <string name="permlab_bindWallpaper">壁紙にバインド</string>
     <string name="permdesc_bindWallpaper">壁紙のトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
+    <string name="permlab_bindRemoteDisplay">リモートディスプレイへのバインド</string>
+    <string name="permdesc_bindRemoteDisplay">リモートディスプレイのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
     <string name="permlab_bindRemoteViews">ウィジェットサービスにバインド</string>
     <string name="permdesc_bindRemoteViews">ウィジェットサービスのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
     <string name="permlab_bindDeviceAdmin">デバイス管理者との通信</string>
     <string name="permdesc_bindDeviceAdmin">デバイス管理者へのintentの送信を所有者に許可します。通常のアプリでは不要です。</string>
+    <string name="permlab_manageDeviceAdmins">端末の管理者の追加または削除</string>
+    <string name="permdesc_manageDeviceAdmins">有効な端末の管理者を追加または削除することを所有者に許可します。通常のアプリでは不要です。</string>
     <string name="permlab_setOrientation">画面の向きの変更</string>
     <string name="permdesc_setOrientation">いつでも画面の向きを変更することをアプリに許可します。通常のアプリでは不要です。</string>
     <string name="permlab_setPointerSpeed">ポインタの速度の変更</string>
@@ -475,6 +534,8 @@
     <string name="permdesc_readLogs">システムの各種ログファイルの読み取りをアプリに許可します。許可すると、アプリでは携帯端末の使用に関する全般的な情報を読み取れるようになります。この情報には個人情報や機密情報が含まれる場合があります。</string>
     <string name="permlab_anyCodecForPlayback">再生用にメディア デコーダーを使用</string>
     <string name="permdesc_anyCodecForPlayback">インストール済みのメディアデコーダーを使用して再生用にデコードすることをアプリに許可します。</string>
+    <string name="permlab_manageCaCertificates">信頼できる認証情報の管理</string>
+    <string name="permdesc_manageCaCertificates">CA証明書を信頼できる認証情報としてインストールしたりアンインストールしたりすることをアプリに許可します。</string>
     <string name="permlab_diagnostic">diagが所有するリソースの読み書き</string>
     <string name="permdesc_diagnostic">diagグループが所有するリソース（/dev内のファイルなど）の読み書きをアプリに許可します。許可すると、システムの安定性とセキュリティに影響が生じる可能性があります。メーカー/通信事業者によるハードウェア固有の診断以外には使用しないでください。</string>
     <string name="permlab_changeComponentState">アプリのコンポーネントの有効/無効化</string>
@@ -511,7 +572,7 @@
     <string name="permdesc_writeSocialStream">友だちのソーシャル更新情報の表示をアプリに許可します。情報の共有は慎重に行ってください。これによりアプリは、友だちから発信されたかのようなメッセージを作成できるようになります。注: この許可は、一部のソーシャルネットワークでは適用されない場合があります。</string>
     <string name="permlab_readCalendar">カレンダーの予定と機密情報を読み取る</string>
     <string name="permdesc_readCalendar">携帯端末に保存されているカレンダーの予定（友だちや同僚の予定も含めすべて）を読み取ることをアプリに許可します。これにより、アプリがカレンダーのデータを機密性に関係なく共有または保存できるようになる可能性があります。</string>
-    <string name="permlab_writeCalendar">所有者に通知せずに、カレンダーの予定の追加や変更を行い、ゲストにメールを送信する</string>
+    <string name="permlab_writeCalendar">カレンダーの予定の変更や追加を行う、所有者に通知せずにゲストにメールを送信する場合がある</string>
     <string name="permdesc_writeCalendar">ユーザーが携帯端末から編集できる予定（友だちや同僚の予定も含む）を追加、削除、変更することをアプリに許可します。これによりアプリは、カレンダーの所有者から発信されたかのようなメッセージを送信したり、所有者の知らないうちに予定を変更したりできるようになる可能性があります。</string>
     <string name="permlab_accessMockLocation">仮の位置情報でテスト</string>
     <string name="permdesc_accessMockLocation">テスト用に仮の位置情報源を作成するか、新しい位置情報提供元をインストールします。これにより、他の位置情報源（GPS、位置情報提供元など）から返された位置情報やステータスの上書きをアプリに許可することになります。</string>
@@ -531,12 +592,24 @@
     <string name="permdesc_configureWifiDisplay">Wi-Fiディスプレイを設定して接続することをアプリに許可します。</string>
     <string name="permlab_controlWifiDisplay">Wi-Fiディスプレイの制御</string>
     <string name="permdesc_controlWifiDisplay">Wi-Fiディスプレイの低レベル機能を制御することをアプリに許可します。</string>
+    <string name="permlab_captureAudioOutput">音声出力のキャプチャ</string>
+    <string name="permdesc_captureAudioOutput">音声出力のキャプチャとリダイレクトをアプリに許可します。</string>
+    <string name="permlab_captureAudioHotword">注目ワード検出</string>
+    <string name="permdesc_captureAudioHotword">注目ワード検出での音声キャプチャをアプリに許可します。キャプチャはバックグラウンドで発生しますが、その他の音声キャプチャ（例: ビデオ録画）を妨げることはありません。</string>
+    <string name="permlab_captureVideoOutput">動画出力のキャプチャ</string>
+    <string name="permdesc_captureVideoOutput">動画出力のキャプチャとリダイレクトをアプリに許可します。</string>
+    <string name="permlab_captureSecureVideoOutput">セキュリティ保護された動画出力のキャプチャ</string>
+    <string name="permdesc_captureSecureVideoOutput">セキュリティ保護された動画出力のキャプチャとリダイレクトをアプリに許可します。</string>
+    <string name="permlab_mediaContentControl">メディア再生とメタデータアクセスの制御</string>
+    <string name="permdesc_mediaContentControl">メディア再生の制御やメディア情報（書籍名、著者など）へのアクセスをアプリに許可します。</string>
     <string name="permlab_modifyAudioSettings">音声設定の変更</string>
     <string name="permdesc_modifyAudioSettings">音声全般の設定（音量、出力に使用するスピーカーなど）の変更をアプリに許可します。</string>
     <string name="permlab_recordAudio">録音</string>
     <string name="permdesc_recordAudio">マイクを使った録音をアプリに許可します。これにより、アプリがいつでも確認なしで録音できるようになります。</string>
     <string name="permlab_camera">写真と動画の撮影</string>
     <string name="permdesc_camera">カメラでの写真と動画の撮影をアプリに許可します。これにより、アプリが確認なしでいつでもカメラを使用できるようになります。</string>
+    <string name="permlab_cameraDisableTransmitLed">カメラの使用中に通信インジケータLEDを無効にする</string>
+    <string name="permdesc_cameraDisableTransmitLed">カメラ使用インジケータLEDを無効にすることをプレインストールされているシステムアプリに許可します。</string>
     <string name="permlab_brick">端末を永続的に無効にする</string>
     <string name="permdesc_brick">携帯端末全体を完全に無効にすることをアプリに許可します。この許可は危険です。</string>
     <string name="permlab_reboot">端末の再起動</string>
@@ -583,6 +656,8 @@
     <string name="permdesc_readPhoneState">端末の電話機能へのアクセスをアプリに許可します。これにより、電話番号、端末ID、通話中かどうか、通話相手の電話番号をアプリから特定できるようになります。</string>
     <string name="permlab_wakeLock">端末のスリープを無効にする</string>
     <string name="permdesc_wakeLock">携帯端末のスリープを無効にすることをアプリに許可します。</string>
+    <string name="permlab_transmitIr">赤外線の送信</string>
+    <string name="permdesc_transmitIr">携帯電話の赤外線送信機能の使用をアプリに許可します。</string>
     <string name="permlab_devicePower">電源のON/OFF</string>
     <string name="permdesc_devicePower">携帯端末の電源のON/OFFをアプリに許可します。</string>
     <string name="permlab_factoryTest">出荷時試験モードでの実行</string>
@@ -627,6 +702,8 @@
     <string name="permdesc_changeWifiMulticastState">マルチキャストアドレスを使用して、この携帯端末だけでなくWi-Fiネットワーク上のすべてのデバイスに送信されたパケットを受信することをアプリに許可します。マルチキャスト以外のモードよりも電池の消費量が大きくなります。</string>
     <string name="permlab_bluetoothAdmin">Bluetoothの設定へのアクセス</string>
     <string name="permdesc_bluetoothAdmin">ローカルのBluetooth携帯端末を設定することと、リモート端末を検出してペアに設定することをアプリに許可します。</string>
+    <string name="permlab_bluetoothPriv">アプリによるBluetoothペア設定を許可</string>
+    <string name="permdesc_bluetoothPriv">ユーザーの操作なしでリモート端末とペア設定することをアプリに許可します。</string>
     <string name="permlab_accessWimaxState">WiMAXへの接続と切断</string>
     <string name="permdesc_accessWimaxState">WiMAXがONになっているかどうかを識別し、接続されているWiMAXネットワークの情報を表示することをアプリに許可します。</string>
     <string name="permlab_changeWimaxState">WiMAX状態の変更</string>
@@ -648,27 +725,41 @@
     <string name="permlab_subscribedFeedsWrite">登録したフィードの書き込み</string>
     <string name="permdesc_subscribedFeedsWrite">現在同期されているフィードの変更をアプリに許可します。この許可を悪意のあるアプリに利用されると、同期されたフィードが変更される恐れがあります。</string>
     <string name="permlab_readDictionary">辞書に追加された語句の読み取り</string>
-    <string name="permdesc_readDictionary">ユーザー辞書に登録されているすべての語句や名前を読み取ることをアプリに許可します。</string>
+    <string name="permdesc_readDictionary">単語リストに登録されているすべての語句や名前を読み取ることをアプリに許可します。</string>
     <string name="permlab_writeDictionary">単語リストへの語句の追加</string>
     <string name="permdesc_writeDictionary">単語リストに新しい語句を書き込むことをアプリに許可します。</string>
-    <string name="permlab_sdcardRead">保護されたストレージへのテストアクセス</string>
-    <string name="permdesc_sdcardRead">今後追加するデバイスで使用できるSDカードの権限のテストをアプリに許可します。</string>
+    <string name="permlab_sdcardRead">SDカードのコンテンツの読み取り</string>
+    <string name="permdesc_sdcardRead">SDカードのコンテンツの読み取りをアプリに許可します。</string>
     <string name="permlab_sdcardWrite">SDカードのコンテンツの変更または削除</string>
     <string name="permdesc_sdcardWrite">SDカードへの書き込みをアプリに許可します。</string>
     <string name="permlab_mediaStorageWrite">内部メディアストレージの内容の変更/削除</string>
     <string name="permdesc_mediaStorageWrite">内部メディアストレージの内容を変更することをアプリに許可します。</string>
+    <string name="permlab_manageDocs">ドキュメントストレージの管理</string>
+    <string name="permdesc_manageDocs">ドキュメントストレージの管理をアプリに許可します。</string>
     <string name="permlab_sdcardAccessAll">全ユーザー外部ストレージへのアクセス</string>
     <string name="permdesc_sdcardAccessAll">すべてのユーザーの外部ストレージへのアクセスをアプリに許可します。</string>
     <string name="permlab_cache_filesystem">キャッシュファイルシステムにアクセス</string>
     <string name="permdesc_cache_filesystem">キャッシュファイルシステムの読み書きをアプリに許可します。</string>
     <string name="permlab_use_sip">インターネット通話の発着信</string>
     <string name="permdesc_use_sip">インターネット通話の発着信にSIPサービスを使用することをアプリに許可します。</string>
+    <string name="permlab_bind_call_service">通話画面とのインタラクション</string>
+    <string name="permdesc_bind_call_service">通話画面をユーザーに表示するタイミングと方法の制御をアプリに許可します。</string>
     <string name="permlab_readNetworkUsageHistory">ネットワーク使用履歴の読み取り</string>
     <string name="permdesc_readNetworkUsageHistory">特定のネットワークやアプリに関するネットワーク使用履歴の読み取りをアプリに許可します。</string>
     <string name="permlab_manageNetworkPolicy">ネットワークポリシーの管理</string>
     <string name="permdesc_manageNetworkPolicy">ネットワークポリシーを管理しアプリ固有のルールを定義することをアプリに許可します。</string>
     <string name="permlab_modifyNetworkAccounting">ネットワークの課金の変更</string>
     <string name="permdesc_modifyNetworkAccounting">アプリに対するネットワーク利用の計算方法を変更することをアプリに許可します。通常のアプリでは使用しません。</string>
+    <string name="permlab_markNetworkSocket">ソケットマークの変更</string>
+    <string name="permdesc_markNetworkSocket">ルーティングのソケットマークを変更することをアプリに許可します。</string>
+    <string name="permlab_accessNotifications">通知にアクセス</string>
+    <string name="permdesc_accessNotifications">通知（他のアプリから投稿されたものも含む）を取得、調査、クリアすることをアプリに許可します。</string>
+    <string name="permlab_bindNotificationListenerService">通知リスナーサービスにバインド</string>
+    <string name="permdesc_bindNotificationListenerService">通知リスナーサービスのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。</string>
+    <string name="permlab_invokeCarrierSetup">携帯通信会社が提供する設定アプリの呼び出し</string>
+    <string name="permdesc_invokeCarrierSetup">携帯通信会社が提供する設定アプリを呼び出すことを所有者に許可します。通常のアプリでは不要です。</string>
+    <string name="permlab_accessNetworkConditions">ネットワーク状況監視のためのリッスン</string>
+    <string name="permdesc_accessNetworkConditions">ネットワーク状況を監視するためリッスンすることをアプリに許可します。通常のアプリで必要になることはありません。</string>
     <string name="policylab_limitPassword">パスワードルールの設定</string>
     <string name="policydesc_limitPassword">画面ロック解除パスワードの長さと使用できる文字を制御します。</string>
     <string name="policylab_watchLogin">画面ロック解除試行の監視</string>
@@ -733,7 +824,7 @@
     <string name="imProtocolYahoo">Yahoo</string>
     <string name="imProtocolSkype">Skype</string>
     <string name="imProtocolQq">QQ</string>
-    <string name="imProtocolGoogleTalk">Googleトーク</string>
+    <string name="imProtocolGoogleTalk">ハングアウト</string>
     <string name="imProtocolIcq">ICQ</string>
     <string name="imProtocolJabber">Jabber</string>
     <string name="imProtocolNetMeeting">NetMeeting</string>
@@ -759,6 +850,7 @@
     <string name="sipAddressTypeHome">自宅</string>
     <string name="sipAddressTypeWork">勤務先</string>
     <string name="sipAddressTypeOther">その他</string>
+    <string name="quick_contacts_not_available">この連絡先を表示するアプリが見つかりません。</string>
     <string name="keyguard_password_enter_pin_code">PINコードを入力</string>
     <string name="keyguard_password_enter_puk_code">PUKと新しいPINコードを入力</string>
     <string name="keyguard_password_enter_puk_prompt">PUKコード</string>
@@ -804,16 +896,16 @@
     <string name="lockscreen_sim_unlock_progress_dialog_message">SIMカードのロック解除中...</string>
     <string name="lockscreen_too_many_failed_attempts_dialog_message" formatted="false">"ロック解除パターンの入力を%d回間違えました。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="lockscreen_too_many_failed_password_attempts_dialog_message" formatted="false">"正しくないパスワードを%d回入力しました。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="lockscreen_too_many_failed_pin_attempts_dialog_message" formatted="false">"正しくないPINを%d回入力しました。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="lockscreen_failed_attempts_almost_glogin" formatted="false">"ロック解除パターンの入力を%d回間違えました。あと%d回間違えると、携帯端末のロック解除にGoogleへのログインが必要になります。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="lockscreen_failed_attempts_almost_at_wipe" formatted="false">端末のロック解除に%d回失敗しました。あと%d回失敗すると、端末は工場出荷状態にリセットされ、ユーザーのデータはすべて失われます。</string>
     <string name="lockscreen_failed_attempts_now_wiping">端末のロック解除を%d回失敗しました。端末を工場出荷状態にリセットします。</string>
     <string name="lockscreen_too_many_failed_attempts_countdown">%d秒後にやり直してください。</string>
@@ -835,6 +927,7 @@
     <string name="lockscreen_access_pattern_cleared">パターンを消去しました</string>
     <string name="lockscreen_access_pattern_cell_added">セルを追加しました</string>
     <string name="lockscreen_access_pattern_detected">パターンの描画が完了しました</string>
+    <string name="keyguard_accessibility_widget_changed">%1$s。ウィジェット%2$d/%3$d。</string>
     <string name="keyguard_accessibility_add_widget">ウィジェットを追加します。</string>
     <string name="keyguard_accessibility_widget_empty_slot">なし</string>
     <string name="keyguard_accessibility_unlock_area_expanded">ロック解除エリアを拡大しました。</string>
@@ -870,11 +963,12 @@
     <string name="factorytest_reboot">再起動</string>
     <string name="js_dialog_title">%s のページ:</string>
     <string name="js_dialog_title_default">JavaScript</string>
-    <string name="js_dialog_before_unload">"このページから移動しますか？
+    <string name="js_dialog_before_unload_title">ナビゲーションの確認</string>
+    <string name="js_dialog_before_unload_positive_button">このページから移動</string>
+    <string name="js_dialog_before_unload_negative_button">このページのまま</string>
+    <string name="js_dialog_before_unload">"%s
 
-%s
-
-移動する場合は[OK]、現在のページに留まる場合は[キャンセル]をタップしてください。"</string>
+このページから移動してもよろしいですか？"</string>
     <string name="save_password_label">確認</string>
     <string name="double_tap_toast">ヒント: ダブルタップで拡大/縮小できます。</string>
     <string name="autofill_this_form">自動入力</string>
@@ -968,10 +1062,13 @@
     <string name="editTextMenuTitle">テキスト操作</string>
     <string name="low_internal_storage_view_title">空き容量わずか</string>
     <string name="low_internal_storage_view_text">一部のシステム機能が動作しない可能性があります</string>
+    <string name="app_running_notification_title">%1$sを実行しています</string>
+    <string name="app_running_notification_text">タップすると詳細が表示されるか、アプリが停止します。</string>
     <string name="loading">読み込んでいます...</string>
-    <string name="capital_on">ON</string>
-    <string name="capital_off">OFF</string>
+    <string name="capital_on">❙</string>
+    <string name="capital_off">〇</string>
     <string name="whichApplication">アプリケーションを選択</string>
+    <string name="whichHomeApplication">ホームアプリを選択</string>
     <string name="alwaysUse">常にこの操作で使用する</string>
     <string name="clearDefaultHintMsg">[システム設定]>[アプリ]>[ダウンロード済み]でデフォルト設定をクリアします。</string>
     <string name="chooseActivity">操作の選択</string>
@@ -1138,6 +1235,10 @@
     <string name="permdesc_copyProtectedData">デフォルトのコンテナサービスを呼び出してコンテンツをコピーすることをアプリに許可します。通常のアプリでは使用しません。</string>
     <string name="permlab_route_media_output">メディア出力のルーティング</string>
     <string name="permdesc_route_media_output">メディア出力を他の外部デバイスにルーティングすることをアプリに許可します。</string>
+    <string name="permlab_access_keyguard_secure_storage">キーガードセキュアストレージへのアクセス</string>
+    <string name="permdesc_access_keyguard_secure_storage">キーガードセキュアストレージへのアクセスをアプリに許可する</string>
+    <string name="permlab_control_keyguard">キーガードの表示/非表示の制御</string>
+    <string name="permdesc_control_keyguard">キーガードの制御をアプリに許可します。</string>
     <string name="tutorial_double_tap_to_zoom_message_short">ダブルタップでズームコントロール</string>
     <string name="gadget_host_error_inflating">ウィジェットを追加できませんでした。</string>
     <string name="ime_action_go">移動</string>
@@ -1164,6 +1265,7 @@
     <string name="accessibility_binding_label">ユーザー補助</string>
     <string name="wallpaper_binding_label">壁紙</string>
     <string name="chooser_wallpaper">壁紙を変更</string>
+    <string name="notification_listener_binding_label">通知リスナー</string>
     <string name="vpn_title">VPNが有効になりました</string>
     <string name="vpn_title_long">VPNが%sにより有効化されました</string>
     <string name="vpn_text">タップしてネットワークを管理します。</string>
@@ -1171,7 +1273,7 @@
     <string name="vpn_lockdown_connecting">VPNに常時接続しています…</string>
     <string name="vpn_lockdown_connected">VPNに常時接続しました</string>
     <string name="vpn_lockdown_error">常時接続VPNのエラー</string>
-    <string name="vpn_lockdown_reset">接続をリセットするにはタップします</string>
+    <string name="vpn_lockdown_config">タップして設定してください</string>
     <string name="upload_file">ファイルを選択</string>
     <string name="no_file_chosen">ファイルが選択されていません</string>
     <string name="reset">リセット</string>
@@ -1240,6 +1342,7 @@
     <string name="keyboardview_keycode_shift">Shift</string>
     <string name="keyboardview_keycode_enter">Enter</string>
     <string name="activitychooserview_choose_application">アプリの選択</string>
+    <string name="activitychooserview_choose_application_error">%sを起動できませんでした</string>
     <string name="shareactionprovider_share_with">共有</string>
     <string name="shareactionprovider_share_with_application">%sと共有</string>
     <string name="content_description_sliding_handle">スライダーハンドルです。押し続けます。</string>
@@ -1258,6 +1361,8 @@
     <string name="action_bar_home_description">ホームへ移動</string>
     <string name="action_bar_up_description">上へ移動</string>
     <string name="action_menu_overflow_description">その他のオプション</string>
+    <string name="action_bar_home_description_format">%1$s、%2$s</string>
+    <string name="action_bar_home_subtitle_description_format">%1$s、%2$s、%3$s</string>
     <string name="storage_internal">内部ストレージ</string>
     <string name="storage_sd_card">SDカード</string>
     <string name="storage_usb">USBストレージ</string>
@@ -1293,7 +1398,6 @@
     <string name="activity_chooser_view_see_all">すべて表示</string>
     <string name="activity_chooser_view_dialog_title_default">操作の選択</string>
     <string name="share_action_provider_share_with">共有</string>
-    <string name="status_bar_device_locked">端末がロックされています。</string>
     <string name="list_delimeter">"、 "</string>
     <string name="sending">送信中...</string>
     <string name="launchBrowserDefault">ブラウザを起動しますか？</string>
@@ -1306,25 +1410,34 @@
     <string name="default_media_route_name_hdmi">HDMI</string>
     <string name="default_audio_route_category_name">システム</string>
     <string name="bluetooth_a2dp_audio_route_name">Bluetooth音声</string>
-    <string name="media_route_chooser_grouping_done">完了</string>
+    <string name="wireless_display_route_description">ワイヤレスディスプレイ</string>
     <string name="media_route_button_content_description">メディア出力</string>
+    <string name="media_route_chooser_title">端末に接続</string>
+    <string name="media_route_chooser_title_for_remote_display">端末への画面のキャスト</string>
+    <string name="media_route_chooser_searching">端末を検索しています…</string>
+    <string name="media_route_chooser_extended_settings">設定</string>
+    <string name="media_route_controller_disconnect">接続を解除</string>
     <string name="media_route_status_scanning">スキャン中...</string>
     <string name="media_route_status_connecting">接続中...</string>
     <string name="media_route_status_available">利用できます</string>
     <string name="media_route_status_not_available">利用できません</string>
+    <string name="media_route_status_in_use">使用中</string>
     <string name="display_manager_built_in_display_name">内蔵スクリーン</string>
     <string name="display_manager_hdmi_display_name">HDMI画面</string>
     <string name="display_manager_overlay_display_name">オーバーレイ第%1$d</string>
     <string name="display_manager_overlay_display_title">%1$s: %2$dx%3$d、%4$d dpi</string>
-    <string name="wifi_display_notification_title">ワイヤレスディスプレイが接続されています</string>
-    <string name="wifi_display_notification_message">この画面は別の端末で表示されています</string>
+    <string name="display_manager_overlay_display_secure_suffix">、セキュア</string>
+    <string name="wifi_display_notification_connecting_title">画面のキャスト中</string>
+    <string name="wifi_display_notification_connecting_message">%1$sに接続しています</string>
+    <string name="wifi_display_notification_connected_title">画面のキャスト中</string>
+    <string name="wifi_display_notification_connected_message">%1$sに接続しました</string>
     <string name="wifi_display_notification_disconnect">切断</string>
     <string name="kg_emergency_call_label">緊急通報</string>
     <string name="kg_forgot_pattern_button_text">パターンを忘れた場合</string>
     <string name="kg_wrong_pattern">パターンが正しくありません</string>
     <string name="kg_wrong_password">パスワードが正しくありません</string>
     <string name="kg_wrong_pin">PINが正しくありません</string>
-    <string name="kg_too_many_failed_attempts_countdown">%d秒以内にもう一度お試しください。</string>
+    <string name="kg_too_many_failed_attempts_countdown">%1$d秒後にもう一度お試しください。</string>
     <string name="kg_pattern_instructions">パターンを入力</string>
     <string name="kg_sim_pin_instructions">SIM PINを入力</string>
     <string name="kg_pin_instructions">PINを入力</string>
@@ -1349,25 +1462,183 @@
     <string name="kg_login_checking_password">アカウントをチェックしています…</string>
     <string name="kg_too_many_failed_pin_attempts_dialog_message" formatted="false">"PINの入力を%d回間違えました。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="kg_too_many_failed_password_attempts_dialog_message" formatted="false">"パスワードの入力を%d回間違えました。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="kg_too_many_failed_pattern_attempts_dialog_message" formatted="false">"ロック解除パターンの入力を%d回間違えました。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="kg_failed_attempts_almost_at_wipe" formatted="false">携帯端末のロック解除に%d回失敗しました。あと%d回失敗すると、端末は出荷時設定にリセットされ、ユーザーのデータはすべて失われます。</string>
     <string name="kg_failed_attempts_now_wiping">携帯端末のロック解除を%d回失敗しました。端末は出荷時設定にリセットされます。</string>
     <string name="kg_failed_attempts_almost_at_login" formatted="false">"ロック解除パターンの入力を%d回間違えました。あと%d回間違えると、携帯端末のロック解除にメールアカウントが必要になります。
 
-%d秒以内にもう一度お試しください。"</string>
+%d秒後にもう一度お試しください。"</string>
     <string name="kg_text_message_separator">" - "</string>
     <string name="kg_reordering_delete_drop_target_text">削除</string>
-    <string name="safe_media_volume_warning">"安全レベルを超えるまで音量を上げますか？
-大音量で長時間聞き続けると、聴力を損なう恐れがあります。"</string>
+    <string name="safe_media_volume_warning">"推奨レベルよりも音量を上げますか？
+長時間大音量で聞き続けると、聴力を損なうおそれがあります。"</string>
     <string name="continue_to_enable_accessibility">ユーザー補助機能を有効にするには2本の指で押し続けてください。</string>
     <string name="accessibility_enabled">ユーザー補助が有効になりました。</string>
     <string name="enable_accessibility_canceled">ユーザー補助をキャンセルしました。</string>
     <string name="user_switched">現在のユーザーは%1$sです。</string>
     <string name="owner_name">所有者</string>
+    <string name="error_message_title">エラー</string>
+    <string name="app_no_restricted_accounts">このアプリでは制限付きプロフィールのアカウントはサポートしていません</string>
+    <string name="app_not_found">この操作を行うアプリが見つかりません</string>
+    <string name="revoke">取り消し</string>
+    <string name="mediasize_iso_a0">ISO A0</string>
+    <string name="mediasize_iso_a1">ISO A1</string>
+    <string name="mediasize_iso_a2">ISO A2</string>
+    <string name="mediasize_iso_a3">ISO A3</string>
+    <string name="mediasize_iso_a4">ISO A4</string>
+    <string name="mediasize_iso_a5">ISO A5</string>
+    <string name="mediasize_iso_a6">ISO A6</string>
+    <string name="mediasize_iso_a7">ISO A7</string>
+    <string name="mediasize_iso_a8">ISO A8</string>
+    <string name="mediasize_iso_a9">ISO A9</string>
+    <string name="mediasize_iso_a10">ISO A10</string>
+    <string name="mediasize_iso_b0">ISO B0</string>
+    <string name="mediasize_iso_b1">ISO B1</string>
+    <string name="mediasize_iso_b2">ISO B2</string>
+    <string name="mediasize_iso_b3">ISO B3</string>
+    <string name="mediasize_iso_b4">ISO B4</string>
+    <string name="mediasize_iso_b5">ISO B5</string>
+    <string name="mediasize_iso_b6">ISO B6</string>
+    <string name="mediasize_iso_b7">ISO B7</string>
+    <string name="mediasize_iso_b8">ISO B8</string>
+    <string name="mediasize_iso_b9">ISO B9</string>
+    <string name="mediasize_iso_b10">ISO B10</string>
+    <string name="mediasize_iso_c0">ISO C0</string>
+    <string name="mediasize_iso_c1">ISO C1</string>
+    <string name="mediasize_iso_c2">ISO C2</string>
+    <string name="mediasize_iso_c3">ISO C3</string>
+    <string name="mediasize_iso_c4">ISO C4</string>
+    <string name="mediasize_iso_c5">ISO C5</string>
+    <string name="mediasize_iso_c6">ISO C6</string>
+    <string name="mediasize_iso_c7">ISO C7</string>
+    <string name="mediasize_iso_c8">ISO C8</string>
+    <string name="mediasize_iso_c9">ISO C9</string>
+    <string name="mediasize_iso_c10">ISO C10</string>
+    <string name="mediasize_na_letter">レター</string>
+    <string name="mediasize_na_gvrnmt_letter">ガバメントレター</string>
+    <string name="mediasize_na_legal">リーガル</string>
+    <string name="mediasize_na_junior_legal">ジュニアリーガル</string>
+    <string name="mediasize_na_ledger">レジャー</string>
+    <string name="mediasize_na_tabloid">タブロイド</string>
+    <string name="mediasize_na_index_3x5">インデックスカード3x5</string>
+    <string name="mediasize_na_index_4x6">インデックスカード4x6</string>
+    <string name="mediasize_na_index_5x8">インデックスカード5x8</string>
+    <string name="mediasize_na_monarch">モナーク</string>
+    <string name="mediasize_na_quarto">クォート</string>
+    <string name="mediasize_na_foolscap">フールスキャップ</string>
+    <string name="mediasize_chinese_roc_8k">ROC 8K</string>
+    <string name="mediasize_chinese_roc_16k">ROC 16K</string>
+    <string name="mediasize_chinese_prc_1">PRC 1</string>
+    <string name="mediasize_chinese_prc_2">PRC 2</string>
+    <string name="mediasize_chinese_prc_3">PRC 3</string>
+    <string name="mediasize_chinese_prc_4">PRC 4</string>
+    <string name="mediasize_chinese_prc_5">PRC 5</string>
+    <string name="mediasize_chinese_prc_6">PRC 6</string>
+    <string name="mediasize_chinese_prc_7">PRC 7</string>
+    <string name="mediasize_chinese_prc_8">PRC 8</string>
+    <string name="mediasize_chinese_prc_9">PRC 9</string>
+    <string name="mediasize_chinese_prc_10">PRC 10</string>
+    <string name="mediasize_chinese_prc_16k">PRC 16K</string>
+    <string name="mediasize_chinese_om_pa_kai">Pa Kai</string>
+    <string name="mediasize_chinese_om_dai_pa_kai">Dai Pa Kai</string>
+    <string name="mediasize_chinese_om_jurro_ku_kai">Jurro Ku Kai</string>
+    <string name="mediasize_japanese_jis_b10">JIS B10</string>
+    <string name="mediasize_japanese_jis_b9">JIS B9</string>
+    <string name="mediasize_japanese_jis_b8">JIS B8</string>
+    <string name="mediasize_japanese_jis_b7">JIS B7</string>
+    <string name="mediasize_japanese_jis_b6">JIS B6</string>
+    <string name="mediasize_japanese_jis_b5">JIS B5</string>
+    <string name="mediasize_japanese_jis_b4">JIS B4</string>
+    <string name="mediasize_japanese_jis_b3">JIS B3</string>
+    <string name="mediasize_japanese_jis_b2">JIS B2</string>
+    <string name="mediasize_japanese_jis_b1">JIS B1</string>
+    <string name="mediasize_japanese_jis_b0">JIS B0</string>
+    <string name="mediasize_japanese_jis_exec">JIS Exec</string>
+    <string name="mediasize_japanese_chou4">長4</string>
+    <string name="mediasize_japanese_chou3">長3</string>
+    <string name="mediasize_japanese_chou2">長2</string>
+    <string name="mediasize_japanese_hagaki">はがき</string>
+    <string name="mediasize_japanese_oufuku">往復</string>
+    <string name="mediasize_japanese_kahu">Kahu</string>
+    <string name="mediasize_japanese_kaku2">角2</string>
+    <string name="mediasize_japanese_you4">洋4</string>
+    <string name="mediasize_unknown_portrait">縦向き不明</string>
+    <string name="mediasize_unknown_landscape">横向き不明</string>
+    <string name="write_fail_reason_cancelled">キャンセルされました</string>
+    <string name="write_fail_reason_cannot_write">コンテンツの書き込み中にエラーが発生しました</string>
+    <string name="reason_unknown">不明</string>
+    <string name="reason_service_unavailable">印刷サービスが有効ではありません</string>
+    <string name="print_service_installed_title">「%s」サービスがインストールされました</string>
+    <string name="print_service_installed_message">有効にするにはタップしてください</string>
+    <string name="restr_pin_enter_admin_pin">管理者PINを入力</string>
+    <string name="restr_pin_enter_pin">PINを入力</string>
+    <string name="restr_pin_incorrect">間違っています</string>
+    <string name="restr_pin_enter_old_pin">現在のPIN</string>
+    <string name="restr_pin_enter_new_pin">新しいPIN</string>
+    <string name="restr_pin_confirm_pin">新しいPINの確認</string>
+    <string name="restr_pin_create_pin">制限を変更するためのPINを作成してください</string>
+    <string name="restr_pin_error_doesnt_match">PINが一致しません。もう一度お試しください。</string>
+    <string name="restr_pin_error_too_short">PINが短すぎます。4桁以上にしてください。</string>
+    <string name="restr_pin_try_later">しばらくしてから再試行</string>
+    <string name="immersive_mode_confirmation">画面の最上部から下にスワイプするとフルスクリーンを終了します。</string>
+    <string name="webviewchromium_actionbar_share">共有</string>
+    <string name="webviewchromium_actionbar_web_search">ウェブ検索</string>
+    <string name="webviewchromium_accessibility_content_view">ウェブ表示</string>
+    <string name="webviewchromium_date_picker_dialog_title">日付の設定</string>
+    <string name="webviewchromium_date_picker_dialog_set">設定</string>
+    <string name="webviewchromium_date_picker_dialog_clear">消去</string>
+    <string name="webviewchromium_date_picker_dialog_other_button_label">その他</string>
+    <string name="webviewchromium_date_time_picker_dialog_title">日時の設定</string>
+    <string name="webviewchromium_time_picker_dialog_title">時刻の設定</string>
+    <string name="webviewchromium_time_picker_dialog_am">AM</string>
+    <string name="webviewchromium_time_picker_dialog_pm">PM</string>
+    <string name="webviewchromium_time_picker_dialog_hour_minute_separator">:</string>
+    <string name="webviewchromium_time_picker_dialog_minute_second_separator">:</string>
+    <string name="webviewchromium_time_picker_dialog_second_subsecond_separator">.</string>
+    <string name="webviewchromium_month_picker_dialog_title">月の設定</string>
+    <string name="webviewchromium_week_picker_dialog_title">週の設定</string>
+    <string name="webviewchromium_accessibility_datetime_picker_date">日</string>
+    <string name="webviewchromium_accessibility_datetime_picker_time">時刻</string>
+    <string name="webviewchromium_accessibility_date_picker_month">月</string>
+    <string name="webviewchromium_accessibility_date_picker_week">週</string>
+    <string name="webviewchromium_accessibility_date_picker_year">年</string>
+    <string name="webviewchromium_accessibility_time_picker_hour">時</string>
+    <string name="webviewchromium_accessibility_time_picker_minute">分</string>
+    <string name="webviewchromium_accessibility_time_picker_second">秒</string>
+    <string name="webviewchromium_accessibility_time_picker_milli">ミリ秒</string>
+    <string name="webviewchromium_accessibility_time_picker_ampm">AM/PM</string>
+    <string name="webviewchromium_media_player_error_title">動画を再生できません</string>
+    <string name="webviewchromium_media_player_error_text_invalid_progressive_playback">この動画はご使用の端末でストリーミングできません。</string>
+    <string name="webviewchromium_media_player_error_text_unknown">この動画は再生できません。</string>
+    <string name="webviewchromium_media_player_error_button">OK</string>
+    <string name="webviewchromium_media_player_loading_video">動画を読み込み中</string>
+    <string name="webviewchromium_color_picker_button_more">その他</string>
+    <string name="webviewchromium_color_picker_hue">色彩</string>
+    <string name="webviewchromium_color_picker_saturation">彩度</string>
+    <string name="webviewchromium_color_picker_value">値</string>
+    <string name="webviewchromium_color_picker_button_set">設定</string>
+    <string name="webviewchromium_color_picker_button_cancel">キャンセル</string>
+    <string name="webviewchromium_color_picker_dialog_title">色の選択</string>
+    <string name="webviewchromium_color_picker_button_red">赤</string>
+    <string name="webviewchromium_color_picker_button_cyan">シアン</string>
+    <string name="webviewchromium_color_picker_button_blue">青</string>
+    <string name="webviewchromium_color_picker_button_green">緑</string>
+    <string name="webviewchromium_color_picker_button_magenta">マゼンタ</string>
+    <string name="webviewchromium_color_picker_button_yellow">黄</string>
+    <string name="webviewchromium_color_picker_button_black">黒</string>
+    <string name="webviewchromium_color_picker_button_white">白</string>
+    <string name="webviewchromium_copy_to_clipboard_failure_message">クリップボードにコピーできませんでした</string>
+    <string name="webviewchromium_low_memory_error">メモリが不足しているため前回の操作を完了できません</string>
+    <string name="webviewchromium_opening_file_error">指定のファイルを開けませんでした</string>
+    <string name="webviewchromium_private_browsing_warning">この機能はこのバージョンのAndroidではサポートされていません。</string>
+    <string name="webviewchromium_profiler_started_toast">プロファイラを開始しました</string>
+    <string name="webviewchromium_profiler_stopped_toast">プロファイラを終了しました。結果は%1$sをご覧ください。</string>
+    <string name="webviewchromium_profiler_no_storage_toast">外部ストレージの準備ができていないためプロファイラを開始できません</string>
+    <string name="webviewchromium_profiler_error_toast">プロファイラを開始できませんでした</string>
 </resources>

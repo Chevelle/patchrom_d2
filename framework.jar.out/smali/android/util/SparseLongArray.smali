@@ -19,12 +19,12 @@
     .locals 1
 
     .prologue
-    .line 38
+    .line 51
     const/16 v0, 0xa
 
     invoke-direct {p0, v0}, Landroid/util/SparseLongArray;-><init>(I)V
 
-    .line 39
+    .line 52
     return-void
 .end method
 
@@ -33,115 +33,48 @@
     .parameter "initialCapacity"
 
     .prologue
-    .line 46
+    .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 47
-    invoke-static {p1}, Lcom/android/internal/util/ArrayUtils;->idealLongArraySize(I)I
+    .line 62
+    if-nez p1, :cond_0
 
-    move-result p1
-
-    .line 49
-    new-array v0, p1, [I
+    .line 63
+    sget-object v0, Landroid/util/ContainerHelpers;->EMPTY_INTS:[I
 
     iput-object v0, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
-    .line 50
-    new-array v0, p1, [J
+    .line 64
+    sget-object v0, Landroid/util/ContainerHelpers;->EMPTY_LONGS:[J
 
     iput-object v0, p0, Landroid/util/SparseLongArray;->mValues:[J
 
-    .line 51
+    .line 70
+    :goto_0
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    .line 52
+    .line 71
     return-void
-.end method
 
-.method private static binarySearch([IIIJ)I
-    .locals 5
-    .parameter "a"
-    .parameter "start"
-    .parameter "len"
-    .parameter "key"
-
-    .prologue
-    .line 229
-    add-int v1, p1, p2
-
-    .local v1, high:I
-    add-int/lit8 v2, p1, -0x1
-
-    .line 231
-    .local v2, low:I
-    :goto_0
-    sub-int v3, v1, v2
-
-    const/4 v4, 0x1
-
-    if-le v3, v4, :cond_1
-
-    .line 232
-    add-int v3, v1, v2
-
-    div-int/lit8 v0, v3, 0x2
-
-    .line 234
-    .local v0, guess:I
-    aget v3, p0, v0
-
-    int-to-long v3, v3
-
-    cmp-long v3, v3, p3
-
-    if-gez v3, :cond_0
-
-    .line 235
-    move v2, v0
-
-    goto :goto_0
-
-    .line 237
+    .line 66
     :cond_0
-    move v1, v0
+    invoke-static {p1}, Lcom/android/internal/util/ArrayUtils;->idealLongArraySize(I)I
+
+    move-result p1
+
+    .line 67
+    new-array v0, p1, [I
+
+    iput-object v0, p0, Landroid/util/SparseLongArray;->mKeys:[I
+
+    .line 68
+    new-array v0, p1, [J
+
+    iput-object v0, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     goto :goto_0
-
-    .line 240
-    .end local v0           #guess:I
-    :cond_1
-    add-int v3, p1, p2
-
-    if-ne v1, v3, :cond_3
-
-    .line 241
-    add-int v3, p1, p2
-
-    xor-int/lit8 v1, v3, -0x1
-
-    .line 245
-    .end local v1           #high:I
-    :cond_2
-    :goto_1
-    return v1
-
-    .line 242
-    .restart local v1       #high:I
-    :cond_3
-    aget v3, p0, v1
-
-    int-to-long v3, v3
-
-    cmp-long v3, v3, p3
-
-    if-eqz v3, :cond_2
-
-    .line 245
-    xor-int/lit8 v1, v1, -0x1
-
-    goto :goto_1
 .end method
 
 .method private growKeyAndValueArrays(I)V
@@ -151,20 +84,20 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 216
+    .line 246
     invoke-static {p1}, Lcom/android/internal/util/ArrayUtils;->idealLongArraySize(I)I
 
     move-result v0
 
-    .line 218
+    .line 248
     .local v0, n:I
     new-array v1, v0, [I
 
-    .line 219
+    .line 249
     .local v1, nkeys:[I
     new-array v2, v0, [J
 
-    .line 221
+    .line 251
     .local v2, nvalues:[J
     iget-object v3, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
@@ -174,7 +107,7 @@
 
     invoke-static {v3, v5, v1, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 222
+    .line 252
     iget-object v3, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     iget-object v4, p0, Landroid/util/SparseLongArray;->mValues:[J
@@ -183,13 +116,13 @@
 
     invoke-static {v3, v5, v2, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 224
+    .line 254
     iput-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
-    .line 225
+    .line 255
     iput-object v2, p0, Landroid/util/SparseLongArray;->mValues:[J
 
-    .line 226
+    .line 256
     return-void
 .end method
 
@@ -201,7 +134,7 @@
     .parameter "value"
 
     .prologue
-    .line 200
+    .line 230
     iget v1, p0, Landroid/util/SparseLongArray;->mSize:I
 
     if-eqz v1, :cond_0
@@ -216,18 +149,18 @@
 
     if-gt p1, v1, :cond_0
 
-    .line 201
+    .line 231
     invoke-virtual {p0, p1, p2, p3}, Landroid/util/SparseLongArray;->put(IJ)V
 
-    .line 213
+    .line 243
     :goto_0
     return-void
 
-    .line 205
+    .line 235
     :cond_0
     iget v0, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    .line 206
+    .line 236
     .local v0, pos:I
     iget-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
@@ -235,23 +168,23 @@
 
     if-lt v0, v1, :cond_1
 
-    .line 207
+    .line 237
     add-int/lit8 v1, v0, 0x1
 
     invoke-direct {p0, v1}, Landroid/util/SparseLongArray;->growKeyAndValueArrays(I)V
 
-    .line 210
+    .line 240
     :cond_1
     iget-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
     aput p1, v1, v0
 
-    .line 211
+    .line 241
     iget-object v1, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     aput-wide p2, v1, v0
 
-    .line 212
+    .line 242
     add-int/lit8 v1, v0, 0x1
 
     iput v1, p0, Landroid/util/SparseLongArray;->mSize:I
@@ -263,12 +196,12 @@
     .locals 1
 
     .prologue
-    .line 192
+    .line 222
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    .line 193
+    .line 223
     return-void
 .end method
 
@@ -276,10 +209,10 @@
     .locals 3
 
     .prologue
-    .line 56
+    .line 75
     const/4 v1, 0x0
 
-    .line 58
+    .line 77
     .local v1, clone:Landroid/util/SparseLongArray;
     :try_start_0
     invoke-super {p0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
@@ -292,7 +225,7 @@
 
     move-object v1, v0
 
-    .line 59
+    .line 78
     iget-object v2, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
     invoke-virtual {v2}, [I->clone()Ljava/lang/Object;
@@ -303,7 +236,7 @@
 
     iput-object v2, v1, Landroid/util/SparseLongArray;->mKeys:[I
 
-    .line 60
+    .line 79
     iget-object v2, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     invoke-virtual {v2}, [J->clone()Ljava/lang/Object;
@@ -316,11 +249,11 @@
     :try_end_0
     .catch Ljava/lang/CloneNotSupportedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 64
+    .line 83
     :goto_0
     return-object v1
 
-    .line 61
+    .line 80
     :catch_0
     move-exception v2
 
@@ -336,7 +269,7 @@
     .end annotation
 
     .prologue
-    .line 28
+    .line 42
     invoke-virtual {p0}, Landroid/util/SparseLongArray;->clone()Landroid/util/SparseLongArray;
 
     move-result-object v0
@@ -345,31 +278,27 @@
 .end method
 
 .method public delete(I)V
-    .locals 6
+    .locals 3
     .parameter "key"
 
     .prologue
-    .line 93
+    .line 112
     iget-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
-    const/4 v2, 0x0
+    iget v2, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    iget v3, p0, Landroid/util/SparseLongArray;->mSize:I
-
-    int-to-long v4, p1
-
-    invoke-static {v1, v2, v3, v4, v5}, Landroid/util/SparseLongArray;->binarySearch([IIIJ)I
+    invoke-static {v1, v2, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
 
     move-result v0
 
-    .line 95
+    .line 114
     .local v0, i:I
     if-ltz v0, :cond_0
 
-    .line 96
+    .line 115
     invoke-virtual {p0, v0}, Landroid/util/SparseLongArray;->removeAt(I)V
 
-    .line 98
+    .line 117
     :cond_0
     return-void
 .end method
@@ -379,7 +308,7 @@
     .parameter "key"
 
     .prologue
-    .line 72
+    .line 91
     const-wide/16 v0, 0x0
 
     invoke-virtual {p0, p1, v0, v1}, Landroid/util/SparseLongArray;->get(IJ)J
@@ -390,29 +319,25 @@
 .end method
 
 .method public get(IJ)J
-    .locals 6
+    .locals 3
     .parameter "key"
     .parameter "valueIfKeyNotFound"
 
     .prologue
-    .line 80
+    .line 99
     iget-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
-    const/4 v2, 0x0
+    iget v2, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    iget v3, p0, Landroid/util/SparseLongArray;->mSize:I
-
-    int-to-long v4, p1
-
-    invoke-static {v1, v2, v3, v4, v5}, Landroid/util/SparseLongArray;->binarySearch([IIIJ)I
+    invoke-static {v1, v2, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
 
     move-result v0
 
-    .line 82
+    .line 101
     .local v0, i:I
     if-gez v0, :cond_0
 
-    .line 85
+    .line 104
     .end local p2
     :goto_0
     return-wide p2
@@ -427,20 +352,16 @@
 .end method
 
 .method public indexOfKey(I)I
-    .locals 5
+    .locals 2
     .parameter "key"
 
     .prologue
-    .line 169
+    .line 199
     iget-object v0, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
-    const/4 v1, 0x0
+    iget v1, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    iget v2, p0, Landroid/util/SparseLongArray;->mSize:I
-
-    int-to-long v3, p1
-
-    invoke-static {v0, v1, v2, v3, v4}, Landroid/util/SparseLongArray;->binarySearch([IIIJ)I
+    invoke-static {v0, v1, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
 
     move-result v0
 
@@ -452,7 +373,7 @@
     .parameter "value"
 
     .prologue
-    .line 181
+    .line 211
     const/4 v0, 0x0
 
     .local v0, i:I
@@ -461,7 +382,7 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 182
+    .line 212
     iget-object v1, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     aget-wide v1, v1, v0
@@ -470,19 +391,19 @@
 
     if-nez v1, :cond_0
 
-    .line 185
+    .line 215
     .end local v0           #i:I
     :goto_1
     return v0
 
-    .line 181
+    .line 211
     .restart local v0       #i:I
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 185
+    .line 215
     :cond_1
     const/4 v0, -0x1
 
@@ -494,7 +415,7 @@
     .parameter "index"
 
     .prologue
-    .line 151
+    .line 175
     iget-object v0, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
     aget v0, v0, p1
@@ -503,42 +424,38 @@
 .end method
 
 .method public put(IJ)V
-    .locals 6
+    .locals 5
     .parameter "key"
     .parameter "value"
 
     .prologue
-    .line 115
+    .line 134
     iget-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
-    const/4 v2, 0x0
+    iget v2, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    iget v3, p0, Landroid/util/SparseLongArray;->mSize:I
-
-    int-to-long v4, p1
-
-    invoke-static {v1, v2, v3, v4, v5}, Landroid/util/SparseLongArray;->binarySearch([IIIJ)I
+    invoke-static {v1, v2, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
 
     move-result v0
 
-    .line 117
+    .line 136
     .local v0, i:I
     if-ltz v0, :cond_0
 
-    .line 118
+    .line 137
     iget-object v1, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     aput-wide p2, v1, v0
 
-    .line 135
+    .line 154
     :goto_0
     return-void
 
-    .line 120
+    .line 139
     :cond_0
     xor-int/lit8 v0, v0, -0x1
 
-    .line 122
+    .line 141
     iget v1, p0, Landroid/util/SparseLongArray;->mSize:I
 
     iget-object v2, p0, Landroid/util/SparseLongArray;->mKeys:[I
@@ -547,14 +464,14 @@
 
     if-lt v1, v2, :cond_1
 
-    .line 123
+    .line 142
     iget v1, p0, Landroid/util/SparseLongArray;->mSize:I
 
     add-int/lit8 v1, v1, 0x1
 
     invoke-direct {p0, v1}, Landroid/util/SparseLongArray;->growKeyAndValueArrays(I)V
 
-    .line 126
+    .line 145
     :cond_1
     iget v1, p0, Landroid/util/SparseLongArray;->mSize:I
 
@@ -562,7 +479,7 @@
 
     if-eqz v1, :cond_2
 
-    .line 127
+    .line 146
     iget-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
     iget-object v2, p0, Landroid/util/SparseLongArray;->mKeys:[I
@@ -575,7 +492,7 @@
 
     invoke-static {v1, v0, v2, v3, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 128
+    .line 147
     iget-object v1, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     iget-object v2, p0, Landroid/util/SparseLongArray;->mValues:[J
@@ -588,18 +505,18 @@
 
     invoke-static {v1, v0, v2, v3, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 131
+    .line 150
     :cond_2
     iget-object v1, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
     aput p1, v1, v0
 
-    .line 132
+    .line 151
     iget-object v1, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     aput-wide p2, v1, v0
 
-    .line 133
+    .line 152
     iget v1, p0, Landroid/util/SparseLongArray;->mSize:I
 
     add-int/lit8 v1, v1, 0x1
@@ -614,7 +531,7 @@
     .parameter "index"
 
     .prologue
-    .line 104
+    .line 123
     iget-object v0, p0, Landroid/util/SparseLongArray;->mKeys:[I
 
     add-int/lit8 v1, p1, 0x1
@@ -629,7 +546,7 @@
 
     invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 105
+    .line 124
     iget-object v0, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     add-int/lit8 v1, p1, 0x1
@@ -644,14 +561,14 @@
 
     invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 106
+    .line 125
     iget v0, p0, Landroid/util/SparseLongArray;->mSize:I
 
     add-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Landroid/util/SparseLongArray;->mSize:I
 
-    .line 107
+    .line 126
     return-void
 .end method
 
@@ -659,10 +576,106 @@
     .locals 1
 
     .prologue
-    .line 142
+    .line 161
     iget v0, p0, Landroid/util/SparseLongArray;->mSize:I
 
     return v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 6
+
+    .prologue
+    .line 265
+    invoke-virtual {p0}, Landroid/util/SparseLongArray;->size()I
+
+    move-result v5
+
+    if-gtz v5, :cond_0
+
+    .line 266
+    const-string/jumbo v5, "{}"
+
+    .line 282
+    :goto_0
+    return-object v5
+
+    .line 269
+    :cond_0
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    iget v5, p0, Landroid/util/SparseLongArray;->mSize:I
+
+    mul-int/lit8 v5, v5, 0x1c
+
+    invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    .line 270
+    .local v0, buffer:Ljava/lang/StringBuilder;
+    const/16 v5, 0x7b
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 271
+    const/4 v1, 0x0
+
+    .local v1, i:I
+    :goto_1
+    iget v5, p0, Landroid/util/SparseLongArray;->mSize:I
+
+    if-ge v1, v5, :cond_2
+
+    .line 272
+    if-lez v1, :cond_1
+
+    .line 273
+    const-string v5, ", "
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 275
+    :cond_1
+    invoke-virtual {p0, v1}, Landroid/util/SparseLongArray;->keyAt(I)I
+
+    move-result v2
+
+    .line 276
+    .local v2, key:I
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 277
+    const/16 v5, 0x3d
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 278
+    invoke-virtual {p0, v1}, Landroid/util/SparseLongArray;->valueAt(I)J
+
+    move-result-wide v3
+
+    .line 279
+    .local v3, value:J
+    invoke-virtual {v0, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 271
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    .line 281
+    .end local v2           #key:I
+    .end local v3           #value:J
+    :cond_2
+    const/16 v5, 0x7d
+
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 282
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    goto :goto_0
 .end method
 
 .method public valueAt(I)J
@@ -670,7 +683,7 @@
     .parameter "index"
 
     .prologue
-    .line 160
+    .line 190
     iget-object v0, p0, Landroid/util/SparseLongArray;->mValues:[J
 
     aget-wide v0, v0, p1

@@ -25,13 +25,15 @@
 
 .field public nonLocalizedLabel:Ljava/lang/CharSequence;
 
+.field public preferred:I
+
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
     .prologue
-    .line 3840
+    .line 4561
     invoke-direct {p0}, Landroid/content/IntentFilter;-><init>()V
 
     return-void

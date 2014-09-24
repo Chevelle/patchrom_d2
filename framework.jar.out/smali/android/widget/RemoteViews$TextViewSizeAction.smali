@@ -35,23 +35,23 @@
     .parameter "size"
 
     .prologue
-    .line 1315
+    .line 1437
     iput-object p1, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->this$0:Landroid/widget/RemoteViews;
 
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/widget/RemoteViews$Action;-><init>(Landroid/widget/RemoteViews$1;)V
 
-    .line 1316
+    .line 1438
     iput p2, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->viewId:I
 
-    .line 1317
+    .line 1439
     iput p3, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->units:I
 
-    .line 1318
+    .line 1440
     iput p4, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->size:F
 
-    .line 1319
+    .line 1441
     return-void
 .end method
 
@@ -61,77 +61,71 @@
     .parameter "parcel"
 
     .prologue
-    .line 1321
+    .line 1443
     iput-object p1, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->this$0:Landroid/widget/RemoteViews;
 
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/widget/RemoteViews$Action;-><init>(Landroid/widget/RemoteViews$1;)V
 
-    .line 1322
+    .line 1444
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->viewId:I
 
-    .line 1323
+    .line 1445
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->units:I
 
-    .line 1324
+    .line 1446
     invoke-virtual {p2}, Landroid/os/Parcel;->readFloat()F
 
     move-result v0
 
     iput v0, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->size:F
 
-    .line 1325
+    .line 1447
     return-void
 .end method
 
 
 # virtual methods
 .method public apply(Landroid/view/View;Landroid/view/ViewGroup;Landroid/widget/RemoteViews$OnClickHandler;)V
-    .locals 4
+    .locals 3
     .parameter "root"
     .parameter "rootParent"
     .parameter "handler"
 
     .prologue
-    .line 1336
-    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+    .line 1458
+    iget v1, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->viewId:I
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    .line 1337
-    .local v0, context:Landroid/content/Context;
-    iget v2, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->viewId:I
+    check-cast v0, Landroid/widget/TextView;
 
-    invoke-virtual {p1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    .line 1459
+    .local v0, target:Landroid/widget/TextView;
+    if-nez v0, :cond_0
 
-    move-result-object v1
-
-    check-cast v1, Landroid/widget/TextView;
-
-    .line 1338
-    .local v1, target:Landroid/widget/TextView;
-    if-nez v1, :cond_0
-
-    .line 1340
+    .line 1461
     :goto_0
     return-void
 
-    .line 1339
+    .line 1460
     :cond_0
-    iget v2, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->units:I
+    iget v1, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->units:I
 
-    iget v3, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->size:F
+    iget v2, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->size:F
 
-    invoke-virtual {v1, v2, v3}, Landroid/widget/TextView;->setTextSize(IF)V
+    invoke-virtual {v0, v1, v2}, Landroid/widget/TextView;->setTextSize(IF)V
 
     goto :goto_0
 .end method
@@ -140,7 +134,7 @@
     .locals 1
 
     .prologue
-    .line 1343
+    .line 1464
     const-string v0, "TextViewSizeAction"
 
     return-object v0
@@ -152,26 +146,26 @@
     .parameter "flags"
 
     .prologue
-    .line 1328
+    .line 1450
     const/16 v0, 0xd
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1329
+    .line 1451
     iget v0, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->viewId:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1330
+    .line 1452
     iget v0, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->units:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1331
+    .line 1453
     iget v0, p0, Landroid/widget/RemoteViews$TextViewSizeAction;->size:F
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 1332
+    .line 1454
     return-void
 .end method

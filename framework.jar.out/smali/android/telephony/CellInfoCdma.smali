@@ -34,7 +34,7 @@
     .locals 1
 
     .prologue
-    .line 124
+    .line 125
     new-instance v0, Landroid/telephony/CellInfoCdma$1;
 
     invoke-direct {v0}, Landroid/telephony/CellInfoCdma$1;-><init>()V
@@ -74,10 +74,10 @@
     .parameter "in"
 
     .prologue
-    .line 117
+    .line 118
     invoke-direct {p0, p1}, Landroid/telephony/CellInfo;-><init>(Landroid/os/Parcel;)V
 
-    .line 118
+    .line 119
     sget-object v0, Landroid/telephony/CellIdentityCdma;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -88,7 +88,7 @@
 
     iput-object v0, p0, Landroid/telephony/CellInfoCdma;->mCellIdentityCdma:Landroid/telephony/CellIdentityCdma;
 
-    .line 119
+    .line 120
     sget-object v0, Landroid/telephony/CellSignalStrengthCdma;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -99,7 +99,7 @@
 
     iput-object v0, p0, Landroid/telephony/CellInfoCdma;->mCellSignalStrengthCdma:Landroid/telephony/CellSignalStrengthCdma;
 
-    .line 121
+    .line 122
     return-void
 .end method
 
@@ -138,7 +138,7 @@
     .parameter "in"
 
     .prologue
-    .line 139
+    .line 140
     new-instance v0, Landroid/telephony/CellInfoCdma;
 
     invoke-direct {v0, p0}, Landroid/telephony/CellInfoCdma;-><init>(Landroid/os/Parcel;)V
@@ -151,12 +151,12 @@
     .parameter "s"
 
     .prologue
-    .line 146
+    .line 147
     const-string v0, "CellInfoCdma"
 
-    invoke-static {v0, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 147
+    .line 148
     return-void
 .end method
 
@@ -166,7 +166,7 @@
     .locals 1
 
     .prologue
-    .line 101
+    .line 102
     const/4 v0, 0x0
 
     return v0
@@ -321,7 +321,7 @@
 
     .line 90
     .local v0, sb:Ljava/lang/StringBuffer;
-    const-string v1, "CellInfoCdma:"
+    const-string v1, "CellInfoCdma:{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -333,7 +333,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 92
-    const-string v1, ", "
+    const-string v1, " "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -344,7 +344,7 @@
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/Object;)Ljava/lang/StringBuffer;
 
     .line 93
-    const-string v1, ", "
+    const-string v1, " "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -354,7 +354,12 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/Object;)Ljava/lang/StringBuffer;
 
-    .line 95
+    .line 94
+    const-string/jumbo v1, "}"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    .line 96
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -368,21 +373,21 @@
     .parameter "flags"
 
     .prologue
-    .line 107
+    .line 108
     const/4 v0, 0x2
 
     invoke-super {p0, p1, p2, v0}, Landroid/telephony/CellInfo;->writeToParcel(Landroid/os/Parcel;II)V
 
-    .line 108
+    .line 109
     iget-object v0, p0, Landroid/telephony/CellInfoCdma;->mCellIdentityCdma:Landroid/telephony/CellIdentityCdma;
 
     invoke-virtual {v0, p1, p2}, Landroid/telephony/CellIdentityCdma;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 109
+    .line 110
     iget-object v0, p0, Landroid/telephony/CellInfoCdma;->mCellSignalStrengthCdma:Landroid/telephony/CellSignalStrengthCdma;
 
     invoke-virtual {v0, p1, p2}, Landroid/telephony/CellSignalStrengthCdma;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 110
+    .line 111
     return-void
 .end method

@@ -43,7 +43,7 @@
     .locals 1
 
     .prologue
-    .line 187
+    .line 189
     new-instance v0, Landroid/content/pm/Signature$1;
 
     invoke-direct {v0}, Landroid/content/pm/Signature$1;-><init>()V
@@ -58,17 +58,17 @@
     .parameter "source"
 
     .prologue
-    .line 198
+    .line 200
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 199
+    .line 201
     invoke-virtual {p1}, Landroid/os/Parcel;->createByteArray()[B
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/content/pm/Signature;->mSignature:[B
 
-    .line 200
+    .line 202
     return-void
 .end method
 
@@ -78,7 +78,7 @@
     .parameter "x1"
 
     .prologue
-    .line 34
+    .line 36
     invoke-direct {p0, p1}, Landroid/content/pm/Signature;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -89,25 +89,25 @@
     .parameter "text"
 
     .prologue
-    .line 67
+    .line 69
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 68
+    .line 70
     invoke-virtual {p1}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v4
 
-    .line 69
+    .line 71
     .local v4, input:[B
     array-length v0, v4
 
-    .line 71
+    .line 73
     .local v0, N:I
     rem-int/lit8 v9, v0, 0x2
 
     if-eqz v9, :cond_0
 
-    .line 72
+    .line 74
     new-instance v9, Ljava/lang/IllegalArgumentException;
 
     new-instance v10, Ljava/lang/StringBuilder;
@@ -138,17 +138,17 @@
 
     throw v9
 
-    .line 75
+    .line 77
     :cond_0
     div-int/lit8 v9, v0, 0x2
 
     new-array v6, v9, [B
 
-    .line 76
+    .line 78
     .local v6, sig:[B
     const/4 v7, 0x0
 
-    .line 78
+    .line 80
     .local v7, sigIndex:I
     const/4 v2, 0x0
 
@@ -164,7 +164,7 @@
     :goto_0
     if-ge v3, v0, :cond_1
 
-    .line 79
+    .line 81
     add-int/lit8 v2, v3, 0x1
 
     .end local v3           #i:I
@@ -175,7 +175,7 @@
 
     move-result v1
 
-    .line 80
+    .line 82
     .local v1, hi:I
     add-int/lit8 v3, v2, 0x1
 
@@ -187,7 +187,7 @@
 
     move-result v5
 
-    .line 81
+    .line 83
     .local v5, lo:I
     add-int/lit8 v7, v8, 0x1
 
@@ -203,18 +203,18 @@
 
     move v8, v7
 
-    .line 82
+    .line 84
     .end local v7           #sigIndex:I
     .restart local v8       #sigIndex:I
     goto :goto_0
 
-    .line 84
+    .line 86
     .end local v1           #hi:I
     .end local v5           #lo:I
     :cond_1
     iput-object v6, p0, Landroid/content/pm/Signature;->mSignature:[B
 
-    .line 85
+    .line 87
     return-void
 .end method
 
@@ -223,10 +223,10 @@
     .parameter "signature"
 
     .prologue
-    .line 43
+    .line 45
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 44
+    .line 46
     invoke-virtual {p1}, [B->clone()Ljava/lang/Object;
 
     move-result-object v0
@@ -235,8 +235,38 @@
 
     iput-object v0, p0, Landroid/content/pm/Signature;->mSignature:[B
 
-    .line 45
+    .line 47
     return-void
+.end method
+
+.method public static areExactMatch([Landroid/content/pm/Signature;[Landroid/content/pm/Signature;)Z
+    .locals 1
+    .parameter "a"
+    .parameter "b"
+
+    .prologue
+    .line 210
+    invoke-static {p0, p1}, Lcom/android/internal/util/ArrayUtils;->containsAll([Ljava/lang/Object;[Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-static {p1, p0}, Lcom/android/internal/util/ArrayUtils;->containsAll([Ljava/lang/Object;[Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method private static final parseHexDigit(I)I
@@ -244,7 +274,7 @@
     .parameter "nibble"
 
     .prologue
-    .line 48
+    .line 50
     const/16 v0, 0x30
 
     if-gt v0, p0, :cond_0
@@ -253,14 +283,14 @@
 
     if-gt p0, v0, :cond_0
 
-    .line 49
+    .line 51
     add-int/lit8 v0, p0, -0x30
 
-    .line 53
+    .line 55
     :goto_0
     return v0
 
-    .line 50
+    .line 52
     :cond_0
     const/16 v0, 0x61
 
@@ -270,14 +300,14 @@
 
     if-gt p0, v0, :cond_1
 
-    .line 51
+    .line 53
     add-int/lit8 v0, p0, -0x61
 
     add-int/lit8 v0, v0, 0xa
 
     goto :goto_0
 
-    .line 52
+    .line 54
     :cond_1
     const/16 v0, 0x41
 
@@ -287,14 +317,14 @@
 
     if-gt p0, v0, :cond_2
 
-    .line 53
+    .line 55
     add-int/lit8 v0, p0, -0x41
 
     add-int/lit8 v0, v0, 0xa
 
     goto :goto_0
 
-    .line 55
+    .line 57
     :cond_2
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -333,7 +363,7 @@
     .locals 1
 
     .prologue
-    .line 180
+    .line 182
     const/4 v0, 0x0
 
     return v0
@@ -346,10 +376,10 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 160
+    .line 162
     if-eqz p1, :cond_1
 
-    .line 161
+    .line 163
     :try_start_0
     move-object v0, p1
 
@@ -357,7 +387,7 @@
 
     move-object v1, v0
 
-    .line 162
+    .line 164
     .local v1, other:Landroid/content/pm/Signature;
     if-eq p0, v1, :cond_0
 
@@ -376,13 +406,13 @@
     :cond_0
     const/4 v2, 0x1
 
-    .line 166
+    .line 168
     .end local v1           #other:Landroid/content/pm/Signature;
     :cond_1
     :goto_0
     return v2
 
-    .line 164
+    .line 166
     :catch_0
     move-exception v3
 
@@ -398,14 +428,14 @@
     .end annotation
 
     .prologue
-    .line 151
+    .line 153
     const-string v3, "X.509"
 
     invoke-static {v3}, Ljava/security/cert/CertificateFactory;->getInstance(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
 
     move-result-object v2
 
-    .line 152
+    .line 154
     .local v2, certFactory:Ljava/security/cert/CertificateFactory;
     new-instance v0, Ljava/io/ByteArrayInputStream;
 
@@ -413,13 +443,13 @@
 
     invoke-direct {v0, v3}, Ljava/io/ByteArrayInputStream;-><init>([B)V
 
-    .line 153
+    .line 155
     .local v0, bais:Ljava/io/ByteArrayInputStream;
     invoke-virtual {v2, v0}, Ljava/security/cert/CertificateFactory;->generateCertificate(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
 
     move-result-object v1
 
-    .line 154
+    .line 156
     .local v1, cert:Ljava/security/cert/Certificate;
     invoke-virtual {v1}, Ljava/security/cert/Certificate;->getPublicKey()Ljava/security/PublicKey;
 
@@ -432,19 +462,19 @@
     .locals 1
 
     .prologue
-    .line 171
+    .line 173
     iget-boolean v0, p0, Landroid/content/pm/Signature;->mHaveHashCode:Z
 
     if-eqz v0, :cond_0
 
-    .line 172
+    .line 174
     iget v0, p0, Landroid/content/pm/Signature;->mHashCode:I
 
-    .line 176
+    .line 178
     :goto_0
     return v0
 
-    .line 174
+    .line 176
     :cond_0
     iget-object v0, p0, Landroid/content/pm/Signature;->mSignature:[B
 
@@ -454,12 +484,12 @@
 
     iput v0, p0, Landroid/content/pm/Signature;->mHashCode:I
 
-    .line 175
+    .line 177
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/content/pm/Signature;->mHaveHashCode:Z
 
-    .line 176
+    .line 178
     iget v0, p0, Landroid/content/pm/Signature;->mHashCode:I
 
     goto :goto_0
@@ -471,14 +501,14 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 138
+    .line 140
     iget-object v1, p0, Landroid/content/pm/Signature;->mSignature:[B
 
     array-length v1, v1
 
     new-array v0, v1, [B
 
-    .line 139
+    .line 141
     .local v0, bytes:[B
     iget-object v1, p0, Landroid/content/pm/Signature;->mSignature:[B
 
@@ -488,7 +518,7 @@
 
     invoke-static {v1, v3, v0, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 140
+    .line 142
     return-object v0
 .end method
 
@@ -498,7 +528,7 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 91
+    .line 93
     invoke-virtual {p0, v0, v0}, Landroid/content/pm/Signature;->toChars([C[I)[C
 
     move-result-object v0
@@ -514,18 +544,18 @@
     .prologue
     const/16 v9, 0xa
 
-    .line 105
+    .line 107
     iget-object v4, p0, Landroid/content/pm/Signature;->mSignature:[B
 
-    .line 106
+    .line 108
     .local v4, sig:[B
     array-length v0, v4
 
-    .line 107
+    .line 109
     .local v0, N:I
     mul-int/lit8 v1, v0, 0x2
 
-    .line 108
+    .line 110
     .local v1, N2:I
     if-eqz p1, :cond_0
 
@@ -536,7 +566,7 @@
     :cond_0
     new-array v5, v1, [C
 
-    .line 110
+    .line 112
     .local v5, text:[C
     :goto_0
     const/4 v3, 0x0
@@ -545,16 +575,16 @@
     :goto_1
     if-ge v3, v0, :cond_4
 
-    .line 111
+    .line 113
     aget-byte v6, v4, v3
 
-    .line 112
+    .line 114
     .local v6, v:B
     shr-int/lit8 v7, v6, 0x4
 
     and-int/lit8 v2, v7, 0xf
 
-    .line 113
+    .line 115
     .local v2, d:I
     mul-int/lit8 v8, v3, 0x2
 
@@ -569,10 +599,10 @@
 
     aput-char v7, v5, v8
 
-    .line 114
+    .line 116
     and-int/lit8 v2, v6, 0xf
 
-    .line 115
+    .line 117
     mul-int/lit8 v7, v3, 0x2
 
     add-int/lit8 v8, v7, 0x1
@@ -588,7 +618,7 @@
 
     aput-char v7, v5, v8
 
-    .line 110
+    .line 112
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_1
@@ -600,10 +630,10 @@
     :cond_1
     move-object v5, p1
 
-    .line 108
+    .line 110
     goto :goto_0
 
-    .line 113
+    .line 115
     .restart local v2       #d:I
     .restart local v3       #j:I
     .restart local v5       #text:[C
@@ -613,13 +643,13 @@
 
     goto :goto_2
 
-    .line 115
+    .line 117
     :cond_3
     add-int/lit8 v7, v2, 0x30
 
     goto :goto_3
 
-    .line 117
+    .line 119
     .end local v2           #d:I
     .end local v6           #v:B
     :cond_4
@@ -629,7 +659,7 @@
 
     aput v0, p2, v7
 
-    .line 118
+    .line 120
     :cond_5
     return-object v5
 .end method
@@ -638,27 +668,27 @@
     .locals 3
 
     .prologue
-    .line 125
+    .line 127
     iget-object v2, p0, Landroid/content/pm/Signature;->mStringRef:Ljava/lang/ref/SoftReference;
 
     if-nez v2, :cond_0
 
     const/4 v0, 0x0
 
-    .line 126
+    .line 128
     .local v0, str:Ljava/lang/String;
     :goto_0
     if-eqz v0, :cond_1
 
     move-object v1, v0
 
-    .line 131
+    .line 133
     .end local v0           #str:Ljava/lang/String;
     .local v1, str:Ljava/lang/Object;
     :goto_1
     return-object v1
 
-    .line 125
+    .line 127
     .end local v1           #str:Ljava/lang/Object;
     :cond_0
     iget-object v2, p0, Landroid/content/pm/Signature;->mStringRef:Ljava/lang/ref/SoftReference;
@@ -673,7 +703,7 @@
 
     goto :goto_0
 
-    .line 129
+    .line 131
     .restart local v0       #str:Ljava/lang/String;
     :cond_1
     new-instance v0, Ljava/lang/String;
@@ -685,7 +715,7 @@
 
     invoke-direct {v0, v2}, Ljava/lang/String;-><init>([C)V
 
-    .line 130
+    .line 132
     .restart local v0       #str:Ljava/lang/String;
     new-instance v2, Ljava/lang/ref/SoftReference;
 
@@ -695,7 +725,7 @@
 
     move-object v1, v0
 
-    .line 131
+    .line 133
     .restart local v1       #str:Ljava/lang/Object;
     goto :goto_1
 .end method
@@ -706,11 +736,11 @@
     .parameter "parcelableFlags"
 
     .prologue
-    .line 184
+    .line 186
     iget-object v0, p0, Landroid/content/pm/Signature;->mSignature:[B
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 185
+    .line 187
     return-void
 .end method

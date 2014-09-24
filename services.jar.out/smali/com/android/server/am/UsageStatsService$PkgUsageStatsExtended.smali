@@ -15,12 +15,24 @@
 
 
 # instance fields
-.field mLaunchCount:I
-
-.field final mLaunchTimes:Ljava/util/HashMap;
+.field final mFullyDrawnTimes:Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/HashMap",
+            "Landroid/util/ArrayMap",
+            "<",
+            "Ljava/lang/String;",
+            "Lcom/android/server/am/UsageStatsService$TimeStats;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field mLaunchCount:I
+
+.field final mLaunchTimes:Landroid/util/ArrayMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/util/ArrayMap",
             "<",
             "Ljava/lang/String;",
             "Lcom/android/server/am/UsageStatsService$TimeStats;",
@@ -44,143 +56,243 @@
     .parameter
 
     .prologue
-    .line 172
+    .line 178
     iput-object p1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->this$0:Lcom/android/server/am/UsageStatsService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 165
-    new-instance v0, Ljava/util/HashMap;
+    .line 169
+    new-instance v0, Landroid/util/ArrayMap;
 
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
 
-    iput-object v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    iput-object v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    .line 173
+    .line 171
+    new-instance v0, Landroid/util/ArrayMap;
+
+    invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
+
+    iput-object v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    .line 179
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
 
-    .line 174
+    .line 180
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
 
-    .line 175
+    .line 181
     return-void
 .end method
 
 .method constructor <init>(Lcom/android/server/am/UsageStatsService;Landroid/os/Parcel;)V
-    .locals 6
+    .locals 7
     .parameter
     .parameter "in"
 
     .prologue
-    .line 177
+    .line 183
     iput-object p1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->this$0:Lcom/android/server/am/UsageStatsService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 165
-    new-instance v4, Ljava/util/HashMap;
+    .line 169
+    new-instance v5, Landroid/util/ArrayMap;
 
-    invoke-direct {v4}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v5}, Landroid/util/ArrayMap;-><init>()V
 
-    iput-object v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    iput-object v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    .line 178
+    .line 171
+    new-instance v5, Landroid/util/ArrayMap;
+
+    invoke-direct {v5}, Landroid/util/ArrayMap;-><init>()V
+
+    iput-object v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    .line 184
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result v4
+    move-result v5
 
-    iput v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
-
-    .line 179
-    invoke-virtual {p2}, Landroid/os/Parcel;->readLong()J
-
-    move-result-wide v4
-
-    iput-wide v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
-
-    .line 183
-    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v2
+    iput v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
 
     .line 185
-    .local v2, numTimeStats:I
+    invoke-virtual {p2}, Landroid/os/Parcel;->readLong()J
+
+    move-result-wide v5
+
+    iput-wide v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
+
+    .line 189
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    .line 191
+    .local v3, numLaunchTimeStats:I
+    iget-object v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v5, v3}, Landroid/util/ArrayMap;->ensureCapacity(I)V
+
+    .line 192
     const/4 v1, 0x0
 
     .local v1, i:I
     :goto_0
-    if-ge v1, v2, :cond_0
+    if-ge v1, v3, :cond_0
 
-    .line 186
+    .line 193
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 188
+    .line 195
     .local v0, comp:Ljava/lang/String;
-    new-instance v3, Lcom/android/server/am/UsageStatsService$TimeStats;
+    new-instance v4, Lcom/android/server/am/UsageStatsService$TimeStats;
 
-    invoke-direct {v3, p2}, Lcom/android/server/am/UsageStatsService$TimeStats;-><init>(Landroid/os/Parcel;)V
+    invoke-direct {v4, p2}, Lcom/android/server/am/UsageStatsService$TimeStats;-><init>(Landroid/os/Parcel;)V
 
-    .line 189
-    .local v3, times:Lcom/android/server/am/UsageStatsService$TimeStats;
-    iget-object v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    .line 196
+    .local v4, times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    iget-object v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    invoke-virtual {v4, v0, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v5, v0, v4}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 185
+    .line 192
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 191
+    .line 199
     .end local v0           #comp:Ljava/lang/String;
-    .end local v3           #times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    .end local v4           #times:Lcom/android/server/am/UsageStatsService$TimeStats;
     :cond_0
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v2
+
+    .line 201
+    .local v2, numFullyDrawnTimeStats:I
+    iget-object v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v5, v2}, Landroid/util/ArrayMap;->ensureCapacity(I)V
+
+    .line 202
+    const/4 v1, 0x0
+
+    :goto_1
+    if-ge v1, v2, :cond_1
+
+    .line 203
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 205
+    .restart local v0       #comp:Ljava/lang/String;
+    new-instance v4, Lcom/android/server/am/UsageStatsService$TimeStats;
+
+    invoke-direct {v4, p2}, Lcom/android/server/am/UsageStatsService$TimeStats;-><init>(Landroid/os/Parcel;)V
+
+    .line 206
+    .restart local v4       #times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    iget-object v5, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v5, v0, v4}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 202
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    .line 208
+    .end local v0           #comp:Ljava/lang/String;
+    .end local v4           #times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    :cond_1
     return-void
 .end method
 
 
 # virtual methods
-.method addLaunchCount(Ljava/lang/String;)V
+.method addFullyDrawnTime(Ljava/lang/String;I)V
     .locals 2
     .parameter "comp"
+    .parameter "millis"
 
     .prologue
-    .line 206
-    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    .line 241
+    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
 
-    invoke-virtual {v1, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v1, p1}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/server/am/UsageStatsService$TimeStats;
 
-    .line 207
+    .line 242
     .local v0, times:Lcom/android/server/am/UsageStatsService$TimeStats;
     if-nez v0, :cond_0
 
-    .line 208
+    .line 243
     new-instance v0, Lcom/android/server/am/UsageStatsService$TimeStats;
 
     .end local v0           #times:Lcom/android/server/am/UsageStatsService$TimeStats;
     invoke-direct {v0}, Lcom/android/server/am/UsageStatsService$TimeStats;-><init>()V
 
-    .line 209
+    .line 244
     .restart local v0       #times:Lcom/android/server/am/UsageStatsService$TimeStats;
-    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
 
-    invoke-virtual {v1, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v1, p1, v0}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 211
+    .line 246
+    :cond_0
+    invoke-virtual {v0, p2}, Lcom/android/server/am/UsageStatsService$TimeStats;->add(I)V
+
+    .line 247
+    return-void
+.end method
+
+.method addLaunchCount(Ljava/lang/String;)V
+    .locals 2
+    .parameter "comp"
+
+    .prologue
+    .line 223
+    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v1, p1}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/server/am/UsageStatsService$TimeStats;
+
+    .line 224
+    .local v0, times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    if-nez v0, :cond_0
+
+    .line 225
+    new-instance v0, Lcom/android/server/am/UsageStatsService$TimeStats;
+
+    .end local v0           #times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    invoke-direct {v0}, Lcom/android/server/am/UsageStatsService$TimeStats;-><init>()V
+
+    .line 226
+    .restart local v0       #times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v1, p1, v0}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 228
     :cond_0
     invoke-virtual {v0}, Lcom/android/server/am/UsageStatsService$TimeStats;->incCount()V
 
-    .line 212
+    .line 229
     return-void
 .end method
 
@@ -190,36 +302,36 @@
     .parameter "millis"
 
     .prologue
-    .line 215
-    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    .line 232
+    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    invoke-virtual {v1, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v1, p1}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/server/am/UsageStatsService$TimeStats;
 
-    .line 216
+    .line 233
     .local v0, times:Lcom/android/server/am/UsageStatsService$TimeStats;
     if-nez v0, :cond_0
 
-    .line 217
+    .line 234
     new-instance v0, Lcom/android/server/am/UsageStatsService$TimeStats;
 
     .end local v0           #times:Lcom/android/server/am/UsageStatsService$TimeStats;
     invoke-direct {v0}, Lcom/android/server/am/UsageStatsService$TimeStats;-><init>()V
 
-    .line 218
+    .line 235
     .restart local v0       #times:Lcom/android/server/am/UsageStatsService$TimeStats;
-    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    iget-object v1, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    invoke-virtual {v1, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v1, p1, v0}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 220
+    .line 237
     :cond_0
     invoke-virtual {v0, p2}, Lcom/android/server/am/UsageStatsService$TimeStats;->add(I)V
 
-    .line 221
+    .line 238
     return-void
 .end method
 
@@ -227,22 +339,27 @@
     .locals 2
 
     .prologue
-    .line 238
-    iget-object v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    .line 267
+    iget-object v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    invoke-virtual {v0}, Ljava/util/HashMap;->clear()V
+    invoke-virtual {v0}, Landroid/util/ArrayMap;->clear()V
 
-    .line 239
+    .line 268
+    iget-object v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v0}, Landroid/util/ArrayMap;->clear()V
+
+    .line 269
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
 
-    .line 240
+    .line 270
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
 
-    .line 241
+    .line 271
     return-void
 .end method
 
@@ -250,14 +367,14 @@
     .locals 6
 
     .prologue
-    .line 201
+    .line 218
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mPausedTime:J
 
-    .line 202
+    .line 219
     iget-wide v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
 
     iget-wide v2, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mPausedTime:J
@@ -270,7 +387,7 @@
 
     iput-wide v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
 
-    .line 203
+    .line 220
     return-void
 .end method
 
@@ -280,17 +397,17 @@
     .parameter "launched"
 
     .prologue
-    .line 194
+    .line 211
     if-eqz p2, :cond_0
 
-    .line 195
+    .line 212
     iget v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
 
     add-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
 
-    .line 197
+    .line 214
     :cond_0
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
@@ -298,91 +415,116 @@
 
     iput-wide v0, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mResumedTime:J
 
-    .line 198
+    .line 215
     return-void
 .end method
 
 .method writeToParcel(Landroid/os/Parcel;)V
-    .locals 6
+    .locals 5
     .parameter "out"
 
     .prologue
-    .line 224
-    iget v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
+    .line 250
+    iget v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchCount:I
 
-    invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 225
-    iget-wide v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
+    .line 251
+    iget-wide v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mUsageTime:J
 
-    invoke-virtual {p1, v4, v5}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v3, v4}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 226
-    iget-object v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
+    .line 252
+    iget-object v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    invoke-virtual {v4}, Ljava/util/HashMap;->size()I
+    invoke-virtual {v3}, Landroid/util/ArrayMap;->size()I
 
     move-result v2
 
-    .line 227
-    .local v2, numTimeStats:I
+    .line 253
+    .local v2, numLaunchTimeStats:I
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 228
-    if-lez v2, :cond_0
+    .line 254
+    const/4 v0, 0x0
 
-    .line 229
-    iget-object v4, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Ljava/util/HashMap;
-
-    invoke-virtual {v4}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
-
-    move-result-object v4
-
-    invoke-interface {v4}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    .local v1, i$:Ljava/util/Iterator;
+    .local v0, i:I
     :goto_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+    if-ge v0, v2, :cond_0
 
-    move-result v4
+    .line 255
+    iget-object v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    if-eqz v4, :cond_0
+    invoke-virtual {v3, v0}, Landroid/util/ArrayMap;->keyAt(I)Ljava/lang/Object;
 
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    move-result-object v3
 
-    move-result-object v0
+    check-cast v3, Ljava/lang/String;
 
-    check-cast v0, Ljava/util/Map$Entry;
+    invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 230
-    .local v0, ent:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/UsageStatsService$TimeStats;>;"
-    invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+    .line 256
+    iget-object v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mLaunchTimes:Landroid/util/ArrayMap;
 
-    move-result-object v4
-
-    check-cast v4, Ljava/lang/String;
-
-    invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 231
-    invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    invoke-virtual {v3, v0}, Landroid/util/ArrayMap;->valueAt(I)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Lcom/android/server/am/UsageStatsService$TimeStats;
 
-    .line 232
-    .local v3, times:Lcom/android/server/am/UsageStatsService$TimeStats;
     invoke-virtual {v3, p1}, Lcom/android/server/am/UsageStatsService$TimeStats;->writeToParcel(Landroid/os/Parcel;)V
+
+    .line 254
+    add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 235
-    .end local v0           #ent:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/UsageStatsService$TimeStats;>;"
-    .end local v1           #i$:Ljava/util/Iterator;
-    .end local v3           #times:Lcom/android/server/am/UsageStatsService$TimeStats;
+    .line 258
     :cond_0
+    iget-object v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v3}, Landroid/util/ArrayMap;->size()I
+
+    move-result v1
+
+    .line 259
+    .local v1, numFullyDrawnTimeStats:I
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 260
+    const/4 v0, 0x0
+
+    :goto_1
+    if-ge v0, v1, :cond_1
+
+    .line 261
+    iget-object v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v3, v0}, Landroid/util/ArrayMap;->keyAt(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/String;
+
+    invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    .line 262
+    iget-object v3, p0, Lcom/android/server/am/UsageStatsService$PkgUsageStatsExtended;->mFullyDrawnTimes:Landroid/util/ArrayMap;
+
+    invoke-virtual {v3, v0}, Landroid/util/ArrayMap;->valueAt(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/server/am/UsageStatsService$TimeStats;
+
+    invoke-virtual {v3, p1}, Lcom/android/server/am/UsageStatsService$TimeStats;->writeToParcel(Landroid/os/Parcel;)V
+
+    .line 260
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_1
+
+    .line 264
+    :cond_1
     return-void
 .end method

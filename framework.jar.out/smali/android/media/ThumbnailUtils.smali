@@ -288,7 +288,7 @@
 
     iget v13, v4, Landroid/media/MediaFile$MediaFileType;->fileType:I
 
-    const/16 v14, 0x20
+    const/16 v14, 0x1f
 
     if-ne v13, v14, :cond_0
 

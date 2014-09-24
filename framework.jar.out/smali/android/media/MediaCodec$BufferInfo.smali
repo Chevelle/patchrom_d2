@@ -29,7 +29,7 @@
     .locals 0
 
     .prologue
-    .line 123
+    .line 128
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,18 +45,18 @@
     .parameter "newFlags"
 
     .prologue
-    .line 126
+    .line 131
     iput p1, p0, Landroid/media/MediaCodec$BufferInfo;->offset:I
 
-    .line 127
+    .line 132
     iput p2, p0, Landroid/media/MediaCodec$BufferInfo;->size:I
 
-    .line 128
+    .line 133
     iput-wide p3, p0, Landroid/media/MediaCodec$BufferInfo;->presentationTimeUs:J
 
-    .line 129
+    .line 134
     iput p5, p0, Landroid/media/MediaCodec$BufferInfo;->flags:I
 
-    .line 130
+    .line 135
     return-void
 .end method

@@ -19,6 +19,8 @@
 
 .field public static final AsecPathResult:I = 0xd3
 
+.field public static final FstrimCompleted:I = 0x2bc
+
 .field public static final OpFailedMediaBlank:I = 0x192
 
 .field public static final OpFailedMediaCorrupt:I = 0x193
@@ -47,6 +49,10 @@
 
 .field public static final VolumeStateChange:I = 0x25d
 
+.field public static final VolumeUserLabelChange:I = 0x266
+
+.field public static final VolumeUuidChange:I = 0x265
+
 
 # instance fields
 .field final synthetic this$0:Lcom/android/server/MountService;
@@ -58,7 +64,7 @@
     .parameter
 
     .prologue
-    .line 142
+    .line 147
     iput-object p1, p0, Lcom/android/server/MountService$VoldResponseCode;->this$0:Lcom/android/server/MountService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

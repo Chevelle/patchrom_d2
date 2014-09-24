@@ -54,7 +54,7 @@
     .locals 1
 
     .prologue
-    .line 138
+    .line 142
     new-instance v0, Landroid/content/pm/UserInfo$1;
 
     invoke-direct {v0}, Landroid/content/pm/UserInfo$1;-><init>()V
@@ -68,10 +68,10 @@
     .locals 0
 
     .prologue
-    .line 100
+    .line 104
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 101
+    .line 105
     return-void
 .end method
 
@@ -123,50 +123,50 @@
     .parameter "orig"
 
     .prologue
-    .line 103
+    .line 107
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 104
+    .line 108
     iget-object v0, p1, Landroid/content/pm/UserInfo;->name:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/pm/UserInfo;->name:Ljava/lang/String;
 
-    .line 105
+    .line 109
     iget-object v0, p1, Landroid/content/pm/UserInfo;->iconPath:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/pm/UserInfo;->iconPath:Ljava/lang/String;
 
-    .line 106
+    .line 110
     iget v0, p1, Landroid/content/pm/UserInfo;->id:I
 
     iput v0, p0, Landroid/content/pm/UserInfo;->id:I
 
-    .line 107
+    .line 111
     iget v0, p1, Landroid/content/pm/UserInfo;->flags:I
 
     iput v0, p0, Landroid/content/pm/UserInfo;->flags:I
 
-    .line 108
+    .line 112
     iget v0, p1, Landroid/content/pm/UserInfo;->serialNumber:I
 
     iput v0, p0, Landroid/content/pm/UserInfo;->serialNumber:I
 
-    .line 109
+    .line 113
     iget-wide v0, p1, Landroid/content/pm/UserInfo;->creationTime:J
 
     iput-wide v0, p0, Landroid/content/pm/UserInfo;->creationTime:J
 
-    .line 110
+    .line 114
     iget-wide v0, p1, Landroid/content/pm/UserInfo;->lastLoggedInTime:J
 
     iput-wide v0, p0, Landroid/content/pm/UserInfo;->lastLoggedInTime:J
 
-    .line 111
+    .line 115
     iget-boolean v0, p1, Landroid/content/pm/UserInfo;->partial:Z
 
     iput-boolean v0, p0, Landroid/content/pm/UserInfo;->partial:Z
 
-    .line 112
+    .line 116
     return-void
 .end method
 
@@ -175,59 +175,59 @@
     .parameter "source"
 
     .prologue
-    .line 148
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 149
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/content/pm/UserInfo;->id:I
-
-    .line 150
-    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v0
-
-    iput-object v0, p0, Landroid/content/pm/UserInfo;->name:Ljava/lang/String;
-
-    .line 151
-    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v0
-
-    iput-object v0, p0, Landroid/content/pm/UserInfo;->iconPath:Ljava/lang/String;
-
     .line 152
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v0
-
-    iput v0, p0, Landroid/content/pm/UserInfo;->flags:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 153
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroid/content/pm/UserInfo;->serialNumber:I
+    iput v0, p0, Landroid/content/pm/UserInfo;->id:I
 
     .line 154
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/content/pm/UserInfo;->name:Ljava/lang/String;
+
+    .line 155
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/content/pm/UserInfo;->iconPath:Ljava/lang/String;
+
+    .line 156
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/content/pm/UserInfo;->flags:I
+
+    .line 157
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/content/pm/UserInfo;->serialNumber:I
+
+    .line 158
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/content/pm/UserInfo;->creationTime:J
 
-    .line 155
+    .line 159
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/content/pm/UserInfo;->lastLoggedInTime:J
 
-    .line 156
+    .line 160
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
@@ -239,10 +239,10 @@
     :goto_0
     iput-boolean v0, p0, Landroid/content/pm/UserInfo;->partial:Z
 
-    .line 157
+    .line 161
     return-void
 
-    .line 156
+    .line 160
     :cond_0
     const/4 v0, 0x0
 
@@ -267,7 +267,7 @@
     .locals 1
 
     .prologue
-    .line 124
+    .line 128
     const/4 v0, 0x0
 
     return v0
@@ -277,7 +277,7 @@
     .locals 2
 
     .prologue
-    .line 115
+    .line 119
     new-instance v0, Landroid/os/UserHandle;
 
     iget v1, p0, Landroid/content/pm/UserInfo;->id:I
@@ -357,11 +357,35 @@
     goto :goto_0
 .end method
 
+.method public isRestricted()Z
+    .locals 2
+
+    .prologue
+    .line 101
+    iget v0, p0, Landroid/content/pm/UserInfo;->flags:I
+
+    and-int/lit8 v0, v0, 0x8
+
+    const/16 v1, 0x8
+
+    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
 .method public toString()Ljava/lang/String;
     .locals 2
 
     .prologue
-    .line 120
+    .line 124
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -425,42 +449,42 @@
     .parameter "parcelableFlags"
 
     .prologue
-    .line 128
+    .line 132
     iget v0, p0, Landroid/content/pm/UserInfo;->id:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 129
+    .line 133
     iget-object v0, p0, Landroid/content/pm/UserInfo;->name:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 130
+    .line 134
     iget-object v0, p0, Landroid/content/pm/UserInfo;->iconPath:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 131
+    .line 135
     iget v0, p0, Landroid/content/pm/UserInfo;->flags:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 132
+    .line 136
     iget v0, p0, Landroid/content/pm/UserInfo;->serialNumber:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 133
+    .line 137
     iget-wide v0, p0, Landroid/content/pm/UserInfo;->creationTime:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 134
+    .line 138
     iget-wide v0, p0, Landroid/content/pm/UserInfo;->lastLoggedInTime:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 135
+    .line 139
     iget-boolean v0, p0, Landroid/content/pm/UserInfo;->partial:Z
 
     if-eqz v0, :cond_0
@@ -470,10 +494,10 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 136
+    .line 140
     return-void
 
-    .line 135
+    .line 139
     :cond_0
     const/4 v0, 0x0
 

@@ -46,10 +46,10 @@
     .parameter "rs"
 
     .prologue
-    .line 77
+    .line 78
     invoke-direct {p0, p1, p2}, Landroid/renderscript/BaseObj;-><init>(ILandroid/renderscript/RenderScript;)V
 
-    .line 78
+    .line 79
     return-void
 .end method
 
@@ -61,7 +61,7 @@
     .parameter "slot"
 
     .prologue
-    .line 145
+    .line 146
     if-ltz p2, :cond_0
 
     iget-object v1, p0, Landroid/renderscript/Program;->mConstants:[Landroid/renderscript/Type;
@@ -70,7 +70,7 @@
 
     if-lt p2, v1, :cond_1
 
-    .line 146
+    .line 147
     :cond_0
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
@@ -80,7 +80,7 @@
 
     throw v1
 
-    .line 148
+    .line 149
     :cond_1
     if-eqz p1, :cond_2
 
@@ -106,7 +106,7 @@
 
     if-eq v1, v2, :cond_2
 
-    .line 150
+    .line 151
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string v2, "Allocation type does not match slot type."
@@ -115,7 +115,7 @@
 
     throw v1
 
-    .line 152
+    .line 153
     :cond_2
     if-eqz p1, :cond_3
 
@@ -125,7 +125,7 @@
 
     move-result v0
 
-    .line 153
+    .line 154
     .local v0, id:I
     :goto_0
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
@@ -138,10 +138,10 @@
 
     invoke-virtual {v1, v2, p2, v0}, Landroid/renderscript/RenderScript;->nProgramBindConstants(III)V
 
-    .line 154
+    .line 155
     return-void
 
-    .line 152
+    .line 153
     .end local v0           #id:I
     :cond_3
     const/4 v0, 0x0
@@ -160,19 +160,19 @@
     .end annotation
 
     .prologue
-    .line 189
+    .line 190
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
     invoke-virtual {v1}, Landroid/renderscript/RenderScript;->validate()V
 
-    .line 190
+    .line 191
     if-ltz p2, :cond_0
 
     iget v1, p0, Landroid/renderscript/Program;->mTextureCount:I
 
     if-lt p2, v1, :cond_1
 
-    .line 191
+    .line 192
     :cond_0
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
@@ -182,7 +182,7 @@
 
     throw v1
 
-    .line 194
+    .line 195
     :cond_1
     if-eqz p1, :cond_2
 
@@ -192,7 +192,7 @@
 
     move-result v0
 
-    .line 195
+    .line 196
     .local v0, id:I
     :goto_0
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
@@ -205,10 +205,10 @@
 
     invoke-virtual {v1, v2, p2, v0}, Landroid/renderscript/RenderScript;->nProgramBindSampler(III)V
 
-    .line 196
+    .line 197
     return-void
 
-    .line 194
+    .line 195
     .end local v0           #id:I
     :cond_2
     const/4 v0, 0x0
@@ -227,19 +227,19 @@
     .end annotation
 
     .prologue
-    .line 165
+    .line 166
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
     invoke-virtual {v1}, Landroid/renderscript/RenderScript;->validate()V
 
-    .line 166
+    .line 167
     if-ltz p2, :cond_0
 
     iget v1, p0, Landroid/renderscript/Program;->mTextureCount:I
 
     if-lt p2, v1, :cond_1
 
-    .line 167
+    .line 168
     :cond_0
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
@@ -249,7 +249,7 @@
 
     throw v1
 
-    .line 169
+    .line 170
     :cond_1
     if-eqz p1, :cond_2
 
@@ -271,7 +271,7 @@
 
     if-eq v1, v2, :cond_2
 
-    .line 171
+    .line 172
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string v2, "Cannot bind cubemap to 2d texture slot"
@@ -280,7 +280,7 @@
 
     throw v1
 
-    .line 174
+    .line 175
     :cond_2
     if-eqz p1, :cond_3
 
@@ -290,7 +290,7 @@
 
     move-result v0
 
-    .line 175
+    .line 176
     .local v0, id:I
     :goto_0
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
@@ -303,10 +303,10 @@
 
     invoke-virtual {v1, v2, p2, v0}, Landroid/renderscript/RenderScript;->nProgramBindTexture(III)V
 
-    .line 176
+    .line 177
     return-void
 
-    .line 174
+    .line 175
     .end local v0           #id:I
     :cond_3
     const/4 v0, 0x0
@@ -319,7 +319,7 @@
     .parameter "slot"
 
     .prologue
-    .line 97
+    .line 98
     if-ltz p1, :cond_0
 
     iget-object v0, p0, Landroid/renderscript/Program;->mConstants:[Landroid/renderscript/Type;
@@ -328,7 +328,7 @@
 
     if-lt p1, v0, :cond_1
 
-    .line 98
+    .line 99
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -338,7 +338,7 @@
 
     throw v0
 
-    .line 100
+    .line 101
     :cond_1
     iget-object v0, p0, Landroid/renderscript/Program;->mConstants:[Landroid/renderscript/Type;
 
@@ -351,7 +351,7 @@
     .locals 1
 
     .prologue
-    .line 86
+    .line 87
     iget-object v0, p0, Landroid/renderscript/Program;->mConstants:[Landroid/renderscript/Type;
 
     if-eqz v0, :cond_0
@@ -373,7 +373,7 @@
     .locals 1
 
     .prologue
-    .line 108
+    .line 109
     iget v0, p0, Landroid/renderscript/Program;->mTextureCount:I
 
     return v0
@@ -384,14 +384,14 @@
     .parameter "slot"
 
     .prologue
-    .line 130
+    .line 131
     if-ltz p1, :cond_0
 
     iget v0, p0, Landroid/renderscript/Program;->mTextureCount:I
 
     if-lt p1, v0, :cond_1
 
-    .line 131
+    .line 132
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -401,7 +401,7 @@
 
     throw v0
 
-    .line 133
+    .line 134
     :cond_1
     iget-object v0, p0, Landroid/renderscript/Program;->mTextureNames:[Ljava/lang/String;
 
@@ -415,14 +415,14 @@
     .parameter "slot"
 
     .prologue
-    .line 117
+    .line 118
     if-ltz p1, :cond_0
 
     iget v0, p0, Landroid/renderscript/Program;->mTextureCount:I
 
     if-lt p1, v0, :cond_1
 
-    .line 118
+    .line 119
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -432,7 +432,7 @@
 
     throw v0
 
-    .line 120
+    .line 121
     :cond_1
     iget-object v0, p0, Landroid/renderscript/Program;->mTextures:[Landroid/renderscript/Program$TextureType;
 

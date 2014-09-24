@@ -37,30 +37,90 @@
 
 .field mHandler:Landroid/os/Handler;
 
+.field protected mSubscription:I
+
 
 # direct methods
 .method public constructor <init>()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 168
+    .line 178
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 299
+    .line 176
+    const/4 v0, 0x0
+
+    iput v0, p0, Landroid/telephony/PhoneStateListener;->mSubscription:I
+
+    .line 318
     new-instance v0, Landroid/telephony/PhoneStateListener$1;
 
     invoke-direct {v0, p0}, Landroid/telephony/PhoneStateListener$1;-><init>(Landroid/telephony/PhoneStateListener;)V
 
     iput-object v0, p0, Landroid/telephony/PhoneStateListener;->callback:Lcom/android/internal/telephony/IPhoneStateListener;
 
-    .line 349
+    .line 368
     new-instance v0, Landroid/telephony/PhoneStateListener$2;
 
-    invoke-direct {v0, p0}, Landroid/telephony/PhoneStateListener$2;-><init>(Landroid/telephony/PhoneStateListener;)V
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    move-result-object v1
+
+    invoke-direct {v0, p0, v1}, Landroid/telephony/PhoneStateListener$2;-><init>(Landroid/telephony/PhoneStateListener;Landroid/os/Looper;)V
 
     iput-object v0, p0, Landroid/telephony/PhoneStateListener;->mHandler:Landroid/os/Handler;
 
-    .line 169
+    .line 180
+    invoke-static {}, Landroid/telephony/MSimTelephonyManager;->getDefault()Landroid/telephony/MSimTelephonyManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/telephony/MSimTelephonyManager;->getDefaultSubscription()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/telephony/PhoneStateListener;->mSubscription:I
+
+    .line 181
+    return-void
+.end method
+
+.method public constructor <init>(I)V
+    .locals 2
+    .parameter "subscription"
+
+    .prologue
+    .line 186
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 176
+    const/4 v0, 0x0
+
+    iput v0, p0, Landroid/telephony/PhoneStateListener;->mSubscription:I
+
+    .line 318
+    new-instance v0, Landroid/telephony/PhoneStateListener$1;
+
+    invoke-direct {v0, p0}, Landroid/telephony/PhoneStateListener$1;-><init>(Landroid/telephony/PhoneStateListener;)V
+
+    iput-object v0, p0, Landroid/telephony/PhoneStateListener;->callback:Lcom/android/internal/telephony/IPhoneStateListener;
+
+    .line 368
+    new-instance v0, Landroid/telephony/PhoneStateListener$2;
+
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    move-result-object v1
+
+    invoke-direct {v0, p0, v1}, Landroid/telephony/PhoneStateListener$2;-><init>(Landroid/telephony/PhoneStateListener;Landroid/os/Looper;)V
+
+    iput-object v0, p0, Landroid/telephony/PhoneStateListener;->mHandler:Landroid/os/Handler;
+
+    .line 187
+    iput p1, p0, Landroid/telephony/PhoneStateListener;->mSubscription:I
+
+    .line 188
     return-void
 .end method
 
@@ -71,7 +131,7 @@
     .parameter "cfi"
 
     .prologue
-    .line 209
+    .line 228
     return-void
 .end method
 
@@ -81,7 +141,7 @@
     .parameter "incomingNumber"
 
     .prologue
-    .line 227
+    .line 246
     return-void
 .end method
 
@@ -99,7 +159,7 @@
     .end annotation
 
     .prologue
-    .line 293
+    .line 312
     .local p1, cellInfo:Ljava/util/List;,"Ljava/util/List<Landroid/telephony/CellInfo;>;"
     return-void
 .end method
@@ -109,7 +169,7 @@
     .parameter "location"
 
     .prologue
-    .line 216
+    .line 235
     return-void
 .end method
 
@@ -118,7 +178,7 @@
     .parameter "direction"
 
     .prologue
-    .line 258
+    .line 277
     return-void
 .end method
 
@@ -127,7 +187,7 @@
     .parameter "state"
 
     .prologue
-    .line 239
+    .line 258
     return-void
 .end method
 
@@ -137,7 +197,7 @@
     .parameter "networkType"
 
     .prologue
-    .line 245
+    .line 264
     return-void
 .end method
 
@@ -146,7 +206,7 @@
     .parameter "mwi"
 
     .prologue
-    .line 202
+    .line 221
     return-void
 .end method
 
@@ -155,7 +215,7 @@
     .parameter "otaspMode"
 
     .prologue
-    .line 285
+    .line 304
     return-void
 .end method
 
@@ -164,7 +224,7 @@
     .parameter "serviceState"
 
     .prologue
-    .line 181
+    .line 200
     return-void
 .end method
 
@@ -175,7 +235,7 @@
     .end annotation
 
     .prologue
-    .line 195
+    .line 214
     return-void
 .end method
 
@@ -184,6 +244,6 @@
     .parameter "signalStrength"
 
     .prologue
-    .line 270
+    .line 289
     return-void
 .end method

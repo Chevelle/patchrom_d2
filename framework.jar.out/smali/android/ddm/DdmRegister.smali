@@ -36,9 +36,12 @@
     .line 53
     invoke-static {}, Landroid/ddm/DdmHandleExit;->register()V
 
-    .line 55
-    invoke-static {}, Lorg/apache/harmony/dalvik/ddmc/DdmServer;->registrationComplete()V
+    .line 54
+    invoke-static {}, Landroid/ddm/DdmHandleViewDebug;->register()V
 
     .line 56
+    invoke-static {}, Lorg/apache/harmony/dalvik/ddmc/DdmServer;->registrationComplete()V
+
+    .line 57
     return-void
 .end method

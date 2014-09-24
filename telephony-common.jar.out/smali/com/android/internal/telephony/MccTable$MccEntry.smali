@@ -28,13 +28,13 @@
 
 
 # instance fields
-.field iso:Ljava/lang/String;
+.field mIso:Ljava/lang/String;
 
-.field language:Ljava/lang/String;
+.field mLanguage:Ljava/lang/String;
 
-.field mcc:I
+.field mMcc:I
 
-.field smallestDigitsMnc:I
+.field mSmallestDigitsMnc:I
 
 
 # direct methods
@@ -45,12 +45,12 @@
     .parameter "smallestDigitsMCC"
 
     .prologue
-    .line 55
+    .line 56
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, p3, v0}, Lcom/android/internal/telephony/MccTable$MccEntry;-><init>(ILjava/lang/String;ILjava/lang/String;)V
 
-    .line 56
+    .line 57
     return-void
 .end method
 
@@ -62,22 +62,22 @@
     .parameter "language"
 
     .prologue
-    .line 58
+    .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 59
-    iput p1, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mcc:I
-
     .line 60
-    iput-object p2, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->iso:Ljava/lang/String;
+    iput p1, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mMcc:I
 
     .line 61
-    iput p3, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->smallestDigitsMnc:I
+    iput-object p2, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mIso:Ljava/lang/String;
 
     .line 62
-    iput-object p4, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->language:Ljava/lang/String;
+    iput p3, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mSmallestDigitsMnc:I
 
     .line 63
+    iput-object p4, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mLanguage:Ljava/lang/String;
+
+    .line 64
     return-void
 .end method
 
@@ -88,10 +88,10 @@
     .parameter "o"
 
     .prologue
-    .line 68
-    iget v0, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mcc:I
+    .line 70
+    iget v0, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mMcc:I
 
-    iget v1, p1, Lcom/android/internal/telephony/MccTable$MccEntry;->mcc:I
+    iget v1, p1, Lcom/android/internal/telephony/MccTable$MccEntry;->mMcc:I
 
     sub-int/2addr v0, v1
 
@@ -103,7 +103,7 @@
     .parameter "x0"
 
     .prologue
-    .line 47
+    .line 48
     check-cast p1, Lcom/android/internal/telephony/MccTable$MccEntry;
 
     .end local p1

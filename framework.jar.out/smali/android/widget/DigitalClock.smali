@@ -14,12 +14,6 @@
 .end annotation
 
 
-# static fields
-.field private static final m12:Ljava/lang/String; = "h:mm:ss aa"
-
-.field private static final m24:Ljava/lang/String; = "k:mm:ss"
-
-
 # instance fields
 .field mCalendar:Ljava/util/Calendar;
 
@@ -40,18 +34,18 @@
     .parameter "context"
 
     .prologue
-    .line 55
+    .line 53
     invoke-direct {p0, p1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 50
+    .line 48
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
 
-    .line 56
+    .line 54
     invoke-direct {p0}, Landroid/widget/DigitalClock;->initClock()V
 
-    .line 57
+    .line 55
     return-void
 .end method
 
@@ -61,18 +55,18 @@
     .parameter "attrs"
 
     .prologue
-    .line 60
+    .line 58
     invoke-direct {p0, p1, p2}, Landroid/widget/TextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 50
+    .line 48
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
 
-    .line 61
+    .line 59
     invoke-direct {p0}, Landroid/widget/DigitalClock;->initClock()V
 
-    .line 62
+    .line 60
     return-void
 .end method
 
@@ -120,39 +114,23 @@
     return-void
 .end method
 
-.method private get24HourMode()Z
-    .locals 1
-
-    .prologue
-    .line 109
-    invoke-virtual {p0}, Landroid/widget/DigitalClock;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-static {v0}, Landroid/text/format/DateFormat;->is24HourFormat(Landroid/content/Context;)Z
-
-    move-result v0
-
-    return v0
-.end method
-
 .method private initClock()V
     .locals 4
 
     .prologue
-    .line 65
+    .line 63
     iget-object v0, p0, Landroid/widget/DigitalClock;->mCalendar:Ljava/util/Calendar;
 
     if-nez v0, :cond_0
 
-    .line 66
+    .line 64
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mCalendar:Ljava/util/Calendar;
 
-    .line 69
+    .line 67
     :cond_0
     new-instance v0, Landroid/widget/DigitalClock$FormatChangeObserver;
 
@@ -160,7 +138,7 @@
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mFormatChangeObserver:Landroid/widget/DigitalClock$FormatChangeObserver;
 
-    .line 70
+    .line 68
     invoke-virtual {p0}, Landroid/widget/DigitalClock;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -177,10 +155,10 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 73
+    .line 71
     invoke-direct {p0}, Landroid/widget/DigitalClock;->setFormat()V
 
-    .line 74
+    .line 72
     return-void
 .end method
 
@@ -188,29 +166,19 @@
     .locals 1
 
     .prologue
-    .line 113
-    invoke-direct {p0}, Landroid/widget/DigitalClock;->get24HourMode()Z
+    .line 104
+    invoke-virtual {p0}, Landroid/widget/DigitalClock;->getContext()Landroid/content/Context;
 
-    move-result v0
+    move-result-object v0
 
-    if-eqz v0, :cond_0
+    invoke-static {v0}, Landroid/text/format/DateFormat;->getTimeFormatString(Landroid/content/Context;)Ljava/lang/String;
 
-    .line 114
-    const-string v0, "k:mm:ss"
+    move-result-object v0
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mFormat:Ljava/lang/String;
 
-    .line 118
-    :goto_0
+    .line 105
     return-void
-
-    .line 116
-    :cond_0
-    const-string v0, "h:mm:ss aa"
-
-    iput-object v0, p0, Landroid/widget/DigitalClock;->mFormat:Ljava/lang/String;
-
-    goto :goto_0
 .end method
 
 
@@ -219,34 +187,34 @@
     .locals 1
 
     .prologue
-    .line 78
+    .line 76
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
 
-    .line 79
+    .line 77
     invoke-super {p0}, Landroid/widget/TextView;->onAttachedToWindow()V
 
-    .line 80
+    .line 78
     new-instance v0, Landroid/os/Handler;
 
     invoke-direct {v0}, Landroid/os/Handler;-><init>()V
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mHandler:Landroid/os/Handler;
 
-    .line 85
+    .line 83
     new-instance v0, Landroid/widget/DigitalClock$1;
 
     invoke-direct {v0, p0}, Landroid/widget/DigitalClock$1;-><init>(Landroid/widget/DigitalClock;)V
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mTicker:Ljava/lang/Runnable;
 
-    .line 96
+    .line 94
     iget-object v0, p0, Landroid/widget/DigitalClock;->mTicker:Ljava/lang/Runnable;
 
     invoke-interface {v0}, Ljava/lang/Runnable;->run()V
 
-    .line 97
+    .line 95
     return-void
 .end method
 
@@ -254,15 +222,15 @@
     .locals 1
 
     .prologue
-    .line 101
+    .line 99
     invoke-super {p0}, Landroid/widget/TextView;->onDetachedFromWindow()V
 
-    .line 102
+    .line 100
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
 
-    .line 103
+    .line 101
     return-void
 .end method
 
@@ -271,10 +239,10 @@
     .parameter "event"
 
     .prologue
-    .line 133
+    .line 120
     invoke-super {p0, p1}, Landroid/widget/TextView;->onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
 
-    .line 135
+    .line 122
     const-class v0, Landroid/widget/DigitalClock;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -283,7 +251,7 @@
 
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityEvent;->setClassName(Ljava/lang/CharSequence;)V
 
-    .line 136
+    .line 123
     return-void
 .end method
 
@@ -292,10 +260,10 @@
     .parameter "info"
 
     .prologue
-    .line 140
+    .line 127
     invoke-super {p0, p1}, Landroid/widget/TextView;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
 
-    .line 142
+    .line 129
     const-class v0, Landroid/widget/DigitalClock;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -304,6 +272,6 @@
 
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->setClassName(Ljava/lang/CharSequence;)V
 
-    .line 143
+    .line 130
     return-void
 .end method

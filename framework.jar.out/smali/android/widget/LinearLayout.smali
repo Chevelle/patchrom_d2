@@ -565,14 +565,14 @@
     .parameter "height"
 
     .prologue
-    .line 1663
+    .line 1671
     add-int v0, p2, p4
 
     add-int v1, p3, p5
 
     invoke-virtual {p1, p2, p3, v0, v1}, Landroid/view/View;->layout(IIII)V
 
-    .line 1664
+    .line 1672
     return-void
 .end method
 
@@ -583,7 +583,7 @@
     .parameter "p"
 
     .prologue
-    .line 1765
+    .line 1773
     instance-of v0, p1, Landroid/widget/LinearLayout$LayoutParams;
 
     return v0
@@ -1050,21 +1050,21 @@
     .prologue
     const/4 v2, -0x2
 
-    .line 1748
+    .line 1756
     iget v0, p0, Landroid/widget/LinearLayout;->mOrientation:I
 
     if-nez v0, :cond_0
 
-    .line 1749
+    .line 1757
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     invoke-direct {v0, v2, v2}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 1753
+    .line 1761
     :goto_0
     return-object v0
 
-    .line 1750
+    .line 1758
     :cond_0
     iget v0, p0, Landroid/widget/LinearLayout;->mOrientation:I
 
@@ -1072,7 +1072,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 1751
+    .line 1759
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v1, -0x1
@@ -1081,7 +1081,7 @@
 
     goto :goto_0
 
-    .line 1753
+    .line 1761
     :cond_1
     const/4 v0, 0x0
 
@@ -1119,7 +1119,7 @@
     .parameter "attrs"
 
     .prologue
-    .line 1735
+    .line 1743
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     invoke-virtual {p0}, Landroid/widget/LinearLayout;->getContext()Landroid/content/Context;
@@ -1136,7 +1136,7 @@
     .parameter "p"
 
     .prologue
-    .line 1758
+    .line 1766
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     invoke-direct {v0, p1}, Landroid/widget/LinearLayout$LayoutParams;-><init>(Landroid/view/ViewGroup$LayoutParams;)V
@@ -1395,7 +1395,7 @@
     .locals 1
 
     .prologue
-    .line 1686
+    .line 1694
     iget v0, p0, Landroid/widget/LinearLayout;->mOrientation:I
 
     return v0
@@ -1571,16 +1571,20 @@
     return v0
 .end method
 
-.method layoutHorizontal()V
+.method layoutHorizontal(IIII)V
     .locals 30
+    .parameter "left"
+    .parameter "top"
+    .parameter "right"
+    .parameter "bottom"
 
     .prologue
-    .line 1539
+    .line 1547
     invoke-virtual/range {p0 .. p0}, Landroid/widget/LinearLayout;->isLayoutRtl()Z
 
     move-result v20
 
-    .line 1540
+    .line 1548
     .local v20, isLayoutRtl:Z
     move-object/from16 v0, p0
 
@@ -1588,19 +1592,11 @@
 
     move/from16 v27, v0
 
-    .line 1546
+    .line 1554
     .local v27, paddingTop:I
-    move-object/from16 v0, p0
+    sub-int v18, p4, p2
 
-    iget v2, v0, Landroid/widget/LinearLayout;->mBottom:I
-
-    move-object/from16 v0, p0
-
-    iget v4, v0, Landroid/widget/LinearLayout;->mTop:I
-
-    sub-int v18, v2, v4
-
-    .line 1547
+    .line 1555
     .local v18, height:I
     move-object/from16 v0, p0
 
@@ -1608,7 +1604,7 @@
 
     sub-int v10, v18, v2
 
-    .line 1550
+    .line 1558
     .local v10, childBottom:I
     sub-int v2, v18, v27
 
@@ -1618,13 +1614,13 @@
 
     sub-int v13, v2, v4
 
-    .line 1552
+    .line 1560
     .local v13, childSpace:I
     invoke-virtual/range {p0 .. p0}, Landroid/widget/LinearLayout;->getVirtualChildCount()I
 
     move-result v14
 
-    .line 1554
+    .line 1562
     .local v14, count:I
     move-object/from16 v0, p0
 
@@ -1634,7 +1630,7 @@
 
     and-int v23, v2, v4
 
-    .line 1555
+    .line 1563
     .local v23, majorGravity:I
     move-object/from16 v0, p0
 
@@ -1642,13 +1638,13 @@
 
     and-int/lit8 v26, v2, 0x70
 
-    .line 1557
+    .line 1565
     .local v26, minorGravity:I
     move-object/from16 v0, p0
 
     iget-boolean v8, v0, Landroid/widget/LinearLayout;->mBaselineAligned:Z
 
-    .line 1559
+    .line 1567
     .local v8, baselineAligned:Z
     move-object/from16 v0, p0
 
@@ -1656,7 +1652,7 @@
 
     move-object/from16 v24, v0
 
-    .line 1560
+    .line 1568
     .local v24, maxAscent:[I
     move-object/from16 v0, p0
 
@@ -1664,13 +1660,13 @@
 
     move-object/from16 v25, v0
 
-    .line 1562
+    .line 1570
     .local v25, maxDescent:[I
     invoke-virtual/range {p0 .. p0}, Landroid/widget/LinearLayout;->getLayoutDirection()I
 
     move-result v21
 
-    .line 1563
+    .line 1571
     .local v21, layoutDirection:I
     move/from16 v0, v23
 
@@ -1682,31 +1678,31 @@
 
     sparse-switch v2, :sswitch_data_0
 
-    .line 1576
+    .line 1584
     move-object/from16 v0, p0
 
     iget v12, v0, Landroid/widget/LinearLayout;->mPaddingLeft:I
 
-    .line 1580
+    .line 1588
     .local v12, childLeft:I
     :goto_0
     const/16 v28, 0x0
 
-    .line 1581
+    .line 1589
     .local v28, start:I
     const/16 v16, 0x1
 
-    .line 1583
+    .line 1591
     .local v16, dir:I
     if-eqz v20, :cond_0
 
-    .line 1584
+    .line 1592
     add-int/lit8 v28, v14, -0x1
 
-    .line 1585
+    .line 1593
     const/16 v16, -0x1
 
-    .line 1588
+    .line 1596
     :cond_0
     const/16 v19, 0x0
 
@@ -1716,12 +1712,12 @@
 
     if-ge v0, v14, :cond_7
 
-    .line 1589
+    .line 1597
     mul-int v2, v16, v19
 
     add-int v11, v28, v2
 
-    .line 1590
+    .line 1598
     .local v11, childIndex:I
     move-object/from16 v0, p0
 
@@ -1729,11 +1725,11 @@
 
     move-result-object v3
 
-    .line 1592
+    .line 1600
     .local v3, child:Landroid/view/View;
     if-nez v3, :cond_2
 
-    .line 1593
+    .line 1601
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v11}, Landroid/widget/LinearLayout;->measureNullChild(I)I
@@ -1742,14 +1738,14 @@
 
     add-int/2addr v12, v2
 
-    .line 1588
+    .line 1596
     :cond_1
     :goto_2
     add-int/lit8 v19, v19, 0x1
 
     goto :goto_1
 
-    .line 1566
+    .line 1574
     .end local v3           #child:Landroid/view/View;
     .end local v11           #childIndex:I
     .end local v12           #childLeft:I
@@ -1761,17 +1757,9 @@
 
     iget v2, v0, Landroid/widget/LinearLayout;->mPaddingLeft:I
 
-    move-object/from16 v0, p0
+    add-int v2, v2, p3
 
-    iget v4, v0, Landroid/widget/LinearLayout;->mRight:I
-
-    add-int/2addr v2, v4
-
-    move-object/from16 v0, p0
-
-    iget v4, v0, Landroid/widget/LinearLayout;->mLeft:I
-
-    sub-int/2addr v2, v4
+    sub-int v2, v2, p1
 
     move-object/from16 v0, p0
 
@@ -1779,28 +1767,18 @@
 
     sub-int v12, v2, v4
 
-    .line 1567
+    .line 1575
     .restart local v12       #childLeft:I
     goto :goto_0
 
-    .line 1571
+    .line 1579
     .end local v12           #childLeft:I
     :sswitch_1
     move-object/from16 v0, p0
 
     iget v2, v0, Landroid/widget/LinearLayout;->mPaddingLeft:I
 
-    move-object/from16 v0, p0
-
-    iget v4, v0, Landroid/widget/LinearLayout;->mRight:I
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Landroid/widget/LinearLayout;->mLeft:I
-
-    move/from16 v29, v0
-
-    sub-int v4, v4, v29
+    sub-int v4, p3, p1
 
     move-object/from16 v0, p0
 
@@ -1814,11 +1792,11 @@
 
     add-int v12, v2, v4
 
-    .line 1572
+    .line 1580
     .restart local v12       #childLeft:I
     goto :goto_0
 
-    .line 1594
+    .line 1602
     .restart local v3       #child:Landroid/view/View;
     .restart local v11       #childIndex:I
     .restart local v16       #dir:I
@@ -1833,22 +1811,22 @@
 
     if-eq v2, v4, :cond_1
 
-    .line 1595
+    .line 1603
     invoke-virtual {v3}, Landroid/view/View;->getMeasuredWidth()I
 
     move-result v6
 
-    .line 1596
+    .line 1604
     .local v6, childWidth:I
     invoke-virtual {v3}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v7
 
-    .line 1597
+    .line 1605
     .local v7, childHeight:I
     const/4 v9, -0x1
 
-    .line 1599
+    .line 1607
     .local v9, childBaseline:I
     invoke-virtual {v3}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
@@ -1856,7 +1834,7 @@
 
     check-cast v22, Landroid/widget/LinearLayout$LayoutParams;
 
-    .line 1602
+    .line 1610
     .local v22, lp:Landroid/widget/LinearLayout$LayoutParams;
     if-eqz v8, :cond_3
 
@@ -1868,12 +1846,12 @@
 
     if-eq v2, v4, :cond_3
 
-    .line 1603
+    .line 1611
     invoke-virtual {v3}, Landroid/view/View;->getBaseline()I
 
     move-result v9
 
-    .line 1606
+    .line 1614
     :cond_3
     move-object/from16 v0, v22
 
@@ -1881,23 +1859,23 @@
 
     move/from16 v17, v0
 
-    .line 1607
+    .line 1615
     .local v17, gravity:I
     if-gez v17, :cond_4
 
-    .line 1608
+    .line 1616
     move/from16 v17, v26
 
-    .line 1611
+    .line 1619
     :cond_4
     and-int/lit8 v2, v17, 0x70
 
     sparse-switch v2, :sswitch_data_1
 
-    .line 1643
+    .line 1651
     move/from16 v5, v27
 
-    .line 1647
+    .line 1655
     .local v5, childTop:I
     :cond_5
     :goto_3
@@ -1909,14 +1887,14 @@
 
     if-eqz v2, :cond_6
 
-    .line 1648
+    .line 1656
     move-object/from16 v0, p0
 
     iget v2, v0, Landroid/widget/LinearLayout;->mDividerWidth:I
 
     add-int/2addr v12, v2
 
-    .line 1651
+    .line 1659
     :cond_6
     move-object/from16 v0, v22
 
@@ -1924,7 +1902,7 @@
 
     add-int/2addr v12, v2
 
-    .line 1652
+    .line 1660
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v3}, Landroid/widget/LinearLayout;->getLocationOffset(Landroid/view/View;)I
@@ -1937,7 +1915,7 @@
 
     invoke-direct/range {v2 .. v7}, Landroid/widget/LinearLayout;->setChildFrame(Landroid/view/View;IIII)V
 
-    .line 1654
+    .line 1662
     move-object/from16 v0, v22
 
     iget v2, v0, Landroid/widget/LinearLayout$LayoutParams;->rightMargin:I
@@ -1954,7 +1932,7 @@
 
     add-int/2addr v12, v2
 
-    .line 1657
+    .line 1665
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v3, v11}, Landroid/widget/LinearLayout;->getChildrenSkipCount(Landroid/view/View;I)I
@@ -1965,7 +1943,7 @@
 
     goto/16 :goto_2
 
-    .line 1613
+    .line 1621
     .end local v5           #childTop:I
     :sswitch_2
     move-object/from16 v0, v22
@@ -1974,13 +1952,13 @@
 
     add-int v5, v27, v2
 
-    .line 1614
+    .line 1622
     .restart local v5       #childTop:I
     const/4 v2, -0x1
 
     if-eq v9, v2, :cond_5
 
-    .line 1615
+    .line 1623
     const/4 v2, 0x1
 
     aget v2, v24, v2
@@ -1991,7 +1969,7 @@
 
     goto :goto_3
 
-    .line 1631
+    .line 1639
     .end local v5           #childTop:I
     :sswitch_3
     sub-int v2, v13, v7
@@ -2012,11 +1990,11 @@
 
     sub-int v5, v2, v4
 
-    .line 1633
+    .line 1641
     .restart local v5       #childTop:I
     goto :goto_3
 
-    .line 1636
+    .line 1644
     .end local v5           #childTop:I
     :sswitch_4
     sub-int v2, v10, v7
@@ -2027,20 +2005,20 @@
 
     sub-int v5, v2, v4
 
-    .line 1637
+    .line 1645
     .restart local v5       #childTop:I
     const/4 v2, -0x1
 
     if-eq v9, v2, :cond_5
 
-    .line 1638
+    .line 1646
     invoke-virtual {v3}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v2
 
     sub-int v15, v2, v9
 
-    .line 1639
+    .line 1647
     .local v15, descent:I
     const/4 v2, 0x2
 
@@ -2050,10 +2028,10 @@
 
     sub-int/2addr v5, v2
 
-    .line 1640
+    .line 1648
     goto :goto_3
 
-    .line 1660
+    .line 1668
     .end local v3           #child:Landroid/view/View;
     .end local v5           #childTop:I
     .end local v6           #childWidth:I
@@ -2066,14 +2044,14 @@
     :cond_7
     return-void
 
-    .line 1563
+    .line 1571
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_1
         0x5 -> :sswitch_0
     .end sparse-switch
 
-    .line 1611
+    .line 1619
     :sswitch_data_1
     .sparse-switch
         0x10 -> :sswitch_3
@@ -2082,30 +2060,26 @@
     .end sparse-switch
 .end method
 
-.method layoutVertical()V
+.method layoutVertical(IIII)V
     .locals 21
+    .parameter "left"
+    .parameter "top"
+    .parameter "right"
+    .parameter "bottom"
 
     .prologue
-    .line 1449
+    .line 1453
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/widget/LinearLayout;->mPaddingLeft:I
 
     move/from16 v18, v0
 
-    .line 1455
+    .line 1459
     .local v18, paddingLeft:I
-    move-object/from16 v0, p0
+    sub-int v19, p3, p1
 
-    iget v1, v0, Landroid/widget/LinearLayout;->mRight:I
-
-    move-object/from16 v0, p0
-
-    iget v4, v0, Landroid/widget/LinearLayout;->mLeft:I
-
-    sub-int v19, v1, v4
-
-    .line 1456
+    .line 1460
     .local v19, width:I
     move-object/from16 v0, p0
 
@@ -2113,7 +2087,7 @@
 
     sub-int v8, v19, v1
 
-    .line 1459
+    .line 1463
     .local v8, childRight:I
     sub-int v1, v19, v18
 
@@ -2123,13 +2097,13 @@
 
     sub-int v9, v1, v4
 
-    .line 1461
+    .line 1465
     .local v9, childSpace:I
     invoke-virtual/range {p0 .. p0}, Landroid/widget/LinearLayout;->getVirtualChildCount()I
 
     move-result v11
 
-    .line 1463
+    .line 1467
     .local v11, count:I
     move-object/from16 v0, p0
 
@@ -2137,7 +2111,7 @@
 
     and-int/lit8 v16, v1, 0x70
 
-    .line 1464
+    .line 1468
     .local v16, majorGravity:I
     move-object/from16 v0, p0
 
@@ -2147,16 +2121,16 @@
 
     and-int v17, v1, v4
 
-    .line 1466
+    .line 1470
     .local v17, minorGravity:I
     sparse-switch v16, :sswitch_data_0
 
-    .line 1479
+    .line 1483
     move-object/from16 v0, p0
 
     iget v10, v0, Landroid/widget/LinearLayout;->mPaddingTop:I
 
-    .line 1483
+    .line 1487
     .local v10, childTop:I
     :goto_0
     const/4 v13, 0x0
@@ -2165,18 +2139,18 @@
     :goto_1
     if-ge v13, v11, :cond_4
 
-    .line 1484
+    .line 1488
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v13}, Landroid/widget/LinearLayout;->getVirtualChildAt(I)Landroid/view/View;
 
     move-result-object v2
 
-    .line 1485
+    .line 1489
     .local v2, child:Landroid/view/View;
     if-nez v2, :cond_1
 
-    .line 1486
+    .line 1490
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v13}, Landroid/widget/LinearLayout;->measureNullChild(I)I
@@ -2185,14 +2159,14 @@
 
     add-int/2addr v10, v1
 
-    .line 1483
+    .line 1487
     :cond_0
     :goto_2
     add-int/lit8 v13, v13, 0x1
 
     goto :goto_1
 
-    .line 1469
+    .line 1473
     .end local v2           #child:Landroid/view/View;
     .end local v10           #childTop:I
     .end local v13           #i:I
@@ -2201,17 +2175,9 @@
 
     iget v1, v0, Landroid/widget/LinearLayout;->mPaddingTop:I
 
-    move-object/from16 v0, p0
+    add-int v1, v1, p4
 
-    iget v4, v0, Landroid/widget/LinearLayout;->mBottom:I
-
-    add-int/2addr v1, v4
-
-    move-object/from16 v0, p0
-
-    iget v4, v0, Landroid/widget/LinearLayout;->mTop:I
-
-    sub-int/2addr v1, v4
+    sub-int v1, v1, p2
 
     move-object/from16 v0, p0
 
@@ -2219,28 +2185,18 @@
 
     sub-int v10, v1, v4
 
-    .line 1470
+    .line 1474
     .restart local v10       #childTop:I
     goto :goto_0
 
-    .line 1474
+    .line 1478
     .end local v10           #childTop:I
     :sswitch_1
     move-object/from16 v0, p0
 
     iget v1, v0, Landroid/widget/LinearLayout;->mPaddingTop:I
 
-    move-object/from16 v0, p0
-
-    iget v4, v0, Landroid/widget/LinearLayout;->mBottom:I
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Landroid/widget/LinearLayout;->mTop:I
-
-    move/from16 v20, v0
-
-    sub-int v4, v4, v20
+    sub-int v4, p4, p2
 
     move-object/from16 v0, p0
 
@@ -2254,11 +2210,11 @@
 
     add-int v10, v1, v4
 
-    .line 1475
+    .line 1479
     .restart local v10       #childTop:I
     goto :goto_0
 
-    .line 1487
+    .line 1491
     .restart local v2       #child:Landroid/view/View;
     .restart local v13       #i:I
     :cond_1
@@ -2270,18 +2226,18 @@
 
     if-eq v1, v4, :cond_0
 
-    .line 1488
+    .line 1492
     invoke-virtual {v2}, Landroid/view/View;->getMeasuredWidth()I
 
     move-result v5
 
-    .line 1489
+    .line 1493
     .local v5, childWidth:I
     invoke-virtual {v2}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v6
 
-    .line 1491
+    .line 1495
     .local v6, childHeight:I
     invoke-virtual {v2}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
@@ -2289,41 +2245,41 @@
 
     check-cast v15, Landroid/widget/LinearLayout$LayoutParams;
 
-    .line 1494
+    .line 1498
     .local v15, lp:Landroid/widget/LinearLayout$LayoutParams;
     iget v12, v15, Landroid/widget/LinearLayout$LayoutParams;->gravity:I
 
-    .line 1495
+    .line 1499
     .local v12, gravity:I
     if-gez v12, :cond_2
 
-    .line 1496
+    .line 1500
     move/from16 v12, v17
 
-    .line 1498
+    .line 1502
     :cond_2
     invoke-virtual/range {p0 .. p0}, Landroid/widget/LinearLayout;->getLayoutDirection()I
 
     move-result v14
 
-    .line 1499
+    .line 1503
     .local v14, layoutDirection:I
     invoke-static {v12, v14}, Landroid/view/Gravity;->getAbsoluteGravity(II)I
 
     move-result v7
 
-    .line 1500
+    .line 1504
     .local v7, absoluteGravity:I
     and-int/lit8 v1, v7, 0x7
 
     sparse-switch v1, :sswitch_data_1
 
-    .line 1512
+    .line 1516
     iget v1, v15, Landroid/widget/LinearLayout$LayoutParams;->leftMargin:I
 
     add-int v3, v18, v1
 
-    .line 1516
+    .line 1520
     .local v3, childLeft:I
     :goto_3
     move-object/from16 v0, p0
@@ -2334,20 +2290,20 @@
 
     if-eqz v1, :cond_3
 
-    .line 1517
+    .line 1521
     move-object/from16 v0, p0
 
     iget v1, v0, Landroid/widget/LinearLayout;->mDividerHeight:I
 
     add-int/2addr v10, v1
 
-    .line 1520
+    .line 1524
     :cond_3
     iget v1, v15, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
 
     add-int/2addr v10, v1
 
-    .line 1521
+    .line 1525
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->getLocationOffset(Landroid/view/View;)I
@@ -2360,7 +2316,7 @@
 
     invoke-direct/range {v1 .. v6}, Landroid/widget/LinearLayout;->setChildFrame(Landroid/view/View;IIII)V
 
-    .line 1523
+    .line 1527
     iget v1, v15, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin:I
 
     add-int/2addr v1, v6
@@ -2375,7 +2331,7 @@
 
     add-int/2addr v10, v1
 
-    .line 1525
+    .line 1529
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2, v13}, Landroid/widget/LinearLayout;->getChildrenSkipCount(Landroid/view/View;I)I
@@ -2386,7 +2342,7 @@
 
     goto/16 :goto_2
 
-    .line 1502
+    .line 1506
     .end local v3           #childLeft:I
     :sswitch_2
     sub-int v1, v9, v5
@@ -2403,11 +2359,11 @@
 
     sub-int v3, v1, v4
 
-    .line 1504
+    .line 1508
     .restart local v3       #childLeft:I
     goto :goto_3
 
-    .line 1507
+    .line 1511
     .end local v3           #childLeft:I
     :sswitch_3
     sub-int v1, v8, v5
@@ -2416,11 +2372,11 @@
 
     sub-int v3, v1, v4
 
-    .line 1508
+    .line 1512
     .restart local v3       #childLeft:I
     goto :goto_3
 
-    .line 1528
+    .line 1532
     .end local v2           #child:Landroid/view/View;
     .end local v3           #childLeft:I
     .end local v5           #childWidth:I
@@ -2432,7 +2388,7 @@
     :cond_4
     return-void
 
-    .line 1466
+    .line 1470
     nop
 
     :sswitch_data_0
@@ -2441,7 +2397,7 @@
         0x50 -> :sswitch_0
     .end sparse-switch
 
-    .line 1500
+    .line 1504
     :sswitch_data_1
     .sparse-switch
         0x1 -> :sswitch_2
@@ -5948,10 +5904,10 @@
     .parameter "event"
 
     .prologue
-    .line 1770
+    .line 1778
     invoke-super {p0, p1}, Landroid/view/ViewGroup;->onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
 
-    .line 1771
+    .line 1779
     const-class v0, Landroid/widget/LinearLayout;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -5960,7 +5916,7 @@
 
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityEvent;->setClassName(Ljava/lang/CharSequence;)V
 
-    .line 1772
+    .line 1780
     return-void
 .end method
 
@@ -5969,10 +5925,10 @@
     .parameter "info"
 
     .prologue
-    .line 1776
+    .line 1784
     invoke-super {p0, p1}, Landroid/view/ViewGroup;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
 
-    .line 1777
+    .line 1785
     const-class v0, Landroid/widget/LinearLayout;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -5981,7 +5937,7 @@
 
     invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->setClassName(Ljava/lang/CharSequence;)V
 
-    .line 1778
+    .line 1786
     return-void
 .end method
 
@@ -6002,7 +5958,7 @@
     if-ne v0, v1, :cond_0
 
     .line 1434
-    invoke-virtual {p0}, Landroid/widget/LinearLayout;->layoutVertical()V
+    invoke-virtual {p0, p2, p3, p4, p5}, Landroid/widget/LinearLayout;->layoutVertical(IIII)V
 
     .line 1438
     :goto_0
@@ -6010,7 +5966,7 @@
 
     .line 1436
     :cond_0
-    invoke-virtual {p0}, Landroid/widget/LinearLayout;->layoutHorizontal()V
+    invoke-virtual {p0, p2, p3, p4, p5}, Landroid/widget/LinearLayout;->layoutHorizontal(IIII)V
 
     goto :goto_0
 .end method
@@ -6196,40 +6152,40 @@
     .end annotation
 
     .prologue
-    .line 1701
+    .line 1709
     iget v0, p0, Landroid/widget/LinearLayout;->mGravity:I
 
     if-eq v0, p1, :cond_2
 
-    .line 1702
+    .line 1710
     const v0, 0x800007
 
     and-int/2addr v0, p1
 
     if-nez v0, :cond_0
 
-    .line 1703
+    .line 1711
     const v0, 0x800003
 
     or-int/2addr p1, v0
 
-    .line 1706
+    .line 1714
     :cond_0
     and-int/lit8 v0, p1, 0x70
 
     if-nez v0, :cond_1
 
-    .line 1707
+    .line 1715
     or-int/lit8 p1, p1, 0x30
 
-    .line 1710
+    .line 1718
     :cond_1
     iput p1, p0, Landroid/widget/LinearLayout;->mGravity:I
 
-    .line 1711
+    .line 1719
     invoke-virtual {p0}, Landroid/widget/LinearLayout;->requestLayout()V
 
-    .line 1713
+    .line 1721
     :cond_2
     return-void
 .end method
@@ -6243,10 +6199,10 @@
     .prologue
     const v2, 0x800007
 
-    .line 1717
+    .line 1725
     and-int v0, p1, v2
 
-    .line 1718
+    .line 1726
     .local v0, gravity:I
     iget v1, p0, Landroid/widget/LinearLayout;->mGravity:I
 
@@ -6254,7 +6210,7 @@
 
     if-eq v1, v0, :cond_0
 
-    .line 1719
+    .line 1727
     iget v1, p0, Landroid/widget/LinearLayout;->mGravity:I
 
     const v2, -0x800008
@@ -6265,10 +6221,10 @@
 
     iput v1, p0, Landroid/widget/LinearLayout;->mGravity:I
 
-    .line 1720
+    .line 1728
     invoke-virtual {p0}, Landroid/widget/LinearLayout;->requestLayout()V
 
-    .line 1722
+    .line 1730
     :cond_0
     return-void
 .end method
@@ -6292,18 +6248,18 @@
     .parameter "orientation"
 
     .prologue
-    .line 1674
+    .line 1682
     iget v0, p0, Landroid/widget/LinearLayout;->mOrientation:I
 
     if-eq v0, p1, :cond_0
 
-    .line 1675
+    .line 1683
     iput p1, p0, Landroid/widget/LinearLayout;->mOrientation:I
 
-    .line 1676
+    .line 1684
     invoke-virtual {p0}, Landroid/widget/LinearLayout;->requestLayout()V
 
-    .line 1678
+    .line 1686
     :cond_0
     return-void
 .end method
@@ -6336,10 +6292,10 @@
     .end annotation
 
     .prologue
-    .line 1726
+    .line 1734
     and-int/lit8 v0, p1, 0x70
 
-    .line 1727
+    .line 1735
     .local v0, gravity:I
     iget v1, p0, Landroid/widget/LinearLayout;->mGravity:I
 
@@ -6347,7 +6303,7 @@
 
     if-eq v1, v0, :cond_0
 
-    .line 1728
+    .line 1736
     iget v1, p0, Landroid/widget/LinearLayout;->mGravity:I
 
     and-int/lit8 v1, v1, -0x71
@@ -6356,10 +6312,10 @@
 
     iput v1, p0, Landroid/widget/LinearLayout;->mGravity:I
 
-    .line 1729
+    .line 1737
     invoke-virtual {p0}, Landroid/widget/LinearLayout;->requestLayout()V
 
-    .line 1731
+    .line 1739
     :cond_0
     return-void
 .end method

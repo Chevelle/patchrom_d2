@@ -15,7 +15,7 @@
 
 
 # instance fields
-.field final synthetic this$0:Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;
+.field final synthetic this$1:Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;
 
 
 # direct methods
@@ -24,8 +24,8 @@
     .parameter
 
     .prologue
-    .line 844
-    iput-object p1, p0, Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver$1;->this$0:Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;
+    .line 1141
+    iput-object p1, p0, Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver$1;->this$1:Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
@@ -39,31 +39,31 @@
     .parameter "message"
 
     .prologue
-    .line 847
+    .line 1144
     iget v1, p1, Landroid/os/Message;->what:I
 
     packed-switch v1, :pswitch_data_0
 
-    .line 853
+    .line 1150
     :goto_0
     return-void
 
-    .line 849
+    .line 1146
     :pswitch_0
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Ljava/lang/String;
 
-    .line 850
+    .line 1147
     .local v0, action:Ljava/lang/String;
-    iget-object v1, p0, Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver$1;->this$0:Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;
+    iget-object v1, p0, Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver$1;->this$1:Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;
 
     #calls: Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;->handleOnScreenStateChange(Ljava/lang/String;)V
-    invoke-static {v1, v0}, Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;->access$2300(Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;Ljava/lang/String;)V
+    invoke-static {v1, v0}, Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;->access$2900(Lcom/android/server/accessibility/ScreenMagnifier$ScreenStateObserver;Ljava/lang/String;)V
 
     goto :goto_0
 
-    .line 847
+    .line 1144
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

@@ -15,11 +15,29 @@
 
 
 # instance fields
-.field private final mAddresses:Ljava/lang/StringBuilder;
+.field private final mAddresses:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Landroid/net/LinkAddress;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private final mConfig:Lcom/android/internal/net/VpnConfig;
 
-.field private final mRoutes:Ljava/lang/StringBuilder;
+.field private final mRoutes:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Landroid/net/RouteInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field final synthetic this$0:Landroid/net/VpnService;
 
@@ -30,33 +48,33 @@
     .parameter
 
     .prologue
-    .line 259
+    .line 261
     iput-object p1, p0, Landroid/net/VpnService$Builder;->this$0:Landroid/net/VpnService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 255
+    .line 257
     new-instance v0, Lcom/android/internal/net/VpnConfig;
 
     invoke-direct {v0}, Lcom/android/internal/net/VpnConfig;-><init>()V
 
     iput-object v0, p0, Landroid/net/VpnService$Builder;->mConfig:Lcom/android/internal/net/VpnConfig;
 
-    .line 256
-    new-instance v0, Ljava/lang/StringBuilder;
+    .line 258
+    new-instance v0, Ljava/util/ArrayList;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Landroid/net/VpnService$Builder;->mAddresses:Ljava/lang/StringBuilder;
+    iput-object v0, p0, Landroid/net/VpnService$Builder;->mAddresses:Ljava/util/List;
 
-    .line 257
-    new-instance v0, Ljava/lang/StringBuilder;
+    .line 259
+    new-instance v0, Ljava/util/ArrayList;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Landroid/net/VpnService$Builder;->mRoutes:Ljava/lang/StringBuilder;
+    iput-object v0, p0, Landroid/net/VpnService$Builder;->mRoutes:Ljava/util/List;
 
-    .line 260
+    .line 262
     iget-object v0, p0, Landroid/net/VpnService$Builder;->mConfig:Lcom/android/internal/net/VpnConfig;
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
@@ -69,7 +87,7 @@
 
     iput-object v1, v0, Lcom/android/internal/net/VpnConfig;->user:Ljava/lang/String;
 
-    .line 261
+    .line 263
     return-void
 .end method
 
@@ -79,14 +97,14 @@
     .parameter "prefixLength"
 
     .prologue
-    .line 302
+    .line 304
     invoke-virtual {p1}, Ljava/net/InetAddress;->isLoopbackAddress()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 303
+    .line 305
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "Bad address"
@@ -95,20 +113,20 @@
 
     throw v0
 
-    .line 305
+    .line 307
     :cond_0
     instance-of v0, p1, Ljava/net/Inet4Address;
 
     if-eqz v0, :cond_2
 
-    .line 306
+    .line 308
     if-ltz p2, :cond_1
 
     const/16 v0, 0x20
 
     if-le p2, v0, :cond_5
 
-    .line 307
+    .line 309
     :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -118,20 +136,20 @@
 
     throw v0
 
-    .line 309
+    .line 311
     :cond_2
     instance-of v0, p1, Ljava/net/Inet6Address;
 
     if-eqz v0, :cond_4
 
-    .line 310
+    .line 312
     if-ltz p2, :cond_3
 
     const/16 v0, 0x80
 
     if-le p2, v0, :cond_5
 
-    .line 311
+    .line 313
     :cond_3
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -141,7 +159,7 @@
 
     throw v0
 
-    .line 314
+    .line 316
     :cond_4
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -151,7 +169,7 @@
 
     throw v0
 
-    .line 316
+    .line 318
     :cond_5
     return-void
 .end method
@@ -164,7 +182,7 @@
     .parameter "prefixLength"
 
     .prologue
-    .line 345
+    .line 346
     invoke-static {p1}, Ljava/net/InetAddress;->parseNumericAddress(Ljava/lang/String;)Ljava/net/InetAddress;
 
     move-result-object v0
@@ -177,22 +195,22 @@
 .end method
 
 .method public addAddress(Ljava/net/InetAddress;I)Landroid/net/VpnService$Builder;
-    .locals 3
+    .locals 2
     .parameter "address"
     .parameter "prefixLength"
 
     .prologue
-    .line 326
+    .line 328
     invoke-direct {p0, p1, p2}, Landroid/net/VpnService$Builder;->check(Ljava/net/InetAddress;I)V
 
-    .line 328
+    .line 330
     invoke-virtual {p1}, Ljava/net/InetAddress;->isAnyLocalAddress()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 329
+    .line 331
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "Bad address"
@@ -201,45 +219,17 @@
 
     throw v0
 
-    .line 332
-    :cond_0
-    iget-object v0, p0, Landroid/net/VpnService$Builder;->mAddresses:Ljava/lang/StringBuilder;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const/16 v2, 0x20
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {p1}, Ljava/net/InetAddress;->getHostAddress()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const/16 v2, 0x2f
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 333
+    :cond_0
+    iget-object v0, p0, Landroid/net/VpnService$Builder;->mAddresses:Ljava/util/List;
+
+    new-instance v1, Landroid/net/LinkAddress;
+
+    invoke-direct {v1, p1, p2}, Landroid/net/LinkAddress;-><init>(Ljava/net/InetAddress;I)V
+
+    invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 334
     return-object p0
 .end method
 
@@ -340,30 +330,30 @@
 .end method
 
 .method public addRoute(Ljava/net/InetAddress;I)Landroid/net/VpnService$Builder;
-    .locals 7
+    .locals 6
     .parameter "address"
     .parameter "prefixLength"
 
     .prologue
-    .line 355
+    .line 356
     invoke-direct {p0, p1, p2}, Landroid/net/VpnService$Builder;->check(Ljava/net/InetAddress;I)V
 
-    .line 357
+    .line 358
     div-int/lit8 v1, p2, 0x8
 
-    .line 358
+    .line 359
     .local v1, offset:I
     invoke-virtual {p1}, Ljava/net/InetAddress;->getAddress()[B
 
     move-result-object v0
 
-    .line 359
+    .line 360
     .local v0, bytes:[B
     array-length v2, v0
 
     if-ge v1, v2, :cond_1
 
-    .line 360
+    .line 361
     aget-byte v2, v0, v1
 
     rem-int/lit8 v3, p2, 0x8
@@ -379,12 +369,12 @@
 
     if-ge v1, v2, :cond_1
 
-    .line 361
+    .line 362
     aget-byte v2, v0, v1
 
     if-eqz v2, :cond_0
 
-    .line 362
+    .line 363
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
     const-string v3, "Bad address"
@@ -393,7 +383,7 @@
 
     throw v2
 
-    .line 360
+    .line 361
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
@@ -401,35 +391,19 @@
 
     .line 367
     :cond_1
-    iget-object v2, p0, Landroid/net/VpnService$Builder;->mRoutes:Ljava/lang/StringBuilder;
+    iget-object v2, p0, Landroid/net/VpnService$Builder;->mRoutes:Ljava/util/List;
 
-    const-string v3, " %s/%d"
+    new-instance v3, Landroid/net/RouteInfo;
 
-    const/4 v4, 0x2
+    new-instance v4, Landroid/net/LinkAddress;
 
-    new-array v4, v4, [Ljava/lang/Object;
+    invoke-direct {v4, p1, p2}, Landroid/net/LinkAddress;-><init>(Ljava/net/InetAddress;I)V
 
     const/4 v5, 0x0
 
-    invoke-virtual {p1}, Ljava/net/InetAddress;->getHostAddress()Ljava/lang/String;
+    invoke-direct {v3, v4, v5}, Landroid/net/RouteInfo;-><init>(Landroid/net/LinkAddress;Ljava/net/InetAddress;)V
 
-    move-result-object v6
-
-    aput-object v6, v4, v5
-
-    const/4 v5, 0x1
-
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v6
-
-    aput-object v6, v4, v5
-
-    invoke-static {v3, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-interface {v2, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 368
     return-object p0
@@ -475,24 +449,16 @@
     .line 468
     iget-object v1, p0, Landroid/net/VpnService$Builder;->mConfig:Lcom/android/internal/net/VpnConfig;
 
-    iget-object v2, p0, Landroid/net/VpnService$Builder;->mAddresses:Ljava/lang/StringBuilder;
+    iget-object v2, p0, Landroid/net/VpnService$Builder;->mAddresses:Ljava/util/List;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    iput-object v2, v1, Lcom/android/internal/net/VpnConfig;->addresses:Ljava/lang/String;
+    iput-object v2, v1, Lcom/android/internal/net/VpnConfig;->addresses:Ljava/util/List;
 
     .line 469
     iget-object v1, p0, Landroid/net/VpnService$Builder;->mConfig:Lcom/android/internal/net/VpnConfig;
 
-    iget-object v2, p0, Landroid/net/VpnService$Builder;->mRoutes:Ljava/lang/StringBuilder;
+    iget-object v2, p0, Landroid/net/VpnService$Builder;->mRoutes:Ljava/util/List;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    iput-object v2, v1, Lcom/android/internal/net/VpnConfig;->routes:Ljava/lang/String;
+    iput-object v2, v1, Lcom/android/internal/net/VpnConfig;->routes:Ljava/util/List;
 
     .line 472
     :try_start_0
@@ -529,12 +495,12 @@
     .parameter "intent"
 
     .prologue
-    .line 279
+    .line 281
     iget-object v0, p0, Landroid/net/VpnService$Builder;->mConfig:Lcom/android/internal/net/VpnConfig;
 
     iput-object p1, v0, Lcom/android/internal/net/VpnConfig;->configureIntent:Landroid/app/PendingIntent;
 
-    .line 280
+    .line 282
     return-object p0
 .end method
 
@@ -543,10 +509,10 @@
     .parameter "mtu"
 
     .prologue
-    .line 291
+    .line 293
     if-gtz p1, :cond_0
 
-    .line 292
+    .line 294
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "Bad mtu"
@@ -555,13 +521,13 @@
 
     throw v0
 
-    .line 294
+    .line 296
     :cond_0
     iget-object v0, p0, Landroid/net/VpnService$Builder;->mConfig:Lcom/android/internal/net/VpnConfig;
 
     iput p1, v0, Lcom/android/internal/net/VpnConfig;->mtu:I
 
-    .line 295
+    .line 297
     return-object p0
 .end method
 
@@ -570,11 +536,11 @@
     .parameter "session"
 
     .prologue
-    .line 269
+    .line 271
     iget-object v0, p0, Landroid/net/VpnService$Builder;->mConfig:Lcom/android/internal/net/VpnConfig;
 
     iput-object p1, v0, Lcom/android/internal/net/VpnConfig;->session:Ljava/lang/String;
 
-    .line 270
+    .line 272
     return-object p0
 .end method

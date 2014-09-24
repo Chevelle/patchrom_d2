@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 39
+    .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,34 +41,94 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/hardware/display/WifiDisplay;
-    .locals 4
+    .locals 9
     .parameter "in"
 
     .prologue
-    .line 41
-    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+    const/4 v0, 0x1
 
-    move-result-object v0
+    const/4 v7, 0x0
 
-    .line 42
-    .local v0, deviceAddress:Ljava/lang/String;
-    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 43
-    .local v2, deviceName:Ljava/lang/String;
+    .line 44
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 44
-    .local v1, deviceAlias:Ljava/lang/String;
-    new-instance v3, Landroid/hardware/display/WifiDisplay;
+    .line 45
+    .local v1, deviceAddress:Ljava/lang/String;
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    invoke-direct {v3, v0, v2, v1}, Landroid/hardware/display/WifiDisplay;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v2
 
-    return-object v3
+    .line 46
+    .local v2, deviceName:Ljava/lang/String;
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 47
+    .local v3, deviceAlias:Ljava/lang/String;
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v8
+
+    if-eqz v8, :cond_0
+
+    move v4, v0
+
+    .line 48
+    .local v4, isAvailable:Z
+    :goto_0
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v8
+
+    if-eqz v8, :cond_1
+
+    move v5, v0
+
+    .line 49
+    .local v5, canConnect:Z
+    :goto_1
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v8
+
+    if-eqz v8, :cond_2
+
+    move v6, v0
+
+    .line 50
+    .local v6, isRemembered:Z
+    :goto_2
+    new-instance v0, Landroid/hardware/display/WifiDisplay;
+
+    invoke-direct/range {v0 .. v6}, Landroid/hardware/display/WifiDisplay;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZ)V
+
+    return-object v0
+
+    .end local v4           #isAvailable:Z
+    .end local v5           #canConnect:Z
+    .end local v6           #isRemembered:Z
+    :cond_0
+    move v4, v7
+
+    .line 47
+    goto :goto_0
+
+    .restart local v4       #isAvailable:Z
+    :cond_1
+    move v5, v7
+
+    .line 48
+    goto :goto_1
+
+    .restart local v5       #canConnect:Z
+    :cond_2
+    move v6, v7
+
+    .line 49
+    goto :goto_2
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -76,7 +136,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 42
     invoke-virtual {p0, p1}, Landroid/hardware/display/WifiDisplay$1;->createFromParcel(Landroid/os/Parcel;)Landroid/hardware/display/WifiDisplay;
 
     move-result-object v0
@@ -89,7 +149,7 @@
     .parameter "size"
 
     .prologue
-    .line 48
+    .line 55
     if-nez p1, :cond_0
 
     sget-object v0, Landroid/hardware/display/WifiDisplay;->EMPTY_ARRAY:[Landroid/hardware/display/WifiDisplay;
@@ -108,7 +168,7 @@
     .parameter "x0"
 
     .prologue
-    .line 39
+    .line 42
     invoke-virtual {p0, p1}, Landroid/hardware/display/WifiDisplay$1;->newArray(I)[Landroid/hardware/display/WifiDisplay;
 
     move-result-object v0

@@ -17,9 +17,9 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/Watchdog;
 
-.field final synthetic val$name:Ljava/lang/String;
+.field final synthetic val$newFd:Ljava/io/File;
 
-.field final synthetic val$stack:Ljava/io/File;
+.field final synthetic val$subject:Ljava/lang/String;
 
 
 # direct methods
@@ -31,12 +31,12 @@
     .parameter
 
     .prologue
-    .line 464
+    .line 445
     iput-object p1, p0, Lcom/android/server/Watchdog$1;->this$0:Lcom/android/server/Watchdog;
 
-    iput-object p3, p0, Lcom/android/server/Watchdog$1;->val$name:Ljava/lang/String;
+    iput-object p3, p0, Lcom/android/server/Watchdog$1;->val$subject:Ljava/lang/String;
 
-    iput-object p4, p0, Lcom/android/server/Watchdog$1;->val$stack:Ljava/io/File;
+    iput-object p4, p0, Lcom/android/server/Watchdog$1;->val$newFd:Ljava/io/File;
 
     invoke-direct {p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/String;)V
 
@@ -51,7 +51,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 466
+    .line 447
     iget-object v0, p0, Lcom/android/server/Watchdog$1;->this$0:Lcom/android/server/Watchdog;
 
     iget-object v0, v0, Lcom/android/server/Watchdog;->mActivity:Lcom/android/server/am/ActivityManagerService;
@@ -60,9 +60,9 @@
 
     const-string v3, "system_server"
 
-    iget-object v6, p0, Lcom/android/server/Watchdog$1;->val$name:Ljava/lang/String;
+    iget-object v6, p0, Lcom/android/server/Watchdog$1;->val$subject:Ljava/lang/String;
 
-    iget-object v8, p0, Lcom/android/server/Watchdog$1;->val$stack:Ljava/io/File;
+    iget-object v8, p0, Lcom/android/server/Watchdog$1;->val$newFd:Ljava/io/File;
 
     move-object v4, v2
 
@@ -74,6 +74,6 @@
 
     invoke-virtual/range {v0 .. v9}, Lcom/android/server/am/ActivityManagerService;->addErrorToDropBox(Ljava/lang/String;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;)V
 
-    .line 469
+    .line 450
     return-void
 .end method

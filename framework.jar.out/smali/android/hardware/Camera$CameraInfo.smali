@@ -19,6 +19,10 @@
 
 .field public static final CAMERA_FACING_FRONT:I = 0x1
 
+.field public static final CAMERA_SUPPORT_MODE_NONZSL:I = 0x3
+
+.field public static final CAMERA_SUPPORT_MODE_ZSL:I = 0x2
+
 
 # instance fields
 .field public canDisableShutterSound:Z
@@ -33,7 +37,7 @@
     .locals 0
 
     .prologue
-    .line 219
+    .line 238
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

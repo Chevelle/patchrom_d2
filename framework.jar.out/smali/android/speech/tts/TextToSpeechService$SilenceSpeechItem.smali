@@ -1,5 +1,5 @@
 .class Landroid/speech/tts/TextToSpeechService$SilenceSpeechItem;
-.super Landroid/speech/tts/TextToSpeechService$SpeechItem;
+.super Landroid/speech/tts/TextToSpeechService$UtteranceSpeechItem;
 .source "TextToSpeechService.java"
 
 
@@ -31,16 +31,16 @@
     .parameter "duration"
 
     .prologue
-    .line 691
+    .line 724
     iput-object p1, p0, Landroid/speech/tts/TextToSpeechService$SilenceSpeechItem;->this$0:Landroid/speech/tts/TextToSpeechService;
 
-    .line 692
-    invoke-direct/range {p0 .. p5}, Landroid/speech/tts/TextToSpeechService$SpeechItem;-><init>(Landroid/speech/tts/TextToSpeechService;Ljava/lang/Object;IILandroid/os/Bundle;)V
+    .line 725
+    invoke-direct/range {p0 .. p5}, Landroid/speech/tts/TextToSpeechService$UtteranceSpeechItem;-><init>(Landroid/speech/tts/TextToSpeechService;Ljava/lang/Object;IILandroid/os/Bundle;)V
 
-    .line 693
+    .line 726
     iput-wide p6, p0, Landroid/speech/tts/TextToSpeechService$SilenceSpeechItem;->mDuration:J
 
-    .line 694
+    .line 727
     return-void
 .end method
 
@@ -50,7 +50,7 @@
     .locals 1
 
     .prologue
-    .line 698
+    .line 731
     const/4 v0, 0x1
 
     return v0
@@ -60,7 +60,7 @@
     .locals 5
 
     .prologue
-    .line 703
+    .line 736
     iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$SilenceSpeechItem;->this$0:Landroid/speech/tts/TextToSpeechService;
 
     #getter for: Landroid/speech/tts/TextToSpeechService;->mAudioPlaybackHandler:Landroid/speech/tts/AudioPlaybackHandler;
@@ -80,7 +80,7 @@
 
     invoke-virtual {v0, v1}, Landroid/speech/tts/AudioPlaybackHandler;->enqueue(Landroid/speech/tts/PlaybackQueueItem;)V
 
-    .line 705
+    .line 738
     const/4 v0, 0x0
 
     return v0
@@ -90,6 +90,6 @@
     .locals 0
 
     .prologue
-    .line 711
+    .line 744
     return-void
 .end method

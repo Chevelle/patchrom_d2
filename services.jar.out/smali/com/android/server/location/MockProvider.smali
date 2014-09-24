@@ -448,7 +448,7 @@
     .parameter "extras"
 
     .prologue
-    .line 165
+    .line 160
     const/4 v0, 0x0
 
     return v0
@@ -549,14 +549,5 @@
     iput-boolean v0, p0, Lcom/android/server/location/MockProvider;->mHasStatus:Z
 
     .line 132
-    return-void
-.end method
-
-.method public switchUser(I)V
-    .locals 0
-    .parameter "userId"
-
-    .prologue
-    .line 161
     return-void
 .end method

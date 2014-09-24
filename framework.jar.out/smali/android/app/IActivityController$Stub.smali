@@ -36,6 +36,8 @@
 
 .field static final TRANSACTION_appNotResponding:I = 0x5
 
+.field static final TRANSACTION_systemNotResponding:I = 0x6
+
 
 # direct methods
 .method public constructor <init>()V
@@ -130,7 +132,7 @@
     .line 43
     sparse-switch p1, :sswitch_data_0
 
-    .line 126
+    .line 136
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v9
@@ -399,7 +401,39 @@
 
     goto/16 :goto_0
 
+    .line 127
+    .end local v1           #_arg0:Ljava/lang/String;
+    .end local v2           #_arg1:I
+    .end local v3           #_arg2:Ljava/lang/String;
+    .end local v8           #_result:I
+    :sswitch_6
+    const-string v0, "android.app.IActivityController"
+
+    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 129
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 130
+    .restart local v1       #_arg0:Ljava/lang/String;
+    invoke-virtual {p0, v1}, Landroid/app/IActivityController$Stub;->systemNotResponding(Ljava/lang/String;)I
+
+    move-result v8
+
+    .line 131
+    .restart local v8       #_result:I
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 132
+    invoke-virtual {p3, v8}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
     .line 43
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_1
@@ -407,6 +441,7 @@
         0x3 -> :sswitch_3
         0x4 -> :sswitch_4
         0x5 -> :sswitch_5
+        0x6 -> :sswitch_6
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

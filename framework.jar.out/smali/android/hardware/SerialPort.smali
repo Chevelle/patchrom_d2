@@ -156,14 +156,14 @@
     .end annotation
 
     .prologue
-    .line 91
+    .line 93
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->isDirect()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 92
+    .line 94
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->remaining()I
 
     move-result v0
@@ -172,11 +172,11 @@
 
     move-result v0
 
-    .line 94
+    .line 96
     :goto_0
     return v0
 
-    .line 93
+    .line 95
     :cond_0
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->hasArray()Z
 
@@ -184,7 +184,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 94
+    .line 96
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->array()[B
 
     move-result-object v0
@@ -199,7 +199,7 @@
 
     goto :goto_0
 
-    .line 96
+    .line 98
     :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -214,10 +214,10 @@
     .locals 0
 
     .prologue
-    .line 120
+    .line 124
     invoke-direct {p0}, Landroid/hardware/SerialPort;->native_send_break()V
 
-    .line 121
+    .line 125
     return-void
 .end method
 
@@ -232,21 +232,21 @@
     .end annotation
 
     .prologue
-    .line 107
+    .line 111
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->isDirect()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 108
+    .line 112
     invoke-direct {p0, p1, p2}, Landroid/hardware/SerialPort;->native_write_direct(Ljava/nio/ByteBuffer;I)V
 
-    .line 114
+    .line 118
     :goto_0
     return-void
 
-    .line 109
+    .line 113
     :cond_0
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->hasArray()Z
 
@@ -254,7 +254,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 110
+    .line 114
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->array()[B
 
     move-result-object v0
@@ -263,7 +263,7 @@
 
     goto :goto_0
 
-    .line 112
+    .line 116
     :cond_1
     new-instance v0, Ljava/lang/IllegalArgumentException;
 

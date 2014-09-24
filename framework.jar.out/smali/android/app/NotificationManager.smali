@@ -20,12 +20,12 @@
     .locals 1
 
     .prologue
-    .line 70
+    .line 71
     const-string v0, "NotificationManager"
 
     sput-object v0, Landroid/app/NotificationManager;->TAG:Ljava/lang/String;
 
-    .line 71
+    .line 72
     const/4 v0, 0x0
 
     sput-boolean v0, Landroid/app/NotificationManager;->localLOGV:Z
@@ -39,13 +39,13 @@
     .parameter "handler"
 
     .prologue
-    .line 87
+    .line 88
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 88
+    .line 89
     iput-object p1, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
 
-    .line 89
+    .line 90
     return-void
 .end method
 
@@ -54,7 +54,7 @@
     .parameter "context"
 
     .prologue
-    .line 93
+    .line 94
     const-string/jumbo v0, "notification"
 
     invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -70,20 +70,20 @@
     .locals 2
 
     .prologue
-    .line 78
+    .line 79
     sget-object v1, Landroid/app/NotificationManager;->sService:Landroid/app/INotificationManager;
 
     if-eqz v1, :cond_0
 
-    .line 79
+    .line 80
     sget-object v1, Landroid/app/NotificationManager;->sService:Landroid/app/INotificationManager;
 
-    .line 83
+    .line 84
     .local v0, b:Landroid/os/IBinder;
     :goto_0
     return-object v1
 
-    .line 81
+    .line 82
     .end local v0           #b:Landroid/os/IBinder;
     :cond_0
     const-string/jumbo v1, "notification"
@@ -92,7 +92,7 @@
 
     move-result-object v0
 
-    .line 82
+    .line 83
     .restart local v0       #b:Landroid/os/IBinder;
     invoke-static {v0}, Landroid/app/INotificationManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/app/INotificationManager;
 
@@ -100,7 +100,7 @@
 
     sput-object v1, Landroid/app/NotificationManager;->sService:Landroid/app/INotificationManager;
 
-    .line 83
+    .line 84
     sget-object v1, Landroid/app/NotificationManager;->sService:Landroid/app/INotificationManager;
 
     goto :goto_0
@@ -113,12 +113,12 @@
     .parameter "id"
 
     .prologue
-    .line 170
+    .line 177
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0, p1}, Landroid/app/NotificationManager;->cancel(Ljava/lang/String;I)V
 
-    .line 171
+    .line 178
     return-void
 .end method
 
@@ -128,12 +128,12 @@
     .parameter "id"
 
     .prologue
-    .line 180
+    .line 187
     invoke-static {}, Landroid/app/NotificationManager;->getService()Landroid/app/INotificationManager;
 
     move-result-object v1
 
-    .line 181
+    .line 188
     .local v1, service:Landroid/app/INotificationManager;
     iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
 
@@ -141,7 +141,7 @@
 
     move-result-object v0
 
-    .line 182
+    .line 189
     .local v0, pkg:Ljava/lang/String;
     sget-boolean v2, Landroid/app/NotificationManager;->localLOGV:Z
 
@@ -179,7 +179,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 184
+    .line 191
     :cond_0
     :try_start_0
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
@@ -190,11 +190,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 187
+    .line 194
     :goto_0
     return-void
 
-    .line 185
+    .line 192
     :catch_0
     move-exception v2
 
@@ -205,12 +205,12 @@
     .locals 5
 
     .prologue
-    .line 209
+    .line 216
     invoke-static {}, Landroid/app/NotificationManager;->getService()Landroid/app/INotificationManager;
 
     move-result-object v1
 
-    .line 210
+    .line 217
     .local v1, service:Landroid/app/INotificationManager;
     iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
 
@@ -218,7 +218,7 @@
 
     move-result-object v0
 
-    .line 211
+    .line 218
     .local v0, pkg:Ljava/lang/String;
     sget-boolean v2, Landroid/app/NotificationManager;->localLOGV:Z
 
@@ -246,7 +246,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 213
+    .line 220
     :cond_0
     :try_start_0
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
@@ -257,11 +257,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 216
+    .line 223
     :goto_0
     return-void
 
-    .line 214
+    .line 221
     :catch_0
     move-exception v2
 
@@ -275,12 +275,12 @@
     .parameter "user"
 
     .prologue
-    .line 194
+    .line 201
     invoke-static {}, Landroid/app/NotificationManager;->getService()Landroid/app/INotificationManager;
 
     move-result-object v1
 
-    .line 195
+    .line 202
     .local v1, service:Landroid/app/INotificationManager;
     iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
 
@@ -288,7 +288,7 @@
 
     move-result-object v0
 
-    .line 196
+    .line 203
     .local v0, pkg:Ljava/lang/String;
     sget-boolean v2, Landroid/app/NotificationManager;->localLOGV:Z
 
@@ -326,7 +326,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 198
+    .line 205
     :cond_0
     :try_start_0
     invoke-virtual {p3}, Landroid/os/UserHandle;->getIdentifier()I
@@ -337,11 +337,11 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 201
+    .line 208
     :goto_0
     return-void
 
-    .line 199
+    .line 206
     :catch_0
     move-exception v2
 
@@ -354,34 +354,34 @@
     .parameter "notification"
 
     .prologue
-    .line 108
+    .line 109
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0, p1, p2}, Landroid/app/NotificationManager;->notify(Ljava/lang/String;ILandroid/app/Notification;)V
 
-    .line 109
+    .line 110
     return-void
 .end method
 
 .method public notify(Ljava/lang/String;ILandroid/app/Notification;)V
-    .locals 7
+    .locals 8
     .parameter "tag"
     .parameter "id"
     .parameter "notification"
 
     .prologue
-    .line 124
+    .line 125
     const/4 v2, 0x1
 
-    new-array v5, v2, [I
+    new-array v6, v2, [I
 
-    .line 125
-    .local v5, idOut:[I
+    .line 126
+    .local v6, idOut:[I
     invoke-static {}, Landroid/app/NotificationManager;->getService()Landroid/app/INotificationManager;
 
     move-result-object v0
 
-    .line 126
+    .line 127
     .local v0, service:Landroid/app/INotificationManager;
     iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
 
@@ -389,13 +389,13 @@
 
     move-result-object v1
 
-    .line 127
+    .line 128
     .local v1, pkg:Ljava/lang/String;
     iget-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
     if-eqz v2, :cond_0
 
-    .line 128
+    .line 129
     iget-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
     invoke-virtual {v2}, Landroid/net/Uri;->getCanonicalUri()Landroid/net/Uri;
@@ -405,6 +405,20 @@
     iput-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
     .line 130
+    invoke-static {}, Landroid/os/StrictMode;->vmFileUriExposureEnabled()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 131
+    iget-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
+
+    const-string v3, "Notification.sound"
+
+    invoke-virtual {v2, v3}, Landroid/net/Uri;->checkFileUriExposed(Ljava/lang/String;)V
+
+    .line 134
     :cond_0
     sget-boolean v2, Landroid/app/NotificationManager;->localLOGV:Z
 
@@ -452,29 +466,35 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 132
+    .line 136
     :cond_1
     :try_start_0
+    iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getOpPackageName()Ljava/lang/String;
+
+    move-result-object v2
+
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
-    move-result v6
+    move-result v7
 
-    move-object v2, p1
+    move-object v3, p1
 
-    move v3, p2
+    move v4, p2
 
-    move-object v4, p3
+    move-object v5, p3
 
-    invoke-interface/range {v0 .. v6}, Landroid/app/INotificationManager;->enqueueNotificationWithTag(Ljava/lang/String;Ljava/lang/String;ILandroid/app/Notification;[II)V
+    invoke-interface/range {v0 .. v7}, Landroid/app/INotificationManager;->enqueueNotificationWithTag(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/app/Notification;[II)V
 
-    .line 134
+    .line 138
     const/4 v2, 0x0
 
-    aget v2, v5, v2
+    aget v2, v6, v2
 
     if-eq p2, v2, :cond_2
 
-    .line 135
+    .line 139
     sget-object v2, Landroid/app/NotificationManager;->TAG:Ljava/lang/String;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -499,7 +519,7 @@
 
     const/4 v4, 0x0
 
-    aget v4, v5, v4
+    aget v4, v6, v4
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -513,12 +533,12 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 139
+    .line 143
     :cond_2
     :goto_0
     return-void
 
-    .line 137
+    .line 141
     :catch_0
     move-exception v2
 
@@ -526,25 +546,25 @@
 .end method
 
 .method public notifyAsUser(Ljava/lang/String;ILandroid/app/Notification;Landroid/os/UserHandle;)V
-    .locals 7
+    .locals 8
     .parameter "tag"
     .parameter "id"
     .parameter "notification"
     .parameter "user"
 
     .prologue
-    .line 146
+    .line 150
     const/4 v2, 0x1
 
-    new-array v5, v2, [I
+    new-array v6, v2, [I
 
-    .line 147
-    .local v5, idOut:[I
+    .line 151
+    .local v6, idOut:[I
     invoke-static {}, Landroid/app/NotificationManager;->getService()Landroid/app/INotificationManager;
 
     move-result-object v0
 
-    .line 148
+    .line 152
     .local v0, service:Landroid/app/INotificationManager;
     iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
 
@@ -552,13 +572,13 @@
 
     move-result-object v1
 
-    .line 149
+    .line 153
     .local v1, pkg:Ljava/lang/String;
     iget-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
     if-eqz v2, :cond_0
 
-    .line 150
+    .line 154
     iget-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
     invoke-virtual {v2}, Landroid/net/Uri;->getCanonicalUri()Landroid/net/Uri;
@@ -567,7 +587,21 @@
 
     iput-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
-    .line 152
+    .line 155
+    invoke-static {}, Landroid/os/StrictMode;->vmFileUriExposureEnabled()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 156
+    iget-object v2, p3, Landroid/app/Notification;->sound:Landroid/net/Uri;
+
+    const-string v3, "Notification.sound"
+
+    invoke-virtual {v2, v3}, Landroid/net/Uri;->checkFileUriExposed(Ljava/lang/String;)V
+
+    .line 159
     :cond_0
     sget-boolean v2, Landroid/app/NotificationManager;->localLOGV:Z
 
@@ -615,29 +649,35 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 154
+    .line 161
     :cond_1
     :try_start_0
+    iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v2}, Landroid/content/Context;->getOpPackageName()Ljava/lang/String;
+
+    move-result-object v2
+
     invoke-virtual {p4}, Landroid/os/UserHandle;->getIdentifier()I
 
-    move-result v6
+    move-result v7
 
-    move-object v2, p1
+    move-object v3, p1
 
-    move v3, p2
+    move v4, p2
 
-    move-object v4, p3
+    move-object v5, p3
 
-    invoke-interface/range {v0 .. v6}, Landroid/app/INotificationManager;->enqueueNotificationWithTag(Ljava/lang/String;Ljava/lang/String;ILandroid/app/Notification;[II)V
+    invoke-interface/range {v0 .. v7}, Landroid/app/INotificationManager;->enqueueNotificationWithTag(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/app/Notification;[II)V
 
-    .line 156
+    .line 163
     const/4 v2, 0x0
 
-    aget v2, v5, v2
+    aget v2, v6, v2
 
     if-eq p2, v2, :cond_2
 
-    .line 157
+    .line 164
     sget-object v2, Landroid/app/NotificationManager;->TAG:Ljava/lang/String;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -662,7 +702,7 @@
 
     const/4 v4, 0x0
 
-    aget v4, v5, v4
+    aget v4, v6, v4
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -676,12 +716,12 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 161
+    .line 168
     :cond_2
     :goto_0
     return-void
 
-    .line 159
+    .line 166
     :catch_0
     move-exception v2
 

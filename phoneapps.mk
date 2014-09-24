@@ -1,34 +1,35 @@
-local-phone-apps = $(private-phone-apps)
+# For apps in /system/app
+local-phone-apps :=		BasicDreams \
+				Bluetooth \
+				BluetoothExt \
+				Camera2 \
+				CellBroadcastReceiver \
+				CertInstaller \
+				DeskClock \
+				DocumentsUI \
+				DSPManager \
+				Galaxy4 \
+				Gallery2 \
+				HTMLViewer \
+				HoloSpiralWallpaper \
+				KeyChain \
+				LatinIME \
+				LiveWallpapers \
+				LiveWallpapersPicker \
+				MagicSmokeWallpapers \
+				Nfc \
+				PacProcessor \
+				PhaseBeam \
+				PrintSpooler \
+				Stk \
+				UserDictionaryProvider
 
-private-phone-apps := 	ApplicationsProvider \
-                        Bluetooth \
-			CertInstaller \
-			DefaultContainerService \
-			DrmProvider \
-                        DSPManager \
-			Galaxy4 \
-			GalaxyS3Settings \
-			Gallery2 \
-			HTMLViewer \
-			InputDevices \
-			KeyChain \
-                        LatinIME \
-			LiveWallpapers \
-                        LiveWallpapersPicker \
-			MagicSmokeWallpapers \
-                        MediaProvider \
-			NoiseField \
-			Nfc \
-			PhaseBeam \
-                        Stk \
-			SharedStorageBackup \
-			Tag \
-			Term \
-			UserDictionaryProvider \
-			VisualizationWallpapers \
-			WAPPushManager
-
-private-lockscreen-apps := 
-
-private-phone-apps2 :=  
-#for d2vzw
+# For app in /system/priv-app
+local-phone-priv-apps :=	BackupRestoreConfirmation \
+				DefaultContainerService \
+				ExternalStorageProvider \
+				InputDevices \
+				ProxyHandler \
+				SharedStorageBackup \
+				Shell \
+				Tag

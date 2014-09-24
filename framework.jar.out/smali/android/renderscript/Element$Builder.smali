@@ -36,33 +36,33 @@
     .prologue
     const/16 v1, 0x8
 
-    .line 999
+    .line 1014
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1000
+    .line 1015
     iput-object p1, p0, Landroid/renderscript/Element$Builder;->mRS:Landroid/renderscript/RenderScript;
 
-    .line 1001
+    .line 1016
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
-    .line 1002
+    .line 1017
     new-array v0, v1, [Landroid/renderscript/Element;
 
     iput-object v0, p0, Landroid/renderscript/Element$Builder;->mElements:[Landroid/renderscript/Element;
 
-    .line 1003
+    .line 1018
     new-array v0, v1, [Ljava/lang/String;
 
     iput-object v0, p0, Landroid/renderscript/Element$Builder;->mElementNames:[Ljava/lang/String;
 
-    .line 1004
+    .line 1019
     new-array v0, v1, [I
 
     iput-object v0, p0, Landroid/renderscript/Element$Builder;->mArraySizes:[I
 
-    .line 1005
+    .line 1020
     return-void
 .end method
 
@@ -74,7 +74,7 @@
     .parameter "name"
 
     .prologue
-    .line 1058
+    .line 1073
     const/4 v0, 0x1
 
     invoke-virtual {p0, p1, p2, v0}, Landroid/renderscript/Element$Builder;->add(Landroid/renderscript/Element;Ljava/lang/String;I)Landroid/renderscript/Element$Builder;
@@ -95,10 +95,10 @@
 
     const/4 v5, 0x0
 
-    .line 1015
+    .line 1030
     if-ge p3, v6, :cond_0
 
-    .line 1016
+    .line 1031
     new-instance v3, Landroid/renderscript/RSIllegalArgumentException;
 
     const-string v4, "Array size cannot be less than 1."
@@ -107,13 +107,13 @@
 
     throw v3
 
-    .line 1020
+    .line 1035
     :cond_0
     iget v3, p0, Landroid/renderscript/Element$Builder;->mSkipPadding:I
 
     if-eqz v3, :cond_1
 
-    .line 1021
+    .line 1036
     const-string v3, "#padding_"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
@@ -122,14 +122,14 @@
 
     if-eqz v3, :cond_1
 
-    .line 1022
+    .line 1037
     iput v5, p0, Landroid/renderscript/Element$Builder;->mSkipPadding:I
 
-    .line 1048
+    .line 1063
     :goto_0
     return-object p0
 
-    .line 1027
+    .line 1042
     :cond_1
     iget v3, p1, Landroid/renderscript/Element;->mVectorSize:I
 
@@ -137,10 +137,10 @@
 
     if-ne v3, v4, :cond_3
 
-    .line 1028
+    .line 1043
     iput v6, p0, Landroid/renderscript/Element$Builder;->mSkipPadding:I
 
-    .line 1033
+    .line 1048
     :goto_1
     iget v3, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
@@ -150,14 +150,14 @@
 
     if-ne v3, v4, :cond_2
 
-    .line 1034
+    .line 1049
     iget v3, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     add-int/lit8 v3, v3, 0x8
 
     new-array v1, v3, [Landroid/renderscript/Element;
 
-    .line 1035
+    .line 1050
     .local v1, e:[Landroid/renderscript/Element;
     iget v3, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
@@ -165,7 +165,7 @@
 
     new-array v2, v3, [Ljava/lang/String;
 
-    .line 1036
+    .line 1051
     .local v2, s:[Ljava/lang/String;
     iget v3, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
@@ -173,7 +173,7 @@
 
     new-array v0, v3, [I
 
-    .line 1037
+    .line 1052
     .local v0, as:[I
     iget-object v3, p0, Landroid/renderscript/Element$Builder;->mElements:[Landroid/renderscript/Element;
 
@@ -181,30 +181,30 @@
 
     invoke-static {v3, v5, v1, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1038
+    .line 1053
     iget-object v3, p0, Landroid/renderscript/Element$Builder;->mElementNames:[Ljava/lang/String;
 
     iget v4, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     invoke-static {v3, v5, v2, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1039
+    .line 1054
     iget-object v3, p0, Landroid/renderscript/Element$Builder;->mArraySizes:[I
 
     iget v4, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     invoke-static {v3, v5, v0, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1040
+    .line 1055
     iput-object v1, p0, Landroid/renderscript/Element$Builder;->mElements:[Landroid/renderscript/Element;
 
-    .line 1041
+    .line 1056
     iput-object v2, p0, Landroid/renderscript/Element$Builder;->mElementNames:[Ljava/lang/String;
 
-    .line 1042
+    .line 1057
     iput-object v0, p0, Landroid/renderscript/Element$Builder;->mArraySizes:[I
 
-    .line 1044
+    .line 1059
     .end local v0           #as:[I
     .end local v1           #e:[Landroid/renderscript/Element;
     .end local v2           #s:[Ljava/lang/String;
@@ -215,21 +215,21 @@
 
     aput-object p1, v3, v4
 
-    .line 1045
+    .line 1060
     iget-object v3, p0, Landroid/renderscript/Element$Builder;->mElementNames:[Ljava/lang/String;
 
     iget v4, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     aput-object p2, v3, v4
 
-    .line 1046
+    .line 1061
     iget-object v3, p0, Landroid/renderscript/Element$Builder;->mArraySizes:[I
 
     iget v4, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     aput p3, v3, v4
 
-    .line 1047
+    .line 1062
     iget v3, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     add-int/lit8 v3, v3, 0x1
@@ -238,7 +238,7 @@
 
     goto :goto_0
 
-    .line 1030
+    .line 1045
     :cond_3
     iput v5, p0, Landroid/renderscript/Element$Builder;->mSkipPadding:I
 
@@ -251,29 +251,29 @@
     .prologue
     const/4 v8, 0x0
 
-    .line 1068
+    .line 1083
     iget-object v0, p0, Landroid/renderscript/Element$Builder;->mRS:Landroid/renderscript/RenderScript;
 
     invoke-virtual {v0}, Landroid/renderscript/RenderScript;->validate()V
 
-    .line 1069
+    .line 1084
     iget v0, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     new-array v3, v0, [Landroid/renderscript/Element;
 
-    .line 1070
+    .line 1085
     .local v3, ein:[Landroid/renderscript/Element;
     iget v0, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     new-array v4, v0, [Ljava/lang/String;
 
-    .line 1071
+    .line 1086
     .local v4, sin:[Ljava/lang/String;
     iget v0, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     new-array v5, v0, [I
 
-    .line 1072
+    .line 1087
     .local v5, asin:[I
     iget-object v0, p0, Landroid/renderscript/Element$Builder;->mElements:[Landroid/renderscript/Element;
 
@@ -281,26 +281,26 @@
 
     invoke-static {v0, v8, v3, v8, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1073
+    .line 1088
     iget-object v0, p0, Landroid/renderscript/Element$Builder;->mElementNames:[Ljava/lang/String;
 
     iget v2, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     invoke-static {v0, v8, v4, v8, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1074
+    .line 1089
     iget-object v0, p0, Landroid/renderscript/Element$Builder;->mArraySizes:[I
 
     iget v2, p0, Landroid/renderscript/Element$Builder;->mCount:I
 
     invoke-static {v0, v8, v5, v8, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 1076
+    .line 1091
     array-length v0, v3
 
     new-array v7, v0, [I
 
-    .line 1077
+    .line 1092
     .local v7, ids:[I
     const/4 v6, 0x0
 
@@ -310,7 +310,7 @@
 
     if-ge v6, v0, :cond_0
 
-    .line 1078
+    .line 1093
     aget-object v0, v3, v6
 
     iget-object v2, p0, Landroid/renderscript/Element$Builder;->mRS:Landroid/renderscript/RenderScript;
@@ -321,12 +321,12 @@
 
     aput v0, v7, v6
 
-    .line 1077
+    .line 1092
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_0
 
-    .line 1080
+    .line 1095
     :cond_0
     iget-object v0, p0, Landroid/renderscript/Element$Builder;->mRS:Landroid/renderscript/RenderScript;
 
@@ -334,7 +334,7 @@
 
     move-result v1
 
-    .line 1081
+    .line 1096
     .local v1, id:I
     new-instance v0, Landroid/renderscript/Element;
 

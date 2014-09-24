@@ -17,9 +17,9 @@
 # instance fields
 .field public availableResponseCount:I
 
-.field public cmdNum:I
+.field public final cmdNum:I
 
-.field public request:Ljava/lang/String;
+.field public final logCmd:Ljava/lang/String;
 
 .field public responses:Ljava/util/concurrent/BlockingQueue;
     .annotation system Ldalvik/annotation/Signature;
@@ -36,8 +36,8 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 2
-    .parameter "c"
-    .parameter "r"
+    .parameter "cmdNum"
+    .parameter "logCmd"
 
     .prologue
     .line 511
@@ -52,10 +52,12 @@
 
     iput-object v0, p0, Lcom/android/server/NativeDaemonConnector$ResponseQueue$PendingCmd;->responses:Ljava/util/concurrent/BlockingQueue;
 
-    .line 511
+    .line 512
     iput p1, p0, Lcom/android/server/NativeDaemonConnector$ResponseQueue$PendingCmd;->cmdNum:I
 
-    iput-object p2, p0, Lcom/android/server/NativeDaemonConnector$ResponseQueue$PendingCmd;->request:Ljava/lang/String;
+    .line 513
+    iput-object p2, p0, Lcom/android/server/NativeDaemonConnector$ResponseQueue$PendingCmd;->logCmd:Ljava/lang/String;
 
+    .line 514
     return-void
 .end method

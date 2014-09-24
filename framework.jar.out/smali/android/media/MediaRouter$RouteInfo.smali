@@ -25,7 +25,11 @@
 
 .field public static final STATUS_AVAILABLE:I = 0x3
 
+.field public static final STATUS_CONNECTED:I = 0x6
+
 .field public static final STATUS_CONNECTING:I = 0x2
+
+.field public static final STATUS_IN_USE:I = 0x5
 
 .field public static final STATUS_NONE:I = 0x0
 
@@ -37,9 +41,13 @@
 # instance fields
 .field final mCategory:Landroid/media/MediaRouter$RouteCategory;
 
+.field mDescription:Ljava/lang/CharSequence;
+
 .field mDeviceAddress:Ljava/lang/String;
 
 .field mEnabled:Z
+
+.field mGlobalRouteId:Ljava/lang/String;
 
 .field mGroup:Landroid/media/MediaRouter$RouteGroup;
 
@@ -55,11 +63,15 @@
 
 .field mPresentationDisplay:Landroid/view/Display;
 
+.field mPresentationDisplayId:I
+
+.field private mRealStatusCode:I
+
 .field final mRemoteVolObserver:Landroid/media/IRemoteVolumeObserver$Stub;
 
-.field private mStatus:Ljava/lang/CharSequence;
+.field private mResolvedStatusCode:I
 
-.field private mStatusCode:I
+.field private mStatus:Ljava/lang/CharSequence;
 
 .field mSupportedTypes:I
 
@@ -84,43 +96,227 @@
 
     const/4 v1, 0x1
 
-    .line 976
+    .line 1525
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 928
+    .line 1468
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackType:I
 
-    .line 929
+    .line 1469
     iput v2, p0, Landroid/media/MediaRouter$RouteInfo;->mVolumeMax:I
 
-    .line 930
+    .line 1470
     iput v2, p0, Landroid/media/MediaRouter$RouteInfo;->mVolume:I
 
-    .line 931
+    .line 1471
     iput v1, p0, Landroid/media/MediaRouter$RouteInfo;->mVolumeHandling:I
 
-    .line 932
+    .line 1472
     const/4 v0, 0x3
 
     iput v0, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackStream:I
 
-    .line 937
+    .line 1475
+    const/4 v0, -0x1
+
+    iput v0, p0, Landroid/media/MediaRouter$RouteInfo;->mPresentationDisplayId:I
+
+    .line 1478
     iput-boolean v1, p0, Landroid/media/MediaRouter$RouteInfo;->mEnabled:Z
 
-    .line 1254
+    .line 1941
     new-instance v0, Landroid/media/MediaRouter$RouteInfo$1;
 
     invoke-direct {v0, p0}, Landroid/media/MediaRouter$RouteInfo$1;-><init>(Landroid/media/MediaRouter$RouteInfo;)V
 
     iput-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mRemoteVolObserver:Landroid/media/IRemoteVolumeObserver$Stub;
 
-    .line 977
+    .line 1526
     iput-object p1, p0, Landroid/media/MediaRouter$RouteInfo;->mCategory:Landroid/media/MediaRouter$RouteCategory;
 
-    .line 978
+    .line 1527
     return-void
+.end method
+
+.method static synthetic access$100(Landroid/media/MediaRouter$RouteInfo;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 1458
+    iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mRealStatusCode:I
+
+    return v0
+.end method
+
+.method private choosePresentationDisplay()Landroid/view/Display;
+    .locals 8
+
+    .prologue
+    const/4 v5, 0x0
+
+    .line 1858
+    iget v6, p0, Landroid/media/MediaRouter$RouteInfo;->mSupportedTypes:I
+
+    and-int/lit8 v6, v6, 0x2
+
+    if-eqz v6, :cond_7
+
+    .line 1859
+    sget-object v6, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
+
+    invoke-virtual {v6}, Landroid/media/MediaRouter$Static;->getAllPresentationDisplays()[Landroid/view/Display;
+
+    move-result-object v2
+
+    .line 1864
+    .local v2, displays:[Landroid/view/Display;
+    iget v6, p0, Landroid/media/MediaRouter$RouteInfo;->mPresentationDisplayId:I
+
+    if-ltz v6, :cond_3
+
+    .line 1865
+    move-object v0, v2
+
+    .local v0, arr$:[Landroid/view/Display;
+    array-length v4, v0
+
+    .local v4, len$:I
+    const/4 v3, 0x0
+
+    .local v3, i$:I
+    :goto_0
+    if-ge v3, v4, :cond_2
+
+    aget-object v1, v0, v3
+
+    .line 1866
+    .local v1, display:Landroid/view/Display;
+    invoke-virtual {v1}, Landroid/view/Display;->getDisplayId()I
+
+    move-result v6
+
+    iget v7, p0, Landroid/media/MediaRouter$RouteInfo;->mPresentationDisplayId:I
+
+    if-ne v6, v7, :cond_1
+
+    .line 1889
+    .end local v0           #arr$:[Landroid/view/Display;
+    .end local v1           #display:Landroid/view/Display;
+    .end local v2           #displays:[Landroid/view/Display;
+    .end local v3           #i$:I
+    .end local v4           #len$:I
+    :cond_0
+    :goto_1
+    return-object v1
+
+    .line 1865
+    .restart local v0       #arr$:[Landroid/view/Display;
+    .restart local v1       #display:Landroid/view/Display;
+    .restart local v2       #displays:[Landroid/view/Display;
+    .restart local v3       #i$:I
+    .restart local v4       #len$:I
+    :cond_1
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_0
+
+    .end local v1           #display:Landroid/view/Display;
+    :cond_2
+    move-object v1, v5
+
+    .line 1870
+    goto :goto_1
+
+    .line 1874
+    .end local v0           #arr$:[Landroid/view/Display;
+    .end local v3           #i$:I
+    .end local v4           #len$:I
+    :cond_3
+    iget-object v6, p0, Landroid/media/MediaRouter$RouteInfo;->mDeviceAddress:Ljava/lang/String;
+
+    if-eqz v6, :cond_6
+
+    .line 1875
+    move-object v0, v2
+
+    .restart local v0       #arr$:[Landroid/view/Display;
+    array-length v4, v0
+
+    .restart local v4       #len$:I
+    const/4 v3, 0x0
+
+    .restart local v3       #i$:I
+    :goto_2
+    if-ge v3, v4, :cond_5
+
+    aget-object v1, v0, v3
+
+    .line 1876
+    .restart local v1       #display:Landroid/view/Display;
+    invoke-virtual {v1}, Landroid/view/Display;->getType()I
+
+    move-result v6
+
+    const/4 v7, 0x3
+
+    if-ne v6, v7, :cond_4
+
+    iget-object v6, p0, Landroid/media/MediaRouter$RouteInfo;->mDeviceAddress:Ljava/lang/String;
+
+    invoke-virtual {v1}, Landroid/view/Display;->getAddress()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-virtual {v6, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    if-nez v6, :cond_0
+
+    .line 1875
+    :cond_4
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_2
+
+    .end local v1           #display:Landroid/view/Display;
+    :cond_5
+    move-object v1, v5
+
+    .line 1881
+    goto :goto_1
+
+    .line 1885
+    .end local v0           #arr$:[Landroid/view/Display;
+    .end local v3           #i$:I
+    .end local v4           #len$:I
+    :cond_6
+    sget-object v6, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
+
+    iget-object v6, v6, Landroid/media/MediaRouter$Static;->mDefaultAudioVideo:Landroid/media/MediaRouter$RouteInfo;
+
+    if-ne p0, v6, :cond_7
+
+    array-length v6, v2
+
+    if-lez v6, :cond_7
+
+    .line 1886
+    const/4 v5, 0x0
+
+    aget-object v1, v2, v5
+
+    goto :goto_1
+
+    .end local v2           #displays:[Landroid/view/Display;
+    :cond_7
+    move-object v1, v5
+
+    .line 1889
+    goto :goto_1
 .end method
 
 
@@ -129,8 +325,28 @@
     .locals 1
 
     .prologue
-    .line 1067
+    .line 1680
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mCategory:Landroid/media/MediaRouter$RouteCategory;
+
+    return-object v0
+.end method
+
+.method public getDescription()Ljava/lang/CharSequence;
+    .locals 1
+
+    .prologue
+    .line 1575
+    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mDescription:Ljava/lang/CharSequence;
+
+    return-object v0
+.end method
+
+.method public getDeviceAddress()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    .line 1894
+    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mDeviceAddress:Ljava/lang/String;
 
     return-object v0
 .end method
@@ -139,7 +355,7 @@
     .locals 1
 
     .prologue
-    .line 1060
+    .line 1673
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mGroup:Landroid/media/MediaRouter$RouteGroup;
 
     return-object v0
@@ -149,7 +365,7 @@
     .locals 1
 
     .prologue
-    .line 1077
+    .line 1690
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mIcon:Landroid/graphics/drawable/Drawable;
 
     return-object v0
@@ -159,7 +375,7 @@
     .locals 1
 
     .prologue
-    .line 985
+    .line 1540
     sget-object v0, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
 
     iget-object v0, v0, Landroid/media/MediaRouter$Static;->mResources:Landroid/content/res/Resources;
@@ -176,7 +392,7 @@
     .parameter "context"
 
     .prologue
-    .line 996
+    .line 1555
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -193,12 +409,12 @@
     .parameter "res"
 
     .prologue
-    .line 1000
+    .line 1559
     iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mNameResId:I
 
     if-eqz v0, :cond_0
 
-    .line 1001
+    .line 1560
     iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mNameResId:I
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
@@ -207,7 +423,7 @@
 
     iput-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mName:Ljava/lang/CharSequence;
 
-    .line 1003
+    .line 1562
     :goto_0
     return-object v0
 
@@ -221,7 +437,7 @@
     .locals 1
 
     .prologue
-    .line 1117
+    .line 1730
     iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackStream:I
 
     return v0
@@ -231,7 +447,7 @@
     .locals 1
 
     .prologue
-    .line 1109
+    .line 1722
     iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackType:I
 
     return v0
@@ -241,7 +457,7 @@
     .locals 1
 
     .prologue
-    .line 1234
+    .line 1845
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mPresentationDisplay:Landroid/view/Display;
 
     return-object v0
@@ -251,7 +467,7 @@
     .locals 1
 
     .prologue
-    .line 1011
+    .line 1583
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mStatus:Ljava/lang/CharSequence;
 
     return-object v0
@@ -261,8 +477,8 @@
     .locals 1
 
     .prologue
-    .line 1046
-    iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mStatusCode:I
+    .line 1654
+    iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mResolvedStatusCode:I
 
     return v0
 .end method
@@ -271,7 +487,7 @@
     .locals 1
 
     .prologue
-    .line 1053
+    .line 1661
     iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mSupportedTypes:I
 
     return v0
@@ -281,7 +497,7 @@
     .locals 1
 
     .prologue
-    .line 1101
+    .line 1714
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mTag:Ljava/lang/Object;
 
     return-object v0
@@ -291,15 +507,15 @@
     .locals 4
 
     .prologue
-    .line 1128
+    .line 1741
     iget v2, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackType:I
 
     if-nez v2, :cond_0
 
-    .line 1129
+    .line 1742
     const/4 v1, 0x0
 
-    .line 1131
+    .line 1744
     .local v1, vol:I
     :try_start_0
     sget-object v2, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
@@ -314,17 +530,17 @@
 
     move-result v1
 
-    .line 1137
+    .line 1750
     .end local v1           #vol:I
     :goto_0
     return v1
 
-    .line 1132
+    .line 1745
     .restart local v1       #vol:I
     :catch_0
     move-exception v0
 
-    .line 1133
+    .line 1746
     .local v0, e:Landroid/os/RemoteException;
     const-string v2, "MediaRouter"
 
@@ -334,7 +550,7 @@
 
     goto :goto_0
 
-    .line 1137
+    .line 1750
     .end local v0           #e:Landroid/os/RemoteException;
     .end local v1           #vol:I
     :cond_0
@@ -347,7 +563,7 @@
     .locals 1
 
     .prologue
-    .line 1202
+    .line 1813
     iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mVolumeHandling:I
 
     return v0
@@ -357,15 +573,15 @@
     .locals 4
 
     .prologue
-    .line 1184
+    .line 1795
     iget v2, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackType:I
 
     if-nez v2, :cond_0
 
-    .line 1185
+    .line 1796
     const/4 v1, 0x0
 
-    .line 1187
+    .line 1798
     .local v1, volMax:I
     :try_start_0
     sget-object v2, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
@@ -380,17 +596,17 @@
 
     move-result v1
 
-    .line 1193
+    .line 1804
     .end local v1           #volMax:I
     :goto_0
     return v1
 
-    .line 1188
+    .line 1799
     .restart local v1       #volMax:I
     :catch_0
     move-exception v0
 
-    .line 1189
+    .line 1800
     .local v0, e:Landroid/os/RemoteException;
     const-string v2, "MediaRouter"
 
@@ -400,7 +616,7 @@
 
     goto :goto_0
 
-    .line 1193
+    .line 1804
     .end local v0           #e:Landroid/os/RemoteException;
     .end local v1           #volMax:I
     :cond_0
@@ -409,27 +625,116 @@
     goto :goto_0
 .end method
 
+.method public isConnecting()Z
+    .locals 2
+
+    .prologue
+    .line 1913
+    iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mResolvedStatusCode:I
+
+    const/4 v1, 0x2
+
+    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public isDefault()Z
+    .locals 1
+
+    .prologue
+    .line 1923
+    sget-object v0, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
+
+    iget-object v0, v0, Landroid/media/MediaRouter$Static;->mDefaultAudioVideo:Landroid/media/MediaRouter$RouteInfo;
+
+    if-ne p0, v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
 .method public isEnabled()Z
     .locals 1
 
     .prologue
-    .line 1241
+    .line 1903
     iget-boolean v0, p0, Landroid/media/MediaRouter$RouteInfo;->mEnabled:Z
 
     return v0
 .end method
 
+.method public isSelected()Z
+    .locals 1
+
+    .prologue
+    .line 1918
+    sget-object v0, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
+
+    iget-object v0, v0, Landroid/media/MediaRouter$Static;->mSelectedRoute:Landroid/media/MediaRouter$RouteInfo;
+
+    if-ne p0, v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public matchesTypes(I)Z
+    .locals 1
+    .parameter "types"
+
+    .prologue
+    .line 1666
+    iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mSupportedTypes:I
+
+    and-int/2addr v0, p1
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
 .method public requestSetVolume(I)V
-    .locals 4
+    .locals 5
     .parameter "volume"
 
     .prologue
-    .line 1146
+    .line 1759
     iget v1, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackType:I
 
     if-nez v1, :cond_0
 
-    .line 1148
+    .line 1761
     :try_start_0
     sget-object v1, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
 
@@ -439,19 +744,23 @@
 
     const/4 v3, 0x0
 
-    invoke-interface {v1, v2, p1, v3}, Landroid/media/IAudioService;->setStreamVolume(III)V
+    invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-interface {v1, v2, p1, v3, v4}, Landroid/media/IAudioService;->setStreamVolume(IIILjava/lang/String;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1157
+    .line 1769
     :goto_0
     return-void
 
-    .line 1149
+    .line 1763
     :catch_0
     move-exception v0
 
-    .line 1150
+    .line 1764
     .local v0, e:Landroid/os/RemoteException;
     const-string v1, "MediaRouter"
 
@@ -461,65 +770,27 @@
 
     goto :goto_0
 
-    .line 1153
+    .line 1767
     .end local v0           #e:Landroid/os/RemoteException;
     :cond_0
-    const-string v1, "MediaRouter"
+    sget-object v1, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
 
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, ".requestSetVolume(): "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, "Non-local volume playback on system route? "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, "Could not request volume change."
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v1, p0, p1}, Landroid/media/MediaRouter$Static;->requestSetVolume(Landroid/media/MediaRouter$RouteInfo;I)V
 
     goto :goto_0
 .end method
 
 .method public requestUpdateVolume(I)V
-    .locals 5
+    .locals 6
     .parameter "direction"
 
     .prologue
-    .line 1164
+    .line 1776
     iget v2, p0, Landroid/media/MediaRouter$RouteInfo;->mPlaybackType:I
 
     if-nez v2, :cond_0
 
-    .line 1166
+    .line 1778
     const/4 v2, 0x0
 
     :try_start_0
@@ -541,7 +812,7 @@
 
     move-result v1
 
-    .line 1168
+    .line 1780
     .local v1, volume:I
     sget-object v2, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
 
@@ -551,20 +822,24 @@
 
     const/4 v4, 0x0
 
-    invoke-interface {v2, v3, v1, v4}, Landroid/media/IAudioService;->setStreamVolume(III)V
+    invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-interface {v2, v3, v1, v4, v5}, Landroid/media/IAudioService;->setStreamVolume(IIILjava/lang/String;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1177
+    .line 1788
     .end local v1           #volume:I
     :goto_0
     return-void
 
-    .line 1169
+    .line 1782
     :catch_0
     move-exception v0
 
-    .line 1170
+    .line 1783
     .local v0, e:Landroid/os/RemoteException;
     const-string v2, "MediaRouter"
 
@@ -574,157 +849,210 @@
 
     goto :goto_0
 
-    .line 1173
+    .line 1786
     .end local v0           #e:Landroid/os/RemoteException;
     :cond_0
-    const-string v2, "MediaRouter"
+    sget-object v2, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
 
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, ".requestChangeVolume(): "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, "Non-local volume playback on system route? "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, "Could not request volume change."
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v2, p0, p1}, Landroid/media/MediaRouter$Static;->requestUpdateVolume(Landroid/media/MediaRouter$RouteInfo;I)V
 
     goto :goto_0
+.end method
+
+.method resolveStatusCode()Z
+    .locals 3
+
+    .prologue
+    .line 1603
+    iget v1, p0, Landroid/media/MediaRouter$RouteInfo;->mRealStatusCode:I
+
+    .line 1604
+    .local v1, statusCode:I
+    invoke-virtual {p0}, Landroid/media/MediaRouter$RouteInfo;->isSelected()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 1605
+    packed-switch v1, :pswitch_data_0
+
+    .line 1618
+    :cond_0
+    :goto_0
+    :pswitch_0
+    iget v2, p0, Landroid/media/MediaRouter$RouteInfo;->mResolvedStatusCode:I
+
+    if-ne v2, v1, :cond_1
+
+    .line 1619
+    const/4 v2, 0x0
+
+    .line 1647
+    :goto_1
+    return v2
+
+    .line 1614
+    :pswitch_1
+    const/4 v1, 0x2
+
+    goto :goto_0
+
+    .line 1622
+    :cond_1
+    iput v1, p0, Landroid/media/MediaRouter$RouteInfo;->mResolvedStatusCode:I
+
+    .line 1624
+    packed-switch v1, :pswitch_data_1
+
+    .line 1643
+    const/4 v0, 0x0
+
+    .line 1646
+    .local v0, resId:I
+    :goto_2
+    if-eqz v0, :cond_2
+
+    sget-object v2, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
+
+    iget-object v2, v2, Landroid/media/MediaRouter$Static;->mResources:Landroid/content/res/Resources;
+
+    invoke-virtual {v2, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v2
+
+    :goto_3
+    iput-object v2, p0, Landroid/media/MediaRouter$RouteInfo;->mStatus:Ljava/lang/CharSequence;
+
+    .line 1647
+    const/4 v2, 0x1
+
+    goto :goto_1
+
+    .line 1626
+    .end local v0           #resId:I
+    :pswitch_2
+    const v0, 0x104060c
+
+    .line 1627
+    .restart local v0       #resId:I
+    goto :goto_2
+
+    .line 1629
+    .end local v0           #resId:I
+    :pswitch_3
+    const v0, 0x104060d
+
+    .line 1630
+    .restart local v0       #resId:I
+    goto :goto_2
+
+    .line 1632
+    .end local v0           #resId:I
+    :pswitch_4
+    const v0, 0x104060e
+
+    .line 1633
+    .restart local v0       #resId:I
+    goto :goto_2
+
+    .line 1635
+    .end local v0           #resId:I
+    :pswitch_5
+    const v0, 0x104060f
+
+    .line 1636
+    .restart local v0       #resId:I
+    goto :goto_2
+
+    .line 1638
+    .end local v0           #resId:I
+    :pswitch_6
+    const v0, 0x1040610
+
+    .line 1639
+    .restart local v0       #resId:I
+    goto :goto_2
+
+    .line 1646
+    :cond_2
+    const/4 v2, 0x0
+
+    goto :goto_3
+
+    .line 1605
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_1
+        :pswitch_0
+        :pswitch_1
+    .end packed-switch
+
+    .line 1624
+    :pswitch_data_1
+    .packed-switch 0x1
+        :pswitch_2
+        :pswitch_3
+        :pswitch_4
+        :pswitch_5
+        :pswitch_6
+    .end packed-switch
 .end method
 
 .method routeUpdated()V
     .locals 0
 
     .prologue
-    .line 1272
+    .line 1960
     invoke-static {p0}, Landroid/media/MediaRouter;->updateRoute(Landroid/media/MediaRouter$RouteInfo;)V
 
-    .line 1273
+    .line 1961
     return-void
 .end method
 
-.method setStatusCode(I)Z
+.method public select()V
     .locals 2
+
+    .prologue
+    .line 1928
+    iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mSupportedTypes:I
+
+    const/4 v1, 0x1
+
+    invoke-static {v0, p0, v1}, Landroid/media/MediaRouter;->selectRouteStatic(ILandroid/media/MediaRouter$RouteInfo;Z)V
+
+    .line 1929
+    return-void
+.end method
+
+.method setRealStatusCode(I)Z
+    .locals 1
     .parameter "statusCode"
 
     .prologue
-    .line 1019
-    iget v1, p0, Landroid/media/MediaRouter$RouteInfo;->mStatusCode:I
+    .line 1591
+    iget v0, p0, Landroid/media/MediaRouter$RouteInfo;->mRealStatusCode:I
 
-    if-eq p1, v1, :cond_1
+    if-eq v0, p1, :cond_0
 
-    .line 1020
-    iput p1, p0, Landroid/media/MediaRouter$RouteInfo;->mStatusCode:I
+    .line 1592
+    iput p1, p0, Landroid/media/MediaRouter$RouteInfo;->mRealStatusCode:I
 
-    .line 1021
+    .line 1593
+    invoke-virtual {p0}, Landroid/media/MediaRouter$RouteInfo;->resolveStatusCode()Z
+
+    move-result v0
+
+    .line 1595
+    :goto_0
+    return v0
+
+    :cond_0
     const/4 v0, 0x0
 
-    .line 1022
-    .local v0, resId:I
-    packed-switch p1, :pswitch_data_0
-
-    .line 1036
-    :goto_0
-    if-eqz v0, :cond_0
-
-    sget-object v1, Landroid/media/MediaRouter;->sStatic:Landroid/media/MediaRouter$Static;
-
-    iget-object v1, v1, Landroid/media/MediaRouter$Static;->mResources:Landroid/content/res/Resources;
-
-    invoke-virtual {v1, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
-
-    move-result-object v1
-
-    :goto_1
-    iput-object v1, p0, Landroid/media/MediaRouter$RouteInfo;->mStatus:Ljava/lang/CharSequence;
-
-    .line 1037
-    const/4 v1, 0x1
-
-    .line 1039
-    .end local v0           #resId:I
-    :goto_2
-    return v1
-
-    .line 1024
-    .restart local v0       #resId:I
-    :pswitch_0
-    const v0, 0x1040586
-
-    .line 1025
     goto :goto_0
-
-    .line 1027
-    :pswitch_1
-    const v0, 0x1040587
-
-    .line 1028
-    goto :goto_0
-
-    .line 1030
-    :pswitch_2
-    const v0, 0x1040588
-
-    .line 1031
-    goto :goto_0
-
-    .line 1033
-    :pswitch_3
-    const v0, 0x1040589
-
-    goto :goto_0
-
-    .line 1036
-    :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_1
-
-    .line 1039
-    .end local v0           #resId:I
-    :cond_1
-    const/4 v1, 0x0
-
-    goto :goto_2
-
-    .line 1022
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
-        :pswitch_3
-    .end packed-switch
 .end method
 
 .method setStatusInt(Ljava/lang/CharSequence;)V
@@ -732,7 +1060,7 @@
     .parameter "status"
 
     .prologue
-    .line 1245
+    .line 1932
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mStatus:Ljava/lang/CharSequence;
 
     invoke-virtual {p1, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
@@ -741,24 +1069,24 @@
 
     if-nez v0, :cond_1
 
-    .line 1246
+    .line 1933
     iput-object p1, p0, Landroid/media/MediaRouter$RouteInfo;->mStatus:Ljava/lang/CharSequence;
 
-    .line 1247
+    .line 1934
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mGroup:Landroid/media/MediaRouter$RouteGroup;
 
     if-eqz v0, :cond_0
 
-    .line 1248
+    .line 1935
     iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mGroup:Landroid/media/MediaRouter$RouteGroup;
 
     invoke-virtual {v0, p0, p1}, Landroid/media/MediaRouter$RouteGroup;->memberStatusChanged(Landroid/media/MediaRouter$RouteInfo;Ljava/lang/CharSequence;)V
 
-    .line 1250
+    .line 1937
     :cond_0
     invoke-virtual {p0}, Landroid/media/MediaRouter$RouteInfo;->routeUpdated()V
 
-    .line 1252
+    .line 1939
     :cond_1
     return-void
 .end method
@@ -768,13 +1096,13 @@
     .parameter "tag"
 
     .prologue
-    .line 1092
+    .line 1705
     iput-object p1, p0, Landroid/media/MediaRouter$RouteInfo;->mTag:Ljava/lang/Object;
 
-    .line 1093
+    .line 1706
     invoke-virtual {p0}, Landroid/media/MediaRouter$RouteInfo;->routeUpdated()V
 
-    .line 1094
+    .line 1707
     return-void
 .end method
 
@@ -782,7 +1110,7 @@
     .locals 3
 
     .prologue
-    .line 1277
+    .line 1965
     invoke-virtual {p0}, Landroid/media/MediaRouter$RouteInfo;->getSupportedTypes()I
 
     move-result v1
@@ -791,7 +1119,7 @@
 
     move-result-object v0
 
-    .line 1278
+    .line 1966
     .local v0, supportedTypes:Ljava/lang/String;
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -816,6 +1144,20 @@
     move-result-object v1
 
     invoke-virtual {p0}, Landroid/media/MediaRouter$RouteInfo;->getName()Ljava/lang/CharSequence;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ", description="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {p0}, Landroid/media/MediaRouter$RouteInfo;->getDescription()Ljava/lang/CharSequence;
 
     move-result-object v2
 
@@ -873,7 +1215,7 @@
 
     move-result-object v1
 
-    const-string/jumbo v2, "}"
+    const-string v2, " }"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -884,4 +1226,35 @@
     move-result-object v1
 
     return-object v1
+.end method
+
+.method updatePresentationDisplay()Z
+    .locals 2
+
+    .prologue
+    .line 1849
+    invoke-direct {p0}, Landroid/media/MediaRouter$RouteInfo;->choosePresentationDisplay()Landroid/view/Display;
+
+    move-result-object v0
+
+    .line 1850
+    .local v0, display:Landroid/view/Display;
+    iget-object v1, p0, Landroid/media/MediaRouter$RouteInfo;->mPresentationDisplay:Landroid/view/Display;
+
+    if-eq v1, v0, :cond_0
+
+    .line 1851
+    iput-object v0, p0, Landroid/media/MediaRouter$RouteInfo;->mPresentationDisplay:Landroid/view/Display;
+
+    .line 1852
+    const/4 v1, 0x1
+
+    .line 1854
+    :goto_0
+    return v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
 .end method

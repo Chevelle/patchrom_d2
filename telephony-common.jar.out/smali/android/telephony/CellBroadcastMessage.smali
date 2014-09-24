@@ -28,13 +28,15 @@
 
 .field private final mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
+.field private mSubId:I
+
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 89
+    .line 110
     new-instance v0, Landroid/telephony/CellBroadcastMessage$1;
 
     invoke-direct {v0}, Landroid/telephony/CellBroadcastMessage$1;-><init>()V
@@ -45,47 +47,53 @@
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
-    .locals 2
+    .locals 3
     .parameter "in"
 
     .prologue
-    .line 72
+    const/4 v0, 0x0
+
+    .line 89
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 73
-    new-instance v0, Landroid/telephony/SmsCbMessage;
+    .line 57
+    iput v0, p0, Landroid/telephony/CellBroadcastMessage;->mSubId:I
 
-    invoke-direct {v0, p1}, Landroid/telephony/SmsCbMessage;-><init>(Landroid/os/Parcel;)V
+    .line 90
+    new-instance v1, Landroid/telephony/SmsCbMessage;
 
-    iput-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
+    invoke-direct {v1, p1}, Landroid/telephony/SmsCbMessage;-><init>(Landroid/os/Parcel;)V
 
-    .line 74
+    iput-object v1, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
+
+    .line 91
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v0
+    move-result-wide v1
 
-    iput-wide v0, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
+    iput-wide v1, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
 
-    .line 75
+    .line 92
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    iput-boolean v0, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
+
+    .line 93
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    iput v0, p0, Landroid/telephony/CellBroadcastMessage;->mSubId:I
 
-    const/4 v0, 0x1
-
-    :goto_0
-    iput-boolean v0, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
-
-    .line 76
+    .line 94
     return-void
-
-    .line 75
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
 .method synthetic constructor <init>(Landroid/os/Parcel;Landroid/telephony/CellBroadcastMessage$1;)V
@@ -94,59 +102,67 @@
     .parameter "x1"
 
     .prologue
-    .line 48
+    .line 40
     invoke-direct {p0, p1}, Landroid/telephony/CellBroadcastMessage;-><init>(Landroid/os/Parcel;)V
 
     return-void
 .end method
 
 .method public constructor <init>(Landroid/telephony/SmsCbMessage;)V
-    .locals 2
+    .locals 3
     .parameter "message"
 
     .prologue
-    .line 60
+    const/4 v2, 0x0
+
+    .line 77
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 61
+    .line 57
+    iput v2, p0, Landroid/telephony/CellBroadcastMessage;->mSubId:I
+
+    .line 78
     iput-object p1, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
-    .line 62
+    .line 79
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
 
-    .line 63
-    const/4 v0, 0x0
+    .line 80
+    iput-boolean v2, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
 
-    iput-boolean v0, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
-
-    .line 64
+    .line 81
     return-void
 .end method
 
 .method private constructor <init>(Landroid/telephony/SmsCbMessage;JZ)V
-    .locals 0
+    .locals 1
     .parameter "message"
     .parameter "deliveryTime"
     .parameter "isRead"
 
     .prologue
-    .line 66
+    .line 83
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 67
+    .line 57
+    const/4 v0, 0x0
+
+    iput v0, p0, Landroid/telephony/CellBroadcastMessage;->mSubId:I
+
+    .line 84
     iput-object p1, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
-    .line 68
+    .line 85
     iput-wide p2, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
 
-    .line 69
+    .line 86
     iput-boolean p4, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
 
-    .line 70
+    .line 87
     return-void
 .end method
 
@@ -155,7 +171,7 @@
     .parameter "cursor"
 
     .prologue
-    .line 107
+    .line 130
     const-string v22, "geo_scope"
 
     move-object/from16 v0, p0
@@ -174,7 +190,7 @@
 
     move-result v14
 
-    .line 109
+    .line 132
     .local v14, geoScope:I
     const-string v22, "serial_number"
 
@@ -194,7 +210,7 @@
 
     move-result v15
 
-    .line 111
+    .line 134
     .local v15, serialNum:I
     const-string v22, "service_category"
 
@@ -214,7 +230,7 @@
 
     move-result v17
 
-    .line 113
+    .line 136
     .local v17, category:I
     const-string v22, "language"
 
@@ -234,7 +250,7 @@
 
     move-result-object v18
 
-    .line 115
+    .line 138
     .local v18, language:Ljava/lang/String;
     const-string v22, "body"
 
@@ -254,7 +270,7 @@
 
     move-result-object v19
 
-    .line 117
+    .line 140
     .local v19, body:Ljava/lang/String;
     const-string v22, "format"
 
@@ -274,7 +290,7 @@
 
     move-result v13
 
-    .line 119
+    .line 142
     .local v13, format:I
     const-string v22, "priority"
 
@@ -294,7 +310,7 @@
 
     move-result v20
 
-    .line 123
+    .line 146
     .local v20, priority:I
     const-string v22, "plmn"
 
@@ -306,7 +322,7 @@
 
     move-result v38
 
-    .line 124
+    .line 147
     .local v38, plmnColumn:I
     const/16 v22, -0x1
 
@@ -326,7 +342,7 @@
 
     if-nez v22, :cond_0
 
-    .line 125
+    .line 148
     move-object/from16 v0, p0
 
     move/from16 v1, v38
@@ -335,7 +351,7 @@
 
     move-result-object v37
 
-    .line 131
+    .line 154
     .local v37, plmn:Ljava/lang/String;
     :goto_0
     const-string v22, "lac"
@@ -348,7 +364,7 @@
 
     move-result v36
 
-    .line 132
+    .line 155
     .local v36, lacColumn:I
     const/16 v22, -0x1
 
@@ -368,7 +384,7 @@
 
     if-nez v22, :cond_1
 
-    .line 133
+    .line 156
     move-object/from16 v0, p0
 
     move/from16 v1, v36
@@ -377,7 +393,7 @@
 
     move-result v35
 
-    .line 139
+    .line 162
     .local v35, lac:I
     :goto_1
     const-string v22, "cid"
@@ -390,7 +406,7 @@
 
     move-result v24
 
-    .line 140
+    .line 163
     .local v24, cidColumn:I
     const/16 v22, -0x1
 
@@ -410,7 +426,7 @@
 
     if-nez v22, :cond_2
 
-    .line 141
+    .line 164
     move-object/from16 v0, p0
 
     move/from16 v1, v24
@@ -419,7 +435,7 @@
 
     move-result v23
 
-    .line 146
+    .line 169
     .local v23, cid:I
     :goto_2
     new-instance v16, Landroid/telephony/SmsCbLocation;
@@ -434,7 +450,7 @@
 
     invoke-direct {v0, v1, v2, v3}, Landroid/telephony/SmsCbLocation;-><init>(Ljava/lang/String;II)V
 
-    .line 149
+    .line 172
     .local v16, location:Landroid/telephony/SmsCbLocation;
     const-string v22, "etws_warning_type"
 
@@ -446,7 +462,7 @@
 
     move-result v33
 
-    .line 151
+    .line 174
     .local v33, etwsWarningTypeColumn:I
     const/16 v22, -0x1
 
@@ -466,7 +482,7 @@
 
     if-nez v22, :cond_3
 
-    .line 152
+    .line 175
     move-object/from16 v0, p0
 
     move/from16 v1, v33
@@ -475,7 +491,7 @@
 
     move-result v39
 
-    .line 153
+    .line 176
     .local v39, warningType:I
     new-instance v21, Landroid/telephony/SmsCbEtwsInfo;
 
@@ -497,7 +513,7 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Landroid/telephony/SmsCbEtwsInfo;-><init>(IZZ[B)V
 
-    .line 159
+    .line 182
     .end local v39           #warningType:I
     .local v21, etwsInfo:Landroid/telephony/SmsCbEtwsInfo;
     :goto_3
@@ -511,7 +527,7 @@
 
     move-result v27
 
-    .line 161
+    .line 184
     .local v27, cmasMessageClassColumn:I
     const/16 v22, -0x1
 
@@ -531,7 +547,7 @@
 
     if-nez v22, :cond_9
 
-    .line 162
+    .line 185
     move-object/from16 v0, p0
 
     move/from16 v1, v27
@@ -540,7 +556,7 @@
 
     move-result v6
 
-    .line 165
+    .line 188
     .local v6, messageClass:I
     const-string v22, "cmas_category"
 
@@ -552,7 +568,7 @@
 
     move-result v25
 
-    .line 167
+    .line 190
     .local v25, cmasCategoryColumn:I
     const/16 v22, -0x1
 
@@ -572,7 +588,7 @@
 
     if-nez v22, :cond_4
 
-    .line 168
+    .line 191
     move-object/from16 v0, p0
 
     move/from16 v1, v25
@@ -581,7 +597,7 @@
 
     move-result v7
 
-    .line 174
+    .line 197
     .local v7, cmasCategory:I
     :goto_4
     const-string v22, "cmas_response_type"
@@ -594,7 +610,7 @@
 
     move-result v28
 
-    .line 176
+    .line 199
     .local v28, cmasResponseTypeColumn:I
     const/16 v22, -0x1
 
@@ -614,7 +630,7 @@
 
     if-nez v22, :cond_5
 
-    .line 177
+    .line 200
     move-object/from16 v0, p0
 
     move/from16 v1, v28
@@ -623,7 +639,7 @@
 
     move-result v8
 
-    .line 183
+    .line 206
     .local v8, responseType:I
     :goto_5
     const-string v22, "cmas_severity"
@@ -636,7 +652,7 @@
 
     move-result v29
 
-    .line 185
+    .line 208
     .local v29, cmasSeverityColumn:I
     const/16 v22, -0x1
 
@@ -656,7 +672,7 @@
 
     if-nez v22, :cond_6
 
-    .line 186
+    .line 209
     move-object/from16 v0, p0
 
     move/from16 v1, v29
@@ -665,7 +681,7 @@
 
     move-result v9
 
-    .line 192
+    .line 215
     .local v9, severity:I
     :goto_6
     const-string v22, "cmas_urgency"
@@ -678,7 +694,7 @@
 
     move-result v30
 
-    .line 194
+    .line 217
     .local v30, cmasUrgencyColumn:I
     const/16 v22, -0x1
 
@@ -698,7 +714,7 @@
 
     if-nez v22, :cond_7
 
-    .line 195
+    .line 218
     move-object/from16 v0, p0
 
     move/from16 v1, v30
@@ -707,7 +723,7 @@
 
     move-result v10
 
-    .line 201
+    .line 224
     .local v10, urgency:I
     :goto_7
     const-string v22, "cmas_certainty"
@@ -720,7 +736,7 @@
 
     move-result v26
 
-    .line 203
+    .line 226
     .local v26, cmasCertaintyColumn:I
     const/16 v22, -0x1
 
@@ -740,7 +756,7 @@
 
     if-nez v22, :cond_8
 
-    .line 204
+    .line 227
     move-object/from16 v0, p0
 
     move/from16 v1, v26
@@ -749,14 +765,14 @@
 
     move-result v11
 
-    .line 209
+    .line 232
     .local v11, certainty:I
     :goto_8
     new-instance v5, Landroid/telephony/SmsCbCmasInfo;
 
     invoke-direct/range {v5 .. v11}, Landroid/telephony/SmsCbCmasInfo;-><init>(IIIIII)V
 
-    .line 215
+    .line 238
     .end local v6           #messageClass:I
     .end local v7           #cmasCategory:I
     .end local v8           #responseType:I
@@ -776,7 +792,7 @@
 
     invoke-direct/range {v12 .. v22}, Landroid/telephony/SmsCbMessage;-><init>(IIILandroid/telephony/SmsCbLocation;ILjava/lang/String;Ljava/lang/String;ILandroid/telephony/SmsCbEtwsInfo;Landroid/telephony/SmsCbCmasInfo;)V
 
-    .line 218
+    .line 241
     .local v12, msg:Landroid/telephony/SmsCbMessage;
     const-string v22, "date"
 
@@ -796,7 +812,7 @@
 
     move-result-wide v31
 
-    .line 220
+    .line 243
     .local v31, deliveryTime:J
     const-string v22, "read"
 
@@ -820,7 +836,7 @@
 
     const/16 v34, 0x1
 
-    .line 223
+    .line 246
     .local v34, isRead:Z
     :goto_a
     new-instance v22, Landroid/telephony/CellBroadcastMessage;
@@ -835,7 +851,7 @@
 
     return-object v22
 
-    .line 127
+    .line 150
     .end local v5           #cmasInfo:Landroid/telephony/SmsCbCmasInfo;
     .end local v12           #msg:Landroid/telephony/SmsCbMessage;
     .end local v16           #location:Landroid/telephony/SmsCbLocation;
@@ -855,7 +871,7 @@
     .restart local v37       #plmn:Ljava/lang/String;
     goto/16 :goto_0
 
-    .line 135
+    .line 158
     .restart local v36       #lacColumn:I
     :cond_1
     const/16 v35, -0x1
@@ -863,7 +879,7 @@
     .restart local v35       #lac:I
     goto/16 :goto_1
 
-    .line 143
+    .line 166
     .restart local v24       #cidColumn:I
     :cond_2
     const/16 v23, -0x1
@@ -871,7 +887,7 @@
     .restart local v23       #cid:I
     goto/16 :goto_2
 
-    .line 155
+    .line 178
     .restart local v16       #location:Landroid/telephony/SmsCbLocation;
     .restart local v33       #etwsWarningTypeColumn:I
     :cond_3
@@ -880,7 +896,7 @@
     .restart local v21       #etwsInfo:Landroid/telephony/SmsCbEtwsInfo;
     goto/16 :goto_3
 
-    .line 170
+    .line 193
     .restart local v6       #messageClass:I
     .restart local v25       #cmasCategoryColumn:I
     .restart local v27       #cmasMessageClassColumn:I
@@ -890,7 +906,7 @@
     .restart local v7       #cmasCategory:I
     goto/16 :goto_4
 
-    .line 179
+    .line 202
     .restart local v28       #cmasResponseTypeColumn:I
     :cond_5
     const/4 v8, -0x1
@@ -898,7 +914,7 @@
     .restart local v8       #responseType:I
     goto/16 :goto_5
 
-    .line 188
+    .line 211
     .restart local v29       #cmasSeverityColumn:I
     :cond_6
     const/4 v9, -0x1
@@ -906,7 +922,7 @@
     .restart local v9       #severity:I
     goto/16 :goto_6
 
-    .line 197
+    .line 220
     .restart local v30       #cmasUrgencyColumn:I
     :cond_7
     const/4 v10, -0x1
@@ -914,7 +930,7 @@
     .restart local v10       #urgency:I
     goto :goto_7
 
-    .line 206
+    .line 229
     .restart local v26       #cmasCertaintyColumn:I
     :cond_8
     const/4 v11, -0x1
@@ -922,7 +938,7 @@
     .restart local v11       #certainty:I
     goto :goto_8
 
-    .line 212
+    .line 235
     .end local v6           #messageClass:I
     .end local v7           #cmasCategory:I
     .end local v8           #responseType:I
@@ -940,7 +956,7 @@
     .restart local v5       #cmasInfo:Landroid/telephony/SmsCbCmasInfo;
     goto :goto_9
 
-    .line 220
+    .line 243
     .restart local v12       #msg:Landroid/telephony/SmsCbMessage;
     .restart local v31       #deliveryTime:J
     :cond_a
@@ -955,7 +971,7 @@
     .locals 1
 
     .prologue
-    .line 80
+    .line 99
     const/4 v0, 0x0
 
     return v0
@@ -965,7 +981,7 @@
     .locals 1
 
     .prologue
-    .line 364
+    .line 379
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->isCmasMessage()Z
@@ -974,7 +990,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 365
+    .line 380
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->getCmasWarningInfo()Landroid/telephony/SmsCbCmasInfo;
@@ -985,7 +1001,7 @@
 
     move-result v0
 
-    .line 367
+    .line 382
     :goto_0
     return v0
 
@@ -999,7 +1015,7 @@
     .locals 1
 
     .prologue
-    .line 304
+    .line 327
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->getCmasWarningInfo()Landroid/telephony/SmsCbCmasInfo;
@@ -1015,18 +1031,18 @@
     .prologue
     const/4 v7, -0x1
 
-    .line 231
+    .line 254
     new-instance v1, Landroid/content/ContentValues;
 
     const/16 v5, 0x10
 
     invoke-direct {v1, v5}, Landroid/content/ContentValues;-><init>(I)V
 
-    .line 232
+    .line 255
     .local v1, cv:Landroid/content/ContentValues;
     iget-object v4, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
-    .line 233
+    .line 256
     .local v4, msg:Landroid/telephony/SmsCbMessage;
     const-string v5, "geo_scope"
 
@@ -1040,12 +1056,12 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 234
+    .line 257
     invoke-virtual {v4}, Landroid/telephony/SmsCbMessage;->getLocation()Landroid/telephony/SmsCbLocation;
 
     move-result-object v3
 
-    .line 235
+    .line 258
     .local v3, location:Landroid/telephony/SmsCbLocation;
     invoke-virtual {v3}, Landroid/telephony/SmsCbLocation;->getPlmn()Ljava/lang/String;
 
@@ -1053,7 +1069,7 @@
 
     if-eqz v5, :cond_0
 
-    .line 236
+    .line 259
     const-string v5, "plmn"
 
     invoke-virtual {v3}, Landroid/telephony/SmsCbLocation;->getPlmn()Ljava/lang/String;
@@ -1062,7 +1078,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 238
+    .line 261
     :cond_0
     invoke-virtual {v3}, Landroid/telephony/SmsCbLocation;->getLac()I
 
@@ -1070,7 +1086,7 @@
 
     if-eq v5, v7, :cond_1
 
-    .line 239
+    .line 262
     const-string v5, "lac"
 
     invoke-virtual {v3}, Landroid/telephony/SmsCbLocation;->getLac()I
@@ -1083,7 +1099,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 241
+    .line 264
     :cond_1
     invoke-virtual {v3}, Landroid/telephony/SmsCbLocation;->getCid()I
 
@@ -1091,7 +1107,7 @@
 
     if-eq v5, v7, :cond_2
 
-    .line 242
+    .line 265
     const-string v5, "cid"
 
     invoke-virtual {v3}, Landroid/telephony/SmsCbLocation;->getCid()I
@@ -1104,7 +1120,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 244
+    .line 267
     :cond_2
     const-string v5, "serial_number"
 
@@ -1118,7 +1134,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 245
+    .line 268
     const-string v5, "service_category"
 
     invoke-virtual {v4}, Landroid/telephony/SmsCbMessage;->getServiceCategory()I
@@ -1131,7 +1147,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 246
+    .line 269
     const-string v5, "language"
 
     invoke-virtual {v4}, Landroid/telephony/SmsCbMessage;->getLanguageCode()Ljava/lang/String;
@@ -1140,7 +1156,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 247
+    .line 270
     const-string v5, "body"
 
     invoke-virtual {v4}, Landroid/telephony/SmsCbMessage;->getMessageBody()Ljava/lang/String;
@@ -1149,7 +1165,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 248
+    .line 271
     const-string v5, "date"
 
     iget-wide v6, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
@@ -1160,7 +1176,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 249
+    .line 272
     const-string v5, "read"
 
     iget-boolean v6, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
@@ -1171,7 +1187,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Boolean;)V
 
-    .line 250
+    .line 273
     const-string v5, "format"
 
     invoke-virtual {v4}, Landroid/telephony/SmsCbMessage;->getMessageFormat()I
@@ -1184,7 +1200,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 251
+    .line 274
     const-string v5, "priority"
 
     invoke-virtual {v4}, Landroid/telephony/SmsCbMessage;->getMessagePriority()I
@@ -1197,18 +1213,18 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 253
+    .line 276
     iget-object v5, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v5}, Landroid/telephony/SmsCbMessage;->getEtwsWarningInfo()Landroid/telephony/SmsCbEtwsInfo;
 
     move-result-object v2
 
-    .line 254
+    .line 277
     .local v2, etwsInfo:Landroid/telephony/SmsCbEtwsInfo;
     if-eqz v2, :cond_3
 
-    .line 255
+    .line 278
     const-string v5, "etws_warning_type"
 
     invoke-virtual {v2}, Landroid/telephony/SmsCbEtwsInfo;->getWarningType()I
@@ -1221,7 +1237,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 258
+    .line 281
     :cond_3
     iget-object v5, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
@@ -1229,11 +1245,11 @@
 
     move-result-object v0
 
-    .line 259
+    .line 282
     .local v0, cmasInfo:Landroid/telephony/SmsCbCmasInfo;
     if-eqz v0, :cond_4
 
-    .line 260
+    .line 283
     const-string v5, "cmas_message_class"
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbCmasInfo;->getMessageClass()I
@@ -1246,7 +1262,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 261
+    .line 284
     const-string v5, "cmas_category"
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbCmasInfo;->getCategory()I
@@ -1259,7 +1275,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 262
+    .line 285
     const-string v5, "cmas_response_type"
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbCmasInfo;->getResponseType()I
@@ -1272,7 +1288,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 263
+    .line 286
     const-string v5, "cmas_severity"
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbCmasInfo;->getSeverity()I
@@ -1285,7 +1301,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 264
+    .line 287
     const-string v5, "cmas_urgency"
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbCmasInfo;->getUrgency()I
@@ -1298,7 +1314,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 265
+    .line 288
     const-string v5, "cmas_certainty"
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbCmasInfo;->getCertainty()I
@@ -1311,7 +1327,7 @@
 
     invoke-virtual {v1, v5, v6}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 268
+    .line 291
     :cond_4
     return-object v1
 .end method
@@ -1321,10 +1337,10 @@
     .parameter "context"
 
     .prologue
-    .line 407
+    .line 422
     const v0, 0x80b11
 
-    .line 410
+    .line 425
     .local v0, flags:I
     iget-wide v1, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
 
@@ -1339,7 +1355,7 @@
     .locals 2
 
     .prologue
-    .line 288
+    .line 311
     iget-wide v0, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
 
     return-wide v0
@@ -1349,7 +1365,7 @@
     .locals 1
 
     .prologue
-    .line 308
+    .line 331
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->getEtwsWarningInfo()Landroid/telephony/SmsCbEtwsInfo;
@@ -1363,7 +1379,7 @@
     .locals 1
 
     .prologue
-    .line 280
+    .line 303
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->getLanguageCode()Ljava/lang/String;
@@ -1377,7 +1393,7 @@
     .locals 1
 
     .prologue
-    .line 292
+    .line 315
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->getMessageBody()Ljava/lang/String;
@@ -1391,7 +1407,7 @@
     .locals 1
 
     .prologue
-    .line 300
+    .line 323
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->getSerialNumber()I
@@ -1405,7 +1421,7 @@
     .locals 1
 
     .prologue
-    .line 284
+    .line 307
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->getServiceCategory()I
@@ -1420,10 +1436,10 @@
     .parameter "context"
 
     .prologue
-    .line 419
+    .line 434
     const/16 v0, 0x11
 
-    .line 420
+    .line 435
     .local v0, flags:I
     iget-wide v1, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
 
@@ -1434,11 +1450,21 @@
     return-object v1
 .end method
 
+.method public getSubId()I
+    .locals 1
+
+    .prologue
+    .line 74
+    iget v0, p0, Landroid/telephony/CellBroadcastMessage;->mSubId:I
+
+    return v0
+.end method
+
 .method public isCmasMessage()Z
     .locals 1
 
     .prologue
-    .line 355
+    .line 370
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->isCmasMessage()Z
@@ -1449,64 +1475,31 @@
 .end method
 
 .method public isEmergencyAlertMessage()Z
-    .locals 4
+    .locals 1
 
     .prologue
-    const/4 v1, 0x0
+    .line 354
+    iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
-    .line 331
-    iget-object v2, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
+    invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->isEmergencyMessage()Z
 
-    invoke-virtual {v2}, Landroid/telephony/SmsCbMessage;->isEmergencyMessage()Z
+    move-result v0
 
-    move-result v2
-
-    if-nez v2, :cond_1
-
-    .line 339
-    :cond_0
-    :goto_0
-    return v1
-
-    .line 334
-    :cond_1
-    iget-object v2, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
-
-    invoke-virtual {v2}, Landroid/telephony/SmsCbMessage;->getCmasWarningInfo()Landroid/telephony/SmsCbCmasInfo;
-
-    move-result-object v0
-
-    .line 335
-    .local v0, cmasInfo:Landroid/telephony/SmsCbCmasInfo;
-    if-eqz v0, :cond_2
-
-    invoke-virtual {v0}, Landroid/telephony/SmsCbCmasInfo;->getMessageClass()I
-
-    move-result v2
-
-    const/4 v3, 0x3
-
-    if-eq v2, v3, :cond_0
-
-    .line 339
-    :cond_2
-    const/4 v1, 0x1
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isEtwsEmergencyUserAlert()Z
     .locals 2
 
     .prologue
-    .line 387
+    .line 402
     iget-object v1, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v1}, Landroid/telephony/SmsCbMessage;->getEtwsWarningInfo()Landroid/telephony/SmsCbEtwsInfo;
 
     move-result-object v0
 
-    .line 388
+    .line 403
     .local v0, etwsInfo:Landroid/telephony/SmsCbEtwsInfo;
     if-eqz v0, :cond_0
 
@@ -1531,7 +1524,7 @@
     .locals 1
 
     .prologue
-    .line 347
+    .line 362
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->isEtwsMessage()Z
@@ -1545,14 +1538,14 @@
     .locals 2
 
     .prologue
-    .line 377
+    .line 392
     iget-object v1, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v1}, Landroid/telephony/SmsCbMessage;->getEtwsWarningInfo()Landroid/telephony/SmsCbEtwsInfo;
 
     move-result-object v0
 
-    .line 378
+    .line 393
     .local v0, etwsInfo:Landroid/telephony/SmsCbEtwsInfo;
     if-eqz v0, :cond_0
 
@@ -1577,14 +1570,14 @@
     .locals 3
 
     .prologue
-    .line 396
+    .line 411
     iget-object v1, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v1}, Landroid/telephony/SmsCbMessage;->getEtwsWarningInfo()Landroid/telephony/SmsCbEtwsInfo;
 
     move-result-object v0
 
-    .line 397
+    .line 412
     .local v0, etwsInfo:Landroid/telephony/SmsCbEtwsInfo;
     if-eqz v0, :cond_0
 
@@ -1611,7 +1604,7 @@
     .locals 1
 
     .prologue
-    .line 321
+    .line 344
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0}, Landroid/telephony/SmsCbMessage;->isEmergencyMessage()Z
@@ -1625,7 +1618,7 @@
     .locals 1
 
     .prologue
-    .line 296
+    .line 319
     iget-boolean v0, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
 
     return v0
@@ -1636,10 +1629,22 @@
     .parameter "isRead"
 
     .prologue
-    .line 276
+    .line 299
     iput-boolean p1, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
 
-    .line 277
+    .line 300
+    return-void
+.end method
+
+.method public setSubId(I)V
+    .locals 0
+    .parameter "subId"
+
+    .prologue
+    .line 65
+    iput p1, p0, Landroid/telephony/CellBroadcastMessage;->mSubId:I
+
+    .line 66
     return-void
 .end method
 
@@ -1649,17 +1654,17 @@
     .parameter "flags"
 
     .prologue
-    .line 84
+    .line 104
     iget-object v0, p0, Landroid/telephony/CellBroadcastMessage;->mSmsCbMessage:Landroid/telephony/SmsCbMessage;
 
     invoke-virtual {v0, p1, p2}, Landroid/telephony/SmsCbMessage;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 85
+    .line 105
     iget-wide v0, p0, Landroid/telephony/CellBroadcastMessage;->mDeliveryTime:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 86
+    .line 106
     iget-boolean v0, p0, Landroid/telephony/CellBroadcastMessage;->mIsRead:Z
 
     if-eqz v0, :cond_0
@@ -1669,10 +1674,15 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 87
+    .line 107
+    iget v0, p0, Landroid/telephony/CellBroadcastMessage;->mSubId:I
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 108
     return-void
 
-    .line 86
+    .line 106
     :cond_0
     const/4 v0, 0x0
 

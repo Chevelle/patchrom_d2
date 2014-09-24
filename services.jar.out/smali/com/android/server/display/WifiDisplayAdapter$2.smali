@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/display/WifiDisplayAdapter;->requestScanLocked()V
+    value = Lcom/android/server/display/WifiDisplayAdapter;->requestStartScanLocked()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 158
+    .line 165
     iput-object p1, p0, Lcom/android/server/display/WifiDisplayAdapter$2;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 161
+    .line 168
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayAdapter$2;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
     #getter for: Lcom/android/server/display/WifiDisplayAdapter;->mDisplayController:Lcom/android/server/display/WifiDisplayController;
@@ -51,7 +51,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 162
+    .line 169
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayAdapter$2;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
     #getter for: Lcom/android/server/display/WifiDisplayAdapter;->mDisplayController:Lcom/android/server/display/WifiDisplayController;
@@ -59,9 +59,9 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/android/server/display/WifiDisplayController;->requestScan()V
+    invoke-virtual {v0}, Lcom/android/server/display/WifiDisplayController;->requestStartScan()V
 
-    .line 164
+    .line 171
     :cond_0
     return-void
 .end method

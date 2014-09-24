@@ -11,6 +11,8 @@
 
 
 # instance fields
+.field private mDialogStyle:I
+
 .field private mRequestCode:I
 
 .field private mRingtoneType:I
@@ -26,12 +28,12 @@
     .parameter "context"
 
     .prologue
-    .line 72
+    .line 75
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Landroid/preference/RingtonePreference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 73
+    .line 76
     return-void
 .end method
 
@@ -41,12 +43,12 @@
     .parameter "attrs"
 
     .prologue
-    .line 68
+    .line 71
     const v0, 0x1010093
 
     invoke-direct {p0, p1, p2, v0}, Landroid/preference/RingtonePreference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 69
+    .line 72
     return-void
 .end method
 
@@ -61,17 +63,17 @@
 
     const/4 v2, 0x1
 
-    .line 54
+    .line 55
     invoke-direct {p0, p1, p2, p3}, Landroid/preference/Preference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 56
+    .line 57
     sget-object v1, Lcom/android/internal/R$styleable;->RingtonePreference:[I
 
     invoke-virtual {p1, p2, v1, p3, v3}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 58
+    .line 59
     .local v0, a:Landroid/content/res/TypedArray;
     invoke-virtual {v0, v3, v2}, Landroid/content/res/TypedArray;->getInt(II)I
 
@@ -79,14 +81,14 @@
 
     iput v1, p0, Landroid/preference/RingtonePreference;->mRingtoneType:I
 
-    .line 60
+    .line 61
     invoke-virtual {v0, v2, v2}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v1
 
     iput-boolean v1, p0, Landroid/preference/RingtonePreference;->mShowDefault:Z
 
-    .line 62
+    .line 63
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1, v2}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
@@ -95,20 +97,39 @@
 
     iput-boolean v1, p0, Landroid/preference/RingtonePreference;->mShowSilent:Z
 
-    .line 64
+    .line 65
+    const/4 v1, 0x3
+
+    invoke-virtual {v0, v1, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v1
+
+    iput v1, p0, Landroid/preference/RingtonePreference;->mDialogStyle:I
+
+    .line 67
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 65
+    .line 68
     return-void
 .end method
 
 
 # virtual methods
+.method public getDialogStyle()I
+    .locals 1
+
+    .prologue
+    .line 144
+    iget v0, p0, Landroid/preference/RingtonePreference;->mDialogStyle:I
+
+    return v0
+.end method
+
 .method public getRingtoneType()I
     .locals 1
 
     .prologue
-    .line 82
+    .line 85
     iget v0, p0, Landroid/preference/RingtonePreference;->mRingtoneType:I
 
     return v0
@@ -118,7 +139,7 @@
     .locals 1
 
     .prologue
-    .line 101
+    .line 104
     iget-boolean v0, p0, Landroid/preference/RingtonePreference;->mShowDefault:Z
 
     return v0
@@ -128,7 +149,7 @@
     .locals 1
 
     .prologue
-    .line 121
+    .line 124
     iget-boolean v0, p0, Landroid/preference/RingtonePreference;->mShowSilent:Z
 
     return v0
@@ -141,15 +162,15 @@
     .parameter "data"
 
     .prologue
-    .line 232
+    .line 260
     iget v1, p0, Landroid/preference/RingtonePreference;->mRequestCode:I
 
     if-ne p1, v1, :cond_2
 
-    .line 234
+    .line 262
     if-eqz p3, :cond_0
 
-    .line 235
+    .line 263
     const-string v1, "android.intent.extra.ringtone.PICKED_URI"
 
     invoke-virtual {p3, v1}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
@@ -158,7 +179,7 @@
 
     check-cast v0, Landroid/net/Uri;
 
-    .line 237
+    .line 265
     .local v0, uri:Landroid/net/Uri;
     if-eqz v0, :cond_1
 
@@ -173,26 +194,26 @@
 
     if-eqz v1, :cond_0
 
-    .line 238
+    .line 266
     invoke-virtual {p0, v0}, Landroid/preference/RingtonePreference;->onSaveRingtone(Landroid/net/Uri;)V
 
-    .line 242
+    .line 270
     .end local v0           #uri:Landroid/net/Uri;
     :cond_0
     const/4 v1, 0x1
 
-    .line 245
+    .line 273
     :goto_1
     return v1
 
-    .line 237
+    .line 265
     .restart local v0       #uri:Landroid/net/Uri;
     :cond_1
     const-string v1, ""
 
     goto :goto_0
 
-    .line 245
+    .line 273
     .end local v0           #uri:Landroid/net/Uri;
     :cond_2
     const/4 v1, 0x0
@@ -205,20 +226,20 @@
     .parameter "preferenceManager"
 
     .prologue
-    .line 224
+    .line 252
     invoke-super {p0, p1}, Landroid/preference/Preference;->onAttachedToHierarchy(Landroid/preference/PreferenceManager;)V
 
-    .line 226
+    .line 254
     invoke-virtual {p1, p0}, Landroid/preference/PreferenceManager;->registerOnActivityResultListener(Landroid/preference/PreferenceManager$OnActivityResultListener;)V
 
-    .line 227
+    .line 255
     invoke-virtual {p1}, Landroid/preference/PreferenceManager;->getNextRequestCode()I
 
     move-result v0
 
     iput v0, p0, Landroid/preference/RingtonePreference;->mRequestCode:I
 
-    .line 228
+    .line 256
     return-void
 .end method
 
@@ -226,18 +247,18 @@
     .locals 4
 
     .prologue
-    .line 137
+    .line 161
     new-instance v0, Landroid/content/Intent;
 
     const-string v2, "android.intent.action.RINGTONE_PICKER"
 
     invoke-direct {v0, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 138
+    .line 162
     .local v0, intent:Landroid/content/Intent;
     invoke-virtual {p0, v0}, Landroid/preference/RingtonePreference;->onPrepareRingtonePickerIntent(Landroid/content/Intent;)V
 
-    .line 139
+    .line 163
     invoke-virtual {p0}, Landroid/preference/RingtonePreference;->getPreferenceManager()Landroid/preference/PreferenceManager;
 
     move-result-object v2
@@ -246,20 +267,20 @@
 
     move-result-object v1
 
-    .line 140
+    .line 164
     .local v1, owningFragment:Landroid/preference/PreferenceFragment;
     if-eqz v1, :cond_0
 
-    .line 141
+    .line 165
     iget v2, p0, Landroid/preference/RingtonePreference;->mRequestCode:I
 
     invoke-virtual {v1, v0, v2}, Landroid/preference/PreferenceFragment;->startActivityForResult(Landroid/content/Intent;I)V
 
-    .line 145
+    .line 169
     :goto_0
     return-void
 
-    .line 143
+    .line 167
     :cond_0
     invoke-virtual {p0}, Landroid/preference/RingtonePreference;->getPreferenceManager()Landroid/preference/PreferenceManager;
 
@@ -282,7 +303,7 @@
     .parameter "index"
 
     .prologue
-    .line 198
+    .line 226
     invoke-virtual {p1, p2}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 
     move-result-object v0
@@ -295,7 +316,7 @@
     .parameter "ringtonePickerIntent"
 
     .prologue
-    .line 156
+    .line 180
     const-string v0, "android.intent.extra.ringtone.EXISTING_URI"
 
     invoke-virtual {p0}, Landroid/preference/RingtonePreference;->onRestoreRingtone()Landroid/net/Uri;
@@ -304,19 +325,19 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 159
+    .line 183
     const-string v0, "android.intent.extra.ringtone.SHOW_DEFAULT"
 
     iget-boolean v1, p0, Landroid/preference/RingtonePreference;->mShowDefault:Z
 
     invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 160
+    .line 184
     iget-boolean v0, p0, Landroid/preference/RingtonePreference;->mShowDefault:Z
 
     if-eqz v0, :cond_0
 
-    .line 161
+    .line 185
     const-string v0, "android.intent.extra.ringtone.DEFAULT_URI"
 
     invoke-virtual {p0}, Landroid/preference/RingtonePreference;->getRingtoneType()I
@@ -329,22 +350,35 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 165
+    .line 188
     :cond_0
+    iget v0, p0, Landroid/preference/RingtonePreference;->mDialogStyle:I
+
+    if-eqz v0, :cond_1
+
+    .line 189
+    const-string v0, "android.intent.extra.ringtone.DIALOG_THEME"
+
+    iget v1, p0, Landroid/preference/RingtonePreference;->mDialogStyle:I
+
+    invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
+
+    .line 193
+    :cond_1
     const-string v0, "android.intent.extra.ringtone.SHOW_SILENT"
 
     iget-boolean v1, p0, Landroid/preference/RingtonePreference;->mShowSilent:Z
 
     invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 166
+    .line 194
     const-string v0, "android.intent.extra.ringtone.TYPE"
 
     iget v1, p0, Landroid/preference/RingtonePreference;->mRingtoneType:I
 
     invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 167
+    .line 195
     const-string v0, "android.intent.extra.ringtone.TITLE"
 
     invoke-virtual {p0}, Landroid/preference/RingtonePreference;->getTitle()Ljava/lang/CharSequence;
@@ -353,13 +387,9 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/CharSequence;)Landroid/content/Intent;
 
-    const-string v0, "com.android.thememanager"
+    invoke-static {p1}, Landroid/preference/Injector$RingtonePreferenceHook;->after_onPrepareRingtonePickerIntent(Landroid/content/Intent;)V
 
-    const-string v1, "com.android.thememanager.activity.ThemeTabActivity"
-
-    invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 168
+    .line 196
     return-void
 .end method
 
@@ -369,12 +399,12 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 192
+    .line 220
     invoke-virtual {p0, v1}, Landroid/preference/RingtonePreference;->getPersistedString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 193
+    .line 221
     .local v0, uriString:Ljava/lang/String;
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -395,7 +425,7 @@
     .parameter "ringtoneUri"
 
     .prologue
-    .line 179
+    .line 207
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Landroid/net/Uri;->toString()Ljava/lang/String;
@@ -405,10 +435,10 @@
     :goto_0
     invoke-virtual {p0, v0}, Landroid/preference/RingtonePreference;->persistString(Ljava/lang/String;)Z
 
-    .line 180
+    .line 208
     return-void
 
-    .line 179
+    .line 207
     :cond_0
     const-string v0, ""
 
@@ -421,21 +451,21 @@
     .parameter "defaultValueObj"
 
     .prologue
-    .line 203
+    .line 231
     move-object v0, p2
 
     check-cast v0, Ljava/lang/String;
 
-    .line 212
+    .line 240
     .local v0, defaultValue:Ljava/lang/String;
     if-eqz p1, :cond_1
 
-    .line 220
+    .line 248
     :cond_0
     :goto_0
     return-void
 
-    .line 217
+    .line 245
     :cond_1
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -443,7 +473,7 @@
 
     if-nez v1, :cond_0
 
-    .line 218
+    .line 246
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
@@ -453,15 +483,27 @@
     goto :goto_0
 .end method
 
+.method public setDialogStyle(I)V
+    .locals 0
+    .parameter "dialogStyle"
+
+    .prologue
+    .line 155
+    iput p1, p0, Landroid/preference/RingtonePreference;->mDialogStyle:I
+
+    .line 156
+    return-void
+.end method
+
 .method public setRingtoneType(I)V
     .locals 0
     .parameter "type"
 
     .prologue
-    .line 92
+    .line 95
     iput p1, p0, Landroid/preference/RingtonePreference;->mRingtoneType:I
 
-    .line 93
+    .line 96
     return-void
 .end method
 
@@ -470,10 +512,10 @@
     .parameter "showDefault"
 
     .prologue
-    .line 112
+    .line 115
     iput-boolean p1, p0, Landroid/preference/RingtonePreference;->mShowDefault:Z
 
-    .line 113
+    .line 116
     return-void
 .end method
 
@@ -482,9 +524,9 @@
     .parameter "showSilent"
 
     .prologue
-    .line 131
+    .line 134
     iput-boolean p1, p0, Landroid/preference/RingtonePreference;->mShowSilent:Z
 
-    .line 132
+    .line 135
     return-void
 .end method

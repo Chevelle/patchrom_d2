@@ -23,7 +23,7 @@
     .locals 0
 
     .prologue
-    .line 263
+    .line 289
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -39,21 +39,21 @@
     .parameter "unused"
 
     .prologue
-    .line 268
+    .line 294
     monitor-enter p0
 
-    .line 269
+    .line 295
     :try_start_0
     iget-object v0, p0, Landroid/app/ContextImpl$StaticServiceFetcher;->mCachedInstance:Ljava/lang/Object;
 
-    .line 270
+    .line 296
     .local v0, service:Ljava/lang/Object;
     if-eqz v0, :cond_0
 
-    .line 271
+    .line 297
     monitor-exit p0
 
-    .line 273
+    .line 299
     .end local v0           #service:Ljava/lang/Object;
     :goto_0
     return-object v0
@@ -71,7 +71,7 @@
 
     goto :goto_0
 
-    .line 274
+    .line 300
     :catchall_0
     move-exception v1
 

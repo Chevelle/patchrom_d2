@@ -44,37 +44,37 @@
     .parameter "d4"
 
     .prologue
-    .line 1261
+    .line 1384
     iput-object p1, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->this$0:Landroid/widget/RemoteViews;
 
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/widget/RemoteViews$Action;-><init>(Landroid/widget/RemoteViews$1;)V
 
-    .line 1305
+    .line 1427
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->isRelative:Z
 
-    .line 1262
+    .line 1385
     iput p2, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->viewId:I
 
-    .line 1263
+    .line 1386
     iput-boolean p3, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->isRelative:Z
 
-    .line 1264
+    .line 1387
     iput p4, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d1:I
 
-    .line 1265
+    .line 1388
     iput p5, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d2:I
 
-    .line 1266
+    .line 1389
     iput p6, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d3:I
 
-    .line 1267
+    .line 1390
     iput p7, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d4:I
 
-    .line 1268
+    .line 1391
     return-void
 .end method
 
@@ -86,24 +86,24 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 1270
+    .line 1393
     iput-object p1, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->this$0:Landroid/widget/RemoteViews;
 
     const/4 v1, 0x0
 
     invoke-direct {p0, v1}, Landroid/widget/RemoteViews$Action;-><init>(Landroid/widget/RemoteViews$1;)V
 
-    .line 1305
+    .line 1427
     iput-boolean v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->isRelative:Z
 
-    .line 1271
+    .line 1394
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->viewId:I
 
-    .line 1272
+    .line 1395
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
@@ -115,100 +115,94 @@
     :cond_0
     iput-boolean v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->isRelative:Z
 
-    .line 1273
+    .line 1396
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d1:I
 
-    .line 1274
+    .line 1397
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d2:I
 
-    .line 1275
+    .line 1398
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d3:I
 
-    .line 1276
+    .line 1399
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d4:I
 
-    .line 1277
+    .line 1400
     return-void
 .end method
 
 
 # virtual methods
 .method public apply(Landroid/view/View;Landroid/view/ViewGroup;Landroid/widget/RemoteViews$OnClickHandler;)V
-    .locals 6
+    .locals 5
     .parameter "root"
     .parameter "rootParent"
     .parameter "handler"
 
     .prologue
-    .line 1291
-    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+    .line 1414
+    iget v1, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->viewId:I
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    .line 1292
-    .local v0, context:Landroid/content/Context;
-    iget v2, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->viewId:I
+    check-cast v0, Landroid/widget/TextView;
 
-    invoke-virtual {p1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    .line 1415
+    .local v0, target:Landroid/widget/TextView;
+    if-nez v0, :cond_0
 
-    move-result-object v1
-
-    check-cast v1, Landroid/widget/TextView;
-
-    .line 1293
-    .local v1, target:Landroid/widget/TextView;
-    if-nez v1, :cond_0
-
-    .line 1299
+    .line 1421
     :goto_0
     return-void
 
-    .line 1294
+    .line 1416
     :cond_0
-    iget-boolean v2, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->isRelative:Z
+    iget-boolean v1, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->isRelative:Z
 
-    if-eqz v2, :cond_1
+    if-eqz v1, :cond_1
 
-    .line 1295
-    iget v2, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d1:I
+    .line 1417
+    iget v1, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d1:I
 
-    iget v3, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d2:I
+    iget v2, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d2:I
 
-    iget v4, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d3:I
+    iget v3, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d3:I
 
-    iget v5, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d4:I
+    iget v4, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d4:I
 
-    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/widget/TextView;->setCompoundDrawablesRelativeWithIntrinsicBounds(IIII)V
+    invoke-virtual {v0, v1, v2, v3, v4}, Landroid/widget/TextView;->setCompoundDrawablesRelativeWithIntrinsicBounds(IIII)V
 
     goto :goto_0
 
-    .line 1297
+    .line 1419
     :cond_1
-    iget v2, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d1:I
+    iget v1, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d1:I
 
-    iget v3, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d2:I
+    iget v2, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d2:I
 
-    iget v4, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d3:I
+    iget v3, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d3:I
 
-    iget v5, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d4:I
+    iget v4, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d4:I
 
-    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/widget/TextView;->setCompoundDrawablesWithIntrinsicBounds(IIII)V
+    invoke-virtual {v0, v1, v2, v3, v4}, Landroid/widget/TextView;->setCompoundDrawablesWithIntrinsicBounds(IIII)V
 
     goto :goto_0
 .end method
@@ -217,7 +211,7 @@
     .locals 1
 
     .prologue
-    .line 1302
+    .line 1424
     const-string v0, "TextViewDrawableAction"
 
     return-object v0
@@ -229,17 +223,17 @@
     .parameter "flags"
 
     .prologue
-    .line 1280
+    .line 1403
     const/16 v0, 0xb
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1281
+    .line 1404
     iget v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->viewId:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1282
+    .line 1405
     iget-boolean v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->isRelative:Z
 
     if-eqz v0, :cond_0
@@ -249,30 +243,30 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1283
+    .line 1406
     iget v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d1:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1284
+    .line 1407
     iget v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d2:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1285
+    .line 1408
     iget v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d3:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1286
+    .line 1409
     iget v0, p0, Landroid/widget/RemoteViews$TextViewDrawableAction;->d4:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1287
+    .line 1410
     return-void
 
-    .line 1282
+    .line 1405
     :cond_0
     const/4 v0, 0x0
 

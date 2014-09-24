@@ -1,5 +1,5 @@
 .class Landroid/net/EthernetDataTracker$InterfaceObserver;
-.super Landroid/net/INetworkManagementEventObserver$Stub;
+.super Lcom/android/server/net/BaseNetworkObserver;
 .source "EthernetDataTracker.java"
 
 
@@ -24,13 +24,13 @@
     .parameter "tracker"
 
     .prologue
-    .line 68
-    invoke-direct {p0}, Landroid/net/INetworkManagementEventObserver$Stub;-><init>()V
+    .line 67
+    invoke-direct {p0}, Lcom/android/server/net/BaseNetworkObserver;-><init>()V
 
-    .line 69
+    .line 68
     iput-object p1, p0, Landroid/net/EthernetDataTracker$InterfaceObserver;->mTracker:Landroid/net/EthernetDataTracker;
 
-    .line 70
+    .line 69
     return-void
 .end method
 
@@ -41,23 +41,13 @@
     .parameter "iface"
 
     .prologue
-    .line 92
+    .line 94
     iget-object v0, p0, Landroid/net/EthernetDataTracker$InterfaceObserver;->mTracker:Landroid/net/EthernetDataTracker;
 
     #calls: Landroid/net/EthernetDataTracker;->interfaceAdded(Ljava/lang/String;)V
-    invoke-static {v0, p1}, Landroid/net/EthernetDataTracker;->access$300(Landroid/net/EthernetDataTracker;Ljava/lang/String;)V
+    invoke-static {v0, p1}, Landroid/net/EthernetDataTracker;->access$200(Landroid/net/EthernetDataTracker;Ljava/lang/String;)V
 
-    .line 93
-    return-void
-.end method
-
-.method public interfaceClassDataActivityChanged(Ljava/lang/String;Z)V
-    .locals 0
-    .parameter "label"
-    .parameter "active"
-
-    .prologue
-    .line 105
+    .line 95
     return-void
 .end method
 
@@ -67,7 +57,7 @@
     .parameter "up"
 
     .prologue
-    .line 77
+    .line 78
     invoke-static {}, Landroid/net/EthernetDataTracker;->access$000()Ljava/lang/String;
 
     move-result-object v0
@@ -78,13 +68,7 @@
 
     if-eqz v0, :cond_0
 
-    invoke-static {}, Landroid/net/EthernetDataTracker;->access$100()Z
-
-    move-result v0
-
-    if-eq v0, p2, :cond_0
-
-    .line 78
+    .line 79
     const-string v1, "Ethernet"
 
     new-instance v0, Ljava/lang/StringBuilder;
@@ -122,39 +106,36 @@
 
     invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 79
+    .line 80
     invoke-static {p2}, Landroid/net/EthernetDataTracker;->access$102(Z)Z
 
-    .line 80
+    .line 81
     iget-object v0, p0, Landroid/net/EthernetDataTracker$InterfaceObserver;->mTracker:Landroid/net/EthernetDataTracker;
 
-    #getter for: Landroid/net/EthernetDataTracker;->mNetworkInfo:Landroid/net/NetworkInfo;
-    invoke-static {v0}, Landroid/net/EthernetDataTracker;->access$200(Landroid/net/EthernetDataTracker;)Landroid/net/NetworkInfo;
-
-    move-result-object v0
+    iget-object v0, v0, Landroid/net/EthernetDataTracker;->mNetworkInfo:Landroid/net/NetworkInfo;
 
     invoke-virtual {v0, p2}, Landroid/net/NetworkInfo;->setIsAvailable(Z)V
 
-    .line 83
+    .line 84
     if-eqz p2, :cond_2
 
-    .line 84
+    .line 85
     iget-object v0, p0, Landroid/net/EthernetDataTracker$InterfaceObserver;->mTracker:Landroid/net/EthernetDataTracker;
 
     invoke-virtual {v0}, Landroid/net/EthernetDataTracker;->reconnect()Z
 
-    .line 89
+    .line 90
     :cond_0
     :goto_1
     return-void
 
-    .line 78
+    .line 79
     :cond_1
     const-string v0, "down"
 
     goto :goto_0
 
-    .line 86
+    .line 87
     :cond_2
     iget-object v0, p0, Landroid/net/EthernetDataTracker$InterfaceObserver;->mTracker:Landroid/net/EthernetDataTracker;
 
@@ -168,13 +149,13 @@
     .parameter "iface"
 
     .prologue
-    .line 96
+    .line 99
     iget-object v0, p0, Landroid/net/EthernetDataTracker$InterfaceObserver;->mTracker:Landroid/net/EthernetDataTracker;
 
     #calls: Landroid/net/EthernetDataTracker;->interfaceRemoved(Ljava/lang/String;)V
-    invoke-static {v0, p1}, Landroid/net/EthernetDataTracker;->access$400(Landroid/net/EthernetDataTracker;Ljava/lang/String;)V
+    invoke-static {v0, p1}, Landroid/net/EthernetDataTracker;->access$300(Landroid/net/EthernetDataTracker;Ljava/lang/String;)V
 
-    .line 97
+    .line 100
     return-void
 .end method
 
@@ -224,14 +205,4 @@
     const-string v0, "down"
 
     goto :goto_0
-.end method
-
-.method public limitReached(Ljava/lang/String;Ljava/lang/String;)V
-    .locals 0
-    .parameter "limitName"
-    .parameter "iface"
-
-    .prologue
-    .line 101
-    return-void
 .end method

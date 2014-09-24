@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 236
+    .line 238
     iput-object p1, p0, Landroid/net/VpnService$Callback;->this$0:Landroid/net/VpnService;
 
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
@@ -38,7 +38,7 @@
     .parameter "x1"
 
     .prologue
-    .line 236
+    .line 238
     invoke-direct {p0, p1}, Landroid/net/VpnService$Callback;-><init>(Landroid/net/VpnService;)V
 
     return-void
@@ -54,20 +54,20 @@
     .parameter "flags"
 
     .prologue
-    .line 239
+    .line 241
     const v0, 0xffffff
 
     if-ne p1, v0, :cond_0
 
-    .line 240
+    .line 242
     iget-object v0, p0, Landroid/net/VpnService$Callback;->this$0:Landroid/net/VpnService;
 
     invoke-virtual {v0}, Landroid/net/VpnService;->onRevoke()V
 
-    .line 241
+    .line 243
     const/4 v0, 0x1
 
-    .line 243
+    .line 245
     :goto_0
     return v0
 

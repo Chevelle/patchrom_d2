@@ -87,6 +87,30 @@
     .end annotation
 .end method
 
+.method public abstract getLastWallpaperX()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getLastWallpaperY()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getWindowId(Landroid/os/IBinder;)Landroid/view/IWindowId;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract onRectangleOnScreenRequested(Landroid/os/IBinder;Landroid/graphics/Rect;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -135,7 +159,7 @@
     .end annotation
 .end method
 
-.method public abstract relayout(Landroid/view/IWindow;ILandroid/view/WindowManager$LayoutParams;IIIILandroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/content/res/Configuration;Landroid/view/Surface;)I
+.method public abstract relayout(Landroid/view/IWindow;ILandroid/view/WindowManager$LayoutParams;IIIILandroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/content/res/Configuration;Landroid/view/Surface;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -200,6 +224,14 @@
 .end method
 
 .method public abstract setWallpaperPosition(Landroid/os/IBinder;FFFF)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setWallpaperPositionOverscroll(Landroid/os/IBinder;FFFFFFII)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

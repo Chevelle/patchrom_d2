@@ -4,10 +4,6 @@
 
 
 # static fields
-.field public static final INTENT_ACTION_PROFILE_SELECTED:Ljava/lang/String; = "android.intent.action.PROFILE_SELECTED"
-
-.field public static final INTENT_ACTION_PROFILE_UPDATED:Ljava/lang/String; = "android.intent.action.PROFILE_UPDATED"
-
 .field private static final LOCAL_LOGV:Z = false
 
 .field public static final PERMISSION_CHANGE_SETTINGS:Ljava/lang/String; = "android.permission.WRITE_SETTINGS"
@@ -42,8 +38,6 @@
 
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
 
-.field private mLastConnectedSSID:Ljava/lang/String;
-
 .field private mProfileNames:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -68,7 +62,7 @@
     .end annotation
 .end field
 
-.field private mWifiManager:Landroid/net/wifi/WifiManager;
+.field private mTriggerHelper:Lcom/android/server/ProfileTriggerHelper;
 
 .field private mWildcardGroup:Landroid/app/NotificationGroup;
 
@@ -78,7 +72,7 @@
     .locals 3
 
     .prologue
-    .line 76
+    .line 60
     new-instance v0, Ljava/io/File;
 
     invoke-static {}, Landroid/os/Environment;->getSystemSecureDirectory()Ljava/io/File;
@@ -91,7 +85,7 @@
 
     sput-object v0, Lcom/android/server/ProfileManagerService;->PROFILE_FILE:Ljava/io/File;
 
-    .line 91
+    .line 73
     const-string v0, "a126d48a-aaef-47c4-baed-7f0e44aeffe5"
 
     invoke-static {v0}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;
@@ -108,22 +102,22 @@
     .parameter "context"
 
     .prologue
-    const v4, 0x1040022
+    const v4, 0x1040066
 
-    .line 147
+    .line 95
     invoke-direct {p0}, Landroid/app/IProfileManager$Stub;-><init>()V
 
-    .line 100
+    .line 82
     new-instance v1, Lcom/android/server/ProfileManagerService$1;
 
     invoke-direct {v1, p0}, Lcom/android/server/ProfileManagerService$1;-><init>(Lcom/android/server/ProfileManagerService;)V
 
     iput-object v1, p0, Lcom/android/server/ProfileManagerService;->mIntentReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 148
+    .line 96
     iput-object p1, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
-    .line 149
+    .line 97
     new-instance v1, Landroid/app/backup/BackupManager;
 
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
@@ -132,27 +126,16 @@
 
     iput-object v1, p0, Lcom/android/server/ProfileManagerService;->mBackupManager:Landroid/app/backup/BackupManager;
 
-    .line 150
-    iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
+    .line 98
+    new-instance v1, Lcom/android/server/ProfileTriggerHelper;
 
-    const-string v2, "wifi"
+    iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v1, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-direct {v1, v2, p0}, Lcom/android/server/ProfileTriggerHelper;-><init>(Landroid/content/Context;Lcom/android/server/ProfileManagerService;)V
 
-    move-result-object v1
+    iput-object v1, p0, Lcom/android/server/ProfileManagerService;->mTriggerHelper:Lcom/android/server/ProfileTriggerHelper;
 
-    check-cast v1, Landroid/net/wifi/WifiManager;
-
-    iput-object v1, p0, Lcom/android/server/ProfileManagerService;->mWifiManager:Landroid/net/wifi/WifiManager;
-
-    .line 151
-    invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->getActiveSSID()Ljava/lang/String;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/android/server/ProfileManagerService;->mLastConnectedSSID:Ljava/lang/String;
-
-    .line 153
+    .line 100
     new-instance v1, Landroid/app/NotificationGroup;
 
     invoke-virtual {p1, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
@@ -165,48 +148,33 @@
 
     iput-object v1, p0, Lcom/android/server/ProfileManagerService;->mWildcardGroup:Landroid/app/NotificationGroup;
 
-    .line 158
+    .line 105
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->initialize()V
 
-    .line 160
+    .line 107
     new-instance v0, Landroid/content/IntentFilter;
 
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
-    .line 161
+    .line 108
     .local v0, filter:Landroid/content/IntentFilter;
     const-string v1, "android.intent.action.LOCALE_CHANGED"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 162
+    .line 109
     const-string v1, "android.intent.action.ACTION_SHUTDOWN"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 163
-    const-string v1, "android.net.wifi.STATE_CHANGE"
-
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
-
-    .line 164
-    const-string v1, "android.bluetooth.device.action.ACL_CONNECTED"
-
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
-
-    .line 165
-    const-string v1, "android.bluetooth.device.action.ACL_DISCONNECTED"
-
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
-
-    .line 166
+    .line 110
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mIntentReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {v1, v2, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 167
+    .line 111
     return-void
 .end method
 
@@ -215,7 +183,7 @@
     .parameter "x0"
 
     .prologue
-    .line 55
+    .line 53
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
     return-void
@@ -226,88 +194,10 @@
     .parameter "x0"
 
     .prologue
-    .line 55
+    .line 53
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->initialize()V
 
     return-void
-.end method
-
-.method static synthetic access$200(Lcom/android/server/ProfileManagerService;)Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 55
-    invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->getActiveSSID()Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method static synthetic access$300(Lcom/android/server/ProfileManagerService;)Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 55
-    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mLastConnectedSSID:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method static synthetic access$302(Lcom/android/server/ProfileManagerService;Ljava/lang/String;)Ljava/lang/String;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 55
-    iput-object p1, p0, Lcom/android/server/ProfileManagerService;->mLastConnectedSSID:Ljava/lang/String;
-
-    return-object p1
-.end method
-
-.method static synthetic access$400(Lcom/android/server/ProfileManagerService;)Ljava/util/Map;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 55
-    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
-
-    return-object v0
-.end method
-
-.method static synthetic access$500(Lcom/android/server/ProfileManagerService;)Landroid/app/Profile;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 55
-    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    return-object v0
-.end method
-
-.method static synthetic access$600(Lcom/android/server/ProfileManagerService;Landroid/app/Profile;Z)Z
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 55
-    invoke-direct {p0, p1, p2}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)Z
-
-    move-result v0
-
-    return v0
 .end method
 
 .method private addNotificationGroupInternal(Landroid/app/NotificationGroup;)V
@@ -315,7 +205,7 @@
     .parameter "group"
 
     .prologue
-    .line 462
+    .line 406
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/NotificationGroup;->getUuid()Ljava/util/UUID;
@@ -328,7 +218,7 @@
 
     if-nez v2, :cond_0
 
-    .line 465
+    .line 409
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-interface {v2}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -353,7 +243,7 @@
 
     check-cast v1, Landroid/app/Profile;
 
-    .line 466
+    .line 410
     .local v1, profile:Landroid/app/Profile;
     const/4 v2, 0x0
 
@@ -361,7 +251,7 @@
 
     goto :goto_0
 
-    .line 469
+    .line 413
     .end local v0           #i$:Ljava/util/Iterator;
     .end local v1           #profile:Landroid/app/Profile;
     :cond_0
@@ -369,7 +259,7 @@
 
     iput-boolean v2, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 470
+    .line 414
     return-void
 .end method
 
@@ -380,7 +270,7 @@
     .prologue
     const/4 v5, 0x1
 
-    .line 320
+    .line 253
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-interface {v2}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -405,7 +295,7 @@
 
     check-cast v0, Landroid/app/NotificationGroup;
 
-    .line 321
+    .line 254
     .local v0, group:Landroid/app/NotificationGroup;
     const/4 v2, 0x0
 
@@ -413,14 +303,14 @@
 
     goto :goto_0
 
-    .line 323
+    .line 256
     .end local v0           #group:Landroid/app/NotificationGroup;
     :cond_0
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mWildcardGroup:Landroid/app/NotificationGroup;
 
     invoke-direct {p0, p1, v2, v5}, Lcom/android/server/ProfileManagerService;->ensureGroupInProfile(Landroid/app/Profile;Landroid/app/NotificationGroup;Z)V
 
-    .line 324
+    .line 257
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
@@ -429,7 +319,7 @@
 
     invoke-interface {v2, v3, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 325
+    .line 258
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/Profile;->getName()Ljava/lang/String;
@@ -442,23 +332,18 @@
 
     invoke-interface {v2, v3, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 326
+    .line 259
     iput-boolean v5, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 327
+    .line 260
     return-void
 .end method
 
 .method private enforceChangePermissions()V
     .locals 3
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
 
     .prologue
-    .line 642
+    .line 588
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
     const-string v1, "android.permission.WRITE_SETTINGS"
@@ -467,7 +352,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 644
+    .line 590
     return-void
 .end method
 
@@ -478,7 +363,7 @@
     .parameter "defaultGroup"
 
     .prologue
-    .line 330
+    .line 264
     invoke-virtual {p2}, Landroid/app/NotificationGroup;->getUuid()Ljava/util/UUID;
 
     move-result-object v4
@@ -489,12 +374,12 @@
 
     if-eqz v4, :cond_1
 
-    .line 344
+    .line 278
     :cond_0
     :goto_0
     return-void
 
-    .line 336
+    .line 270
     :cond_1
     invoke-virtual {p1}, Landroid/app/Profile;->getProfileGroups()[Landroid/app/ProfileGroup;
 
@@ -512,7 +397,7 @@
 
     aget-object v3, v0, v1
 
-    .line 337
+    .line 271
     .local v3, pg:Landroid/app/ProfileGroup;
     invoke-virtual {v3, p2, p3}, Landroid/app/ProfileGroup;->matches(Landroid/app/NotificationGroup;Z)Z
 
@@ -520,12 +405,12 @@
 
     if-nez v4, :cond_0
 
-    .line 336
+    .line 270
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 343
+    .line 277
     .end local v3           #pg:Landroid/app/ProfileGroup;
     :cond_2
     new-instance v4, Landroid/app/ProfileGroup;
@@ -541,67 +426,123 @@
     goto :goto_0
 .end method
 
-.method private getActiveSSID()Ljava/lang/String;
-    .locals 4
+.method private getProfile(Ljava/util/UUID;)Landroid/app/Profile;
+    .locals 7
+    .parameter "profileUuid"
 
     .prologue
-    const/4 v2, 0x0
+    .line 300
+    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
-    .line 203
-    iget-object v3, p0, Lcom/android/server/ProfileManagerService;->mWifiManager:Landroid/net/wifi/WifiManager;
+    invoke-interface {v6, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
-    invoke-virtual {v3}, Landroid/net/wifi/WifiManager;->getConnectionInfo()Landroid/net/wifi/WifiInfo;
+    move-result v6
+
+    if-eqz v6, :cond_0
+
+    .line 301
+    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
+
+    invoke-interface {v6, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Landroid/app/Profile;
+
+    .line 312
+    :goto_0
+    return-object v6
+
+    .line 304
+    :cond_0
+    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
+
+    invoke-interface {v6}, Ljava/util/Map;->values()Ljava/util/Collection;
+
+    move-result-object v6
+
+    invoke-interface {v6}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    .line 204
-    .local v1, wifiinfo:Landroid/net/wifi/WifiInfo;
-    if-nez v1, :cond_1
-
-    .line 211
-    :cond_0
-    :goto_0
-    return-object v2
-
-    .line 207
     :cond_1
-    invoke-virtual {v1}, Landroid/net/wifi/WifiInfo;->getWifiSsid()Landroid/net/wifi/WifiSsid;
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v6
+
+    if-eqz v6, :cond_3
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/app/Profile;
+
+    .line 305
+    .local v4, p:Landroid/app/Profile;
+    invoke-virtual {v4}, Landroid/app/Profile;->getSecondaryUuids()[Ljava/util/UUID;
 
     move-result-object v0
 
-    .line 208
-    .local v0, ssid:Landroid/net/wifi/WifiSsid;
-    if-eqz v0, :cond_0
+    .local v0, arr$:[Ljava/util/UUID;
+    array-length v3, v0
 
-    .line 211
-    invoke-virtual {v0}, Landroid/net/wifi/WifiSsid;->toString()Ljava/lang/String;
+    .local v3, len$:I
+    const/4 v2, 0x0
 
-    move-result-object v2
+    .local v2, i$:I
+    :goto_1
+    if-ge v2, v3, :cond_1
+
+    aget-object v5, v0, v2
+
+    .line 306
+    .local v5, uuid:Ljava/util/UUID;
+    invoke-virtual {p1, v5}, Ljava/util/UUID;->equals(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_2
+
+    move-object v6, v4
+
+    .line 307
+    goto :goto_0
+
+    .line 305
+    :cond_2
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_1
+
+    .line 312
+    .end local v0           #arr$:[Ljava/util/UUID;
+    .end local v2           #i$:I
+    .end local v3           #len$:I
+    .end local v4           #p:Landroid/app/Profile;
+    .end local v5           #uuid:Ljava/util/UUID;
+    :cond_3
+    const/4 v6, 0x0
 
     goto :goto_0
 .end method
 
 .method private getXmlString()Ljava/lang/String;
     .locals 5
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
 
     .prologue
-    .line 582
+    .line 528
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 583
+    .line 529
     .local v0, builder:Ljava/lang/StringBuilder;
     const-string v4, "<profiles>\n<active>"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 584
+    .line 530
     invoke-virtual {p0}, Lcom/android/server/ProfileManagerService;->getActiveProfile()Landroid/app/Profile;
 
     move-result-object v4
@@ -620,12 +561,12 @@
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 585
+    .line 531
     const-string v4, "</active>\n"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 587
+    .line 533
     iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-interface {v4}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -650,7 +591,7 @@
 
     check-cast v3, Landroid/app/Profile;
 
-    .line 588
+    .line 534
     .local v3, p:Landroid/app/Profile;
     iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
@@ -658,7 +599,7 @@
 
     goto :goto_0
 
-    .line 590
+    .line 536
     .end local v3           #p:Landroid/app/Profile;
     :cond_0
     iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
@@ -684,7 +625,7 @@
 
     check-cast v1, Landroid/app/NotificationGroup;
 
-    .line 591
+    .line 537
     .local v1, g:Landroid/app/NotificationGroup;
     iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
@@ -692,14 +633,14 @@
 
     goto :goto_1
 
-    .line 593
+    .line 539
     .end local v1           #g:Landroid/app/NotificationGroup;
     :cond_1
     const-string v4, "</profiles>\n"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 594
+    .line 540
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v4
@@ -711,50 +652,49 @@
     .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
-            Landroid/os/RemoteException;,
             Lorg/xmlpull/v1/XmlPullParserException;,
             Ljava/io/IOException;
         }
     .end annotation
 
     .prologue
-    .line 570
+    .line 516
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    const v2, 0x10f000d
+    const v2, 0x10f000f
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getXml(I)Landroid/content/res/XmlResourceParser;
 
     move-result-object v0
 
-    .line 573
+    .line 519
     .local v0, xml:Landroid/content/res/XmlResourceParser;
     :try_start_0
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
     invoke-direct {p0, v0, v1}, Lcom/android/server/ProfileManagerService;->loadXml(Lorg/xmlpull/v1/XmlPullParser;Landroid/content/Context;)V
 
-    .line 574
+    .line 520
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 575
+    .line 521
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 577
+    .line 523
     invoke-interface {v0}, Landroid/content/res/XmlResourceParser;->close()V
 
-    .line 579
+    .line 525
     return-void
 
-    .line 577
+    .line 523
     :catchall_0
     move-exception v1
 
@@ -767,12 +707,12 @@
     .locals 1
 
     .prologue
-    .line 170
+    .line 114
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Lcom/android/server/ProfileManagerService;->initialize(Z)V
 
-    .line 171
+    .line 115
     return-void
 .end method
 
@@ -781,102 +721,90 @@
     .parameter "skipFile"
 
     .prologue
-    .line 174
+    .line 118
     new-instance v3, Ljava/util/HashMap;
 
     invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
-    .line 175
+    .line 119
     new-instance v3, Ljava/util/HashMap;
 
     invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
-    .line 176
+    .line 120
     new-instance v3, Ljava/util/HashMap;
 
     invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
 
     iput-object v3, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
-    .line 177
+    .line 121
     const/4 v3, 0x0
 
     iput-boolean v3, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 179
+    .line 123
     move v2, p1
 
-    .line 181
+    .line 125
     .local v2, init:Z
     if-nez p1, :cond_0
 
-    .line 183
+    .line 127
     :try_start_0
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->loadFromFile()V
     :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_0 .. :try_end_0} :catch_1
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1
 
-    .line 193
+    .line 135
     :cond_0
     :goto_0
     if-eqz v2, :cond_1
 
-    .line 195
+    .line 137
     :try_start_1
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->initialiseStructure()V
     :try_end_1
-    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_3
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_2
 
-    .line 200
+    .line 142
     :cond_1
     :goto_1
     return-void
 
-    .line 184
+    .line 128
     :catch_0
     move-exception v0
 
-    .line 185
-    .local v0, e:Landroid/os/RemoteException;
-    invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
-
-    goto :goto_0
-
-    .line 186
-    .end local v0           #e:Landroid/os/RemoteException;
-    :catch_1
-    move-exception v0
-
-    .line 187
+    .line 129
     .local v0, e:Lorg/xmlpull/v1/XmlPullParserException;
     const/4 v2, 0x1
 
-    .line 190
+    .line 132
     goto :goto_0
 
-    .line 188
+    .line 130
     .end local v0           #e:Lorg/xmlpull/v1/XmlPullParserException;
-    :catch_2
+    :catch_1
     move-exception v0
 
-    .line 189
+    .line 131
     .local v0, e:Ljava/io/IOException;
     const/4 v2, 0x1
 
     goto :goto_0
 
-    .line 196
+    .line 138
     .end local v0           #e:Ljava/io/IOException;
-    :catch_3
+    :catch_2
     move-exception v1
 
-    .line 197
+    .line 139
     .local v1, ex:Ljava/lang/Throwable;
     const-string v3, "ProfileService"
 
@@ -891,25 +819,24 @@
     .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
-            Landroid/os/RemoteException;,
             Lorg/xmlpull/v1/XmlPullParserException;,
             Ljava/io/IOException;
         }
     .end annotation
 
     .prologue
-    .line 516
+    .line 462
     invoke-static {}, Lorg/xmlpull/v1/XmlPullParserFactory;->newInstance()Lorg/xmlpull/v1/XmlPullParserFactory;
 
     move-result-object v2
 
-    .line 517
+    .line 463
     .local v2, xppf:Lorg/xmlpull/v1/XmlPullParserFactory;
     invoke-virtual {v2}, Lorg/xmlpull/v1/XmlPullParserFactory;->newPullParser()Lorg/xmlpull/v1/XmlPullParser;
 
     move-result-object v1
 
-    .line 518
+    .line 464
     .local v1, xpp:Lorg/xmlpull/v1/XmlPullParser;
     new-instance v0, Ljava/io/FileReader;
 
@@ -917,22 +844,22 @@
 
     invoke-direct {v0, v3}, Ljava/io/FileReader;-><init>(Ljava/io/File;)V
 
-    .line 519
+    .line 465
     .local v0, fr:Ljava/io/FileReader;
     invoke-interface {v1, v0}, Lorg/xmlpull/v1/XmlPullParser;->setInput(Ljava/io/Reader;)V
 
-    .line 520
+    .line 466
     iget-object v3, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
     invoke-direct {p0, v1, v3}, Lcom/android/server/ProfileManagerService;->loadXml(Lorg/xmlpull/v1/XmlPullParser;Landroid/content/Context;)V
 
-    .line 521
+    .line 467
     invoke-virtual {v0}, Ljava/io/FileReader;->close()V
 
-    .line 522
+    .line 468
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 523
+    .line 469
     return-void
 .end method
 
@@ -943,8 +870,7 @@
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/xmlpull/v1/XmlPullParserException;,
-            Ljava/io/IOException;,
-            Landroid/os/RemoteException;
+            Ljava/io/IOException;
         }
     .end annotation
 
@@ -953,16 +879,16 @@
 
     const/4 v9, 0x0
 
-    .line 527
+    .line 473
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 
     move-result v2
 
-    .line 528
+    .line 474
     .local v2, event:I
     const/4 v0, 0x0
 
-    .line 529
+    .line 475
     .local v0, active:Ljava/lang/String;
     :goto_0
     const/4 v6, 0x3
@@ -981,18 +907,18 @@
 
     if-nez v6, :cond_5
 
-    .line 530
+    .line 476
     :cond_0
     const/4 v6, 0x2
 
     if-ne v2, v6, :cond_4
 
-    .line 531
+    .line 477
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 532
+    .line 478
     .local v3, name:Ljava/lang/String;
     const-string v6, "active"
 
@@ -1002,12 +928,12 @@
 
     if-eqz v6, :cond_2
 
-    .line 533
+    .line 479
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->nextText()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 534
+    .line 480
     const-string v6, "ProfileService"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -1030,7 +956,7 @@
 
     invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 549
+    .line 495
     .end local v3           #name:Ljava/lang/String;
     :cond_1
     :goto_1
@@ -1040,7 +966,7 @@
 
     goto :goto_0
 
-    .line 535
+    .line 481
     .restart local v3       #name:Ljava/lang/String;
     :cond_2
     const-string v6, "profile"
@@ -1051,19 +977,19 @@
 
     if-eqz v6, :cond_3
 
-    .line 536
+    .line 482
     invoke-static {p1, p2}, Landroid/app/Profile;->fromXml(Lorg/xmlpull/v1/XmlPullParser;Landroid/content/Context;)Landroid/app/Profile;
 
     move-result-object v5
 
-    .line 537
+    .line 483
     .local v5, prof:Landroid/app/Profile;
     invoke-direct {p0, v5}, Lcom/android/server/ProfileManagerService;->addProfileInternal(Landroid/app/Profile;)V
 
-    .line 539
+    .line 485
     if-nez v0, :cond_1
 
-    .line 540
+    .line 486
     invoke-virtual {v5}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
 
     move-result-object v6
@@ -1074,7 +1000,7 @@
 
     goto :goto_1
 
-    .line 542
+    .line 488
     .end local v5           #prof:Landroid/app/Profile;
     :cond_3
     const-string v6, "notificationGroup"
@@ -1085,24 +1011,24 @@
 
     if-eqz v6, :cond_1
 
-    .line 543
+    .line 489
     invoke-static {p1, p2}, Landroid/app/NotificationGroup;->fromXml(Lorg/xmlpull/v1/XmlPullParser;Landroid/content/Context;)Landroid/app/NotificationGroup;
 
     move-result-object v4
 
-    .line 544
+    .line 490
     .local v4, ng:Landroid/app/NotificationGroup;
     invoke-direct {p0, v4}, Lcom/android/server/ProfileManagerService;->addNotificationGroupInternal(Landroid/app/NotificationGroup;)V
 
     goto :goto_1
 
-    .line 546
+    .line 492
     .end local v3           #name:Ljava/lang/String;
     .end local v4           #ng:Landroid/app/NotificationGroup;
     :cond_4
     if-ne v2, v10, :cond_1
 
-    .line 547
+    .line 493
     new-instance v6, Ljava/io/IOException;
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -1129,7 +1055,7 @@
 
     throw v6
 
-    .line 555
+    .line 501
     :cond_5
     :try_start_0
     invoke-static {v0}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;
@@ -1142,15 +1068,15 @@
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 567
+    .line 513
     :goto_2
     return-void
 
-    .line 556
+    .line 502
     :catch_0
     move-exception v1
 
-    .line 557
+    .line 503
     .local v1, e:Ljava/lang/IllegalArgumentException;
     iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
@@ -1160,7 +1086,7 @@
 
     if-eqz v6, :cond_6
 
-    .line 558
+    .line 504
     iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-interface {v6, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1171,13 +1097,13 @@
 
     invoke-direct {p0, v6, v9}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Ljava/util/UUID;Z)Z
 
-    .line 565
+    .line 511
     :goto_3
     iput-boolean v10, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
     goto :goto_2
 
-    .line 562
+    .line 508
     :cond_6
     iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
@@ -1195,7 +1121,7 @@
 
     check-cast v6, Landroid/app/Profile;
 
-    invoke-direct {p0, v6, v9}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)Z
+    invoke-virtual {p0, v6, v9}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)V
 
     goto :goto_3
 .end method
@@ -1204,17 +1130,17 @@
     .locals 10
 
     .prologue
-    .line 606
+    .line 552
     monitor-enter p0
 
     :try_start_0
     iget-boolean v0, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 607
+    .line 553
     .local v0, dirty:Z
     if-nez v0, :cond_1
 
-    .line 608
+    .line 554
     iget-object v8, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-interface {v8}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -1239,7 +1165,7 @@
 
     check-cast v5, Landroid/app/Profile;
 
-    .line 609
+    .line 555
     .local v5, profile:Landroid/app/Profile;
     invoke-virtual {v5}, Landroid/app/Profile;->isDirty()Z
 
@@ -1247,16 +1173,16 @@
 
     if-eqz v8, :cond_0
 
-    .line 610
+    .line 556
     const/4 v0, 0x1
 
-    .line 615
+    .line 561
     .end local v4           #i$:Ljava/util/Iterator;
     .end local v5           #profile:Landroid/app/Profile;
     :cond_1
     if-nez v0, :cond_3
 
-    .line 616
+    .line 562
     iget-object v8, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-interface {v8}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -1281,7 +1207,7 @@
 
     check-cast v3, Landroid/app/NotificationGroup;
 
-    .line 617
+    .line 563
     .local v3, group:Landroid/app/NotificationGroup;
     invoke-virtual {v3}, Landroid/app/NotificationGroup;->isDirty()Z
     :try_end_0
@@ -1291,16 +1217,16 @@
 
     if-eqz v8, :cond_2
 
-    .line 618
+    .line 564
     const/4 v0, 0x1
 
-    .line 623
+    .line 569
     .end local v3           #group:Landroid/app/NotificationGroup;
     .end local v4           #i$:Ljava/util/Iterator;
     :cond_3
     if-eqz v0, :cond_4
 
-    .line 625
+    .line 571
     :try_start_1
     const-string v8, "ProfileService"
 
@@ -1308,14 +1234,14 @@
 
     invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 626
+    .line 572
     new-instance v2, Ljava/io/FileWriter;
 
     sget-object v8, Lcom/android/server/ProfileManagerService;->PROFILE_FILE:Ljava/io/File;
 
     invoke-direct {v2, v8}, Ljava/io/FileWriter;-><init>(Ljava/io/File;)V
 
-    .line 627
+    .line 573
     .local v2, fw:Ljava/io/FileWriter;
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->getXmlString()Ljava/lang/String;
 
@@ -1323,39 +1249,39 @@
 
     invoke-virtual {v2, v8}, Ljava/io/FileWriter;->write(Ljava/lang/String;)V
 
-    .line 628
+    .line 574
     invoke-virtual {v2}, Ljava/io/FileWriter;->close()V
 
-    .line 629
+    .line 575
     const-string v8, "ProfileService"
 
     const-string v9, "Save completed."
 
     invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 630
+    .line 576
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 632
+    .line 578
     invoke-static {}, Lcom/android/server/ProfileManagerService;->clearCallingIdentity()J
 
     move-result-wide v6
 
-    .line 633
+    .line 579
     .local v6, token:J
     iget-object v8, p0, Lcom/android/server/ProfileManagerService;->mBackupManager:Landroid/app/backup/BackupManager;
 
     invoke-virtual {v8}, Landroid/app/backup/BackupManager;->dataChanged()V
 
-    .line 634
+    .line 580
     invoke-static {v6, v7}, Lcom/android/server/ProfileManagerService;->restoreCallingIdentity(J)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 639
+    .line 585
     .end local v2           #fw:Ljava/io/FileWriter;
     .end local v6           #token:J
     :cond_4
@@ -1364,11 +1290,11 @@
 
     return-void
 
-    .line 635
+    .line 581
     :catch_0
     move-exception v1
 
-    .line 636
+    .line 582
     .local v1, e:Ljava/lang/Throwable;
     :try_start_2
     invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
@@ -1377,7 +1303,7 @@
 
     goto :goto_0
 
-    .line 606
+    .line 552
     .end local v0           #dirty:Z
     .end local v1           #e:Ljava/lang/Throwable;
     :catchall_0
@@ -1388,296 +1314,22 @@
     throw v8
 .end method
 
-.method private setActiveProfile(Landroid/app/Profile;Z)Z
-    .locals 9
-    .parameter "newActiveProfile"
-    .parameter "doinit"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    const/4 v5, 0x1
-
-    .line 265
-    :try_start_0
-    invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
-
-    .line 266
-    const-string v6, "ProfileService"
-
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "Set active profile to: "
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {p1}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/util/UUID;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    const-string v8, " - "
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {p1}, Landroid/app/Profile;->getName()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 267
-    iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    .line 268
-    .local v2, lastProfile:Landroid/app/Profile;
-    iput-object p1, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    .line 269
-    const/4 v6, 0x1
-
-    iput-boolean v6, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
-
-    .line 270
-    if-eqz p2, :cond_1
-
-    .line 278
-    invoke-static {}, Lcom/android/server/ProfileManagerService;->clearCallingIdentity()J
-
-    move-result-wide v3
-
-    .line 281
-    .local v3, token:J
-    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    iget-object v7, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v6, v7}, Landroid/app/Profile;->doSelect(Landroid/content/Context;)V
-
-    .line 284
-    new-instance v0, Landroid/content/Intent;
-
-    const-string v6, "android.intent.action.PROFILE_SELECTED"
-
-    invoke-direct {v0, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    .line 285
-    .local v0, broadcast:Landroid/content/Intent;
-    const-string v6, "name"
-
-    iget-object v7, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    invoke-virtual {v7}, Landroid/app/Profile;->getName()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 286
-    const-string v6, "uuid"
-
-    iget-object v7, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    invoke-virtual {v7}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/util/UUID;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 287
-    const-string v6, "lastName"
-
-    invoke-virtual {v2}, Landroid/app/Profile;->getName()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 288
-    const-string v6, "lastUuid"
-
-    invoke-virtual {v2}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/util/UUID;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 289
-    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
-
-    sget-object v7, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
-
-    invoke-virtual {v6, v0, v7}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
-
-    .line 291
-    invoke-static {v3, v4}, Lcom/android/server/ProfileManagerService;->restoreCallingIdentity(J)V
-
-    .line 292
-    invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
-
-    .line 306
-    .end local v0           #broadcast:Landroid/content/Intent;
-    .end local v2           #lastProfile:Landroid/app/Profile;
-    .end local v3           #token:J
-    :cond_0
-    :goto_0
-    return v5
-
-    .line 293
-    .restart local v2       #lastProfile:Landroid/app/Profile;
-    :cond_1
-    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    if-eq v2, v6, :cond_0
-
-    invoke-static {}, Landroid/app/ActivityManagerNative;->isSystemReady()Z
-
-    move-result v6
-
-    if-eqz v6, :cond_0
-
-    .line 296
-    invoke-static {}, Lcom/android/server/ProfileManagerService;->clearCallingIdentity()J
-
-    move-result-wide v3
-
-    .line 297
-    .restart local v3       #token:J
-    new-instance v0, Landroid/content/Intent;
-
-    const-string v6, "android.intent.action.PROFILE_UPDATED"
-
-    invoke-direct {v0, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    .line 298
-    .restart local v0       #broadcast:Landroid/content/Intent;
-    const-string v6, "name"
-
-    iget-object v7, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    invoke-virtual {v7}, Landroid/app/Profile;->getName()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 299
-    const-string v6, "uuid"
-
-    iget-object v7, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
-
-    invoke-virtual {v7}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/util/UUID;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 300
-    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
-
-    sget-object v7, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
-
-    invoke-virtual {v6, v0, v7}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
-
-    .line 301
-    invoke-static {v3, v4}, Lcom/android/server/ProfileManagerService;->restoreCallingIdentity(J)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    goto :goto_0
-
-    .line 304
-    .end local v0           #broadcast:Landroid/content/Intent;
-    .end local v2           #lastProfile:Landroid/app/Profile;
-    .end local v3           #token:J
-    :catch_0
-    move-exception v1
-
-    .line 305
-    .local v1, ex:Ljava/lang/Exception;
-    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
-
-    .line 306
-    const/4 v5, 0x0
-
-    goto :goto_0
-.end method
-
 .method private setActiveProfile(Ljava/util/UUID;Z)Z
     .locals 3
     .parameter "profileUuid"
-    .parameter "doinit"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
+    .parameter "doInit"
 
     .prologue
-    .line 246
+    .line 172
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
-    .line 248
-    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
-
-    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/app/Profile;
-
-    invoke-direct {p0, v0, p2}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)Z
-
-    move-result v0
-
-    .line 251
-    :goto_0
-    return v0
-
-    .line 250
-    :cond_0
+    .line 173
     const-string v0, "ProfileService"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1710,8 +1362,27 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 251
+    .line 175
     const/4 v0, 0x0
+
+    .line 180
+    :goto_0
+    return v0
+
+    .line 179
+    :cond_0
+    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
+
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/Profile;
+
+    invoke-virtual {p0, v0, p2}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)V
+
+    .line 180
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -1721,48 +1392,36 @@
 .method public addNotificationGroup(Landroid/app/NotificationGroup;)V
     .locals 0
     .parameter "group"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
 
     .prologue
-    .line 456
+    .line 400
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
 
-    .line 457
+    .line 401
     invoke-direct {p0, p1}, Lcom/android/server/ProfileManagerService;->addNotificationGroupInternal(Landroid/app/NotificationGroup;)V
 
-    .line 458
+    .line 402
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 459
+    .line 403
     return-void
 .end method
 
 .method public addProfile(Landroid/app/Profile;)Z
     .locals 1
     .parameter "profile"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
 
     .prologue
-    .line 312
+    .line 245
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
 
-    .line 313
+    .line 246
     invoke-direct {p0, p1}, Lcom/android/server/ProfileManagerService;->addProfileInternal(Landroid/app/Profile;)V
 
-    .line 314
+    .line 247
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 315
+    .line 248
     const/4 v0, 0x1
 
     return v0
@@ -1770,14 +1429,9 @@
 
 .method public getActiveProfile()Landroid/app/Profile;
     .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
 
     .prologue
-    .line 390
+    .line 328
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
 
     return-object v0
@@ -1786,14 +1440,9 @@
 .method public getNotificationGroup(Landroid/os/ParcelUuid;)Landroid/app/NotificationGroup;
     .locals 2
     .parameter "uuid"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
 
     .prologue
-    .line 599
+    .line 545
     invoke-virtual {p1}, Landroid/os/ParcelUuid;->getUuid()Ljava/util/UUID;
 
     move-result-object v0
@@ -1810,10 +1459,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 600
+    .line 546
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mWildcardGroup:Landroid/app/NotificationGroup;
 
-    .line 602
+    .line 548
     :goto_0
     return-object v0
 
@@ -1836,14 +1485,9 @@
 .method public getNotificationGroupForPackage(Ljava/lang/String;)Landroid/app/NotificationGroup;
     .locals 3
     .parameter "pkg"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
 
     .prologue
-    .line 498
+    .line 444
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-interface {v2}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -1868,7 +1512,7 @@
 
     check-cast v0, Landroid/app/NotificationGroup;
 
-    .line 499
+    .line 445
     .local v0, group:Landroid/app/NotificationGroup;
     invoke-virtual {v0, p1}, Landroid/app/NotificationGroup;->hasPackage(Ljava/lang/String;)Z
 
@@ -1876,7 +1520,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 503
+    .line 449
     .end local v0           #group:Landroid/app/NotificationGroup;
     :goto_0
     return-object v0
@@ -1889,14 +1533,9 @@
 
 .method public getNotificationGroups()[Landroid/app/NotificationGroup;
     .locals 2
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
 
     .prologue
-    .line 451
+    .line 395
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-interface {v0}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -1925,135 +1564,28 @@
     .parameter "profileParcelUuid"
 
     .prologue
-    .line 360
+    .line 294
     invoke-virtual {p1}, Landroid/os/ParcelUuid;->getUuid()Ljava/util/UUID;
 
     move-result-object v0
 
-    .line 361
+    .line 295
     .local v0, profileUuid:Ljava/util/UUID;
-    invoke-virtual {p0, v0}, Lcom/android/server/ProfileManagerService;->getProfile(Ljava/util/UUID;)Landroid/app/Profile;
+    invoke-direct {p0, v0}, Lcom/android/server/ProfileManagerService;->getProfile(Ljava/util/UUID;)Landroid/app/Profile;
 
     move-result-object v1
 
     return-object v1
 .end method
 
-.method public getProfile(Ljava/util/UUID;)Landroid/app/Profile;
-    .locals 7
-    .parameter "profileUuid"
-
-    .prologue
-    .line 366
-    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
-
-    invoke-interface {v6, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
-
-    move-result v6
-
-    if-eqz v6, :cond_0
-
-    .line 367
-    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
-
-    invoke-interface {v6, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v6
-
-    check-cast v6, Landroid/app/Profile;
-
-    .line 378
-    :goto_0
-    return-object v6
-
-    .line 370
-    :cond_0
-    iget-object v6, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
-
-    invoke-interface {v6}, Ljava/util/Map;->values()Ljava/util/Collection;
-
-    move-result-object v6
-
-    invoke-interface {v6}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    :cond_1
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v6
-
-    if-eqz v6, :cond_3
-
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/app/Profile;
-
-    .line 371
-    .local v4, p:Landroid/app/Profile;
-    invoke-virtual {v4}, Landroid/app/Profile;->getSecondaryUuids()[Ljava/util/UUID;
-
-    move-result-object v0
-
-    .local v0, arr$:[Ljava/util/UUID;
-    array-length v3, v0
-
-    .local v3, len$:I
-    const/4 v2, 0x0
-
-    .local v2, i$:I
-    :goto_1
-    if-ge v2, v3, :cond_1
-
-    aget-object v5, v0, v2
-
-    .line 372
-    .local v5, uuid:Ljava/util/UUID;
-    invoke-virtual {p1, v5}, Ljava/util/UUID;->equals(Ljava/lang/Object;)Z
-
-    move-result v6
-
-    if-eqz v6, :cond_2
-
-    move-object v6, v4
-
-    .line 373
-    goto :goto_0
-
-    .line 371
-    :cond_2
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_1
-
-    .line 378
-    .end local v0           #arr$:[Ljava/util/UUID;
-    .end local v2           #i$:I
-    .end local v3           #len$:I
-    .end local v4           #p:Landroid/app/Profile;
-    .end local v5           #uuid:Ljava/util/UUID;
-    :cond_3
-    const/4 v6, 0x0
-
-    goto :goto_0
-.end method
-
 .method public getProfileByName(Ljava/lang/String;)Landroid/app/Profile;
     .locals 2
     .parameter "profileName"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 349
+    .line 283
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
@@ -2062,7 +1594,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 350
+    .line 284
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
@@ -2077,11 +1609,11 @@
 
     check-cast v0, Landroid/app/Profile;
 
-    .line 354
+    .line 288
     :goto_0
     return-object v0
 
-    .line 351
+    .line 285
     :cond_0
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
@@ -2095,7 +1627,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 352
+    .line 286
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-static {p1}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;
@@ -2110,26 +1642,42 @@
 
     goto :goto_0
 
-    .line 354
+    .line 288
     :cond_1
     const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
-.method public getProfiles()[Landroid/app/Profile;
-    .locals 3
-    .annotation system Ldalvik/annotation/Throws;
+.method getProfileList()Ljava/util/Collection;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
         value = {
-            Landroid/os/RemoteException;
+            "()",
+            "Ljava/util/Collection",
+            "<",
+            "Landroid/app/Profile;",
+            ">;"
         }
     .end annotation
 
     .prologue
-    .line 383
-    iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
+    .line 316
+    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
-    invoke-interface {v1}, Ljava/util/Map;->values()Ljava/util/Collection;
+    invoke-interface {v0}, Ljava/util/Map;->values()Ljava/util/Collection;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getProfiles()[Landroid/app/Profile;
+    .locals 3
+
+    .prologue
+    .line 321
+    invoke-virtual {p0}, Lcom/android/server/ProfileManagerService;->getProfileList()Ljava/util/Collection;
 
     move-result-object v1
 
@@ -2147,25 +1695,22 @@
 
     check-cast v0, [Landroid/app/Profile;
 
-    .line 384
-    .local v0, tmpArr:[Landroid/app/Profile;
+    .line 322
+    .local v0, profiles:[Landroid/app/Profile;
     invoke-static {v0}, Ljava/util/Arrays;->sort([Ljava/lang/Object;)V
 
-    .line 385
+    .line 323
     return-object v0
 .end method
 
 .method public notificationGroupExistsByName(Ljava/lang/String;)Z
     .locals 3
     .parameter "notificationGroupName"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
+    .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 441
+    .line 385
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-interface {v2}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -2190,7 +1735,7 @@
 
     check-cast v0, Landroid/app/NotificationGroup;
 
-    .line 442
+    .line 386
     .local v0, group:Landroid/app/NotificationGroup;
     invoke-virtual {v0}, Landroid/app/NotificationGroup;->getName()Ljava/lang/String;
 
@@ -2202,10 +1747,10 @@
 
     if-eqz v2, :cond_0
 
-    .line 443
+    .line 387
     const/4 v2, 0x1
 
-    .line 446
+    .line 390
     .end local v0           #group:Landroid/app/NotificationGroup;
     :goto_0
     return v2
@@ -2219,14 +1764,9 @@
 .method public profileExists(Landroid/os/ParcelUuid;)Z
     .locals 2
     .parameter "profileUuid"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
 
     .prologue
-    .line 426
+    .line 368
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/os/ParcelUuid;->getUuid()Ljava/util/UUID;
@@ -2243,14 +1783,11 @@
 .method public profileExistsByName(Ljava/lang/String;)Z
     .locals 3
     .parameter "profileName"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
+    .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 431
+    .line 374
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-interface {v2}, Ljava/util/Map;->entrySet()Ljava/util/Set;
@@ -2275,7 +1812,7 @@
 
     check-cast v0, Ljava/util/Map$Entry;
 
-    .line 432
+    .line 375
     .local v0, entry:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/UUID;>;"
     invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
@@ -2289,10 +1826,10 @@
 
     if-eqz v2, :cond_0
 
-    .line 433
+    .line 376
     const/4 v2, 0x1
 
-    .line 436
+    .line 379
     .end local v0           #entry:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/UUID;>;"
     :goto_0
     return v2
@@ -2306,18 +1843,12 @@
 .method public removeNotificationGroup(Landroid/app/NotificationGroup;)V
     .locals 5
     .parameter "group"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
 
     .prologue
-    .line 474
+    .line 418
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
 
-    .line 475
+    .line 419
     iget-boolean v3, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
@@ -2339,7 +1870,7 @@
 
     iput-boolean v2, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 478
+    .line 422
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-interface {v2}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -2364,7 +1895,7 @@
 
     check-cast v1, Landroid/app/Profile;
 
-    .line 479
+    .line 423
     .local v1, profile:Landroid/app/Profile;
     invoke-virtual {p1}, Landroid/app/NotificationGroup;->getUuid()Ljava/util/UUID;
 
@@ -2374,7 +1905,7 @@
 
     goto :goto_1
 
-    .line 475
+    .line 419
     .end local v0           #i$:Ljava/util/Iterator;
     .end local v1           #profile:Landroid/app/Profile;
     :cond_0
@@ -2382,32 +1913,26 @@
 
     goto :goto_0
 
-    .line 481
+    .line 425
     .restart local v0       #i$:Ljava/util/Iterator;
     :cond_1
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 482
+    .line 426
     return-void
 .end method
 
 .method public removeProfile(Landroid/app/Profile;)Z
     .locals 3
     .parameter "profile"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
 
     .prologue
     const/4 v0, 0x1
 
-    .line 395
+    .line 333
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
 
-    .line 396
+    .line 334
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/Profile;->getName()Ljava/lang/String;
@@ -2432,13 +1957,13 @@
 
     if-eqz v1, :cond_0
 
-    .line 397
+    .line 336
     iput-boolean v0, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
 
-    .line 398
+    .line 337
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 401
+    .line 340
     :goto_0
     return v0
 
@@ -2452,153 +1977,279 @@
     .locals 1
 
     .prologue
-    .line 216
+    .line 146
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
 
-    .line 217
+    .line 147
     const/4 v0, 0x1
 
     invoke-direct {p0, v0}, Lcom/android/server/ProfileManagerService;->initialize(Z)V
 
-    .line 218
+    .line 148
     return-void
 .end method
 
-.method public setActiveProfile(Landroid/os/ParcelUuid;)Z
-    .locals 4
-    .parameter "profileParcelUuid"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
+.method setActiveProfile(Landroid/app/Profile;Z)V
+    .locals 7
+    .parameter "newActiveProfile"
+    .parameter "doInit"
 
     .prologue
-    .line 235
+    .line 192
+    invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
+
+    .line 194
+    const-string v4, "ProfileService"
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "Set active profile to: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {p1}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/util/UUID;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " - "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {p1}, Landroid/app/Profile;->getName()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 197
+    iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    .line 198
+    .local v1, lastProfile:Landroid/app/Profile;
+    iput-object p1, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    .line 199
+    const/4 v4, 0x1
+
+    iput-boolean v4, p0, Lcom/android/server/ProfileManagerService;->mDirty:Z
+
+    .line 201
+    if-eqz p2, :cond_1
+
+    .line 210
+    invoke-static {}, Lcom/android/server/ProfileManagerService;->clearCallingIdentity()J
+
+    move-result-wide v2
+
+    .line 213
+    .local v2, token:J
+    iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    iget-object v5, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4, v5}, Landroid/app/Profile;->doSelect(Landroid/content/Context;)V
+
+    .line 216
+    new-instance v0, Landroid/content/Intent;
+
+    const-string v4, "android.intent.action.PROFILE_SELECTED"
+
+    invoke-direct {v0, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 217
+    .local v0, broadcast:Landroid/content/Intent;
+    const-string v4, "name"
+
+    iget-object v5, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    invoke-virtual {v5}, Landroid/app/Profile;->getName()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v0, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 219
+    const-string v4, "uuid"
+
+    iget-object v5, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    invoke-virtual {v5}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/util/UUID;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v0, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 221
+    const-string v4, "lastName"
+
+    invoke-virtual {v1}, Landroid/app/Profile;->getName()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v0, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 223
+    const-string v4, "uuid"
+
+    invoke-virtual {v1}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/util/UUID;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v0, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 226
+    iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
+
+    sget-object v5, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
+
+    invoke-virtual {v4, v0, v5}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
+
+    .line 228
+    invoke-static {v2, v3}, Lcom/android/server/ProfileManagerService;->restoreCallingIdentity(J)V
+
+    .line 229
+    invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
+
+    .line 241
+    .end local v0           #broadcast:Landroid/content/Intent;
+    .end local v2           #token:J
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 230
+    :cond_1
+    iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    if-eq v1, v4, :cond_0
+
+    invoke-static {}, Landroid/app/ActivityManagerNative;->isSystemReady()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    .line 232
+    invoke-static {}, Lcom/android/server/ProfileManagerService;->clearCallingIdentity()J
+
+    move-result-wide v2
+
+    .line 233
+    .restart local v2       #token:J
+    new-instance v0, Landroid/content/Intent;
+
+    const-string v4, "android.intent.action.PROFILE_UPDATED"
+
+    invoke-direct {v0, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 234
+    .restart local v0       #broadcast:Landroid/content/Intent;
+    const-string v4, "name"
+
+    iget-object v5, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    invoke-virtual {v5}, Landroid/app/Profile;->getName()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v0, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 236
+    const-string v4, "uuid"
+
+    iget-object v5, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
+
+    invoke-virtual {v5}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/util/UUID;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v0, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 238
+    iget-object v4, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
+
+    sget-object v5, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
+
+    invoke-virtual {v4, v0, v5}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
+
+    .line 239
+    invoke-static {v2, v3}, Lcom/android/server/ProfileManagerService;->restoreCallingIdentity(J)V
+
+    goto :goto_0
+.end method
+
+.method public setActiveProfile(Landroid/os/ParcelUuid;)Z
+    .locals 2
+    .parameter "profileParcelUuid"
+
+    .prologue
+    .line 168
     invoke-virtual {p1}, Landroid/os/ParcelUuid;->getUuid()Ljava/util/UUID;
 
     move-result-object v0
 
-    .line 236
-    .local v0, profileUuid:Ljava/util/UUID;
-    iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
+    const/4 v1, 0x1
 
-    invoke-interface {v1, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+    invoke-direct {p0, v0, v1}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Ljava/util/UUID;Z)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_0
-
-    .line 238
-    iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
-
-    invoke-interface {v1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/app/Profile;
-
-    const/4 v2, 0x1
-
-    invoke-direct {p0, v1, v2}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)Z
-
-    move-result v1
-
-    .line 241
-    :goto_0
-    return v1
-
-    .line 240
-    :cond_0
-    const-string v1, "ProfileService"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "Cannot set active profile to: "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v0}, Ljava/util/UUID;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " - does not exist."
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 241
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public setActiveProfileByName(Ljava/lang/String;)Z
     .locals 3
     .parameter "profileName"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
-
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 223
+    const/4 v1, 0x1
+
+    .line 153
     iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-interface {v0, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
-    .line 225
-    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
-
-    iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
-
-    invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/app/Profile;
-
-    const/4 v1, 0x1
-
-    invoke-direct {p0, v0, v1}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)Z
-
-    move-result v0
-
-    .line 229
-    :goto_0
-    return v0
-
-    .line 228
-    :cond_0
+    .line 155
     const-string v0, "ProfileService"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -2621,9 +2272,34 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 229
+    .line 156
     const/4 v0, 0x0
 
+    .line 163
+    :goto_0
+    return v0
+
+    .line 162
+    :cond_0
+    iget-object v0, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
+
+    iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
+
+    invoke-interface {v2, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v2
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/Profile;
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)V
+
+    move v0, v1
+
+    .line 163
     goto :goto_0
 .end method
 
@@ -2631,10 +2307,10 @@
     .locals 3
 
     .prologue
-    .line 508
+    .line 454
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->initialize()V
 
-    .line 509
+    .line 455
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-interface {v2}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -2659,7 +2335,7 @@
 
     check-cast v1, Landroid/app/Profile;
 
-    .line 510
+    .line 456
     .local v1, p:Landroid/app/Profile;
     iget-object v2, p0, Lcom/android/server/ProfileManagerService;->mContext:Landroid/content/Context;
 
@@ -2667,30 +2343,24 @@
 
     goto :goto_0
 
-    .line 512
+    .line 458
     .end local v1           #p:Landroid/app/Profile;
     :cond_0
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 513
+    .line 459
     return-void
 .end method
 
 .method public updateNotificationGroup(Landroid/app/NotificationGroup;)V
     .locals 3
     .parameter "group"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
 
     .prologue
-    .line 486
+    .line 430
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
 
-    .line 487
+    .line 431
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/NotificationGroup;->getUuid()Ljava/util/UUID;
@@ -2703,11 +2373,16 @@
 
     check-cast v0, Landroid/app/NotificationGroup;
 
-    .line 488
+    .line 432
     .local v0, old:Landroid/app/NotificationGroup;
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
-    .line 489
+    .line 440
+    :goto_0
+    return-void
+
+    .line 436
+    :cond_0
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mGroups:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/NotificationGroup;->getUuid()Ljava/util/UUID;
@@ -2716,29 +2391,21 @@
 
     invoke-interface {v1, v2, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 492
+    .line 439
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 494
-    :cond_0
-    return-void
+    goto :goto_0
 .end method
 
 .method public updateProfile(Landroid/app/Profile;)V
     .locals 4
     .parameter "profile"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;,
-            Ljava/lang/SecurityException;
-        }
-    .end annotation
 
     .prologue
-    .line 407
+    .line 346
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->enforceChangePermissions()V
 
-    .line 408
+    .line 347
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
@@ -2751,11 +2418,17 @@
 
     check-cast v0, Landroid/app/Profile;
 
-    .line 409
+    .line 349
     .local v0, old:Landroid/app/Profile;
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_1
 
-    .line 410
+    .line 364
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 353
+    :cond_1
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-virtual {v0}, Landroid/app/Profile;->getName()Ljava/lang/String;
@@ -2764,7 +2437,7 @@
 
     invoke-interface {v1, v2}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 411
+    .line 354
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfileNames:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/Profile;->getName()Ljava/lang/String;
@@ -2777,7 +2450,7 @@
 
     invoke-interface {v1, v2, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 412
+    .line 355
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mProfiles:Ljava/util/Map;
 
     invoke-virtual {p1}, Landroid/app/Profile;->getUuid()Ljava/util/UUID;
@@ -2786,10 +2459,10 @@
 
     invoke-interface {v1, v2, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 415
+    .line 358
     invoke-direct {p0}, Lcom/android/server/ProfileManagerService;->persistIfDirty()V
 
-    .line 418
+    .line 361
     iget-object v1, p0, Lcom/android/server/ProfileManagerService;->mActiveProfile:Landroid/app/Profile;
 
     if-eqz v1, :cond_0
@@ -2810,12 +2483,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 419
+    .line 362
     const/4 v1, 0x1
 
-    invoke-direct {p0, p1, v1}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)Z
+    invoke-virtual {p0, p1, v1}, Lcom/android/server/ProfileManagerService;->setActiveProfile(Landroid/app/Profile;Z)V
 
-    .line 422
-    :cond_0
-    return-void
+    goto :goto_0
 .end method

@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1434
+    .line 1506
     iput-object p1, p0, Lcom/android/server/power/DisplayPowerController$9;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .parameter "accuracy"
 
     .prologue
-    .line 1447
+    .line 1519
     return-void
 .end method
 
@@ -52,22 +52,22 @@
     .parameter "event"
 
     .prologue
-    .line 1437
+    .line 1509
     iget-object v3, p0, Lcom/android/server/power/DisplayPowerController$9;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     #getter for: Lcom/android/server/power/DisplayPowerController;->mLightSensorEnabled:Z
-    invoke-static {v3}, Lcom/android/server/power/DisplayPowerController;->access$1200(Lcom/android/server/power/DisplayPowerController;)Z
+    invoke-static {v3}, Lcom/android/server/power/DisplayPowerController;->access$1300(Lcom/android/server/power/DisplayPowerController;)Z
 
     move-result v3
 
     if-eqz v3, :cond_0
 
-    .line 1438
+    .line 1510
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v1
 
-    .line 1439
+    .line 1511
     .local v1, time:J
     iget-object v3, p1, Landroid/hardware/SensorEvent;->values:[F
 
@@ -75,14 +75,14 @@
 
     aget v0, v3, v4
 
-    .line 1440
+    .line 1512
     .local v0, lux:F
     iget-object v3, p0, Lcom/android/server/power/DisplayPowerController$9;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     #calls: Lcom/android/server/power/DisplayPowerController;->handleLightSensorEvent(JF)V
-    invoke-static {v3, v1, v2, v0}, Lcom/android/server/power/DisplayPowerController;->access$1300(Lcom/android/server/power/DisplayPowerController;JF)V
+    invoke-static {v3, v1, v2, v0}, Lcom/android/server/power/DisplayPowerController;->access$1400(Lcom/android/server/power/DisplayPowerController;JF)V
 
-    .line 1442
+    .line 1514
     .end local v0           #lux:F
     .end local v1           #time:J
     :cond_0

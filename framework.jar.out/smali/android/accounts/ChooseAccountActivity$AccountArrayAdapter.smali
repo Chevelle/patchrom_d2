@@ -75,7 +75,7 @@
     .line 171
     iget-object v1, p0, Landroid/accounts/ChooseAccountActivity$AccountArrayAdapter;->mLayoutInflater:Landroid/view/LayoutInflater;
 
-    const v2, 0x1090034
+    const v2, 0x1090035
 
     invoke-virtual {v1, v2, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -88,7 +88,7 @@
 
     .line 173
     .local v0, holder:Landroid/accounts/ChooseAccountActivity$ViewHolder;
-    const v1, 0x1020275
+    const v1, 0x1020290
 
     invoke-virtual {p2, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -99,7 +99,7 @@
     iput-object v1, v0, Landroid/accounts/ChooseAccountActivity$ViewHolder;->text:Landroid/widget/TextView;
 
     .line 174
-    const v1, 0x1020274
+    const v1, 0x102028f
 
     invoke-virtual {p2, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 

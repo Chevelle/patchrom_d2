@@ -33,26 +33,35 @@
     .end annotation
 .end field
 
+.field final mUid:I
+
+.field final mWorkSource:Landroid/os/WorkSource;
+
 
 # direct methods
-.method constructor <init>(Lcom/android/server/AlarmManagerService;Landroid/app/PendingIntent;)V
+.method constructor <init>(Lcom/android/server/AlarmManagerService;Landroid/app/PendingIntent;Landroid/os/WorkSource;I)V
     .locals 5
     .parameter "service"
     .parameter "pendingIntent"
+    .parameter "workSource"
+    .parameter "uid"
 
     .prologue
-    .line 115
+    .line 453
     invoke-direct {p0}, Landroid/content/Intent;-><init>()V
 
-    .line 116
+    .line 454
     iput-object p2, p0, Lcom/android/server/AlarmManagerService$InFlight;->mPendingIntent:Landroid/app/PendingIntent;
 
-    .line 117
+    .line 455
+    iput-object p3, p0, Lcom/android/server/AlarmManagerService$InFlight;->mWorkSource:Landroid/os/WorkSource;
+
+    .line 456
     invoke-virtual {p2}, Landroid/app/PendingIntent;->getIntent()Landroid/content/Intent;
 
     move-result-object v1
 
-    .line 118
+    .line 457
     .local v1, intent:Landroid/content/Intent;
     if-eqz v1, :cond_1
 
@@ -71,15 +80,15 @@
     :goto_0
     iput-object v2, p0, Lcom/android/server/AlarmManagerService$InFlight;->mTarget:Landroid/util/Pair;
 
-    .line 121
+    .line 460
     #calls: Lcom/android/server/AlarmManagerService;->getStatsLocked(Landroid/app/PendingIntent;)Lcom/android/server/AlarmManagerService$BroadcastStats;
-    invoke-static {p1, p2}, Lcom/android/server/AlarmManagerService;->access$000(Lcom/android/server/AlarmManagerService;Landroid/app/PendingIntent;)Lcom/android/server/AlarmManagerService$BroadcastStats;
+    invoke-static {p1, p2}, Lcom/android/server/AlarmManagerService;->access$100(Lcom/android/server/AlarmManagerService;Landroid/app/PendingIntent;)Lcom/android/server/AlarmManagerService$BroadcastStats;
 
     move-result-object v2
 
     iput-object v2, p0, Lcom/android/server/AlarmManagerService$InFlight;->mBroadcastStats:Lcom/android/server/AlarmManagerService$BroadcastStats;
 
-    .line 122
+    .line 461
     iget-object v2, p0, Lcom/android/server/AlarmManagerService$InFlight;->mBroadcastStats:Lcom/android/server/AlarmManagerService$BroadcastStats;
 
     iget-object v2, v2, Lcom/android/server/AlarmManagerService$BroadcastStats;->filterStats:Ljava/util/HashMap;
@@ -92,11 +101,11 @@
 
     check-cast v0, Lcom/android/server/AlarmManagerService$FilterStats;
 
-    .line 123
+    .line 462
     .local v0, fs:Lcom/android/server/AlarmManagerService$FilterStats;
     if-nez v0, :cond_0
 
-    .line 124
+    .line 463
     new-instance v0, Lcom/android/server/AlarmManagerService$FilterStats;
 
     .end local v0           #fs:Lcom/android/server/AlarmManagerService$FilterStats;
@@ -106,7 +115,7 @@
 
     invoke-direct {v0, v2, v3}, Lcom/android/server/AlarmManagerService$FilterStats;-><init>(Lcom/android/server/AlarmManagerService$BroadcastStats;Landroid/util/Pair;)V
 
-    .line 125
+    .line 464
     .restart local v0       #fs:Lcom/android/server/AlarmManagerService$FilterStats;
     iget-object v2, p0, Lcom/android/server/AlarmManagerService$InFlight;->mBroadcastStats:Lcom/android/server/AlarmManagerService$BroadcastStats;
 
@@ -116,14 +125,17 @@
 
     invoke-virtual {v2, v3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 127
+    .line 466
     :cond_0
     iput-object v0, p0, Lcom/android/server/AlarmManagerService$InFlight;->mFilterStats:Lcom/android/server/AlarmManagerService$FilterStats;
 
-    .line 128
+    .line 467
+    iput p4, p0, Lcom/android/server/AlarmManagerService$InFlight;->mUid:I
+
+    .line 468
     return-void
 
-    .line 118
+    .line 457
     .end local v0           #fs:Lcom/android/server/AlarmManagerService$FilterStats;
     :cond_1
     const/4 v2, 0x0

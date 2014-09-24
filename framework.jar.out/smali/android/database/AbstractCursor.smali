@@ -132,7 +132,7 @@
     .locals 3
 
     .prologue
-    .line 423
+    .line 425
     const/4 v0, -0x1
 
     iget v1, p0, Landroid/database/AbstractCursor;->mPos:I
@@ -147,7 +147,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 424
+    .line 426
     :cond_0
     new-instance v0, Landroid/database/CursorIndexOutOfBoundsException;
 
@@ -161,7 +161,7 @@
 
     throw v0
 
-    .line 426
+    .line 428
     :cond_1
     return-void
 .end method
@@ -287,7 +287,7 @@
     .locals 2
 
     .prologue
-    .line 430
+    .line 432
     iget-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     if-eqz v0, :cond_0
@@ -298,14 +298,14 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 431
+    .line 433
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
 
     iget-object v1, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     invoke-virtual {v0, v1}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 434
+    .line 436
     :cond_0
     :try_start_0
     iget-boolean v0, p0, Landroid/database/AbstractCursor;->mClosed:Z
@@ -316,12 +316,12 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 436
+    .line 438
     :cond_1
     :goto_0
     return-void
 
-    .line 435
+    .line 437
     :catch_0
     move-exception v0
 
@@ -536,7 +536,7 @@
     .locals 1
 
     .prologue
-    .line 391
+    .line 393
     iget-object v0, p0, Landroid/database/AbstractCursor;->mExtras:Landroid/os/Bundle;
 
     return-object v0
@@ -552,13 +552,31 @@
 .end method
 
 .method public getNotificationUri()Landroid/net/Uri;
-    .locals 1
+    .locals 2
 
     .prologue
     .line 372
+    iget-object v1, p0, Landroid/database/AbstractCursor;->mSelfObserverLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 373
+    :try_start_0
     iget-object v0, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
 
+    monitor-exit v1
+
     return-object v0
+
+    .line 374
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
 .end method
 
 .method public final getPosition()I
@@ -595,7 +613,7 @@
     .end annotation
 
     .prologue
-    .line 411
+    .line 413
     const/4 v0, 0x0
 
     return-object v0
@@ -605,7 +623,7 @@
     .locals 1
 
     .prologue
-    .line 376
+    .line 378
     const/4 v0, 0x0
 
     return v0
@@ -700,7 +718,7 @@
     .end annotation
 
     .prologue
-    .line 403
+    .line 405
     const/4 v0, 0x0
 
     return v0
@@ -1099,7 +1117,7 @@
     .parameter "extras"
 
     .prologue
-    .line 395
+    .line 397
     sget-object v0, Landroid/os/Bundle;->EMPTY:Landroid/os/Bundle;
 
     return-object v0
@@ -1110,7 +1128,7 @@
     .parameter "extras"
 
     .prologue
-    .line 387
+    .line 389
     if-nez p1, :cond_0
 
     sget-object p1, Landroid/os/Bundle;->EMPTY:Landroid/os/Bundle;
@@ -1119,7 +1137,7 @@
     :cond_0
     iput-object p1, p0, Landroid/database/AbstractCursor;->mExtras:Landroid/os/Bundle;
 
-    .line 388
+    .line 390
     return-void
 .end method
 

@@ -38,7 +38,7 @@
     .locals 0
 
     .prologue
-    .line 7614
+    .line 7887
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -53,10 +53,10 @@
     .parameter "excludeMimes"
 
     .prologue
-    .line 7691
+    .line 7964
     move-object v0, p0
 
-    .line 7693
+    .line 7966
     .local v0, actualContext:Landroid/content/Context;
     :goto_0
     instance-of v3, v0, Landroid/content/ContextWrapper;
@@ -67,7 +67,7 @@
 
     if-nez v3, :cond_0
 
-    .line 7694
+    .line 7967
     check-cast v0, Landroid/content/ContextWrapper;
 
     .end local v0           #actualContext:Landroid/content/Context;
@@ -78,7 +78,7 @@
     .restart local v0       #actualContext:Landroid/content/Context;
     goto :goto_0
 
-    .line 7696
+    .line 7969
     :cond_0
     instance-of v3, v0, Landroid/app/Activity;
 
@@ -86,7 +86,7 @@
 
     const/high16 v2, 0x8
 
-    .line 7701
+    .line 7974
     .local v2, intentFlags:I
     :goto_1
     new-instance v3, Landroid/content/Intent;
@@ -99,27 +99,27 @@
 
     move-result-object v1
 
-    .line 7703
+    .line 7976
     .local v1, intent:Landroid/content/Intent;
     invoke-virtual {v1, p2}, Landroid/content/Intent;->setData(Landroid/net/Uri;)Landroid/content/Intent;
 
-    .line 7704
+    .line 7977
     invoke-virtual {v1, p1}, Landroid/content/Intent;->setSourceBounds(Landroid/graphics/Rect;)V
 
-    .line 7705
+    .line 7978
     const-string/jumbo v3, "mode"
 
     invoke-virtual {v1, v3, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 7706
+    .line 7979
     const-string v3, "exclude_mimes"
 
     invoke-virtual {v1, v3, p4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 7707
+    .line 7980
     return-object v1
 
-    .line 7696
+    .line 7969
     .end local v1           #intent:Landroid/content/Intent;
     .end local v2           #intentFlags:I
     :cond_1
@@ -143,7 +143,7 @@
 
     const/high16 v5, 0x3f00
 
-    .line 7670
+    .line 7943
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
@@ -154,22 +154,22 @@
 
     iget v0, v3, Landroid/content/res/CompatibilityInfo;->applicationScale:F
 
-    .line 7671
+    .line 7944
     .local v0, appScale:F
     const/4 v3, 0x2
 
     new-array v1, v3, [I
 
-    .line 7672
+    .line 7945
     .local v1, pos:[I
     invoke-virtual {p1, v1}, Landroid/view/View;->getLocationOnScreen([I)V
 
-    .line 7674
+    .line 7947
     new-instance v2, Landroid/graphics/Rect;
 
     invoke-direct {v2}, Landroid/graphics/Rect;-><init>()V
 
-    .line 7675
+    .line 7948
     .local v2, rect:Landroid/graphics/Rect;
     aget v3, v1, v4
 
@@ -183,7 +183,7 @@
 
     iput v3, v2, Landroid/graphics/Rect;->left:I
 
-    .line 7676
+    .line 7949
     aget v3, v1, v6
 
     int-to-float v3, v3
@@ -196,7 +196,7 @@
 
     iput v3, v2, Landroid/graphics/Rect;->top:I
 
-    .line 7677
+    .line 7950
     aget v3, v1, v4
 
     invoke-virtual {p1}, Landroid/view/View;->getWidth()I
@@ -215,7 +215,7 @@
 
     iput v3, v2, Landroid/graphics/Rect;->right:I
 
-    .line 7678
+    .line 7951
     aget v3, v1, v6
 
     invoke-virtual {p1}, Landroid/view/View;->getHeight()I
@@ -234,7 +234,7 @@
 
     iput v3, v2, Landroid/graphics/Rect;->bottom:I
 
-    .line 7680
+    .line 7953
     invoke-static {p0, v2, p2, p3, p4}, Landroid/provider/ContactsContract$QuickContact;->composeQuickContactsIntent(Landroid/content/Context;Landroid/graphics/Rect;Landroid/net/Uri;I[Ljava/lang/String;)Landroid/content/Intent;
 
     move-result-object v3
@@ -251,16 +251,16 @@
     .parameter "excludeMimes"
 
     .prologue
-    .line 7769
+    .line 8042
     invoke-static {p0, p1, p2, p3, p4}, Landroid/provider/ContactsContract$QuickContact;->composeQuickContactsIntent(Landroid/content/Context;Landroid/graphics/Rect;Landroid/net/Uri;I[Ljava/lang/String;)Landroid/content/Intent;
 
     move-result-object v0
 
-    .line 7771
+    .line 8044
     .local v0, intent:Landroid/content/Intent;
-    invoke-virtual {p0, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+    invoke-static {p0, v0}, Landroid/provider/ContactsContract$QuickContact;->startActivityWithErrorToast(Landroid/content/Context;Landroid/content/Intent;)V
 
-    .line 7772
+    .line 8045
     return-void
 .end method
 
@@ -273,15 +273,50 @@
     .parameter "excludeMimes"
 
     .prologue
-    .line 7736
+    .line 8009
     invoke-static {p0, p1, p2, p3, p4}, Landroid/provider/ContactsContract$QuickContact;->composeQuickContactsIntent(Landroid/content/Context;Landroid/view/View;Landroid/net/Uri;I[Ljava/lang/String;)Landroid/content/Intent;
 
     move-result-object v0
 
-    .line 7738
+    .line 8011
     .local v0, intent:Landroid/content/Intent;
-    invoke-virtual {p0, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+    invoke-static {p0, v0}, Landroid/provider/ContactsContract$QuickContact;->startActivityWithErrorToast(Landroid/content/Context;Landroid/content/Intent;)V
 
-    .line 7739
+    .line 8012
     return-void
+.end method
+
+.method private static startActivityWithErrorToast(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 3
+    .parameter "context"
+    .parameter "intent"
+
+    .prologue
+    .line 8049
+    :try_start_0
+    invoke-virtual {p0, p1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+    :try_end_0
+    .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 8054
+    :goto_0
+    return-void
+
+    .line 8050
+    :catch_0
+    move-exception v0
+
+    .line 8051
+    .local v0, e:Landroid/content/ActivityNotFoundException;
+    const v1, 0x10403bd
+
+    const/4 v2, 0x0
+
+    invoke-static {p0, v1, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/widget/Toast;->show()V
+
+    goto :goto_0
 .end method

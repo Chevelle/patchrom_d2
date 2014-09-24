@@ -24,12 +24,12 @@
     .parameter "rs"
 
     .prologue
-    .line 284
+    .line 302
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 285
+    .line 303
     iput-object p1, p0, Landroid/renderscript/Script$Builder;->mRS:Landroid/renderscript/RenderScript;
 
-    .line 286
+    .line 304
     return-void
 .end method

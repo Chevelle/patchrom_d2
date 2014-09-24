@@ -13,7 +13,7 @@ $ mkdir patchrom
 
 $ cd patchrom
 
-$ repo init -u git://github.com/MiCode/patchrom.git -b jellybean42
+$ repo init -u git://github.com/MiCode/patchrom.git -b kitkat
 
 Then to sync up:
 
@@ -29,8 +29,8 @@ $ . build/envsetup.sh
 
 $ cd d2vzw
 
-$ make fullota PORT_PRODUCT=d2vzw BUILD_NUMBER=4.X.XX
+$ make fullota PORT_PRODUCT=d2vzw_chevelle BUILD_NUMBER=4.X.XX
 
 or
 
-$ make zipfile PORT_PRODUCT=d2vzw BUILD_NUMBER=4.X.XX
+$ make zipfile PORT_PRODUCT=d2vzw_chevelle BUILD_NUMBER=4.X.XX

@@ -32,7 +32,7 @@
     .locals 1
 
     .prologue
-    .line 58
+    .line 60
     new-instance v0, Lcom/android/internal/telephony/cat/Item$1;
 
     invoke-direct {v0}, Lcom/android/internal/telephony/cat/Item$1;-><init>()V
@@ -109,7 +109,7 @@
     .locals 1
 
     .prologue
-    .line 49
+    .line 50
     const/4 v0, 0x0
 
     return v0
@@ -119,7 +119,7 @@
     .locals 1
 
     .prologue
-    .line 69
+    .line 74
     iget-object v0, p0, Lcom/android/internal/telephony/cat/Item;->text:Ljava/lang/String;
 
     return-object v0
@@ -131,21 +131,21 @@
     .parameter "flags"
 
     .prologue
-    .line 53
+    .line 55
     iget v0, p0, Lcom/android/internal/telephony/cat/Item;->id:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 54
+    .line 56
     iget-object v0, p0, Lcom/android/internal/telephony/cat/Item;->text:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 55
+    .line 57
     iget-object v0, p0, Lcom/android/internal/telephony/cat/Item;->icon:Landroid/graphics/Bitmap;
 
     invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 56
+    .line 58
     return-void
 .end method

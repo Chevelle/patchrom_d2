@@ -26,20 +26,20 @@
     .parameter "intent"
 
     .prologue
-    .line 6274
+    .line 6627
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 6275
+    .line 6628
     iput-object p1, p0, Landroid/content/Intent$FilterComparison;->mIntent:Landroid/content/Intent;
 
-    .line 6276
+    .line 6629
     invoke-virtual {p1}, Landroid/content/Intent;->filterHashCode()I
 
     move-result v0
 
     iput v0, p0, Landroid/content/Intent$FilterComparison;->mHashCode:I
 
-    .line 6277
+    .line 6630
     return-void
 .end method
 
@@ -50,18 +50,18 @@
     .parameter "obj"
 
     .prologue
-    .line 6290
+    .line 6643
     instance-of v1, p1, Landroid/content/Intent$FilterComparison;
 
     if-eqz v1, :cond_0
 
-    .line 6291
+    .line 6644
     check-cast p1, Landroid/content/Intent$FilterComparison;
 
     .end local p1
     iget-object v0, p1, Landroid/content/Intent$FilterComparison;->mIntent:Landroid/content/Intent;
 
-    .line 6292
+    .line 6645
     .local v0, other:Landroid/content/Intent;
     iget-object v1, p0, Landroid/content/Intent$FilterComparison;->mIntent:Landroid/content/Intent;
 
@@ -69,7 +69,7 @@
 
     move-result v1
 
-    .line 6294
+    .line 6647
     .end local v0           #other:Landroid/content/Intent;
     :goto_0
     return v1
@@ -85,7 +85,7 @@
     .locals 1
 
     .prologue
-    .line 6285
+    .line 6638
     iget-object v0, p0, Landroid/content/Intent$FilterComparison;->mIntent:Landroid/content/Intent;
 
     return-object v0
@@ -95,7 +95,7 @@
     .locals 1
 
     .prologue
-    .line 6299
+    .line 6652
     iget v0, p0, Landroid/content/Intent$FilterComparison;->mHashCode:I
 
     return v0

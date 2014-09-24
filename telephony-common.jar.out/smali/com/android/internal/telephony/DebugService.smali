@@ -12,7 +12,7 @@
     .locals 1
 
     .prologue
-    .line 32
+    .line 35
     const-string v0, "DebugService"
 
     sput-object v0, Lcom/android/internal/telephony/DebugService;->TAG:Ljava/lang/String;
@@ -24,15 +24,15 @@
     .locals 1
 
     .prologue
-    .line 35
+    .line 38
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 36
+    .line 39
     const-string v0, "DebugService:"
 
     invoke-static {v0}, Lcom/android/internal/telephony/DebugService;->log(Ljava/lang/String;)V
 
-    .line 37
+    .line 40
     return-void
 .end method
 
@@ -41,7 +41,7 @@
     .parameter "s"
 
     .prologue
-    .line 106
+    .line 123
     sget-object v0, Lcom/android/internal/telephony/DebugService;->TAG:Ljava/lang/String;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -62,9 +62,9 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 107
+    .line 124
     return-void
 .end method
 
@@ -77,19 +77,19 @@
     .parameter "args"
 
     .prologue
-    .line 43
+    .line 46
     const-string v4, "dump: +"
 
     invoke-static {v4}, Lcom/android/internal/telephony/DebugService;->log(Ljava/lang/String;)V
 
-    .line 44
+    .line 47
     const/4 v3, 0x0
 
-    .line 45
+    .line 48
     .local v3, phoneProxy:Lcom/android/internal/telephony/PhoneProxy;
     const/4 v2, 0x0
 
-    .line 48
+    .line 51
     .local v2, phoneBase:Lcom/android/internal/telephony/PhoneBase;
     :try_start_0
     invoke-static {}, Lcom/android/internal/telephony/PhoneFactory;->getDefaultPhone()Lcom/android/internal/telephony/Phone;
@@ -104,7 +104,7 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 54
+    .line 57
     :try_start_1
     invoke-virtual {v3}, Lcom/android/internal/telephony/PhoneProxy;->getActivePhone()Lcom/android/internal/telephony/Phone;
 
@@ -118,50 +118,50 @@
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 64
+    .line 67
     invoke-virtual {p2}, Ljava/io/PrintWriter;->println()V
 
-    .line 65
+    .line 68
     const-string v4, "++++++++++++++++++++++++++++++++"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 66
+    .line 69
     invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
 
-    .line 68
+    .line 71
     :try_start_2
     invoke-virtual {v2, p1, p2, p3}, Lcom/android/internal/telephony/PhoneBase;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_2
 
-    .line 72
+    .line 75
     :goto_0
     invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
 
-    .line 73
+    .line 76
     const-string v4, "++++++++++++++++++++++++++++++++"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 75
+    .line 78
     :try_start_3
-    iget-object v4, v2, Lcom/android/internal/telephony/PhoneBase;->mDataConnectionTracker:Lcom/android/internal/telephony/DataConnectionTracker;
+    iget-object v4, v2, Lcom/android/internal/telephony/PhoneBase;->mDcTracker:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
-    invoke-virtual {v4, p1, p2, p3}, Lcom/android/internal/telephony/DataConnectionTracker;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
+    invoke-virtual {v4, p1, p2, p3}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
     :try_end_3
     .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_3
 
-    .line 79
+    .line 82
     :goto_1
     invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
 
-    .line 80
+    .line 83
     const-string v4, "++++++++++++++++++++++++++++++++"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 82
+    .line 85
     :try_start_4
     invoke-virtual {v2}, Lcom/android/internal/telephony/PhoneBase;->getServiceStateTracker()Lcom/android/internal/telephony/ServiceStateTracker;
 
@@ -171,16 +171,16 @@
     :try_end_4
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_4
 
-    .line 86
+    .line 89
     :goto_2
     invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
 
-    .line 87
+    .line 90
     const-string v4, "++++++++++++++++++++++++++++++++"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 89
+    .line 92
     :try_start_5
     invoke-virtual {v2}, Lcom/android/internal/telephony/PhoneBase;->getCallTracker()Lcom/android/internal/telephony/CallTracker;
 
@@ -190,18 +190,18 @@
     :try_end_5
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_5
 
-    .line 93
+    .line 96
     :goto_3
     invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
 
-    .line 94
+    .line 97
     const-string v4, "++++++++++++++++++++++++++++++++"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 96
+    .line 99
     :try_start_6
-    iget-object v4, v2, Lcom/android/internal/telephony/PhoneBase;->mCM:Lcom/android/internal/telephony/CommandsInterface;
+    iget-object v4, v2, Lcom/android/internal/telephony/PhoneBase;->mCi:Lcom/android/internal/telephony/CommandsInterface;
 
     check-cast v4, Lcom/android/internal/telephony/RIL;
 
@@ -209,29 +209,69 @@
     :try_end_6
     .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_6
 
-    .line 100
+    .line 103
     :goto_4
     invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
 
-    .line 101
+    .line 104
     const-string v4, "++++++++++++++++++++++++++++++++"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 102
+    .line 106
+    :try_start_7
+    invoke-static {}, Lcom/android/internal/telephony/uicc/UiccController;->getInstance()Lcom/android/internal/telephony/uicc/UiccController;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1, p2, p3}, Lcom/android/internal/telephony/uicc/UiccController;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
+    :try_end_7
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_7
+
+    .line 110
+    :goto_5
+    invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
+
+    .line 111
+    const-string v4, "++++++++++++++++++++++++++++++++"
+
+    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+
+    .line 113
+    :try_start_8
+    invoke-virtual {v3}, Lcom/android/internal/telephony/PhoneProxy;->getIccCard()Lcom/android/internal/telephony/IccCard;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/android/internal/telephony/uicc/IccCardProxy;
+
+    invoke-virtual {v4, p1, p2, p3}, Lcom/android/internal/telephony/uicc/IccCardProxy;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
+    :try_end_8
+    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_8
+
+    .line 117
+    :goto_6
+    invoke-virtual {p2}, Ljava/io/PrintWriter;->flush()V
+
+    .line 118
+    const-string v4, "++++++++++++++++++++++++++++++++"
+
+    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+
+    .line 119
     const-string v4, "dump: -"
 
     invoke-static {v4}, Lcom/android/internal/telephony/DebugService;->log(Ljava/lang/String;)V
 
-    .line 103
-    :goto_5
+    .line 120
+    :goto_7
     return-void
 
-    .line 49
+    .line 52
     :catch_0
     move-exception v1
 
-    .line 50
+    .line 53
     .local v1, e:Ljava/lang/Exception;
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -253,14 +293,14 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    goto :goto_5
+    goto :goto_7
 
-    .line 55
+    .line 58
     .end local v1           #e:Ljava/lang/Exception;
     :catch_1
     move-exception v1
 
-    .line 56
+    .line 59
     .restart local v1       #e:Ljava/lang/Exception;
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -282,60 +322,82 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    goto :goto_5
+    goto :goto_7
 
-    .line 69
+    .line 72
     .end local v1           #e:Ljava/lang/Exception;
     :catch_2
     move-exception v1
 
-    .line 70
+    .line 73
     .restart local v1       #e:Ljava/lang/Exception;
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 76
+    .line 79
     .end local v1           #e:Ljava/lang/Exception;
     :catch_3
     move-exception v1
 
-    .line 77
+    .line 80
     .restart local v1       #e:Ljava/lang/Exception;
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    .line 83
+    .line 86
     .end local v1           #e:Ljava/lang/Exception;
     :catch_4
     move-exception v1
 
-    .line 84
+    .line 87
     .restart local v1       #e:Ljava/lang/Exception;
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
-    goto :goto_2
+    goto/16 :goto_2
 
-    .line 90
+    .line 93
     .end local v1           #e:Ljava/lang/Exception;
     :catch_5
     move-exception v1
 
-    .line 91
+    .line 94
     .restart local v1       #e:Ljava/lang/Exception;
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
-    goto :goto_3
+    goto/16 :goto_3
 
-    .line 97
+    .line 100
     .end local v1           #e:Ljava/lang/Exception;
     :catch_6
     move-exception v1
 
-    .line 98
+    .line 101
     .restart local v1       #e:Ljava/lang/Exception;
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
     goto :goto_4
+
+    .line 107
+    .end local v1           #e:Ljava/lang/Exception;
+    :catch_7
+    move-exception v1
+
+    .line 108
+    .restart local v1       #e:Ljava/lang/Exception;
+    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
+
+    goto :goto_5
+
+    .line 114
+    .end local v1           #e:Ljava/lang/Exception;
+    :catch_8
+    move-exception v1
+
+    .line 115
+    .restart local v1       #e:Ljava/lang/Exception;
+    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
+
+    goto :goto_6
 .end method

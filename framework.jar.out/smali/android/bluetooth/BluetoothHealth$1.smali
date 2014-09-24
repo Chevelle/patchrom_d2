@@ -35,7 +35,7 @@
 
 # virtual methods
 .method public onBluetoothStateChange(Z)V
-    .locals 6
+    .locals 4
     .parameter "up"
 
     .prologue
@@ -109,7 +109,7 @@
     :try_start_1
     monitor-exit v2
 
-    .line 129
+    .line 127
     :goto_1
     return-void
 
@@ -163,47 +163,12 @@
     .line 120
     iget-object v1, p0, Landroid/bluetooth/BluetoothHealth$1;->this$0:Landroid/bluetooth/BluetoothHealth;
 
-    #getter for: Landroid/bluetooth/BluetoothHealth;->mContext:Landroid/content/Context;
-    invoke-static {v1}, Landroid/bluetooth/BluetoothHealth;->access$200(Landroid/bluetooth/BluetoothHealth;)Landroid/content/Context;
-
-    move-result-object v1
-
-    new-instance v3, Landroid/content/Intent;
-
-    const-class v4, Landroid/bluetooth/IBluetoothHealth;
-
-    invoke-virtual {v4}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-direct {v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    iget-object v4, p0, Landroid/bluetooth/BluetoothHealth$1;->this$0:Landroid/bluetooth/BluetoothHealth;
-
-    #getter for: Landroid/bluetooth/BluetoothHealth;->mConnection:Landroid/content/ServiceConnection;
-    invoke-static {v4}, Landroid/bluetooth/BluetoothHealth;->access$000(Landroid/bluetooth/BluetoothHealth;)Landroid/content/ServiceConnection;
-
-    move-result-object v4
-
-    const/4 v5, 0x0
-
-    invoke-virtual {v1, v3, v4, v5}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    .line 121
-    const-string v1, "BluetoothHealth"
-
-    const-string v3, "Could not bind to Bluetooth Health Service"
-
-    invoke-static {v1, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v1}, Landroid/bluetooth/BluetoothHealth;->doBind()Z
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
 
-    .line 127
+    .line 125
     :cond_1
     :goto_2
     :try_start_3
@@ -220,11 +185,11 @@
 
     throw v1
 
-    .line 124
+    .line 122
     :catch_1
     move-exception v0
 
-    .line 125
+    .line 123
     .restart local v0       #re:Ljava/lang/Exception;
     :try_start_4
     const-string v1, "BluetoothHealth"

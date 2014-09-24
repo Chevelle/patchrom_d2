@@ -186,7 +186,7 @@
     return-object v0
 
     :cond_0
-    sget-object v0, Ljava/nio/charset/Charsets;->UTF_8:Ljava/nio/charset/Charset;
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
 
     invoke-static {p0, v1, v0, v1}, Llibcore/net/UriCodec;->decode(Ljava/lang/String;ZLjava/nio/charset/Charset;Z)Ljava/lang/String;
 
@@ -670,6 +670,32 @@
 .method public abstract buildUpon()Landroid/net/Uri$Builder;
 .end method
 
+.method public checkFileUriExposed(Ljava/lang/String;)V
+    .locals 2
+    .parameter "location"
+
+    .prologue
+    .line 2337
+    const-string v0, "file"
+
+    invoke-virtual {p0}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 2338
+    invoke-static {p1}, Landroid/os/StrictMode;->onFileUriExposed(Ljava/lang/String;)V
+
+    .line 2340
+    :cond_0
+    return-void
+.end method
+
 .method public compareTo(Landroid/net/Uri;)I
     .locals 2
     .parameter "other"
@@ -773,7 +799,9 @@
     .line 1719
     .restart local p2
     :cond_0
-    invoke-virtual {v0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+    sget-object v1, Ljava/util/Locale;->ROOT:Ljava/util/Locale;
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -1127,7 +1155,7 @@
     .local v1, encodedValue:Ljava/lang/String;
     const/4 v8, 0x1
 
-    sget-object v9, Ljava/nio/charset/Charsets;->UTF_8:Ljava/nio/charset/Charset;
+    sget-object v9, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
 
     invoke-static {v1, v8, v9, v12}, Llibcore/net/UriCodec;->decode(Ljava/lang/String;ZLjava/nio/charset/Charset;Z)Ljava/lang/String;
 
@@ -1601,7 +1629,7 @@
     .line 1747
     .restart local p0
     :cond_1
-    sget-object v2, Ljava/util/Locale;->US:Ljava/util/Locale;
+    sget-object v2, Ljava/util/Locale;->ROOT:Ljava/util/Locale;
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
 

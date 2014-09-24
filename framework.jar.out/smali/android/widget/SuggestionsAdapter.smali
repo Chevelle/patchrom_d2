@@ -9,8 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/widget/SuggestionsAdapter$ChildViewCache;,
-        Landroid/widget/SuggestionsAdapter$Injector;
+        Landroid/widget/SuggestionsAdapter$ChildViewCache;
     }
 .end annotation
 
@@ -101,7 +100,7 @@
     const/4 v3, -0x1
 
     .line 100
-    const v1, 0x10900c0
+    const v1, 0x1090098
 
     const/4 v2, 0x0
 
@@ -377,7 +376,7 @@
 
     .line 668
     .local v4, pkg:Ljava/lang/String;
-    invoke-static {v5, v4, v3, v0}, Landroid/widget/SuggestionsAdapter$Injector;->getDrawable(Landroid/content/pm/PackageManager;Ljava/lang/String;ILandroid/content/pm/ActivityInfo;)Landroid/graphics/drawable/Drawable;
+    invoke-static {v5, v4, v3, v0}, Landroid/widget/Injector$SuggestionsAdapterHook;->getDrawable(Landroid/content/pm/PackageManager;Ljava/lang/String;ILandroid/content/pm/ActivityInfo;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
@@ -830,7 +829,7 @@
     .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_3
     .catch Ljava/io/FileNotFoundException; {:try_start_7 .. :try_end_7} :catch_1
 
-    .line 579
+    .line 583
     :goto_1
     :try_start_8
     throw v5

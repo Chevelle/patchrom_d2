@@ -4,7 +4,7 @@
 
 
 # static fields
-.field static final LOG_TAG:Ljava/lang/String; = "CDMA"
+.field static final LOG_TAG:Ljava/lang/String; = "CdmaCallWaitingNotification"
 
 
 # instance fields
@@ -38,37 +38,37 @@
 
     const/4 v0, 0x0
 
-    .line 28
+    .line 27
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 30
+    .line 29
     iput-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->number:Ljava/lang/String;
 
-    .line 31
+    .line 30
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->numberPresentation:I
 
-    .line 32
+    .line 31
     iput-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->name:Ljava/lang/String;
 
-    .line 33
+    .line 32
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->namePresentation:I
 
-    .line 34
+    .line 33
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->numberType:I
 
-    .line 35
+    .line 34
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->numberPlan:I
 
-    .line 36
+    .line 35
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->isPresent:I
 
-    .line 37
+    .line 36
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->signalType:I
 
-    .line 38
+    .line 37
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->alertPitch:I
 
-    .line 39
+    .line 38
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->signal:I
 
     return-void
@@ -83,7 +83,7 @@
     packed-switch p0, :pswitch_data_0
 
     .line 65
-    const-string v0, "CDMA"
+    const-string v0, "CdmaCallWaitingNotification"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -103,7 +103,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 66
     sget v0, Lcom/android/internal/telephony/PhoneConstants;->PRESENTATION_UNKNOWN:I

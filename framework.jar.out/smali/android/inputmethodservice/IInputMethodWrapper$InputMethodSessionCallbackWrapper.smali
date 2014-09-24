@@ -1,4 +1,4 @@
-.class Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;
+.class final Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;
 .super Ljava/lang/Object;
 .source "IInputMethodWrapper.java"
 
@@ -12,34 +12,40 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x18
     name = "InputMethodSessionCallbackWrapper"
 .end annotation
 
 
 # instance fields
-.field final mCb:Lcom/android/internal/view/IInputMethodCallback;
+.field final mCb:Lcom/android/internal/view/IInputSessionCallback;
+
+.field final mChannel:Landroid/view/InputChannel;
 
 .field final mContext:Landroid/content/Context;
 
 
 # direct methods
-.method constructor <init>(Landroid/content/Context;Lcom/android/internal/view/IInputMethodCallback;)V
+.method constructor <init>(Landroid/content/Context;Landroid/view/InputChannel;Lcom/android/internal/view/IInputSessionCallback;)V
     .locals 0
     .parameter "context"
+    .parameter "channel"
     .parameter "cb"
 
     .prologue
-    .line 84
+    .line 87
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 85
+    .line 88
     iput-object p1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mContext:Landroid/content/Context;
 
-    .line 86
-    iput-object p2, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mCb:Lcom/android/internal/view/IInputMethodCallback;
+    .line 89
+    iput-object p2, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mChannel:Landroid/view/InputChannel;
 
-    .line 87
+    .line 90
+    iput-object p3, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mCb:Lcom/android/internal/view/IInputSessionCallback;
+
+    .line 91
     return-void
 .end method
 
@@ -50,41 +56,54 @@
     .parameter "session"
 
     .prologue
-    .line 90
+    .line 96
     if-eqz p1, :cond_0
 
-    .line 91
+    .line 97
     :try_start_0
     new-instance v0, Landroid/inputmethodservice/IInputMethodSessionWrapper;
 
     iget-object v1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mContext:Landroid/content/Context;
 
-    invoke-direct {v0, v1, p1}, Landroid/inputmethodservice/IInputMethodSessionWrapper;-><init>(Landroid/content/Context;Landroid/view/inputmethod/InputMethodSession;)V
+    iget-object v2, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mChannel:Landroid/view/InputChannel;
 
-    .line 93
-    .local v0, wrap:Landroid/inputmethodservice/IInputMethodSessionWrapper;
-    iget-object v1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mCb:Lcom/android/internal/view/IInputMethodCallback;
-
-    invoke-interface {v1, v0}, Lcom/android/internal/view/IInputMethodCallback;->sessionCreated(Lcom/android/internal/view/IInputMethodSession;)V
+    invoke-direct {v0, v1, p1, v2}, Landroid/inputmethodservice/IInputMethodSessionWrapper;-><init>(Landroid/content/Context;Landroid/view/inputmethod/InputMethodSession;Landroid/view/InputChannel;)V
 
     .line 99
+    .local v0, wrap:Landroid/inputmethodservice/IInputMethodSessionWrapper;
+    iget-object v1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mCb:Lcom/android/internal/view/IInputSessionCallback;
+
+    invoke-interface {v1, v0}, Lcom/android/internal/view/IInputSessionCallback;->sessionCreated(Lcom/android/internal/view/IInputMethodSession;)V
+
+    .line 108
     .end local v0           #wrap:Landroid/inputmethodservice/IInputMethodSessionWrapper;
     :goto_0
     return-void
 
-    .line 95
+    .line 101
     :cond_0
-    iget-object v1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mCb:Lcom/android/internal/view/IInputMethodCallback;
+    iget-object v1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mChannel:Landroid/view/InputChannel;
+
+    if-eqz v1, :cond_1
+
+    .line 102
+    iget-object v1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mChannel:Landroid/view/InputChannel;
+
+    invoke-virtual {v1}, Landroid/view/InputChannel;->dispose()V
+
+    .line 104
+    :cond_1
+    iget-object v1, p0, Landroid/inputmethodservice/IInputMethodWrapper$InputMethodSessionCallbackWrapper;->mCb:Lcom/android/internal/view/IInputSessionCallback;
 
     const/4 v2, 0x0
 
-    invoke-interface {v1, v2}, Lcom/android/internal/view/IInputMethodCallback;->sessionCreated(Lcom/android/internal/view/IInputMethodSession;)V
+    invoke-interface {v1, v2}, Lcom/android/internal/view/IInputSessionCallback;->sessionCreated(Lcom/android/internal/view/IInputMethodSession;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
-    .line 97
+    .line 106
     :catch_0
     move-exception v1
 

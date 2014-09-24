@@ -198,116 +198,139 @@
     return-void
 .end method
 
-.method public static getAssistIntent(Landroid/content/Context;)Landroid/content/Intent;
-    .locals 2
+
+# virtual methods
+.method public getAssistIntent(Landroid/content/Context;Z)Landroid/content/Intent;
+    .locals 1
     .parameter "context"
+    .parameter "inclContext"
 
     .prologue
-    const-string v0, "search"
-
-    invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/app/SearchManager;
-
+    .line 850
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
-    move-result v1
+    move-result v0
 
-    invoke-virtual {v0, p0, v1}, Landroid/app/SearchManager;->getAssistIntent(Landroid/content/Context;I)Landroid/content/Intent;
+    invoke-virtual {p0, p1, p2, v0}, Landroid/app/SearchManager;->getAssistIntent(Landroid/content/Context;ZI)Landroid/content/Intent;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getAssistIntent(Landroid/content/Context;I)Landroid/content/Intent;
-    .locals 7
+.method public getAssistIntent(Landroid/content/Context;ZI)Landroid/content/Intent;
+    .locals 9
     .parameter "context"
+    .parameter "inclContext"
     .parameter "userHandle"
 
     .prologue
-    const/4 v3, 0x0
+    const/4 v5, 0x0
 
     .line 861
     :try_start_0
-    sget-object v4, Landroid/app/SearchManager;->mService:Landroid/app/ISearchManager;
+    sget-object v6, Landroid/app/SearchManager;->mService:Landroid/app/ISearchManager;
 
-    if-nez v4, :cond_0
+    if-nez v6, :cond_1
 
-    move-object v1, v3
+    move-object v3, v5
 
-    .line 873
+    .line 880
+    :cond_0
     :goto_0
-    return-object v1
+    return-object v3
 
     .line 864
-    :cond_0
-    sget-object v4, Landroid/app/SearchManager;->mService:Landroid/app/ISearchManager;
+    :cond_1
+    sget-object v6, Landroid/app/SearchManager;->mService:Landroid/app/ISearchManager;
 
-    invoke-interface {v4, p2}, Landroid/app/ISearchManager;->getAssistIntent(I)Landroid/content/ComponentName;
+    invoke-interface {v6, p3}, Landroid/app/ISearchManager;->getAssistIntent(I)Landroid/content/ComponentName;
 
-    move-result-object v0
+    move-result-object v1
 
     .line 865
-    .local v0, comp:Landroid/content/ComponentName;
-    if-nez v0, :cond_1
+    .local v1, comp:Landroid/content/ComponentName;
+    if-nez v1, :cond_2
 
-    move-object v1, v3
+    move-object v3, v5
 
     .line 866
     goto :goto_0
 
     .line 868
-    :cond_1
-    new-instance v1, Landroid/content/Intent;
+    :cond_2
+    new-instance v3, Landroid/content/Intent;
 
-    const-string v4, "android.intent.action.ASSIST"
+    const-string v6, "android.intent.action.ASSIST"
 
-    invoke-direct {v1, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .line 869
-    .local v1, intent:Landroid/content/Intent;
-    invoke-virtual {v1, v0}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
+    .local v3, intent:Landroid/content/Intent;
+    invoke-virtual {v3, v1}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
+
+    .line 870
+    if-eqz p2, :cond_0
+
+    .line 871
+    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+
+    move-result-object v0
+
+    .line 872
+    .local v0, am:Landroid/app/IActivityManager;
+    const/4 v6, 0x0
+
+    invoke-interface {v0, v6}, Landroid/app/IActivityManager;->getAssistContextExtras(I)Landroid/os/Bundle;
+
+    move-result-object v2
+
+    .line 873
+    .local v2, extras:Landroid/os/Bundle;
+    if-eqz v2, :cond_0
+
+    .line 874
+    invoke-virtual {v3, v2}, Landroid/content/Intent;->replaceExtras(Landroid/os/Bundle;)Landroid/content/Intent;
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
-    .line 871
-    .end local v0           #comp:Landroid/content/ComponentName;
-    .end local v1           #intent:Landroid/content/Intent;
+    .line 878
+    .end local v0           #am:Landroid/app/IActivityManager;
+    .end local v1           #comp:Landroid/content/ComponentName;
+    .end local v2           #extras:Landroid/os/Bundle;
+    .end local v3           #intent:Landroid/content/Intent;
     :catch_0
-    move-exception v2
+    move-exception v4
 
-    .line 872
-    .local v2, re:Landroid/os/RemoteException;
-    const-string v4, "SearchManager"
+    .line 879
+    .local v4, re:Landroid/os/RemoteException;
+    const-string v6, "SearchManager"
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v7, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "getAssistIntent() failed: "
+    const-string v8, "getAssistIntent() failed: "
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v6, v7}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    move-object v1, v3
+    move-object v3, v5
 
-    .line 873
+    .line 880
     goto :goto_0
 .end method
 

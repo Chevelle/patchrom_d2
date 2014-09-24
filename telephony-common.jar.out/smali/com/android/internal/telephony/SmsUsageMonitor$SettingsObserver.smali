@@ -25,13 +25,13 @@
     .parameter "handler"
 
     .prologue
-    .line 234
+    .line 228
     iput-object p1, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->this$0:Lcom/android/internal/telephony/SmsUsageMonitor;
 
-    .line 235
+    .line 229
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 236
+    .line 230
     return-void
 .end method
 
@@ -45,20 +45,20 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 240
+    .line 234
     const-string v1, "sms_short_code_confirmation"
 
     invoke-static {v1}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    invoke-virtual {p2, v1}, Landroid/net/Uri;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, p2}, Landroid/net/Uri;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
     if-eqz v1, :cond_2
 
-    .line 241
+    .line 235
     iget-object v1, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->this$0:Lcom/android/internal/telephony/SmsUsageMonitor;
 
     #getter for: Lcom/android/internal/telephony/SmsUsageMonitor;->mCheckEnabled:Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -88,18 +88,18 @@
     :goto_0
     invoke-virtual {v1, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
 
-    .line 247
+    .line 241
     :cond_0
     :goto_1
     return-void
 
-    .line 241
+    .line 235
     :cond_1
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 243
+    .line 237
     :cond_2
     const-string v0, "sms_outgoing_check_max_count"
 
@@ -107,13 +107,13 @@
 
     move-result-object v0
 
-    invoke-virtual {p2, v0}, Landroid/net/Uri;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, p2}, Landroid/net/Uri;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 244
+    .line 238
     iget-object v0, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->this$0:Lcom/android/internal/telephony/SmsUsageMonitor;
 
     iget-object v1, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->this$0:Lcom/android/internal/telephony/SmsUsageMonitor;

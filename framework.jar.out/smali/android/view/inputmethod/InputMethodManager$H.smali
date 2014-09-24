@@ -20,18 +20,22 @@
 
 # direct methods
 .method constructor <init>(Landroid/view/inputmethod/InputMethodManager;Landroid/os/Looper;)V
-    .locals 0
+    .locals 2
     .parameter
     .parameter "looper"
 
     .prologue
-    .line 336
+    .line 351
     iput-object p1, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
-    .line 337
-    invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+    .line 352
+    const/4 v0, 0x0
 
-    .line 338
+    const/4 v1, 0x1
+
+    invoke-direct {p0, p2, v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;Landroid/os/Handler$Callback;Z)V
+
+    .line 353
     return-void
 .end method
 
@@ -48,23 +52,23 @@
 
     const/4 v6, 0x0
 
-    .line 342
+    .line 357
     iget v7, p1, Landroid/os/Message;->what:I
 
     packed-switch v7, :pswitch_data_0
 
-    .line 460
+    .line 480
     :cond_0
     :goto_0
     return-void
 
-    .line 344
+    .line 359
     :pswitch_0
     iget-object v1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v1, Lcom/android/internal/os/SomeArgs;
 
-    .line 346
+    .line 361
     .local v1, args:Lcom/android/internal/os/SomeArgs;
     :try_start_0
     iget-object v9, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
@@ -87,13 +91,13 @@
     :try_end_0
     .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 351
+    .line 366
     :goto_1
     iget-object v7, v1, Lcom/android/internal/os/SomeArgs;->arg4:Ljava/lang/Object;
 
     monitor-enter v7
 
-    .line 352
+    .line 367
     :try_start_1
     iget-object v6, v1, Lcom/android/internal/os/SomeArgs;->arg4:Ljava/lang/Object;
 
@@ -101,21 +105,21 @@
 
     invoke-virtual {v6}, Ljava/util/concurrent/CountDownLatch;->countDown()V
 
-    .line 353
+    .line 368
     monitor-exit v7
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 354
+    .line 369
     invoke-virtual {v1}, Lcom/android/internal/os/SomeArgs;->recycle()V
 
     goto :goto_0
 
-    .line 348
+    .line 363
     :catch_0
     move-exception v2
 
-    .line 349
+    .line 364
     .local v2, e:Ljava/lang/RuntimeException;
     iget-object v6, v1, Lcom/android/internal/os/SomeArgs;->arg2:Ljava/lang/Object;
 
@@ -143,7 +147,7 @@
 
     goto :goto_1
 
-    .line 353
+    .line 368
     .end local v2           #e:Ljava/lang/RuntimeException;
     :catchall_0
     move-exception v6
@@ -155,14 +159,14 @@
 
     throw v6
 
-    .line 358
+    .line 373
     .end local v1           #args:Lcom/android/internal/os/SomeArgs;
     :pswitch_1
     iget-object v3, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v3, Lcom/android/internal/view/InputBindResult;
 
-    .line 362
+    .line 377
     .local v3, res:Lcom/android/internal/view/InputBindResult;
     iget-object v7, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
@@ -170,7 +174,7 @@
 
     monitor-enter v7
 
-    .line 363
+    .line 378
     :try_start_3
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
@@ -184,9 +188,9 @@
 
     iget v9, v3, Lcom/android/internal/view/InputBindResult;->sequence:I
 
-    if-eq v8, v9, :cond_2
+    if-eq v8, v9, :cond_3
 
-    .line 364
+    .line 379
     :cond_1
     const-string v6, "InputMethodManager"
 
@@ -226,12 +230,31 @@
 
     invoke-static {v6, v8}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 366
+    .line 381
+    iget-object v6, v3, Lcom/android/internal/view/InputBindResult;->channel:Landroid/view/InputChannel;
+
+    if-eqz v6, :cond_2
+
+    iget-object v6, v3, Lcom/android/internal/view/InputBindResult;->channel:Landroid/view/InputChannel;
+
+    iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
+
+    iget-object v8, v8, Landroid/view/inputmethod/InputMethodManager;->mCurChannel:Landroid/view/InputChannel;
+
+    if-eq v6, v8, :cond_2
+
+    .line 382
+    iget-object v6, v3, Lcom/android/internal/view/InputBindResult;->channel:Landroid/view/InputChannel;
+
+    invoke-virtual {v6}, Landroid/view/InputChannel;->dispose()V
+
+    .line 384
+    :cond_2
     monitor-exit v7
 
     goto/16 :goto_0
 
-    .line 372
+    .line 391
     :catchall_1
     move-exception v6
 
@@ -241,51 +264,58 @@
 
     throw v6
 
-    .line 369
-    :cond_2
+    .line 387
+    :cond_3
     :try_start_4
+    iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
+
+    iget-object v9, v3, Lcom/android/internal/view/InputBindResult;->channel:Landroid/view/InputChannel;
+
+    invoke-virtual {v8, v9}, Landroid/view/inputmethod/InputMethodManager;->setInputChannelLocked(Landroid/view/InputChannel;)V
+
+    .line 388
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget-object v9, v3, Lcom/android/internal/view/InputBindResult;->method:Lcom/android/internal/view/IInputMethodSession;
 
     iput-object v9, v8, Landroid/view/inputmethod/InputMethodManager;->mCurMethod:Lcom/android/internal/view/IInputMethodSession;
 
-    .line 370
+    .line 389
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget-object v9, v3, Lcom/android/internal/view/InputBindResult;->id:Ljava/lang/String;
 
     iput-object v9, v8, Landroid/view/inputmethod/InputMethodManager;->mCurId:Ljava/lang/String;
 
-    .line 371
+    .line 390
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget v9, v3, Lcom/android/internal/view/InputBindResult;->sequence:I
 
     iput v9, v8, Landroid/view/inputmethod/InputMethodManager;->mBindSequence:I
 
-    .line 372
+    .line 391
     monitor-exit v7
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 373
+    .line 392
     iget-object v7, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     invoke-virtual {v7, v10, v6, v6, v6}, Landroid/view/inputmethod/InputMethodManager;->startInputInner(Landroid/os/IBinder;III)Z
 
     goto/16 :goto_0
 
-    .line 377
+    .line 396
     .end local v3           #res:Lcom/android/internal/view/InputBindResult;
     :pswitch_2
     iget v4, p1, Landroid/os/Message;->arg1:I
 
-    .line 381
+    .line 400
     .local v4, sequence:I
     const/4 v5, 0x0
 
-    .line 382
+    .line 401
     .local v5, startInput:Z
     iget-object v7, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
@@ -293,25 +323,25 @@
 
     monitor-enter v7
 
-    .line 383
+    .line 402
     :try_start_5
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget v8, v8, Landroid/view/inputmethod/InputMethodManager;->mBindSequence:I
 
-    if-ne v8, v4, :cond_4
+    if-ne v8, v4, :cond_5
 
-    .line 394
+    .line 413
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     invoke-virtual {v8}, Landroid/view/inputmethod/InputMethodManager;->clearBindingLocked()V
 
-    .line 398
+    .line 417
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget-object v8, v8, Landroid/view/inputmethod/InputMethodManager;->mServedView:Landroid/view/View;
 
-    if-eqz v8, :cond_3
+    if-eqz v8, :cond_4
 
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
@@ -321,43 +351,43 @@
 
     move-result v8
 
-    if-eqz v8, :cond_3
+    if-eqz v8, :cond_4
 
-    .line 399
+    .line 418
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     const/4 v9, 0x1
 
     iput-boolean v9, v8, Landroid/view/inputmethod/InputMethodManager;->mServedConnecting:Z
 
-    .line 401
-    :cond_3
+    .line 420
+    :cond_4
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget-boolean v8, v8, Landroid/view/inputmethod/InputMethodManager;->mActive:Z
 
-    if-eqz v8, :cond_4
+    if-eqz v8, :cond_5
 
-    .line 402
+    .line 421
     const/4 v5, 0x1
 
-    .line 405
-    :cond_4
+    .line 424
+    :cond_5
     monitor-exit v7
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_2
 
-    .line 406
+    .line 425
     if-eqz v5, :cond_0
 
-    .line 407
+    .line 426
     iget-object v7, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     invoke-virtual {v7, v10, v6, v6, v6}, Landroid/view/inputmethod/InputMethodManager;->startInputInner(Landroid/os/IBinder;III)Z
 
     goto/16 :goto_0
 
-    .line 405
+    .line 424
     :catchall_2
     move-exception v6
 
@@ -368,15 +398,15 @@
 
     throw v6
 
-    .line 412
+    .line 431
     .end local v4           #sequence:I
     .end local v5           #startInput:Z
     :pswitch_3
     iget v7, p1, Landroid/os/Message;->arg1:I
 
-    if-eqz v7, :cond_6
+    if-eqz v7, :cond_7
 
-    .line 416
+    .line 435
     .local v0, active:Z
     :goto_2
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
@@ -385,23 +415,23 @@
 
     monitor-enter v7
 
-    .line 417
+    .line 436
     :try_start_7
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iput-boolean v0, v6, Landroid/view/inputmethod/InputMethodManager;->mActive:Z
 
-    .line 418
+    .line 437
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     const/4 v8, 0x0
 
     iput-boolean v8, v6, Landroid/view/inputmethod/InputMethodManager;->mFullscreenMode:Z
 
-    .line 419
-    if-nez v0, :cond_5
+    .line 438
+    if-nez v0, :cond_6
 
-    .line 423
+    .line 442
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     const/4 v8, 0x1
@@ -410,7 +440,7 @@
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_3
 
-    .line 427
+    .line 446
     :try_start_8
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
@@ -421,14 +451,14 @@
     .catchall {:try_start_8 .. :try_end_8} :catchall_3
     .catch Landroid/os/RemoteException; {:try_start_8 .. :try_end_8} :catch_1
 
-    .line 432
+    .line 451
     :goto_3
     :try_start_9
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget-object v6, v6, Landroid/view/inputmethod/InputMethodManager;->mServedView:Landroid/view/View;
 
-    if-eqz v6, :cond_5
+    if-eqz v6, :cond_6
 
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
@@ -438,9 +468,9 @@
 
     move-result v6
 
-    if-eqz v6, :cond_5
+    if-eqz v6, :cond_6
 
-    .line 440
+    .line 459
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     iget-object v8, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
@@ -454,9 +484,9 @@
 
     move-result v6
 
-    if-eqz v6, :cond_5
+    if-eqz v6, :cond_6
 
-    .line 441
+    .line 460
     iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
     const/4 v8, 0x0
@@ -469,8 +499,8 @@
 
     invoke-virtual {v6, v8, v9, v10, v11}, Landroid/view/inputmethod/InputMethodManager;->startInputInner(Landroid/os/IBinder;III)Z
 
-    .line 445
-    :cond_5
+    .line 464
+    :cond_6
     monitor-exit v7
 
     goto/16 :goto_0
@@ -485,30 +515,52 @@
     throw v6
 
     .end local v0           #active:Z
-    :cond_6
+    :cond_7
     move v0, v6
 
-    .line 412
+    .line 431
     goto :goto_2
 
-    .line 456
+    .line 468
     :pswitch_4
-    iget-object v6, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
+    iget-object v7, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
 
-    iget v7, p1, Landroid/os/Message;->arg1:I
+    iget-object v6, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    invoke-virtual {v6, v7}, Landroid/view/inputmethod/InputMethodManager;->timeoutEvent(I)V
+    check-cast v6, Landroid/view/inputmethod/InputMethodManager$PendingEvent;
+
+    invoke-virtual {v7, v6}, Landroid/view/inputmethod/InputMethodManager;->sendInputEventAndReportResultOnMainLooper(Landroid/view/inputmethod/InputMethodManager$PendingEvent;)V
 
     goto/16 :goto_0
 
-    .line 428
+    .line 472
+    :pswitch_5
+    iget-object v7, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
+
+    iget v8, p1, Landroid/os/Message;->arg1:I
+
+    invoke-virtual {v7, v8, v6, v0}, Landroid/view/inputmethod/InputMethodManager;->finishedInputEvent(IZZ)V
+
+    goto/16 :goto_0
+
+    .line 476
+    :pswitch_6
+    iget-object v7, p0, Landroid/view/inputmethod/InputMethodManager$H;->this$0:Landroid/view/inputmethod/InputMethodManager;
+
+    iget v8, p1, Landroid/os/Message;->arg1:I
+
+    invoke-virtual {v7, v8, v6, v6}, Landroid/view/inputmethod/InputMethodManager;->finishedInputEvent(IZZ)V
+
+    goto/16 :goto_0
+
+    .line 447
     .restart local v0       #active:Z
     :catch_1
     move-exception v6
 
     goto :goto_3
 
-    .line 342
+    .line 357
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -516,5 +568,7 @@
         :pswitch_2
         :pswitch_3
         :pswitch_4
+        :pswitch_5
+        :pswitch_6
     .end packed-switch
 .end method

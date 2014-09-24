@@ -125,7 +125,7 @@
 
     iput-object v0, p0, Lcom/android/server/power/DisplayPowerState;->mScreenUpdateRunnable:Ljava/lang/Runnable;
 
-    .line 313
+    .line 320
     new-instance v0, Lcom/android/server/power/DisplayPowerState$4;
 
     invoke-direct {v0, p0}, Lcom/android/server/power/DisplayPowerState$4;-><init>(Lcom/android/server/power/DisplayPowerState;)V
@@ -192,15 +192,15 @@
     return-void
 .end method
 
-.method static synthetic access$1000(Lcom/android/server/power/DisplayPowerState;)Lcom/android/server/power/ElectronBeam;
+.method static synthetic access$1000(Lcom/android/server/power/DisplayPowerState;)Z
     .locals 1
     .parameter "x0"
 
     .prologue
     .line 50
-    iget-object v0, p0, Lcom/android/server/power/DisplayPowerState;->mElectronBeam:Lcom/android/server/power/ElectronBeam;
+    iget-boolean v0, p0, Lcom/android/server/power/DisplayPowerState;->mElectronBeamPrepared:Z
 
-    return-object v0
+    return v0
 .end method
 
 .method static synthetic access$102(Lcom/android/server/power/DisplayPowerState;Z)Z
@@ -215,7 +215,18 @@
     return p1
 .end method
 
-.method static synthetic access$1102(Lcom/android/server/power/DisplayPowerState;Z)Z
+.method static synthetic access$1100(Lcom/android/server/power/DisplayPowerState;)Lcom/android/server/power/ElectronBeam;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 50
+    iget-object v0, p0, Lcom/android/server/power/DisplayPowerState;->mElectronBeam:Lcom/android/server/power/ElectronBeam;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1202(Lcom/android/server/power/DisplayPowerState;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
@@ -225,16 +236,6 @@
     iput-boolean p1, p0, Lcom/android/server/power/DisplayPowerState;->mElectronBeamReady:Z
 
     return p1
-.end method
-
-.method static synthetic access$1200()Z
-    .locals 1
-
-    .prologue
-    .line 50
-    sget-boolean v0, Lcom/android/server/power/DisplayPowerState;->DEBUG:Z
-
-    return v0
 .end method
 
 .method static synthetic access$1900(Lcom/android/server/power/DisplayPowerState;)Lcom/android/server/power/DisplayBlanker;
@@ -314,7 +315,17 @@
     return-object v0
 .end method
 
-.method static synthetic access$602(Lcom/android/server/power/DisplayPowerState;Z)Z
+.method static synthetic access$600()Z
+    .locals 1
+
+    .prologue
+    .line 50
+    sget-boolean v0, Lcom/android/server/power/DisplayPowerState;->DEBUG:Z
+
+    return v0
+.end method
+
+.method static synthetic access$702(Lcom/android/server/power/DisplayPowerState;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
@@ -326,7 +337,7 @@
     return p1
 .end method
 
-.method static synthetic access$700(Lcom/android/server/power/DisplayPowerState;)V
+.method static synthetic access$800(Lcom/android/server/power/DisplayPowerState;)V
     .locals 0
     .parameter "x0"
 
@@ -337,7 +348,7 @@
     return-void
 .end method
 
-.method static synthetic access$802(Lcom/android/server/power/DisplayPowerState;Z)Z
+.method static synthetic access$902(Lcom/android/server/power/DisplayPowerState;Z)Z
     .locals 0
     .parameter "x0"
     .parameter "x1"
@@ -347,17 +358,6 @@
     iput-boolean p1, p0, Lcom/android/server/power/DisplayPowerState;->mElectronBeamDrawPending:Z
 
     return p1
-.end method
-
-.method static synthetic access$900(Lcom/android/server/power/DisplayPowerState;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 50
-    iget-boolean v0, p0, Lcom/android/server/power/DisplayPowerState;->mElectronBeamPrepared:Z
-
-    return v0
 .end method
 
 .method private invokeCleanListenerIfNeeded()V

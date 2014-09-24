@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 552
+    .line 582
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -32,22 +32,24 @@
     .parameter "ctx"
 
     .prologue
-    .line 554
-    invoke-virtual {p1}, Landroid/app/ContextImpl;->getOuterContext()Landroid/content/Context;
+    .line 584
+    const-string/jumbo v2, "user"
+
+    invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 555
-    .local v0, outerContext:Landroid/content/Context;
-    new-instance v1, Landroid/app/ProfileManager;
+    .line 585
+    .local v0, b:Landroid/os/IBinder;
+    invoke-static {v0}, Landroid/os/IUserManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/os/IUserManager;
 
-    iget-object v2, p1, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
+    move-result-object v1
 
-    invoke-virtual {v2}, Landroid/app/ActivityThread;->getHandler()Landroid/os/Handler;
+    .line 586
+    .local v1, service:Landroid/os/IUserManager;
+    new-instance v2, Landroid/os/UserManager;
 
-    move-result-object v2
+    invoke-direct {v2, p1, v1}, Landroid/os/UserManager;-><init>(Landroid/content/Context;Landroid/os/IUserManager;)V
 
-    invoke-direct {v1, v0, v2}, Landroid/app/ProfileManager;-><init>(Landroid/content/Context;Landroid/os/Handler;)V
-
-    return-object v1
+    return-object v2
 .end method

@@ -26,17 +26,11 @@
 
 .field public static final CARRIER_ENABLED:Ljava/lang/String; = "carrier_enabled"
 
-.field public static final CLASS:Ljava/lang/String; = "class"
-
 .field public static final CONTENT_URI:Landroid/net/Uri; = null
 
 .field public static final CURRENT:Ljava/lang/String; = "current"
 
 .field public static final DEFAULT_SORT_ORDER:Ljava/lang/String; = "name ASC"
-
-.field public static final ENABLED:Ljava/lang/String; = "enabled"
-
-.field public static final INACTIVE_TIMER:Ljava/lang/String; = "inactivetimer"
 
 .field public static final MCC:Ljava/lang/String; = "mcc"
 
@@ -48,6 +42,10 @@
 
 .field public static final MNC:Ljava/lang/String; = "mnc"
 
+.field public static final MVNO_MATCH_DATA:Ljava/lang/String; = "mvno_match_data"
+
+.field public static final MVNO_TYPE:Ljava/lang/String; = "mvno_type"
+
 .field public static final NAME:Ljava/lang/String; = "name"
 
 .field public static final NUMERIC:Ljava/lang/String; = "numeric"
@@ -55,6 +53,8 @@
 .field public static final PASSWORD:Ljava/lang/String; = "password"
 
 .field public static final PORT:Ljava/lang/String; = "port"
+
+.field public static final PREFERRED:Ljava/lang/String; = "preferred"
 
 .field public static final PROTOCOL:Ljava/lang/String; = "protocol"
 
@@ -74,7 +74,7 @@
     .locals 1
 
     .prologue
-    .line 1747
+    .line 2468
     const-string v0, "content://telephony/carriers"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -86,11 +86,11 @@
     return-void
 .end method
 
-.method public constructor <init>()V
+.method private constructor <init>()V
     .locals 0
 
     .prologue
-    .line 1743
+    .line 2463
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

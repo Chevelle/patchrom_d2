@@ -37,7 +37,7 @@
     .parameter
 
     .prologue
-    .line 1246
+    .line 1245
     iput-object p1, p0, Lcom/android/server/net/NetworkStatsService$DropBoxNonMonotonicObserver;->this$0:Lcom/android/server/net/NetworkStatsService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -51,7 +51,7 @@
     .parameter "x1"
 
     .prologue
-    .line 1246
+    .line 1245
     invoke-direct {p0, p1}, Lcom/android/server/net/NetworkStatsService$DropBoxNonMonotonicObserver;-><init>(Lcom/android/server/net/NetworkStatsService;)V
 
     return-void
@@ -68,7 +68,7 @@
     .parameter "x4"
 
     .prologue
-    .line 1246
+    .line 1245
     move-object v5, p5
 
     check-cast v5, Ljava/lang/String;
@@ -99,19 +99,19 @@
     .prologue
     const/16 v4, 0xa
 
-    .line 1250
+    .line 1249
     const-string v2, "NetworkStats"
 
     const-string v3, "found non-monotonic values; saving to dropbox"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1253
+    .line 1252
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 1254
+    .line 1253
     .local v0, builder:Ljava/lang/StringBuilder;
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -159,7 +159,7 @@
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1256
+    .line 1255
     const-string v2, "left="
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -172,7 +172,7 @@
 
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 1257
+    .line 1256
     const-string v2, "right="
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -185,7 +185,7 @@
 
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 1259
+    .line 1258
     iget-object v2, p0, Lcom/android/server/net/NetworkStatsService$DropBoxNonMonotonicObserver;->this$0:Lcom/android/server/net/NetworkStatsService;
 
     #getter for: Lcom/android/server/net/NetworkStatsService;->mContext:Landroid/content/Context;
@@ -201,7 +201,7 @@
 
     check-cast v1, Landroid/os/DropBoxManager;
 
-    .line 1261
+    .line 1260
     .local v1, dropBox:Landroid/os/DropBoxManager;
     const-string v2, "netstats_error"
 
@@ -211,6 +211,6 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/os/DropBoxManager;->addText(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1262
+    .line 1261
     return-void
 .end method

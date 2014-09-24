@@ -96,7 +96,7 @@
 
     if-nez v3, :cond_0
 
-    .line 170
+    .line 172
     :goto_0
     return-void
 
@@ -153,7 +153,7 @@
 
     move-result-object v2
 
-    .line 157
+    .line 159
     .local v2, sci:Landroid/view/textservice/SpellCheckerInfo;
     if-nez v2, :cond_1
 
@@ -161,7 +161,7 @@
 
     goto :goto_0
 
-    .line 169
+    .line 171
     .end local v2           #sci:Landroid/view/textservice/SpellCheckerInfo;
     :catchall_0
     move-exception v3
@@ -172,7 +172,7 @@
 
     throw v3
 
-    .line 158
+    .line 160
     .restart local v2       #sci:Landroid/view/textservice/SpellCheckerInfo;
     :cond_1
     :try_start_1
@@ -180,13 +180,13 @@
 
     move-result-object v1
 
-    .line 159
+    .line 161
     .local v1, packageName:Ljava/lang/String;
     invoke-virtual {p0, v1}, Lcom/android/server/TextServicesManagerService$TextServicesMonitor;->isPackageDisappearing(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 160
+    .line 162
     .local v0, change:I
     const/4 v3, 0x3
 
@@ -202,7 +202,7 @@
 
     if-eqz v3, :cond_3
 
-    .line 164
+    .line 166
     :cond_2
     iget-object v3, p0, Lcom/android/server/TextServicesManagerService$TextServicesMonitor;->this$0:Lcom/android/server/TextServicesManagerService;
 
@@ -213,10 +213,10 @@
 
     move-result-object v2
 
-    .line 165
+    .line 167
     if-eqz v2, :cond_3
 
-    .line 166
+    .line 168
     iget-object v3, p0, Lcom/android/server/TextServicesManagerService$TextServicesMonitor;->this$0:Lcom/android/server/TextServicesManagerService;
 
     invoke-virtual {v2}, Landroid/view/textservice/SpellCheckerInfo;->getId()Ljava/lang/String;
@@ -226,7 +226,7 @@
     #calls: Lcom/android/server/TextServicesManagerService;->setCurrentSpellCheckerLocked(Ljava/lang/String;)V
     invoke-static {v3, v5}, Lcom/android/server/TextServicesManagerService;->access$800(Lcom/android/server/TextServicesManagerService;Ljava/lang/String;)V
 
-    .line 169
+    .line 171
     :cond_3
     monitor-exit v4
     :try_end_1

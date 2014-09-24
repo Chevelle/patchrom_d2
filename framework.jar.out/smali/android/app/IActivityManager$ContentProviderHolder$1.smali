@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 405
+    .line 446
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -45,7 +45,7 @@
     .parameter "source"
 
     .prologue
-    .line 407
+    .line 449
     new-instance v0, Landroid/app/IActivityManager$ContentProviderHolder;
 
     const/4 v1, 0x0
@@ -60,7 +60,7 @@
     .parameter "x0"
 
     .prologue
-    .line 405
+    .line 446
     invoke-virtual {p0, p1}, Landroid/app/IActivityManager$ContentProviderHolder$1;->createFromParcel(Landroid/os/Parcel;)Landroid/app/IActivityManager$ContentProviderHolder;
 
     move-result-object v0
@@ -73,7 +73,7 @@
     .parameter "size"
 
     .prologue
-    .line 411
+    .line 454
     new-array v0, p1, [Landroid/app/IActivityManager$ContentProviderHolder;
 
     return-object v0
@@ -84,7 +84,7 @@
     .parameter "x0"
 
     .prologue
-    .line 405
+    .line 446
     invoke-virtual {p0, p1}, Landroid/app/IActivityManager$ContentProviderHolder$1;->newArray(I)[Landroid/app/IActivityManager$ContentProviderHolder;
 
     move-result-object v0

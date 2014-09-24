@@ -44,7 +44,7 @@
     .locals 1
 
     .prologue
-    .line 102
+    .line 108
     new-instance v0, Landroid/view/inputmethod/ExtractedText$1;
 
     invoke-direct {v0}, Landroid/view/inputmethod/ExtractedText$1;-><init>()V
@@ -58,7 +58,7 @@
     .locals 0
 
     .prologue
-    .line 26
+    .line 29
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -70,7 +70,7 @@
     .locals 1
 
     .prologue
-    .line 121
+    .line 128
     const/4 v0, 0x0
 
     return v0
@@ -82,41 +82,41 @@
     .parameter "flags"
 
     .prologue
-    .line 90
+    .line 96
     iget-object v0, p0, Landroid/view/inputmethod/ExtractedText;->text:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 91
+    .line 97
     iget v0, p0, Landroid/view/inputmethod/ExtractedText;->startOffset:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 92
+    .line 98
     iget v0, p0, Landroid/view/inputmethod/ExtractedText;->partialStartOffset:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 93
+    .line 99
     iget v0, p0, Landroid/view/inputmethod/ExtractedText;->partialEndOffset:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 94
+    .line 100
     iget v0, p0, Landroid/view/inputmethod/ExtractedText;->selectionStart:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 95
+    .line 101
     iget v0, p0, Landroid/view/inputmethod/ExtractedText;->selectionEnd:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 96
+    .line 102
     iget v0, p0, Landroid/view/inputmethod/ExtractedText;->flags:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 97
+    .line 103
     return-void
 .end method

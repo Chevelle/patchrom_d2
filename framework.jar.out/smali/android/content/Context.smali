@@ -14,9 +14,13 @@
 
 .field public static final APPWIDGET_SERVICE:Ljava/lang/String; = "appwidget"
 
+.field public static final APP_OPS_SERVICE:Ljava/lang/String; = "appops"
+
 .field public static final AUDIO_SERVICE:Ljava/lang/String; = "audio"
 
 .field public static final BACKUP_SERVICE:Ljava/lang/String; = "backup"
+
+.field public static final BATTERY_SERVICE:Ljava/lang/String; = "battery"
 
 .field public static final BIND_ABOVE_CLIENT:I = 0x8
 
@@ -34,15 +38,23 @@
 
 .field public static final BIND_NOT_VISIBLE:I = 0x40000000
 
-.field public static final BIND_VISIBLE:I = 0x100
+.field public static final BIND_SHOWING_UI:I = 0x20000000
+
+.field public static final BIND_VISIBLE:I = 0x10000000
 
 .field public static final BIND_WAIVE_PRIORITY:I = 0x20
 
 .field public static final BLUETOOTH_SERVICE:Ljava/lang/String; = "bluetooth"
 
+.field public static final CAMERA_SERVICE:Ljava/lang/String; = "camera"
+
+.field public static final CAPTIONING_SERVICE:Ljava/lang/String; = "captioning"
+
 .field public static final CLIPBOARD_SERVICE:Ljava/lang/String; = "clipboard"
 
 .field public static final CONNECTIVITY_SERVICE:Ljava/lang/String; = "connectivity"
+
+.field public static final CONSUMER_IR_SERVICE:Ljava/lang/String; = "consumer_ir"
 
 .field public static final CONTEXT_IGNORE_SECURITY:I = 0x2
 
@@ -90,6 +102,8 @@
     .end annotation
 .end field
 
+.field public static final MSIM_TELEPHONY_SERVICE:Ljava/lang/String; = "phone_msim"
+
 .field public static final NETWORKMANAGEMENT_SERVICE:Ljava/lang/String; = "network_management"
 
 .field public static final NETWORK_POLICY_SERVICE:Ljava/lang/String; = "netpolicy"
@@ -104,11 +118,13 @@
 
 .field public static final POWER_SERVICE:Ljava/lang/String; = "power"
 
+.field public static final PRINT_SERVICE:Ljava/lang/String; = "print"
+
 .field public static final PROFILE_SERVICE:Ljava/lang/String; = "profile"
 
-.field public static final SCHEDULING_POLICY_SERVICE:Ljava/lang/String; = "scheduling_policy"
-
 .field public static final SEARCH_SERVICE:Ljava/lang/String; = "search"
+
+.field public static final SECURITY_SERVICE:Ljava/lang/String; = "security"
 
 .field public static final SENSOR_SERVICE:Ljava/lang/String; = "sensor"
 
@@ -124,7 +140,9 @@
 
 .field public static final TEXT_SERVICES_MANAGER_SERVICE:Ljava/lang/String; = "textservices"
 
-.field public static final THROTTLE_SERVICE:Ljava/lang/String; = "throttle"
+.field public static final THEME_SERVICE:Ljava/lang/String; = "themes"
+
+.field public static final TORCH_SERVICE:Ljava/lang/String; = "torch"
 
 .field public static final UI_MODE_SERVICE:Ljava/lang/String; = "uimode"
 
@@ -150,7 +168,7 @@
     .locals 0
 
     .prologue
-    .line 57
+    .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -162,14 +180,33 @@
 .end method
 
 .method public bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;II)Z
-    .locals 2
+    .locals 1
     .parameter "service"
     .parameter "conn"
     .parameter "flags"
     .parameter "userHandle"
 
     .prologue
-    .line 1681
+    new-instance v0, Landroid/os/UserHandle;
+
+    invoke-direct {v0, p4}, Landroid/os/UserHandle;-><init>(I)V
+
+    invoke-virtual {p0, p1, p2, p3, v0}, Landroid/content/Context;->bindServiceAsUser(Landroid/content/Intent;Landroid/content/ServiceConnection;ILandroid/os/UserHandle;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public bindServiceAsUser(Landroid/content/Intent;Landroid/content/ServiceConnection;ILandroid/os/UserHandle;)Z
+    .locals 2
+    .parameter "service"
+    .parameter "conn"
+    .parameter "flags"
+    .parameter "user"
+
+    .prologue
+    .line 1860
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "Not implemented. Must override in a subclass."
@@ -233,6 +270,14 @@
     .end annotation
 .end method
 
+.method public abstract createPackageContextAsUser(Ljava/lang/String;Ljava/lang/String;ILandroid/os/UserHandle;)Landroid/content/Context;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/content/pm/PackageManager$NameNotFoundException;
+        }
+    .end annotation
+.end method
+
 .method public abstract databaseList()[Ljava/lang/String;
 .end method
 
@@ -275,13 +320,13 @@
 .method public abstract getAssets()Landroid/content/res/AssetManager;
 .end method
 
+.method public abstract getBasePackageName()Ljava/lang/String;
+.end method
+
 .method public abstract getCacheDir()Ljava/io/File;
 .end method
 
 .method public abstract getClassLoader()Ljava/lang/ClassLoader;
-.end method
-
-.method public abstract getCompatibilityInfo(I)Landroid/view/CompatibilityInfoHolder;
 .end method
 
 .method public abstract getContentResolver()Landroid/content/ContentResolver;
@@ -293,10 +338,19 @@
 .method public abstract getDir(Ljava/lang/String;I)Ljava/io/File;
 .end method
 
+.method public abstract getDisplayAdjustments(I)Landroid/view/DisplayAdjustments;
+.end method
+
 .method public abstract getExternalCacheDir()Ljava/io/File;
 .end method
 
+.method public abstract getExternalCacheDirs()[Ljava/io/File;
+.end method
+
 .method public abstract getExternalFilesDir(Ljava/lang/String;)Ljava/io/File;
+.end method
+
+.method public abstract getExternalFilesDirs(Ljava/lang/String;)[Ljava/io/File;
 .end method
 
 .method public abstract getFileStreamPath(Ljava/lang/String;)Ljava/io/File;
@@ -309,6 +363,12 @@
 .end method
 
 .method public abstract getObbDir()Ljava/io/File;
+.end method
+
+.method public abstract getObbDirs()[Ljava/io/File;
+.end method
+
+.method public abstract getOpPackageName()Ljava/lang/String;
 .end method
 
 .method public abstract getPackageCodePath()Ljava/lang/String;
@@ -337,7 +397,7 @@
     .parameter "resId"
 
     .prologue
-    .line 327
+    .line 345
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -355,7 +415,7 @@
     .parameter "formatArgs"
 
     .prologue
-    .line 340
+    .line 358
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -375,7 +435,7 @@
     .parameter "resId"
 
     .prologue
-    .line 317
+    .line 335
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -394,10 +454,13 @@
     .locals 1
 
     .prologue
-    .line 356
+    .line 374
     const/4 v0, 0x0
 
     return v0
+.end method
+
+.method public abstract getUserId()I
 .end method
 
 .method public abstract getWallpaper()Landroid/graphics/drawable/Drawable;
@@ -418,14 +481,11 @@
 .method public abstract grantUriPermission(Ljava/lang/String;Landroid/net/Uri;I)V
 .end method
 
-.method public abstract isPrivacyGuardEnabled()Z
-.end method
-
 .method public isRestricted()Z
     .locals 1
 
     .prologue
-    .line 2748
+    .line 3001
     const/4 v0, 0x0
 
     return v0
@@ -442,7 +502,7 @@
     .end annotation
 
     .prologue
-    .line 385
+    .line 403
     invoke-virtual {p0}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
 
     move-result-object v0
@@ -462,7 +522,7 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 397
+    .line 415
     invoke-virtual {p0}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
 
     move-result-object v0
@@ -482,7 +542,7 @@
     .parameter "defStyleRes"
 
     .prologue
-    .line 409
+    .line 427
     invoke-virtual {p0}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
 
     move-result-object v0
@@ -499,7 +559,7 @@
     .parameter "attrs"
 
     .prologue
-    .line 373
+    .line 391
     invoke-virtual {p0}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
 
     move-result-object v0
@@ -543,14 +603,14 @@
     .parameter "callback"
 
     .prologue
-    .line 299
+    .line 317
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Landroid/content/Context;->registerComponentCallbacks(Landroid/content/ComponentCallbacks;)V
 
-    .line 300
+    .line 318
     return-void
 .end method
 
@@ -578,6 +638,9 @@
 .method public abstract sendBroadcast(Landroid/content/Intent;Ljava/lang/String;)V
 .end method
 
+.method public abstract sendBroadcast(Landroid/content/Intent;Ljava/lang/String;I)V
+.end method
+
 .method public abstract sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 .end method
 
@@ -585,6 +648,9 @@
 .end method
 
 .method public abstract sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;)V
+.end method
+
+.method public abstract sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;ILandroid/content/BroadcastReceiver;Landroid/os/Handler;ILjava/lang/String;Landroid/os/Bundle;)V
 .end method
 
 .method public abstract sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;Landroid/content/BroadcastReceiver;Landroid/os/Handler;ILjava/lang/String;Landroid/os/Bundle;)V
@@ -643,7 +709,7 @@
     .parameter "userHandle"
 
     .prologue
-    .line 1036
+    .line 1197
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "Not implemented. Must override in a subclass."
@@ -666,7 +732,7 @@
     .parameter "userId"
 
     .prologue
-    .line 967
+    .line 1128
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "Not implemented. Must override in a subclass."
@@ -682,7 +748,7 @@
     .parameter "user"
 
     .prologue
-    .line 922
+    .line 1083
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "Not implemented. Must override in a subclass."
@@ -731,14 +797,14 @@
     .parameter "callback"
 
     .prologue
-    .line 307
+    .line 325
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Landroid/content/Context;->unregisterComponentCallbacks(Landroid/content/ComponentCallbacks;)V
 
-    .line 308
+    .line 326
     return-void
 .end method
 

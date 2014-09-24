@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 330
+    .line 356
     invoke-direct {p0}, Landroid/app/ContextImpl$ServiceFetcher;-><init>()V
 
     return-void
@@ -32,10 +32,10 @@
     .parameter "ctx"
 
     .prologue
-    .line 332
-    new-instance v0, Landroid/media/MediaRouter;
+    .line 358
+    new-instance v0, Landroid/media/AudioManager;
 
-    invoke-direct {v0, p1}, Landroid/media/MediaRouter;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p1}, Landroid/media/AudioManager;-><init>(Landroid/content/Context;)V
 
     return-object v0
 .end method

@@ -9,9 +9,9 @@
     .parameter "reason"
 
     .prologue
-    .line 431
+    .line 432
     invoke-direct {p0, p1}, Ljavax/net/ssl/SSLException;-><init>(Ljava/lang/String;)V
 
-    .line 432
+    .line 433
     return-void
 .end method

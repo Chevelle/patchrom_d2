@@ -49,6 +49,22 @@
     .end annotation
 .end method
 
+.method public abstract getDeviceOwner()Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getDeviceOwnerName()Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getGlobalProxyAdmin(I)Landroid/content/ComponentName;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -58,14 +74,6 @@
 .end method
 
 .method public abstract getKeyguardDisabledFeatures(Landroid/content/ComponentName;I)I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getMMACenforcing(Landroid/content/ComponentName;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -185,42 +193,6 @@
     .end annotation
 .end method
 
-.method public abstract getSELinuxBooleanNames(Landroid/content/ComponentName;I)Ljava/util/List;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/content/ComponentName;",
-            "I)",
-            "Ljava/util/List",
-            "<",
-            "Ljava/lang/String;",
-            ">;"
-        }
-    .end annotation
-
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getSELinuxBooleanValue(Landroid/content/ComponentName;Ljava/lang/String;I)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getSELinuxEnforcing(Landroid/content/ComponentName;I)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract getStorageEncryption(Landroid/content/ComponentName;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -245,6 +217,14 @@
     .end annotation
 .end method
 
+.method public abstract installCaCert([B)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract isActivePasswordSufficient(I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -261,23 +241,7 @@
     .end annotation
 .end method
 
-.method public abstract isCustomPolicyFile(Landroid/content/ComponentName;II)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract isMMACadmin(Landroid/content/ComponentName;I)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract isSELinuxAdmin(Landroid/content/ComponentName;I)Z
+.method public abstract isDeviceOwner(Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -325,6 +289,14 @@
     .end annotation
 .end method
 
+.method public abstract requireSecureKeyguard(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract resetPassword(Ljava/lang/String;II)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -357,7 +329,7 @@
     .end annotation
 .end method
 
-.method public abstract setCustomPolicyFile(Landroid/content/ComponentName;I[BI)Z
+.method public abstract setDeviceOwner(Ljava/lang/String;Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -374,22 +346,6 @@
 .end method
 
 .method public abstract setKeyguardDisabledFeatures(Landroid/content/ComponentName;II)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setMMACadmin(Landroid/content/ComponentName;ZI)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setMMACenforcing(Landroid/content/ComponentName;ZI)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -493,31 +449,15 @@
     .end annotation
 .end method
 
-.method public abstract setSELinuxAdmin(Landroid/content/ComponentName;ZI)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setSELinuxBooleanValue(Landroid/content/ComponentName;Ljava/lang/String;ZI)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setSELinuxEnforcing(Landroid/content/ComponentName;ZI)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract setStorageEncryption(Landroid/content/ComponentName;ZI)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract uninstallCaCert([B)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

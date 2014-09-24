@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 74
+    .line 97
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -34,10 +34,10 @@
     .locals 0
 
     .prologue
-    .line 76
+    .line 99
     #calls: Landroid/os/Trace;->cacheEnabledTags()J
     invoke-static {}, Landroid/os/Trace;->access$000()J
 
-    .line 77
+    .line 100
     return-void
 .end method

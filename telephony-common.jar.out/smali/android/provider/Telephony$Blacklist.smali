@@ -44,7 +44,7 @@
     .locals 1
 
     .prologue
-    .line 2009
+    .line 2847
     const-string v0, "content://blacklist"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -53,7 +53,7 @@
 
     sput-object v0, Landroid/provider/Telephony$Blacklist;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 2017
+    .line 2856
     const-string v0, "content://blacklist/bynumber"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -62,7 +62,7 @@
 
     sput-object v0, Landroid/provider/Telephony$Blacklist;->CONTENT_FILTER_BYNUMBER_URI:Landroid/net/Uri;
 
-    .line 2023
+    .line 2862
     const-string v0, "content://blacklist/phone"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -71,7 +71,7 @@
 
     sput-object v0, Landroid/provider/Telephony$Blacklist;->CONTENT_PHONE_URI:Landroid/net/Uri;
 
-    .line 2029
+    .line 2868
     const-string v0, "content://blacklist/message"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -87,7 +87,7 @@
     .locals 0
 
     .prologue
-    .line 2005
+    .line 2843
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

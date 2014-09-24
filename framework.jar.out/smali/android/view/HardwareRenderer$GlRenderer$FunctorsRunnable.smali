@@ -29,7 +29,7 @@
     .parameter
 
     .prologue
-    .line 1118
+    .line 1410
     iput-object p1, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,69 +40,67 @@
 
 # virtual methods
 .method public run()V
-    .locals 5
+    .locals 4
 
     .prologue
-    .line 1123
-    iget-object v3, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->attachInfo:Landroid/view/View$AttachInfo;
+    .line 1415
+    iget-object v2, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->attachInfo:Landroid/view/View$AttachInfo;
 
-    iget-object v0, v3, Landroid/view/View$AttachInfo;->mHardwareRenderer:Landroid/view/HardwareRenderer;
+    iget-object v0, v2, Landroid/view/View$AttachInfo;->mHardwareRenderer:Landroid/view/HardwareRenderer;
 
-    .line 1124
+    .line 1416
     .local v0, renderer:Landroid/view/HardwareRenderer;
     if-eqz v0, :cond_0
 
     invoke-virtual {v0}, Landroid/view/HardwareRenderer;->isEnabled()Z
 
-    move-result v3
+    move-result v2
 
-    if-eqz v3, :cond_0
+    if-eqz v2, :cond_0
 
-    iget-object v3, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
+    iget-object v2, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
 
-    if-eq v0, v3, :cond_1
+    if-eq v0, v2, :cond_1
 
-    .line 1133
+    .line 1424
     :cond_0
     :goto_0
     return-void
 
-    .line 1128
+    .line 1420
     :cond_1
-    iget-object v3, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
+    iget-object v2, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
 
-    invoke-virtual {v3}, Landroid/view/HardwareRenderer$GlRenderer;->checkCurrent()I
+    invoke-virtual {v2}, Landroid/view/HardwareRenderer$GlRenderer;->checkRenderContext()I
 
     move-result v2
 
-    .line 1129
-    .local v2, surfaceState:I
     if-eqz v2, :cond_0
 
-    .line 1130
+    .line 1421
+    iget-object v2, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
+
+    iget-object v2, v2, Landroid/view/HardwareRenderer$GlRenderer;->mCanvas:Landroid/view/HardwareCanvas;
+
     iget-object v3, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
 
-    iget-object v3, v3, Landroid/view/HardwareRenderer$GlRenderer;->mCanvas:Landroid/view/HardwareCanvas;
-
-    iget-object v4, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
-
     #getter for: Landroid/view/HardwareRenderer$GlRenderer;->mRedrawClip:Landroid/graphics/Rect;
-    invoke-static {v4}, Landroid/view/HardwareRenderer$GlRenderer;->access$000(Landroid/view/HardwareRenderer$GlRenderer;)Landroid/graphics/Rect;
+    invoke-static {v3}, Landroid/view/HardwareRenderer$GlRenderer;->access$100(Landroid/view/HardwareRenderer$GlRenderer;)Landroid/graphics/Rect;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-virtual {v3, v4}, Landroid/view/HardwareCanvas;->invokeFunctors(Landroid/graphics/Rect;)I
+    invoke-virtual {v2, v3}, Landroid/view/HardwareCanvas;->invokeFunctors(Landroid/graphics/Rect;)I
 
     move-result v1
 
-    .line 1131
+    .line 1422
     .local v1, status:I
-    iget-object v3, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
+    iget-object v2, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->this$0:Landroid/view/HardwareRenderer$GlRenderer;
 
-    iget-object v4, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->attachInfo:Landroid/view/View$AttachInfo;
+    iget-object v3, p0, Landroid/view/HardwareRenderer$GlRenderer$FunctorsRunnable;->attachInfo:Landroid/view/View$AttachInfo;
 
     #calls: Landroid/view/HardwareRenderer$GlRenderer;->handleFunctorStatus(Landroid/view/View$AttachInfo;I)V
-    invoke-static {v3, v4, v1}, Landroid/view/HardwareRenderer$GlRenderer;->access$100(Landroid/view/HardwareRenderer$GlRenderer;Landroid/view/View$AttachInfo;I)V
+    invoke-static {v2, v3, v1}, Landroid/view/HardwareRenderer$GlRenderer;->access$200(Landroid/view/HardwareRenderer$GlRenderer;Landroid/view/View$AttachInfo;I)V
 
     goto :goto_0
 .end method

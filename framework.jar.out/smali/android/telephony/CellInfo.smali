@@ -34,6 +34,8 @@
 
 .field protected static final TYPE_LTE:I = 0x3
 
+.field protected static final TYPE_WCDMA:I = 0x4
+
 
 # instance fields
 .field private mRegistered:Z
@@ -48,7 +50,7 @@
     .locals 1
 
     .prologue
-    .line 196
+    .line 198
     new-instance v0, Landroid/telephony/CellInfo$1;
 
     invoke-direct {v0}, Landroid/telephony/CellInfo$1;-><init>()V
@@ -64,21 +66,21 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 59
+    .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 60
+    .line 62
     iput-boolean v0, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
-    .line 61
+    .line 63
     iput v0, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
-    .line 62
+    .line 64
     const-wide v0, 0x7fffffffffffffffL
 
     iput-wide v0, p0, Landroid/telephony/CellInfo;->mTimeStamp:J
 
-    .line 63
+    .line 65
     return-void
 .end method
 
@@ -89,10 +91,10 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 189
+    .line 191
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 190
+    .line 192
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
@@ -102,24 +104,24 @@
     :goto_0
     iput-boolean v0, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
-    .line 191
+    .line 193
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
-    .line 192
+    .line 194
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/telephony/CellInfo;->mTimeStamp:J
 
-    .line 193
+    .line 195
     return-void
 
-    .line 190
+    .line 192
     :cond_0
     const/4 v0, 0x0
 
@@ -131,25 +133,25 @@
     .parameter "ci"
 
     .prologue
-    .line 66
+    .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 67
+    .line 69
     iget-boolean v0, p1, Landroid/telephony/CellInfo;->mRegistered:Z
 
     iput-boolean v0, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
-    .line 68
+    .line 70
     iget v0, p1, Landroid/telephony/CellInfo;->mTimeStampType:I
 
     iput v0, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
-    .line 69
+    .line 71
     iget-wide v0, p1, Landroid/telephony/CellInfo;->mTimeStamp:J
 
     iput-wide v0, p0, Landroid/telephony/CellInfo;->mTimeStamp:J
 
-    .line 70
+    .line 72
     return-void
 .end method
 
@@ -158,40 +160,40 @@
     .parameter "type"
 
     .prologue
-    .line 133
+    .line 135
     packed-switch p0, :pswitch_data_0
 
-    .line 143
+    .line 145
     const-string/jumbo v0, "unknown"
 
     :goto_0
     return-object v0
 
-    .line 135
+    .line 137
     :pswitch_0
     const-string v0, "antenna"
 
     goto :goto_0
 
-    .line 137
+    .line 139
     :pswitch_1
     const-string/jumbo v0, "modem"
 
     goto :goto_0
 
-    .line 139
+    .line 141
     :pswitch_2
     const-string/jumbo v0, "oem_ril"
 
     goto :goto_0
 
-    .line 141
+    .line 143
     :pswitch_3
     const-string v0, "java_ril"
 
     goto :goto_0
 
-    .line 133
+    .line 135
     nop
 
     :pswitch_data_0
@@ -209,7 +211,7 @@
     .locals 1
 
     .prologue
-    .line 165
+    .line 167
     const/4 v0, 0x0
 
     return v0
@@ -224,23 +226,23 @@
 
     const/4 v4, 0x0
 
-    .line 117
+    .line 119
     if-nez p1, :cond_0
 
-    .line 128
+    .line 130
     :goto_0
     return v4
 
-    .line 120
+    .line 122
     :cond_0
     if-ne p0, p1, :cond_1
 
     move v4, v3
 
-    .line 121
+    .line 123
     goto :goto_0
 
-    .line 124
+    .line 126
     :cond_1
     :try_start_0
     move-object v0, p1
@@ -249,7 +251,7 @@
 
     move-object v2, v0
 
-    .line 125
+    .line 127
     .local v2, o:Landroid/telephony/CellInfo;
     iget-boolean v5, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
@@ -283,12 +285,12 @@
 
     goto :goto_1
 
-    .line 127
+    .line 129
     .end local v2           #o:Landroid/telephony/CellInfo;
     :catch_0
     move-exception v1
 
-    .line 128
+    .line 130
     .local v1, e:Ljava/lang/ClassCastException;
     goto :goto_0
 .end method
@@ -297,7 +299,7 @@
     .locals 2
 
     .prologue
-    .line 83
+    .line 85
     iget-wide v0, p0, Landroid/telephony/CellInfo;->mTimeStamp:J
 
     return-wide v0
@@ -307,7 +309,7 @@
     .locals 1
 
     .prologue
-    .line 97
+    .line 99
     iget v0, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
     return v0
@@ -317,10 +319,10 @@
     .locals 6
 
     .prologue
-    .line 110
+    .line 112
     const/16 v0, 0x1f
 
-    .line 111
+    .line 113
     .local v0, primeNum:I
     iget-boolean v1, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
@@ -361,7 +363,7 @@
     .locals 1
 
     .prologue
-    .line 74
+    .line 76
     iget-boolean v0, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
     return v0
@@ -372,10 +374,10 @@
     .parameter "registered"
 
     .prologue
-    .line 78
+    .line 80
     iput-boolean p1, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
-    .line 79
+    .line 81
     return-void
 .end method
 
@@ -384,10 +386,10 @@
     .parameter "timeStamp"
 
     .prologue
-    .line 87
+    .line 89
     iput-wide p1, p0, Landroid/telephony/CellInfo;->mTimeStamp:J
 
-    .line 88
+    .line 90
     return-void
 .end method
 
@@ -396,24 +398,24 @@
     .parameter "timeStampType"
 
     .prologue
-    .line 101
+    .line 103
     if-ltz p1, :cond_0
 
     const/4 v0, 0x4
 
     if-le p1, v0, :cond_1
 
-    .line 102
+    .line 104
     :cond_0
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
-    .line 106
+    .line 108
     :goto_0
     return-void
 
-    .line 104
+    .line 106
     :cond_1
     iput p1, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
@@ -424,14 +426,14 @@
     .locals 5
 
     .prologue
-    .line 149
+    .line 151
     new-instance v0, Ljava/lang/StringBuffer;
 
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
-    .line 152
+    .line 154
     .local v0, sb:Ljava/lang/StringBuffer;
-    const-string v2, " mRegistered="
+    const-string v2, "mRegistered="
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -446,14 +448,14 @@
     :goto_0
     invoke-virtual {v3, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 153
+    .line 155
     iget v2, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
     invoke-static {v2}, Landroid/telephony/CellInfo;->timeStampTypeToString(I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 154
+    .line 156
     .local v1, timeStampType:Ljava/lang/String;
     const-string v2, " mTimeStampType="
 
@@ -463,7 +465,7 @@
 
     invoke-virtual {v2, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 155
+    .line 157
     const-string v2, " mTimeStamp="
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
@@ -480,14 +482,14 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 157
+    .line 159
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
     move-result-object v2
 
     return-object v2
 
-    .line 152
+    .line 154
     .end local v1           #timeStampType:Ljava/lang/String;
     :cond_0
     const-string v2, "NO"
@@ -505,10 +507,10 @@
     .parameter "type"
 
     .prologue
-    .line 178
+    .line 180
     invoke-virtual {p1, p3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 179
+    .line 181
     iget-boolean v0, p0, Landroid/telephony/CellInfo;->mRegistered:Z
 
     if-eqz v0, :cond_0
@@ -518,20 +520,20 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 180
+    .line 182
     iget v0, p0, Landroid/telephony/CellInfo;->mTimeStampType:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 181
+    .line 183
     iget-wide v0, p0, Landroid/telephony/CellInfo;->mTimeStamp:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 182
+    .line 184
     return-void
 
-    .line 179
+    .line 181
     :cond_0
     const/4 v0, 0x0
 

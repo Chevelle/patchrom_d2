@@ -27,23 +27,23 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 251
+    .line 245
     iput-object p1, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserverHandler;->this$0:Lcom/android/internal/telephony/SmsUsageMonitor;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
-    .line 252
+    .line 246
     invoke-virtual {p2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
 
-    .line 253
+    .line 247
     .local v1, resolver:Landroid/content/ContentResolver;
     new-instance v0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;
 
     invoke-direct {v0, p1, p0}, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;-><init>(Lcom/android/internal/telephony/SmsUsageMonitor;Landroid/os/Handler;)V
 
-    .line 254
+    .line 248
     .local v0, globalObserver:Landroid/database/ContentObserver;
     const-string v2, "sms_short_code_confirmation"
 
@@ -53,7 +53,7 @@
 
     invoke-virtual {v1, v2, v3, v0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 256
+    .line 250
     const-string v2, "sms_outgoing_check_max_count"
 
     invoke-static {v2}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
@@ -62,6 +62,6 @@
 
     invoke-virtual {v1, v2, v3, v0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 258
+    .line 252
     return-void
 .end method

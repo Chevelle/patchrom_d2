@@ -1428,7 +1428,7 @@
 
     .prologue
     .line 448
-    invoke-virtual {p0}, Landroid/widget/TableLayout;->layoutVertical()V
+    invoke-virtual {p0, p2, p3, p4, p5}, Landroid/widget/TableLayout;->layoutVertical(IIII)V
 
     .line 449
     return-void

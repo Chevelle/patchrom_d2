@@ -20,31 +20,37 @@
 # instance fields
 .field private final mDisplayManager:Lcom/android/server/display/DisplayManagerService;
 
-.field private mSurface:Landroid/view/Surface;
+.field private final mHWRotation:I
+
+.field private mSurfaceControl:Landroid/view/SurfaceControl;
 
 
 # direct methods
-.method public constructor <init>(Lcom/android/server/display/DisplayManagerService;Landroid/view/Surface;)V
+.method public constructor <init>(Lcom/android/server/display/DisplayManagerService;Landroid/view/SurfaceControl;I)V
     .locals 1
     .parameter "displayManager"
-    .parameter "surface"
+    .parameter "surfaceControl"
+    .parameter "hwRotation"
 
     .prologue
-    .line 713
+    .line 721
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 714
+    .line 722
     iput-object p1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mDisplayManager:Lcom/android/server/display/DisplayManagerService;
 
-    .line 715
-    iput-object p2, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    .line 723
+    iput-object p2, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
-    .line 716
+    .line 724
     iget-object v0, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mDisplayManager:Lcom/android/server/display/DisplayManagerService;
 
     invoke-virtual {v0, p0}, Lcom/android/server/display/DisplayManagerService;->registerDisplayTransactionListener(Lcom/android/server/display/DisplayTransactionListener;)V
 
-    .line 717
+    .line 725
+    iput p3, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mHWRotation:I
+
+    .line 726
     return-void
 .end method
 
@@ -54,29 +60,29 @@
     .locals 1
 
     .prologue
-    .line 720
+    .line 729
     monitor-enter p0
 
-    .line 721
+    .line 730
     const/4 v0, 0x0
 
     :try_start_0
-    iput-object v0, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    iput-object v0, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
-    .line 722
+    .line 731
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 723
+    .line 732
     iget-object v0, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mDisplayManager:Lcom/android/server/display/DisplayManagerService;
 
     invoke-virtual {v0, p0}, Lcom/android/server/display/DisplayManagerService;->unregisterDisplayTransactionListener(Lcom/android/server/display/DisplayTransactionListener;)V
 
-    .line 724
+    .line 733
     return-void
 
-    .line 722
+    .line 731
     :catchall_0
     move-exception v0
 
@@ -92,23 +98,23 @@
     .locals 6
 
     .prologue
-    .line 728
+    .line 737
     monitor-enter p0
 
-    .line 729
+    .line 738
     :try_start_0
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     if-nez v1, :cond_0
 
-    .line 730
+    .line 739
     monitor-exit p0
 
-    .line 753
+    .line 762
     :goto_0
     return-void
 
-    .line 733
+    .line 742
     :cond_0
     iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mDisplayManager:Lcom/android/server/display/DisplayManagerService;
 
@@ -118,13 +124,19 @@
 
     move-result-object v0
 
-    .line 734
+    .line 743
     .local v0, displayInfo:Landroid/view/DisplayInfo;
     iget v1, v0, Landroid/view/DisplayInfo;->rotation:I
 
+    iget v2, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mHWRotation:I
+
+    add-int/2addr v1, v2
+
+    rem-int/lit8 v1, v1, 0x4
+
     packed-switch v1, :pswitch_data_0
 
-    .line 752
+    .line 761
     :goto_1
     monitor-exit p0
 
@@ -140,20 +152,20 @@
 
     throw v1
 
-    .line 736
+    .line 745
     .restart local v0       #displayInfo:Landroid/view/DisplayInfo;
     :pswitch_0
     :try_start_1
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     const/4 v2, 0x0
 
     const/4 v3, 0x0
 
-    invoke-virtual {v1, v2, v3}, Landroid/view/Surface;->setPosition(II)V
+    invoke-virtual {v1, v2, v3}, Landroid/view/SurfaceControl;->setPosition(FF)V
 
-    .line 737
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    .line 746
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     const/high16 v2, 0x3f80
 
@@ -163,22 +175,24 @@
 
     const/high16 v5, 0x3f80
 
-    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/Surface;->setMatrix(FFFF)V
+    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/SurfaceControl;->setMatrix(FFFF)V
 
     goto :goto_1
 
-    .line 740
+    .line 749
     :pswitch_1
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     const/4 v2, 0x0
 
     iget v3, v0, Landroid/view/DisplayInfo;->logicalHeight:I
 
-    invoke-virtual {v1, v2, v3}, Landroid/view/Surface;->setPosition(II)V
+    int-to-float v3, v3
 
-    .line 741
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    invoke-virtual {v1, v2, v3}, Landroid/view/SurfaceControl;->setPosition(FF)V
+
+    .line 750
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     const/4 v2, 0x0
 
@@ -188,22 +202,26 @@
 
     const/4 v5, 0x0
 
-    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/Surface;->setMatrix(FFFF)V
+    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/SurfaceControl;->setMatrix(FFFF)V
 
     goto :goto_1
 
-    .line 744
+    .line 753
     :pswitch_2
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     iget v2, v0, Landroid/view/DisplayInfo;->logicalWidth:I
 
+    int-to-float v2, v2
+
     iget v3, v0, Landroid/view/DisplayInfo;->logicalHeight:I
 
-    invoke-virtual {v1, v2, v3}, Landroid/view/Surface;->setPosition(II)V
+    int-to-float v3, v3
 
-    .line 745
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    invoke-virtual {v1, v2, v3}, Landroid/view/SurfaceControl;->setPosition(FF)V
+
+    .line 754
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     const/high16 v2, -0x4080
 
@@ -213,22 +231,24 @@
 
     const/high16 v5, -0x4080
 
-    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/Surface;->setMatrix(FFFF)V
+    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/SurfaceControl;->setMatrix(FFFF)V
 
     goto :goto_1
 
-    .line 748
+    .line 757
     :pswitch_3
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     iget v2, v0, Landroid/view/DisplayInfo;->logicalWidth:I
 
+    int-to-float v2, v2
+
     const/4 v3, 0x0
 
-    invoke-virtual {v1, v2, v3}, Landroid/view/Surface;->setPosition(II)V
+    invoke-virtual {v1, v2, v3}, Landroid/view/SurfaceControl;->setPosition(FF)V
 
-    .line 749
-    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurface:Landroid/view/Surface;
+    .line 758
+    iget-object v1, p0, Lcom/android/server/power/ElectronBeam$NaturalSurfaceLayout;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     const/4 v2, 0x0
 
@@ -238,13 +258,15 @@
 
     const/4 v5, 0x0
 
-    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/Surface;->setMatrix(FFFF)V
+    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/view/SurfaceControl;->setMatrix(FFFF)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_1
 
-    .line 734
+    .line 743
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

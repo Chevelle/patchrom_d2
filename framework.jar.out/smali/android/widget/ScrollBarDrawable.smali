@@ -443,6 +443,20 @@
     goto :goto_0
 .end method
 
+.method public getAlpha()I
+    .locals 1
+
+    .prologue
+    .line 231
+    iget-object v0, p0, Landroid/widget/ScrollBarDrawable;->mVerticalThumb:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getAlpha()I
+
+    move-result v0
+
+    return v0
+.end method
+
 .method public getAlwaysDrawHorizontalTrack()Z
     .locals 1
 
@@ -467,7 +481,7 @@
     .locals 1
 
     .prologue
-    .line 242
+    .line 248
     const/4 v0, -0x3
 
     return v0
@@ -611,39 +625,39 @@
     .parameter "cf"
 
     .prologue
-    .line 230
+    .line 236
     iget-object v0, p0, Landroid/widget/ScrollBarDrawable;->mVerticalTrack:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_0
 
-    .line 231
+    .line 237
     iget-object v0, p0, Landroid/widget/ScrollBarDrawable;->mVerticalTrack:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
 
-    .line 233
+    .line 239
     :cond_0
     iget-object v0, p0, Landroid/widget/ScrollBarDrawable;->mVerticalThumb:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
 
-    .line 234
+    .line 240
     iget-object v0, p0, Landroid/widget/ScrollBarDrawable;->mHorizontalTrack:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_1
 
-    .line 235
+    .line 241
     iget-object v0, p0, Landroid/widget/ScrollBarDrawable;->mHorizontalTrack:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
 
-    .line 237
+    .line 243
     :cond_1
     iget-object v0, p0, Landroid/widget/ScrollBarDrawable;->mHorizontalThumb:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
 
-    .line 238
+    .line 244
     return-void
 .end method
 
@@ -760,7 +774,7 @@
     .locals 2
 
     .prologue
-    .line 247
+    .line 253
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

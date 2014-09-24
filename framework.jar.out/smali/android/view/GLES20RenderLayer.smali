@@ -100,23 +100,36 @@
 
 # virtual methods
 .method end(Landroid/graphics/Canvas;)V
-    .locals 1
+    .locals 2
     .parameter "currentCanvas"
 
     .prologue
     .line 92
-    instance-of v0, p1, Landroid/view/GLES20Canvas;
+    invoke-virtual {p0}, Landroid/view/GLES20RenderLayer;->getCanvas()Landroid/view/HardwareCanvas;
 
-    if-eqz v0, :cond_0
+    move-result-object v0
 
     .line 93
+    .local v0, canvas:Landroid/view/HardwareCanvas;
+    if-eqz v0, :cond_0
+
+    .line 94
+    invoke-virtual {v0}, Landroid/view/HardwareCanvas;->onPostDraw()V
+
+    .line 96
+    :cond_0
+    instance-of v1, p1, Landroid/view/GLES20Canvas;
+
+    if-eqz v1, :cond_1
+
+    .line 97
     check-cast p1, Landroid/view/GLES20Canvas;
 
     .end local p1
     invoke-virtual {p1}, Landroid/view/GLES20Canvas;->resume()V
 
-    .line 95
-    :cond_0
+    .line 99
+    :cond_1
     return-void
 .end method
 
@@ -164,7 +177,7 @@
     .parameter "dirtyRect"
 
     .prologue
-    .line 114
+    .line 126
     iget v0, p0, Landroid/view/GLES20RenderLayer;->mLayer:I
 
     iget-object v1, p0, Landroid/view/GLES20RenderLayer;->mCanvas:Landroid/view/GLES20Canvas;
@@ -190,7 +203,7 @@
 
     invoke-static/range {v0 .. v6}, Landroid/view/GLES20Canvas;->nUpdateRenderLayer(IIIIIII)V
 
-    .line 117
+    .line 129
     return-void
 .end method
 
@@ -308,7 +321,7 @@
     .parameter "matrix"
 
     .prologue
-    .line 110
+    .line 122
     return-void
 .end method
 
@@ -317,22 +330,50 @@
     .parameter "currentCanvas"
 
     .prologue
-    .line 99
-    instance-of v0, p1, Landroid/view/GLES20Canvas;
+    .line 103
+    const/4 v0, 0x0
 
-    if-eqz v0, :cond_0
+    invoke-virtual {p0, p1, v0}, Landroid/view/GLES20RenderLayer;->start(Landroid/graphics/Canvas;Landroid/graphics/Rect;)Landroid/view/HardwareCanvas;
 
-    .line 100
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method start(Landroid/graphics/Canvas;Landroid/graphics/Rect;)Landroid/view/HardwareCanvas;
+    .locals 3
+    .parameter "currentCanvas"
+    .parameter "dirty"
+
+    .prologue
+    .line 108
+    instance-of v1, p1, Landroid/view/GLES20Canvas;
+
+    if-eqz v1, :cond_0
+
+    .line 109
     check-cast p1, Landroid/view/GLES20Canvas;
 
     .end local p1
     invoke-virtual {p1}, Landroid/view/GLES20Canvas;->interrupt()V
 
-    .line 102
+    .line 111
     :cond_0
     invoke-virtual {p0}, Landroid/view/GLES20RenderLayer;->getCanvas()Landroid/view/HardwareCanvas;
 
     move-result-object v0
 
+    .line 112
+    .local v0, canvas:Landroid/view/HardwareCanvas;
+    iget v1, p0, Landroid/view/GLES20RenderLayer;->mWidth:I
+
+    iget v2, p0, Landroid/view/GLES20RenderLayer;->mHeight:I
+
+    invoke-virtual {v0, v1, v2}, Landroid/view/HardwareCanvas;->setViewport(II)V
+
+    .line 113
+    invoke-virtual {v0, p2}, Landroid/view/HardwareCanvas;->onPreDraw(Landroid/graphics/Rect;)I
+
+    .line 114
     return-object v0
 .end method

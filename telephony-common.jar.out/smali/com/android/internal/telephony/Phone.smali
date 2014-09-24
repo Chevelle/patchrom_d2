@@ -41,6 +41,26 @@
 
 .field public static final BM_US_BAND:I = 0x2
 
+.field public static final CALL_DOMAIN_AUTOMATIC:I = 0x3
+
+.field public static final CALL_DOMAIN_CS:I = 0x1
+
+.field public static final CALL_DOMAIN_NOT_SET:I = 0x4
+
+.field public static final CALL_DOMAIN_PS:I = 0x2
+
+.field public static final CALL_TYPE_UNKNOWN:I = 0xa
+
+.field public static final CALL_TYPE_VOICE:I = 0x0
+
+.field public static final CALL_TYPE_VT:I = 0x3
+
+.field public static final CALL_TYPE_VT_NODIR:I = 0x4
+
+.field public static final CALL_TYPE_VT_RX:I = 0x2
+
+.field public static final CALL_TYPE_VT_TX:I = 0x1
+
 .field public static final CDMA_OTA_PROVISION_STATUS_A_KEY_EXCHANGED:I = 0x2
 
 .field public static final CDMA_OTA_PROVISION_STATUS_COMMITTED:I = 0x8
@@ -78,6 +98,8 @@
 .field public static final CDMA_SUBSCRIPTION_UNKNOWN:I = -0x1
 
 .field public static final DEBUG_PHONE:Z = true
+
+.field public static final EXTRAS_IS_CONFERENCE_URI:Ljava/lang/String; = "isConferenceUri"
 
 .field public static final FEATURE_ENABLE_CBS:Ljava/lang/String; = "enableCBS"
 
@@ -123,6 +145,26 @@
 
 .field public static final NT_MODE_LTE_WCDMA:I = 0xc
 
+.field public static final NT_MODE_TD_SCDMA_CDMA_EVDO_GSM_WCDMA:I = 0x15
+
+.field public static final NT_MODE_TD_SCDMA_GSM:I = 0x10
+
+.field public static final NT_MODE_TD_SCDMA_GSM_LTE:I = 0x11
+
+.field public static final NT_MODE_TD_SCDMA_GSM_WCDMA:I = 0x12
+
+.field public static final NT_MODE_TD_SCDMA_GSM_WCDMA_LTE:I = 0x14
+
+.field public static final NT_MODE_TD_SCDMA_LTE:I = 0xf
+
+.field public static final NT_MODE_TD_SCDMA_LTE_CDMA_EVDO_GSM_WCDMA:I = 0x16
+
+.field public static final NT_MODE_TD_SCDMA_ONLY:I = 0xd
+
+.field public static final NT_MODE_TD_SCDMA_WCDMA:I = 0xe
+
+.field public static final NT_MODE_TD_SCDMA_WCDMA_LTE:I = 0x13
+
 .field public static final NT_MODE_WCDMA_ONLY:I = 0x2
 
 .field public static final NT_MODE_WCDMA_PREF:I = 0x0
@@ -151,6 +193,8 @@
 
 .field public static final REASON_CDMA_DATA_DETACHED:Ljava/lang/String; = "cdmaDataDetached"
 
+.field public static final REASON_CONNECTED:Ljava/lang/String; = "connected"
+
 .field public static final REASON_DATA_ATTACHED:Ljava/lang/String; = "dataAttached"
 
 .field public static final REASON_DATA_DEPENDENCY_MET:Ljava/lang/String; = "dependencyMet"
@@ -162,6 +206,12 @@
 .field public static final REASON_DATA_DISABLED:Ljava/lang/String; = "dataDisabled"
 
 .field public static final REASON_DATA_ENABLED:Ljava/lang/String; = "dataEnabled"
+
+.field public static final REASON_IWLAN_AVAILABLE:Ljava/lang/String; = "iwlanAvailable"
+
+.field public static final REASON_LOST_DATA_CONNECTION:Ljava/lang/String; = "lostDataConnection"
+
+.field public static final REASON_NV_READY:Ljava/lang/String; = "nvReady"
 
 .field public static final REASON_NW_TYPE_CHANGED:Ljava/lang/String; = "nwTypeChanged"
 
@@ -180,6 +230,8 @@
 .field public static final REASON_ROAMING_ON:Ljava/lang/String; = "roamingOn"
 
 .field public static final REASON_SIM_LOADED:Ljava/lang/String; = "simLoaded"
+
+.field public static final REASON_SINGLE_PDN_ARBITRATION:Ljava/lang/String; = "SinglePdnArbitration"
 
 .field public static final REASON_VOICE_CALL_ENDED:Ljava/lang/String; = "2GVoiceCallEnded"
 
@@ -205,13 +257,71 @@
     .end annotation
 .end method
 
+.method public abstract acceptCall(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
+.method public abstract acceptConnectionTypeChange(Lcom/android/internal/telephony/Connection;Ljava/util/Map;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/android/internal/telephony/Connection;",
+            "Ljava/util/Map",
+            "<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)V"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract activateCellBroadcastSms(ILandroid/os/Message;)V
+.end method
+
+.method public abstract addParticipant(Ljava/lang/String;II[Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
 .end method
 
 .method public abstract canConference()Z
 .end method
 
 .method public abstract canTransfer()Z
+.end method
+
+.method public abstract changeConnectionType(Landroid/os/Message;Lcom/android/internal/telephony/Connection;ILjava/util/Map;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/os/Message;",
+            "Lcom/android/internal/telephony/Connection;",
+            "I",
+            "Ljava/util/Map",
+            "<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)V"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
 .end method
 
 .method public abstract clearDisconnected()V
@@ -225,7 +335,23 @@
     .end annotation
 .end method
 
+.method public abstract deflectCall(ILjava/lang/String;Landroid/os/Message;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract dial(Ljava/lang/String;)Lcom/android/internal/telephony/Connection;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
+.method public abstract dial(Ljava/lang/String;I[Ljava/lang/String;)Lcom/android/internal/telephony/Connection;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lcom/android/internal/telephony/CallStateException;
@@ -297,10 +423,29 @@
 .method public abstract getBackgroundCall()Lcom/android/internal/telephony/Call;
 .end method
 
+.method public abstract getCallBarringOption(Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
+.end method
+
+.method public abstract getCallDomain(Lcom/android/internal/telephony/Call;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getCallForwardingIndicator()Z
 .end method
 
 .method public abstract getCallForwardingOption(ILandroid/os/Message;)V
+.end method
+
+.method public abstract getCallType(Lcom/android/internal/telephony/Call;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
 .end method
 
 .method public abstract getCallWaiting(Landroid/os/Message;)V
@@ -360,6 +505,9 @@
 .method public abstract getForegroundCall()Lcom/android/internal/telephony/Call;
 .end method
 
+.method public abstract getGroupIdLevel1()Ljava/lang/String;
+.end method
+
 .method public abstract getIccCard()Lcom/android/internal/telephony/IccCard;
 .end method
 
@@ -372,13 +520,10 @@
 .method public abstract getIccSerialNumber()Ljava/lang/String;
 .end method
 
-.method public abstract getIccSmsInterfaceManager()Lcom/android/internal/telephony/IccSmsInterfaceManager;
-.end method
-
 .method public abstract getImei()Ljava/lang/String;
 .end method
 
-.method public abstract getIsimRecords()Lcom/android/internal/telephony/ims/IsimRecords;
+.method public abstract getIsimRecords()Lcom/android/internal/telephony/uicc/IsimRecords;
 .end method
 
 .method public abstract getLine1AlphaTag()Ljava/lang/String;
@@ -441,6 +586,14 @@
 .method public abstract getPreferredNetworkType(Landroid/os/Message;)V
 .end method
 
+.method public abstract getProposedConnectionType(Lcom/android/internal/telephony/Connection;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getRingingCall()Lcom/android/internal/telephony/Call;
 .end method
 
@@ -462,10 +615,13 @@
 .method public abstract getSubscriberId()Ljava/lang/String;
 .end method
 
+.method public abstract getSubscription()I
+.end method
+
 .method public abstract getUnitTestMode()Z
 .end method
 
-.method public abstract getUsimServiceTable()Lcom/android/internal/telephony/gsm/UsimServiceTable;
+.method public abstract getUsimServiceTable()Lcom/android/internal/telephony/uicc/UsimServiceTable;
 .end method
 
 .method public abstract getVoiceMailAlphaTag()Ljava/lang/String;
@@ -488,6 +644,14 @@
 .method public abstract handlePinMmi(Ljava/lang/String;)Z
 .end method
 
+.method public abstract hangupWithReason(ILjava/lang/String;ZILjava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract invokeOemRilRequestRaw([BLandroid/os/Message;)V
 .end method
 
@@ -506,10 +670,24 @@
 .method public abstract isDnsCheckDisabled()Z
 .end method
 
+.method public abstract isManualNetSelAllowed()Z
+.end method
+
 .method public abstract isMinInfoReady()Z
 .end method
 
 .method public abstract isOtaSpNumber(Ljava/lang/String;)Z
+.end method
+
+.method public abstract isRadioOn()Z
+.end method
+
+.method public abstract isVTModifyAllowed()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
 .end method
 
 .method public abstract needsOtaServiceProvisioning()Z
@@ -528,6 +706,14 @@
 .end method
 
 .method public abstract registerFoT53ClirlInfo(Landroid/os/Handler;ILjava/lang/Object;)V
+.end method
+
+.method public abstract registerForAvpUpgradeFailure(Landroid/os/Handler;ILjava/lang/Object;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
 .end method
 
 .method public abstract registerForCallWaiting(Landroid/os/Handler;ILjava/lang/Object;)V
@@ -563,6 +749,14 @@
 .method public abstract registerForMmiInitiate(Landroid/os/Handler;ILjava/lang/Object;)V
 .end method
 
+.method public abstract registerForModifyCallRequest(Landroid/os/Handler;ILjava/lang/Object;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract registerForNewRingingConnection(Landroid/os/Handler;ILjava/lang/Object;)V
 .end method
 
@@ -585,6 +779,9 @@
 .end method
 
 .method public abstract registerForSignalInfo(Landroid/os/Handler;ILjava/lang/Object;)V
+.end method
+
+.method public abstract registerForSimRecordsLoaded(Landroid/os/Handler;ILjava/lang/Object;)V
 .end method
 
 .method public abstract registerForSubscriptionInfoReady(Landroid/os/Handler;ILjava/lang/Object;)V
@@ -610,7 +807,18 @@
     .end annotation
 .end method
 
+.method public abstract rejectConnectionTypeChange(Lcom/android/internal/telephony/Connection;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract removeReferences()V
+.end method
+
+.method public abstract requestChangeCbPsw(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
 .end method
 
 .method public abstract requestIsimAuthentication(Ljava/lang/String;Landroid/os/Message;)V
@@ -631,6 +839,9 @@
 .method public abstract setBandMode(ILandroid/os/Message;)V
 .end method
 
+.method public abstract setCallBarringOption(Ljava/lang/String;ZLjava/lang/String;Landroid/os/Message;)V
+.end method
+
 .method public abstract setCallForwardingOption(IILjava/lang/String;ILandroid/os/Message;)V
 .end method
 
@@ -646,13 +857,22 @@
 .method public abstract setCellBroadcastSmsConfig([ILandroid/os/Message;)V
 .end method
 
+.method public abstract setCellInfoListRate(I)V
+.end method
+
 .method public abstract setDataRoamingEnabled(Z)V
+.end method
+
+.method public abstract setDefaultVoiceSub(ILandroid/os/Message;)V
 .end method
 
 .method public abstract setEchoSuppressionEnabled(Z)V
 .end method
 
 .method public abstract setLine1Number(Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
+.end method
+
+.method public abstract setLocalCallHold(ILandroid/os/Message;)V
 .end method
 
 .method public abstract setMute(Z)V
@@ -673,6 +893,9 @@
 .method public abstract setPreferredNetworkType(ILandroid/os/Message;)V
 .end method
 
+.method public abstract setPrioritySub(ILandroid/os/Message;)V
+.end method
+
 .method public abstract setRadioPower(Z)V
 .end method
 
@@ -680,6 +903,9 @@
 .end method
 
 .method public abstract setTTYMode(ILandroid/os/Message;)V
+.end method
+
+.method public abstract setTuneAway(ZLandroid/os/Message;)V
 .end method
 
 .method public abstract setUnitTestMode(Z)V
@@ -698,6 +924,14 @@
 .end method
 
 .method public abstract switchHoldingAndActive()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
+.method public abstract unregisterForAvpUpgradeFailure(Landroid/os/Handler;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lcom/android/internal/telephony/CallStateException;
@@ -738,6 +972,14 @@
 .method public abstract unregisterForMmiInitiate(Landroid/os/Handler;)V
 .end method
 
+.method public abstract unregisterForModifyCallRequest(Landroid/os/Handler;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/telephony/CallStateException;
+        }
+    .end annotation
+.end method
+
 .method public abstract unregisterForNewRingingConnection(Landroid/os/Handler;)V
 .end method
 
@@ -762,6 +1004,9 @@
 .method public abstract unregisterForSignalInfo(Landroid/os/Handler;)V
 .end method
 
+.method public abstract unregisterForSimRecordsLoaded(Landroid/os/Handler;)V
+.end method
+
 .method public abstract unregisterForSubscriptionInfoReady(Landroid/os/Handler;)V
 .end method
 
@@ -781,6 +1026,9 @@
 .end method
 
 .method public abstract unsetOnEcbModeExitResponse(Landroid/os/Handler;)V
+.end method
+
+.method public abstract updatePhoneObject(I)V
 .end method
 
 .method public abstract updateServiceLocation()V

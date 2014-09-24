@@ -15,86 +15,97 @@
 
 
 # instance fields
-.field observer:Landroid/os/storage/IMountShutdownObserver;
+.field mMountShutdownLatch:Lcom/android/server/MountService$MountShutdownLatch;
 
 .field final synthetic this$0:Lcom/android/server/MountService;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/MountService;Ljava/lang/String;Landroid/os/storage/IMountShutdownObserver;)V
+.method constructor <init>(Lcom/android/server/MountService;Ljava/lang/String;Lcom/android/server/MountService$MountShutdownLatch;)V
     .locals 2
     .parameter
     .parameter "path"
-    .parameter "observer"
+    .parameter "mountShutdownLatch"
 
     .prologue
-    .line 375
+    .line 389
     iput-object p1, p0, Lcom/android/server/MountService$ShutdownCallBack;->this$0:Lcom/android/server/MountService;
 
-    .line 376
+    .line 390
     const/4 v0, 0x1
 
     const/4 v1, 0x0
 
     invoke-direct {p0, p1, p2, v0, v1}, Lcom/android/server/MountService$UnmountCallBack;-><init>(Lcom/android/server/MountService;Ljava/lang/String;ZZ)V
 
-    .line 377
-    iput-object p3, p0, Lcom/android/server/MountService$ShutdownCallBack;->observer:Landroid/os/storage/IMountShutdownObserver;
+    .line 391
+    iput-object p3, p0, Lcom/android/server/MountService$ShutdownCallBack;->mMountShutdownLatch:Lcom/android/server/MountService$MountShutdownLatch;
 
-    .line 378
+    .line 392
     return-void
 .end method
 
 
 # virtual methods
 .method handleFinished()V
-    .locals 6
+    .locals 5
 
     .prologue
-    .line 382
-    iget-object v2, p0, Lcom/android/server/MountService$ShutdownCallBack;->this$0:Lcom/android/server/MountService;
+    .line 396
+    iget-object v1, p0, Lcom/android/server/MountService$ShutdownCallBack;->this$0:Lcom/android/server/MountService;
+
+    iget-object v2, p0, Lcom/android/server/MountService$ShutdownCallBack;->path:Ljava/lang/String;
+
+    const/4 v3, 0x1
+
+    iget-boolean v4, p0, Lcom/android/server/MountService$ShutdownCallBack;->removeEncryption:Z
+
+    #calls: Lcom/android/server/MountService;->doUnmountVolume(Ljava/lang/String;ZZ)I
+    invoke-static {v1, v2, v3, v4}, Lcom/android/server/MountService;->access$100(Lcom/android/server/MountService;Ljava/lang/String;ZZ)I
+
+    move-result v0
+
+    .line 397
+    .local v0, ret:I
+    const-string v1, "MountService"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Unmount completed: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     iget-object v3, p0, Lcom/android/server/MountService$ShutdownCallBack;->path:Ljava/lang/String;
 
-    const/4 v4, 0x1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-boolean v5, p0, Lcom/android/server/MountService$ShutdownCallBack;->removeEncryption:Z
+    move-result-object v2
 
-    #calls: Lcom/android/server/MountService;->doUnmountVolume(Ljava/lang/String;ZZ)I
-    invoke-static {v2, v3, v4, v5}, Lcom/android/server/MountService;->access$100(Lcom/android/server/MountService;Ljava/lang/String;ZZ)I
+    const-string v3, ", result code: "
 
-    move-result v1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 383
-    .local v1, ret:I
-    iget-object v2, p0, Lcom/android/server/MountService$ShutdownCallBack;->observer:Landroid/os/storage/IMountShutdownObserver;
+    move-result-object v2
 
-    if-eqz v2, :cond_0
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 385
-    :try_start_0
-    iget-object v2, p0, Lcom/android/server/MountService$ShutdownCallBack;->observer:Landroid/os/storage/IMountShutdownObserver;
+    move-result-object v2
 
-    invoke-interface {v2, v1}, Landroid/os/storage/IMountShutdownObserver;->onShutDownComplete(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 390
-    :cond_0
-    :goto_0
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 398
+    iget-object v1, p0, Lcom/android/server/MountService$ShutdownCallBack;->mMountShutdownLatch:Lcom/android/server/MountService$MountShutdownLatch;
+
+    invoke-virtual {v1}, Lcom/android/server/MountService$MountShutdownLatch;->countDown()V
+
+    .line 399
     return-void
-
-    .line 386
-    :catch_0
-    move-exception v0
-
-    .line 387
-    .local v0, e:Landroid/os/RemoteException;
-    const-string v2, "MountService"
-
-    const-string v3, "RemoteException when shutting down"
-
-    invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
 .end method

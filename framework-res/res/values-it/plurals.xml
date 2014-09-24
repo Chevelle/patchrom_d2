@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Hai ancora %d tentativi a disposizione prima che la SIM venga bloccata.</item>
+        <item quantity="one">Hai ancora %d tentativo a disposizione prima che la SIM venga bloccata.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d secondi fa</item>
         <item quantity="one">1 secondo fa</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d di %2$d</item>
         <item quantity="one">1 corrispondenza</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Riprova tra %d s.</item>
+        <item quantity="one">Riprova fra 1 s.</item>
     </plurals>
 </resources>

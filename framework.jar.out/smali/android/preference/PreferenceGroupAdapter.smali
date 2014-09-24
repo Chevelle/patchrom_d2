@@ -277,11 +277,11 @@
 
     if-nez v4, :cond_0
 
-    invoke-virtual {v2}, Landroid/preference/Preference;->hasSpecifiedLayout()Z
+    invoke-virtual {v2}, Landroid/preference/Preference;->canRecycleLayout()Z
 
     move-result v4
 
-    if-nez v4, :cond_0
+    if-eqz v4, :cond_0
 
     .line 157
     invoke-direct {p0, v2}, Landroid/preference/PreferenceGroupAdapter;->addPreferenceClassName(Landroid/preference/Preference;)V
@@ -547,11 +547,11 @@
 
     .line 258
     .local v0, preference:Landroid/preference/Preference;
-    invoke-virtual {v0}, Landroid/preference/Preference;->hasSpecifiedLayout()Z
+    invoke-virtual {v0}, Landroid/preference/Preference;->canRecycleLayout()Z
 
     move-result v3
 
-    if-eqz v3, :cond_2
+    if-nez v3, :cond_2
 
     move v1, v2
 

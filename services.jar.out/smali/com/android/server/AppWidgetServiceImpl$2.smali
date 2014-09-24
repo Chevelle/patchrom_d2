@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 918
+    .line 972
     iput-object p1, p0, Lcom/android/server/AppWidgetServiceImpl$2;->this$0:Lcom/android/server/AppWidgetServiceImpl;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,32 +41,32 @@
     .locals 2
 
     .prologue
-    .line 921
+    .line 975
     iget-object v0, p0, Lcom/android/server/AppWidgetServiceImpl$2;->this$0:Lcom/android/server/AppWidgetServiceImpl;
 
     iget-object v1, v0, Lcom/android/server/AppWidgetServiceImpl;->mAppWidgetIds:Ljava/util/ArrayList;
 
     monitor-enter v1
 
-    .line 922
+    .line 976
     :try_start_0
     iget-object v0, p0, Lcom/android/server/AppWidgetServiceImpl$2;->this$0:Lcom/android/server/AppWidgetServiceImpl;
 
     #calls: Lcom/android/server/AppWidgetServiceImpl;->ensureStateLoadedLocked()V
     invoke-static {v0}, Lcom/android/server/AppWidgetServiceImpl;->access$000(Lcom/android/server/AppWidgetServiceImpl;)V
 
-    .line 923
+    .line 977
     iget-object v0, p0, Lcom/android/server/AppWidgetServiceImpl$2;->this$0:Lcom/android/server/AppWidgetServiceImpl;
 
     invoke-virtual {v0}, Lcom/android/server/AppWidgetServiceImpl;->saveStateLocked()V
 
-    .line 924
+    .line 978
     monitor-exit v1
 
-    .line 925
+    .line 979
     return-void
 
-    .line 924
+    .line 978
     :catchall_0
     move-exception v0
 

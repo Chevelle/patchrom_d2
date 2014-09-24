@@ -4,7 +4,7 @@
 
 
 # static fields
-.field public static final PROVIDER_NAME:Ljava/lang/String; = "AndroidKeyStoreProvider"
+.field public static final PROVIDER_NAME:Ljava/lang/String; = "AndroidKeyStore"
 
 
 # direct methods
@@ -13,7 +13,7 @@
 
     .prologue
     .line 30
-    const-string v0, "AndroidKeyStoreProvider"
+    const-string v0, "AndroidKeyStore"
 
     const-wide/high16 v1, 0x3ff0
 
@@ -33,7 +33,7 @@
     invoke-virtual {p0, v0, v1}, Landroid/security/AndroidKeyStoreProvider;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 36
-    const-string v0, "KeyPairGenerator.AndroidKeyPairGenerator"
+    const-string v0, "KeyPairGenerator.RSA"
 
     const-class v1, Landroid/security/AndroidKeyPairGenerator;
 
@@ -43,6 +43,6 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/security/AndroidKeyStoreProvider;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 38
+    .line 37
     return-void
 .end method

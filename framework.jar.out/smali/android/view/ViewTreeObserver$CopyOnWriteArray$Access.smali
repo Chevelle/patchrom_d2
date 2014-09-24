@@ -41,11 +41,22 @@
     .locals 0
 
     .prologue
-    .line 795
+    .line 962
     .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
+.end method
+
+.method static synthetic access$000(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;)Ljava/util/ArrayList;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 962
+    iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
+
+    return-object v0
 .end method
 
 .method static synthetic access$002(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;Ljava/util/ArrayList;)Ljava/util/ArrayList;
@@ -54,7 +65,7 @@
     .parameter "x1"
 
     .prologue
-    .line 795
+    .line 962
     iput-object p1, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
 
     return-object p1
@@ -66,7 +77,7 @@
     .parameter "x1"
 
     .prologue
-    .line 795
+    .line 962
     iput p1, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mSize:I
 
     return p1
@@ -84,7 +95,7 @@
     .end annotation
 
     .prologue
-    .line 800
+    .line 967
     .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access<TT;>;"
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
 
@@ -99,7 +110,7 @@
     .locals 1
 
     .prologue
-    .line 804
+    .line 971
     .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access<TT;>;"
     iget v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mSize:I
 

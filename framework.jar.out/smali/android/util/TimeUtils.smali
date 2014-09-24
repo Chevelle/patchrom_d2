@@ -993,7 +993,7 @@
 
     .line 67
     .local v8, r:Landroid/content/res/Resources;
-    const v10, 0x10f0010
+    const v10, 0x10f0012
 
     invoke-virtual {v8, v10}, Landroid/content/res/Resources;->getXml(I)Landroid/content/res/XmlResourceParser;
 
@@ -1114,7 +1114,11 @@
 
     .prologue
     .line 238
-    invoke-static {}, Llibcore/util/ZoneInfoDB;->getVersion()Ljava/lang/String;
+    invoke-static {}, Llibcore/util/ZoneInfoDB;->getInstance()Llibcore/util/ZoneInfoDB$TzData;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Llibcore/util/ZoneInfoDB$TzData;->getVersion()Ljava/lang/String;
 
     move-result-object v0
 
@@ -1186,7 +1190,7 @@
 
     .line 174
     .local v4, r:Landroid/content/res/Resources;
-    const v8, 0x10f0010
+    const v8, 0x10f0012
 
     invoke-virtual {v4, v8}, Landroid/content/res/Resources;->getXml(I)Landroid/content/res/XmlResourceParser;
 

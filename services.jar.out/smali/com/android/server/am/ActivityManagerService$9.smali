@@ -5,7 +5,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/am/ActivityManagerService;->systemReady(Ljava/lang/Runnable;)V
+    value = Lcom/android/server/am/ActivityManagerService;->finishBooting()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -17,25 +17,15 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/am/ActivityManagerService;
 
-.field final synthetic val$doneReceivers:Ljava/util/ArrayList;
-
-.field final synthetic val$goingCallback:Ljava/lang/Runnable;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Ljava/util/ArrayList;Ljava/lang/Runnable;)V
+.method constructor <init>(Lcom/android/server/am/ActivityManagerService;)V
     .locals 0
-    .parameter
-    .parameter
     .parameter
 
     .prologue
-    .line 7877
+    .line 5293
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$9;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    iput-object p2, p0, Lcom/android/server/am/ActivityManagerService$9;->val$doneReceivers:Ljava/util/ArrayList;
-
-    iput-object p3, p0, Lcom/android/server/am/ActivityManagerService$9;->val$goingCallback:Ljava/lang/Runnable;
 
     invoke-direct {p0}, Landroid/content/IIntentReceiver$Stub;-><init>()V
 
@@ -45,7 +35,7 @@
 
 # virtual methods
 .method public performReceive(Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZI)V
-    .locals 2
+    .locals 6
     .parameter "intent"
     .parameter "resultCode"
     .parameter "data"
@@ -55,17 +45,38 @@
     .parameter "sendingUser"
 
     .prologue
-    .line 7884
+    .line 5298
+    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$9;->this$0:Lcom/android/server/am/ActivityManagerService;
+
+    monitor-enter v1
+
+    .line 5299
+    :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$9;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mHandler:Landroid/os/Handler;
+    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    new-instance v1, Lcom/android/server/am/ActivityManagerService$9$1;
+    move-result-wide v2
 
-    invoke-direct {v1, p0}, Lcom/android/server/am/ActivityManagerService$9$1;-><init>(Lcom/android/server/am/ActivityManagerService$9;)V
+    const/4 v4, 0x1
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+    const/4 v5, 0x0
 
-    .line 7896
+    invoke-virtual {v0, v2, v3, v4, v5}, Lcom/android/server/am/ActivityManagerService;->requestPssAllProcsLocked(JZZ)V
+
+    .line 5301
+    monitor-exit v1
+
+    .line 5302
     return-void
+
+    .line 5301
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
 .end method

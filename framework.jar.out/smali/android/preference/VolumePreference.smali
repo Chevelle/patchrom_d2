@@ -36,17 +36,17 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 52
+    .line 55
     invoke-direct {p0, p1, p2}, Landroid/preference/SeekBarDialogPreference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 54
+    .line 57
     sget-object v1, Lcom/android/internal/R$styleable;->VolumePreference:[I
 
     invoke-virtual {p1, p2, v1, v2, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 56
+    .line 59
     .local v0, a:Landroid/content/res/TypedArray;
     invoke-virtual {v0, v2, v2}, Landroid/content/res/TypedArray;->getInt(II)I
 
@@ -54,10 +54,10 @@
 
     iput v1, p0, Landroid/preference/VolumePreference;->mStreamType:I
 
-    .line 57
+    .line 60
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 58
+    .line 61
     return-void
 .end method
 
@@ -67,24 +67,24 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 126
+    .line 129
     invoke-virtual {p0}, Landroid/preference/VolumePreference;->getPreferenceManager()Landroid/preference/PreferenceManager;
 
     move-result-object v2
 
     invoke-virtual {v2, p0}, Landroid/preference/PreferenceManager;->unregisterOnActivityStopListener(Landroid/preference/PreferenceManager$OnActivityStopListener;)V
 
-    .line 128
+    .line 131
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     if-eqz v2, :cond_2
 
-    .line 129
+    .line 132
     invoke-virtual {p0}, Landroid/preference/VolumePreference;->getDialog()Landroid/app/Dialog;
 
     move-result-object v0
 
-    .line 130
+    .line 133
     .local v0, dialog:Landroid/app/Dialog;
     if-eqz v0, :cond_1
 
@@ -94,7 +94,7 @@
 
     if-eqz v2, :cond_1
 
-    .line 131
+    .line 134
     invoke-virtual {v0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
     move-result-object v2
@@ -103,35 +103,35 @@
 
     move-result-object v2
 
-    const v3, 0x1020348
+    const v3, 0x10202ff
 
     invoke-virtual {v2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v1
 
-    .line 133
+    .line 136
     .local v1, view:Landroid/view/View;
     if-eqz v1, :cond_0
 
     invoke-virtual {v1, v4}, Landroid/view/View;->setOnKeyListener(Landroid/view/View$OnKeyListener;)V
 
-    .line 135
+    .line 138
     :cond_0
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v2}, Landroid/preference/VolumePreference$SeekBarVolumizer;->revertVolume()V
 
-    .line 137
+    .line 140
     .end local v1           #view:Landroid/view/View;
     :cond_1
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v2}, Landroid/preference/VolumePreference$SeekBarVolumizer;->stop()V
 
-    .line 138
+    .line 141
     iput-object v4, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
-    .line 141
+    .line 144
     .end local v0           #dialog:Landroid/app/Dialog;
     :cond_2
     return-void
@@ -143,17 +143,18 @@
     .locals 1
 
     .prologue
-    .line 117
+    .line 120
     iget-object v0, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     if-eqz v0, :cond_0
 
-    .line 118
+    .line 121
     iget-object v0, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
-    invoke-virtual {v0}, Landroid/preference/VolumePreference$SeekBarVolumizer;->stopSample()V
+    #calls: Landroid/preference/VolumePreference$SeekBarVolumizer;->postStopSample()V
+    invoke-static {v0}, Landroid/preference/VolumePreference$SeekBarVolumizer;->access$000(Landroid/preference/VolumePreference$SeekBarVolumizer;)V
 
-    .line 120
+    .line 123
     :cond_0
     return-void
 .end method
@@ -163,11 +164,11 @@
     .parameter "view"
 
     .prologue
-    .line 66
+    .line 69
     invoke-super {p0, p1}, Landroid/preference/SeekBarDialogPreference;->onBindDialogView(Landroid/view/View;)V
 
-    .line 68
-    const v1, 0x1020348
+    .line 71
+    const v1, 0x10202ff
 
     invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -175,7 +176,7 @@
 
     check-cast v0, Landroid/widget/SeekBar;
 
-    .line 69
+    .line 72
     .local v0, seekBar:Landroid/widget/SeekBar;
     new-instance v1, Landroid/preference/VolumePreference$SeekBarVolumizer;
 
@@ -189,25 +190,25 @@
 
     iput-object v1, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
-    .line 71
+    .line 74
     invoke-virtual {p0}, Landroid/preference/VolumePreference;->getPreferenceManager()Landroid/preference/PreferenceManager;
 
     move-result-object v1
 
     invoke-virtual {v1, p0}, Landroid/preference/PreferenceManager;->registerOnActivityStopListener(Landroid/preference/PreferenceManager$OnActivityStopListener;)V
 
-    .line 75
+    .line 78
     invoke-virtual {p1, p0}, Landroid/view/View;->setOnKeyListener(Landroid/view/View$OnKeyListener;)V
 
-    .line 76
+    .line 79
     const/4 v1, 0x1
 
     invoke-virtual {p1, v1}, Landroid/view/View;->setFocusableInTouchMode(Z)V
 
-    .line 77
+    .line 80
     invoke-virtual {p1}, Landroid/view/View;->requestFocus()Z
 
-    .line 78
+    .line 81
     return-void
 .end method
 
@@ -216,26 +217,26 @@
     .parameter "positiveResult"
 
     .prologue
-    .line 107
+    .line 110
     invoke-super {p0, p1}, Landroid/preference/SeekBarDialogPreference;->onDialogClosed(Z)V
 
-    .line 109
+    .line 112
     if-nez p1, :cond_0
 
     iget-object v0, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     if-eqz v0, :cond_0
 
-    .line 110
+    .line 113
     iget-object v0, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v0}, Landroid/preference/VolumePreference$SeekBarVolumizer;->revertVolume()V
 
-    .line 113
+    .line 116
     :cond_0
     invoke-direct {p0}, Landroid/preference/VolumePreference;->cleanup()V
 
-    .line 114
+    .line 117
     return-void
 .end method
 
@@ -250,17 +251,17 @@
 
     const/4 v1, 0x1
 
-    .line 82
+    .line 85
     iget-object v3, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     if-nez v3, :cond_1
 
-    .line 101
+    .line 104
     :cond_0
     :goto_0
     return v1
 
-    .line 83
+    .line 86
     :cond_1
     invoke-virtual {p3}, Landroid/view/KeyEvent;->getAction()I
 
@@ -270,29 +271,29 @@
 
     move v0, v1
 
-    .line 84
+    .line 87
     .local v0, isdown:Z
     :goto_1
     sparse-switch p2, :sswitch_data_0
 
     move v1, v2
 
-    .line 101
+    .line 104
     goto :goto_0
 
     .end local v0           #isdown:Z
     :cond_2
     move v0, v2
 
-    .line 83
+    .line 86
     goto :goto_1
 
-    .line 86
+    .line 89
     .restart local v0       #isdown:Z
     :sswitch_0
     if-eqz v0, :cond_0
 
-    .line 87
+    .line 90
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     const/4 v3, -0x1
@@ -301,29 +302,29 @@
 
     goto :goto_0
 
-    .line 91
+    .line 94
     :sswitch_1
     if-eqz v0, :cond_0
 
-    .line 92
+    .line 95
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v2, v1}, Landroid/preference/VolumePreference$SeekBarVolumizer;->changeVolumeBy(I)V
 
     goto :goto_0
 
-    .line 96
+    .line 99
     :sswitch_2
     if-eqz v0, :cond_0
 
-    .line 97
+    .line 100
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v2}, Landroid/preference/VolumePreference$SeekBarVolumizer;->muteVolume()V
 
     goto :goto_0
 
-    .line 84
+    .line 87
     :sswitch_data_0
     .sparse-switch
         0x18 -> :sswitch_1
@@ -337,7 +338,7 @@
     .parameter "state"
 
     .prologue
-    .line 171
+    .line 174
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
@@ -352,11 +353,11 @@
 
     if-nez v1, :cond_2
 
-    .line 173
+    .line 176
     :cond_0
     invoke-super {p0, p1}, Landroid/preference/SeekBarDialogPreference;->onRestoreInstanceState(Landroid/os/Parcelable;)V
 
-    .line 182
+    .line 185
     :cond_1
     :goto_0
     return-void
@@ -364,10 +365,10 @@
     :cond_2
     move-object v0, p1
 
-    .line 177
+    .line 180
     check-cast v0, Landroid/preference/VolumePreference$SavedState;
 
-    .line 178
+    .line 181
     .local v0, myState:Landroid/preference/VolumePreference$SavedState;
     invoke-virtual {v0}, Landroid/preference/VolumePreference$SavedState;->getSuperState()Landroid/os/Parcelable;
 
@@ -375,12 +376,12 @@
 
     invoke-super {p0, v1}, Landroid/preference/SeekBarDialogPreference;->onRestoreInstanceState(Landroid/os/Parcelable;)V
 
-    .line 179
+    .line 182
     iget-object v1, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     if-eqz v1, :cond_1
 
-    .line 180
+    .line 183
     iget-object v1, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v0}, Landroid/preference/VolumePreference$SavedState;->getVolumeStore()Landroid/preference/VolumePreference$VolumeStore;
@@ -397,7 +398,7 @@
     .parameter "volumizer"
 
     .prologue
-    .line 144
+    .line 147
     iget-object v0, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     if-eqz v0, :cond_0
@@ -406,12 +407,12 @@
 
     if-eq p1, v0, :cond_0
 
-    .line 145
+    .line 148
     iget-object v0, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v0}, Landroid/preference/VolumePreference$SeekBarVolumizer;->stopSample()V
 
-    .line 147
+    .line 150
     :cond_0
     return-void
 .end method
@@ -420,12 +421,12 @@
     .locals 4
 
     .prologue
-    .line 156
+    .line 159
     invoke-super {p0}, Landroid/preference/SeekBarDialogPreference;->onSaveInstanceState()Landroid/os/Parcelable;
 
     move-result-object v1
 
-    .line 157
+    .line 160
     .local v1, superState:Landroid/os/Parcelable;
     invoke-virtual {p0}, Landroid/preference/VolumePreference;->isPersistent()Z
 
@@ -433,25 +434,25 @@
 
     if-eqz v2, :cond_0
 
-    .line 166
+    .line 169
     .end local v1           #superState:Landroid/os/Parcelable;
     :goto_0
     return-object v1
 
-    .line 162
+    .line 165
     .restart local v1       #superState:Landroid/os/Parcelable;
     :cond_0
     new-instance v0, Landroid/preference/VolumePreference$SavedState;
 
     invoke-direct {v0, v1}, Landroid/preference/VolumePreference$SavedState;-><init>(Landroid/os/Parcelable;)V
 
-    .line 163
+    .line 166
     .local v0, myState:Landroid/preference/VolumePreference$SavedState;
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     if-eqz v2, :cond_1
 
-    .line 164
+    .line 167
     iget-object v2, p0, Landroid/preference/VolumePreference;->mSeekBarVolumizer:Landroid/preference/VolumePreference$SeekBarVolumizer;
 
     invoke-virtual {v0}, Landroid/preference/VolumePreference$SavedState;->getVolumeStore()Landroid/preference/VolumePreference$VolumeStore;
@@ -463,7 +464,7 @@
     :cond_1
     move-object v1, v0
 
-    .line 166
+    .line 169
     goto :goto_0
 .end method
 
@@ -473,7 +474,7 @@
     .parameter "value"
 
     .prologue
-    .line 151
+    .line 154
     const/4 v0, 0x1
 
     return v0
@@ -484,9 +485,9 @@
     .parameter "streamType"
 
     .prologue
-    .line 61
+    .line 64
     iput p1, p0, Landroid/preference/VolumePreference;->mStreamType:I
 
-    .line 62
+    .line 65
     return-void
 .end method

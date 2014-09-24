@@ -17,7 +17,15 @@
 # static fields
 .field public static final BandwidthControl:I = 0x259
 
+.field public static final ClatdStatusResult:I = 0xdf
+
+.field public static final CommandOkay:I = 0xc8
+
 .field public static final DnsProxyQueryResult:I = 0xde
+
+.field public static final GetMarkResult:I = 0xe1
+
+.field public static final InterfaceAddressChange:I = 0x266
 
 .field public static final InterfaceChange:I = 0x258
 
@@ -29,11 +37,7 @@
 
 .field public static final InterfaceRxCounterResult:I = 0xd8
 
-.field public static final InterfaceRxThrottleResult:I = 0xda
-
 .field public static final InterfaceTxCounterResult:I = 0xd9
-
-.field public static final InterfaceTxThrottleResult:I = 0xdb
 
 .field public static final IpFwdStatusResult:I = 0xd3
 
@@ -47,9 +51,13 @@
 
 .field public static final TetherStatusResult:I = 0xd2
 
+.field public static final TetheringStatsListResult:I = 0x72
+
 .field public static final TetheringStatsResult:I = 0xdd
 
 .field public static final TtyListResult:I = 0x71
+
+.field public static final V6RtrAdvResult:I = 0xe3
 
 
 # instance fields
@@ -62,7 +70,7 @@
     .parameter
 
     .prologue
-    .line 112
+    .line 127
     iput-object p1, p0, Lcom/android/server/NetworkManagementService$NetdResponseCode;->this$0:Lcom/android/server/NetworkManagementService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

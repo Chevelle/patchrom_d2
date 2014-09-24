@@ -42,30 +42,30 @@
     .parameter "maxChannels"
 
     .prologue
-    .line 92
+    .line 99
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 93
+    .line 100
     iput p1, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mCodec:I
 
-    .line 94
+    .line 101
     iput p2, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMinBitRate:I
 
-    .line 95
+    .line 102
     iput p3, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMaxBitRate:I
 
-    .line 96
+    .line 103
     iput p4, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMinSampleRate:I
 
-    .line 97
+    .line 104
     iput p5, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMaxSampleRate:I
 
-    .line 98
+    .line 105
     iput p6, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMinChannels:I
 
-    .line 99
+    .line 106
     iput p7, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMaxChannels:I
 
-    .line 100
+    .line 107
     return-void
 .end method

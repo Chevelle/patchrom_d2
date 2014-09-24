@@ -527,7 +527,7 @@
     .line 141
     iget-object v11, p0, Landroid/renderscript/Matrix3f;->mMat:[F
 
-    const/16 v12, 0x9
+    const/4 v12, 0x7
 
     mul-float v13, v8, v2
 
@@ -549,7 +549,7 @@
     .line 143
     iget-object v11, p0, Landroid/renderscript/Matrix3f;->mMat:[F
 
-    const/4 v12, 0x6
+    const/4 v12, 0x5
 
     mul-float v13, v8, v2
 

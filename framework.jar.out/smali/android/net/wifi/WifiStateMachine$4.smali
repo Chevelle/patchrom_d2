@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 675
+    .line 758
     iput-object p1, p0, Landroid/net/wifi/WifiStateMachine$4;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,34 +35,28 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 5
+    .locals 4
     .parameter "context"
     .parameter "intent"
 
     .prologue
-    const/4 v4, 0x0
+    const/4 v3, 0x0
 
-    .line 678
+    .line 761
     const-string v1, "DelayedStopCounter"
 
-    invoke-virtual {p2, v1, v4}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+    invoke-virtual {p2, v1, v3}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
     move-result v0
 
-    .line 679
+    .line 762
     .local v0, counter:I
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$4;->this$0:Landroid/net/wifi/WifiStateMachine;
 
-    iget-object v2, p0, Landroid/net/wifi/WifiStateMachine$4;->this$0:Landroid/net/wifi/WifiStateMachine;
+    const v2, 0x20012
 
-    const v3, 0x20012
+    invoke-virtual {v1, v2, v0, v3}, Landroid/net/wifi/WifiStateMachine;->sendMessage(III)V
 
-    invoke-virtual {v2, v3, v0, v4}, Landroid/net/wifi/WifiStateMachine;->obtainMessage(III)Landroid/os/Message;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Landroid/net/wifi/WifiStateMachine;->sendMessage(Landroid/os/Message;)V
-
-    .line 680
+    .line 763
     return-void
 .end method

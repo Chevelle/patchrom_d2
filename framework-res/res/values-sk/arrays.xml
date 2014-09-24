@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="emailAddressTypes">
-        <item>Domovská stránka</item>
+        <item>Domov</item>
         <item>Práca</item>
         <item>Iné</item>
         <item>Vlastné</item>
@@ -22,7 +22,7 @@
         <item>Vlastné</item>
     </string-array>
     <string-array name="phoneTypes">
-        <item>Domovská stránka</item>
+        <item>Domov</item>
         <item>Mobil</item>
         <item>Práca</item>
         <item>Fax do práce</item>
@@ -32,13 +32,13 @@
         <item>Vlastné</item>
     </string-array>
     <string-array name="postalAddressTypes">
-        <item>Domovská stránka</item>
+        <item>Domov</item>
         <item>Práca</item>
         <item>Iné</item>
         <item>Vlastné</item>
     </string-array>
     <string-array name="imAddressTypes">
-        <item>Domovská stránka</item>
+        <item>Domov</item>
         <item>Práca</item>
         <item>Iné</item>
         <item>Vlastné</item>

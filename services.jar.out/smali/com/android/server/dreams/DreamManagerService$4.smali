@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 350
+    .line 356
     iput-object p1, p0, Lcom/android/server/dreams/DreamManagerService$4;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 353
+    .line 359
     iget-object v0, p0, Lcom/android/server/dreams/DreamManagerService$4;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
     #getter for: Lcom/android/server/dreams/DreamManagerService;->mController:Lcom/android/server/dreams/DreamController;
@@ -51,6 +51,6 @@
 
     invoke-virtual {v0}, Lcom/android/server/dreams/DreamController;->stopDream()V
 
-    .line 354
+    .line 360
     return-void
 .end method

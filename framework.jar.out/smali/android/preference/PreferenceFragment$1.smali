@@ -52,8 +52,7 @@
     :pswitch_0
     iget-object v0, p0, Landroid/preference/PreferenceFragment$1;->this$0:Landroid/preference/PreferenceFragment;
 
-    #calls: Landroid/preference/PreferenceFragment;->bindPreferences()V
-    invoke-static {v0}, Landroid/preference/PreferenceFragment;->access$000(Landroid/preference/PreferenceFragment;)V
+    invoke-virtual {v0}, Landroid/preference/PreferenceFragment;->bindPreferences()V
 
     goto :goto_0
 

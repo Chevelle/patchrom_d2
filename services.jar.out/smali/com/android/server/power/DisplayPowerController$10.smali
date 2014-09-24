@@ -27,7 +27,7 @@
     .parameter
 
     .prologue
-    .line 1451
+    .line 1523
     iput-object p1, p0, Lcom/android/server/power/DisplayPowerController$10;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,20 +41,20 @@
     .locals 2
 
     .prologue
-    .line 1454
+    .line 1526
     iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$10;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     const/4 v1, 0x1
 
     #setter for: Lcom/android/server/power/DisplayPowerController;->mTwilightChanged:Z
-    invoke-static {v0, v1}, Lcom/android/server/power/DisplayPowerController;->access$1402(Lcom/android/server/power/DisplayPowerController;Z)Z
+    invoke-static {v0, v1}, Lcom/android/server/power/DisplayPowerController;->access$1502(Lcom/android/server/power/DisplayPowerController;Z)Z
 
-    .line 1455
+    .line 1527
     iget-object v0, p0, Lcom/android/server/power/DisplayPowerController$10;->this$0:Lcom/android/server/power/DisplayPowerController;
 
     #calls: Lcom/android/server/power/DisplayPowerController;->updatePowerState()V
-    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$400(Lcom/android/server/power/DisplayPowerController;)V
+    invoke-static {v0}, Lcom/android/server/power/DisplayPowerController;->access$500(Lcom/android/server/power/DisplayPowerController;)V
 
-    .line 1456
+    .line 1528
     return-void
 .end method

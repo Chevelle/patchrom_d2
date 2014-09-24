@@ -50,22 +50,22 @@
     .line 295
     invoke-direct {p0, v0}, Landroid/content/ContextWrapper;-><init>(Landroid/content/Context;)V
 
-    .line 707
+    .line 709
     iput-object v0, p0, Landroid/app/Service;->mThread:Landroid/app/ActivityThread;
 
-    .line 708
+    .line 710
     iput-object v0, p0, Landroid/app/Service;->mClassName:Ljava/lang/String;
 
-    .line 709
+    .line 711
     iput-object v0, p0, Landroid/app/Service;->mToken:Landroid/os/IBinder;
 
-    .line 710
+    .line 712
     iput-object v0, p0, Landroid/app/Service;->mApplication:Landroid/app/Application;
 
-    .line 711
+    .line 713
     iput-object v0, p0, Landroid/app/Service;->mActivityManager:Landroid/app/IActivityManager;
 
-    .line 712
+    .line 714
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/app/Service;->mStartCompatibility:Z
@@ -86,28 +86,28 @@
     .parameter "activityManager"
 
     .prologue
-    .line 692
+    .line 694
     invoke-virtual {p0, p1}, Landroid/app/Service;->attachBaseContext(Landroid/content/Context;)V
 
-    .line 693
+    .line 695
     iput-object p2, p0, Landroid/app/Service;->mThread:Landroid/app/ActivityThread;
 
-    .line 694
+    .line 696
     iput-object p3, p0, Landroid/app/Service;->mClassName:Ljava/lang/String;
 
-    .line 695
+    .line 697
     iput-object p4, p0, Landroid/app/Service;->mToken:Landroid/os/IBinder;
 
-    .line 696
+    .line 698
     iput-object p5, p0, Landroid/app/Service;->mApplication:Landroid/app/Application;
 
-    .line 697
+    .line 699
     check-cast p6, Landroid/app/IActivityManager;
 
     .end local p6
     iput-object p6, p0, Landroid/app/Service;->mActivityManager:Landroid/app/IActivityManager;
 
-    .line 698
+    .line 700
     invoke-virtual {p0}, Landroid/app/Service;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
     move-result-object v0
@@ -123,10 +123,10 @@
     :goto_0
     iput-boolean v0, p0, Landroid/app/Service;->mStartCompatibility:Z
 
-    .line 700
+    .line 702
     return-void
 
-    .line 698
+    .line 700
     :cond_0
     const/4 v0, 0x0
 
@@ -140,12 +140,12 @@
     .parameter "args"
 
     .prologue
-    .line 680
+    .line 682
     const-string/jumbo v0, "nothing to dump"
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 681
+    .line 683
     return-void
 .end method
 
@@ -163,7 +163,7 @@
     .locals 1
 
     .prologue
-    .line 703
+    .line 705
     iget-object v0, p0, Landroid/app/Service;->mClassName:Ljava/lang/String;
 
     return-object v0

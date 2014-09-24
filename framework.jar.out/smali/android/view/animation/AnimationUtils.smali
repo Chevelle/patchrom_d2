@@ -1137,7 +1137,7 @@
     .line 214
     .end local v0           #a:Landroid/view/animation/Animation;
     :cond_0
-    const v1, 0x10a0057
+    const v1, 0x10a0054
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -1153,7 +1153,7 @@
 
     .prologue
     .line 253
-    const v1, 0x10a0056
+    const v1, 0x10a0053
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -1216,7 +1216,7 @@
     .line 235
     .end local v0           #a:Landroid/view/animation/Animation;
     :cond_0
-    const v1, 0x10a005a
+    const v1, 0x10a0057
 
     invoke-static {p0, v1}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 

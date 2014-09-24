@@ -8,15 +8,15 @@
     .locals 1
 
     .prologue
-    .line 54
+    .line 57
     const-string/jumbo v0, "media_jni"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 55
+    .line 58
     invoke-static {}, Landroid/media/MediaCodecList;->native_init()V
 
-    .line 56
+    .line 59
     return-void
 .end method
 
@@ -24,10 +24,13 @@
     .locals 0
 
     .prologue
-    .line 51
+    .line 54
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
+.end method
+
+.method static final native findCodecByName(Ljava/lang/String;)I
 .end method
 
 .method static final native getCodecCapabilities(ILjava/lang/String;)Landroid/media/MediaCodecInfo$CodecCapabilities;
@@ -41,7 +44,7 @@
     .parameter "index"
 
     .prologue
-    .line 33
+    .line 34
     if-ltz p0, :cond_0
 
     invoke-static {}, Landroid/media/MediaCodecList;->getCodecCount()I
@@ -50,7 +53,7 @@
 
     if-le p0, v0, :cond_1
 
-    .line 34
+    .line 35
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -58,7 +61,7 @@
 
     throw v0
 
-    .line 37
+    .line 38
     :cond_1
     new-instance v0, Landroid/media/MediaCodecInfo;
 

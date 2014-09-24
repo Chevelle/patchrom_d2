@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Mayroon kang %d (na) natitirang pagsubok bago ma-lock ang SIM.</item>
+        <item quantity="one">Mayroon kang %d (na) natitirang pagsubok bago ma-lock ang SIM.</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d (na) segundo ang nakalipas</item>
         <item quantity="one">1 segundo ang nakakalipas</item>
@@ -90,5 +94,9 @@
     <plurals name="matches_found">
         <item quantity="other">%1$d ng %2$d</item>
         <item quantity="one">1 tugma</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Subukan muli sa %d seg</item>
+        <item quantity="one">Subukan muli sa 1 seg</item>
     </plurals>
 </resources>
