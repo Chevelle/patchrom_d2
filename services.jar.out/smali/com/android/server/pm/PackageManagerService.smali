@@ -3005,6 +3005,8 @@
 
     iget-object v3, v0, Lcom/android/server/pm/PackageManagerService;->mSettings:Lcom/android/server/pm/Settings;
 
+    move-object/from16 v0, p0
+
     invoke-static {v0, v3}, Lcom/android/server/pm/Injector$PackageManagerServiceHook;->performPreinstallApp(Lcom/android/server/pm/PackageManagerService;Lcom/android/server/pm/Settings;)V
 
     move-object/from16 v0, p0
