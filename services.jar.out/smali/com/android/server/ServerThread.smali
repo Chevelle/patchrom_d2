@@ -2368,6 +2368,7 @@
     move-object/from16 v0, v175
 
     invoke-static {v7, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+    
     const-string v7, "security"
     
     new-instance v9, Lcom/miui/server/SecurityManagerService;
@@ -2375,7 +2376,6 @@
     invoke-direct {v9, v5}, Lcom/miui/server/SecurityManagerService;-><init>(Landroid/content/Context;)V
     
     invoke-static {v7, v9}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
-    
     :try_end_41
     .catch Ljava/lang/Throwable; {:try_start_41 .. :try_end_41} :catch_50
 

@@ -672,7 +672,7 @@
     if-eqz v3, :cond_1c
 
     iget-object v3, p0, Lcom/android/server/ServerThread$2;->val$themeServiceF:Lcom/android/server/ThemeService;
-
+    
     .line 1273
     :cond_1c
     iget-object v3, p0, Lcom/android/server/ServerThread$2;->val$contextF:Landroid/content/Context;
