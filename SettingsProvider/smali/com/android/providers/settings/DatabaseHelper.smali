@@ -1431,7 +1431,7 @@
     move-result v2
 
     .line 2294
-    const/16 v3, 0x8
+    const/16 v3, 0xa
 
     if-ne v2, v3, :cond_8
 
