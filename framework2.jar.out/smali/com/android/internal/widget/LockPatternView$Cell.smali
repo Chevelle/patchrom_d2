@@ -38,30 +38,6 @@
     return-void
 .end method
 
-.method private constructor <init>(II)V
-    .locals 1
-    .parameter "row"
-    .parameter "column"
-
-    .prologue
-    .line 154
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 155
-    const/4 v0, 0x3
-
-    invoke-static {p1, p2, v0}, Lcom/android/internal/widget/LockPatternView$Cell;->checkRange(IIB)V
-
-    .line 156
-    iput p1, p0, Lcom/android/internal/widget/LockPatternView$Cell;->row:I
-
-    .line 157
-    iput p2, p0, Lcom/android/internal/widget/LockPatternView$Cell;->column:I
-
-    .line 158
-    return-void
-.end method
-
 .method private constructor <init>(IIB)V
     .locals 0
     .parameter "row"
@@ -85,20 +61,44 @@
     return-void
 .end method
 
+.method private static checkRange(II)V
+    .locals 2
+    .parameter "row"
+    .parameter "column"
 
+    .prologue
+    const/4 v0, 0x2
 
+    if-ltz p0, :cond_0
 
+    if-le p0, v0, :cond_1
 
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
+    const-string v1, "row must be in range 0-2"
 
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    throw v0
 
+    :cond_1
+    if-ltz p1, :cond_2
 
+    if-le p1, v0, :cond_3
 
+    :cond_2
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
+    const-string v1, "column must be in range 0-2"
 
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    throw v0
 
+    :cond_3
+    return-void
+.end method
 
 .method private static checkRange(IIB)V
     .locals 3
@@ -193,10 +193,8 @@
 
     monitor-enter v1
 
-    const/4 v0, 0x3
-
     :try_start_0
-    invoke-static {p0, p1, v0}, Lcom/android/internal/widget/LockPatternView$Cell;->checkRange(IIB)V
+    invoke-static {p0, p1}, Lcom/android/internal/widget/LockPatternView$Cell;->checkRange(II)V
 
     sget-object v0, Lcom/android/internal/widget/LockPatternView$Cell;->sCells:[[Lcom/android/internal/widget/LockPatternView$Cell;
 

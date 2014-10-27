@@ -1119,7 +1119,7 @@
 .end method
 
 .method public static stringToPattern(Ljava/lang/String;)Ljava/util/List;
-    .locals 8
+    .locals 6
     .parameter "string"
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -1136,24 +1136,22 @@
     invoke-static {}, Lcom/google/android/collect/Lists;->newArrayList()Ljava/util/ArrayList;
     move-result-object v3
     .local v3, result:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/widget/LockPatternView$Cell;>;"
-    const/4 v4, 0x3
-    .local v4, size:B
     invoke-virtual {p0}, Ljava/lang/String;->getBytes()[B
     move-result-object v1
     .local v1, bytes:[B
     const/4 v2, 0x0
     .local v2, i:I
     :goto_0
-    array-length v5, v1
-    if-ge v2, v5, :cond_0
+    array-length v4, v1
+    if-ge v2, v4, :cond_0
     aget-byte v0, v1, v2
     .local v0, b:B
-    div-int/lit8 v5, v0, 0x3
-    rem-int/lit8 v6, v0, 0x3
-    const/4 v7, 0x3
-    invoke-static {v5, v6, v7}, Lcom/android/internal/widget/LockPatternView$Cell;->of(IIB)Lcom/android/internal/widget/LockPatternView$Cell;
-    move-result-object v5
-    invoke-interface {v3, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    div-int/lit8 v4, v0, 0x3
+    rem-int/lit8 v5, v0, 0x3
+
+    invoke-static {v4, v5}, Lcom/android/internal/widget/LockPatternView$Cell;->of(II)Lcom/android/internal/widget/LockPatternView$Cell;
+    move-result-object v4
+    invoke-interface {v3, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
     add-int/lit8 v2, v2, 0x1
     goto :goto_0
     .end local v0           #b:B

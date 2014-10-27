@@ -32,12 +32,11 @@
 
 .field public static final enum DETECTED:Lcom/android/internal/telephony/IccCardConstants$State;
 
-.field public static final NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
+.field public static final enum NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 .field public static final enum NOT_READY:Lcom/android/internal/telephony/IccCardConstants$State;
 
 .field public static final enum PERM_DISABLED:Lcom/android/internal/telephony/IccCardConstants$State;
 
-.field public static final enum PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 
 .field public static final enum PIN_REQUIRED:Lcom/android/internal/telephony/IccCardConstants$State;
 
@@ -102,11 +101,11 @@
     .line 65
     new-instance v0, Lcom/android/internal/telephony/IccCardConstants$State;
 
-    const-string v1, "PERSO_LOCKED"
+    const-string v1, "NETWORK_LOCKED"
 
     invoke-direct {v0, v1, v7}, Lcom/android/internal/telephony/IccCardConstants$State;-><init>(Ljava/lang/String;I)V
 
-    sput-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
+    sput-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 
     .line 66
     new-instance v0, Lcom/android/internal/telephony/IccCardConstants$State;
@@ -184,7 +183,7 @@
 
     aput-object v1, v0, v6
 
-    sget-object v1, Lcom/android/internal/telephony/IccCardConstants$State;->PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
+    sget-object v1, Lcom/android/internal/telephony/IccCardConstants$State;->NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 
     aput-object v1, v0, v7
 
@@ -220,8 +219,6 @@
 
     sput-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->$VALUES:[Lcom/android/internal/telephony/IccCardConstants$State;
 
-    sget-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
-    sput-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
     return-void
 .end method
 
@@ -290,7 +287,7 @@
 
     if-eq p0, v0, :cond_0
 
-    sget-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
+    sget-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 
     if-eq p0, v0, :cond_0
 
