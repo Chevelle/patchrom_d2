@@ -3264,7 +3264,9 @@
     move-object/from16 v0, p0
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/ServiceStateTracker;->setPhoneType()V
+
     move-object/from16 v0, p0
+
     iget-boolean v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mNitzUpdatedTime:Z
 
     move/from16 v38, v0

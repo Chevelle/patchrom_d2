@@ -2604,14 +2604,22 @@
 
 .method public setPhoneType()V
     .locals 3
+
     const-string v0, "gsm.current.phone-type"
+
     invoke-static {v0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
     move-result-object v1
+
     const-string v0, "persist.radio.phonetype"
+
     iget-object v2, p0, Lcom/android/internal/telephony/ServiceStateTracker;->mPhoneBase:Lcom/android/internal/telephony/PhoneBase;
+
     invoke-virtual {v2, v0, v1}, Lcom/android/internal/telephony/PhoneBase;->setSystemProperty(Ljava/lang/String;Ljava/lang/String;)V
+
     return-void
 .end method
+
 .method protected abstract setPowerStateToDesired()V
 .end method
 

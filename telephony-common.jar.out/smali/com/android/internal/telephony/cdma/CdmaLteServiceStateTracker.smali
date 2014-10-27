@@ -3929,8 +3929,6 @@
     .line 475
     move-object/from16 v0, p0
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/ServiceStateTracker;->setPhoneType()V
-    move-object/from16 v0, p0
     iget-object v0, v0, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->mPhone:Lcom/android/internal/telephony/cdma/CDMAPhone;
 
     move-object/from16 v37, v0

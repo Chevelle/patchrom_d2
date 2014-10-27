@@ -29,7 +29,7 @@
 
 .field protected static final EVENT_IMSI_READY:I = 0x8
 
-.field private static final EVENT_PERSO_LOCKED:I = 0x9
+.field private static final EVENT_NETWORK_LOCKED:I = 0x9
 
 .field private static final EVENT_RADIO_OFF_OR_UNAVAILABLE:I = 0x1
 
@@ -2291,7 +2291,7 @@
     invoke-virtual {v1, v0}, Landroid/os/RegistrantList;->notifyRegistrants(Landroid/os/AsyncResult;)V
 
     .line 271
-    sget-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
+    sget-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/IccCardProxy;->setExternalState(Lcom/android/internal/telephony/IccCardConstants$State;)V
 
@@ -2573,15 +2573,6 @@
 .end method
 
 .method public registerForNetworkLocked(Landroid/os/Handler;ILjava/lang/Object;)V
-    .locals 0
-    .parameter "h"
-    .parameter "what"
-    .parameter "obj"
-    .prologue
-    invoke-virtual {p0, p1, p2, p3}, Lcom/android/internal/telephony/uicc/IccCardProxy;->registerForPersoLocked(Landroid/os/Handler;ILjava/lang/Object;)V
-    return-void
-.end method
-.method public registerForPersoLocked(Landroid/os/Handler;ILjava/lang/Object;)V
     .locals 6
     .parameter "h"
     .parameter "what"
@@ -2610,7 +2601,7 @@
 
     move-result-object v1
 
-    sget-object v3, Lcom/android/internal/telephony/IccCardConstants$State;->PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
+    sget-object v3, Lcom/android/internal/telephony/IccCardConstants$State;->NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 
     if-ne v1, v3, :cond_0
 
@@ -2696,7 +2687,7 @@
 
     const/16 v1, 0x9
 
-    invoke-virtual {v0, p0, v1, v2}, Lcom/android/internal/telephony/uicc/UiccCardApplication;->registerForPersoLocked(Landroid/os/Handler;ILjava/lang/Object;)V
+    invoke-virtual {v0, p0, v1, v2}, Lcom/android/internal/telephony/uicc/UiccCardApplication;->registerForNetworkLocked(Landroid/os/Handler;ILjava/lang/Object;)V
 
     .line 392
     :cond_1
@@ -3084,19 +3075,6 @@
     throw v1
 .end method
 
-.method public supplyNetworkDepersonalization(Ljava/lang/String;Landroid/os/Message;)V
-    .locals 1
-    .parameter "pin"
-    .parameter "onComplete"
-    .prologue
-    sget-object v0, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$PersoSubState;->PERSOSUBSTATE_SIM_NETWORK:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$PersoSubState;
-    invoke-virtual {v0}, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$PersoSubState;->ordinal()I
-    move-result v0
-    invoke-static {v0}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
-    move-result-object v0
-    invoke-virtual {p0, p1, v0, p2}, Lcom/android/internal/telephony/uicc/IccCardProxy;->supplyDepersonalization(Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
-    return-void
-.end method
 .method public supplyPin(Ljava/lang/String;Landroid/os/Message;)V
     .locals 3
     .parameter "pin"
@@ -3442,13 +3420,6 @@
 .end method
 
 .method public unregisterForNetworkLocked(Landroid/os/Handler;)V
-    .locals 0
-    .parameter "h"
-    .prologue
-    invoke-virtual {p0, p1}, Lcom/android/internal/telephony/uicc/IccCardProxy;->unregisterForPersoLocked(Landroid/os/Handler;)V
-    return-void
-.end method
-.method public unregisterForPersoLocked(Landroid/os/Handler;)V
     .locals 2
     .parameter "h"
 
@@ -3522,7 +3493,7 @@
 
     iget-object v0, p0, Lcom/android/internal/telephony/uicc/IccCardProxy;->mUiccApplication:Lcom/android/internal/telephony/uicc/UiccCardApplication;
 
-    invoke-virtual {v0, p0}, Lcom/android/internal/telephony/uicc/UiccCardApplication;->unregisterForPersoLocked(Landroid/os/Handler;)V
+    invoke-virtual {v0, p0}, Lcom/android/internal/telephony/uicc/UiccCardApplication;->unregisterForNetworkLocked(Landroid/os/Handler;)V
 
     .line 403
     :cond_3
@@ -3808,7 +3779,7 @@
     iput-object v0, p0, Lcom/android/internal/telephony/uicc/IccCardProxy;->mPersoSubState:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$PersoSubState;
 
     .line 374
-    sget-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->PERSO_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
+    sget-object v0, Lcom/android/internal/telephony/IccCardConstants$State;->NETWORK_LOCKED:Lcom/android/internal/telephony/IccCardConstants$State;
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/IccCardProxy;->setExternalState(Lcom/android/internal/telephony/IccCardConstants$State;)V
 
