@@ -1,5 +1,5 @@
 #
-# Makefile for SCH-I535
+# Makefile for D2LTE
 #
 
 # The original zip file, MUST be specified by each product
@@ -9,7 +9,7 @@ local-zip-file     := stockrom.zip
 local-out-zip-file := miui_$(PORT_PRODUCT)_$(BUILD_NUMBER)_4.4.zip
 
 # the location for local-ota to save target-file
-local-previous-target-dir := ~/workspace/ota_base/4.4/d2vzw
+local-previous-target-dir := ~/workspace/ota_base/4.4/d2lte-M9
 
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps :=
@@ -21,11 +21,16 @@ local-miui-removed-apps := 	BaiduNetworkLocation \
 				VoiceAssist \
 				GameCenter \
 				GameCenterSDKService \
-				O2O
+				SuperMarket \
+				O2O \
+				Weather \
+				WeatherProvider
 
 local-miui-removed-priv-apps :=
 
-local-miui-modified-apps :=	SettingsProvider
+local-miui-modified-apps :=	Mms \
+				Phone \
+				SettingsProvider
 
 local-modified-priv-apps :=	
 
@@ -61,11 +66,13 @@ local-pre-zip-misc:
 	cp other/boot.img $(ZIP_DIR)/boot.img
 	cp other/installd $(ZIP_DIR)/system/bin/installd
 	cp other/lbesec $(ZIP_DIR)/system/xbin/lbesec
+	cp other/00shelld $(ZIP_DIR)/system/etc/init.d/00shelld
+	cp other/00lbesec $(ZIP_DIR)/system/etc/init.d/00lbesec
+	cp other/lbesec $(ZIP_DIR)/system/xbin/lbesec
 	cp other/apns-conf.xml $(ZIP_DIR)/system/etc/apns-conf.xml
 # To replace FM icon
 #	cp -rf other/miui_mod_icons/* $(ZIP_DIR)/system/media/theme/miui_mod_icons/
 	@echo Remove usless stuff
 	#rm -rf $(ZIP_DIR)/data/miui/apps/*.apk
-	cp other/de.mangelow.network-1.apk $(ZIP_DIR)/data/miui/apps/de.mangelow.network-1.apk
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
 	rm -rf $(ZIP_DIR)/system/tts/lang_pico/*.bin
