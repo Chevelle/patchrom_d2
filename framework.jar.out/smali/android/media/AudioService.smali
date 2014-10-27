@@ -2865,7 +2865,6 @@
     if-le p2, v0, :cond_0
 
     .line 4861
-    invoke-direct {p0}, Landroid/media/AudioService;->displaySafeVolumeWarning()V
 
     .line 4862
     const/4 v0, 0x0
@@ -5236,17 +5235,12 @@
     if-eqz v9, :cond_0
 
     .line 1870
-    .end local v7           #inTouchSoundsGroup:Z
-    .end local v10           #version:Ljava/lang/String;
-    :goto_2
     invoke-interface {v9}, Landroid/content/res/XmlResourceParser;->close()V
 
     goto :goto_0
 
     .line 1824
     .restart local v1       #element:Ljava/lang/String;
-    .restart local v7       #inTouchSoundsGroup:Z
-    .restart local v10       #version:Ljava/lang/String;
     :cond_4
     :try_start_1
     const-string v11, "group"
@@ -5411,8 +5405,9 @@
     if-eqz v9, :cond_0
 
     .line 1870
+    invoke-interface {v9}, Landroid/content/res/XmlResourceParser;->close()V
 
-    goto :goto_2
+    goto/16 :goto_0
 
     .line 1846
     .end local v0           #e:Landroid/content/res/Resources$NotFoundException;
@@ -5474,13 +5469,16 @@
     const-string v12, "XML parser exception reading touch sound assets"
 
     invoke-static {v11, v12, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    :try_end_6
+    .catchall {:try_start_6 .. :try_end_6} :catchall_0
 
     .line 1869
     if-eqz v9, :cond_0
 
     .line 1870
+    invoke-interface {v9}, Landroid/content/res/XmlResourceParser;->close()V
 
-    goto/16 :goto_2
+    goto/16 :goto_0
 
     .line 1866
     .end local v0           #e:Lorg/xmlpull/v1/XmlPullParserException;
@@ -5489,20 +5487,22 @@
 
     .line 1867
     .local v0, e:Ljava/io/IOException;
+    :try_start_7
     const-string v11, "AudioService"
 
     const-string v12, "I/O exception reading touch sound assets"
 
     invoke-static {v11, v12, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_6
-    .catchall {:try_start_6 .. :try_end_6} :catchall_0
+    :try_end_7
+    .catchall {:try_start_7 .. :try_end_7} :catchall_0
 
     .line 1869
     if-eqz v9, :cond_0
 
     .line 1870
+    invoke-interface {v9}, Landroid/content/res/XmlResourceParser;->close()V
 
-    goto/16 :goto_2
+    goto/16 :goto_0
 
     .line 1869
     .end local v0           #e:Ljava/io/IOException;
@@ -5895,7 +5895,6 @@
     iput v0, p0, Landroid/media/AudioService;->mMusicActiveMs:I
 
     .line 2542
-    invoke-direct {p0}, Landroid/media/AudioService;->displaySafeVolumeWarning()V
 
     .line 2547
     .end local v7           #device:I
@@ -7751,13 +7750,14 @@
 .end method
 
 .method private sendMasterMuteUpdate(ZI)V
-    .locals 0
+    .locals 1
     .parameter "muted"
     .parameter "flags"
 
     .prologue
     .line 1265
-    invoke-direct {p0, p2}, Landroid/media/AudioService;->masterMuteChanged(I)V
+    iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+    invoke-virtual {v0, p2}, Lmiui/view/VolumePanel;->postMasterMuteChanged(I)V
 
     .line 1266
     invoke-direct {p0, p1}, Landroid/media/AudioService;->broadcastMasterMuteStatus(Z)V
@@ -7905,7 +7905,8 @@
 
     .line 1240
     :cond_0
-    invoke-direct {p0, p1, p4}, Landroid/media/AudioService;->showVolumeChangeUi(II)V
+    iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+    invoke-virtual {v1, p1, p4}, Lmiui/view/VolumePanel;->postVolumeChanged(II)V
 
     .line 1242
     and-int/lit8 v1, p4, 0x20

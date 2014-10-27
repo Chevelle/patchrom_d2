@@ -605,13 +605,9 @@
     invoke-static {v0, v1}, Landroid/app/ContextImpl;->registerService(Ljava/lang/String;Landroid/app/ContextImpl$ServiceFetcher;)V
 
     .line 633
-    const-string/jumbo v0, "themes"
 
-    new-instance v1, Landroid/app/ContextImpl$49;
 
-    invoke-direct {v1}, Landroid/app/ContextImpl$49;-><init>()V
 
-    invoke-static {v0, v1}, Landroid/app/ContextImpl;->registerService(Ljava/lang/String;Landroid/app/ContextImpl$ServiceFetcher;)V
 
     invoke-static {}, Landroid/app/ContextImpl;->registerMiuiServices()V
 
@@ -2454,6 +2450,7 @@
 
     goto :goto_0
 
+    .line 1858
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1

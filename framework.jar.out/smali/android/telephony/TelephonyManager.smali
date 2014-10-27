@@ -2894,17 +2894,13 @@
 .end method
 
 .method public getSimOperator()Ljava/lang/String;
-    .locals 3
+    .locals 1
 
     .prologue
     .line 992
-    const-string v0, "gsm.sim.operator.numeric"
 
-    invoke-static {}, Landroid/telephony/TelephonyManager;->getDefaultSubscription()I
 
-    move-result v1
 
-    const-string v2, ""
 
     invoke-static {p0}, Landroid/telephony/Injector$TelephonyManagerHook;->getSimOperator(Landroid/telephony/TelephonyManager;)Ljava/lang/String;
 
@@ -3040,7 +3036,7 @@
 
     .line 969
     :cond_2
-    const-string v1, "PERSO_LOCKED"
+    const-string v1, "NETWORK_LOCKED"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 

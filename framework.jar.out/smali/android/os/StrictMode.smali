@@ -231,11 +231,11 @@
     sput-boolean v0, Landroid/os/StrictMode;->LOG_V:Z
 
     .line 120
+    const-string/jumbo v0, "user"
 
-    sget-object v0, Landroid/os/Build;->TYPE:Ljava/lang/String;
+    sget-object v1, Landroid/os/Build;->TYPE:Ljava/lang/String;
 
-    const-string/jumbo v1, "user"
-    invoke-virtual {v0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    invoke-virtual {v1, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v0
 
@@ -2145,12 +2145,13 @@
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
     .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_0
 
-    :goto_4
+    .line 1666
     invoke-static {v13}, Landroid/os/StrictMode;->setThreadPolicyMask(I)V
 
     .line 1670
     .end local v13           #savedPolicyMask:I
     :cond_8
+    :goto_4
     if-eqz v10, :cond_3
 
     .line 1671
@@ -2195,6 +2196,7 @@
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
     .line 1666
+    invoke-static {v13}, Landroid/os/StrictMode;->setThreadPolicyMask(I)V
 
     goto :goto_4
 
