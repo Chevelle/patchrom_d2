@@ -11,12 +11,20 @@ def WritePolicyConfig(info):
 def ReplaceLine(info):
     edify = info.script
     for i in xrange(len(edify.script)):
-	if "assert(getprop(\"ro.product.device\") == \"d2vzw\" ||" in edify.script[i]:
-           edify.script[i] = edify.script[i].replace("assert(getprop(\"ro.product.device\") == \"d2vzw\" ||", 'assert(getprop("ro.product.device") == "d2vzw" || getprop("ro.build.product") == "d2vzw" || getprop("ro.product.device") == "d2lte" || getprop("ro.build.product") == "d2lte");')
-
-	if "       getprop(\"ro.build.product\") == \"d2vzw\");" in edify.script[i]:
-	   edify.script[i] = edify.script[i].replace("       getprop(\"ro.build.product\") == \"d2vzw\");", '')
-
+	if 'getprop("ro.product.device") == "d2lte" || abort("This package is for \\"d2lte\\" devices; this is a \\"" + getprop("ro.product.device") + "\\".");' in edify.script[i]:
+           edify.script[i] = edify.script[i].replace('getprop("ro.product.device") == "d2lte" || abort("This package is for \\"d2lte\\" devices; this is a \\"" + getprop("ro.product.device") + "\\".");', 
+'assert(getprop("ro.product.device") == "d2att" || getprop("ro.build.product") == "d2att" ||\n\
+       getprop("ro.product.device") == "d2spr" || getprop("ro.build.product") == "d2spr" ||\n\
+       getprop("ro.product.device") == "d2spi" || getprop("ro.build.product") == "d2spi" ||\n\
+       getprop("ro.product.device") == "d2tfnspr" || getprop("ro.build.product") == "d2tfnspr" ||\n\
+       getprop("ro.product.device") == "d2tmo" || getprop("ro.build.product") == "d2tmo" ||\n\
+       getprop("ro.product.device") == "d2cri" || getprop("ro.build.product") == "d2cri" ||\n\
+       getprop("ro.product.device") == "d2mtr" || getprop("ro.build.product") == "d2mtr" ||\n\
+       getprop("ro.product.device") == "d2usc" || getprop("ro.build.product") == "d2usc" ||\n\
+       getprop("ro.product.device") == "d2vmu" || getprop("ro.build.product") == "d2vmu" ||\n\
+       getprop("ro.product.device") == "d2vzw" || getprop("ro.build.product") == "d2vzw" ||\n\
+       getprop("ro.product.device") == "d2lte" || getprop("ro.build.product") == "d2lte" ||\n\
+       getprop("ro.product.device") == "d2can" || getprop("ro.build.product") == "d2can" || abort("This package is for \\"d2att,d2spr,d2spi,d2tfnspr,d2tmo,d2cri,d2mtr,d2usc,d2vmu,d2vzw,d2lte,d2can\\" devices; this is a \\"" + getprop("ro.product.device") + "\\"."););')
     return
 
 def AddBackupTool(info):
@@ -116,14 +124,16 @@ ifelse(is_substring(\"SC06D\", getprop(\"ro.bootloader\")), run_program(\"/sbin/
 
 def FullOTA_InstallEnd(info):
     AddSetMetaData(info)
-    #ReplaceLine(info)
+    ReplaceLine(info)
     AddBackupTool(info)
     AddAssertions(info)
     AssertBootloader(info)
+    WritePolicyConfig(info)
 
 def IncrementalOTA_InstallEnd(info):
     AddSetMetaData(info)
-    #ReplaceLine(info)
+    ReplaceLine(info)
     AddBackupTool(info)
     AddAssertions(info)
     AssertBootloader(info)
+    WritePolicyConfig(info)
