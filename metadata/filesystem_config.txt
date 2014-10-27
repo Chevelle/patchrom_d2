@@ -432,6 +432,8 @@ system/etc/hosts 0 0 644
 system/etc/init.crda.sh 0 0 644
 system/etc/init.d 0 0 755
 system/etc/init.d/00banner 0 2000 755
+system/etc/init.d/00lbesec 0 2000 755
+system/etc/init.d/00shelld 0 2000 755
 system/etc/init.d/90userinit 0 2000 755
 system/etc/init.led.sh 0 0 644
 system/etc/init.qcom.efs.sync.sh 0 0 644
