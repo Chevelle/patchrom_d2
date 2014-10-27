@@ -9,7 +9,6 @@ local-phone-apps :=		BasicDreams \
 				DocumentsUI \
 				DSPManager \
 				Galaxy4 \
-				Gallery2 \
 				HTMLViewer \
 				HoloSpiralWallpaper \
 				KeyChain \
