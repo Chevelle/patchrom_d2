@@ -1,4 +1,4 @@
-Patchrom MIUI V5 for D2VZW (WIP)
+Patchrom MIUI V5 for D2LTE (WIP)
 ========================================
 
 Get started
@@ -27,10 +27,10 @@ use this command
 
 $ . build/envsetup.sh
 
-$ cd d2vzw
+$ cd d2lte
 
-$ make fullota PORT_PRODUCT=d2vzw_chevelle BUILD_NUMBER=4.X.XX
+$ make fullota PORT_PRODUCT=d2lte_chevelle BUILD_NUMBER=4.X.XX
 
 or
 
-$ make zipfile PORT_PRODUCT=d2vzw_chevelle BUILD_NUMBER=4.X.XX
+$ make zipfile PORT_PRODUCT=d2lte_chevelle BUILD_NUMBER=4.X.XX
