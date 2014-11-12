@@ -25,7 +25,7 @@ ro.wifi.channels=
 ro.board.platform=msm8960
 # ro.build.product is obsolete; use ro.product.device
 ro.build.product=d2lte
-ro.build.fingerprint=Verizon/d2vzw/d2vzw:4.3/JSS15J/I535VRUCML1:user/release-keys
+ro.build.fingerprint=Verizon/d2vzw/d2vzw:4.4.2/KOT49H/I535VRUDNE1:user/release-keys
 ro.build.characteristics=default
 ro.cm.device=d2lte
 # end build properties
