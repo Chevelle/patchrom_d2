@@ -307,6 +307,14 @@
     const/4 v3, 0x6
 
     if-eq p1, v3, :cond_5
+    
+    const/16 v3, 0x8
+    
+    if-eq p1, v3, :cond_5
+    
+    const/16 v3, 0xa
+    
+    if-eq p1, v3, :cond_5
 
     move v0, v1
 
@@ -800,11 +808,11 @@
     if-ne v3, v6, :cond_3
 
     .line 368
-    const/4 v2, 0x7
+    const/16 v2, 0x8
 
     .line 370
     :cond_3
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     .line 371
     .local v0, cdmaSubscription:I
@@ -945,7 +953,7 @@
 
     .line 388
     :cond_4
-    const/4 v2, 0x0
+    const/16 v2, 0x8
 
     .line 389
     const-string v3, "PhoneApp"
