@@ -1424,7 +1424,7 @@
     .line 2291
     const-string v2, "ro.telephony.default_network"
 
-    const/4 v3, 0x0
+    const/16 v3, 0xa
 
     invoke-static {v2, v3}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
 
