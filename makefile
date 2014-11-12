@@ -29,8 +29,7 @@ local-miui-removed-apps := 	BaiduNetworkLocation \
 local-miui-removed-priv-apps :=
 
 local-miui-modified-apps :=	Mms \
-				Phone \
-				SettingsProvider
+				Phone
 
 local-modified-priv-apps :=	
 
