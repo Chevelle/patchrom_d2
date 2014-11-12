@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="string" name="preferred_network_type_cdma_lte_miui" id="0x7f0e03f0" />
+</resources>

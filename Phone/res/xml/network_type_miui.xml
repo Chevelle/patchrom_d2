@@ -7,6 +7,7 @@
     </miui.preference.RadioButtonPreferenceCategory>
     <miui.preference.RadioButtonPreferenceCategory android:title="@string/preferred_network_type_cdma_miui" android:key="network_type_list_cdma">
         <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_cdma_miui" android:key="4" />
+	<miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_cdma_lte_miui" android:key="8" />
 	<miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_global_miui" android:key="10" />
     </miui.preference.RadioButtonPreferenceCategory>
 </PreferenceScreen>
